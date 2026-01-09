@@ -322,6 +322,7 @@ class ScoreFromHTML:
             self.bowled,
             self.lbw,
             self.innings_list,
+            self.man_of_the_match,
             self.batsmen_list,
             self.bowlers_info
         ) = self._parse_html_scorecards()
@@ -362,8 +363,8 @@ class ScoreFromHTML:
             result.update({'mode': 'bowled', 'bowler_bowled': outdec.replace('b ', '').strip()})
             return result
 
-        if 'lbw b ' in outdec.lower():
-            result.update({'mode': 'lbw', 'bowler_lbw': outdec.split(' b ')[-1].strip()})
+        if 'lbw ' in outdec.lower():
+            result.update({'mode': 'lbw', 'bowler_lbw': outdec.split('lbw ')[-1].strip()})
             return result
 
         if 'run out' in outdec.lower():
@@ -405,6 +406,8 @@ class ScoreFromHTML:
 
             with path.open("r", encoding="utf-8") as f:
                 soup = BeautifulSoup(f, "html.parser")
+                
+            man_of_the_match = soup.find_all('span',class_="ng-binding")[-1].text.strip()
 
             tables = soup.find_all('table', class_="ap-scroreboard-table table-striped")
             batting_table, bowling_table = tables[0], tables[1]
@@ -481,6 +484,7 @@ class ScoreFromHTML:
             bowled,
             lbw,
             innings_list,
+            man_of_the_match,
             pd.DataFrame(batsmen_rows),
             pd.DataFrame(bowlers_rows)
         )
