@@ -1,0 +1,1618 @@
+<div class="scoreCardContentWrap ng-scope" ng-if="battingCard.length &gt; 0">
+ <div class="scoreCardContentHead" ng-class="{'scoreCardContentHead_SO':battingCard[0].InningsNo &gt; 2}">
+  <!-- ngIf: battingCard[0].InningsNo <= 2 -->
+  <span class="sh_teamdet sh_teamdetL ng-scope" ng-if="battingCard[0].InningsNo &lt;= 2">
+   <span class="sh_teamLogo">
+    <img alt="RCB" ng-src="https://scores.iplt20.com/ipl/teamlogos/NVAlbtIyB81740555172aFPMviEPyJ1710927747rcb.png" onerror="this.src = basePath+'images/default-team-logo.png?v=1?v=5';" src="https://scores.iplt20.com/ipl/teamlogos/NVAlbtIyB81740555172aFPMviEPyJ1710927747rcb.png"/>
+   </span>
+   <!-- ngIf: battingCard[0].InningsNo <= 2 -->
+   <span class="sh_teamName mob-hide ng-binding ng-scope" ng-bind="curInnData.teamName" ng-if="battingCard[0].InningsNo &lt;= 2">
+    Royal Challengers Bengaluru
+   </span>
+   <!-- end ngIf: battingCard[0].InningsNo <= 2 -->
+   <!-- ngIf: battingCard[0].InningsNo <= 2 -->
+   <span class="sh_teamName mob-show ng-binding ng-scope" ng-bind="curInnData.teamCode" ng-if="battingCard[0].InningsNo &lt;= 2">
+    RCB
+   </span>
+   <!-- end ngIf: battingCard[0].InningsNo <= 2 -->
+   <!-- ngIf: battingCard[0].InningsNo > 2 && battingCard[0].InningsNo <= 4 -->
+  </span>
+  <!-- end ngIf: battingCard[0].InningsNo <= 2 -->
+  <!-- ngIf: battingCard[0].InningsNo <= 2 -->
+  <span class="sh_teamScoredet ng-scope" ng-if="battingCard[0].InningsNo &lt;= 2">
+   <span class="sh_teamScore_Overs ng-binding">
+    Overs (20.0)
+   </span>
+   <!-- ngIf: extras.FallWickets != 10 -->
+   <span class="sh_teamScore_runs ng-binding ng-scope" ng-if="extras.FallWickets != 10">
+    190/9
+   </span>
+   <!-- end ngIf: extras.FallWickets != 10 -->
+   <!-- ngIf: extras.FallWickets == 10 -->
+  </span>
+  <!-- end ngIf: battingCard[0].InningsNo <= 2 -->
+  <!-- ngIf: battingCard[0].InningsNo > 2 && battingCard[0].InningsNo <= 4 -->
+  <!-- ngIf: battingCard[0].InningsNo > 2 && battingCard[0].InningsNo <= 4 -->
+  <!-- ngIf: battingCard[0].InningsNo > 2 && battingCard[0].InningsNo <= 4 -->
+  <!-- ngIf: battingCard[0].InningsNo > 4 && battingCard[0].InningsNo <= 6 -->
+  <!-- ngIf: battingCard[0].InningsNo > 4 && battingCard[0].InningsNo <= 6 -->
+  <!-- ngIf: battingCard[0].InningsNo > 4 && battingCard[0].InningsNo <= 6 -->
+ </div>
+ <div class="ap-scorecard-outer col-100 floatLft mb-4">
+  <table cellpadding="0" cellspacing="0" class="ap-scroreboard-table table-striped" width="100%">
+   <thead>
+    <tr class="ap-head-row" style="background: #1b3e8a;color:#fff">
+     <th class="textLeft">
+      Batter
+     </th>
+     <th class="mobile-hide">
+     </th>
+     <th class="textCenter">
+      R
+     </th>
+     <th class="textCenter">
+      B
+     </th>
+     <th class="textCenter">
+      4s
+     </th>
+     <th class="textCenter">
+      6s
+     </th>
+     <th class="textCenter">
+      SR
+     </th>
+     <!-- ngIf: inningsMediaList.length > 0 && false -->
+    </tr>
+   </thead>
+   <tbody class="team1">
+    <!-- ngRepeat: battingCardResult in battingCard | filter:notEmptyOrNull -->
+    <tr class="ng-scope" ng-repeat="battingCardResult in battingCard | filter:notEmptyOrNull">
+     <td>
+      <div class="ap-bats-score-name">
+       <a class="" href="javascript:void(0);">
+        <!-- ngIf: isNotNull(battingCardResult.PlayerImage) -->
+        <img alt="" class="ng-scope" ng-if="isNotNull(battingCardResult.PlayerImage)" ng-src="https://scores.iplt20.com/ipl/playerimages/xwV1GGVyQX17425503751220.png" onerror="this.src = basePath+'images/player-thumb.jpg';" src="https://scores.iplt20.com/ipl/playerimages/xwV1GGVyQX17425503751220.png" title="Phil Salt "/>
+        <!-- end ngIf: isNotNull(battingCardResult.PlayerImage) -->
+        <!-- ngIf: !isNotNull(battingCardResult.PlayerImage) -->
+        <span class="ng-binding">
+         Phil Salt
+        </span>
+        <!-- ngIf: battingCardResult.IP -->
+        <!-- ngIf: battingCardResult.RP -->
+        <!-- ngIf: battingCardResult.CS -->
+        <span class="dismissalSmall ng-binding">
+         c Shreyas Iyer b Kyle Jamieson
+        </span>
+        <span class="playerpopup bc_video_icon" data-description="" data-mediaid="6373825068112" data-share="https://www.iplt20.com/video/63866/ipl-2025-final-rcb-vs-pbks---phil-salt-wicket?tagNames=2025" data-short-description="" data-thumbnile="" data-videodate="" data-videoid="63866" data-videoslug="63866/ipl-2025-final-rcb-vs-pbks---phil-salt-wicket?tagNames=2025" data-videotitle="IPL 2025 Final: RCB vs PBKS - Phil Salt Wicket" data-videoview="48298" ng-show="battingCardResult.wicketVideo != undefined &amp;&amp; battingCardResult.wicketVideo.mediaId != undefined &amp;&amp; battingCardResult.wicketVideo.mediaId != '' &amp;&amp; battingCardResult.OutDesc != '' &amp;&amp; battingCardResult.OutDesc != 'not out' &amp;&amp; inningsMediaList.length &gt; 0" onclick="click_tile(this)">
+        </span>
+       </a>
+      </div>
+     </td>
+     <td class="mobile-hide op5 ng-binding">
+      c Shreyas Iyer b Kyle Jamieson
+     </td>
+     <td class="textCenter ng-binding">
+      16
+     </td>
+     <td class="textCenter op5 ng-binding">
+      9
+     </td>
+     <td class="textCenter op5 ng-binding">
+      2
+     </td>
+     <td class="textCenter op5 ng-binding">
+      1
+     </td>
+     <td class="textCenter op5 ng-binding">
+      177.78
+     </td>
+     <td class="ng-hide" ng-show="battingCardResult.wicketVideo != undefined &amp;&amp; battingCardResult.wicketVideo.mediaId != undefined &amp;&amp; battingCardResult.wicketVideo.mediaId != '' &amp;&amp; battingCardResult.OutDesc != '' &amp;&amp; battingCardResult.OutDesc != 'not out' &amp;&amp; inningsMediaList.length &gt; 0 &amp;&amp; false">
+      <div class="playerpopup" data-description="" data-mediaid="6373825068112" data-share="https://www.iplt20.com/video/63866/ipl-2025-final-rcb-vs-pbks---phil-salt-wicket?tagNames=2025" data-short-description="" data-thumbnile="" data-videodate="" data-videoid="63866" data-videoslug="63866/ipl-2025-final-rcb-vs-pbks---phil-salt-wicket?tagNames=2025" data-videotitle="IPL 2025 Final: RCB vs PBKS - Phil Salt Wicket" data-videoview="48298" onclick="click_tile(this)">
+       <img alt="" src="https://www.iplt20.com/assets/images/Play.png?v=1" style="width:20px;height:20px;display:inline-block;cursor:pointer;"/>
+      </div>
+     </td>
+     <td class="ng-hide" ng-show="( battingCardResult.OutDesc == '' || battingCardResult.OutDesc == 'not out' || battingCardResult.wicketVideo.mediaId == '' || battingCardResult.wicketVideo.mediaId == undefined) &amp;&amp; inningsMediaList.length &gt; 0 &amp;&amp; false">
+     </td>
+    </tr>
+    <!-- end ngRepeat: battingCardResult in battingCard | filter:notEmptyOrNull -->
+    <tr class="ng-scope" ng-repeat="battingCardResult in battingCard | filter:notEmptyOrNull">
+     <td>
+      <div class="ap-bats-score-name">
+       <a class="" href="javascript:void(0);">
+        <!-- ngIf: isNotNull(battingCardResult.PlayerImage) -->
+        <img alt="" class="ng-scope" ng-if="isNotNull(battingCardResult.PlayerImage)" ng-src="https://scores.iplt20.com/ipl/playerimages/Uhn6V1VxZp17425506282.png" onerror="this.src = basePath+'images/player-thumb.jpg';" src="https://scores.iplt20.com/ipl/playerimages/Uhn6V1VxZp17425506282.png" title="Virat Kohli "/>
+        <!-- end ngIf: isNotNull(battingCardResult.PlayerImage) -->
+        <!-- ngIf: !isNotNull(battingCardResult.PlayerImage) -->
+        <span class="ng-binding">
+         Virat Kohli
+        </span>
+        <!-- ngIf: battingCardResult.IP -->
+        <!-- ngIf: battingCardResult.RP -->
+        <!-- ngIf: battingCardResult.CS -->
+        <span class="dismissalSmall ng-binding">
+         c &amp; b Azmatullah Omarzai
+        </span>
+        <span class="playerpopup bc_video_icon" data-description="" data-mediaid="6373827779112" data-share="https://www.iplt20.com/video/63875/ipl-2025-final-rcb-vs-pbks---virat-kohli-wicket?tagNames=2025" data-short-description="" data-thumbnile="" data-videodate="" data-videoid="63875" data-videoslug="63875/ipl-2025-final-rcb-vs-pbks---virat-kohli-wicket?tagNames=2025" data-videotitle="IPL 2025 Final: RCB vs PBKS - Virat Kohli Wicket" data-videoview="16393" ng-show="battingCardResult.wicketVideo != undefined &amp;&amp; battingCardResult.wicketVideo.mediaId != undefined &amp;&amp; battingCardResult.wicketVideo.mediaId != '' &amp;&amp; battingCardResult.OutDesc != '' &amp;&amp; battingCardResult.OutDesc != 'not out' &amp;&amp; inningsMediaList.length &gt; 0" onclick="click_tile(this)">
+        </span>
+       </a>
+      </div>
+     </td>
+     <td class="mobile-hide op5 ng-binding">
+      c &amp; b Azmatullah Omarzai
+     </td>
+     <td class="textCenter ng-binding">
+      43
+     </td>
+     <td class="textCenter op5 ng-binding">
+      35
+     </td>
+     <td class="textCenter op5 ng-binding">
+      3
+     </td>
+     <td class="textCenter op5 ng-binding">
+      0
+     </td>
+     <td class="textCenter op5 ng-binding">
+      122.86
+     </td>
+     <td class="ng-hide" ng-show="battingCardResult.wicketVideo != undefined &amp;&amp; battingCardResult.wicketVideo.mediaId != undefined &amp;&amp; battingCardResult.wicketVideo.mediaId != '' &amp;&amp; battingCardResult.OutDesc != '' &amp;&amp; battingCardResult.OutDesc != 'not out' &amp;&amp; inningsMediaList.length &gt; 0 &amp;&amp; false">
+      <div class="playerpopup" data-description="" data-mediaid="6373827779112" data-share="https://www.iplt20.com/video/63875/ipl-2025-final-rcb-vs-pbks---virat-kohli-wicket?tagNames=2025" data-short-description="" data-thumbnile="" data-videodate="" data-videoid="63875" data-videoslug="63875/ipl-2025-final-rcb-vs-pbks---virat-kohli-wicket?tagNames=2025" data-videotitle="IPL 2025 Final: RCB vs PBKS - Virat Kohli Wicket" data-videoview="16393" onclick="click_tile(this)">
+       <img alt="" src="https://www.iplt20.com/assets/images/Play.png?v=1" style="width:20px;height:20px;display:inline-block;cursor:pointer;"/>
+      </div>
+     </td>
+     <td class="ng-hide" ng-show="( battingCardResult.OutDesc == '' || battingCardResult.OutDesc == 'not out' || battingCardResult.wicketVideo.mediaId == '' || battingCardResult.wicketVideo.mediaId == undefined) &amp;&amp; inningsMediaList.length &gt; 0 &amp;&amp; false">
+     </td>
+    </tr>
+    <!-- end ngRepeat: battingCardResult in battingCard | filter:notEmptyOrNull -->
+    <tr class="ng-scope" ng-repeat="battingCardResult in battingCard | filter:notEmptyOrNull">
+     <td>
+      <div class="ap-bats-score-name">
+       <a class="" href="javascript:void(0);">
+        <!-- ngIf: isNotNull(battingCardResult.PlayerImage) -->
+        <img alt="" class="ng-scope" ng-if="isNotNull(battingCardResult.PlayerImage)" ng-src="https://scores.iplt20.com/ipl/playerimages/pNhf7tIauP174670833055.png" onerror="this.src = basePath+'images/player-thumb.jpg';" src="https://scores.iplt20.com/ipl/playerimages/pNhf7tIauP174670833055.png" title="Mayank Agarwal  "/>
+        <!-- end ngIf: isNotNull(battingCardResult.PlayerImage) -->
+        <!-- ngIf: !isNotNull(battingCardResult.PlayerImage) -->
+        <span class="ng-binding">
+         Mayank Agarwal
+        </span>
+        <!-- ngIf: battingCardResult.IP -->
+        <!-- ngIf: battingCardResult.RP -->
+        <span class="bc_player_r_icon RP ng-scope" ng-if="battingCardResult.RP">
+        </span>
+        <!-- end ngIf: battingCardResult.RP -->
+        <!-- ngIf: battingCardResult.CS -->
+        <span class="dismissalSmall ng-binding">
+         c Arshdeep Singh b Yuzvendra Chahal
+        </span>
+        <span class="playerpopup bc_video_icon" data-description="" data-mediaid="6373825966112" data-share="https://www.iplt20.com/video/63867/ipl-2025-final-rcb-vs-pbks---mayank-agarwal-wicket?tagNames=2025" data-short-description="" data-thumbnile="" data-videodate="" data-videoid="63867" data-videoslug="63867/ipl-2025-final-rcb-vs-pbks---mayank-agarwal-wicket?tagNames=2025" data-videotitle="IPL 2025 Final: RCB vs PBKS - Mayank Agarwal Wicket" data-videoview="40042" ng-show="battingCardResult.wicketVideo != undefined &amp;&amp; battingCardResult.wicketVideo.mediaId != undefined &amp;&amp; battingCardResult.wicketVideo.mediaId != '' &amp;&amp; battingCardResult.OutDesc != '' &amp;&amp; battingCardResult.OutDesc != 'not out' &amp;&amp; inningsMediaList.length &gt; 0" onclick="click_tile(this)">
+        </span>
+       </a>
+      </div>
+     </td>
+     <td class="mobile-hide op5 ng-binding">
+      c Arshdeep Singh b Yuzvendra Chahal
+     </td>
+     <td class="textCenter ng-binding">
+      24
+     </td>
+     <td class="textCenter op5 ng-binding">
+      18
+     </td>
+     <td class="textCenter op5 ng-binding">
+      2
+     </td>
+     <td class="textCenter op5 ng-binding">
+      1
+     </td>
+     <td class="textCenter op5 ng-binding">
+      133.33
+     </td>
+     <td class="ng-hide" ng-show="battingCardResult.wicketVideo != undefined &amp;&amp; battingCardResult.wicketVideo.mediaId != undefined &amp;&amp; battingCardResult.wicketVideo.mediaId != '' &amp;&amp; battingCardResult.OutDesc != '' &amp;&amp; battingCardResult.OutDesc != 'not out' &amp;&amp; inningsMediaList.length &gt; 0 &amp;&amp; false">
+      <div class="playerpopup" data-description="" data-mediaid="6373825966112" data-share="https://www.iplt20.com/video/63867/ipl-2025-final-rcb-vs-pbks---mayank-agarwal-wicket?tagNames=2025" data-short-description="" data-thumbnile="" data-videodate="" data-videoid="63867" data-videoslug="63867/ipl-2025-final-rcb-vs-pbks---mayank-agarwal-wicket?tagNames=2025" data-videotitle="IPL 2025 Final: RCB vs PBKS - Mayank Agarwal Wicket" data-videoview="40042" onclick="click_tile(this)">
+       <img alt="" src="https://www.iplt20.com/assets/images/Play.png?v=1" style="width:20px;height:20px;display:inline-block;cursor:pointer;"/>
+      </div>
+     </td>
+     <td class="ng-hide" ng-show="( battingCardResult.OutDesc == '' || battingCardResult.OutDesc == 'not out' || battingCardResult.wicketVideo.mediaId == '' || battingCardResult.wicketVideo.mediaId == undefined) &amp;&amp; inningsMediaList.length &gt; 0 &amp;&amp; false">
+     </td>
+    </tr>
+    <!-- end ngRepeat: battingCardResult in battingCard | filter:notEmptyOrNull -->
+    <tr class="ng-scope" ng-repeat="battingCardResult in battingCard | filter:notEmptyOrNull">
+     <td>
+      <div class="ap-bats-score-name">
+       <a class="" href="javascript:void(0);">
+        <!-- ngIf: isNotNull(battingCardResult.PlayerImage) -->
+        <img alt="" class="ng-scope" ng-if="isNotNull(battingCardResult.PlayerImage)" ng-src="https://scores.iplt20.com/ipl/playerimages/VJslS8YN1C1742550776597.png" onerror="this.src = basePath+'images/player-thumb.jpg';" src="https://scores.iplt20.com/ipl/playerimages/VJslS8YN1C1742550776597.png" title="Rajat Patidar (c)"/>
+        <!-- end ngIf: isNotNull(battingCardResult.PlayerImage) -->
+        <!-- ngIf: !isNotNull(battingCardResult.PlayerImage) -->
+        <span class="ng-binding">
+         Rajat Patidar (c)
+        </span>
+        <!-- ngIf: battingCardResult.IP -->
+        <!-- ngIf: battingCardResult.RP -->
+        <!-- ngIf: battingCardResult.CS -->
+        <span class="dismissalSmall ng-binding">
+         lbw Kyle Jamieson
+        </span>
+        <span class="playerpopup bc_video_icon" data-description="" data-mediaid="6373828732112" data-share="https://www.iplt20.com/video/63871/ipl-2025-final-rcb-vs-pbks---rajat-patidar-wicket?tagNames=2025" data-short-description="" data-thumbnile="" data-videodate="" data-videoid="63871" data-videoslug="63871/ipl-2025-final-rcb-vs-pbks---rajat-patidar-wicket?tagNames=2025" data-videotitle="IPL 2025 Final: RCB vs PBKS - Rajat Patidar Wicket" data-videoview="32737" ng-show="battingCardResult.wicketVideo != undefined &amp;&amp; battingCardResult.wicketVideo.mediaId != undefined &amp;&amp; battingCardResult.wicketVideo.mediaId != '' &amp;&amp; battingCardResult.OutDesc != '' &amp;&amp; battingCardResult.OutDesc != 'not out' &amp;&amp; inningsMediaList.length &gt; 0" onclick="click_tile(this)">
+        </span>
+       </a>
+      </div>
+     </td>
+     <td class="mobile-hide op5 ng-binding">
+      lbw Kyle Jamieson
+     </td>
+     <td class="textCenter ng-binding">
+      26
+     </td>
+     <td class="textCenter op5 ng-binding">
+      16
+     </td>
+     <td class="textCenter op5 ng-binding">
+      1
+     </td>
+     <td class="textCenter op5 ng-binding">
+      2
+     </td>
+     <td class="textCenter op5 ng-binding">
+      162.50
+     </td>
+     <td class="ng-hide" ng-show="battingCardResult.wicketVideo != undefined &amp;&amp; battingCardResult.wicketVideo.mediaId != undefined &amp;&amp; battingCardResult.wicketVideo.mediaId != '' &amp;&amp; battingCardResult.OutDesc != '' &amp;&amp; battingCardResult.OutDesc != 'not out' &amp;&amp; inningsMediaList.length &gt; 0 &amp;&amp; false">
+      <div class="playerpopup" data-description="" data-mediaid="6373828732112" data-share="https://www.iplt20.com/video/63871/ipl-2025-final-rcb-vs-pbks---rajat-patidar-wicket?tagNames=2025" data-short-description="" data-thumbnile="" data-videodate="" data-videoid="63871" data-videoslug="63871/ipl-2025-final-rcb-vs-pbks---rajat-patidar-wicket?tagNames=2025" data-videotitle="IPL 2025 Final: RCB vs PBKS - Rajat Patidar Wicket" data-videoview="32737" onclick="click_tile(this)">
+       <img alt="" src="https://www.iplt20.com/assets/images/Play.png?v=1" style="width:20px;height:20px;display:inline-block;cursor:pointer;"/>
+      </div>
+     </td>
+     <td class="ng-hide" ng-show="( battingCardResult.OutDesc == '' || battingCardResult.OutDesc == 'not out' || battingCardResult.wicketVideo.mediaId == '' || battingCardResult.wicketVideo.mediaId == undefined) &amp;&amp; inningsMediaList.length &gt; 0 &amp;&amp; false">
+     </td>
+    </tr>
+    <!-- end ngRepeat: battingCardResult in battingCard | filter:notEmptyOrNull -->
+    <tr class="ng-scope" ng-repeat="battingCardResult in battingCard | filter:notEmptyOrNull">
+     <td>
+      <div class="ap-bats-score-name">
+       <a class="" href="javascript:void(0);">
+        <!-- ngIf: isNotNull(battingCardResult.PlayerImage) -->
+        <img alt="" class="ng-scope" ng-if="isNotNull(battingCardResult.PlayerImage)" ng-src="https://scores.iplt20.com/ipl/playerimages/ziCPkOE2FL1742550569183.png" onerror="this.src = basePath+'images/player-thumb.jpg';" src="https://scores.iplt20.com/ipl/playerimages/ziCPkOE2FL1742550569183.png" title="Liam Livingstone "/>
+        <!-- end ngIf: isNotNull(battingCardResult.PlayerImage) -->
+        <!-- ngIf: !isNotNull(battingCardResult.PlayerImage) -->
+        <span class="ng-binding">
+         Liam Livingstone
+        </span>
+        <!-- ngIf: battingCardResult.IP -->
+        <!-- ngIf: battingCardResult.RP -->
+        <!-- ngIf: battingCardResult.CS -->
+        <span class="dismissalSmall ng-binding">
+         lbw Kyle Jamieson
+        </span>
+        <span class="playerpopup bc_video_icon" data-description="" data-mediaid="6373830836112" data-share="https://www.iplt20.com/video/63884/ipl-2025-final-rcb-vs-pbks---liam-livingstone-wicket?tagNames=2025" data-short-description="" data-thumbnile="" data-videodate="" data-videoid="63884" data-videoslug="63884/ipl-2025-final-rcb-vs-pbks---liam-livingstone-wicket?tagNames=2025" data-videotitle="IPL 2025 Final: RCB vs PBKS - Liam Livingstone Wicket" data-videoview="7174" ng-show="battingCardResult.wicketVideo != undefined &amp;&amp; battingCardResult.wicketVideo.mediaId != undefined &amp;&amp; battingCardResult.wicketVideo.mediaId != '' &amp;&amp; battingCardResult.OutDesc != '' &amp;&amp; battingCardResult.OutDesc != 'not out' &amp;&amp; inningsMediaList.length &gt; 0" onclick="click_tile(this)">
+        </span>
+       </a>
+      </div>
+     </td>
+     <td class="mobile-hide op5 ng-binding">
+      lbw Kyle Jamieson
+     </td>
+     <td class="textCenter ng-binding">
+      25
+     </td>
+     <td class="textCenter op5 ng-binding">
+      15
+     </td>
+     <td class="textCenter op5 ng-binding">
+      0
+     </td>
+     <td class="textCenter op5 ng-binding">
+      2
+     </td>
+     <td class="textCenter op5 ng-binding">
+      166.67
+     </td>
+     <td class="ng-hide" ng-show="battingCardResult.wicketVideo != undefined &amp;&amp; battingCardResult.wicketVideo.mediaId != undefined &amp;&amp; battingCardResult.wicketVideo.mediaId != '' &amp;&amp; battingCardResult.OutDesc != '' &amp;&amp; battingCardResult.OutDesc != 'not out' &amp;&amp; inningsMediaList.length &gt; 0 &amp;&amp; false">
+      <div class="playerpopup" data-description="" data-mediaid="6373830836112" data-share="https://www.iplt20.com/video/63884/ipl-2025-final-rcb-vs-pbks---liam-livingstone-wicket?tagNames=2025" data-short-description="" data-thumbnile="" data-videodate="" data-videoid="63884" data-videoslug="63884/ipl-2025-final-rcb-vs-pbks---liam-livingstone-wicket?tagNames=2025" data-videotitle="IPL 2025 Final: RCB vs PBKS - Liam Livingstone Wicket" data-videoview="7174" onclick="click_tile(this)">
+       <img alt="" src="https://www.iplt20.com/assets/images/Play.png?v=1" style="width:20px;height:20px;display:inline-block;cursor:pointer;"/>
+      </div>
+     </td>
+     <td class="ng-hide" ng-show="( battingCardResult.OutDesc == '' || battingCardResult.OutDesc == 'not out' || battingCardResult.wicketVideo.mediaId == '' || battingCardResult.wicketVideo.mediaId == undefined) &amp;&amp; inningsMediaList.length &gt; 0 &amp;&amp; false">
+     </td>
+    </tr>
+    <!-- end ngRepeat: battingCardResult in battingCard | filter:notEmptyOrNull -->
+    <tr class="ng-scope" ng-repeat="battingCardResult in battingCard | filter:notEmptyOrNull">
+     <td>
+      <div class="ap-bats-score-name">
+       <a class="" href="javascript:void(0);">
+        <!-- ngIf: isNotNull(battingCardResult.PlayerImage) -->
+        <img alt="" class="ng-scope" ng-if="isNotNull(battingCardResult.PlayerImage)" ng-src="https://scores.iplt20.com/ipl/playerimages/waXr3SOeif17425503491000.png" onerror="this.src = basePath+'images/player-thumb.jpg';" src="https://scores.iplt20.com/ipl/playerimages/waXr3SOeif17425503491000.png" title="Jitesh Sharma (wk)"/>
+        <!-- end ngIf: isNotNull(battingCardResult.PlayerImage) -->
+        <!-- ngIf: !isNotNull(battingCardResult.PlayerImage) -->
+        <span class="ng-binding">
+         Jitesh Sharma (wk)
+        </span>
+        <!-- ngIf: battingCardResult.IP -->
+        <!-- ngIf: battingCardResult.RP -->
+        <!-- ngIf: battingCardResult.CS -->
+        <span class="dismissalSmall ng-binding">
+         b Vyshak Vijaykumar
+        </span>
+        <span class="playerpopup bc_video_icon" data-description="" data-mediaid="6373829372112" data-share="https://www.iplt20.com/video/63883/ipl-2025-final-rcb-vs-pbks---jitesh-sharma-wicket?tagNames=2025" data-short-description="" data-thumbnile="" data-videodate="" data-videoid="63883" data-videoslug="63883/ipl-2025-final-rcb-vs-pbks---jitesh-sharma-wicket?tagNames=2025" data-videotitle="IPL 2025 Final: RCB vs PBKS - Jitesh Sharma Wicket" data-videoview="10558" ng-show="battingCardResult.wicketVideo != undefined &amp;&amp; battingCardResult.wicketVideo.mediaId != undefined &amp;&amp; battingCardResult.wicketVideo.mediaId != '' &amp;&amp; battingCardResult.OutDesc != '' &amp;&amp; battingCardResult.OutDesc != 'not out' &amp;&amp; inningsMediaList.length &gt; 0" onclick="click_tile(this)">
+        </span>
+       </a>
+      </div>
+     </td>
+     <td class="mobile-hide op5 ng-binding">
+      b Vyshak Vijaykumar
+     </td>
+     <td class="textCenter ng-binding">
+      24
+     </td>
+     <td class="textCenter op5 ng-binding">
+      10
+     </td>
+     <td class="textCenter op5 ng-binding">
+      2
+     </td>
+     <td class="textCenter op5 ng-binding">
+      2
+     </td>
+     <td class="textCenter op5 ng-binding">
+      240.00
+     </td>
+     <td class="ng-hide" ng-show="battingCardResult.wicketVideo != undefined &amp;&amp; battingCardResult.wicketVideo.mediaId != undefined &amp;&amp; battingCardResult.wicketVideo.mediaId != '' &amp;&amp; battingCardResult.OutDesc != '' &amp;&amp; battingCardResult.OutDesc != 'not out' &amp;&amp; inningsMediaList.length &gt; 0 &amp;&amp; false">
+      <div class="playerpopup" data-description="" data-mediaid="6373829372112" data-share="https://www.iplt20.com/video/63883/ipl-2025-final-rcb-vs-pbks---jitesh-sharma-wicket?tagNames=2025" data-short-description="" data-thumbnile="" data-videodate="" data-videoid="63883" data-videoslug="63883/ipl-2025-final-rcb-vs-pbks---jitesh-sharma-wicket?tagNames=2025" data-videotitle="IPL 2025 Final: RCB vs PBKS - Jitesh Sharma Wicket" data-videoview="10558" onclick="click_tile(this)">
+       <img alt="" src="https://www.iplt20.com/assets/images/Play.png?v=1" style="width:20px;height:20px;display:inline-block;cursor:pointer;"/>
+      </div>
+     </td>
+     <td class="ng-hide" ng-show="( battingCardResult.OutDesc == '' || battingCardResult.OutDesc == 'not out' || battingCardResult.wicketVideo.mediaId == '' || battingCardResult.wicketVideo.mediaId == undefined) &amp;&amp; inningsMediaList.length &gt; 0 &amp;&amp; false">
+     </td>
+    </tr>
+    <!-- end ngRepeat: battingCardResult in battingCard | filter:notEmptyOrNull -->
+    <tr class="ng-scope" ng-repeat="battingCardResult in battingCard | filter:notEmptyOrNull">
+     <td>
+      <div class="ap-bats-score-name">
+       <a class="" href="javascript:void(0);">
+        <!-- ngIf: isNotNull(battingCardResult.PlayerImage) -->
+        <img alt="" class="ng-scope" ng-if="isNotNull(battingCardResult.PlayerImage)" ng-src="https://scores.iplt20.com/ipl/playerimages/EpxPz1AwnB1742550722371.png" onerror="this.src = basePath+'images/player-thumb.jpg';" src="https://scores.iplt20.com/ipl/playerimages/EpxPz1AwnB1742550722371.png" title="Romario Shepherd "/>
+        <!-- end ngIf: isNotNull(battingCardResult.PlayerImage) -->
+        <!-- ngIf: !isNotNull(battingCardResult.PlayerImage) -->
+        <span class="ng-binding">
+         Romario Shepherd
+        </span>
+        <!-- ngIf: battingCardResult.IP -->
+        <!-- ngIf: battingCardResult.RP -->
+        <!-- ngIf: battingCardResult.CS -->
+        <span class="dismissalSmall ng-binding">
+         lbw Arshdeep Singh
+        </span>
+        <span class="playerpopup bc_video_icon" data-description="" data-mediaid="6373830852112" data-share="https://www.iplt20.com/video/63889/ipl-2025-final-rcb-vs-pbks---romario-shepherd-wicket?tagNames=2025" data-short-description="" data-thumbnile="" data-videodate="" data-videoid="63889" data-videoslug="63889/ipl-2025-final-rcb-vs-pbks---romario-shepherd-wicket?tagNames=2025" data-videotitle="IPL 2025 Final: RCB vs PBKS - Romario Shepherd Wicket" data-videoview="6948" ng-show="battingCardResult.wicketVideo != undefined &amp;&amp; battingCardResult.wicketVideo.mediaId != undefined &amp;&amp; battingCardResult.wicketVideo.mediaId != '' &amp;&amp; battingCardResult.OutDesc != '' &amp;&amp; battingCardResult.OutDesc != 'not out' &amp;&amp; inningsMediaList.length &gt; 0" onclick="click_tile(this)">
+        </span>
+       </a>
+      </div>
+     </td>
+     <td class="mobile-hide op5 ng-binding">
+      lbw Arshdeep Singh
+     </td>
+     <td class="textCenter ng-binding">
+      17
+     </td>
+     <td class="textCenter op5 ng-binding">
+      9
+     </td>
+     <td class="textCenter op5 ng-binding">
+      1
+     </td>
+     <td class="textCenter op5 ng-binding">
+      1
+     </td>
+     <td class="textCenter op5 ng-binding">
+      188.89
+     </td>
+     <td class="ng-hide" ng-show="battingCardResult.wicketVideo != undefined &amp;&amp; battingCardResult.wicketVideo.mediaId != undefined &amp;&amp; battingCardResult.wicketVideo.mediaId != '' &amp;&amp; battingCardResult.OutDesc != '' &amp;&amp; battingCardResult.OutDesc != 'not out' &amp;&amp; inningsMediaList.length &gt; 0 &amp;&amp; false">
+      <div class="playerpopup" data-description="" data-mediaid="6373830852112" data-share="https://www.iplt20.com/video/63889/ipl-2025-final-rcb-vs-pbks---romario-shepherd-wicket?tagNames=2025" data-short-description="" data-thumbnile="" data-videodate="" data-videoid="63889" data-videoslug="63889/ipl-2025-final-rcb-vs-pbks---romario-shepherd-wicket?tagNames=2025" data-videotitle="IPL 2025 Final: RCB vs PBKS - Romario Shepherd Wicket" data-videoview="6948" onclick="click_tile(this)">
+       <img alt="" src="https://www.iplt20.com/assets/images/Play.png?v=1" style="width:20px;height:20px;display:inline-block;cursor:pointer;"/>
+      </div>
+     </td>
+     <td class="ng-hide" ng-show="( battingCardResult.OutDesc == '' || battingCardResult.OutDesc == 'not out' || battingCardResult.wicketVideo.mediaId == '' || battingCardResult.wicketVideo.mediaId == undefined) &amp;&amp; inningsMediaList.length &gt; 0 &amp;&amp; false">
+     </td>
+    </tr>
+    <!-- end ngRepeat: battingCardResult in battingCard | filter:notEmptyOrNull -->
+    <tr class="ng-scope" ng-repeat="battingCardResult in battingCard | filter:notEmptyOrNull">
+     <td>
+      <div class="ap-bats-score-name">
+       <a class="" href="javascript:void(0);">
+        <!-- ngIf: isNotNull(battingCardResult.PlayerImage) -->
+        <img alt="" class="ng-scope" ng-if="isNotNull(battingCardResult.PlayerImage)" ng-src="https://scores.iplt20.com/ipl/playerimages/ZTNV5cF9cG174255053117.png" onerror="this.src = basePath+'images/player-thumb.jpg';" src="https://scores.iplt20.com/ipl/playerimages/ZTNV5cF9cG174255053117.png" title="Krunal Pandya "/>
+        <!-- end ngIf: isNotNull(battingCardResult.PlayerImage) -->
+        <!-- ngIf: !isNotNull(battingCardResult.PlayerImage) -->
+        <span class="ng-binding">
+         Krunal Pandya
+        </span>
+        <!-- ngIf: battingCardResult.IP -->
+        <!-- ngIf: battingCardResult.RP -->
+        <!-- ngIf: battingCardResult.CS -->
+        <span class="dismissalSmall ng-binding">
+         c Shreyas Iyer b Arshdeep Singh
+        </span>
+        <span class="playerpopup bc_video_icon" data-description="" data-mediaid="6373829195112" data-share="https://www.iplt20.com/video/63887/ipl-2025-final-rcb-vs-pbks---krunal-pandya-wicket?tagNames=2025" data-short-description="" data-thumbnile="" data-videodate="" data-videoid="63887" data-videoslug="63887/ipl-2025-final-rcb-vs-pbks---krunal-pandya-wicket?tagNames=2025" data-videotitle="IPL 2025 Final: RCB vs PBKS - Krunal Pandya Wicket" data-videoview="11195" ng-show="battingCardResult.wicketVideo != undefined &amp;&amp; battingCardResult.wicketVideo.mediaId != undefined &amp;&amp; battingCardResult.wicketVideo.mediaId != '' &amp;&amp; battingCardResult.OutDesc != '' &amp;&amp; battingCardResult.OutDesc != 'not out' &amp;&amp; inningsMediaList.length &gt; 0" onclick="click_tile(this)">
+        </span>
+       </a>
+      </div>
+     </td>
+     <td class="mobile-hide op5 ng-binding">
+      c Shreyas Iyer b Arshdeep Singh
+     </td>
+     <td class="textCenter ng-binding">
+      4
+     </td>
+     <td class="textCenter op5 ng-binding">
+      5
+     </td>
+     <td class="textCenter op5 ng-binding">
+      0
+     </td>
+     <td class="textCenter op5 ng-binding">
+      0
+     </td>
+     <td class="textCenter op5 ng-binding">
+      80.00
+     </td>
+     <td class="ng-hide" ng-show="battingCardResult.wicketVideo != undefined &amp;&amp; battingCardResult.wicketVideo.mediaId != undefined &amp;&amp; battingCardResult.wicketVideo.mediaId != '' &amp;&amp; battingCardResult.OutDesc != '' &amp;&amp; battingCardResult.OutDesc != 'not out' &amp;&amp; inningsMediaList.length &gt; 0 &amp;&amp; false">
+      <div class="playerpopup" data-description="" data-mediaid="6373829195112" data-share="https://www.iplt20.com/video/63887/ipl-2025-final-rcb-vs-pbks---krunal-pandya-wicket?tagNames=2025" data-short-description="" data-thumbnile="" data-videodate="" data-videoid="63887" data-videoslug="63887/ipl-2025-final-rcb-vs-pbks---krunal-pandya-wicket?tagNames=2025" data-videotitle="IPL 2025 Final: RCB vs PBKS - Krunal Pandya Wicket" data-videoview="11195" onclick="click_tile(this)">
+       <img alt="" src="https://www.iplt20.com/assets/images/Play.png?v=1" style="width:20px;height:20px;display:inline-block;cursor:pointer;"/>
+      </div>
+     </td>
+     <td class="ng-hide" ng-show="( battingCardResult.OutDesc == '' || battingCardResult.OutDesc == 'not out' || battingCardResult.wicketVideo.mediaId == '' || battingCardResult.wicketVideo.mediaId == undefined) &amp;&amp; inningsMediaList.length &gt; 0 &amp;&amp; false">
+     </td>
+    </tr>
+    <!-- end ngRepeat: battingCardResult in battingCard | filter:notEmptyOrNull -->
+    <tr class="ng-scope" ng-repeat="battingCardResult in battingCard | filter:notEmptyOrNull">
+     <td>
+      <div class="ap-bats-score-name">
+       <a class="" href="javascript:void(0);">
+        <!-- ngIf: isNotNull(battingCardResult.PlayerImage) -->
+        <img alt="" class="ng-scope" ng-if="isNotNull(battingCardResult.PlayerImage)" ng-src="https://scores.iplt20.com/ipl/playerimages/zpvqipUu2N174255051515.png" onerror="this.src = basePath+'images/player-thumb.jpg';" src="https://scores.iplt20.com/ipl/playerimages/zpvqipUu2N174255051515.png" title="Bhuvneshwar Kumar "/>
+        <!-- end ngIf: isNotNull(battingCardResult.PlayerImage) -->
+        <!-- ngIf: !isNotNull(battingCardResult.PlayerImage) -->
+        <span class="ng-binding">
+         Bhuvneshwar Kumar
+        </span>
+        <!-- ngIf: battingCardResult.IP -->
+        <!-- ngIf: battingCardResult.RP -->
+        <!-- ngIf: battingCardResult.CS -->
+        <span class="dismissalSmall ng-binding">
+         c Priyansh Arya b Arshdeep Singh
+        </span>
+        <span class="playerpopup bc_video_icon" data-description="" data-mediaid="6373830281112" data-share="https://www.iplt20.com/video/63888/ipl-2025-final-rcb-vs-pbks---bhuvneshwar-kumar-wicket?tagNames=2025" data-short-description="" data-thumbnile="" data-videodate="" data-videoid="63888" data-videoslug="63888/ipl-2025-final-rcb-vs-pbks---bhuvneshwar-kumar-wicket?tagNames=2025" data-videotitle="IPL 2025 Final: RCB vs PBKS - Bhuvneshwar Kumar Wicket" data-videoview="6970" ng-show="battingCardResult.wicketVideo != undefined &amp;&amp; battingCardResult.wicketVideo.mediaId != undefined &amp;&amp; battingCardResult.wicketVideo.mediaId != '' &amp;&amp; battingCardResult.OutDesc != '' &amp;&amp; battingCardResult.OutDesc != 'not out' &amp;&amp; inningsMediaList.length &gt; 0" onclick="click_tile(this)">
+        </span>
+       </a>
+      </div>
+     </td>
+     <td class="mobile-hide op5 ng-binding">
+      c Priyansh Arya b Arshdeep Singh
+     </td>
+     <td class="textCenter ng-binding">
+      1
+     </td>
+     <td class="textCenter op5 ng-binding">
+      2
+     </td>
+     <td class="textCenter op5 ng-binding">
+      0
+     </td>
+     <td class="textCenter op5 ng-binding">
+      0
+     </td>
+     <td class="textCenter op5 ng-binding">
+      50.00
+     </td>
+     <td class="ng-hide" ng-show="battingCardResult.wicketVideo != undefined &amp;&amp; battingCardResult.wicketVideo.mediaId != undefined &amp;&amp; battingCardResult.wicketVideo.mediaId != '' &amp;&amp; battingCardResult.OutDesc != '' &amp;&amp; battingCardResult.OutDesc != 'not out' &amp;&amp; inningsMediaList.length &gt; 0 &amp;&amp; false">
+      <div class="playerpopup" data-description="" data-mediaid="6373830281112" data-share="https://www.iplt20.com/video/63888/ipl-2025-final-rcb-vs-pbks---bhuvneshwar-kumar-wicket?tagNames=2025" data-short-description="" data-thumbnile="" data-videodate="" data-videoid="63888" data-videoslug="63888/ipl-2025-final-rcb-vs-pbks---bhuvneshwar-kumar-wicket?tagNames=2025" data-videotitle="IPL 2025 Final: RCB vs PBKS - Bhuvneshwar Kumar Wicket" data-videoview="6970" onclick="click_tile(this)">
+       <img alt="" src="https://www.iplt20.com/assets/images/Play.png?v=1" style="width:20px;height:20px;display:inline-block;cursor:pointer;"/>
+      </div>
+     </td>
+     <td class="ng-hide" ng-show="( battingCardResult.OutDesc == '' || battingCardResult.OutDesc == 'not out' || battingCardResult.wicketVideo.mediaId == '' || battingCardResult.wicketVideo.mediaId == undefined) &amp;&amp; inningsMediaList.length &gt; 0 &amp;&amp; false">
+     </td>
+    </tr>
+    <!-- end ngRepeat: battingCardResult in battingCard | filter:notEmptyOrNull -->
+    <tr class="ng-scope" ng-repeat="battingCardResult in battingCard | filter:notEmptyOrNull">
+     <td>
+      <div class="ap-bats-score-name">
+       <a class="" href="javascript:void(0);">
+        <!-- ngIf: isNotNull(battingCardResult.PlayerImage) -->
+        <img alt="" class="ng-scope" ng-if="isNotNull(battingCardResult.PlayerImage)" ng-src="https://scores.iplt20.com/ipl/playerimages/jzscOWo05P1742551126978.png" onerror="this.src = basePath+'images/player-thumb.jpg';" src="https://scores.iplt20.com/ipl/playerimages/jzscOWo05P1742551126978.png" title="Yash Dayal "/>
+        <!-- end ngIf: isNotNull(battingCardResult.PlayerImage) -->
+        <!-- ngIf: !isNotNull(battingCardResult.PlayerImage) -->
+        <span class="ng-binding">
+         Yash Dayal
+        </span>
+        <!-- ngIf: battingCardResult.IP -->
+        <!-- ngIf: battingCardResult.RP -->
+        <!-- ngIf: battingCardResult.CS -->
+        <span class="dismissalSmall ng-binding">
+         not out
+        </span>
+        <span class="playerpopup bc_video_icon ng-hide" data-description="" data-mediaid="" data-share="https://www.iplt20.com/video//?tagNames=" data-short-description="" data-thumbnile="" data-videodate="" data-videoid="" data-videoslug="/?tagNames=" data-videotitle="" data-videoview="" ng-show="battingCardResult.wicketVideo != undefined &amp;&amp; battingCardResult.wicketVideo.mediaId != undefined &amp;&amp; battingCardResult.wicketVideo.mediaId != '' &amp;&amp; battingCardResult.OutDesc != '' &amp;&amp; battingCardResult.OutDesc != 'not out' &amp;&amp; inningsMediaList.length &gt; 0" onclick="click_tile(this)">
+        </span>
+       </a>
+      </div>
+     </td>
+     <td class="mobile-hide op5 ng-binding">
+      not out
+     </td>
+     <td class="textCenter ng-binding">
+      1
+     </td>
+     <td class="textCenter op5 ng-binding">
+      1
+     </td>
+     <td class="textCenter op5 ng-binding">
+      0
+     </td>
+     <td class="textCenter op5 ng-binding">
+      0
+     </td>
+     <td class="textCenter op5 ng-binding">
+      100.00
+     </td>
+     <td class="ng-hide" ng-show="battingCardResult.wicketVideo != undefined &amp;&amp; battingCardResult.wicketVideo.mediaId != undefined &amp;&amp; battingCardResult.wicketVideo.mediaId != '' &amp;&amp; battingCardResult.OutDesc != '' &amp;&amp; battingCardResult.OutDesc != 'not out' &amp;&amp; inningsMediaList.length &gt; 0 &amp;&amp; false">
+      <div class="playerpopup" data-description="" data-mediaid="" data-share="https://www.iplt20.com/video//?tagNames=" data-short-description="" data-thumbnile="" data-videodate="" data-videoid="" data-videoslug="/?tagNames=" data-videotitle="" data-videoview="" onclick="click_tile(this)">
+       <img alt="" src="https://www.iplt20.com/assets/images/Play.png?v=1" style="width:20px;height:20px;display:inline-block;cursor:pointer;"/>
+      </div>
+     </td>
+     <td class="ng-hide" ng-show="( battingCardResult.OutDesc == '' || battingCardResult.OutDesc == 'not out' || battingCardResult.wicketVideo.mediaId == '' || battingCardResult.wicketVideo.mediaId == undefined) &amp;&amp; inningsMediaList.length &gt; 0 &amp;&amp; false">
+     </td>
+    </tr>
+    <!-- end ngRepeat: battingCardResult in battingCard | filter:notEmptyOrNull -->
+    <tr class="sc-extra-wrap">
+     <td>
+      <div class="ap-bats-score-name bc-extra">
+       <span>
+        Extras
+       </span>
+       <span class="dismissalSmall ng-binding">
+        ( nb 0, w 9, b 0, lb 0, pen 0)
+       </span>
+      </div>
+     </td>
+     <td class="mobile-hide ng-binding">
+      ( nb 0, w 9, b 0, lb 0, pen 0)
+     </td>
+     <td class="textCenter ng-binding">
+      9
+     </td>
+     <td>
+     </td>
+     <td>
+     </td>
+     <td>
+     </td>
+     <td>
+     </td>
+     <!-- ngIf: inningsMediaList.length > 0 && false -->
+    </tr>
+    <!-- ngIf: false -->
+   </tbody>
+  </table>
+ </div>
+ <!-- ngIf: didNotBatList.length!=0 -->
+ <div class="did-not-bat col-100 floatLft ng-scope" ng-if="didNotBatList.length!=0">
+  <div class="ap-fall-txt col-100 floatLft">
+   <!-- ngIf: IsMatchEnd == 1 || extras.InningsNo < matchSummary.CurrentInnings -->
+   <span class="ap-td-bg ng-scope" ng-if="IsMatchEnd == 1 || extras.InningsNo &lt; matchSummary.CurrentInnings">
+    Did Not Bat:
+   </span>
+   <!-- end ngIf: IsMatchEnd == 1 || extras.InningsNo < matchSummary.CurrentInnings -->
+   <!-- ngIf: IsMatchEnd == 0 && !(extras.InningsNo < matchSummary.CurrentInnings) -->
+  </div>
+  <p class="ap-fall-summary team1 mb-0">
+   <span class="dit-not-bat">
+    <!-- ngRepeat: (key,list) in didNotBatList -->
+    <span class="ng-binding ng-scope" ng-repeat="(key,list) in didNotBatList">
+     Suyash Sharma
+     <!-- ngIf: list.IP -->
+     <span class="bc_player_r_icon IP ng-scope" ng-if="list.IP">
+     </span>
+     <!-- end ngIf: list.IP -->
+     <!-- ngIf: list.RP -->
+     <!-- ngIf: list.CS -->
+     <!-- ngIf: key!=didNotBatList.length-1 -->
+     <span class="ng-scope" ng-if="key!=didNotBatList.length-1">
+      ,
+     </span>
+     <!-- end ngIf: key!=didNotBatList.length-1 -->
+    </span>
+    <!-- end ngRepeat: (key,list) in didNotBatList -->
+    <span class="ng-binding ng-scope" ng-repeat="(key,list) in didNotBatList">
+     Josh Hazlewood
+     <!-- ngIf: list.IP -->
+     <!-- ngIf: list.RP -->
+     <!-- ngIf: list.CS -->
+     <!-- ngIf: key!=didNotBatList.length-1 -->
+    </span>
+    <!-- end ngRepeat: (key,list) in didNotBatList -->
+   </span>
+  </p>
+ </div>
+ <!-- end ngIf: didNotBatList.length!=0 -->
+ <!-- ngIf: curSeasonName >= 2023 -->
+ <div class="sc-legend-block ng-scope" ng-if="curSeasonName &gt;= 2023">
+  <span class="sc-legend-item ip">
+   Impact Player
+  </span>
+  <span class="sc-legend-item rp">
+   Replaced Player
+  </span>
+  <span class="sc-legend-item cs">
+   Concussion Substitute
+  </span>
+ </div>
+ <!-- end ngIf: curSeasonName >= 2023 -->
+ <div class="ap-scorecard-outer col-100 floatLft sc-bow-card">
+  <table cellpadding="0" cellspacing="0" class="ap-scroreboard-table table-striped" width="100%">
+   <tbody>
+    <tr class="ap-head-row">
+     <th class="textLeft" width="20%">
+      Bowler
+     </th>
+     <th width="30%">
+     </th>
+     <th class="textCenter bowCItem">
+      O
+     </th>
+     <th class="textCenter bowCItem">
+      M
+     </th>
+     <th class="textCenter bowCItem">
+      R
+     </th>
+     <th class="textCenter bowCItem">
+      W
+     </th>
+     <th class="textCenter bowCItem">
+      Econ
+     </th>
+     <th class="textCenter bowCItem">
+      Dots
+     </th>
+    </tr>
+   </tbody>
+   <tbody class="team1">
+    <!-- ngRepeat: bowlingCardResult in bowlingCard -->
+    <!-- ngIf: bowlingCardResult.PlayerName != '' && bowlingCardResult.PlayerName != '0' -->
+    <tr class="ng-scope" ng-if="bowlingCardResult.PlayerName != '' &amp;&amp; bowlingCardResult.PlayerName != '0'" ng-repeat="bowlingCardResult in bowlingCard">
+     <td>
+      <div class="ap-bats-score-name">
+       <a class="" href="javascript:void(0);">
+        <!-- ngIf: isNotNull(bowlingCardResult.PlayerImage) -->
+        <img alt="" class="ng-scope" ng-if="isNotNull(bowlingCardResult.PlayerImage)" ng-src="https://scores.iplt20.com/ipl/playerimages/tNpo2Jh8iO1742893255125.png" onerror="this.src = basePath+'images/player-thumb.jpg';" src="https://scores.iplt20.com/ipl/playerimages/tNpo2Jh8iO1742893255125.png" title=""/>
+        <!-- end ngIf: isNotNull(bowlingCardResult.PlayerImage) -->
+        <!-- ngIf: !isNotNull(bowlingCardResult.PlayerImage) -->
+        <span class="ng-binding">
+         Arshdeep Singh
+        </span>
+        <!-- ngIf: bowlingCardResult.IP -->
+        <!-- ngIf: bowlingCardResult.RP -->
+        <!-- ngIf: bowlingCardResult.CS -->
+       </a>
+      </div>
+     </td>
+     <td>
+     </td>
+     <td class="textCenter bowCItem ng-binding">
+      4
+     </td>
+     <td class="textCenter bowCItem ng-binding">
+      0
+     </td>
+     <td class="textCenter op5 bowCItem ng-binding">
+      40
+     </td>
+     <td class="textCenter op5 bowCItem ng-binding">
+      3
+     </td>
+     <td class="textCenter op5 bowCItem ng-binding">
+      10
+     </td>
+     <td class="textCenter op5 bowCItem ng-binding">
+      8
+     </td>
+     <!-- <td class="textCenter"></td> -->
+    </tr>
+    <!-- end ngIf: bowlingCardResult.PlayerName != '' && bowlingCardResult.PlayerName != '0' -->
+    <!-- end ngRepeat: bowlingCardResult in bowlingCard -->
+    <!-- ngIf: bowlingCardResult.PlayerName != '' && bowlingCardResult.PlayerName != '0' -->
+    <tr class="ng-scope" ng-if="bowlingCardResult.PlayerName != '' &amp;&amp; bowlingCardResult.PlayerName != '0'" ng-repeat="bowlingCardResult in bowlingCard">
+     <td>
+      <div class="ap-bats-score-name">
+       <a class="" href="javascript:void(0);">
+        <!-- ngIf: isNotNull(bowlingCardResult.PlayerImage) -->
+        <img alt="" class="ng-scope" ng-if="isNotNull(bowlingCardResult.PlayerImage)" ng-src="https://scores.iplt20.com/ipl/playerimages/7VUqVBBofl1748240230382.png" onerror="this.src = basePath+'images/player-thumb.jpg';" src="https://scores.iplt20.com/ipl/playerimages/7VUqVBBofl1748240230382.png" title=""/>
+        <!-- end ngIf: isNotNull(bowlingCardResult.PlayerImage) -->
+        <!-- ngIf: !isNotNull(bowlingCardResult.PlayerImage) -->
+        <span class="ng-binding">
+         Kyle Jamieson
+        </span>
+        <!-- ngIf: bowlingCardResult.IP -->
+        <!-- ngIf: bowlingCardResult.RP -->
+        <!-- ngIf: bowlingCardResult.CS -->
+       </a>
+      </div>
+     </td>
+     <td>
+     </td>
+     <td class="textCenter bowCItem ng-binding">
+      4
+     </td>
+     <td class="textCenter bowCItem ng-binding">
+      0
+     </td>
+     <td class="textCenter op5 bowCItem ng-binding">
+      48
+     </td>
+     <td class="textCenter op5 bowCItem ng-binding">
+      3
+     </td>
+     <td class="textCenter op5 bowCItem ng-binding">
+      12
+     </td>
+     <td class="textCenter op5 bowCItem ng-binding">
+      9
+     </td>
+     <!-- <td class="textCenter"></td> -->
+    </tr>
+    <!-- end ngIf: bowlingCardResult.PlayerName != '' && bowlingCardResult.PlayerName != '0' -->
+    <!-- end ngRepeat: bowlingCardResult in bowlingCard -->
+    <!-- ngIf: bowlingCardResult.PlayerName != '' && bowlingCardResult.PlayerName != '0' -->
+    <tr class="ng-scope" ng-if="bowlingCardResult.PlayerName != '' &amp;&amp; bowlingCardResult.PlayerName != '0'" ng-repeat="bowlingCardResult in bowlingCard">
+     <td>
+      <div class="ap-bats-score-name">
+       <a class="" href="javascript:void(0);">
+        <!-- ngIf: isNotNull(bowlingCardResult.PlayerImage) -->
+        <img alt="" class="ng-scope" ng-if="isNotNull(bowlingCardResult.PlayerImage)" ng-src="https://scores.iplt20.com/ipl/playerimages/GhgQshnHBh17428932771354.png" onerror="this.src = basePath+'images/player-thumb.jpg';" src="https://scores.iplt20.com/ipl/playerimages/GhgQshnHBh17428932771354.png" title=""/>
+        <!-- end ngIf: isNotNull(bowlingCardResult.PlayerImage) -->
+        <!-- ngIf: !isNotNull(bowlingCardResult.PlayerImage) -->
+        <span class="ng-binding">
+         Azmatullah Omarzai
+        </span>
+        <!-- ngIf: bowlingCardResult.IP -->
+        <!-- ngIf: bowlingCardResult.RP -->
+        <!-- ngIf: bowlingCardResult.CS -->
+       </a>
+      </div>
+     </td>
+     <td>
+     </td>
+     <td class="textCenter bowCItem ng-binding">
+      4
+     </td>
+     <td class="textCenter bowCItem ng-binding">
+      0
+     </td>
+     <td class="textCenter op5 bowCItem ng-binding">
+      35
+     </td>
+     <td class="textCenter op5 bowCItem ng-binding">
+      1
+     </td>
+     <td class="textCenter op5 bowCItem ng-binding">
+      8.75
+     </td>
+     <td class="textCenter op5 bowCItem ng-binding">
+      3
+     </td>
+     <!-- <td class="textCenter"></td> -->
+    </tr>
+    <!-- end ngIf: bowlingCardResult.PlayerName != '' && bowlingCardResult.PlayerName != '0' -->
+    <!-- end ngRepeat: bowlingCardResult in bowlingCard -->
+    <!-- ngIf: bowlingCardResult.PlayerName != '' && bowlingCardResult.PlayerName != '0' -->
+    <tr class="ng-scope" ng-if="bowlingCardResult.PlayerName != '' &amp;&amp; bowlingCardResult.PlayerName != '0'" ng-repeat="bowlingCardResult in bowlingCard">
+     <td>
+      <div class="ap-bats-score-name">
+       <a class="" href="javascript:void(0);">
+        <!-- ngIf: isNotNull(bowlingCardResult.PlayerImage) -->
+        <img alt="" class="ng-scope" ng-if="isNotNull(bowlingCardResult.PlayerImage)" ng-src="https://scores.iplt20.com/ipl/playerimages/dXWLPZ4Mnm17428933242034.png" onerror="this.src = basePath+'images/player-thumb.jpg';" src="https://scores.iplt20.com/ipl/playerimages/dXWLPZ4Mnm17428933242034.png" title=""/>
+        <!-- end ngIf: isNotNull(bowlingCardResult.PlayerImage) -->
+        <!-- ngIf: !isNotNull(bowlingCardResult.PlayerImage) -->
+        <span class="ng-binding">
+         Vyshak Vijaykumar
+        </span>
+        <!-- ngIf: bowlingCardResult.IP -->
+        <!-- ngIf: bowlingCardResult.RP -->
+        <!-- ngIf: bowlingCardResult.CS -->
+       </a>
+      </div>
+     </td>
+     <td>
+     </td>
+     <td class="textCenter bowCItem ng-binding">
+      4
+     </td>
+     <td class="textCenter bowCItem ng-binding">
+      0
+     </td>
+     <td class="textCenter op5 bowCItem ng-binding">
+      30
+     </td>
+     <td class="textCenter op5 bowCItem ng-binding">
+      1
+     </td>
+     <td class="textCenter op5 bowCItem ng-binding">
+      7.5
+     </td>
+     <td class="textCenter op5 bowCItem ng-binding">
+      5
+     </td>
+     <!-- <td class="textCenter"></td> -->
+    </tr>
+    <!-- end ngIf: bowlingCardResult.PlayerName != '' && bowlingCardResult.PlayerName != '0' -->
+    <!-- end ngRepeat: bowlingCardResult in bowlingCard -->
+    <!-- ngIf: bowlingCardResult.PlayerName != '' && bowlingCardResult.PlayerName != '0' -->
+    <tr class="ng-scope" ng-if="bowlingCardResult.PlayerName != '' &amp;&amp; bowlingCardResult.PlayerName != '0'" ng-repeat="bowlingCardResult in bowlingCard">
+     <td>
+      <div class="ap-bats-score-name">
+       <a class="" href="javascript:void(0);">
+        <!-- ngIf: isNotNull(bowlingCardResult.PlayerImage) -->
+        <img alt="" class="ng-scope" ng-if="isNotNull(bowlingCardResult.PlayerImage)" ng-src="https://scores.iplt20.com/ipl/playerimages/ZeVxM8vvym174289321110.png" onerror="this.src = basePath+'images/player-thumb.jpg';" src="https://scores.iplt20.com/ipl/playerimages/ZeVxM8vvym174289321110.png" title=""/>
+        <!-- end ngIf: isNotNull(bowlingCardResult.PlayerImage) -->
+        <!-- ngIf: !isNotNull(bowlingCardResult.PlayerImage) -->
+        <span class="ng-binding">
+         Yuzvendra Chahal
+        </span>
+        <!-- ngIf: bowlingCardResult.IP -->
+        <!-- ngIf: bowlingCardResult.RP -->
+        <span class="bc_player_r_icon RP ng-scope" ng-if="bowlingCardResult.RP">
+        </span>
+        <!-- end ngIf: bowlingCardResult.RP -->
+        <!-- ngIf: bowlingCardResult.CS -->
+       </a>
+      </div>
+     </td>
+     <td>
+     </td>
+     <td class="textCenter bowCItem ng-binding">
+      4
+     </td>
+     <td class="textCenter bowCItem ng-binding">
+      0
+     </td>
+     <td class="textCenter op5 bowCItem ng-binding">
+      37
+     </td>
+     <td class="textCenter op5 bowCItem ng-binding">
+      1
+     </td>
+     <td class="textCenter op5 bowCItem ng-binding">
+      9.25
+     </td>
+     <td class="textCenter op5 bowCItem ng-binding">
+      3
+     </td>
+     <!-- <td class="textCenter"></td> -->
+    </tr>
+    <!-- end ngIf: bowlingCardResult.PlayerName != '' && bowlingCardResult.PlayerName != '0' -->
+    <!-- end ngRepeat: bowlingCardResult in bowlingCard -->
+   </tbody>
+  </table>
+ </div>
+ <!-- ngIf: fallofWickets.length>0 -->
+ <div class="ap-fall-wickets col-100 floatLft ng-scope" ng-if="fallofWickets.length&gt;0">
+  <div class="ap-fall-txt col-100 floatLft">
+   Fall of Wickets
+  </div>
+  <div class="ap-fall-summary team1 mb-0">
+   <!-- ngRepeat: (key,fallwicketResult) in fallofWickets -->
+   <span class="fw-wrap ng-scope playerpopup" data-description="" data-mediaid="6373825068112" data-share="https://www.iplt20.com/video/63866/ipl-2025-final-rcb-vs-pbks---phil-salt-wicket?tagNames=2025" data-short-description="" data-thumbnile="" data-videodate="" data-videoid="63866" data-videoslug="63866/ipl-2025-final-rcb-vs-pbks---phil-salt-wicket?tagNames=2025" data-videotitle="IPL 2025 Final: RCB vs PBKS - Phil Salt Wicket" data-videoview="48298" ng-class="{'playerpopup' : (fallwicketResult.wicketVideo != undefined &amp;&amp; fallwicketResult.wicketVideo.mediaId != undefined &amp;&amp; fallwicketResult.wicketVideo.mediaId != '')}" ng-repeat="(key,fallwicketResult) in fallofWickets" onclick="click_tile(this)">
+    <span class="fw-iWrap">
+     <span class="fw-playicon" ng-show="fallwicketResult.wicketVideo != undefined &amp;&amp; fallwicketResult.wicketVideo.mediaId != undefined &amp;&amp; fallwicketResult.wicketVideo.mediaId != ''">
+     </span>
+     <span class="fw-score ng-binding">
+      1-18
+     </span>
+     <span class="fw-pname ng-binding">
+      Phil Salt
+     </span>
+     <span class="fw-over ng-binding">
+      Over 1.4
+     </span>
+    </span>
+   </span>
+   <!-- end ngRepeat: (key,fallwicketResult) in fallofWickets -->
+   <span class="fw-wrap ng-scope playerpopup" data-description="" data-mediaid="6373825966112" data-share="https://www.iplt20.com/video/63867/ipl-2025-final-rcb-vs-pbks---mayank-agarwal-wicket?tagNames=2025" data-short-description="" data-thumbnile="" data-videodate="" data-videoid="63867" data-videoslug="63867/ipl-2025-final-rcb-vs-pbks---mayank-agarwal-wicket?tagNames=2025" data-videotitle="IPL 2025 Final: RCB vs PBKS - Mayank Agarwal Wicket" data-videoview="40042" ng-class="{'playerpopup' : (fallwicketResult.wicketVideo != undefined &amp;&amp; fallwicketResult.wicketVideo.mediaId != undefined &amp;&amp; fallwicketResult.wicketVideo.mediaId != '')}" ng-repeat="(key,fallwicketResult) in fallofWickets" onclick="click_tile(this)">
+    <span class="fw-iWrap">
+     <span class="fw-playicon" ng-show="fallwicketResult.wicketVideo != undefined &amp;&amp; fallwicketResult.wicketVideo.mediaId != undefined &amp;&amp; fallwicketResult.wicketVideo.mediaId != ''">
+     </span>
+     <span class="fw-score ng-binding">
+      2-56
+     </span>
+     <span class="fw-pname ng-binding">
+      Mayank Agarwal
+     </span>
+     <span class="fw-over ng-binding">
+      Over 6.2
+     </span>
+    </span>
+   </span>
+   <!-- end ngRepeat: (key,fallwicketResult) in fallofWickets -->
+   <span class="fw-wrap ng-scope playerpopup" data-description="" data-mediaid="6373828732112" data-share="https://www.iplt20.com/video/63871/ipl-2025-final-rcb-vs-pbks---rajat-patidar-wicket?tagNames=2025" data-short-description="" data-thumbnile="" data-videodate="" data-videoid="63871" data-videoslug="63871/ipl-2025-final-rcb-vs-pbks---rajat-patidar-wicket?tagNames=2025" data-videotitle="IPL 2025 Final: RCB vs PBKS - Rajat Patidar Wicket" data-videoview="32737" ng-class="{'playerpopup' : (fallwicketResult.wicketVideo != undefined &amp;&amp; fallwicketResult.wicketVideo.mediaId != undefined &amp;&amp; fallwicketResult.wicketVideo.mediaId != '')}" ng-repeat="(key,fallwicketResult) in fallofWickets" onclick="click_tile(this)">
+    <span class="fw-iWrap">
+     <span class="fw-playicon" ng-show="fallwicketResult.wicketVideo != undefined &amp;&amp; fallwicketResult.wicketVideo.mediaId != undefined &amp;&amp; fallwicketResult.wicketVideo.mediaId != ''">
+     </span>
+     <span class="fw-score ng-binding">
+      3-96
+     </span>
+     <span class="fw-pname ng-binding">
+      Rajat Patidar
+     </span>
+     <span class="fw-over ng-binding">
+      Over 10.5
+     </span>
+    </span>
+   </span>
+   <!-- end ngRepeat: (key,fallwicketResult) in fallofWickets -->
+   <span class="fw-wrap ng-scope playerpopup" data-description="" data-mediaid="6373827779112" data-share="https://www.iplt20.com/video/63875/ipl-2025-final-rcb-vs-pbks---virat-kohli-wicket?tagNames=2025" data-short-description="" data-thumbnile="" data-videodate="" data-videoid="63875" data-videoslug="63875/ipl-2025-final-rcb-vs-pbks---virat-kohli-wicket?tagNames=2025" data-videotitle="IPL 2025 Final: RCB vs PBKS - Virat Kohli Wicket" data-videoview="16393" ng-class="{'playerpopup' : (fallwicketResult.wicketVideo != undefined &amp;&amp; fallwicketResult.wicketVideo.mediaId != undefined &amp;&amp; fallwicketResult.wicketVideo.mediaId != '')}" ng-repeat="(key,fallwicketResult) in fallofWickets" onclick="click_tile(this)">
+    <span class="fw-iWrap">
+     <span class="fw-playicon" ng-show="fallwicketResult.wicketVideo != undefined &amp;&amp; fallwicketResult.wicketVideo.mediaId != undefined &amp;&amp; fallwicketResult.wicketVideo.mediaId != ''">
+     </span>
+     <span class="fw-score ng-binding">
+      4-131
+     </span>
+     <span class="fw-pname ng-binding">
+      Virat Kohli
+     </span>
+     <span class="fw-over ng-binding">
+      Over 14.5
+     </span>
+    </span>
+   </span>
+   <!-- end ngRepeat: (key,fallwicketResult) in fallofWickets -->
+   <span class="fw-wrap ng-scope playerpopup" data-description="" data-mediaid="6373830836112" data-share="https://www.iplt20.com/video/63884/ipl-2025-final-rcb-vs-pbks---liam-livingstone-wicket?tagNames=2025" data-short-description="" data-thumbnile="" data-videodate="" data-videoid="63884" data-videoslug="63884/ipl-2025-final-rcb-vs-pbks---liam-livingstone-wicket?tagNames=2025" data-videotitle="IPL 2025 Final: RCB vs PBKS - Liam Livingstone Wicket" data-videoview="7174" ng-class="{'playerpopup' : (fallwicketResult.wicketVideo != undefined &amp;&amp; fallwicketResult.wicketVideo.mediaId != undefined &amp;&amp; fallwicketResult.wicketVideo.mediaId != '')}" ng-repeat="(key,fallwicketResult) in fallofWickets" onclick="click_tile(this)">
+    <span class="fw-iWrap">
+     <span class="fw-playicon" ng-show="fallwicketResult.wicketVideo != undefined &amp;&amp; fallwicketResult.wicketVideo.mediaId != undefined &amp;&amp; fallwicketResult.wicketVideo.mediaId != ''">
+     </span>
+     <span class="fw-score ng-binding">
+      5-167
+     </span>
+     <span class="fw-pname ng-binding">
+      Liam Livingstone
+     </span>
+     <span class="fw-over ng-binding">
+      Over 16.5
+     </span>
+    </span>
+   </span>
+   <!-- end ngRepeat: (key,fallwicketResult) in fallofWickets -->
+   <span class="fw-wrap ng-scope playerpopup" data-description="" data-mediaid="6373829372112" data-share="https://www.iplt20.com/video/63883/ipl-2025-final-rcb-vs-pbks---jitesh-sharma-wicket?tagNames=2025" data-short-description="" data-thumbnile="" data-videodate="" data-videoid="63883" data-videoslug="63883/ipl-2025-final-rcb-vs-pbks---jitesh-sharma-wicket?tagNames=2025" data-videotitle="IPL 2025 Final: RCB vs PBKS - Jitesh Sharma Wicket" data-videoview="10558" ng-class="{'playerpopup' : (fallwicketResult.wicketVideo != undefined &amp;&amp; fallwicketResult.wicketVideo.mediaId != undefined &amp;&amp; fallwicketResult.wicketVideo.mediaId != '')}" ng-repeat="(key,fallwicketResult) in fallofWickets" onclick="click_tile(this)">
+    <span class="fw-iWrap">
+     <span class="fw-playicon" ng-show="fallwicketResult.wicketVideo != undefined &amp;&amp; fallwicketResult.wicketVideo.mediaId != undefined &amp;&amp; fallwicketResult.wicketVideo.mediaId != ''">
+     </span>
+     <span class="fw-score ng-binding">
+      6-171
+     </span>
+     <span class="fw-pname ng-binding">
+      Jitesh Sharma
+     </span>
+     <span class="fw-over ng-binding">
+      Over 17.4
+     </span>
+    </span>
+   </span>
+   <!-- end ngRepeat: (key,fallwicketResult) in fallofWickets -->
+   <span class="fw-wrap ng-scope playerpopup" data-description="" data-mediaid="6373830852112" data-share="https://www.iplt20.com/video/63889/ipl-2025-final-rcb-vs-pbks---romario-shepherd-wicket?tagNames=2025" data-short-description="" data-thumbnile="" data-videodate="" data-videoid="63889" data-videoslug="63889/ipl-2025-final-rcb-vs-pbks---romario-shepherd-wicket?tagNames=2025" data-videotitle="IPL 2025 Final: RCB vs PBKS - Romario Shepherd Wicket" data-videoview="6948" ng-class="{'playerpopup' : (fallwicketResult.wicketVideo != undefined &amp;&amp; fallwicketResult.wicketVideo.mediaId != undefined &amp;&amp; fallwicketResult.wicketVideo.mediaId != '')}" ng-repeat="(key,fallwicketResult) in fallofWickets" onclick="click_tile(this)">
+    <span class="fw-iWrap">
+     <span class="fw-playicon" ng-show="fallwicketResult.wicketVideo != undefined &amp;&amp; fallwicketResult.wicketVideo.mediaId != undefined &amp;&amp; fallwicketResult.wicketVideo.mediaId != ''">
+     </span>
+     <span class="fw-score ng-binding">
+      7-188
+     </span>
+     <span class="fw-pname ng-binding">
+      Romario Shepherd
+     </span>
+     <span class="fw-over ng-binding">
+      Over 19.2
+     </span>
+    </span>
+   </span>
+   <!-- end ngRepeat: (key,fallwicketResult) in fallofWickets -->
+   <span class="fw-wrap ng-scope playerpopup" data-description="" data-mediaid="6373829195112" data-share="https://www.iplt20.com/video/63887/ipl-2025-final-rcb-vs-pbks---krunal-pandya-wicket?tagNames=2025" data-short-description="" data-thumbnile="" data-videodate="" data-videoid="63887" data-videoslug="63887/ipl-2025-final-rcb-vs-pbks---krunal-pandya-wicket?tagNames=2025" data-videotitle="IPL 2025 Final: RCB vs PBKS - Krunal Pandya Wicket" data-videoview="11195" ng-class="{'playerpopup' : (fallwicketResult.wicketVideo != undefined &amp;&amp; fallwicketResult.wicketVideo.mediaId != undefined &amp;&amp; fallwicketResult.wicketVideo.mediaId != '')}" ng-repeat="(key,fallwicketResult) in fallofWickets" onclick="click_tile(this)">
+    <span class="fw-iWrap">
+     <span class="fw-playicon" ng-show="fallwicketResult.wicketVideo != undefined &amp;&amp; fallwicketResult.wicketVideo.mediaId != undefined &amp;&amp; fallwicketResult.wicketVideo.mediaId != ''">
+     </span>
+     <span class="fw-score ng-binding">
+      8-189
+     </span>
+     <span class="fw-pname ng-binding">
+      Krunal Pandya
+     </span>
+     <span class="fw-over ng-binding">
+      Over 19.4
+     </span>
+    </span>
+   </span>
+   <!-- end ngRepeat: (key,fallwicketResult) in fallofWickets -->
+   <span class="fw-wrap ng-scope playerpopup" data-description="" data-mediaid="6373830281112" data-share="https://www.iplt20.com/video/63888/ipl-2025-final-rcb-vs-pbks---bhuvneshwar-kumar-wicket?tagNames=2025" data-short-description="" data-thumbnile="" data-videodate="" data-videoid="63888" data-videoslug="63888/ipl-2025-final-rcb-vs-pbks---bhuvneshwar-kumar-wicket?tagNames=2025" data-videotitle="IPL 2025 Final: RCB vs PBKS - Bhuvneshwar Kumar Wicket" data-videoview="6970" ng-class="{'playerpopup' : (fallwicketResult.wicketVideo != undefined &amp;&amp; fallwicketResult.wicketVideo.mediaId != undefined &amp;&amp; fallwicketResult.wicketVideo.mediaId != '')}" ng-repeat="(key,fallwicketResult) in fallofWickets" onclick="click_tile(this)">
+    <span class="fw-iWrap">
+     <span class="fw-playicon" ng-show="fallwicketResult.wicketVideo != undefined &amp;&amp; fallwicketResult.wicketVideo.mediaId != undefined &amp;&amp; fallwicketResult.wicketVideo.mediaId != ''">
+     </span>
+     <span class="fw-score ng-binding">
+      9-190
+     </span>
+     <span class="fw-pname ng-binding">
+      Bhuvneshwar Kumar
+     </span>
+     <span class="fw-over ng-binding">
+      Over 19.6
+     </span>
+    </span>
+   </span>
+   <!-- end ngRepeat: (key,fallwicketResult) in fallofWickets -->
+  </div>
+ </div>
+ <!-- end ngIf: fallofWickets.length>0 -->
+ <!-- ngIf: PartnerShipRuns!= undefined && PartnerShipRuns.length > 0 -->
+ <div class="widget partnerChart ap-fall-wickets ng-scope" ng-if="PartnerShipRuns!= undefined &amp;&amp; PartnerShipRuns.length &gt; 0">
+  <div class="partnerChart RCB">
+   <h4 class="performHeader widgetTitle ap-fall-txt">
+    Partnership
+   </h4>
+   <ul class="partnerContent">
+    <!-- ngRepeat: data in PartnerShipRuns -->
+    <li class="ng-scope" ng-repeat="data in PartnerShipRuns">
+     <div class="partners-name vclickable" ng-click="playPartnership('striker',data.StrikerID,data.NonStrikerID)">
+      <span class="prName ng-binding">
+       Virat Kohli
+      </span>
+      <span class="prScore ng-binding">
+       1
+       <i class="ng-binding">
+        (1)
+       </i>
+      </span>
+     </div>
+     <div class="parters-chart">
+      <div class="prTot vclickable" ng-click="playPartnership('all',data.StrikerID,data.NonStrikerID)">
+       Partnership -
+       <span class="ng-binding">
+        18
+        <i class="ng-binding">
+         (10)
+        </i>
+       </span>
+      </div>
+      <div class="bar-wrap">
+       <div class="indv-bar hrz-bg1" style="width:1%;">
+       </div>
+       <!-- ngIf: data.ExtraWid != 0 -->
+       <div class="indv-bar hrz-bg3 ng-scope" ng-if="data.ExtraWid != 0" style="width:1%;">
+       </div>
+       <!-- end ngIf: data.ExtraWid != 0 -->
+       <div class="indv-bar hrz-bg2" style="width:18%;">
+       </div>
+      </div>
+      <div class="prExtra">
+       Extras -
+       <span class="vclickable ng-binding" ng-click="playPartnership('extras',data.StrikerID,data.NonStrikerID)">
+        1
+       </span>
+      </div>
+     </div>
+     <div class="partners-name vclickable" ng-click="playPartnership('nonstriker',data.StrikerID,data.NonStrikerID)">
+      <span class="prName ng-binding">
+       Phil Salt
+      </span>
+      <span class="prScore ng-binding">
+       16
+       <i class="ng-binding">
+        (9)
+       </i>
+      </span>
+     </div>
+    </li>
+    <!-- end ngRepeat: data in PartnerShipRuns -->
+    <li class="ng-scope" ng-repeat="data in PartnerShipRuns">
+     <div class="partners-name vclickable" ng-click="playPartnership('striker',data.StrikerID,data.NonStrikerID)">
+      <span class="prName ng-binding">
+       Virat Kohli
+      </span>
+      <span class="prScore ng-binding">
+       13
+       <i class="ng-binding">
+        (10)
+       </i>
+      </span>
+     </div>
+     <div class="parters-chart">
+      <div class="prTot vclickable" ng-click="playPartnership('all',data.StrikerID,data.NonStrikerID)">
+       Partnership -
+       <span class="ng-binding">
+        38
+        <i class="ng-binding">
+         (28)
+        </i>
+       </span>
+      </div>
+      <div class="bar-wrap">
+       <div class="indv-bar hrz-bg1" style="width:14%;">
+       </div>
+       <!-- ngIf: data.ExtraWid != 0 -->
+       <div class="indv-bar hrz-bg3 ng-scope" ng-if="data.ExtraWid != 0" style="width:1%;">
+       </div>
+       <!-- end ngIf: data.ExtraWid != 0 -->
+       <div class="indv-bar hrz-bg2" style="width:27%;">
+       </div>
+      </div>
+      <div class="prExtra">
+       Extras -
+       <span class="vclickable ng-binding" ng-click="playPartnership('extras',data.StrikerID,data.NonStrikerID)">
+        1
+       </span>
+      </div>
+     </div>
+     <div class="partners-name vclickable" ng-click="playPartnership('nonstriker',data.StrikerID,data.NonStrikerID)">
+      <span class="prName ng-binding">
+       Mayank Agarwal
+      </span>
+      <span class="prScore ng-binding">
+       24
+       <i class="ng-binding">
+        (18)
+       </i>
+      </span>
+     </div>
+    </li>
+    <!-- end ngRepeat: data in PartnerShipRuns -->
+    <li class="ng-scope" ng-repeat="data in PartnerShipRuns">
+     <div class="partners-name vclickable" ng-click="playPartnership('striker',data.StrikerID,data.NonStrikerID)">
+      <span class="prName ng-binding">
+       Rajat Patidar
+      </span>
+      <span class="prScore ng-binding">
+       26
+       <i class="ng-binding">
+        (16)
+       </i>
+      </span>
+     </div>
+     <div class="parters-chart">
+      <div class="prTot vclickable" ng-click="playPartnership('all',data.StrikerID,data.NonStrikerID)">
+       Partnership -
+       <span class="ng-binding">
+        40
+        <i class="ng-binding">
+         (27)
+        </i>
+       </span>
+      </div>
+      <div class="bar-wrap">
+       <div class="indv-bar hrz-bg1" style="width:29%;">
+       </div>
+       <!-- ngIf: data.ExtraWid != 0 -->
+       <div class="indv-bar hrz-bg2" style="width:16%;">
+       </div>
+      </div>
+      <div class="prExtra">
+       Extras -
+       <span class="vclickable ng-binding" ng-click="playPartnership('extras',data.StrikerID,data.NonStrikerID)">
+        0
+       </span>
+      </div>
+     </div>
+     <div class="partners-name vclickable" ng-click="playPartnership('nonstriker',data.StrikerID,data.NonStrikerID)">
+      <span class="prName ng-binding">
+       Virat Kohli
+      </span>
+      <span class="prScore ng-binding">
+       14
+       <i class="ng-binding">
+        (11)
+       </i>
+      </span>
+     </div>
+    </li>
+    <!-- end ngRepeat: data in PartnerShipRuns -->
+    <li class="ng-scope" ng-repeat="data in PartnerShipRuns">
+     <div class="partners-name vclickable" ng-click="playPartnership('striker',data.StrikerID,data.NonStrikerID)">
+      <span class="prName ng-binding">
+       Virat Kohli
+      </span>
+      <span class="prScore ng-binding">
+       15
+       <i class="ng-binding">
+        (13)
+       </i>
+      </span>
+     </div>
+     <div class="parters-chart">
+      <div class="prTot vclickable" ng-click="playPartnership('all',data.StrikerID,data.NonStrikerID)">
+       Partnership -
+       <span class="ng-binding">
+        35
+        <i class="ng-binding">
+         (24)
+        </i>
+       </span>
+      </div>
+      <div class="bar-wrap">
+       <div class="indv-bar hrz-bg1" style="width:17%;">
+       </div>
+       <!-- ngIf: data.ExtraWid != 0 -->
+       <div class="indv-bar hrz-bg3 ng-scope" ng-if="data.ExtraWid != 0" style="width:4%;">
+       </div>
+       <!-- end ngIf: data.ExtraWid != 0 -->
+       <div class="indv-bar hrz-bg2" style="width:18%;">
+       </div>
+      </div>
+      <div class="prExtra">
+       Extras -
+       <span class="vclickable ng-binding" ng-click="playPartnership('extras',data.StrikerID,data.NonStrikerID)">
+        4
+       </span>
+      </div>
+     </div>
+     <div class="partners-name vclickable" ng-click="playPartnership('nonstriker',data.StrikerID,data.NonStrikerID)">
+      <span class="prName ng-binding">
+       Liam Livingstone
+      </span>
+      <span class="prScore ng-binding">
+       16
+       <i class="ng-binding">
+        (11)
+       </i>
+      </span>
+     </div>
+    </li>
+    <!-- end ngRepeat: data in PartnerShipRuns -->
+    <li class="ng-scope" ng-repeat="data in PartnerShipRuns">
+     <div class="partners-name vclickable" ng-click="playPartnership('striker',data.StrikerID,data.NonStrikerID)">
+      <span class="prName ng-binding">
+       Jitesh Sharma
+      </span>
+      <span class="prScore ng-binding">
+       24
+       <i class="ng-binding">
+        (8)
+       </i>
+      </span>
+     </div>
+     <div class="parters-chart">
+      <div class="prTot vclickable" ng-click="playPartnership('all',data.StrikerID,data.NonStrikerID)">
+       Partnership -
+       <span class="ng-binding">
+        36
+        <i class="ng-binding">
+         (12)
+        </i>
+       </span>
+      </div>
+      <div class="bar-wrap">
+       <div class="indv-bar hrz-bg1" style="width:27%;">
+       </div>
+       <!-- ngIf: data.ExtraWid != 0 -->
+       <div class="indv-bar hrz-bg3 ng-scope" ng-if="data.ExtraWid != 0" style="width:3%;">
+       </div>
+       <!-- end ngIf: data.ExtraWid != 0 -->
+       <div class="indv-bar hrz-bg2" style="width:10%;">
+       </div>
+      </div>
+      <div class="prExtra">
+       Extras -
+       <span class="vclickable ng-binding" ng-click="playPartnership('extras',data.StrikerID,data.NonStrikerID)">
+        3
+       </span>
+      </div>
+     </div>
+     <div class="partners-name vclickable" ng-click="playPartnership('nonstriker',data.StrikerID,data.NonStrikerID)">
+      <span class="prName ng-binding">
+       Liam Livingstone
+      </span>
+      <span class="prScore ng-binding">
+       9
+       <i class="ng-binding">
+        (4)
+       </i>
+      </span>
+     </div>
+    </li>
+    <!-- end ngRepeat: data in PartnerShipRuns -->
+    <li class="ng-scope" ng-repeat="data in PartnerShipRuns">
+     <div class="partners-name vclickable" ng-click="playPartnership('striker',data.StrikerID,data.NonStrikerID)">
+      <span class="prName ng-binding">
+       Jitesh Sharma
+      </span>
+      <span class="prScore ng-binding">
+       0
+       <i class="ng-binding">
+        (2)
+       </i>
+      </span>
+     </div>
+     <div class="parters-chart">
+      <div class="prTot vclickable" ng-click="playPartnership('all',data.StrikerID,data.NonStrikerID)">
+       Partnership -
+       <span class="ng-binding">
+        4
+        <i class="ng-binding">
+         (5)
+        </i>
+       </span>
+      </div>
+      <div class="bar-wrap">
+       <div class="indv-bar hrz-bg1" style="width:0%;">
+       </div>
+       <!-- ngIf: data.ExtraWid != 0 -->
+       <div class="indv-bar hrz-bg2" style="width:4%;">
+       </div>
+      </div>
+      <div class="prExtra">
+       Extras -
+       <span class="vclickable ng-binding" ng-click="playPartnership('extras',data.StrikerID,data.NonStrikerID)">
+        0
+       </span>
+      </div>
+     </div>
+     <div class="partners-name vclickable" ng-click="playPartnership('nonstriker',data.StrikerID,data.NonStrikerID)">
+      <span class="prName ng-binding">
+       Romario Shepherd
+      </span>
+      <span class="prScore ng-binding">
+       4
+       <i class="ng-binding">
+        (3)
+       </i>
+      </span>
+     </div>
+    </li>
+    <!-- end ngRepeat: data in PartnerShipRuns -->
+    <li class="ng-scope" ng-repeat="data in PartnerShipRuns">
+     <div class="partners-name vclickable" ng-click="playPartnership('striker',data.StrikerID,data.NonStrikerID)">
+      <span class="prName ng-binding">
+       Krunal Pandya
+      </span>
+      <span class="prScore ng-binding">
+       4
+       <i class="ng-binding">
+        (4)
+       </i>
+      </span>
+     </div>
+     <div class="parters-chart">
+      <div class="prTot vclickable" ng-click="playPartnership('all',data.StrikerID,data.NonStrikerID)">
+       Partnership -
+       <span class="ng-binding">
+        17
+        <i class="ng-binding">
+         (10)
+        </i>
+       </span>
+      </div>
+      <div class="bar-wrap">
+       <div class="indv-bar hrz-bg1" style="width:4%;">
+       </div>
+       <!-- ngIf: data.ExtraWid != 0 -->
+       <div class="indv-bar hrz-bg2" style="width:14%;">
+       </div>
+      </div>
+      <div class="prExtra">
+       Extras -
+       <span class="vclickable ng-binding" ng-click="playPartnership('extras',data.StrikerID,data.NonStrikerID)">
+        0
+       </span>
+      </div>
+     </div>
+     <div class="partners-name vclickable" ng-click="playPartnership('nonstriker',data.StrikerID,data.NonStrikerID)">
+      <span class="prName ng-binding">
+       Romario Shepherd
+      </span>
+      <span class="prScore ng-binding">
+       13
+       <i class="ng-binding">
+        (6)
+       </i>
+      </span>
+     </div>
+    </li>
+    <!-- end ngRepeat: data in PartnerShipRuns -->
+    <li class="ng-scope" ng-repeat="data in PartnerShipRuns">
+     <div class="partners-name vclickable" ng-click="playPartnership('striker',data.StrikerID,data.NonStrikerID)">
+      <span class="prName ng-binding">
+       Bhuvneshwar Kumar
+      </span>
+      <span class="prScore ng-binding">
+       1
+       <i class="ng-binding">
+        (1)
+       </i>
+      </span>
+     </div>
+     <div class="parters-chart">
+      <div class="prTot vclickable" ng-click="playPartnership('all',data.StrikerID,data.NonStrikerID)">
+       Partnership -
+       <span class="ng-binding">
+        1
+        <i class="ng-binding">
+         (2)
+        </i>
+       </span>
+      </div>
+      <div class="bar-wrap">
+       <div class="indv-bar hrz-bg1" style="width:1%;">
+       </div>
+       <!-- ngIf: data.ExtraWid != 0 -->
+       <div class="indv-bar hrz-bg2" style="width:0%;">
+       </div>
+      </div>
+      <div class="prExtra">
+       Extras -
+       <span class="vclickable ng-binding" ng-click="playPartnership('extras',data.StrikerID,data.NonStrikerID)">
+        0
+       </span>
+      </div>
+     </div>
+     <div class="partners-name vclickable" ng-click="playPartnership('nonstriker',data.StrikerID,data.NonStrikerID)">
+      <span class="prName ng-binding">
+       Krunal Pandya
+      </span>
+      <span class="prScore ng-binding">
+       0
+       <i class="ng-binding">
+        (1)
+       </i>
+      </span>
+     </div>
+    </li>
+    <!-- end ngRepeat: data in PartnerShipRuns -->
+    <li class="ng-scope" ng-repeat="data in PartnerShipRuns">
+     <div class="partners-name vclickable" ng-click="playPartnership('striker',data.StrikerID,data.NonStrikerID)">
+      <span class="prName ng-binding">
+       Yash Dayal
+      </span>
+      <span class="prScore ng-binding">
+       1
+       <i class="ng-binding">
+        (1)
+       </i>
+      </span>
+     </div>
+     <div class="parters-chart">
+      <div class="prTot vclickable" ng-click="playPartnership('all',data.StrikerID,data.NonStrikerID)">
+       Partnership -
+       <span class="ng-binding">
+        1
+        <i class="ng-binding">
+         (2)
+        </i>
+       </span>
+      </div>
+      <div class="bar-wrap">
+       <div class="indv-bar hrz-bg1" style="width:1%;">
+       </div>
+       <!-- ngIf: data.ExtraWid != 0 -->
+       <div class="indv-bar hrz-bg2" style="width:0%;">
+       </div>
+      </div>
+      <div class="prExtra">
+       Extras -
+       <span class="vclickable ng-binding" ng-click="playPartnership('extras',data.StrikerID,data.NonStrikerID)">
+        0
+       </span>
+      </div>
+     </div>
+     <div class="partners-name vclickable" ng-click="playPartnership('nonstriker',data.StrikerID,data.NonStrikerID)">
+      <span class="prName ng-binding">
+       Bhuvneshwar Kumar
+      </span>
+      <span class="prScore ng-binding">
+       0
+       <i class="ng-binding">
+        (1)
+       </i>
+      </span>
+     </div>
+    </li>
+    <!-- end ngRepeat: data in PartnerShipRuns -->
+   </ul>
+  </div>
+ </div>
+ <!-- end ngIf: PartnerShipRuns!= undefined && PartnerShipRuns.length > 0 -->
+ <div class="widget matchDetails sc-matchInfo">
+  <h4 class="widgetTitle">
+   Match Details
+  </h4>
+  <div class="widgetContent">
+   <ul>
+    <!-- ngIf: selectedCompetition.CompetitionName != 'All Live Matches' && (matchSummary.CompetitionName == undefined || matchSummary.CompetitionName=='') -->
+    <!-- ngIf: (matchSummary.CompetitionName != undefined && matchSummary.CompetitionName!='') -->
+    <li class="ng-scope" ng-if="(matchSummary.CompetitionName != undefined &amp;&amp; matchSummary.CompetitionName!='')">
+     <span>
+      Tournament
+     </span>
+     <span class="ng-binding">
+      TATA IPL 2025
+     </span>
+    </li>
+    <!-- end ngIf: (matchSummary.CompetitionName != undefined && matchSummary.CompetitionName!='') -->
+    <!-- ngIf: matchSummary.MatchName!='' -->
+    <li class="ng-scope" ng-if="matchSummary.MatchName!=''">
+     <span>
+      Match
+     </span>
+     <span class="ng-binding" ng-bind="matchSummary.MatchName">
+      Royal Challengers Bengaluru vs Punjab Kings
+     </span>
+    </li>
+    <!-- end ngIf: matchSummary.MatchName!='' -->
+    <!-- ngIf: matchSummary.TossDetails!='' -->
+    <li class="ng-scope" ng-if="matchSummary.TossDetails!=''">
+     <span>
+      Toss Details
+     </span>
+     <span class="ng-binding" ng-bind="matchSummary.TossDetails">
+      Punjab Kings Won The Toss And Elected To Field
+     </span>
+    </li>
+    <!-- end ngIf: matchSummary.TossDetails!='' -->
+    <!-- ngIf: matchSummary.GroundName!='' -->
+    <li class="ng-scope" ng-if="matchSummary.GroundName!=''">
+     <span>
+      Venue
+     </span>
+     <span class="ng-binding" ng-bind="matchSummary.GroundName">
+      Narendra Modi Stadium, Ahmedabad
+     </span>
+    </li>
+    <!-- end ngIf: matchSummary.GroundName!='' -->
+    <!-- ngIf: (matchSummary.Umpire1Name!= undefined && matchSummary.Umpire1Name!='' ) || (matchSummary.Umpire2Name!= undefined && matchSummary.Umpire2Name!='') -->
+    <li class="ng-scope" ng-if="(matchSummary.Umpire1Name!= undefined &amp;&amp; matchSummary.Umpire1Name!='' ) || (matchSummary.Umpire2Name!= undefined &amp;&amp; matchSummary.Umpire2Name!='')">
+     <span>
+      On Field Umpires
+     </span>
+     <span>
+      <!-- ngIf: matchSummary.Umpire1Name!= undefined && matchSummary.Umpire1Name!='' -->
+      <text class="ng-binding ng-scope" ng-if="matchSummary.Umpire1Name!= undefined &amp;&amp; matchSummary.Umpire1Name!=''">
+       Nitin Menon
+      </text>
+      <!-- end ngIf: matchSummary.Umpire1Name!= undefined && matchSummary.Umpire1Name!='' -->
+      <!-- ngIf: matchSummary.Umpire2Name!= undefined && matchSummary.Umpire2Name!='' -->
+      <text class="ng-binding ng-scope" ng-if="matchSummary.Umpire2Name!= undefined &amp;&amp; matchSummary.Umpire2Name!=''">
+       , Madanagopal Jayaraman
+      </text>
+      <!-- end ngIf: matchSummary.Umpire2Name!= undefined && matchSummary.Umpire2Name!='' -->
+     </span>
+    </li>
+    <!-- end ngIf: (matchSummary.Umpire1Name!= undefined && matchSummary.Umpire1Name!='' ) || (matchSummary.Umpire2Name!= undefined && matchSummary.Umpire2Name!='') -->
+    <!-- ngIf: (matchSummary.Umpire3Name!= undefined && matchSummary.Umpire3Name!='') -->
+    <li class="ng-scope" ng-if="(matchSummary.Umpire3Name!= undefined &amp;&amp; matchSummary.Umpire3Name!='')">
+     <span>
+      Third Umpire
+     </span>
+     <span>
+      <!-- ngIf: matchSummary.Umpire3Name!= undefined && matchSummary.Umpire3Name!='' -->
+      <text class="ng-binding ng-scope" ng-if="matchSummary.Umpire3Name!= undefined &amp;&amp; matchSummary.Umpire3Name!=''">
+       Chris Gaffaney
+      </text>
+      <!-- end ngIf: matchSummary.Umpire3Name!= undefined && matchSummary.Umpire3Name!='' -->
+     </span>
+    </li>
+    <!-- end ngIf: (matchSummary.Umpire3Name!= undefined && matchSummary.Umpire3Name!='') -->
+    <!-- ngIf: matchSummary.Referee != undefined && matchSummary.Referee!='' -->
+    <li class="ng-scope" ng-if="matchSummary.Referee != undefined &amp;&amp; matchSummary.Referee!=''">
+     <span>
+      Referee
+     </span>
+     <span class="ng-binding">
+      Javagal Srinath
+     </span>
+    </li>
+    <!-- end ngIf: matchSummary.Referee != undefined && matchSummary.Referee!='' -->
+    <!-- ngIf: ((matchSummary.Scorer1Name!=undefined && matchSummary.Scorer1Name!='') || (matchSummary.Scorer2Name!=undefined && matchSummary.Scorer2Name!='')) && showScorerInMatchDetails -->
+    <!-- ngIf: matchSummary.MOM!=undefined && matchSummary.MOM!='' -->
+    <li class="ng-scope" ng-if="matchSummary.MOM!=undefined &amp;&amp; matchSummary.MOM!=''">
+     <span>
+      MOM
+     </span>
+     <span class="ng-binding">
+      Krunal Pandya (Royal Challengers Bengaluru)
+     </span>
+    </li>
+    <!-- end ngIf: matchSummary.MOM!=undefined && matchSummary.MOM!='' -->
+   </ul>
+  </div>
+  <!-- END .matchDetails -->
+ </div>
+</div>

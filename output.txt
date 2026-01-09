@@ -1,0 +1,672 @@
+ Breetzke', 'Nicholas Pooran', 'Aryan Juyal', 'Rishabh Pant', 'Ravi Bishnoi', 'Akash Deep', 'Manimaran Siddharth', 'Shamar Joseph', 'Avesh Khan', 'Prince Yadav', 'Akash Maharaj Singh', 'Digvesh Singh Rathi', 'William ORourke', 'Nehal Wadhera', 'Harnoor Singh', 'Shreyas Iyer', 'Pyla Avinash', 'Priyansh Arya', 'Musheer Khan', 'Marcus Stoinis', 'Aaron Hardie', 'Suryansh Shedge', 'Shashank Singh', 'Mitchell Owen', 'Praveen Dubey', 'Azmatullah Omarzai', 'Prabhsimran Singh', 'Josh Inglis', 'Vishnu Vinod', 'Harpreet Brar', 'Arshdeep Singh', 'Yuzvendra Chahal', 'Vijaykumar Vyshak', 'Kuldeep Sen', 'Yash Thakur', 'Xavier Bartlett', 'Kyle Jamieson'], 'Punjab Kings': ['Nehal Wadhera', 'Harnoor Singh', 'Shreyas Iyer', 'Pyla Avinash', 'Priyansh Arya', 'Musheer Khan', 'Marcus Stoinis', 'Aaron Hardie', 'Suryansh Shedge', 'Shashank Singh', 'Mitchell Owen', 'Praveen Dubey', 'Azmatullah Omarzai', 'Prabhsimran Singh', 'Josh Inglis', 'Vishnu Vinod', 'Harpreet Brar', 'Arshdeep Singh', 'Yuzvendra Chahal', 'Vijaykumar Vyshak', 'Kuldeep Sen', 'Yash Thakur', 'Xavier Bartlett', 'Kyle Jamieson']}
+
+--------------------------------------------------------------------------------------------------------------------------------------------
+Lucknow Super Giants:
+
+Batsmen:
+        Batsman                        Dismissal  Runs  Balls  4s  6s  Strike Rate
+  Aiden Markram                b Lockie Ferguson    28     18   4   1       155.56
+ Mitchell Marsh  c Marco Jansen b Arshdeep Singh     0      1   0   0         0.00
+Nicholas Pooran               c Maxwell b Chahal    44     30   5   2       146.67
+   Rishabh Pant               c Chahal b Maxwell     2      5   0   0        40.00
+   Ayush Badoni       c Maxwell b Arshdeep Singh    41     33   1   3       124.24
+   David Miller     c Prabhsimran b Marco Jansen    19     18   3   0       105.56
+    Abdul Samad c Priyansh Arya b Arshdeep Singh    27     12   2   2       225.00
+ Shardul Thakur                          not out     3      3   0   0       100.00
+     Avesh Khan                          not out     0      0   0   0         0.00
+
+Bowlers:
+          Bowler Overs  Maidens  Runs  Wickets  Economy  0s
+  Arshdeep Singh   4.0        0    43        3     10.8   0
+            None   3.0        0    26        1      8.7   0
+            None   3.0        0    22        1      7.3   0
+            None   4.0        0    28        1      7.0   0
+  Marcus Stoinis   2.0        0    15        0      7.5   0
+Yuzvendra Chahal   4.0        0    36        1      9.0   0
+
+--------------------------------------------------------------------------------------------------------------------------------------------
+Punjab Kings:
+
+Batsmen:
+          Batsman                      Dismissal  Runs  Balls  4s  6s  Strike Rate
+    Priyansh Arya       c Thakur b Digvesh Rathi     8      9   1   0        88.89
+Prabhsimran Singh c Ravi Bishnoi b Digvesh Rathi    69     34   9   3       202.94
+     Shreyas Iyer                        not out    52     30   3   4       173.33
+    Nehal Wadhera                        not out    43     25   3   4       172.00
+
+Bowlers:
+             Bowler Overs  Maidens  Runs  Wickets  Economy  0s
+     Shardul Thakur   3.0        0    39        0     13.0   4
+         Avesh Khan   3.0        0    30        0     10.0   2
+Digvesh Singh Rathi   4.0        0    30        2      7.5   6
+       Ravi Bishnoi   3.0        0    43        0     14.3   4
+Manimaran Siddharth   3.0        0    28        0      9.3   3
+        Abdul Samad   0.2        0     6        0     18.0   1
+
+Catchers:
+[None, None, 'Yuzvendra Chahal', None, 'Prabhsimran Singh', 'Priyansh Arya', 'Shardul Thakur', 'Ravi Bishnoi']
+
+Stumpings:
+[]
+
+Main Run Outs:
+[]
+
+Secondary Run Outs:
+[]
+
+Bowled:
+[None]
+
+LBW:
+[]
+
+--------------------------------------------------------------------------------------------------------------------------------------------
+Winner:  Punjab Kings
+
+Man of the Match:  Prabhsimran Singh
+Added: 115039
+Attempting to scrape: 115048
+Scraping Successful
+Player List:
+{'Royal Challengers Bengaluru': ['Virat Kohli', 'Rajat Patidar', 'Swastik Chikara', 'Tim David', 'Mayank Agarwal', 'Krunal Pandya', 'Liam Livingstone', 'Manoj Bhandage', 'Romario Shepherd', 'Swapnil Singh', 'Mohit Rathee', 'Philip Salt', 'Jitesh Sharma', 'Tim Seifert', 'Josh Hazlewood', 'Bhuvneshwar Kumar', 'Rasikh Dar Salam', 'Suyash Sharma', 'Yash Dayal', 'Nuwan Thushara', 'Abhinandan Singh', 'Blessing Muzarabani', 'Sai Sudharsan', 'Shubman Gill', 'Shahrukh Khan', 'Rahul Tewatia', 'Nishant Sindhu', 'Sherfane Rutherford', 'Mahipal Lomror', 'Dasun Shanaka', 'Rashid Khan', 'Ravisrinivasan Sai Kishore', 'Arshad Khan', 'Jayant Yadav', 'Karim Janat', 'Washington Sundar', 'Kumar Kushagra', 'Anuj Rawat', 'Kusal Mendis', 'Gerald Coetzee', 'Manav Suthar', 'Gurnoor Brar', 'Ishant Sharma', 'Kulwant Khejroliya', 'Prasidh Krishna', 'Mohammed Siraj', 'Nehal Wadhera', 'Harnoor Singh', 'Shreyas Iyer', 'Pyla Avinash', 'Priyansh Arya', 'Musheer Khan', 'Marcus Stoinis', 'Aaron Hardie', 'Suryansh Shedge', 'Shashank Singh', 'Mitchell Owen', 'Praveen Dubey', 'Azmatullah Omarzai', 'Prabhsimran Singh', 'Josh Inglis', 'Vishnu Vinod', 'Harpreet Brar', 'Arshdeep Singh', 'Yuzvendra Chahal', 'Vijaykumar Vyshak', 'Kuldeep Sen', 'Yash Thakur', 'Xavier Bartlett', 'Kyle Jamieson', 'Rohit Sharma', 'Suryakumar Yadav', 'Tilak Varma', 'Naman Dhir', 'Bevon Jacobs', 'Hardik Pandya', 'Raj Bawa', 'Charith Asalanka', 'Mitchell Santner', 'Arjun Tendulkar', 'Krishnan Shrijith', 'Robin Minz', 'Jonny Bairstow', 'Jasprit Bumrah', 'Ashwani Kumar', 'Reece Topley', 'Karn Sharma', 'Trent Boult', 'Satyanarayana Raju', 'Deepak Chahar', 'Mujeeb Ur Rahman', 'Raghu Sharma', 'Richard Gleeson'], 'Gujarat Titans': ['Sai Sudharsan', 'Shubman Gill', 'Shahrukh Khan', 'Rahul Tewatia', 'Nishant Sindhu', 'Sherfane Rutherford', 'Mahipal Lomror', 'Dasun Shanaka', 'Rashid Khan', 'Ravisrinivasan Sai Kishore', 'Arshad Khan', 'Jayant Yadav', 'Karim Janat', 'Washington Sundar', 'Kumar Kushagra', 'Anuj Rawat', 'Kusal Mendis', 'Gerald Coetzee', 'Manav Suthar', 'Gurnoor Brar', 'Ishant Sharma', 'Kulwant Khejroliya', 'Prasidh Krishna', 'Mohammed Siraj', 'Nehal Wadhera', 'Harnoor Singh', 'Shreyas Iyer', 'Pyla Avinash', 'Priyansh Arya', 'Musheer Khan', 'Marcus Stoinis', 'Aaron Hardie', 'Suryansh Shedge', 'Shashank Singh', 'Mitchell Owen', 'Praveen Dubey', 'Azmatullah Omarzai', 'Prabhsimran Singh', 'Josh Inglis', 'Vishnu Vinod', 'Harpreet Brar', 'Arshdeep Singh', 'Yuzvendra Chahal', 'Vijaykumar Vyshak', 'Kuldeep Sen', 'Yash Thakur', 'Xavier Bartlett', 'Kyle Jamieson', 'Rohit Sharma', 'Suryakumar Yadav', 'Tilak Varma', 'Naman Dhir', 'Bevon Jacobs', 'Hardik Pandya', 'Raj Bawa', 'Charith Asalanka', 'Mitchell Santner', 'Arjun Tendulkar', 'Krishnan Shrijith', 'Robin Minz', 'Jonny Bairstow', 'Jasprit Bumrah', 'Ashwani Kumar', 'Reece Topley', 'Karn Sharma', 'Trent Boult', 'Satyanarayana Raju', 'Deepak Chahar', 'Mujeeb Ur Rahman', 'Raghu Sharma', 'Richard Gleeson']}
+
+--------------------------------------------------------------------------------------------------------------------------------------------
+Royal Challengers Bengaluru:
+
+Batsmen:
+          Batsman                     Dismissal  Runs  Balls  4s  6s  Strike Rate
+      Philip Salt                       b Siraj    14     13   1   1       107.69
+      Virat Kohli       c Prasidh b Arshad Khan     7      6   1   0       116.67
+             None                       b Siraj     4      3   1   0       133.33
+    Rajat Patidar                  lbw b Ishant    12     12   2   0       100.00
+ Liam Livingstone         c Jos Buttler b Siraj    54     40   1   5       135.00
+    Jitesh Sharma c Rahul Tewatia b Sai Kishore    33     21   5   1       157.14
+    Krunal Pandya           c and b Sai Kishore     5      5   1   0       100.00
+        Tim David                     b Prasidh    32     18   3   2       177.78
+Bhuvneshwar Kumar                       not out     1      2   0   0        50.00
+
+Bowlers:
+                    Bowler Overs  Maidens  Runs  Wickets  Economy  0s
+            Mohammed Siraj   4.0        0    19        3      4.8   0
+               Arshad Khan   2.0        0    17        1      8.5   0
+           Prasidh Krishna   4.0        0    26        1      6.5   0
+             Ishant Sharma   2.0        0    27        1     13.5   0
+Ravisrinivasan Sai Kishore   4.0        0    22        2      5.5   0
+               Rashid Khan   4.0        0    54        0     13.5   0
+
+--------------------------------------------------------------------------------------------------------------------------------------------
+Gujarat Titans:
+
+Batsmen:
+            Batsman                   Dismissal  Runs  Balls  4s  6s  Strike Rate
+      Sai Sudharsan c Jitesh Sharma b Hazlewood    49     36   7   1       136.11
+       Shubman Gill c Livingstone b Bhuvneshwar    14     14   1   1       100.00
+               None                     not out    73     39   5   6       187.18
+Sherfane Rutherford                     not out    30     18   1   3       166.67
+
+Bowlers:
+           Bowler Overs  Maidens  Runs  Wickets  Economy  0s
+Bhuvneshwar Kumar   4.0        0    23        1      5.8   2
+   Josh Hazlewood   3.5        0    43        1     11.2   3
+       Yash Dayal   3.0        0    20        0      6.7   3
+ Rasikh Dar Salam   3.0        0    35        0     11.7   2
+    Krunal Pandya   3.0        0    34        0     11.3   3
+ Liam Livingstone   1.0        0    12        0     12.0   2
+
+Catchers:
+['Prasidh Krishna', None, 'Rahul Tewatia', 'Ravisrinivasan Sai Kishore', 'Jitesh Sharma', 'Liam Livingstone']
+
+Stumpings:
+[]
+
+Main Run Outs:
+[]
+
+Secondary Run Outs:
+[]
+
+Bowled:
+['Mohammed Siraj', 'Mohammed Siraj', 'Prasidh Krishna']
+
+LBW:
+['Nishant Sindhu']
+
+--------------------------------------------------------------------------------------------------------------------------------------------
+Winner:  Gujarat Titans
+
+Man of the Match:  Mohammed Siraj
+Added: 115048
+Attempting to scrape: 115050
+Scraping Successful
+Player List:
+{'Kolkata Knight Riders': ['Manish Pandey', 'Ajinkya Rahane', 'Rinku Singh', 'Angkrish Raghuvanshi', 'Anukul Roy', 'Ramandeep Singh', 'Venkatesh Iyer', 'Moeen Ali', 'Sunil Narine', 'Andre Russell', 'Quinton de Kock', 'Rahmanullah Gurbaz', 'Luvnith Sisodia', 'Varun Chakaravarthy', 'Mayank Markande', 'Vaibhav Arora', 'Harshit Rana', 'Anrich Nortje', 'Spencer Johnson', 'Chetan Sakariya', 'Shivam Shukla', 'Virat Kohli', 'Rajat Patidar', 'Swastik Chikara', 'Tim David', 'Mayank Agarwal', 'Krunal Pandya', 'Liam Livingstone', 'Manoj Bhandage', 'Romario Shepherd', 'Swapnil Singh', 'Mohit Rathee', 'Philip Salt', 'Jitesh Sharma', 'Tim Seifert', 'Josh Hazlewood', 'Bhuvneshwar Kumar', 'Rasikh Dar Salam', 'Suyash Sharma', 'Yash Dayal', 'Nuwan Thushara', 'Abhinandan Singh', 'Blessing Muzarabani', 'Atharva Taide', 'Travis Head', 'Abhinav Manohar', 'Sachin Baby', 'Aniket Verma', 'Nitish Kumar Reddy', 'Abhishek Sharma', 'Kamindu Mendis', 'Wiaan Mulder', 'Harsh Dubey', 'Heinrich Klaasen', 'Ishan Kishan', 'Zeeshan Ansari', 'Pat Cummins', 'Mohammed Shami', 'Harshal Patel', 'Rahul Chahar', 'Simarjeet Singh', 'Eshan Malinga', 'Jaydev Unadkat', 'Vaibhav Suryavanshi', 'Shimron Hetmyer', 'Yashasvi Jaiswal', 'Shubham Dubey', 'Riyan Parag', 'Wanindu Hasaranga', 'Sanju Samson', 'Dhruv Jurel', 'Kunal Singh Rathore', 'Lhuan-dre Pretorius', 'Yudhvir Singh Charak', 'Tushar Deshpande', 'Kumar Kartikeya', 'Akash Madhwal', 'Kwena Maphaka', 'Maheesh Theekshana', 'Fazalhaq Farooqi', 'Ashok Sharma', 'Jofra Archer', 'Nandre Burger', 'Himmat Singh', 'David Miller', 'Aiden Markram', 'Ayush Badoni', 'Mitchell Marsh', 'Abdul Samad', 'Arshin Kulkarni', 'Yuvraj Chaudhary', 'Shahbaz Ahmed', 'RS Hangargekar', 'Shardul Thakur', 'Matthew Breetzke', 'Nicholas Pooran', 'Aryan Juyal', 'Rishabh Pant', 'Ravi Bishnoi', 'Akash Deep', 'Manimaran Siddharth', 'Shamar Joseph', 'Avesh Khan', 'Prince Yadav', 'Akash Maharaj Singh', 'Digvesh Singh Rathi', 'William ORourke'], 'Sunrisers Hyderabad': ['Atharva Taide', 'Travis Head', 'Abhinav Manohar', 'Sachin Baby', 'Aniket Verma', 'Nitish Kumar Reddy', 'Abhishek Sharma', 'Kamindu Mendis', 'Wiaan Mulder', 'Harsh Dubey', 'Heinrich Klaasen', 'Ishan Kishan', 'Zeeshan Ansari', 'Pat Cummins', 'Mohammed Shami', 'Harshal Patel', 'Rahul Chahar', 'Simarjeet Singh', 'Eshan Malinga', 'Jaydev Unadkat', 'Vaibhav Suryavanshi', 'Shimron Hetmyer', 'Yashasvi Jaiswal', 'Shubham Dubey', 'Riyan Parag', 'Wanindu Hasaranga', 'Sanju Samson', 'Dhruv Jurel', 'Kunal Singh Rathore', 'Lhuan-dre Pretorius', 'Yudhvir Singh Charak', 'Tushar Deshpande', 'Kumar Kartikeya', 'Akash Madhwal', 'Kwena Maphaka', 'Maheesh Theekshana', 'Fazalhaq Farooqi', 'Ashok Sharma', 'Jofra Archer', 'Nandre Burger', 'Himmat Singh', 'David Miller', 'Aiden Markram', 'Ayush Badoni', 'Mitchell Marsh', 'Abdul Samad', 'Arshin Kulkarni', 'Yuvraj Chaudhary', 'Shahbaz Ahmed', 'RS Hangargekar', 'Shardul Thakur', 'Matthew Breetzke', 'Nicholas Pooran', 'Aryan Juyal', 'Rishabh Pant', 'Ravi Bishnoi', 'Akash Deep', 'Manimaran Siddharth', 'Shamar Joseph', 'Avesh Khan', 'Prince Yadav', 'Akash Maharaj Singh', 'Digvesh Singh Rathi', 'William ORourke']}
+
+--------------------------------------------------------------------------------------------------------------------------------------------
+Kolkata Knight Riders:
+
+Batsmen:
+             Batsman                        Dismissal  Runs  Balls  4s  6s  Strike Rate
+     Quinton de Kock       c Zeeshan Ansari b Cummins     1      6   0   0        16.67
+        Sunil Narine                c Klaasen b Shami     7      7   0   1       100.00
+      Ajinkya Rahane       c Klaasen b Zeeshan Ansari    38     27   1   4       140.74
+Angkrish Raghuvanshi c Harshal Patel b Kamindu Mendis    50     32   5   2       156.25
+      Venkatesh Iyer   c Aniket Verma b Harshal Patel    60     29   7   3       206.90
+         Rinku Singh                          not out    32     17   4   1       188.24
+       Andre Russell                run out (Klaasen)     1      2   0   0        50.00
+
+Bowlers:
+         Bowler Overs  Maidens  Runs  Wickets  Economy  0s
+ Mohammed Shami   4.0        0    29        1      7.2   0
+    Pat Cummins   4.0        0    44        1     11.0   0
+Simarjeet Singh   4.0        0    47        0     11.8   0
+ Zeeshan Ansari   3.0        0    25        1      8.3   0
+  Harshal Patel   4.0        0    43        1     10.8   0
+ Kamindu Mendis   1.0        0     4        1      4.0   0
+
+--------------------------------------------------------------------------------------------------------------------------------------------
+Sunrisers Hyderabad:
+
+Batsmen:
+         Batsman                              Dismissal  Runs  Balls  4s  6s  Strike Rate
+     Travis Head         c Harshit Rana b Vaibhav Arora     4      2   1   0       200.00
+ Abhishek Sharma        c Venkatesh Iyer b Harshit Rana     2      6   0   0        33.33
+    Ishan Kishan       c Ajinkya Rahane b Vaibhav Arora     2      5   0   0        40.00
+    Nitish Reddy                     c Narine b Russell    19     15   2   1       126.67
+  Kamindu Mendis             c (sub)Anukul Roy b Narine    27     20   1   2       135.00
+Heinrich Klaasen                c Moeen b Vaibhav Arora    33     21   2   2       157.14
+    Aniket Verma c Venkatesh Iyer b Varun Chakaravarthy     6      6   1   0       100.00
+     Pat Cummins   c Harshit Rana b Varun Chakaravarthy    14     15   2   0        93.33
+   Harshal Patel                        c and b Russell     3      5   0   0        60.00
+ Simarjeet Singh                  b Varun Chakaravarthy     0      1   0   0         0.00
+  Mohammed Shami                                not out     2      4   0   0        50.00
+
+Bowlers:
+             Bowler Overs  Maidens  Runs  Wickets  Economy  0s
+      Vaibhav Arora   4.0        1    29        3      7.2   1
+       Harshit Rana   3.0        0    15        1      5.0   2
+Varun Chakaravarthy   4.0        0    22        3      5.5   6
+      Andre Russell   1.4        0    21        2     12.6   2
+       Sunil Narine   4.0        0    30        1      7.5   8
+
+Catchers:
+['Zeeshan Ansari', 'Heinrich Klaasen', 'Heinrich Klaasen', 'Harshal Patel', 'Aniket Verma', 'Harshit Rana', 'Venkatesh Iyer', 'Ajinkya Rahane', 'Sunil Narine', 'Anukul Roy', 'Moeen Ali', 'Venkatesh Iyer', 'Harshit Rana', 'Andre Russell']
+
+Stumpings:
+[]
+
+Main Run Outs:
+['Heinrich Klaasen']
+
+Secondary Run Outs:
+['Atharva Taide']
+
+Bowled:
+['Varun Chakaravarthy']
+
+LBW:
+[]
+
+--------------------------------------------------------------------------------------------------------------------------------------------
+Winner:  Kolkata Knight Riders
+
+Man of the Match:  Vaibhav Arora
+Added: 115050
+Attempting to scrape: 115059
+Scraping Successful
+Player List:
+{'Lucknow Super Giants': ['Himmat Singh', 'David Miller', 'Aiden Markram', 'Ayush Badoni', 'Mitchell Marsh', 'Abdul Samad', 'Arshin Kulkarni', 'Yuvraj Chaudhary', 'Shahbaz Ahmed', 'RS Hangargekar', 'Shardul Thakur', 'Matthew Breetzke', 'Nicholas Pooran', 'Aryan Juyal', 'Rishabh Pant', 'Ravi Bishnoi', 'Akash Deep', 'Manimaran Siddharth', 'Shamar Joseph', 'Avesh Khan', 'Prince Yadav', 'Akash Maharaj Singh', 'Digvesh Singh Rathi', 'William ORourke', 'Nehal Wadhera', 'Harnoor Singh', 'Shreyas Iyer', 'Pyla Avinash', 'Priyansh Arya', 'Musheer Khan', 'Marcus Stoinis', 'Aaron Hardie', 'Suryansh Shedge', 'Shashank Singh', 'Mitchell Owen', 'Praveen Dubey', 'Azmatullah Omarzai', 'Prabhsimran Singh', 'Josh Inglis', 'Vishnu Vinod', 'Harpreet Brar', 'Arshdeep Singh', 'Yuzvendra Chahal', 'Vijaykumar Vyshak', 'Kuldeep Sen', 'Yash Thakur', 'Xavier Bartlett', 'Kyle Jamieson', 'Rohit Sharma', 'Suryakumar Yadav', 'Tilak Varma', 'Naman Dhir', 'Bevon Jacobs', 'Hardik Pandya', 'Raj Bawa', 'Charith Asalanka', 'Mitchell Santner', 'Arjun Tendulkar', 'Krishnan Shrijith', 'Robin Minz', 'Jonny Bairstow', 'Jasprit Bumrah', 'Ashwani Kumar', 'Reece Topley', 'Karn Sharma', 'Trent Boult', 'Satyanarayana Raju', 'Deepak Chahar', 'Mujeeb Ur Rahman', 'Raghu Sharma', 'Richard Gleeson', 'Manish Pandey', 'Ajinkya Rahane', 'Rinku Singh', 'Angkrish Raghuvanshi', 'Anukul Roy', 'Ramandeep Singh', 'Venkatesh Iyer', 'Moeen Ali', 'Sunil Narine', 'Andre Russell', 'Quinton de Kock', 'Rahmanullah Gurbaz', 'Luvnith Sisodia', 'Varun Chakaravarthy', 'Mayank Markande', 'Vaibhav Arora', 'Harshit Rana', 'Anrich Nortje', 'Spencer Johnson', 'Chetan Sakariya', 'Shivam Shukla', 'Virat Kohli', 'Rajat Patidar', 'Swastik Chikara', 'Tim David', 'Mayank Agarwal', 'Krunal Pandya', 'Liam Livingstone', 'Manoj Bhandage', 'Romario Shepherd', 'Swapnil Singh', 'Mohit Rathee', 'Philip Salt', 'Jitesh Sharma', 'Tim Seifert', 'Josh Hazlewood', 'Bhuvneshwar Kumar', 'Rasikh Dar Salam', 'Suyash Sharma', 'Yash Dayal', 'Nuwan Thushara', 'Abhinandan Singh', 'Blessing Muzarabani'], 'Mumbai Indians': ['Rohit Sharma', 'Suryakumar Yadav', 'Tilak Varma', 'Naman Dhir', 'Bevon Jacobs', 'Hardik Pandya', 'Raj Bawa', 'Charith Asalanka', 'Mitchell Santner', 'Arjun Tendulkar', 'Krishnan Shrijith', 'Robin Minz', 'Jonny Bairstow', 'Jasprit Bumrah', 'Ashwani Kumar', 'Reece Topley', 'Karn Sharma', 'Trent Boult', 'Satyanarayana Raju', 'Deepak Chahar', 'Mujeeb Ur Rahman', 'Raghu Sharma', 'Richard Gleeson', 'Manish Pandey', 'Ajinkya Rahane', 'Rinku Singh', 'Angkrish Raghuvanshi', 'Anukul Roy', 'Ramandeep Singh', 'Venkatesh Iyer', 'Moeen Ali', 'Sunil Narine', 'Andre Russell', 'Quinton de Kock', 'Rahmanullah Gurbaz', 'Luvnith Sisodia', 'Varun Chakaravarthy', 'Mayank Markande', 'Vaibhav Arora', 'Harshit Rana', 'Anrich Nortje', 'Spencer Johnson', 'Chetan Sakariya', 'Shivam Shukla', 'Virat Kohli', 'Rajat Patidar', 'Swastik Chikara', 'Tim David', 'Mayank Agarwal', 'Krunal Pandya', 'Liam Livingstone', 'Manoj Bhandage', 'Romario Shepherd', 'Swapnil Singh', 'Mohit Rathee', 'Philip Salt', 'Jitesh Sharma', 'Tim Seifert', 'Josh Hazlewood', 'Bhuvneshwar Kumar', 'Rasikh Dar Salam', 'Suyash Sharma', 'Yash Dayal', 'Nuwan Thushara', 'Abhinandan Singh', 'Blessing Muzarabani']}
+
+--------------------------------------------------------------------------------------------------------------------------------------------
+Lucknow Super Giants:
+
+Batsmen:
+        Batsman                           Dismissal  Runs  Balls  4s  6s  Strike Rate
+ Mitchell Marsh              c and b Vignesh Puthur    60     31   9   2       193.55
+  Aiden Markram          c Raj Bawa b Hardik Pandya    53     38   2   4       139.47
+Nicholas Pooran          c D Chahar b Hardik Pandya    12      6   1   1       200.00
+   Rishabh Pant c (sub)Corbin Bosch b Hardik Pandya     2      6   0   0        33.33
+   Ayush Badoni         c Rickelton b Ashwani Kumar    30     19   4   0       157.89
+   David Miller        c Naman Dhir b Hardik Pandya    27     14   3   1       192.86
+    Abdul Samad                c Naman Dhir b Boult     4      2   1   0       200.00
+ Shardul Thakur                             not out     5      2   1   0       250.00
+     Akash Deep           c Santner b Hardik Pandya     0      1   0   0         0.00
+     Avesh Khan                             not out     2      1   0   0       200.00
+
+Bowlers:
+          Bowler Overs  Maidens  Runs  Wickets  Economy  0s
+     Trent Boult   3.0        0    28        1      9.3   0
+   Deepak Chahar   2.0        0    23        0     11.5   0
+   Ashwani Kumar   3.0        0    39        1     13.0   0
+Mitchell Santner   4.0        0    46        0     11.5   0
+            None   4.0        0    31        1      7.8   0
+   Hardik Pandya   4.0        0    36        5      9.0   0
+
+--------------------------------------------------------------------------------------------------------------------------------------------
+Mumbai Indians:
+
+Batsmen:
+         Batsman                   Dismissal  Runs  Balls  4s  6s  Strike Rate
+            None c Ravi Bishnoi b Akash Deep     5      7   0   0        71.43
+            None     c Ravi Bishnoi b Thakur    10      5   2   0       200.00
+      Naman Dhir             b Digvesh Rathi    46     24   4   3       191.67
+Suryakumar Yadav  c Abdul Samad b Avesh Khan    67     43   9   1       155.81
+     Tilak Varma                    retd out    25     23   2   0       108.70
+   Hardik Pandya                     not out    28     16   2   1       175.00
+Mitchell Santner                     not out     2      2   0   0       100.00
+
+Bowlers:
+             Bowler Overs  Maidens  Runs  Wickets  Economy  0s
+     Shardul Thakur   4.0        0    40        1     10.0   0
+         Akash Deep   4.0        0    46        1     11.5   1
+         Avesh Khan   4.0        0    40        1     10.0   4
+Digvesh Singh Rathi   4.0        0    21        1      5.2   0
+       Ravi Bishnoi   4.0        0    40        0     10.0   3
+
+Catchers:
+[None, 'Raj Bawa', 'Deepak Chahar', None, None, 'Naman Dhir', 'Naman Dhir', 'Mitchell Santner', 'Ravi Bishnoi', 'Ravi Bishnoi', 'Abdul Samad']
+
+Stumpings:
+[]
+
+Main Run Outs:
+[]
+
+Secondary Run Outs:
+[]
+
+Bowled:
+['Digvesh Singh Rathi']
+
+LBW:
+[]
+
+--------------------------------------------------------------------------------------------------------------------------------------------
+Winner:  Lucknow Super Giants
+
+Man of the Match:  Digvesh Singh Rathi
+Added: 115059
+Attempting to scrape: 115068
+Scraping Successful
+Player List:
+{'Chennai Super Kings': ['Ruturaj Gaikwad', 'Andre Siddarth C', 'Shaik Rasheed', 'Rahul Tripathi', 'Ayush Mhatre', 'Dewald Brevis', 'Shivam Dube', 'Rachin Ravindra', 'Deepak Hooda', 'Vijay Shankar', 'Ramakrishna Ghosh', 'Ravindra Jadeja', 'Anshul Kamboj', 'Jamie Overton', 'Sam Curran', 'Ravichandran Ashwin', 'Devon Conway', 'MS Dhoni', 'Vansh Bedi', 'Urvil Patel', 'Kamlesh Nagarkoti', 'Shreyas Gopal', 'Matheesha Pathirana', 'Mukesh Choudhary', 'Nathan Ellis', 'Noor Ahmad', 'Khaleel Ahmed', 'Rohit Sharma', 'Suryakumar Yadav', 'Tilak Varma', 'Naman Dhir', 'Bevon Jacobs', 'Hardik Pandya', 'Raj Bawa', 'Charith Asalanka', 'Mitchell Santner', 'Arjun Tendulkar', 'Krishnan Shrijith', 'Robin Minz', 'Jonny Bairstow', 'Jasprit Bumrah', 'Ashwani Kumar', 'Reece Topley', 'Karn Sharma', 'Trent Boult', 'Satyanarayana Raju', 'Deepak Chahar', 'Mujeeb Ur Rahman', 'Raghu Sharma', 'Richard Gleeson', 'Virat Kohli', 'Rajat Patidar', 'Swastik Chikara', 'Tim David', 'Mayank Agarwal', 'Krunal Pandya', 'Liam Livingstone', 'Manoj Bhandage', 'Romario Shepherd', 'Swapnil Singh', 'Mohit Rathee', 'Philip Salt', 'Jitesh Sharma', 'Tim Seifert', 'Josh Hazlewood', 'Bhuvneshwar Kumar', 'Rasikh Dar Salam', 'Suyash Sharma', 'Yash Dayal', 'Nuwan Thushara', 'Abhinandan Singh', 'Blessing Muzarabani', 'Faf du Plessis', 'Karun Nair', 'Sameer Rizvi', 'Sediqullah Atal', 'Ashutosh Sharma', 'Tripurana Vijay', 'Axar Patel', 'Darshan Nalkande', 'Ajay Jadav Mandal', 'Manvanth Kumar L', 'Madhav Tiwari', 'Tristan Stubbs', 'Abishek Porel', 'Donovan Ferreira', 'KL Rahul', 'Vipraj Nigam', 'Kuldeep Yadav', 'Dushmantha Chameera', 'Mohit Sharma', 'T Natarajan', 'Mukesh Kumar', 'Mustafizur Rahman', 'Himmat Singh', 'David Miller', 'Aiden Markram', 'Ayush Badoni', 'Mitchell Marsh', 'Abdul Samad', 'Arshin Kulkarni', 'Yuvraj Chaudhary', 'Shahbaz Ahmed', 'RS Hangargekar', 'Shardul Thakur', 'Matthew Breetzke', 'Nicholas Pooran', 'Aryan Juyal', 'Rishabh Pant', 'Ravi Bishnoi', 'Akash Deep', 'Manimaran Siddharth', 'Shamar Joseph', 'Avesh Khan', 'Prince Yadav', 'Akash Maharaj Singh', 'Digvesh Singh Rathi', 'William ORourke', 'Atharva Taide', 'Travis Head', 'Abhinav Manohar', 'Sachin Baby', 'Aniket Verma', 'Nitish Kumar Reddy', 'Abhishek Sharma', 'Kamindu Mendis', 'Wiaan Mulder', 'Harsh Dubey', 'Heinrich Klaasen', 'Ishan Kishan', 'Zeeshan Ansari', 'Pat Cummins', 'Mohammed Shami', 'Harshal Patel', 'Rahul Chahar', 'Simarjeet Singh', 'Eshan Malinga', 'Jaydev Unadkat', 'Vaibhav Suryavanshi', 'Shimron Hetmyer', 'Yashasvi Jaiswal', 'Shubham Dubey', 'Riyan Parag', 'Wanindu Hasaranga', 'Sanju Samson', 'Dhruv Jurel', 'Kunal Singh Rathore', 'Lhuan-dre Pretorius', 'Yudhvir Singh Charak', 'Tushar Deshpande', 'Kumar Kartikeya', 'Akash Madhwal', 'Kwena Maphaka', 'Maheesh Theekshana', 'Fazalhaq Farooqi', 'Ashok Sharma', 'Jofra Archer', 'Nandre Burger', 'Himmat Singh', 'David Miller', 'Aiden Markram', 'Ayush Badoni', 'Mitchell Marsh', 'Abdul Samad', 'Arshin Kulkarni', 'Yuvraj Chaudhary', 'Shahbaz Ahmed', 'RS Hangargekar', 'Shardul Thakur', 'Matthew Breetzke', 'Nicholas Pooran', 'Aryan Juyal', 'Rishabh Pant', 'Ravi Bishnoi', 'Akash Deep', 'Manimaran Siddharth', 'Shamar Joseph', 'Avesh Khan', 'Prince Yadav', 'Akash Maharaj Singh', 'Digvesh Singh Rathi', 'William ORourke'], 'Delhi Capitals': ['Faf du Plessis', 'Karun Nair', 'Sameer Rizvi', 'Sediqullah Atal', 'Ashutosh Sharma', 'Tripurana Vijay', 'Axar Patel', 'Darshan Nalkande', 'Ajay Jadav Mandal', 'Manvanth Kumar L', 'Madhav Tiwari', 'Tristan Stubbs', 'Abishek Porel', 'Donovan Ferreira', 'KL Rahul', 'Vipraj Nigam', 'Kuldeep Yadav', 'Dushmantha Chameera', 'Mohit Sharma', 'T Natarajan', 'Mukesh Kumar', 'Mustafizur Rahman', 'Himmat Singh', 'David Miller', 'Aiden Markram', 'Ayush Badoni', 'Mitchell Marsh', 'Abdul Samad', 'Arshin Kulkarni', 'Yuvraj Chaudhary', 'Shahbaz Ahmed', 'RS Hangargekar', 'Shardul Thakur', 'Matthew Breetzke', 'Nicholas Pooran', 'Aryan Juyal', 'Rishabh Pant', 'Ravi Bishnoi', 'Akash Deep', 'Manimaran Siddharth', 'Shamar Joseph', 'Avesh Khan', 'Prince Yadav', 'Akash Maharaj Singh', 'Digvesh Singh Rathi', 'William ORourke', 'Atharva Taide', 'Travis Head', 'Abhinav Manohar', 'Sachin Baby', 'Aniket Verma', 'Nitish Kumar Reddy', 'Abhishek Sharma', 'Kamindu Mendis', 'Wiaan Mulder', 'Harsh Dubey', 'Heinrich Klaasen', 'Ishan Kishan', 'Zeeshan Ansari', 'Pat Cummins', 'Mohammed Shami', 'Harshal Patel', 'Rahul Chahar', 'Simarjeet Singh', 'Eshan Malinga', 'Jaydev Unadkat', 'Vaibhav Suryavanshi', 'Shimron Hetmyer', 'Yashasvi Jaiswal', 'Shubham Dubey', 'Riyan Parag', 'Wanindu Hasaranga', 'Sanju Samson', 'Dhruv Jurel', 'Kunal Singh Rathore', 'Lhuan-dre Pretorius', 'Yudhvir Singh Charak', 'Tushar Deshpande', 'Kumar Kartikeya', 'Akash Madhwal', 'Kwena Maphaka', 'Maheesh Theekshana', 'Fazalhaq Farooqi', 'Ashok Sharma', 'Jofra Archer', 'Nandre Burger', 'Himmat Singh', 'David Miller', 'Aiden Markram', 'Ayush Badoni', 'Mitchell Marsh', 'Abdul Samad', 'Arshin Kulkarni', 'Yuvraj Chaudhary', 'Shahbaz Ahmed', 'RS Hangargekar', 'Shardul Thakur', 'Matthew Breetzke', 'Nicholas Pooran', 'Aryan Juyal', 'Rishabh Pant', 'Ravi Bishnoi', 'Akash Deep', 'Manimaran Siddharth', 'Shamar Joseph', 'Avesh Khan', 'Prince Yadav', 'Akash Maharaj Singh', 'Digvesh Singh Rathi', 'William ORourke']}
+
+--------------------------------------------------------------------------------------------------------------------------------------------
+Delhi Capitals:
+
+Batsmen:
+        Batsman                               Dismissal  Runs  Balls  4s  6s  Strike Rate
+           None                c Ashwin b Khaleel Ahmed     0      5   0   0         0.00
+       KL Rahul           c Dhoni b Matheesha Pathirana    77     51   6   3       150.98
+  Abishek Porel c Matheesha Pathirana b Ravindra Jadeja    33     20   4   1       165.00
+     Axar Patel                            b Noor Ahmad    21     14   2   1       150.00
+   Sameer Rizvi       c Ravindra Jadeja b Khaleel Ahmed    20     15   1   1       133.33
+ Tristan Stubbs                                 not out    24     12   2   1       200.00
+Ashutosh Sharma         run out (Ravindra Jadeja/Dhoni)     1      1   0   0       100.00
+   Vipraj Nigam                                 not out     1      2   0   0        50.00
+
+Bowlers:
+             Bowler Overs  Maidens  Runs  Wickets  Economy  0s
+      Khaleel Ahmed   4.0        0    25        2      6.2   0
+   Mukesh Choudhary   4.0        0    50        0     12.5   0
+Ravichandran Ashwin   3.0        0    21        0      7.0   0
+    Ravindra Jadeja   2.0        0    19        1      9.5   0
+         Noor Ahmad   3.0        0    36        1     12.0   0
+Matheesha Pathirana   4.0        0    31        1      7.8   0
+
+--------------------------------------------------------------------------------------------------------------------------------------------
+Chennai Super Kings:
+
+Batsmen:
+        Batsman                             Dismissal  Runs  Balls  4s  6s  Strike Rate
+Rachin Ravindra                  c and b Mukesh Kumar     3      6   0   0        50.00
+   Devon Conway                 c Axar b Vipraj Nigam    13     14   1   0        92.86
+Ruturaj Gaikwad c Jake Fraser-McGurk b Mitchell Starc     5      4   1   0       125.00
+  Vijay Shankar                               not out    69     54   5   1       127.78
+    Shivam Dube               c Stubbs b Vipraj Nigam    18     15   1   1       120.00
+Ravindra Jadeja                   lbw b Kuldeep Yadav     2      3   0   0        66.67
+       MS Dhoni                               not out    30     26   1   1       115.38
+
+Bowlers:
+       Bowler Overs  Maidens  Runs  Wickets  Economy  0s
+         None   4.0        0    27        1      6.8   0
+ Mukesh Kumar   4.0        0    36        1      9.0   0
+ Mohit Sharma   3.0        0    27        0      9.0   3
+ Vipraj Nigam   4.0        0    27        2      6.8   3
+Kuldeep Yadav   4.0        0    30        1      7.5   3
+   Axar Patel   1.0        0     5        0      5.0   1
+
+Catchers:
+['Ravichandran Ashwin', 'MS Dhoni', 'Matheesha Pathirana', 'Ravindra Jadeja', 'Mukesh Kumar', 'Axar Patel', None, 'Tristan Stubbs']
+
+Stumpings:
+[]
+
+Main Run Outs:
+['Ravindra Jadeja']
+
+Secondary Run Outs:
+['MS Dhoni']
+
+Bowled:
+['Noor Ahmad']
+
+LBW:
+[None]
+
+--------------------------------------------------------------------------------------------------------------------------------------------
+Winner:  Delhi Capitals
+
+Man of the Match:  KL Rahul
+Added: 115068
+Attempting to scrape: 115075
+Scraping Successful
+Player List:
+{'Punjab Kings': ['Nehal Wadhera', 'Harnoor Singh', 'Shreyas Iyer', 'Pyla Avinash', 'Priyansh Arya', 'Musheer Khan', 'Marcus Stoinis', 'Aaron Hardie', 'Suryansh Shedge', 'Shashank Singh', 'Mitchell Owen', 'Praveen Dubey', 'Azmatullah Omarzai', 'Prabhsimran Singh', 'Josh Inglis', 'Vishnu Vinod', 'Harpreet Brar', 'Arshdeep Singh', 'Yuzvendra Chahal', 'Vijaykumar Vyshak', 'Kuldeep Sen', 'Yash Thakur', 'Xavier Bartlett', 'Kyle Jamieson', 'Vaibhav Suryavanshi', 'Shimron Hetmyer', 'Yashasvi Jaiswal', 'Shubham Dubey', 'Riyan Parag', 'Wanindu Hasaranga', 'Sanju Samson', 'Dhruv Jurel', 'Kunal Singh Rathore', 'Lhuan-dre Pretorius', 'Yudhvir Singh Charak', 'Tushar Deshpande', 'Kumar Kartikeya', 'Akash Madhwal', 'Kwena Maphaka', 'Maheesh Theekshana', 'Fazalhaq Farooqi', 'Ashok Sharma', 'Jofra Archer', 'Nandre Burger', 'Manish Pandey', 'Ajinkya Rahane', 'Rinku Singh', 'Angkrish Raghuvanshi', 'Anukul Roy', 'Ramandeep Singh', 'Venkatesh Iyer', 'Moeen Ali', 'Sunil Narine', 'Andre Russell', 'Quinton de Kock', 'Rahmanullah Gurbaz', 'Luvnith Sisodia', 'Varun Chakaravarthy', 'Mayank Markande', 'Vaibhav Arora', 'Harshit Rana', 'Anrich Nortje', 'Spencer Johnson', 'Chetan Sakariya', 'Shivam Shukla', 'Virat Kohli', 'Rajat Patidar', 'Swastik Chikara', 'Tim David', 'Mayank Agarwal', 'Krunal Pandya', 'Liam Livingstone', 'Manoj Bhandage', 'Romario Shepherd', 'Swapnil Singh', 'Mohit Rathee', 'Philip Salt', 'Jitesh Sharma', 'Tim Seifert', 'Josh Hazlewood', 'Bhuvneshwar Kumar', 'Rasikh Dar Salam', 'Suyash Sharma', 'Yash Dayal', 'Nuwan Thushara', 'Abhinandan Singh', 'Blessing Muzarabani', 'Ruturaj Gaikwad', 'Andre Siddarth C', 'Shaik Rasheed', 'Rahul Tripathi', 'Ayush Mhatre', 'Dewald Brevis', 'Shivam Dube', 'Rachin Ravindra', 'Deepak Hooda', 'Vijay Shankar', 'Ramakrishna Ghosh', 'Ravindra Jadeja', 'Anshul Kamboj', 'Jamie Overton', 'Sam Curran', 'Ravichandran Ashwin', 'Devon Conway', 'MS Dhoni', 'Vansh Bedi', 'Urvil Patel', 'Kamlesh Nagarkoti', 'Shreyas Gopal', 'Matheesha Pathirana', 'Mukesh Choudhary', 'Nathan Ellis', 'Noor Ahmad', 'Khaleel Ahmed', 'Rohit Sharma', 'Suryakumar Yadav', 'Tilak Varma', 'Naman Dhir', 'Bevon Jacobs', 'Hardik Pandya', 'Raj Bawa', 'Charith Asalanka', 'Mitchell Santner', 'Arjun Tendulkar', 'Krishnan Shrijith', 'Robin Minz', 'Jonny Bairstow', 'Jasprit Bumrah', 'Ashwani Kumar', 'Reece Topley', 'Karn Sharma', 'Trent Boult', 'Satyanarayana Raju', 'Deepak Chahar', 'Mujeeb Ur Rahman', 'Raghu Sharma', 'Richard Gleeson', 'Virat Kohli', 'Rajat Patidar', 'Swastik Chikara', 'Tim David', 'Mayank Agarwal', 'Krunal Pandya', 'Liam Livingstone', 'Manoj Bhandage', 'Romario Shepherd', 'Swapnil Singh', 'Mohit Rathee', 'Philip Salt', 'Jitesh Sharma', 'Tim Seifert', 'Josh Hazlewood', 'Bhuvneshwar Kumar', 'Rasikh Dar Salam', 'Suyash Sharma', 'Yash Dayal', 'Nuwan Thushara', 'Abhinandan Singh', 'Blessing Muzarabani'], 'Rajasthan Royals': ['Vaibhav Suryavanshi', 'Shimron Hetmyer', 'Yashasvi Jaiswal', 'Shubham Dubey', 'Riyan Parag', 'Wanindu Hasaranga', 'Sanju Samson', 'Dhruv Jurel', 'Kunal Singh Rathore', 'Lhuan-dre Pretorius', 'Yudhvir Singh Charak', 'Tushar Deshpande', 'Kumar Kartikeya', 'Akash Madhwal', 'Kwena Maphaka', 'Maheesh Theekshana', 'Fazalhaq Farooqi', 'Ashok Sharma', 'Jofra Archer', 'Nandre Burger', 'Manish Pandey', 'Ajinkya Rahane', 'Rinku Singh', 'Angkrish Raghuvanshi', 'Anukul Roy', 'Ramandeep Singh', 'Venkatesh Iyer', 'Moeen Ali', 'Sunil Narine', 'Andre Russell', 'Quinton de Kock', 'Rahmanullah Gurbaz', 'Luvnith Sisodia', 'Varun Chakaravarthy', 'Mayank Markande', 'Vaibhav Arora', 'Harshit Rana', 'Anrich Nortje', 'Spencer Johnson', 'Chetan Sakariya', 'Shivam Shukla', 'Virat Kohli', 'Rajat Patidar', 'Swastik Chikara', 'Tim David', 'Mayank Agarwal', 'Krunal Pandya', 'Liam Livingstone', 'Manoj Bhandage', 'Romario Shepherd', 'Swapnil Singh', 'Mohit Rathee', 'Philip Salt', 'Jitesh Sharma', 'Tim Seifert', 'Josh Hazlewood', 'Bhuvneshwar Kumar', 'Rasikh Dar Salam', 'Suyash Sharma', 'Yash Dayal', 'Nuwan Thushara', 'Abhinandan Singh', 'Blessing Muzarabani', 'Ruturaj Gaikwad', 'Andre Siddarth C', 'Shaik Rasheed', 'Rahul Tripathi', 'Ayush Mhatre', 'Dewald Brevis', 'Shivam Dube', 'Rachin Ravindra', 'Deepak Hooda', 'Vijay Shankar', 'Ramakrishna Ghosh', 'Ravindra Jadeja', 'Anshul Kamboj', 'Jamie Overton', 'Sam Curran', 'Ravichandran Ashwin', 'Devon Conway', 'MS Dhoni', 'Vansh Bedi', 'Urvil Patel', 'Kamlesh Nagarkoti', 'Shreyas Gopal', 'Matheesha Pathirana', 'Mukesh Choudhary', 'Nathan Ellis', 'Noor Ahmad', 'Khaleel Ahmed', 'Rohit Sharma', 'Suryakumar Yadav', 'Tilak Varma', 'Naman Dhir', 'Bevon Jacobs', 'Hardik Pandya', 'Raj Bawa', 'Charith Asalanka', 'Mitchell Santner', 'Arjun Tendulkar', 'Krishnan Shrijith', 'Robin Minz', 'Jonny Bairstow', 'Jasprit Bumrah', 'Ashwani Kumar', 'Reece Topley', 'Karn Sharma', 'Trent Boult', 'Satyanarayana Raju', 'Deepak Chahar', 'Mujeeb Ur Rahman', 'Raghu Sharma', 'Richard Gleeson', 'Virat Kohli', 'Rajat Patidar', 'Swastik Chikara', 'Tim David', 'Mayank Agarwal', 'Krunal Pandya', 'Liam Livingstone', 'Manoj Bhandage', 'Romario Shepherd', 'Swapnil Singh', 'Mohit Rathee', 'Philip Salt', 'Jitesh Sharma', 'Tim Seifert', 'Josh Hazlewood', 'Bhuvneshwar Kumar', 'Rasikh Dar Salam', 'Suyash Sharma', 'Yash Dayal', 'Nuwan Thushara', 'Abhinandan Singh', 'Blessing Muzarabani']}
+
+--------------------------------------------------------------------------------------------------------------------------------------------
+Rajasthan Royals:
+
+Batsmen:
+         Batsman                        Dismissal  Runs  Balls  4s  6s  Strike Rate
+Yashasvi Jaiswal                b Lockie Ferguson    67     45   3   5       148.89
+    Sanju Samson c Shreyas Iyer b Lockie Ferguson    38     26   6   0       146.15
+     Riyan Parag                          not out    43     25   3   3       172.00
+            None         c Maxwell b Marco Jansen    12      7   2   0       171.43
+ Shimron Hetmyer       c Maxwell b Arshdeep Singh    20     12   2   1       166.67
+     Dhruv Jurel                          not out    13      5   1   1       260.00
+
+Bowlers:
+          Bowler Overs  Maidens  Runs  Wickets  Economy  0s
+  Arshdeep Singh   4.0        0    35        1      8.8   0
+            None   4.0        0    45        1     11.2   0
+            None   4.0        0    37        2      9.2   0
+            None   1.0        0     6        0      6.0   0
+Yuzvendra Chahal   3.0        0    32        0     10.7   0
+  Marcus Stoinis   4.0        0    48        0     12.0   0
+
+--------------------------------------------------------------------------------------------------------------------------------------------
+Punjab Kings:
+
+Batsmen:
+          Batsman                         Dismissal  Runs  Balls  4s  6s  Strike Rate
+    Priyansh Arya                    b Jofra Archer     0      1   0   0         0.00
+Prabhsimran Singh   c W Hasaranga b Kumar Kartikeya    17     16   2   0       106.25
+     Shreyas Iyer                    b Jofra Archer    10      5   2   0       200.00
+   Marcus Stoinis            c and b Sandeep Sharma     1      7   0   0        14.29
+    Nehal Wadhera       c Dhruv Jurel b W Hasaranga    62     41   4   3       151.22
+             None c Yashasvi Jaiswal b M Theekshana    30     21   3   1       142.86
+   Shashank Singh                           not out    10     13   0   0        76.92
+  Suryansh Shedge        c Hetmyer b Sandeep Sharma     2      4   0   0        50.00
+             None          c Hetmyer b M Theekshana     3      6   0   0        50.00
+   Arshdeep Singh      c W Hasaranga b Jofra Archer     1      5   0   0        20.00
+             None                           not out     4      1   1   0       400.00
+
+Bowlers:
+              Bowler Overs  Maidens  Runs  Wickets  Economy  0s
+        Jofra Archer   4.0        0    25        3      6.2   4
+Yudhvir Singh Charak   2.0        0    20        0     10.0   1
+                None   4.0        0    21        2      5.2   0
+  Maheesh Theekshana   4.0        0    26        2      6.5   8
+     Kumar Kartikeya   2.0        0    21        1     10.5   0
+   Wanindu Hasaranga   4.0        0    36        1      9.0   3
+
+Catchers:
+['Shreyas Iyer', None, None, 'Wanindu Hasaranga', None, 'Dhruv Jurel', 'Yashasvi Jaiswal', 'Shimron Hetmyer', 'Shimron Hetmyer', 'Wanindu Hasaranga']
+
+Stumpings:
+[]
+
+Main Run Outs:
+[]
+
+Secondary Run Outs:
+[]
+
+Bowled:
+[None, 'Jofra Archer', 'Jofra Archer']
+
+LBW:
+[]
+
+--------------------------------------------------------------------------------------------------------------------------------------------
+Winner:  Rajasthan Royals
+
+Man of the Match:  Jofra Archer
+Added: 115075
+Attempting to scrape: 115093
+Scraping Successful
+Player List:
+{'Sunrisers Hyderabad': ['Atharva Taide', 'Travis Head', 'Abhinav Manohar', 'Sachin Baby', 'Aniket Verma', 'Nitish Kumar Reddy', 'Abhishek Sharma', 'Kamindu Mendis', 'Wiaan Mulder', 'Harsh Dubey', 'Heinrich Klaasen', 'Ishan Kishan', 'Zeeshan Ansari', 'Pat Cummins', 'Mohammed Shami', 'Harshal Patel', 'Rahul Chahar', 'Simarjeet Singh', 'Eshan Malinga', 'Jaydev Unadkat', 'Vaibhav Suryavanshi', 'Shimron Hetmyer', 'Yashasvi Jaiswal', 'Shubham Dubey', 'Riyan Parag', 'Wanindu Hasaranga', 'Sanju Samson', 'Dhruv Jurel', 'Kunal Singh Rathore', 'Lhuan-dre Pretorius', 'Yudhvir Singh Charak', 'Tushar Deshpande', 'Kumar Kartikeya', 'Akash Madhwal', 'Kwena Maphaka', 'Maheesh Theekshana', 'Fazalhaq Farooqi', 'Ashok Sharma', 'Jofra Archer', 'Nandre Burger', 'Himmat Singh', 'David Miller', 'Aiden Markram', 'Ayush Badoni', 'Mitchell Marsh', 'Abdul Samad', 'Arshin Kulkarni', 'Yuvraj Chaudhary', 'Shahbaz Ahmed', 'RS Hangargekar', 'Shardul Thakur', 'Matthew Breetzke', 'Nicholas Pooran', 'Aryan Juyal', 'Rishabh Pant', 'Ravi Bishnoi', 'Akash Deep', 'Manimaran Siddharth', 'Shamar Joseph', 'Avesh Khan', 'Prince Yadav', 'Akash Maharaj Singh', 'Digvesh Singh Rathi', 'William ORourke', 'Sai Sudharsan', 'Shubman Gill', 'Shahrukh Khan', 'Rahul Tewatia', 'Nishant Sindhu', 'Sherfane Rutherford', 'Mahipal Lomror', 'Dasun Shanaka', 'Rashid Khan', 'Ravisrinivasan Sai Kishore', 'Arshad Khan', 'Jayant Yadav', 'Karim Janat', 'Washington Sundar', 'Kumar Kushagra', 'Anuj Rawat', 'Kusal Mendis', 'Gerald Coetzee', 'Manav Suthar', 'Gurnoor Brar', 'Ishant Sharma', 'Kulwant Khejroliya', 'Prasidh Krishna', 'Mohammed Siraj', 'Nehal Wadhera', 'Harnoor Singh', 'Shreyas Iyer', 'Pyla Avinash', 'Priyansh Arya', 'Musheer Khan', 'Marcus Stoinis', 'Aaron Hardie', 'Suryansh Shedge', 'Shashank Singh', 'Mitchell Owen', 'Praveen Dubey', 'Azmatullah Omarzai', 'Prabhsimran Singh', 'Josh Inglis', 'Vishnu Vinod', 'Harpreet Brar', 'Arshdeep Singh', 'Yuzvendra Chahal', 'Vijaykumar Vyshak', 'Kuldeep Sen', 'Yash Thakur', 'Xavier Bartlett', 'Kyle Jamieson', 'Rohit Sharma', 'Suryakumar Yadav', 'Tilak Varma', 'Naman Dhir', 'Bevon Jacobs', 'Hardik Pandya', 'Raj Bawa', 'Charith Asalanka', 'Mitchell Santner', 'Arjun Tendulkar', 'Krishnan Shrijith', 'Robin Minz', 'Jonny Bairstow', 'Jasprit Bumrah', 'Ashwani Kumar', 'Reece Topley', 'Karn Sharma', 'Trent Boult', 'Satyanarayana Raju', 'Deepak Chahar', 'Mujeeb Ur Rahman', 'Raghu Sharma', 'Richard Gleeson'], 'Gujarat Titans': ['Sai Sudharsan', 'Shubman Gill', 'Shahrukh Khan', 'Rahul Tewatia', 'Nishant Sindhu', 'Sherfane Rutherford', 'Mahipal Lomror', 'Dasun Shanaka', 'Rashid Khan', 'Ravisrinivasan Sai Kishore', 'Arshad Khan', 'Jayant Yadav', 'Karim Janat', 'Washington Sundar', 'Kumar Kushagra', 'Anuj Rawat', 'Kusal Mendis', 'Gerald Coetzee', 'Manav Suthar', 'Gurnoor Brar', 'Ishant Sharma', 'Kulwant Khejroliya', 'Prasidh Krishna', 'Mohammed Siraj', 'Nehal Wadhera', 'Harnoor Singh', 'Shreyas Iyer', 'Pyla Avinash', 'Priyansh Arya', 'Musheer Khan', 'Marcus Stoinis', 'Aaron Hardie', 'Suryansh Shedge', 'Shashank Singh', 'Mitchell Owen', 'Praveen Dubey', 'Azmatullah Omarzai', 'Prabhsimran Singh', 'Josh Inglis', 'Vishnu Vinod', 'Harpreet Brar', 'Arshdeep Singh', 'Yuzvendra Chahal', 'Vijaykumar Vyshak', 'Kuldeep Sen', 'Yash Thakur', 'Xavier Bartlett', 'Kyle Jamieson', 'Rohit Sharma', 'Suryakumar Yadav', 'Tilak Varma', 'Naman Dhir', 'Bevon Jacobs', 'Hardik Pandya', 'Raj Bawa', 'Charith Asalanka', 'Mitchell Santner', 'Arjun Tendulkar', 'Krishnan Shrijith', 'Robin Minz', 'Jonny Bairstow', 'Jasprit Bumrah', 'Ashwani Kumar', 'Reece Topley', 'Karn Sharma', 'Trent Boult', 'Satyanarayana Raju', 'Deepak Chahar', 'Mujeeb Ur Rahman', 'Raghu Sharma', 'Richard Gleeson']}
+
+--------------------------------------------------------------------------------------------------------------------------------------------
+Sunrisers Hyderabad:
+
+Batsmen:
+         Batsman                   Dismissal  Runs  Balls  4s  6s  Strike Rate
+ Abhishek Sharma     c Rahul Tewatia b Siraj    18     16   4   0       112.50
+     Travis Head     c Sai Sudharsan b Siraj     8      5   2   0       160.00
+    Ishan Kishan          c Ishant b Prasidh    17     14   2   0       121.43
+    Nitish Reddy c Rashid Khan b Sai Kishore    31     34   3   0        91.18
+Heinrich Klaasen               b Sai Kishore    27     19   2   1       142.11
+    Aniket Verma                 lbw b Siraj    18     14   2   0       128.57
+  Kamindu Mendis   c Sai Sudharsan b Prasidh     1      5   0   0        20.00
+     Pat Cummins                     not out    22      9   3   1       244.44
+ Simarjeet Singh                     b Siraj     0      2   0   0         0.00
+  Mohammed Shami                     not out     6      2   1   0       300.00
+
+Bowlers:
+                    Bowler Overs  Maidens  Runs  Wickets  Economy  0s
+            Mohammed Siraj   4.0        0    17        4      4.2   0
+             Ishant Sharma   4.0        0    53        0     13.2   0
+           Prasidh Krishna   4.0        0    25        2      6.2   0
+               Rashid Khan   4.0        0    31        0      7.8   0
+Ravisrinivasan Sai Kishore   4.0        0    24        2      6.0   0
+
+--------------------------------------------------------------------------------------------------------------------------------------------
+Gujarat Titans:
+
+Batsmen:
+            Batsman              Dismissal  Runs  Balls  4s  6s  Strike Rate
+      Sai Sudharsan c Aniket Verma b Shami     5      9   0   0        55.56
+       Shubman Gill                not out    61     43   9   0       141.86
+               None    c Klaasen b Cummins     0      3   0   0         0.00
+  Washington Sundar c Aniket Verma b Shami    49     29   5   2       168.97
+Sherfane Rutherford                not out    35     16   6   1       218.75
+
+Bowlers:
+         Bowler Overs  Maidens  Runs  Wickets  Economy  0s
+ Mohammed Shami   4.0        0    28        2      7.0   4
+    Pat Cummins   3.4        0    26        1      7.1   2
+Simarjeet Singh   1.0        0    20        0     20.0   0
+ Jaydev Unadkat   2.0        0    16        0      8.0   1
+ Zeeshan Ansari   4.0        0    33        0      8.2   4
+ Kamindu Mendis   1.0        0    12        0     12.0   1
+Abhishek Sharma   1.0        0    18        0     18.0   1
+
+Catchers:
+['Rahul Tewatia', 'Sai Sudharsan', 'Ishant Sharma', 'Rashid Khan', 'Sai Sudharsan', 'Aniket Verma', 'Heinrich Klaasen', 'Aniket Verma']
+
+Stumpings:
+[]
+
+Main Run Outs:
+[]
+
+Secondary Run Outs:
+[]
+
+Bowled:
+['Ravisrinivasan Sai Kishore', 'Mohammed Siraj']
+
+LBW:
+[None]
+
+--------------------------------------------------------------------------------------------------------------------------------------------
+Winner:  Gujarat Titans
+
+Man of the Match:  Mohammed Siraj
+Added: 115093
+Attempting to scrape: 115095
+Scraping Successful
+Player List:
+{'Mumbai Indians': ['Rohit Sharma', 'Suryakumar Yadav', 'Tilak Varma', 'Naman Dhir', 'Bevon Jacobs', 'Hardik Pandya', 'Raj Bawa', 'Charith Asalanka', 'Mitchell Santner', 'Arjun Tendulkar', 'Krishnan Shrijith', 'Robin Minz', 'Jonny Bairstow', 'Jasprit Bumrah', 'Ashwani Kumar', 'Reece Topley', 'Karn Sharma', 'Trent Boult', 'Satyanarayana Raju', 'Deepak Chahar', 'Mujeeb Ur Rahman', 'Raghu Sharma', 'Richard Gleeson', 'Manish Pandey', 'Ajinkya Rahane', 'Rinku Singh', 'Angkrish Raghuvanshi', 'Anukul Roy', 'Ramandeep Singh', 'Venkatesh Iyer', 'Moeen Ali', 'Sunil Narine', 'Andre Russell', 'Quinton de Kock', 'Rahmanullah Gurbaz', 'Luvnith Sisodia', 'Varun Chakaravarthy', 'Mayank Markande', 'Vaibhav Arora', 'Harshit Rana', 'Anrich Nortje', 'Spencer Johnson', 'Chetan Sakariya', 'Shivam Shukla', 'Virat Kohli', 'Rajat Patidar', 'Swastik Chikara', 'Tim David', 'Mayank Agarwal', 'Krunal Pandya', 'Liam Livingstone', 'Manoj Bhandage', 'Romario Shepherd', 'Swapnil Singh', 'Mohit Rathee', 'Philip Salt', 'Jitesh Sharma', 'Tim Seifert', 'Josh Hazlewood', 'Bhuvneshwar Kumar', 'Rasikh Dar Salam', 'Suyash Sharma', 'Yash Dayal', 'Nuwan Thushara', 'Abhinandan Singh', 'Blessing Muzarabani', 'Virat Kohli', 'Rajat Patidar', 'Swastik Chikara', 'Tim David', 'Mayank Agarwal', 'Krunal Pandya', 'Liam Livingstone', 'Manoj Bhandage', 'Romario Shepherd', 'Swapnil Singh', 'Mohit Rathee', 'Philip Salt', 'Jitesh Sharma', 'Tim Seifert', 'Josh Hazlewood', 'Bhuvneshwar Kumar', 'Rasikh Dar Salam', 'Suyash Sharma', 'Yash Dayal', 'Nuwan Thushara', 'Abhinandan Singh', 'Blessing Muzarabani', 'Sai Sudharsan', 'Shubman Gill', 'Shahrukh Khan', 'Rahul Tewatia', 'Nishant Sindhu', 'Sherfane Rutherford', 'Mahipal Lomror', 'Dasun Shanaka', 'Rashid Khan', 'Ravisrinivasan Sai Kishore', 'Arshad Khan', 'Jayant Yadav', 'Karim Janat', 'Washington Sundar', 'Kumar Kushagra', 'Anuj Rawat', 'Kusal Mendis', 'Gerald Coetzee', 'Manav Suthar', 'Gurnoor Brar', 'Ishant Sharma', 'Kulwant Khejroliya', 'Prasidh Krishna', 'Mohammed Siraj', 'Nehal Wadhera', 'Harnoor Singh', 'Shreyas Iyer', 'Pyla Avinash', 'Priyansh Arya', 'Musheer Khan', 'Marcus Stoinis', 'Aaron Hardie', 'Suryansh Shedge', 'Shashank Singh', 'Mitchell Owen', 'Praveen Dubey', 'Azmatullah Omarzai', 'Prabhsimran Singh', 'Josh Inglis', 'Vishnu Vinod', 'Harpreet Brar', 'Arshdeep Singh', 'Yuzvendra Chahal', 'Vijaykumar Vyshak', 'Kuldeep Sen', 'Yash Thakur', 'Xavier Bartlett', 'Kyle Jamieson', 'Rohit Sharma', 'Suryakumar Yadav', 'Tilak Varma', 'Naman Dhir', 'Bevon Jacobs', 'Hardik Pandya', 'Raj Bawa', 'Charith Asalanka', 'Mitchell Santner', 'Arjun Tendulkar', 'Krishnan Shrijith', 'Robin Minz', 'Jonny Bairstow', 'Jasprit Bumrah', 'Ashwani Kumar', 'Reece Topley', 'Karn Sharma', 'Trent Boult', 'Satyanarayana Raju', 'Deepak Chahar', 'Mujeeb Ur Rahman', 'Raghu Sharma', 'Richard Gleeson'], 'Royal Challengers Bengaluru': ['Virat Kohli', 'Rajat Patidar', 'Swastik Chikara', 'Tim David', 'Mayank Agarwal', 'Krunal Pandya', 'Liam Livingstone', 'Manoj Bhandage', 'Romario Shepherd', 'Swapnil Singh', 'Mohit Rathee', 'Philip Salt', 'Jitesh Sharma', 'Tim Seifert', 'Josh Hazlewood', 'Bhuvneshwar Kumar', 'Rasikh Dar Salam', 'Suyash Sharma', 'Yash Dayal', 'Nuwan Thushara', 'Abhinandan Singh', 'Blessing Muzarabani', 'Sai Sudharsan', 'Shubman Gill', 'Shahrukh Khan', 'Rahul Tewatia', 'Nishant Sindhu', 'Sherfane Rutherford', 'Mahipal Lomror', 'Dasun Shanaka', 'Rashid Khan', 'Ravisrinivasan Sai Kishore', 'Arshad Khan', 'Jayant Yadav', 'Karim Janat', 'Washington Sundar', 'Kumar Kushagra', 'Anuj Rawat', 'Kusal Mendis', 'Gerald Coetzee', 'Manav Suthar', 'Gurnoor Brar', 'Ishant Sharma', 'Kulwant Khejroliya', 'Prasidh Krishna', 'Mohammed Siraj', 'Nehal Wadhera', 'Harnoor Singh', 'Shreyas Iyer', 'Pyla Avinash', 'Priyansh Arya', 'Musheer Khan', 'Marcus Stoinis', 'Aaron Hardie', 'Suryansh Shedge', 'Shashank Singh', 'Mitchell Owen', 'Praveen Dubey', 'Azmatullah Omarzai', 'Prabhsimran Singh', 'Josh Inglis', 'Vishnu Vinod', 'Harpreet Brar', 'Arshdeep Singh', 'Yuzvendra Chahal', 'Vijaykumar Vyshak', 'Kuldeep Sen', 'Yash Thakur', 'Xavier Bartlett', 'Kyle Jamieson', 'Rohit Sharma', 'Suryakumar Yadav', 'Tilak Varma', 'Naman Dhir', 'Bevon Jacobs', 'Hardik Pandya', 'Raj Bawa', 'Charith Asalanka', 'Mitchell Santner', 'Arjun Tendulkar', 'Krishnan Shrijith', 'Robin Minz', 'Jonny Bairstow', 'Jasprit Bumrah', 'Ashwani Kumar', 'Reece Topley', 'Karn Sharma', 'Trent Boult', 'Satyanarayana Raju', 'Deepak Chahar', 'Mujeeb Ur Rahman', 'Raghu Sharma', 'Richard Gleeson']}
+
+--------------------------------------------------------------------------------------------------------------------------------------------
+Royal Challengers Bengaluru:
+
+Batsmen:
+         Batsman                     Dismissal  Runs  Balls  4s  6s  Strike Rate
+     Philip Salt                       b Boult     4      2   1   0       200.00
+     Virat Kohli  c Naman Dhir b Hardik Pandya    67     42   8   2       159.52
+            None c Will Jacks b Vignesh Puthur    37     22   2   3       168.18
+   Rajat Patidar           c Rickelton b Boult    64     32   5   4       200.00
+Liam Livingstone      c Bumrah b Hardik Pandya     0      2   0   0         0.00
+   Jitesh Sharma                       not out    40     19   2   4       210.53
+       Tim David                       not out     1      1   0   0       100.00
+
+Bowlers:
+          Bowler Overs  Maidens  Runs  Wickets  Economy  0s
+     Trent Boult   4.0        0    57        2     14.2   0
+   Deepak Chahar   2.0        0    29        0     14.5   0
+  Jasprit Bumrah   4.0        0    29        0      7.2   0
+            None   1.0        0    10        0     10.0   0
+Mitchell Santner   4.0        0    40        0     10.0   0
+   Hardik Pandya   4.0        0    45        2     11.2   0
+            None   1.0        0    10        1     10.0   0
+
+--------------------------------------------------------------------------------------------------------------------------------------------
+Mumbai Indians:
+
+Batsmen:
+         Batsman                    Dismissal  Runs  Balls  4s  6s  Strike Rate
+    Rohit Sharma                 b Yash Dayal    17      9   2   1       188.89
+            None              lbw b Hazlewood    17     10   4   0       170.00
+            None      c Kohli b Krunal Pandya    22     18   2   1       122.22
+Suryakumar Yadav   c Livingstone b Yash Dayal    28     26   5   0       107.69
+     Tilak Varma    c Phil Salt b Bhuvneshwar    56     29   4   4       193.10
+   Hardik Pandya    c Livingstone b Hazlewood    42     15   3   4       280.00
+      Naman Dhir c Yash Dayal b Krunal Pandya    11      6   1   1       183.33
+Mitchell Santner  c Tim David b Krunal Pandya     8      4   0   1       200.00
+   Deepak Chahar  c Tim David b Krunal Pandya     0      1   0   0         0.00
+     Trent Boult                      not out     1      1   0   0       100.00
+  Jasprit Bumrah                      not out     0      1   0   0         0.00
+
+Bowlers:
+           Bowler Overs  Maidens  Runs  Wickets  Economy  0s
+Bhuvneshwar Kumar   4.0        0    48        1     12.0   4
+       Yash Dayal   4.0        0    46        2     11.5   2
+   Josh Hazlewood   4.0        0    37        2      9.2   3
+    Suyash Sharma   4.0        0    32        0      8.0   0
+    Krunal Pandya   4.0        0    45        4     11.2   4
+
+Catchers:
+['Naman Dhir', None, None, 'Jasprit Bumrah', 'Virat Kohli', 'Liam Livingstone', 'Philip Salt', 'Liam Livingstone', 'Yash Dayal', 'Tim David', 'Tim David']
+
+Stumpings:
+[]
+
+Main Run Outs:
+[]
+
+Secondary Run Outs:
+[]
+
+Bowled:
+['Trent Boult', 'Yash Dayal']
+
+LBW:
+[None]
+
+--------------------------------------------------------------------------------------------------------------------------------------------
+Winner:  Royal Challengers Bengaluru
+
+Man of the Match:  Rajat Patidar
+Added: 115095
+Attempting to scrape: 115084
+Scraping Successful
+Player List:
+{'Kolkata Knight Riders': ['Manish Pandey', 'Ajinkya Rahane', 'Rinku Singh', 'Angkrish Raghuvanshi', 'Anukul Roy', 'Ramandeep Singh', 'Venkatesh Iyer', 'Moeen Ali', 'Sunil Narine', 'Andre Russell', 'Quinton de Kock', 'Rahmanullah Gurbaz', 'Luvnith Sisodia', 'Varun Chakaravarthy', 'Mayank Markande', 'Vaibhav Arora', 'Harshit Rana', 'Anrich Nortje', 'Spencer Johnson', 'Chetan Sakariya', 'Shivam Shukla', 'Virat Kohli', 'Rajat Patidar', 'Swastik Chikara', 'Tim David', 'Mayank Agarwal', 'Krunal Pandya', 'Liam Livingstone', 'Manoj Bhandage', 'Romario Shepherd', 'Swapnil Singh', 'Mohit Rathee', 'Philip Salt', 'Jitesh Sharma', 'Tim Seifert', 'Josh Hazlewood', 'Bhuvneshwar Kumar', 'Rasikh Dar Salam', 'Suyash Sharma', 'Yash Dayal', 'Nuwan Thushara', 'Abhinandan Singh', 'Blessing Muzarabani', 'Atharva Taide', 'Travis Head', 'Abhinav Manohar', 'Sachin Baby', 'Aniket Verma', 'Nitish Kumar Reddy', 'Abhishek Sharma', 'Kamindu Mendis', 'Wiaan Mulder', 'Harsh Dubey', 'Heinrich Klaasen', 'Ishan Kishan', 'Zeeshan Ansari', 'Pat Cummins', 'Mohammed Shami', 'Harshal Patel', 'Rahul Chahar', 'Simarjeet Singh', 'Eshan Malinga', 'Jaydev Unadkat', 'Vaibhav Suryavanshi', 'Shimron Hetmyer', 'Yashasvi Jaiswal', 'Shubham Dubey', 'Riyan Parag', 'Wanindu Hasaranga', 'Sanju Samson', 'Dhruv Jurel', 'Kunal Singh Rathore', 'Lhuan-dre Pretorius', 'Yudhvir Singh Charak', 'Tushar Deshpande', 'Kumar Kartikeya', 'Akash Madhwal', 'Kwena Maphaka', 'Maheesh Theekshana', 'Fazalhaq Farooqi', 'Ashok Sharma', 'Jofra Archer', 'Nandre Burger', 'Himmat Singh', 'David Miller', 'Aiden Markram', 'Ayush Badoni', 'Mitchell Marsh', 'Abdul Samad', 'Arshin Kulkarni', 'Yuvraj Chaudhary', 'Shahbaz Ahmed', 'RS Hangargekar', 'Shardul Thakur', 'Matthew Breetzke', 'Nicholas Pooran', 'Aryan Juyal', 'Rishabh Pant', 'Ravi Bishnoi', 'Akash Deep', 'Manimaran Siddharth', 'Shamar Joseph', 'Avesh Khan', 'Prince Yadav', 'Akash Maharaj Singh', 'Digvesh Singh Rathi', 'William ORourke', 'Himmat Singh', 'David Miller', 'Aiden Markram', 'Ayush Badoni', 'Mitchell Marsh', 'Abdul Samad', 'Arshin Kulkarni', 'Yuvraj Chaudhary', 'Shahbaz Ahmed', 'RS Hangargekar', 'Shardul Thakur', 'Matthew Breetzke', 'Nicholas Pooran', 'Aryan Juyal', 'Rishabh Pant', 'Ravi Bishnoi', 'Akash Deep', 'Manimaran Siddharth', 'Shamar Joseph', 'Avesh Khan', 'Prince Yadav', 'Akash Maharaj Singh', 'Digvesh Singh Rathi', 'William ORourke', 'Nehal Wadhera', 'Harnoor Singh', 'Shreyas Iyer', 'Pyla Avinash', 'Priyansh Arya', 'Musheer Khan', 'Marcus Stoinis', 'Aaron Hardie', 'Suryansh Shedge', 'Shashank Singh', 'Mitchell Owen', 'Praveen Dubey', 'Azmatullah Omarzai', 'Prabhsimran Singh', 'Josh Inglis', 'Vishnu Vinod', 'Harpreet Brar', 'Arshdeep Singh', 'Yuzvendra Chahal', 'Vijaykumar Vyshak', 'Kuldeep Sen', 'Yash Thakur', 'Xavier Bartlett', 'Kyle Jamieson', 'Rohit Sharma', 'Suryakumar Yadav', 'Tilak Varma', 'Naman Dhir', 'Bevon Jacobs', 'Hardik Pandya', 'Raj Bawa', 'Charith Asalanka', 'Mitchell Santner', 'Arjun Tendulkar', 'Krishnan Shrijith', 'Robin Minz', 'Jonny Bairstow', 'Jasprit Bumrah', 'Ashwani Kumar', 'Reece Topley', 'Karn Sharma', 'Trent Boult', 'Satyanarayana Raju', 'Deepak Chahar', 'Mujeeb Ur Rahman', 'Raghu Sharma', 'Richard Gleeson', 'Manish Pandey', 'Ajinkya Rahane', 'Rinku Singh', 'Angkrish Raghuvanshi', 'Anukul Roy', 'Ramandeep Singh', 'Venkatesh Iyer', 'Moeen Ali', 'Sunil Narine', 'Andre Russell', 'Quinton de Kock', 'Rahmanullah Gurbaz', 'Luvnith Sisodia', 'Varun Chakaravarthy', 'Mayank Markande', 'Vaibhav Arora', 'Harshit Rana', 'Anrich Nortje', 'Spencer Johnson', 'Chetan Sakariya', 'Shivam Shukla', 'Virat Kohli', 'Rajat Patidar', 'Swastik Chikara', 'Tim David', 'Mayank Agarwal', 'Krunal Pandya', 'Liam Livingstone', 'Manoj Bhandage', 'Romario Shepherd', 'Swapnil Singh', 'Mohit Rathee', 'Philip Salt', 'Jitesh Sharma', 'Tim Seifert', 'Josh Hazlewood', 'Bhuvneshwar Kumar', 'Rasikh Dar Salam', 'Suyash Sharma', 'Yash Dayal', 'Nuwan Thushara', 'Abhinandan Singh', 'Blessing Muzarabani'], 'Lucknow Super Giants': ['Himmat Singh', 'David Miller', 'Aiden Markram', 'Ayush Badoni', 'Mitchell Marsh', 'Abdul Samad', 'Arshin Kulkarni', 'Yuvraj Chaudhary', 'Shahbaz Ahmed', 'RS Hangargekar', 'Shardul Thakur', 'Matthew Breetzke', 'Nicholas Pooran', 'Aryan Juyal', 'Rishabh Pant', 'Ravi Bishnoi', 'Akash Deep', 'Manimaran Siddharth', 'Shamar Joseph', 'Avesh Khan', 'Prince Yadav', 'Akash Maharaj Singh', 'Digvesh Singh Rathi', 'William ORourke', 'Nehal Wadhera', 'Harnoor Singh', 'Shreyas Iyer', 'Pyla Avinash', 'Priyansh Arya', 'Musheer Khan', 'Marcus Stoinis', 'Aaron Hardie', 'Suryansh Shedge', 'Shashank Singh', 'Mitchell Owen', 'Praveen Dubey', 'Azmatullah Omarzai', 'Prabhsimran Singh', 'Josh Inglis', 'Vishnu Vinod', 'Harpreet Brar', 'Arshdeep Singh', 'Yuzvendra Chahal', 'Vijaykumar Vyshak', 'Kuldeep Sen', 'Yash Thakur', 'Xavier Bartlett', 'Kyle Jamieson', 'Rohit Sharma', 'Suryakumar Yadav', 'Tilak Varma', 'Naman Dhir', 'Bevon Jacobs', 'Hardik Pandya', 'Raj Bawa', 'Charith Asalanka', 'Mitchell Santner', 'Arjun Tendulkar', 'Krishnan Shrijith', 'Robin Minz', 'Jonny Bairstow', 'Jasprit Bumrah', 'Ashwani Kumar', 'Reece Topley', 'Karn Sharma', 'Trent Boult', 'Satyanarayana Raju', 'Deepak Chahar', 'Mujeeb Ur Rahman', 'Raghu Sharma', 'Richard Gleeson', 'Manish Pandey', 'Ajinkya Rahane', 'Rinku Singh', 'Angkrish Raghuvanshi', 'Anukul Roy', 'Ramandeep Singh', 'Venkatesh Iyer', 'Moeen Ali', 'Sunil Narine', 'Andre Russell', 'Quinton de Kock', 'Rahmanullah Gurbaz', 'Luvnith Sisodia', 'Varun Chakaravarthy', 'Mayank Markande', 'Vaibhav Arora', 'Harshit Rana', 'Anrich Nortje', 'Spencer Johnson', 'Chetan Sakariya', 'Shivam Shukla', 'Virat Kohli', 'Rajat Patidar', 'Swastik Chikara', 'Tim David', 'Mayank Agarwal', 'Krunal Pandya', 'Liam Livingstone', 'Manoj Bhandage', 'Romario Shepherd', 'Swapnil Singh', 'Mohit Rathee', 'Philip Salt', 'Jitesh Sharma', 'Tim Seifert', 'Josh Hazlewood', 'Bhuvneshwar Kumar', 'Rasikh Dar Salam', 'Suyash Sharma', 'Yash Dayal', 'Nuwan Thushara', 'Abhinandan Singh', 'Blessing Muzarabani']}
+
+--------------------------------------------------------------------------------------------------------------------------------------------
+Lucknow Super Giants:
+
+Batsmen:
+        Batsman               Dismissal  Runs  Balls  4s  6s  Strike Rate
+  Aiden Markram          b Harshit Rana    47     28   4   2       167.86
+ Mitchell Marsh c Rinku Singh b Russell    81     48   6   5       168.75
+Nicholas Pooran                 not out    87     36   7   8       241.67
+    Abdul Samad          b Harshit Rana     6      4   1   0       150.00
+   David Miller                 not out     4      4   0   0       100.00
+
+Bowlers:
+             Bowler Overs  Maidens  Runs  Wickets  Economy  0s
+      Vaibhav Arora   4.0        0    35        0      8.8   0
+    Spencer Johnson   3.0        0    46        0     15.3   0
+Varun Chakaravarthy   4.0        0    31        0      7.8   0
+       Harshit Rana   4.0        0    51        2     12.8   0
+       Sunil Narine   3.0        0    38        0     12.7   0
+      Andre Russell   2.0        0    32        1     16.0   0
+
+--------------------------------------------------------------------------------------------------------------------------------------------
+Kolkata Knight Riders:
+
+Batsmen:
+             Batsman                 Dismissal  Runs  Balls  4s  6s  Strike Rate
+     Quinton de Kock          lbw b Akash Deep    15      9   0   2       166.67
+        Sunil Narine c Markram b Digvesh Rathi    30     13   4   2       230.77
+      Ajinkya Rahane         c Pooran b Thakur    61     35   8   2       174.29
+      Venkatesh Iyer    c Markram b Akash Deep    45     29   6   1       155.17
+     Ramandeep Singh  c Markram b Ravi Bishnoi     1      2   0   0        50.00
+Angkrish Raghuvanshi       c Pant b Avesh Khan     5      4   1   0       125.00
+       Andre Russell   c David Miller b Thakur     7      4   0   1       175.00
+         Rinku Singh                   not out    38     15   6   2       253.33
+        Harshit Rana                   not out    10      9   2   0       111.11
+
+Bowlers:
+             Bowler Overs  Maidens  Runs  Wickets  Economy  0s
+         Akash Deep   4.0        0    55        2     13.8   2
+     Shardul Thakur   4.0        0    52        2     13.0   3
+         Avesh Khan   4.0        0    45        1     11.2   5
+Digvesh Singh Rathi   4.0        0    33        1      8.2   4
+       Ravi Bishnoi   4.0        0    47        1     11.8   4
+
+Catchers:
+['Rinku Singh', 'Aiden Markram', 'Nicholas Pooran', 'Aiden Markram', 'Aiden Markram', 'Rishabh Pant', 'David Miller']
+
+Stumpings:
+[]
+
+Main Run Outs:
+[]
+
+Secondary Run Outs:
+[]
+
+Bowled:
+['Harshit Rana', 'Harshit Rana']
+
+LBW:
+[None]
+
+--------------------------------------------------------------------------------------------------------------------------------------------
+Winner:  Lucknow Super Giants
+
+Man of the Match:  Nicholas Pooran
+Added: 115084
+Attempting to scrape: 115102
+Traceback (most recent call last):
+  File "/Users/apple/Downloads/IPL Fantasy Project/Scraping.py", line 725, in <module>
+    ipl2025 = Series()
+  File "/Users/apple/Downloads/IPL Fantasy Project/Scraping.py", line 665, in __init__
+    match_object = Score(match)
+  File "/Users/apple/Downloads/IPL Fantasy Project/Scraping.py", line 243, in __init__
+    ) = self._parse_json(self.match_data)
+        ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "/Users/apple/Downloads/IPL Fantasy Project/Scraping.py", line 375, in _parse_json
+    dots_info,man_of_the_match,player_list,full_player_list = self.match_dots_mom()
+                                                              ~~~~~~~~~~~~~~~~~~~^^
+  File "/Users/apple/Downloads/IPL Fantasy Project/Scraping.py", line 589, in match_dots_mom
+    for over in overs_score['overseplist']['oversep']:
+                ~~~~~~~~~~~^^^^^^^^^^^^^^^
+KeyError: 'overseplist'
