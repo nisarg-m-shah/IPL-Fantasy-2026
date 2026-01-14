@@ -1,17 +1,13 @@
+import requests
+import json
 import re
 import pandas as pd
-from bs4 import BeautifulSoup
-from pathlib import Path
-from typing import List, Dict, Any, Tuple
-from selenium import webdriver
-from selenium.webdriver.chrome.service import Service
-from selenium.webdriver.chrome.options import Options
-from selenium.webdriver.common.by import By
-from selenium.webdriver.support.ui import WebDriverWait
-from selenium.webdriver.support import expected_conditions as EC
-from webdriver_manager.chrome import ChromeDriverManager
-from bs4 import BeautifulSoup
+from typing import Dict, List, Any
+import difflib
+from datetime import datetime
+import dill
 import time
+
 
 names = ['Ruturaj Gaikwad', 'Andre Siddarth C', 'Shaik Rasheed', 'Rahul Tripathi', 'Ayush Mhatre', 'Dewald Brevis', 'Shivam Dube', 'Rachin Ravindra', 'Deepak Hooda', 'Vijay Shankar', 'Ramakrishna Ghosh', 'Ravindra Jadeja', 'Anshul Kamboj', 'Jamie Overton', 'Sam Curran', 'Ravichandran Ashwin', 'Devon Conway', 'MS Dhoni', 'Vansh Bedi', 'Urvil Patel', 'Kamlesh Nagarkoti', 'Shreyas Gopal', 'Matheesha Pathirana', 'Mukesh Choudhary', 'Nathan Ellis', 'Noor Ahmad', 'Khaleel Ahmed', 'Vaibhav Suryavanshi', 'Shimron Hetmyer', 'Yashasvi Jaiswal', 'Shubham Dubey', 'Riyan Parag', 'Wanindu Hasaranga', 'Sanju Samson', 'Dhruv Jurel', 'Kunal Singh Rathore', 'Lhuan-dre Pretorius', 'Yudhvir Singh Charak', 'Tushar Deshpande', 'Kumar Kartikeya', 'Akash Madhwal', 'Kwena Maphaka', 'Maheesh Theekshana', 'Fazalhaq Farooqi', 'Ashok Sharma', 'Jofra Archer', 'Nandre Burger', 'Manish Pandey', 'Ajinkya Rahane', 'Rinku Singh', 'Angkrish Raghuvanshi', 'Anukul Roy', 'Ramandeep Singh', 'Venkatesh Iyer', 'Moeen Ali', 'Sunil Narine', 'Andre Russell', 'Quinton de Kock', 'Rahmanullah Gurbaz', 'Luvnith Sisodia', 'Varun Chakaravarthy', 'Mayank Markande', 'Vaibhav Arora', 'Harshit Rana', 'Anrich Nortje', 'Spencer Johnson', 'Chetan Sakariya', 'Shivam Shukla', 'Atharva Taide', 'Travis Head', 'Abhinav Manohar', 'Sachin Baby', 'Aniket Verma', 'Nitish Kumar Reddy', 'Abhishek Sharma', 'Kamindu Mendis', 'Wiaan Mulder', 'Harsh Dubey', 'Heinrich Klaasen', 'Ishan Kishan', 'Zeeshan Ansari', 'Pat Cummins', 'Mohammed Shami', 'Harshal Patel', 'Rahul Chahar', 'Simarjeet Singh', 'Eshan Malinga', 'Jaydev Unadkat', 'Virat Kohli', 'Rajat Patidar', 'Swastik Chikara', 'Tim David', 'Mayank Agarwal', 'Krunal Pandya', 'Liam Livingstone', 'Manoj Bhandage', 'Romario Shepherd', 'Swapnil Singh', 'Mohit Rathee', 'Philip Salt', 'Jitesh Sharma', 'Tim Seifert', 'Josh Hazlewood', 'Bhuvneshwar Kumar', 'Rasikh Dar Salam', 'Suyash Sharma', 'Yash Dayal', 'Nuwan Thushara', 'Abhinandan Singh', 'Blessing Muzarabani', 'Faf du Plessis', 'Karun Nair', 'Sameer Rizvi', 'Sediqullah Atal', 'Ashutosh Sharma', 'Tripurana Vijay', 'Axar Patel', 'Darshan Nalkande', 'Ajay Jadav Mandal', 'Manvanth Kumar L', 'Madhav Tiwari', 'Tristan Stubbs', 'Abishek Porel', 'Donovan Ferreira', 'KL Rahul', 'Vipraj Nigam', 'Kuldeep Yadav', 'Dushmantha Chameera', 'Mohit Sharma', 'T Natarajan', 'Mukesh Kumar', 'Mustafizur Rahman', 'Nehal Wadhera', 'Harnoor Singh', 'Shreyas Iyer', 'Pyla Avinash', 'Priyansh Arya', 'Musheer Khan', 'Marcus Stoinis', 'Aaron Hardie', 'Suryansh Shedge', 'Shashank Singh', 'Mitchell Owen', 'Praveen Dubey', 'Azmatullah Omarzai', 'Prabhsimran Singh', 'Josh Inglis', 'Vishnu Vinod', 'Harpreet Brar', 'Arshdeep Singh', 'Yuzvendra Chahal', 'Vijaykumar Vyshak', 'Kuldeep Sen', 'Yash Thakur', 'Xavier Bartlett', 'Kyle Jamieson', 'Rohit Sharma', 'Suryakumar Yadav', 'Tilak Varma', 'Naman Dhir', 'Bevon Jacobs', 'Hardik Pandya', 'Raj Bawa', 'Charith Asalanka', 'Mitchell Santner', 'Arjun Tendulkar', 'Krishnan Shrijith', 'Robin Minz', 'Jonny Bairstow', 'Jasprit Bumrah', 'Ashwani Kumar', 'Reece Topley', 'Karn Sharma', 'Trent Boult', 'Satyanarayana Raju', 'Deepak Chahar', 'Mujeeb Ur Rahman', 'Raghu Sharma', 'Richard Gleeson', 'Sai Sudharsan', 'Shubman Gill', 'Shahrukh Khan', 'Rahul Tewatia', 'Nishant Sindhu', 'Sherfane Rutherford', 'Mahipal Lomror', 'Dasun Shanaka', 'Rashid Khan', 'Ravisrinivasan Sai Kishore', 'Arshad Khan', 'Jayant Yadav', 'Karim Janat', 'Washington Sundar', 'Kumar Kushagra', 'Anuj Rawat', 'Kusal Mendis', 'Gerald Coetzee', 'Manav Suthar', 'Gurnoor Brar', 'Ishant Sharma', 'Kulwant Khejroliya', 'Prasidh Krishna', 'Mohammed Siraj', 'Himmat Singh', 'David Miller', 'Aiden Markram', 'Ayush Badoni', 'Mitchell Marsh', 'Abdul Samad', 'Arshin Kulkarni', 'Yuvraj Chaudhary', 'Shahbaz Ahmed', 'RS Hangargekar', 'Shardul Thakur', 'Matthew Breetzke', 'Nicholas Pooran', 'Aryan Juyal', 'Rishabh Pant', 'Ravi Bishnoi', 'Akash Deep', 'Manimaran Siddharth', 'Shamar Joseph', 'Avesh Khan', 'Prince Yadav', 'Akash Maharaj Singh', 'Digvesh Singh Rathi', 'William ORourke']
 roles = ['BAT', 'BAT', 'BAT', 'BAT', 'BAT', 'BAT', 'AR', 'AR', 'AR', 'AR', 'AR', 'AR', 'AR', 'AR', 'AR', 'AR', 'WK', 'WK', 'WK', 'WK', 'BOWL', 'BOWL', 'BOWL', 'BOWL', 'BOWL', 'BOWL', 'BOWL', 'BAT', 'BAT', 'BAT', 'BAT', 'AR', 'AR', 'WK', 'WK', 'WK', 'WK', 'BOWL', 'BOWL', 'BOWL', 'BOWL', 'BOWL', 'BOWL', 'BOWL', 'BOWL', 'BOWL', 'BOWL', 'BAT', 'BAT', 'BAT', 'BAT', 'AR', 'AR', 'AR', 'AR', 'AR', 'AR', 'WK', 'WK', 'WK', 'BOWL', 'BOWL', 'BOWL', 'BOWL', 'BOWL', 'BOWL', 'BOWL', 'BOWL', 'BAT', 'BAT', 'BAT', 'BAT', 'BAT', 'AR', 'AR', 'AR', 'AR', 'AR', 'WK', 'WK', 'BOWL', 'BOWL', 'BOWL', 'BOWL', 'BOWL', 'BOWL', 'BOWL', 'BOWL', 'BAT', 'BAT', 'BAT', 'BAT', 'BAT', 'AR', 'AR', 'AR', 'AR', 'AR', 'AR', 'WK', 'WK', 'WK', 'BOWL', 'BOWL', 'BOWL', 'BOWL', 'BOWL', 'BOWL', 'BOWL', 'BOWL', 'BAT', 'BAT', 'BAT', 'BAT', 'AR', 'AR', 'AR', 'AR', 'AR', 'AR', 'AR', 'WK', 'WK', 'WK', 'WK', 'BOWL', 'BOWL', 'BOWL', 'BOWL', 'BOWL', 'BOWL', 'BOWL', 'BAT', 'BAT', 'BAT', 'BAT', 'BAT', 'AR', 'AR', 'AR', 'AR', 'AR', 'AR', 'AR', 'AR', 'WK', 'WK', 'WK', 'BOWL', 'BOWL', 'BOWL', 'BOWL', 'BOWL', 'BOWL', 'BOWL', 'BOWL', 'BAT', 'BAT', 'BAT', 'BAT', 'AR', 'AR', 'AR', 'AR', 'AR', 'AR', 'WK', 'WK', 'WK', 'BOWL', 'BOWL', 'BOWL', 'BOWL', 'BOWL', 'BOWL', 'BOWL', 'BOWL', 'BOWL', 'BOWL', 'BAT', 'BAT', 'AR', 'AR', 'AR', 'AR', 'AR', 'AR', 'AR', 'AR', 'AR', 'AR', 'AR', 'AR', 'WK', 'WK', 'WK', 'BOWL', 'BOWL', 'BOWL', 'BOWL', 'BOWL', 'BOWL', 'BOWL', 'BAT', 'BAT', 'BAT', 'AR', 'AR', 'AR', 'AR', 'AR', 'AR', 'AR', 'AR', 'WK', 'WK', 'WK', 'WK', 'BOWL', 'BOWL', 'BOWL', 'BOWL', 'BOWL', 'BOWL', 'BOWL', 'BOWL', 'BOWL']
@@ -267,14 +263,13 @@ squads = {
 }
 
 
-# -------------------- HELPERS --------------------
+# ---------------- HELPERS (UNCHANGED) ----------------
 
 def split_camel_short(name):
-    parts = []
-    word = ""
+    parts, word = [], ""
     for i, ch in enumerate(name):
         word += ch
-        if i == len(name) - 1 or (i + 1 < len(name) and name[i + 1].isupper()):
+        if i == len(name)-1 or (i+1 < len(name) and name[i+1].isupper()):
             parts.append(word)
             word = ""
     return parts
@@ -291,166 +286,53 @@ def find_full_name(team, short_name):
 
         for player in team:
             if len(player) > len(s):
-                parts = split_camel_short(s)
-                if all(p in player for p in parts):
+                if all(p in player for p in split_camel_short(s)):
                     return player
             else:
-                parts = split_camel_short(player)
-                if all(p in s for p in parts):
+                if all(p in s for p in split_camel_short(player)):
                     return player
 
-        team_lower = [p.lower() for p in team]
-        import difflib
-        matches = difflib.get_close_matches(s.lower(), team_lower, n=1, cutoff=0.7)
+        matches = difflib.get_close_matches(
+            s.lower(), [p.lower() for p in team], n=1, cutoff=0.7
+        )
         if matches:
-            return team[team_lower.index(matches[0])]
+            return team[[p.lower() for p in team].index(matches[0])]
 
         return s
     except:
         return short_name
 
-def scraping_soup(match_number):
-    URL = "https://www.iplt20.com/match/2025/"+str(match_number)
 
-    # -------------------- DRIVER SETUP --------------------
-    chrome_options = Options()
-    chrome_options.add_argument("--headless=new")
-    chrome_options.add_argument("--disable-gpu")
-    chrome_options.add_argument("--window-size=1920,1080")
-    chrome_options.add_argument("--no-sandbox")
-    chrome_options.add_argument("--disable-dev-shm-usage")
-    chrome_options.add_argument(
-        "--user-agent=Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) "
-        "AppleWebKit/537.36 (KHTML, like Gecko) "
-        "Chrome/120.0.0.0 Safari/537.36"
-    )
+# ---------------- MAIN CLASS ----------------
 
-    driver = webdriver.Chrome(
-        service=Service(ChromeDriverManager().install()),
-        options=chrome_options
-    )
+class Score:
 
-    wait = WebDriverWait(driver, 30)
+    def __init__(self, match_id: int):
+        self.match_id = match_id
 
-    # -------------------- OPEN PAGE --------------------
-    driver.get(URL)
+        self.catchers = []
+        self.stumpers = []
+        self.main_runouters = []
+        self.secondary_runouters = []
+        self.bowled = []
+        self.lbw = []
 
-    # -------------------- CLICK SCORECARD --------------------
-    scorecard_tab = wait.until(
-        EC.element_to_be_clickable((By.CSS_SELECTOR, "a[data-id='scoreCard']"))
-    )
-    driver.execute_script("arguments[0].click();", scorecard_tab)
-
-    # -------------------- WAIT FOR SCORECARD ROOT --------------------
-    wait.until(
-        EC.presence_of_element_located(
-            (By.CSS_SELECTOR, "div.scoreCardContentWrap")
-        )
-    )
-
-    # -------------------- FIND INNINGS TABS (LEFT → RIGHT) --------------------
-    innings_tabs = wait.until(
-        EC.presence_of_all_elements_located(
-            (By.CSS_SELECTOR, "a.ap-inner-tb-click")
-        )
-    )
-
-    tabs = []
-    seen = set()
-    for tab in innings_tabs:
-        label = tab.text.strip()
-        if label and label not in seen:
-            seen.add(label)
-            tabs.append(tab)
-
-    tabs = tabs[:2]
-
-    print("Detected innings:", [t.text.strip() for t in tabs])
-
-    # -------------------- SCRAPE EACH INNINGS ONCE --------------------
-    scraped = []
-
-    for idx, tab in enumerate(tabs, start=1):
-        label = tab.text.strip().split(" Innings")[0]
-        label = team_names_ff[team_names_sf.index(label)]
-
-        # click only if not already active
-        if "ap-active-team" not in tab.get_attribute("class"):
-            driver.execute_script("arguments[0].click();", tab)
-
-            # wait until THIS tab becomes active
-            wait.until(
-                lambda d: "ap-active-team" in tab.get_attribute("class")
-            )
-
-            # wait until tables exist (real data)
-            wait.until(
-                EC.presence_of_element_located(
-                    (By.CSS_SELECTOR, "div.scoreCardContentWrap table")
-                )
-            )
-
-        # extract ONLY the scorecard subtree
-        scorecard_root = driver.find_element(
-            By.CSS_SELECTOR, "div.scoreCardContentWrap"
-        )
-        soup = BeautifulSoup(
-            scorecard_root.get_attribute("outerHTML"),
-            "html.parser"
-        )
-
-        if not soup.select_one("table"):
-            raise RuntimeError(f"Failed to load tables for {label}")
-
-        filename = f"Match {match_number} : Innings {idx}.html"
-        with open(filename, "w", encoding="utf-8") as f:
-            f.write(soup.prettify())
-
-        scraped.append(label)
-        print(f"Saved {filename} → {label}")
-
-    driver.quit()
-    print("Done. Scraped innings:", scraped)
-    return scraped
-
-
-
-# -------------------- MAIN CLASS --------------------
-
-class ScoreFromHTML:
-
-    def __init__(self, match_number: int, squads: Dict[str, List[str]]):
-        self.match_number = match_number
-        self.squads = squads
+        self.innings_list = []
+        self.batsmen_list = pd.DataFrame()
+        self.bowlers_info = pd.DataFrame()
 
         self.winner = ""
         self.man_of_the_match = ""
 
-        self.scraped = scraping_soup(match_number)
-
-        (   self.full_player_list,
-            self.player_list,
-            self.catchers,
-            self.stumpers,
-            self.main_runouters,
-            self.secondary_runouters,
-            self.bowled,
-            self.lbw,
-            self.innings_list,
-            self.man_of_the_match,
-            self.winner,
-            self.batsmen_list,
-            self.bowlers_info
-        ) = self._parse_html_scorecards()
+        self._parse_match()
 
 
-    # -------------------- DISMISSAL PARSER (UNCHANGED LOGIC) --------------------
+    # ---------------- DISMISSAL PARSER (SAME LOGIC) ----------------
 
-    def _parse_dismissal(self, outdec: str) -> Dict[str, str]:
+    def _parse_dismissal(self, outdec: str):
         outdec = (outdec or "").strip()
 
-        result = {
-            'mode': 'other',
+        res = {
             'catcher': '',
             'stumper': '',
             'main_ro': '',
@@ -460,171 +342,183 @@ class ScoreFromHTML:
         }
 
         if not outdec or outdec.lower() == 'not out':
-            result['mode'] = 'not out'
-            return result
+            return res
 
         if outdec.startswith('c & b '):
-            result.update({'mode': 'caught', 'catcher': outdec.replace('c & b ', '').strip()})
-            return result
+            res['catcher'] = outdec.replace('c & b ', '').strip()
+            return res
 
         if outdec.startswith('c ') and ' b ' in outdec:
-            result.update({'mode': 'caught', 'catcher': outdec.split(' b ')[0].replace('c ', '').strip()})
-            return result
+            res['catcher'] = outdec.split(' b ')[0].replace('c ', '').strip()
+            return res
 
         if outdec.startswith('st ') and ' b ' in outdec:
-            result.update({'mode': 'stumped', 'stumper': outdec.split(' b ')[0].replace('st ', '').strip()})
-            return result
+            res['stumper'] = outdec.split(' b ')[0].replace('st ', '').strip()
+            return res
 
         if outdec.startswith('b ') and 'lbw' not in outdec.lower():
-            result.update({'mode': 'bowled', 'bowler_bowled': outdec.replace('b ', '').strip()})
-            return result
+            res['bowler_bowled'] = outdec.replace('b ', '').strip()
+            return res
 
-        if 'lbw ' in outdec.lower():
-            result.update({'mode': 'lbw', 'bowler_lbw': outdec.split('lbw ')[-1].strip()})
-            return result
+        if 'lbw' in outdec.lower():
+            res['bowler_lbw'] = outdec.split('lbw ')[-1].strip()
+            return res
 
         if 'run out' in outdec.lower():
-            raw = ""
             m = re.search(r'\(([^)]*)\)', outdec)
             if m:
-                raw = m.group(1)
-            parts = [p.strip() for p in raw.replace('(sub)', '').split('/') if p.strip()]
-            if len(parts) >= 1:
-                result['main_ro'] = parts[-1]
-            if len(parts) >= 2:
-                result['secondary_ro'] = parts[-2]
-            result['mode'] = 'run out'
-            return result
+                parts = [p.strip() for p in m.group(1).split('/') if p.strip()]
+                if len(parts) == 1:
+                    res['main_ro'] = parts[0]
+                elif len(parts) >= 2:
+                    res['main_ro'], res['secondary_ro'] = parts[-2:]
+            return res
 
-        return result
+        return res
 
 
-    # -------------------- HTML PARSER --------------------
+    # ---------------- CORE PARSER ----------------
 
-    def _parse_html_scorecards(self):
+    def _parse_match(self):
+        BASE_URL = "https://ipl-stats-sports-mechanic.s3.ap-south-1.amazonaws.com/ipl/feeds"
 
-        catchers, stumpers = [], []
-        main_runouters, secondary_runouters = [], []
-        bowled, lbw = [], []
-
-        innings_list = []
         batsmen_rows, bowlers_rows = [], []
 
-        player_list = dict(self.squads)
-        full_player_list = []
-        for team in player_list:
-            full_player_list.extend(player_list[team])
-
-        for inn_num in [1, 2]:
-            path = Path(f"Match {self.match_number} : Innings {inn_num}.html")
-            if not path.exists():
+        for inn in [1, 2]:
+            url = f"{BASE_URL}/{self.match_id}-Innings{inn}.js"
+            r = requests.get(url, params={"onScoring": "_jqjsp"}, headers={"User-Agent": "Mozilla/5.0"})
+            if r.status_code != 200:
                 continue
 
-            with path.open("r", encoding="utf-8") as f:
-                soup = BeautifulSoup(f, "html.parser")
-                
-            match_details = soup.find_all('span',class_="ng-binding")[-1].text.strip().split('(')
-            man_of_the_match = match_details[0].strip()
-            winner = match_details[1].split(')')[0]
+            data = json.loads(re.sub(r"^[^(]*\(|\);?$", "", r.text))
+            innings = data[f"Innings{inn}"]
 
-            tables = soup.find_all('table', class_="ap-scroreboard-table table-striped")
-            batting_table, bowling_table = tables[0], tables[1]
+            bat_team = innings["Extras"][0]["BattingTeamName"]
+            bowl_team = innings["Extras"][0]["BowlingTeamName"]
+            self.innings_list.append(bat_team)
 
-            batsmen = batting_table.find_all('tr', class_="ng-scope")
-            bowlers = bowling_table.find_all('tr', class_="ng-scope")
+            bat_players = squads.get(bat_team, [])
+            bowl_players = squads.get(bowl_team, [])
 
-            bat_team = self.scraped[inn_num - 1]
-            innings_list.append(bat_team)
+            # ---------- BATTERS ----------
+            for b in innings["BattingCard"]:
+                if not b["OutDesc"] and b["Balls"] == 0:
+                    continue
 
-            bowl_team = next((t for t in player_list if t != bat_team), "")
-            bat_players = player_list.get(bat_team, [])
-            bowl_players = player_list.get(bowl_team, [])
-
-            # -------- BATTERS --------
-            for b in batsmen:
-                name = find_full_name(bat_players, b.find('span', class_="ng-binding").text.strip())
-                dismissal = b.find('span', class_="dismissalSmall ng-binding").text.strip()
-                dis = self._parse_dismissal(dismissal)
+                name = find_full_name(bat_players, b["PlayerName"])
+                outdec = b["OutDesc"] or "not out"
+                dis = self._parse_dismissal(outdec)
 
                 if dis['catcher']:
-                    catchers.append(find_full_name(bowl_players, dis['catcher']))
+                    self.catchers.append(find_full_name(bowl_players, dis['catcher']))
                 if dis['stumper']:
-                    stumpers.append(find_full_name(bowl_players, dis['stumper']))
+                    self.stumpers.append(find_full_name(bowl_players, dis['stumper']))
                 if dis['main_ro']:
-                    main_runouters.append(find_full_name(bowl_players, dis['main_ro']))
+                    self.main_runouters.append(find_full_name(bowl_players, dis['main_ro']))
                 if dis['secondary_ro']:
-                    secondary_runouters.append(find_full_name(bowl_players, dis['secondary_ro']))
+                    self.secondary_runouters.append(find_full_name(bowl_players, dis['secondary_ro']))
                 if dis['bowler_bowled']:
-                    bowled.append(find_full_name(bowl_players, dis['bowler_bowled']))
+                    self.bowled.append(find_full_name(bowl_players, dis['bowler_bowled']))
                 if dis['bowler_lbw']:
-                    lbw.append(find_full_name(bowl_players, dis['bowler_lbw']))
+                    self.lbw.append(find_full_name(bowl_players, dis['bowler_lbw']))
 
-                runs = int(b.find('td', class_="textCenter ng-binding").text.strip())
-                balls, fours, sixes, sr = b.find_all('td', class_="textCenter op5 ng-binding")
-
+                strike_rate = b["StrikeRate"]
+                if strike_rate == '-':
+                    strike_rate = 0
+                strike_rate = float(strike_rate)
                 batsmen_rows.append({
-                    'Innings Number': inn_num,
-                    'Innings Name': bat_team,
-                    'Batsman': name,
-                    'Dismissal': dismissal,
-                    'Runs': runs,
-                    'Balls': int(balls.text),
-                    '4s': int(fours.text),
-                    '6s': int(sixes.text),
-                    'Strike Rate': float(sr.text)
+                    "Innings Number": inn,
+                    "Innings Name": bat_team,
+                    "Batsman": name,
+                    "Dismissal": outdec,
+                    "Runs": int(b["Runs"]),
+                    "Balls": int(b["Balls"]),
+                    "4s": int(b["Fours"]),
+                    "6s": int(b["Sixes"]),
+                    "Strike Rate": strike_rate
                 })
 
-            # -------- BOWLERS --------
-            for blr in bowlers:
-                name = find_full_name(bowl_players, blr.find('span', class_="ng-binding").text.strip())
-                tds = blr.find_all('td', class_="textCenter")
-
+            # ---------- BOWLERS ----------
+            for blr in innings["BowlingCard"]:
+                name = find_full_name(bowl_players, blr["PlayerName"])
                 bowlers_rows.append({
-                    'Innings Number': inn_num,
-                    'Innings Name': bat_team,
-                    'Bowler': name,
-                    'Overs': float(tds[0].text),
-                    'Maidens': int(tds[1].text),
-                    'Runs': int(tds[2].text),
-                    'Wickets': int(tds[3].text),
-                    'Economy': float(tds[4].text),
-                    '0s': int(tds[5].text)
+                    "Innings Number": inn,
+                    "Innings Name": bat_team,
+                    "Bowler": name,
+                    "Overs": float(blr["Overs"]),
+                    "Maidens": int(blr["Maidens"]),
+                    "Runs": int(blr["Runs"]),
+                    "Wickets": int(blr["Wickets"]),
+                    "Economy": float(blr["Economy"]),
+                    "0s": int(blr["DotBalls"])
                 })
 
-        return (
-            full_player_list,
-            player_list,
-            catchers,
-            stumpers,
-            main_runouters,
-            secondary_runouters,
-            bowled,
-            lbw,
-            innings_list,
-            man_of_the_match,
-            winner,
-            pd.DataFrame(batsmen_rows),
-            pd.DataFrame(bowlers_rows)
-        )
+        self.batsmen_list = pd.DataFrame(batsmen_rows)
+        self.bowlers_info = pd.DataFrame(bowlers_rows)
+
+        # ---------- SUMMARY ----------
+        summary_url = f"{BASE_URL}/{self.match_id}-matchsummary.js"
+        r = requests.get(summary_url)
+        summary = json.loads(re.sub(r"^[^(]*\(|\);?$", "", r.text))["MatchSummary"][0]
+
+        self.man_of_the_match = summary.get("MOM", "").split(" (")[0].strip()
+        comments = summary.get("Comments", "")
+        self.winner = comments.split(" Won")[0].strip() if "Won" in comments else ""
 
 
-    # -------------------- PRINTING --------------------
+    # ---------------- PRINTING ----------------
 
     def printing_scorecard(self):
         for innings in self.innings_list:
             print("-" * 140)
-            print(f"{innings}\n")
+            print(f"{innings}:")
+            print()
 
             print("Batsmen:")
-            dfb = self.batsmen_list[self.batsmen_list['Innings Name'] == innings]
-            print(dfb.drop(columns=['Innings Number', 'Innings Name']).to_string(index=False))
+            batsmen_inn = self.batsmen_list[self.batsmen_list['Innings Name'] == innings]
+            if not batsmen_inn.empty:
+                df = batsmen_inn.drop(columns=['Innings Number', 'Innings Name']).copy()
+                print(df.to_string(index=False))
+            else:
+                print("(No data)")
             print()
 
             print("Bowlers:")
-            dfw = self.bowlers_info[self.bowlers_info['Innings Name'] == innings].copy()
-            dfw['Overs'] = dfw['Overs'].apply(lambda x: f"{x:.1f}")
-            print(dfw.drop(columns=['Innings Number', 'Innings Name']).to_string(index=False))
+            bowlers_inn = self.bowlers_info[self.bowlers_info['Innings Name'] == innings]
+            if not bowlers_inn.empty:
+                df = bowlers_inn.drop(columns=['Innings Number', 'Innings Name']).copy()
+                # Format Overs to show exactly one decimal place (e.g., 2.2, 4.0)
+                df['Overs'] = df['Overs'].apply(lambda x: f"{x:.1f}")
+                print(df.to_string(index=False))
+            else:
+                print("(No data)")
             print()
+
+        print("Catchers:")
+        print(self.catchers)
+        print()
+
+        print("Stumpings:")
+        print(self.stumpers)
+        print()
+
+        print("Main Run Outs:")
+        print(self.main_runouters)
+        print()
+
+        print("Secondary Run Outs:")
+        print(self.secondary_runouters)
+        print()
+
+        print("Bowled:")
+        print(self.bowled)
+        print()
+
+        print("LBW:")
+        print(self.lbw)
+        print()
+        print("-" * 140)
+        print()
 
         print("Catchers:", self.catchers)
         print("Stumpers:", self.stumpers)
@@ -636,6 +530,183 @@ class ScoreFromHTML:
         print("Winner:", self.winner)
         print("Man of the Match:", self.man_of_the_match)
 
-# assuming squads is already defined
-score = ScoreFromHTML(1855, squads)
-score.printing_scorecard()
+
+#score = Score(1856, squads)
+#score.printing_scorecard()
+
+# ---------------- SERIES CLASS ----------------
+
+class Series:
+    def __init__(self, competition_id: int, database_name: str):
+        self.competition_id = competition_id
+        self.database_name = database_name
+
+        self.match_objects = {}   # match_name -> Score
+        self.match_names = []
+        self.match_states = {}    # match_id -> {"is_final": bool}
+
+        self._dirty = False   # ✅ NEW: track if DB needs to be saved
+
+        # ---------------- LOAD DATABASE ----------------
+        try:
+            with open(self.database_name, "rb") as f:
+                payload = dill.load(f)
+                self.match_objects = payload.get("objects", {})
+                self.match_states = payload.get("states", {})
+        except Exception:
+            self.match_objects = {}
+            self.match_states = {}
+        self.match_names = list(self.match_objects.keys())
+
+        # ---------------- GET MATCHES ----------------
+        combined_sorted = self.match_id_generator()
+        attempt_limit = 3
+
+        # ---------------- MAIN LOOP ----------------
+        for match_id, match_type, match_name, status in combined_sorted:
+            print("Processing",match_id,match_type,match_name,status)
+
+            if match_name not in self.match_names:
+                self.match_names.append(match_name)
+
+            # ---------- NOT STARTED ----------
+            if status == 0:
+                continue
+
+            # ---------- FINISHED ----------
+            if status == 2:
+                if self.match_states.get(match_id, {}).get("is_final", False):
+                    continue   # ✅ already scraped final
+
+                print(f"Scraping finished match: {match_name}")
+                self._scrape_match(
+                    match_id,
+                    match_name,
+                    is_final=True,
+                    attempts=attempt_limit
+                )
+                time.sleep(5)
+                continue
+
+            # ---------- LIVE ----------
+            if status == 1:
+                print(f"\n[LIVE] Scraping match: {match_name}")
+                self._scrape_match(
+                    match_id,
+                    match_name,
+                    is_final=False,
+                    attempts=attempt_limit
+                )
+                time.sleep(10)
+
+        # ---------------- SAVE ONLY IF NEEDED ----------------
+        if self._dirty:   # ✅ NEW
+            with open(self.database_name, "wb") as f:
+                dill.dump({
+                    "objects": self.match_objects,
+                    "states": self.match_states
+                }, f)
+
+        print("\nLOADING SUCCESSFUL")
+        print("Matches stored:", len(self.match_objects))
+
+    # =====================================================
+    # Internal scraper
+    # =====================================================
+    def _scrape_match(self, match_id, match_name, is_final, attempts):
+
+        # ✅ HARD GUARD (MOST IMPORTANT FIX)
+        if (
+            match_name in self.match_objects
+            and self.match_states.get(match_id, {}).get("is_final", False)
+        ):
+            return
+
+        attempt = 1
+        while attempt <= attempts:
+            score = Score(match_id)
+            score.is_final = is_final
+
+            self.match_objects[match_name] = score
+            self.match_states[match_id] = {"is_final": is_final}
+            self._dirty = True   # ✅ mark DB dirty
+
+            print("Scraped:", match_name,"\n")
+            return
+
+            attempt += 1
+
+        print(f"[FAILED] {match_name}")
+
+    # =====================================================
+    # Match schedule + ordering (UNCHANGED)
+    # =====================================================
+    def match_id_generator(self):
+        BASE_URL = "https://ipl-stats-sports-mechanic.s3.ap-south-1.amazonaws.com/ipl/feeds"
+        url = f"{BASE_URL}/{self.competition_id}-matchschedule.js"
+
+        params = {"MatchSchedule": "_jqjsp"}
+        headers = {"User-Agent": "Mozilla/5.0"}
+
+        r = requests.get(url, params=params, headers=headers, timeout=20)
+        r.raise_for_status()
+
+        json_text = re.sub(r"^[^(]*\(|\);?$", "", r.text)
+        data = json.loads(json_text)
+
+        combined = []
+
+        for match in data.get("Matchsummary", []):
+            try:
+                match_id = match["MatchID"]
+                match_type = match["MatchOrder"]
+                match_name = match["MatchName"]
+                given_status = match["MatchStatus"]
+
+                winner = "yes" if "Won" in match.get("Comments", "") else "no"
+                current_bowler = match.get("CurrentBowlerName", "")
+                mom = match.get("MOM", "").strip()
+
+                if current_bowler == "":
+                    status = 0
+                elif mom or (winner == "no" and given_status == "Post"):
+                    status = 2
+                else:
+                    status = 1
+
+                if status == 0:
+                    continue
+
+                if " vs " in match_name:
+                    team1,team2 = match_name.split(' vs ')
+                    team1 = team_names_sf[team_names_ff.index(team1)]
+                    team2 = team_names_sf[team_names_ff.index(team2)]
+                    match_name = team1 + " vs " + team2
+
+                combined.append(
+                    (match_id, match_type, match_name, status)
+                )
+
+            except Exception:
+                continue
+
+        playoff_order = {
+            "Qualifier 1": 1000,
+            "Eliminator": 1001,
+            "Qualifier 2": 1002,
+            "Final": 1003
+        }
+
+        def sort_key(item):
+            _, match_type, _, _ = item
+            if match_type.startswith("Match"):
+                return int(match_type.split()[1])
+            return playoff_order.get(match_type, 9999)
+
+        return sorted(combined, key=sort_key)
+
+
+
+
+if __name__ == "__main__":
+    ipl2025 = Series(203,"ipl25.pkl")
