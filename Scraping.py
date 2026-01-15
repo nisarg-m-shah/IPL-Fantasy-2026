@@ -5,7 +5,10 @@ import pandas as pd
 from typing import Dict, List, Any
 import difflib
 from datetime import datetime
-import dill
+def load_dill():
+    import dill
+    return dill
+dill = load_dill()
 import time
 
 

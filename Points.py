@@ -1,4 +1,7 @@
-import dill
+def load_dill():
+    import dill
+    return dill
+dill = load_dill()
 from Scraping import Series, Score, find_full_name, names, roles
 import pandas as pd
 import time
