@@ -8,6 +8,7 @@ def run_output_pipeline():
     from collections import OrderedDict
     import json
     import numpy as np
+    import dill
     def convert_values(obj):
         """ Recursively convert DataFrame and NumPy objects to serializable formats """
         if isinstance(obj, pd.DataFrame):
