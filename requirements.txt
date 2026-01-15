@@ -1,0 +1,8 @@
+streamlit
+plotly
+matplotlib
+requests
+dill
+pandas
+bs4
+time
