@@ -1,4 +1,9 @@
 import streamlit as st
+import dill, plotly
+import streamlit as st
+
+st.write("dill:", dill.__version__)
+st.write("plotly:", plotly.__version__)
 import pandas as pd
 import plotly.express as px
 import plotly.graph_objects as go
@@ -8,6 +13,8 @@ import os
 from datetime import datetime, timedelta
 import time
 import matplotlib.pyplot as plt
+
+
 
 # Page configuration
 st.set_page_config(

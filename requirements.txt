@@ -3,5 +3,6 @@ plotly
 matplotlib
 requests
 dill
+openpyxl
 pandas
 bs4
