@@ -1,239 +1,238 @@
 import streamlit as st
 import pandas as pd
 import plotly.express as px
-import plotly.graph_objects as go
+import os
+import time
+from datetime import datetime
+from Output import run_output_pipeline
 
 # --- PAGE CONFIG ---
-st.set_page_config(page_title="CFC IPL Fantasy League", layout="wide")
+st.set_page_config(
+    page_title="CFC Fantasy League 2025",
+    page_icon="🏏",
+    layout="wide"
+)
 
-# --- CUSTOM CSS FOR IPL LOOK & FEEL ---
+# --- IPL FANTASY STYLING ---
 st.markdown("""
     <style>
-    @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap');
-    
-    html, body, [class*="css"] {
-        font-family: 'Roboto', sans-serif;
-        background-color: #060b26; /* Deep IPL Blue */
-        color: white;
-    }
+    @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Roboto:wght@300;400;700&display=swap');
     
     .stApp {
-        background: linear-gradient(160deg, #060b26 0%, #0a1a4a 100%);
+        background: linear-gradient(135deg, #060b26 0%, #0d1b44 100%);
+        color: white;
     }
 
-    /* Metric Cards */
+    .main-title {
+        font-family: 'Bebas Neue', cursive;
+        font-size: 3.5rem;
+        color: #efb920;
+        text-align: center;
+        text-shadow: 2px 2px #000;
+        margin-bottom: 20px;
+    }
+
+    /* Podium/Metric Cards */
     .metric-card {
         background: rgba(255, 255, 255, 0.05);
-        border-radius: 10px;
-        padding: 15px;
-        border-left: 5px solid #efb920; /* IPL Gold */
-        margin-bottom: 10px;
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        border-radius: 15px;
+        padding: 20px;
+        text-align: center;
+        border-bottom: 4px solid #efb920;
     }
 
-    /* Player Squad Cards */
+    /* Squad & Injury Styling */
     .player-row {
         background: rgba(255, 255, 255, 0.08);
         border-radius: 8px;
-        padding: 10px 15px;
-        margin: 5px 0px;
+        padding: 12px;
+        margin: 6px 0px;
         display: flex;
         justify-content: space-between;
         align-items: center;
+        border-left: 4px solid #efb920;
     }
     
     .injured {
-        background: rgba(0, 0, 0, 0.6) !important;
-        opacity: 0.5;
+        background: rgba(0, 0, 0, 0.5) !important;
+        opacity: 0.6;
         border-left: 4px solid #ff4b4b;
     }
     
     .replacement {
+        background: rgba(0, 242, 254, 0.1) !important;
         border-left: 4px solid #00f2fe;
     }
 
-    /* Sidebar Styling */
-    section[data-testid="stSidebar"] {
-        background-color: #03081a;
+    /* Tab Customization */
+    .stTabs [data-baseweb="tab-list"] { gap: 8px; }
+    .stTabs [data-baseweb="tab"] {
+        background-color: rgba(255,255,255,0.05);
+        color: white !important;
+        border-radius: 10px 10px 0 0;
+        padding: 10px 20px;
     }
-    
-    /* Tables */
-    .styled-table {
-        width: 100%;
-        border-collapse: collapse;
-        background-color: rgba(255,255,255,0.02);
+    .stTabs [aria-selected="true"] {
+        background-color: #efb920 !important;
+        color: #060b26 !important;
+        font-weight: bold;
     }
     </style>
 """, unsafe_allow_html=True)
 
-# --- DATA LOADING ---
-@st.cache_data
+# --- UPDATE LOGIC ---
+TIMESTAMP_FILE = ".last_update_timestamp"
+UPDATE_INTERVAL = 300 
+
+def should_update():
+    if not os.path.exists(TIMESTAMP_FILE): return True
+    with open(TIMESTAMP_FILE, 'r') as f:
+        last_update = float(f.read().strip())
+    return (time.time() - last_update) >= UPDATE_INTERVAL
+
+def save_timestamp():
+    with open(TIMESTAMP_FILE, 'w') as f:
+        f.write(str(time.time()))
+
+# --- DATA LOADING (FIXED SERIALIZATION) ---
+@st.cache_data(ttl=300)
 def load_all_data():
     file_path = "CFC Fantasy League 2025.xlsx"
-    xls = pd.ExcelFile(file_path)
-    
-    # Core Sheets
-    team_points = pd.read_excel(xls, "Team Final Points", index_col=0)
-    player_points = pd.read_excel(xls, "Player Final Points", index_col=0)
-    
-    # Dynamically find Match Sheets
-    match_names = [s.replace(" - CFC Points", "") for s in xls.sheet_names if " - CFC Points" in s]
-    
-    data = {
+    if not os.path.exists(file_path):
+        return None
+        
+    with pd.ExcelFile(file_path) as xls:
+        team_points = pd.read_excel(xls, "Team Final Points", index_col=0)
+        player_points = pd.read_excel(xls, "Player Final Points", index_col=0)
+        
+        match_names = [s.replace(" - CFC Points", "") for s in xls.sheet_names if " - CFC Points" in s]
+        
+        # Extract all match DataFrames into memory to avoid serializing the xls handle
+        match_details = {}
+        for sheet in xls.sheet_names:
+            if " - CFC Points" in sheet or " - Points Breakdown" in sheet:
+                match_details[sheet] = pd.read_excel(xls, sheet, index_col=0)
+                
+    return {
         "teams": team_points,
         "players": player_points,
-        "matches": match_names,
-        "xls": xls
+        "match_names": match_names,
+        "match_details": match_details
     }
-    return data
 
-try:
-    data_store = load_all_data()
-except Exception as e:
-    st.error(f"Error loading Excel file: {e}")
-    st.stop()
-
-# --- SQUAD LOGIC (INJURY MAPPING) ---
-# Define your injury replacements here
+# --- INJURY MAPPING ---
 INJURY_MAP = {
     "Ayush Mhatre": "Ruturaj Gaikwad",
-    "Mohammed Shami": "Lockie Ferguson",
-    # Add more: "Injured Name": "Replacement Name"
+    "Mohammed Shami": "Lockie Ferguson"
 }
 
-# --- SIDEBAR NAVIGATION ---
-st.sidebar.image("https://www.iplt20.com/assets/images/IPL-logo-new-old.png", width=100)
-st.sidebar.title("Navigation")
-page = st.sidebar.radio("Go to", ["Points Table", "Squad View", "Match Breakdown", "Player Analytics"])
+# --- MAIN APP ---
+def main():
+    st.markdown('<h1 class="main-title">IPL FANTASY 2025</h1>', unsafe_allow_html=True)
 
-# --- PAGE 1: POINTS TABLE ---
-if page == "Points Table":
-    st.title("🏆 Leaderboard")
-    df = data_store["teams"].copy()
-    
-    # Calculate Rank
-    df = df.sort_values(by="Total Points", ascending=False)
-    df['Rank'] = range(1, len(df) + 1)
-    
-    cols = st.columns(3)
-    top_3 = df.head(3)
-    for i, (name, row) in enumerate(top_3.iterrows()):
-        with cols[i]:
-            st.markdown(f"""
-                <div class="metric-card">
-                    <p style="color:#efb920; margin:0;">Rank {i+1}</p>
-                    <h3 style="margin:0;">{name}</h3>
-                    <h2 style="margin:0; color:#00f2fe;">{row['Total Points']:,} pts</h2>
-                </div>
-            """, unsafe_allow_html=True)
+    # Auto-Update Check
+    if should_update():
+        with st.spinner("🔄 Auto-updating scores..."):
+            run_output_pipeline()
+            save_timestamp()
+            st.cache_data.clear()
+            st.rerun()
 
-    st.markdown("### Full Standings")
-    display_cols = ['Rank', 'Total Points', 'Orange Cap', 'Purple Cap']
-    st.dataframe(df[display_cols], use_container_width=True)
+    data = load_all_data()
 
-# --- PAGE 2: SQUAD VIEW (WITH INJURY LOGIC) ---
-elif page == "Squad View":
-    st.title("👥 Team Squads")
-    selected_team = st.selectbox("Select Fantasy Team", data_store["teams"].index)
-    
-    st.markdown(f"### Squad Analysis: {selected_team}")
-    
-    # Logic to aggregate player points from ALL "Match - CFC Points" sheets
-    # This reflects Booster and C/VC multipliers
-    squad_points = {}
-    match_sheets = [s for s in data_store["xls"].sheet_names if " - CFC Points" in s]
-    
-    for sheet in match_sheets:
-        df_match = pd.read_excel(data_store["xls"], sheet, index_col=0)
-        if selected_team in df_match.index:
-            row = df_match.loc[selected_team]
-            for player, pts in row.items():
-                if player not in ["Total Points", "Booster"] and pd.notna(pts) and pts != 0:
-                    squad_points[player] = squad_points.get(player, 0) + pts
+    if data is None:
+        st.warning("Excel file not found. Running initial scrape...")
+        run_output_pipeline()
+        st.rerun()
 
-    # Display Squad with Injury Logic
-    players_processed = set()
-    
-    col1, col2 = st.columns(2)
-    
-    all_players = sorted(squad_points.keys())
-    
-    for i, player in enumerate(all_players):
-        if player in players_processed: continue
+    # Sidebar
+    st.sidebar.image("https://www.iplt20.com/assets/images/IPL-logo-new-old.png", width=120)
+    if st.sidebar.button("🔄 Force Refresh Data"):
+        run_output_pipeline()
+        save_timestamp()
+        st.cache_data.clear()
+        st.rerun()
+
+    tab_points, tab_squad, tab_match = st.tabs(["🏆 LEADERBOARD", "🛡️ TEAM SQUADS", "🏏 MATCH CENTER"])
+
+    # 1. POINTS TABLE
+    with tab_points:
+        df_teams = data["teams"].sort_values(by="Total Points", ascending=False)
         
-        target_col = col1 if i % 2 == 0 else col2
-        
-        with target_col:
-            if player in INJURY_MAP:
-                repl = INJURY_MAP[player]
-                pts_orig = squad_points.get(player, 0)
-                pts_repl = squad_points.get(repl, 0)
-                
+        # Podium
+        st.markdown("### Season Rankings")
+        cols = st.columns(3)
+        for i, (name, row) in enumerate(df_teams.head(3).iterrows()):
+            with cols[i]:
                 st.markdown(f"""
-                    <div style="display: flex; gap: 5px;">
-                        <div class="player-row injured" style="flex:1;">
-                            <span>❌ {player}</span>
-                            <span>{pts_orig:,.0f}</span>
-                        </div>
-                        <div class="player-row replacement" style="flex:1;">
-                            <span>✅ {repl}</span>
-                            <span>{pts_repl:,.0f}</span>
-                        </div>
+                    <div class="metric-card">
+                        <div style="font-size:1.5rem;">{'🥇' if i==0 else '🥈' if i==1 else '🥉'}</div>
+                        <div style="color:#efb920; font-weight:bold;">{name}</div>
+                        <div style="font-size:2rem; font-weight:bold;">{int(row['Total Points'])}</div>
                     </div>
                 """, unsafe_allow_html=True)
-                players_processed.add(player)
-                players_processed.add(repl)
-            else:
-                pts = squad_points.get(player, 0)
-                st.markdown(f"""
-                    <div class="player-row">
-                        <span>{player}</span>
-                        <span style="color:#efb920; font-weight:bold;">{pts:,.0f} pts</span>
-                    </div>
-                """, unsafe_allow_html=True)
-                players_processed.add(player)
-
-# --- PAGE 3: MATCH BREAKDOWN ---
-elif page == "Match Breakdown":
-    st.title("🏏 Match Analysis")
-    match_choice = st.selectbox("Select Match", data_store["matches"])
-    
-    tab1, tab2 = st.tabs(["Fantasy Team Breakdown", "Player Stats (This Match)"])
-    
-    with tab1:
-        df_cfc = pd.read_excel(data_store["xls"], f"{match_choice} - CFC Points", index_col=0)
-        st.markdown(f"#### Points earned by each manager in {match_choice}")
-        st.dataframe(df_cfc[['Total Points', 'Booster']].sort_values(by="Total Points", ascending=False))
         
-        fig = px.bar(df_cfc, x=df_cfc.index, y="Total Points", color="Total Points", 
-                     title="Total Points per Fantasy Team", template="plotly_dark")
-        st.plotly_chart(fig, use_container_width=True)
+        st.dataframe(df_teams.style.background_gradient(subset=['Total Points'], cmap='YlOrRd'), use_container_width=True)
 
-    with tab2:
-        df_pb = pd.read_excel(data_store["xls"], f"{match_choice} - Points Breakdown", index_col=0)
-        st.markdown("#### Detailed Player Points")
-        st.dataframe(df_pb.sort_values(by="Player Points", ascending=False), use_container_width=True)
+    # 2. SQUAD VIEW (Calculates points from CFC tabs to include Boosters)
+    with tab_squad:
+        selected_manager = st.selectbox("Select Manager", df_teams.index)
+        
+        # Aggregate points from all Match CFC sheets for this specific manager
+        squad_agg = {}
+        for sheet_name, df_match in data["match_details"].items():
+            if " - CFC Points" in sheet_name and selected_manager in df_match.index:
+                row = df_match.loc[selected_manager]
+                for p_name, p_pts in row.items():
+                    if p_name not in ["Total Points", "Booster"] and pd.notna(p_pts):
+                        squad_agg[p_name] = squad_agg.get(p_name, 0) + p_pts
+        
+        st.markdown(f"#### {selected_manager}'s Squad (Total Contribution)")
+        
+        processed = set()
+        c1, c2 = st.columns(2)
+        squad_list = sorted(squad_agg.items(), key=lambda x: x[1], reverse=True)
 
-# --- PAGE 4: PLAYER ANALYTICS ---
-elif page == "Player Analytics":
-    st.title("📈 Player Season Stats")
-    
-    df_players = data_store["players"].copy()
-    
-    # Top Performers
-    st.markdown("### Top 10 Point Scorers")
-    top_10 = df_players.nlargest(10, 'Total Points')
-    
-    fig = px.bar(top_10, x="Total Points", y=top_10.index, orientation='h',
-                 color="Total Points", template="plotly_dark", color_continuous_scale="Viridis")
-    st.plotly_chart(fig, use_container_width=True)
-    
-    st.markdown("### Search Player History")
-    p_search = st.selectbox("Select Player", df_players.index)
-    
-    p_data = df_players.loc[p_search]
-    # Filter out non-match columns for the trend
-    match_cols = [c for c in df_players.columns if " vs " in c or c in ["Final", "Qualifier 1", "Qualifier 2", "Eliminator"]]
-    trend_data = p_data[match_cols].fillna(0)
-    
-    st.line_chart(trend_data)
-    st.write(f"**Total Points:** {p_data['Total Points']}")
+        for i, (player, pts) in enumerate(squad_list):
+            if player in processed: continue
+            col = c1 if (i % 2 == 0) else c2
+            
+            with col:
+                if player in INJURY_MAP:
+                    repl = INJURY_MAP[player]
+                    pts_repl = squad_agg.get(repl, 0)
+                    st.markdown(f"""
+                        <div style="display:flex; gap:10px;">
+                            <div class="player-row injured" style="flex:1;"><span>❌ {player}</span><span>{int(pts)}</span></div>
+                            <div class="player-row replacement" style="flex:1;"><span>✅ {repl}</span><span>{int(pts_repl)}</span></div>
+                        </div>
+                    """, unsafe_allow_html=True)
+                    processed.add(player); processed.add(repl)
+                else:
+                    st.markdown(f"""
+                        <div class="player-row"><span>{player}</span><span style="color:#efb920;">{int(pts)}</span></div>
+                    """, unsafe_allow_html=True)
+                    processed.add(player)
+
+    # 3. MATCH CENTER
+    with tab_match:
+        m_name = st.selectbox("Select Match Breakdown", data["match_names"])
+        
+        c_cfc = f"{m_name} - CFC Points"
+        c_pb = f"{m_name} - Points Breakdown"
+        
+        col_left, col_right = st.columns([1, 2])
+        
+        with col_left:
+            st.markdown("##### Manager Performance")
+            if c_cfc in data["match_details"]:
+                st.dataframe(data["match_details"][c_cfc][['Total Points', 'Booster']])
+        
+        with col_right:
+            st.markdown("##### Player Points Detail")
+            if c_pb in data["match_details"]:
+                st.dataframe(data["match_details"][c_pb][['Player Points', 'Role', 'Player Batting Points', 'Player Bowling Points']])
+
+if __name__ == "__main__":
+    main()
