@@ -1,8 +1,7 @@
 import dill
-from Scraping import Series,Score,find_full_name,match_number_generator
+from Scraping import Series, Score, find_full_name, names, roles
 import pandas as pd
 import time
-import re
 
 names = ['Ruturaj Gaikwad', 'Andre Siddarth C', 'Shaik Rasheed', 'Rahul Tripathi', 'Ayush Mhatre', 'Dewald Brevis', 'Shivam Dube', 'Rachin Ravindra', 'Deepak Hooda', 'Vijay Shankar', 'Ramakrishna Ghosh', 'Ravindra Jadeja', 'Anshul Kamboj', 'Jamie Overton', 'Sam Curran', 'Ravichandran Ashwin', 'Devon Conway', 'MS Dhoni', 'Vansh Bedi', 'Urvil Patel', 'Kamlesh Nagarkoti', 'Shreyas Gopal', 'Matheesha Pathirana', 'Mukesh Choudhary', 'Nathan Ellis', 'Noor Ahmad', 'Khaleel Ahmed', 'Vaibhav Suryavanshi', 'Shimron Hetmyer', 'Yashasvi Jaiswal', 'Shubham Dubey', 'Riyan Parag', 'Wanindu Hasaranga', 'Sanju Samson', 'Dhruv Jurel', 'Kunal Singh Rathore', 'Lhuan-dre Pretorius', 'Yudhvir Singh Charak', 'Tushar Deshpande', 'Kumar Kartikeya', 'Akash Madhwal', 'Kwena Maphaka', 'Maheesh Theekshana', 'Fazalhaq Farooqi', 'Ashok Sharma', 'Jofra Archer', 'Nandre Burger', 'Manish Pandey', 'Ajinkya Rahane', 'Rinku Singh', 'Angkrish Raghuvanshi', 'Anukul Roy', 'Ramandeep Singh', 'Venkatesh Iyer', 'Moeen Ali', 'Sunil Narine', 'Andre Russell', 'Quinton de Kock', 'Rahmanullah Gurbaz', 'Luvnith Sisodia', 'Varun Chakaravarthy', 'Mayank Markande', 'Vaibhav Arora', 'Harshit Rana', 'Anrich Nortje', 'Spencer Johnson', 'Chetan Sakariya', 'Shivam Shukla', 'Atharva Taide', 'Travis Head', 'Abhinav Manohar', 'Sachin Baby', 'Aniket Verma', 'Nitish Kumar Reddy', 'Abhishek Sharma', 'Kamindu Mendis', 'Wiaan Mulder', 'Harsh Dubey', 'Heinrich Klaasen', 'Ishan Kishan', 'Zeeshan Ansari', 'Pat Cummins', 'Mohammed Shami', 'Harshal Patel', 'Rahul Chahar', 'Simarjeet Singh', 'Eshan Malinga', 'Jaydev Unadkat', 'Virat Kohli', 'Rajat Patidar', 'Swastik Chikara', 'Tim David', 'Mayank Agarwal', 'Krunal Pandya', 'Liam Livingstone', 'Manoj Bhandage', 'Romario Shepherd', 'Swapnil Singh', 'Mohit Rathee', 'Philip Salt', 'Jitesh Sharma', 'Tim Seifert', 'Josh Hazlewood', 'Bhuvneshwar Kumar', 'Rasikh Dar Salam', 'Suyash Sharma', 'Yash Dayal', 'Nuwan Thushara', 'Abhinandan Singh', 'Blessing Muzarabani', 'Faf du Plessis', 'Karun Nair', 'Sameer Rizvi', 'Sediqullah Atal', 'Ashutosh Sharma', 'Tripurana Vijay', 'Axar Patel', 'Darshan Nalkande', 'Ajay Jadav Mandal', 'Manvanth Kumar L', 'Madhav Tiwari', 'Tristan Stubbs', 'Abishek Porel', 'Donovan Ferreira', 'KL Rahul', 'Vipraj Nigam', 'Kuldeep Yadav', 'Dushmantha Chameera', 'Mohit Sharma', 'T Natarajan', 'Mukesh Kumar', 'Mustafizur Rahman', 'Nehal Wadhera', 'Harnoor Singh', 'Shreyas Iyer', 'Pyla Avinash', 'Priyansh Arya', 'Musheer Khan', 'Marcus Stoinis', 'Aaron Hardie', 'Suryansh Shedge', 'Shashank Singh', 'Mitchell Owen', 'Praveen Dubey', 'Azmatullah Omarzai', 'Prabhsimran Singh', 'Josh Inglis', 'Vishnu Vinod', 'Harpreet Brar', 'Arshdeep Singh', 'Yuzvendra Chahal', 'Vijaykumar Vyshak', 'Kuldeep Sen', 'Yash Thakur', 'Xavier Bartlett', 'Kyle Jamieson', 'Rohit Sharma', 'Suryakumar Yadav', 'Tilak Varma', 'Naman Dhir', 'Bevon Jacobs', 'Hardik Pandya', 'Raj Bawa', 'Charith Asalanka', 'Mitchell Santner', 'Arjun Tendulkar', 'Krishnan Shrijith', 'Robin Minz', 'Jonny Bairstow', 'Jasprit Bumrah', 'Ashwani Kumar', 'Reece Topley', 'Karn Sharma', 'Trent Boult', 'Satyanarayana Raju', 'Deepak Chahar', 'Mujeeb Ur Rahman', 'Raghu Sharma', 'Richard Gleeson', 'Sai Sudharsan', 'Shubman Gill', 'Shahrukh Khan', 'Rahul Tewatia', 'Nishant Sindhu', 'Sherfane Rutherford', 'Mahipal Lomror', 'Dasun Shanaka', 'Rashid Khan', 'Ravisrinivasan Sai Kishore', 'Arshad Khan', 'Jayant Yadav', 'Karim Janat', 'Washington Sundar', 'Kumar Kushagra', 'Anuj Rawat', 'Kusal Mendis', 'Gerald Coetzee', 'Manav Suthar', 'Gurnoor Brar', 'Ishant Sharma', 'Kulwant Khejroliya', 'Prasidh Krishna', 'Mohammed Siraj', 'Himmat Singh', 'David Miller', 'Aiden Markram', 'Ayush Badoni', 'Mitchell Marsh', 'Abdul Samad', 'Arshin Kulkarni', 'Yuvraj Chaudhary', 'Shahbaz Ahmed', 'RS Hangargekar', 'Shardul Thakur', 'Matthew Breetzke', 'Nicholas Pooran', 'Aryan Juyal', 'Rishabh Pant', 'Ravi Bishnoi', 'Akash Deep', 'Manimaran Siddharth', 'Shamar Joseph', 'Avesh Khan', 'Prince Yadav', 'Akash Maharaj Singh', 'Digvesh Singh Rathi', 'William ORourke']
 roles = ['BAT', 'BAT', 'BAT', 'BAT', 'BAT', 'BAT', 'AR', 'AR', 'AR', 'AR', 'AR', 'AR', 'AR', 'AR', 'AR', 'AR', 'WK', 'WK', 'WK', 'WK', 'BOWL', 'BOWL', 'BOWL', 'BOWL', 'BOWL', 'BOWL', 'BOWL', 'BAT', 'BAT', 'BAT', 'BAT', 'AR', 'AR', 'WK', 'WK', 'WK', 'WK', 'BOWL', 'BOWL', 'BOWL', 'BOWL', 'BOWL', 'BOWL', 'BOWL', 'BOWL', 'BOWL', 'BOWL', 'BAT', 'BAT', 'BAT', 'BAT', 'AR', 'AR', 'AR', 'AR', 'AR', 'AR', 'WK', 'WK', 'WK', 'BOWL', 'BOWL', 'BOWL', 'BOWL', 'BOWL', 'BOWL', 'BOWL', 'BOWL', 'BAT', 'BAT', 'BAT', 'BAT', 'BAT', 'AR', 'AR', 'AR', 'AR', 'AR', 'WK', 'WK', 'BOWL', 'BOWL', 'BOWL', 'BOWL', 'BOWL', 'BOWL', 'BOWL', 'BOWL', 'BAT', 'BAT', 'BAT', 'BAT', 'BAT', 'AR', 'AR', 'AR', 'AR', 'AR', 'AR', 'WK', 'WK', 'WK', 'BOWL', 'BOWL', 'BOWL', 'BOWL', 'BOWL', 'BOWL', 'BOWL', 'BOWL', 'BAT', 'BAT', 'BAT', 'BAT', 'AR', 'AR', 'AR', 'AR', 'AR', 'AR', 'AR', 'WK', 'WK', 'WK', 'WK', 'BOWL', 'BOWL', 'BOWL', 'BOWL', 'BOWL', 'BOWL', 'BOWL', 'BAT', 'BAT', 'BAT', 'BAT', 'BAT', 'AR', 'AR', 'AR', 'AR', 'AR', 'AR', 'AR', 'AR', 'WK', 'WK', 'WK', 'BOWL', 'BOWL', 'BOWL', 'BOWL', 'BOWL', 'BOWL', 'BOWL', 'BOWL', 'BAT', 'BAT', 'BAT', 'BAT', 'AR', 'AR', 'AR', 'AR', 'AR', 'AR', 'WK', 'WK', 'WK', 'BOWL', 'BOWL', 'BOWL', 'BOWL', 'BOWL', 'BOWL', 'BOWL', 'BOWL', 'BOWL', 'BOWL', 'BAT', 'BAT', 'AR', 'AR', 'AR', 'AR', 'AR', 'AR', 'AR', 'AR', 'AR', 'AR', 'AR', 'AR', 'WK', 'WK', 'WK', 'BOWL', 'BOWL', 'BOWL', 'BOWL', 'BOWL', 'BOWL', 'BOWL', 'BAT', 'BAT', 'BAT', 'AR', 'AR', 'AR', 'AR', 'AR', 'AR', 'AR', 'AR', 'WK', 'WK', 'WK', 'WK', 'BOWL', 'BOWL', 'BOWL', 'BOWL', 'BOWL', 'BOWL', 'BOWL', 'BOWL', 'BOWL']
@@ -216,14 +215,25 @@ class Player:
         return role,player_mompoints,catches,stumpings,main_runouts,secondary_runouts,catching_points,stumping_points,direct_runout_points,second_runout_points,maidens, wickets, dots, economy, bowled_wickets, lbw_wickets, maidens_points, wicket_points, dot_points, economy_points, bowling_milestone_points, bowled_wickets_points, lbw_wickets_points, runs, fours, sixes, strike_rate, runs_points, fours_points, sixes_points, duck_points, strike_rate_points, batting_milestone_points,player_points,player_batpoints,player_bowlpoints,player_fieldpoints
 
 class Team:
-    def __init__(self,team,match_object,booster):
+    def __init__(self, team, match_object, match_name, booster):  # Added match_name parameter
         self.team = team
         self.match_object = match_object
-        match_number = match_number_generator(self.match_object.url)
+        self.match_name = match_name  # Store match name
         self.booster = booster
-        full_player_list = self.match_object.full_player_list
+        
+        # Extract match number from match_name (e.g., "Match 5" -> 5)
+        match_number = 0
+        if "Match" in match_name:
+            try:
+                match_number = int(match_name.split("Match")[1].strip())
+            except:
+                match_number = 0
+        elif match_name in ["Qualifier 1", "Eliminator", "Qualifier 2", "Final"]:
+            match_number = 100  # Treat playoffs as high match numbers
+        
         self.points_list = {}
         self.total_points = 0
+        
         for player_number in range(len(team)):
             player_placeholder = team[player_number]
             multiple_players = []
@@ -231,27 +241,25 @@ class Team:
                 multiple_players.append(player_placeholder)
             else:
                 multiple_players = player_placeholder
+            
             for player in multiple_players:
-                player_name = find_full_name(full_player_list,player)
-                #print("Team Name After:",player_name)
-
+                player_name = find_full_name(names, player)
+                
                 if player_name == None:
-                    #print(player)
                     player_points = 0
                 else:
                     player = player_name   
-                    player_object = Player(player,self.match_object,self.booster)
+                    player_object = Player(player, self.match_object, self.booster)
                     player_points = player_object.player_points
 
                     if player_number == 0:
                         if "Triple" in self.booster:
                             player_points *= 3
-                            #self.points_list['Player Points'] = player_points
                         else:
                             player_points *= 2
                     elif player_number == 1:
                         player_points *= 1.5
-                    elif player_number == 2 and int(match_number) >35:  
+                    elif player_number == 2 and match_number > 35:  
                         player_points *= 3     
 
                     if "Bat" in self.booster and (player_object.role == 'BAT' or player_object.role == "WK"):
@@ -263,170 +271,142 @@ class Team:
 
                 self.points_list[player] = player_points
                 self.total_points += player_points
+        
         if self.total_points.is_integer():
             self.total_points = int(self.total_points)
-        points_entry = {'Total Points':self.total_points}
+        
+        points_entry = {'Total Points': self.total_points}
         self.points_list = {**points_entry, **self.points_list}
 
+
 class Match:
-    def __init__(self, teams, match_object, boosters):
+    def __init__(self, teams, match_object, match_name, boosters):  # Added match_name parameter
         self.teams = teams
         self.boosters = boosters
         self.match_object = match_object
+        self.match_name = match_name
         match_points_breakdown = {}
-        url = match_object.url
 
         for participant in self.teams.keys():
             team = teams[participant]
             try:
-                booster = boosters[participant][url]
+                booster = boosters[participant][match_name]  # Use match_name instead of url
             except:
                 booster = "None"
 
-            team_object = Team(team, self.match_object, booster)
+            team_object = Team(team, self.match_object, match_name, booster)  # Pass match_name
             points_list = team_object.points_list
             total_points = team_object.total_points
 
-            # Store points in a separate dict to preserve order
             player_points_list = {}
             for player in points_list.keys():
                 player_points_list[player] = points_list[player]
 
-            # Create an ordered dictionary with Total Points first, then Booster, then players
             ordered_player_points = {
                 "Total Points": total_points,
-                "Booster": boosters[participant].get(url, "None")  # Get booster or "None" if not present
+                "Booster": boosters[participant].get(match_name, "None")  # Use match_name
             }
-            ordered_player_points.update(player_points_list)  # Append player points
+            ordered_player_points.update(player_points_list)
 
             match_points_breakdown[participant] = ordered_player_points
 
-        # Convert to DataFrame with proper column ordering
         self.match_points_breakdown = pd.DataFrame.from_dict(
             match_points_breakdown, orient='index'
         ).fillna(0).infer_objects(copy=False)
 
-        # Ensure column order
         columns_order = ["Total Points", "Booster"] + [
             col for col in self.match_points_breakdown.columns if col not in ["Total Points", "Booster"]
         ]
         self.match_points_breakdown = self.match_points_breakdown[columns_order]
 
-        # Process general player points
-        player_list = self.match_object.player_list
+        # Generate general player points
+        # Get all unique players from both innings
+        all_players = set()
+        all_players.update(self.match_object.batsmen_list['Batsman'].values)
+        all_players.update(self.match_object.bowlers_info['Bowler'].values)
+        
         general_player_points_list = {}
-        for team in player_list.keys():
-            for player in player_list[team]:   
-                #print("Match before find full name",player)
-                if "Nitish" in player and "Reddy" in player:
-                    player_object = Player("Nitish Reddy", self.match_object, "")
-                else:
-                    player_object = Player(player, self.match_object, "")
-                points_list = player_object.points_list
-                if "Mujeeb" not in player:
-                    player = find_full_name(names,player)
-                if player == None:
-                    continue
-                #print(points_list)
-                general_player_points_list[player] = points_list
-                #print("Match after find full name",player)
+        for player in all_players:
+            if "Nitish" in player and "Reddy" in player:
+                player_object = Player("Nitish Kumar Reddy", self.match_object, "")
+            else:
+                player_object = Player(player, self.match_object, "")
+            points_list = player_object.points_list
+            
+            if "Mujeeb" not in player:
+                player = find_full_name(names, player)
+            if player == None:
+                continue
+            
+            general_player_points_list[player] = points_list
 
         self.general_player_points_list = pd.DataFrame.from_dict(
             general_player_points_list, orient='index'
         ).fillna(0).infer_objects(copy=False)
+
+
 if __name__ == '__main__':
     # Load the object (class definition is included!)
-    with open("ipl2025matches.pkl", "rb") as file:
-        ipl2025 = dill.load(file)
+    with open("ipl25.pkl", "rb") as f:
+        ipl2025 = dill.load(f)
+        match_objects = ipl2025.get("objects", {})
+        match_states = ipl2025.get("states", {})
 
     begin = time.time()
-    match_objects = ipl2025
 
-    # print((match_objects))
-    # for match_link in match_objects.keys():
-    #     match_object = match_objects[match_link]
-    #     print(match_object.url)
-    #     if match_link == match_object.url and match_link == "https://www.espncricinfo.com/series/ipl-2025-1449924/sunrisers-hyderabad-vs-mumbai-indians-41st-match-1473478/full-scorecard":
-    #         print("AHHHHHH")
-    #         match_object.printing_scorecard()
-
-    
-
-    # url = "https://www.espncricinfo.com/series/ipl-2025-1449924/sunrisers-hyderabad-vs-rajasthan-royals-2nd-match-1473439/full-scorecard"             
-    # cricbuzz_page_link = "https://www.cricbuzz.com/cricket-series/9237/indian-premier-league-2025/matches" 
-
-    # print("Attempting to scrape:",url)
-    # attempt = 1
-    # while attempt<=5:
-    #     print("Attempt",attempt)
-    #     try:
-    #         match_object = Score(url,cricbuzz_page_link)
-    #         print("Scraping Successful")
-    #         break
-    #     except:
-    #         attempt+=1
-    #         continue
-    # if attempt == 6:
-    #     print("Unsuccessful")
-    #urlll = "https://www.espncricinfo.com/series/ipl-2025-1449924/kolkata-knight-riders-vs-royal-challengers-bengaluru-1st-match-1473438/full-scorecard"
-    #urlll = "https://www.espncricinfo.com/series/ipl-2025-1449924/sunrisers-hyderabad-vs-rajasthan-royals-2nd-match-1473439/full-scorecard"
-    #urlll = "https://www.espncricinfo.com/series/ipl-2025-1449924/kolkata-knight-riders-vs-gujarat-titans-39th-match-1473476/full-scorecard"
-    urlll = "https://www.espncricinfo.com/series/ipl-2025-1449924/rajasthan-royals-vs-mumbai-indians-50th-match-1473487/full-scorecard"
-    match_object = match_objects[urlll]
+    match_name = "RCB vs PBKS"
+    match_object = match_objects[match_name]
 
     # match_object = match_objects[60]
     match_object.printing_scorecard()
-    teams = {
-        "Desi Destroyers": [
-            "Suryakumar Yadav",
-            "Shubman Gill",
-            "Hardik Pandya",
-            "Axar Patel",
-            "Sanju Samson",
-            "Jasprit Bumrah",
-            "Kuldeep Yadav",
-            "Washington Sundar",
-            "Aiden Markram",
-            "Quinton de Kock",
-            "David Miller",
-            "Marco Jansen",
-            "Anrich Nortje",
-            "Keshav Maharaj",
-            "Tristan Stubbs",
-            "Lungi Ngidi"
-        ],
+    teams = {'Gujju Gang':['Varun Chakaravarthy','Travis Head','Prasidh Krishna','Harshit Rana','Rahul Chahar','Mukesh Choudhary','Ishant Sharma','Jaydev Unadkat','Mukesh Kumar','Abdul Samad','Riyan Parag','Khaleel Ahmed','Avesh Khan','Faf du Plessis','Arjun Tendulkar','Mohammed Shami','Shivam Dube','Lockie Ferguson','Josh Hazlewood','Prabhsimran Singh','Rishabh Pant','Corbin Bosch','Mohammed Siraj','Marcus Stoinis','Harpreet Brar','Rahmanullah Gurbaz','Rashid Khan','Washington Sundar'],
+            'Hilarious Hooligans':['Yashasvi Jaiswal','Axar Patel','Hardik Pandya','Heinrich Klaasen','Rinku Singh','Nehal Wadhera','Romario Shepherd','Manav Suthar','Vijaykumar Vyshak','Himmat Singh','Ayush Badoni','Liam Livingstone','Nathan Ellis','Moeen Ali','Karn Sharma','Shimron Hetmyer','Mayank Yadav','Abhinav Manohar','Ashutosh Sharma','Rachin Ravindra','Shahrukh Khan','Anrich Nortje','Mayank Markande','Yuzvendra Chahal','Tushar Deshpande','Noor Ahmad','Kagiso Rabada','Marco Jansen'],
+            'Tormented Titans':['Virat Kohli','Suryakumar Yadav','Kuldeep Yadav','Abhishek Sharma','Jitesh Sharma','Harnoor Singh','Bhuvneshwar Kumar','Abishek Porel','Angkrish Raghuvanshi','Dhruv Jurel','David Miller','Anuj Rawat','Josh Inglis','Kumar Kartikeya','Akash Deep','Rahul Tewatia','Ramandeep Singh','Sherfane Rutherford','Glenn Maxwell','Sandeep Sharma','Shamar Joseph','Pat Cummins','Quinton de Kock','Ravichandran Ashwin'],
+            'La Furia Roja':['Shreyas Iyer','Sai Sudharsan','Phil Salt','Jasprit Bumrah','Swastik Chikara','Rajvardhan Hangargekar','Manoj Bhandage','Nitish Rana','Rasikh Dar Salam','Deepak Chahar','MS Dhoni','Aaron Hardie','Priyansh Arya','Sameer Rizvi','Mitchell Santner','Manish Pandey','Suyash Sharma','Kamlesh Nagarkoti','Will Jacks','Azmatullah Omarzai','Adam Zampa','Spencer Johnson','Jamie Overton','Shashank Singh','Rovman Powell','Suryansh Shedge','Maheesh Theekshana'],
+            'Supa Jinx Strikas':['Shubman Gill',['Ayush Mhatre','Ruturaj Gaikwad'],'Sai Kishore','Nitish Reddy','Mohit Sharma','Raj Bawa','Ishan Kishan','Mitchell Marsh','Karim Janat','Yash Dayal','Bevon Jacobs','Ryan Rickelton','Rajat Patidar','Tristan Stubbs','Gerald Coetzee','Glenn Phillips','Tim David','Ravi Bishnoi','Donovan Ferreira','Jayant Yadav','Trent Boult','Jofra Archer','Akash Madhwal','Darshan Nalkande','Kwena Maphaka'],
+            'Raging Raptors':['KL Rahul','Venkatesh Iyer','Mitchell Starc','Arshdeep Singh','Shardul Thakur','Ravindra Jadeja','Aiden Markram','Sachin Baby','Dushmantha Chameera','Naman Dhir','Karun Nair','Wanindu Hasaranga','Arshad Khan','Devdutt Padikkal','Robin Minz','Shahbaz Ahmed','Mohsin Khan','Krunal Pandya','Sanju Samson','Jos Buttler','Atharva Taide','Musheer Khan','Devon Conway'],
+            'The Travelling Bankers':['Sunil Narine','Andre Russell','Nicholas Pooran','Harshal Patel','Umran Malik','Chetan Sakariya','T Natarajan','Ajinkya Rahane','Shreyas Gopal','Tilak Varma','Vijay Shankar','Shubham Dubey','Anukul Roy','Deepak Hooda','Rahul Tripathi','Lungi Ngidi','Matheesha Pathirana','Vaibhav Arora','Jake Fraser-McGurk','Sam Curran','Rohit Sharma','Mujeeb Ur Rahman','Anshul Kamboj','Mahipal Lomror']
+            }
 
-        "Protea Powerhouse": [
-            "Abhishek Sharma",
-            "Tilak Varma",
-            "Shivam Dube",
-            "Jitesh Sharma",
-            "Varun Chakravarthy",
-            "Arshdeep Singh",
-            "Harshit Rana",
-            "Aiden Markram",
-            "Dewald Brevis",
-            "Reeza Hendricks",
-            "Tony de Zorzi",
-            "George Linde",
-            "Kwena Maphaka",
-            "Ottneil Baartman",
-            "Lutho Sipamla",
-            "Donovan Ferreira"
-        ]
+    boosters = {
+        'Gujju Gang': {
+            'KKR vs GT': "Double Power",
+            'SRH vs MI': "Batting Powerplay",
+            'KKR vs RR': "Triple Captain"
+        },
+        'Hilarious Hooligans': {
+            'CSK vs PBKS': "Bowling Powerplay",
+            'RR vs MI': "Double Power",
+            'KKR vs RR': "Triple Captain",
+            'SRH vs DC': "Batting Powerplay"
+        },
+        'Tormented Titans': {
+            'SRH vs DC': "Bowling Powerplay"
+        },
+        'La Furia Roja': {
+            'KKR vs PBKS': "Batting Powerplay",  # Fixed typo from "Powrrplay"
+            'PBKS vs DC': "Triple Captain"
+        },
+        'Supa Jinx Strikas': {
+            'MI vs SRH': 'Batting Powerplay',
+            'RR vs MI': "Bowling Powerplay",
+            'GT vs SRH': "Triple Captain"
+        },
+        'Raging Raptors': {
+            'DC vs RR': 'Batting Powerplay',
+            'LSG vs DC': "Double Power",
+            'MI vs DC': "Triple Captain",
+            'PBKS vs DC': "Bowling Powerplay"
+        },
+        'The Travelling Bankers': {
+            'KKR vs LSG': "Batting Powerplay",
+            'KKR vs PBKS': "Bowling Powerplay",
+            'SRH vs KKR': "Triple Captain",
+            'KKR vs CSK': "Double Power"
+        }
     }
 
-
-    boosters = {'Gujju Gang':{'https://www.espncricinfo.com/series/ipl-2025-1449924/kolkata-knight-riders-vs-gujarat-titans-39th-match-1473476/full-scorecard':"Double Power","https://www.espncricinfo.com/series/ipl-2025-1449924/sunrisers-hyderabad-vs-mumbai-indians-41st-match-1473478/full-scorecard":"Batting Powerplay"},
-             'Hilarious Hooligans':{"https://www.espncricinfo.com/series/ipl-2025-1449924/chennai-super-kings-vs-punjab-kings-49th-match-1473486/full-scorecard":"Bowling Powerplay","https://www.espncricinfo.com/series/ipl-2025-1449924/rajasthan-royals-vs-mumbai-indians-50th-match-1473487/full-scorecard":"Double Power"},
-             'Tormented Titans':{"https://www.espncricinfo.com/series/ipl-2025-1449924/sunrisers-hyderabad-vs-delhi-capitals-55th-match-1473492/live-cricket-score":"Bowling Powerplay"},
-             'La Furia Roja':{"https://www.espncricinfo.com/series/ipl-2025-1449924/kolkata-knight-riders-vs-punjab-kings-44th-match-1473481/full-scorecard":"Batting Powrrplay"},
-             'Supa Jinx Strikas':{'https://www.espncricinfo.com/series/ipl-2025-1449924/mumbai-indians-vs-sunrisers-hyderabad-33rd-match-1473470/full-scorecard':'Batting Powerplay',"https://www.espncricinfo.com/series/ipl-2025-1449924/rajasthan-royals-vs-mumbai-indians-50th-match-1473487/full-scorecard":"Bowling Powerplay","https://www.espncricinfo.com/series/ipl-2025-1449924/gujarat-titans-vs-sunrisers-hyderabad-51st-match-1473488/full-scorecard":"Triple Captain"},
-             'Raging Raptors':{'https://www.espncricinfo.com/series/ipl-2025-1449924/delhi-capitals-vs-rajasthan-royals-32nd-match-1473469/full-scorecard':'Batting Powerplay',"https://www.espncricinfo.com/series/ipl-2025-1449924/lucknow-super-giants-vs-delhi-capitals-40th-match-1473477/full-scorecard":"Double Power","https://www.espncricinfo.com/series/ipl-2025-1449924/mumbai-indians-vs-delhi-capitals-66th-match-1473503/live-cricket-score":"Triple Captain","https://www.espncricinfo.com/series/ipl-2025-1449924/punjab-kings-vs-delhi-capitals-58th-match-1473495/live-cricket-score":"Bowling Powerplay"},
-             'The Travelling Bankers':{"https://www.espncricinfo.com/series/ipl-2025-1449924/kolkata-knight-riders-vs-lucknow-super-giants-21st-match-1473456/full-scorecard":"Batting Powerplay","https://www.espncricinfo.com/series/ipl-2025-1449924/kolkata-knight-riders-vs-punjab-kings-44th-match-1473481/full-scorecard":"Bowling Powerplay"}
-             }
-
-    match = Match(teams,match_object,boosters)
+    match = Match(teams,match_object,match_name,boosters)
     print()
     team_breakdown = match.match_points_breakdown
     print(team_breakdown)
