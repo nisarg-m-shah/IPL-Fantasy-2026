@@ -1,9 +1,7 @@
 import streamlit as st
 import dill, plotly
 import streamlit as st
-
-st.write("dill:", dill.__version__)
-st.write("plotly:", plotly.__version__)
+from Output import run_output_pipeline
 import pandas as pd
 import plotly.express as px
 import plotly.graph_objects as go
@@ -85,28 +83,9 @@ def run_output_script():
         status_text.text("Running data update script...")
         progress_bar.progress(30)
         
-        result = subprocess.run(
-            ['python', OUTPUT_SCRIPT],
-            capture_output=True,
-            text=True,
-            timeout=300  # 5 minute timeout
-        )
+        run_output_pipeline()
         
         progress_bar.progress(80)
-        
-        if result.returncode == 0:
-            save_update_time()
-            progress_bar.progress(100)
-            status_text.text("✅ Data updated successfully!")
-            time.sleep(1)
-            status_text.empty()
-            progress_bar.empty()
-            return True
-        else:
-            progress_bar.empty()
-            status_text.empty()
-            st.error(f"❌ Error updating data: {result.stderr}")
-            return False
     except subprocess.TimeoutExpired:
         st.error("⏱️ Update timed out. Please try again later.")
         return False

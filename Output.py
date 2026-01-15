@@ -1,52 +1,47 @@
-def load_dill():
-    import dill
-    return dill
-dill = load_dill()
-from Scraping import Series
-import requests
-import time
-from bs4 import BeautifulSoup
-import pandas as pd
-from Points import Match
-from collections import OrderedDict
-import json
-import numpy as np
+def run_output_pipeline():
+    from Scraping import Series
+    import requests
+    import time
+    from bs4 import BeautifulSoup
+    import pandas as pd
+    from Points import Match
+    from collections import OrderedDict
+    import json
+    import numpy as np
+    def convert_values(obj):
+        """ Recursively convert DataFrame and NumPy objects to serializable formats """
+        if isinstance(obj, pd.DataFrame):
+            return obj.to_dict(orient="records")
+        elif isinstance(obj, np.ndarray):
+            return obj.tolist()
+        elif isinstance(obj, dict):
+            return {k: convert_values(v) for k, v in obj.items()}
+        elif isinstance(obj, list):
+            return [convert_values(v) for v in obj]
+        return obj
 
-def convert_values(obj):
-    """ Recursively convert DataFrame and NumPy objects to serializable formats """
-    if isinstance(obj, pd.DataFrame):
-        return obj.to_dict(orient="records")
-    elif isinstance(obj, np.ndarray):
-        return obj.tolist()
-    elif isinstance(obj, dict):
-        return {k: convert_values(v) for k, v in obj.items()}
-    elif isinstance(obj, list):
-        return [convert_values(v) for v in obj]
-    return obj
+    class NumpyEncoder(json.JSONEncoder):
+        def default(self, obj):
+            if isinstance(obj, np.integer):
+                return int(obj)
+            elif isinstance(obj, np.floating):
+                return float(obj)
+            return super().default(obj)
 
-class NumpyEncoder(json.JSONEncoder):
-    def default(self, obj):
-        if isinstance(obj, np.integer):
-            return int(obj)
-        elif isinstance(obj, np.floating):
-            return float(obj)
-        return super().default(obj)
+    def excel_to_dict(file_path):
+        excel_data = pd.read_excel(file_path, sheet_name=None, index_col=0)
+        parsed_dict = {}
+        for sheet_name, df in excel_data.items():
+            if df.index.dtype == 'O':
+                parsed_dict[sheet_name] = df.to_dict(orient='index')
+            else:
+                parsed_dict[sheet_name] = df.to_dict(orient='records')
+        return parsed_dict
 
-def excel_to_dict(file_path):
-    excel_data = pd.read_excel(file_path, sheet_name=None, index_col=0)
-    parsed_dict = {}
-    for sheet_name, df in excel_data.items():
-        if df.index.dtype == 'O':
-            parsed_dict[sheet_name] = df.to_dict(orient='index')
-        else:
-            parsed_dict[sheet_name] = df.to_dict(orient='records')
-    return parsed_dict
+    def op_caps(url):
+        orange_cap, purple_cap = "Sai Sudharsan", "Prasidh Krishna"
+        return orange_cap, purple_cap
 
-def op_caps(url):
-    orange_cap, purple_cap = "Sai Sudharsan", "Prasidh Krishna"
-    return orange_cap, purple_cap
-
-if __name__ == '__main__':
     begin = time.time()
     team_names_sf = ["KKR", "GT", "MI", "CSK", "RR", "RCB", "PBKS", "DC", "SRH", "LSG"]
     team_names_ff = ["Kolkata Knight Riders", "Gujarat Titans", "Mumbai Indians", "Chennai Super Kings",
