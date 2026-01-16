@@ -197,15 +197,23 @@ def run_output_script():
     except:
         return False
 
-@st.cache_data(ttl=300)
-def load_all_data():
+# Use cache_resource instead of cache_data for Excel file
+@st.cache_resource(ttl=300)
+def load_excel_file():
+    """Load the Excel file object (cached as resource)"""
     if not os.path.exists(EXCEL_FILE):
+        return None
+    return pd.ExcelFile(EXCEL_FILE)
+
+def load_all_data():
+    """Load all data from Excel without caching (reads from cached file)"""
+    excel_file = load_excel_file()
+    if excel_file is None:
         return None
     
     data = {}
-    with pd.ExcelFile(EXCEL_FILE) as xls:
-        for sheet_name in xls.sheet_names:
-            data[sheet_name] = pd.read_excel(xls, sheet_name, index_col=0)
+    for sheet_name in excel_file.sheet_names:
+        data[sheet_name] = pd.read_excel(excel_file, sheet_name, index_col=0)
     return data
 
 # --- SQUAD CONFIGURATION ---
@@ -271,7 +279,7 @@ def main():
     if should_update():
         with st.spinner("🔄 Fetching latest scores..."):
             if run_output_script():
-                st.cache_data.clear()
+                st.cache_resource.clear()
                 st.rerun()
     
     # Load data
