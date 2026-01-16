@@ -371,28 +371,26 @@ def main():
         show_analytics(data)
 
 def highlight_top_3(row):
-    """Applies styling to the entire row, but unique border logic to the first cell."""
     rank = row["Rank"]
     styles = [""] * len(row)
     
+    # Define colors based on rank
     if rank == 1:
-        bg_color = "rgba(239, 185, 32, 0.15)"
-        border_color = "#efb920"
+        bg, border = "rgba(239, 185, 32, 0.2)", "#efb920"
     elif rank == 2:
-        bg_color = "rgba(192, 192, 192, 0.1)"
-        border_color = "#C0C0C0"
+        bg, border = "rgba(192, 192, 192, 0.15)", "#C0C0C0"
     elif rank == 3:
-        bg_color = "rgba(205, 127, 50, 0.1)"
-        border_color = "#CD7F32"
+        bg, border = "rgba(205, 127, 50, 0.15)", "#CD7F32"
     else:
-        return styles
+        # Subtle background for non-top 3 to maintain dark look
+        return ["background-color: rgba(255, 255, 255, 0.02); color: white;"] * len(row)
 
-    # Apply the background to every cell in the row
+    # Apply rank-specific background to whole row
     for i in range(len(row)):
-        styles[i] = f"background-color: {bg_color}; color: white;"
+        styles[i] = f"background-color: {bg} !important; color: white !important;"
         
-    # Apply the thick left border ONLY to the first column (Rank)
-    styles[0] += f" border-left: 6px solid {border_color};"
+    # Apply single left border only to the first cell (Rank)
+    styles[0] += f" border-left: 6px solid {border} !important;"
     
     return styles
 
@@ -478,14 +476,47 @@ def show_rankings(data):
     df_display = df_display[cols_order]
     df_display = df_display.dropna(subset=["Total Points"])
     
-    # st.dataframe(
-    #     style_ipl_table(df_display),
-    #     use_container_width=True
-    # )
+    styled_df = df_display.style \
+            .apply(highlight_top_3, axis=1) \
+            .format({"Total Points": format_points}) \
+            .hide(axis="index")
 
-    # Render as HTML with a container div to ensure 100% width
-    styled_html = style_ipl_table(df_display).to_html()
-    st.markdown(f'<div style="width:100%">{styled_html}</div>', unsafe_allow_html=True)
+    # 3. CONVERT TO HTML AND WRAP IN A FULL-WIDTH CONTAINER
+    # This bypasses Streamlit's white dataframe container entirely
+    styled_html = styled_df.to_html(escape=False, index=False)
+    
+    # Inject CSS specific to this table to force 100% width and transparency
+    custom_table_css = f"""
+    <div class="table-container" style="width:100%; overflow-x:auto;">
+        <style>
+            .table-container table {{
+                width: 100% !important;
+                border-collapse: collapse !important;
+                background-color: transparent !important;
+                color: white !important;
+                border: none !important;
+                margin-top: 20px;
+            }}
+            .table-container th {{
+                background-color: #060b26 !important;
+                color: #efb920 !important;
+                font-family: 'Bebas Neue', sans-serif !important;
+                font-size: 1.2rem !important;
+                padding: 15px !important;
+                text-align: center !important;
+                border-bottom: 2px solid #efb920 !important;
+            }}
+            .table-container td {{
+                padding: 15px !important;
+                text-align: center !important;
+                border-bottom: 1px solid rgba(255, 255, 255, 0.05) !important;
+                font-family: 'Roboto', sans-serif !important;
+            }}
+        </style>
+        {styled_html}
+    </div>
+    """
+    st.markdown(custom_table_css, unsafe_allow_html=True)
 
     
     # Visualization
