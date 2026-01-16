@@ -100,7 +100,7 @@ def run_output_pipeline():
                        'Riyan Parag', 'Khaleel Ahmed', 'Avesh Khan', 'Faf du Plessis', 'Arjun Tendulkar',
                        'Mohammed Shami', 'Shivam Dube', 'Lockie Ferguson', 'Josh Hazlewood', 'Prabhsimran Singh',
                        'Rishabh Pant', 'Corbin Bosch', 'Mohammed Siraj', 'Marcus Stoinis', 'Harpreet Brar',
-                       'Rahmanullah Gurbaz', 'Rashid Khan', 'Washington Sundar'],
+                       'Rahmanullah Gurbaz', 'Rashid Khan', 'Washington Sundar','Kyle Jamieson'],
             'captain':['Varun Chakravarthy'],
             'vice captain':['Travis Head'],
             'trump card':['Prasidh Krishna'],
@@ -112,7 +112,7 @@ def run_output_pipeline():
                                 'Ayush Badoni', 'Liam Livingstone', 'Nathan Ellis', 'Moeen Ali', 'Karn Sharma',
                                 'Shimron Hetmyer', 'Mayank Yadav', 'Abhinav Manohar', 'Ashutosh Sharma', 'Rachin Ravindra',
                                 'Shahrukh Khan', 'Anrich Nortje', 'Mayank Markande', 'Yuzvendra Chahal', 'Tushar Deshpande',
-                                'Noor Ahmad', 'Kagiso Rabada', 'Marco Jansen'],
+                                'Noor Ahmad', 'Kagiso Rabada', 'Marco Jansen',"Will O'Rourke"],
             'captain':['Yashasvi Jaiswal'],
             'vice captain':['Axar Patel'],
             'trump card':['Hardik Pandya'],
@@ -123,7 +123,7 @@ def run_output_pipeline():
                              'Harnoor Singh', 'Bhuvneshwar Kumar', 'Abishek Porel', 'Angkrish Raghuvanshi', 'Dhruv Jurel',
                              'David Miller', 'Anuj Rawat', 'Josh Inglis', 'Kumar Kartikeya', 'Akash Deep', 'Rahul Tewatia',
                              'Ramandeep Singh', 'Sherfane Rutherford', 'Glenn Maxwell', 'Sandeep Sharma', 'Shamar Joseph',
-                             'Pat Cummins', 'Quinton de Kock', 'Ravichandran Ashwin'],
+                             'Pat Cummins', 'Quinton de Kock', 'Ravichandran Ashwin',"Mitch Owen"],
             'captain':['Virat Kohli'],
             'vice captain':['Suryakumar Yadav'],
             'trump card':['Kuldeep Yadav'],
@@ -172,7 +172,7 @@ def run_output_pipeline():
             'captain':['Sunil Narine'],
             'vice captain':['Andre Russell'],
             'trump card':['Nicholas Pooran'],
-            'replacement':{'Mohsin Khan':'Shardul Thakur'}
+            'replacement':{}
                         },   
     }
 

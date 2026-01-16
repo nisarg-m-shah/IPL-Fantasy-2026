@@ -37,7 +37,7 @@ class Player:
         #winner = self.match_object.winner
         try:
             #print("Points Role Name Before:",self.player_name)
-            player_name = find_full_name(names,self.player_name)
+            player_name = self.player_name
             role = roles[names.index(player_name)]
             #print("Points Role Name After:",player_name)
         except:
@@ -47,7 +47,6 @@ class Player:
             else:
                 role = ""
         man_of_the_match = self.match_object.man_of_the_match
-        man_of_the_match = find_full_name(names,man_of_the_match)
         player_mompoints = 0
         if man_of_the_match == self.player_name:
             player_mompoints = 30
@@ -236,10 +235,9 @@ class Team:
         
         self.points_list = {}
         self.total_points = 0
-        
+
         for player_number in range(len(team['squad'])):
-            player_name = team['squad'][player_number]
-            player_name = find_full_name(names, player)                
+            player_name = team['squad'][player_number]               
             if player_name == None:
                 player_points = 0
             else:
@@ -283,7 +281,7 @@ class Match:
         match_points_breakdown = {}
 
         for participant in self.teams.keys():
-            team = teams[participant]
+            team = self.teams[participant]
             try:
                 booster = boosters[participant][match_name]  # Use match_name instead of url
             except:
@@ -329,7 +327,7 @@ class Match:
             points_list = player_object.points_list
             
             if "Mujeeb" not in player:
-                player = find_full_name(names, player)
+                player = player
             if player == None:
                 continue
             
@@ -361,7 +359,7 @@ if __name__ == '__main__':
                        'Riyan Parag', 'Khaleel Ahmed', 'Avesh Khan', 'Faf du Plessis', 'Arjun Tendulkar',
                        'Mohammed Shami', 'Shivam Dube', 'Lockie Ferguson', 'Josh Hazlewood', 'Prabhsimran Singh',
                        'Rishabh Pant', 'Corbin Bosch', 'Mohammed Siraj', 'Marcus Stoinis', 'Harpreet Brar',
-                       'Rahmanullah Gurbaz', 'Rashid Khan', 'Washington Sundar'],
+                       'Rahmanullah Gurbaz', 'Rashid Khan', 'Washington Sundar','Kyle Jamieson'],
             'captain':['Varun Chakravarthy'],
             'vice captain':['Travis Head'],
             'trump card':['Prasidh Krishna'],
@@ -373,7 +371,7 @@ if __name__ == '__main__':
                                 'Ayush Badoni', 'Liam Livingstone', 'Nathan Ellis', 'Moeen Ali', 'Karn Sharma',
                                 'Shimron Hetmyer', 'Mayank Yadav', 'Abhinav Manohar', 'Ashutosh Sharma', 'Rachin Ravindra',
                                 'Shahrukh Khan', 'Anrich Nortje', 'Mayank Markande', 'Yuzvendra Chahal', 'Tushar Deshpande',
-                                'Noor Ahmad', 'Kagiso Rabada', 'Marco Jansen'],
+                                'Noor Ahmad', 'Kagiso Rabada', 'Marco Jansen',"Will O'Rourke"],
             'captain':['Yashasvi Jaiswal'],
             'vice captain':['Axar Patel'],
             'trump card':['Hardik Pandya'],
@@ -384,7 +382,7 @@ if __name__ == '__main__':
                              'Harnoor Singh', 'Bhuvneshwar Kumar', 'Abishek Porel', 'Angkrish Raghuvanshi', 'Dhruv Jurel',
                              'David Miller', 'Anuj Rawat', 'Josh Inglis', 'Kumar Kartikeya', 'Akash Deep', 'Rahul Tewatia',
                              'Ramandeep Singh', 'Sherfane Rutherford', 'Glenn Maxwell', 'Sandeep Sharma', 'Shamar Joseph',
-                             'Pat Cummins', 'Quinton de Kock', 'Ravichandran Ashwin'],
+                             'Pat Cummins', 'Quinton de Kock', 'Ravichandran Ashwin',"Mitch Owen"],
             'captain':['Virat Kohli'],
             'vice captain':['Suryakumar Yadav'],
             'trump card':['Kuldeep Yadav'],
@@ -433,7 +431,7 @@ if __name__ == '__main__':
             'captain':['Sunil Narine'],
             'vice captain':['Andre Russell'],
             'trump card':['Nicholas Pooran'],
-            'replacement':{'Mohsin Khan':'Shardul Thakur'}
+            'replacement':{}
                         },   
     }
 

@@ -254,7 +254,7 @@ SQUAD_INFO = {
                        'Riyan Parag', 'Khaleel Ahmed', 'Avesh Khan', 'Faf du Plessis', 'Arjun Tendulkar',
                        'Mohammed Shami', 'Shivam Dube', 'Lockie Ferguson', 'Josh Hazlewood', 'Prabhsimran Singh',
                        'Rishabh Pant', 'Corbin Bosch', 'Mohammed Siraj', 'Marcus Stoinis', 'Harpreet Brar',
-                       'Rahmanullah Gurbaz', 'Rashid Khan', 'Washington Sundar'],
+                       'Rahmanullah Gurbaz', 'Rashid Khan', 'Washington Sundar','Kyle Jamieson'],
             'captain':['Varun Chakravarthy'],
             'vice captain':['Travis Head'],
             'trump card':['Prasidh Krishna'],
@@ -266,7 +266,7 @@ SQUAD_INFO = {
                                 'Ayush Badoni', 'Liam Livingstone', 'Nathan Ellis', 'Moeen Ali', 'Karn Sharma',
                                 'Shimron Hetmyer', 'Mayank Yadav', 'Abhinav Manohar', 'Ashutosh Sharma', 'Rachin Ravindra',
                                 'Shahrukh Khan', 'Anrich Nortje', 'Mayank Markande', 'Yuzvendra Chahal', 'Tushar Deshpande',
-                                'Noor Ahmad', 'Kagiso Rabada', 'Marco Jansen'],
+                                'Noor Ahmad', 'Kagiso Rabada', 'Marco Jansen',"Will O'Rourke"],
             'captain':['Yashasvi Jaiswal'],
             'vice captain':['Axar Patel'],
             'trump card':['Hardik Pandya'],
@@ -277,7 +277,7 @@ SQUAD_INFO = {
                              'Harnoor Singh', 'Bhuvneshwar Kumar', 'Abishek Porel', 'Angkrish Raghuvanshi', 'Dhruv Jurel',
                              'David Miller', 'Anuj Rawat', 'Josh Inglis', 'Kumar Kartikeya', 'Akash Deep', 'Rahul Tewatia',
                              'Ramandeep Singh', 'Sherfane Rutherford', 'Glenn Maxwell', 'Sandeep Sharma', 'Shamar Joseph',
-                             'Pat Cummins', 'Quinton de Kock', 'Ravichandran Ashwin'],
+                             'Pat Cummins', 'Quinton de Kock', 'Ravichandran Ashwin',"Mitch Owen"],
             'captain':['Virat Kohli'],
             'vice captain':['Suryakumar Yadav'],
             'trump card':['Kuldeep Yadav'],
@@ -326,7 +326,7 @@ SQUAD_INFO = {
             'captain':['Sunil Narine'],
             'vice captain':['Andre Russell'],
             'trump card':['Nicholas Pooran'],
-            'replacement':{'Mohsin Khan':'Shardul Thakur'}
+            'replacement':{}
                         },   
     }
 
@@ -646,11 +646,11 @@ def show_squads(data):
                         st.markdown(f"""
                             <div style="display: flex; gap: 10px; margin-bottom: 10px;">
                                 <div class="player-row injured" style="flex: 1;">
-                                    <span>❌ {player}</span>
+                                    <span>🚑 {player}</span>
                                     <span style="color: #ff4b4b; font-weight: bold;">{int(pts)}</span>
                                 </div>
                                 <div class="player-row replacement" style="flex: 1;">
-                                    <span>✅ {replacement}</span>
+                                    <span>🔁 {replacement}</span>
                                     <span style="color: #00f2fe; font-weight: bold;">{int(repl_pts)}</span>
                                 </div>
                             </div>
