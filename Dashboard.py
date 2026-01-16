@@ -371,26 +371,28 @@ def main():
         show_analytics(data)
 
 def highlight_top_3(row):
+    """Applies styling to the entire row, but unique border logic to the first cell."""
     rank = row["Rank"]
     styles = [""] * len(row)
     
-    # Define colors based on rank
     if rank == 1:
-        bg, border = "rgba(239, 185, 32, 0.2)", "#efb920"
+        bg_color = "rgba(239, 185, 32, 0.15)"
+        border_color = "#efb920"
     elif rank == 2:
-        bg, border = "rgba(192, 192, 192, 0.15)", "#C0C0C0"
+        bg_color = "rgba(192, 192, 192, 0.1)"
+        border_color = "#C0C0C0"
     elif rank == 3:
-        bg, border = "rgba(205, 127, 50, 0.15)", "#CD7F32"
+        bg_color = "rgba(205, 127, 50, 0.1)"
+        border_color = "#CD7F32"
     else:
-        # Subtle background for non-top 3 to maintain dark look
-        return ["background-color: rgba(255, 255, 255, 0.02); color: white;"] * len(row)
+        return styles
 
-    # Apply rank-specific background to whole row
+    # Apply the background to every cell in the row
     for i in range(len(row)):
-        styles[i] = f"background-color: {bg} !important; color: white !important;"
+        styles[i] = f"background-color: {bg_color}; color: white;"
         
-    # Apply single left border only to the first cell (Rank)
-    styles[0] += f" border-left: 6px solid {border} !important;"
+    # Apply the thick left border ONLY to the first column (Rank)
+    styles[0] += f" border-left: 6px solid {border_color};"
     
     return styles
 
@@ -476,47 +478,59 @@ def show_rankings(data):
     df_display = df_display[cols_order]
     df_display = df_display.dropna(subset=["Total Points"])
     
-    styled_df = df_display.style \
-            .apply(highlight_top_3, axis=1) \
-            .format({"Total Points": format_points}) \
-            .hide(axis="index")
-
-    # 3. CONVERT TO HTML AND WRAP IN A FULL-WIDTH CONTAINER
-    # This bypasses Streamlit's white dataframe container entirely
-    styled_html = styled_df.to_html(escape=False, index=False)
-    
-    # Inject CSS specific to this table to force 100% width and transparency
-    custom_table_css = f"""
-    <div class="table-container" style="width:100%; overflow-x:auto;">
-        <style>
-            .table-container table {{
-                width: 100% !important;
-                border-collapse: collapse !important;
-                background-color: transparent !important;
-                color: white !important;
-                border: none !important;
-                margin-top: 20px;
-            }}
-            .table-container th {{
-                background-color: #060b26 !important;
-                color: #efb920 !important;
-                font-family: 'Bebas Neue', sans-serif !important;
-                font-size: 1.2rem !important;
-                padding: 15px !important;
-                text-align: center !important;
-                border-bottom: 2px solid #efb920 !important;
-            }}
-            .table-container td {{
-                padding: 15px !important;
-                text-align: center !important;
-                border-bottom: 1px solid rgba(255, 255, 255, 0.05) !important;
-                font-family: 'Roboto', sans-serif !important;
-            }}
-        </style>
-        {styled_html}
-    </div>
+# 2. Build the HTML Table Manually (Bypasses all Streamlit styling)
+    html_table = """
+    <table style="width:100%; border-collapse: collapse; background-color: transparent; color: white; border: none; font-family: 'Roboto', sans-serif;">
+        <thead>
+            <tr style="border-bottom: 2px solid #efb920;">
+                <th style="padding: 15px; color: #efb920; font-family: 'Bebas Neue', sans-serif; font-size: 1.2rem; text-align: center;">RANK</th>
+                <th style="padding: 15px; color: #efb920; font-family: 'Bebas Neue', sans-serif; font-size: 1.2rem; text-align: center;">TEAM</th>
+                <th style="padding: 15px; color: #efb920; font-family: 'Bebas Neue', sans-serif; font-size: 1.2rem; text-align: center;">TOTAL POINTS</th>
+                <th style="padding: 15px; color: #efb920; font-family: 'Bebas Neue', sans-serif; font-size: 1.2rem; text-align: center;">ORANGE CAP</th>
+                <th style="padding: 15px; color: #efb920; font-family: 'Bebas Neue', sans-serif; font-size: 1.2rem; text-align: center;">PURPLE CAP</th>
+            </tr>
+        </thead>
+        <tbody>
     """
-    st.markdown(custom_table_css, unsafe_allow_html=True)
+
+    for _, row in df_display.iterrows():
+        rank = row['Rank']
+        
+        # Row-specific styling logic
+        row_style = "border-bottom: 1px solid rgba(255, 255, 255, 0.05);"
+        first_cell_extra = ""
+        
+        if rank == 1:
+            row_style += " background-color: rgba(239, 185, 32, 0.15);"
+            first_cell_extra = "border-left: 6px solid #efb920;"
+        elif rank == 2:
+            row_style += " background-color: rgba(192, 192, 192, 0.1);"
+            first_cell_extra = "border-left: 6px solid #C0C0C0;"
+        elif rank == 3:
+            row_style += " background-color: rgba(205, 127, 50, 0.1);"
+            first_cell_extra = "border-left: 6px solid #CD7F32;"
+        else:
+            row_style += " background-color: rgba(255, 255, 255, 0.02);"
+
+        html_table += f'<tr style="{row_style}">'
+        
+        # Add cells
+        # First cell (Rank) gets the single vertical line
+        html_table += f'<td style="padding: 15px; text-align: center; font-weight: bold; {first_cell_extra}">{rank}</td>'
+        # Second cell (Team)
+        html_table += f'<td style="padding: 15px; text-align: center; font-weight: bold;">{row["Team"]}</td>'
+        # Third cell (Total Points) with your format logic
+        html_table += f'<td style="padding: 15px; text-align: center;">{format_points(row["Total Points"])}</td>'
+        # Cap cells
+        html_table += f'<td style="padding: 15px; text-align: center;">{row["Orange Cap"]}</td>'
+        html_table += f'<td style="padding: 15px; text-align: center;">{row["Purple Cap"]}</td>'
+        
+        html_table += "</tr>"
+
+    html_table += "</tbody></table>"
+
+    # 3. Final Injection
+    st.markdown(html_table, unsafe_allow_html=True)
 
     
     # Visualization
