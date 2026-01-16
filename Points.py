@@ -237,7 +237,7 @@ class Team:
         self.points_list = {}
         self.total_points = 0
         
-        for player_number in range(len(team)['squad']):
+        for player_number in range(len(team['squad'])):
             player_name = team['squad'][player_number]
             player_name = find_full_name(names, player)                
             if player_name == None:

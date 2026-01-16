@@ -5,6 +5,8 @@ import plotly.graph_objects as go
 import os
 import time
 import subprocess
+import threading
+from Output import run_output_pipeline
 
 def format_points(val):
     """Removes trailing zeros, keeps .5 if present, otherwise returns integer."""
@@ -678,18 +680,33 @@ def show_matches(data):
         cfc_sheet = f"{selected_match} - CFC Points"
         breakdown_sheet = f"{selected_match} - Points Breakdown"
         
-        # Team performance
+        #Inside show_matches(data) under "Manager Points"
         if cfc_sheet in data:
             st.markdown("#### 🎯 Manager Points")
             df_match = data[cfc_sheet][["Total Points", "Booster"]].sort_values("Total Points", ascending=False)
             
-            # styled_html = style_ipl_table(df_match).to_html()
-            # st.markdown(f'<div style="width:100%">{styled_html}</div>', unsafe_allow_html=True) 
-
-            st.dataframe(
-                df_match.style.background_gradient(subset=['Total Points'], cmap='RdYlGn'),
-                use_container_width=True
-            )
+            # Manual HTML construction to ensure dark mode/full width
+            mgr_html = '<table style="width:100%;"><thead><tr style="border-bottom:2px solid #efb920;">'
+            mgr_html += '<th style="padding:10px; color:#efb920; text-align:center; font-family:\'Bebas Neue\';">TEAM</th>'
+            mgr_html += '<th style="padding:10px; color:#efb920; text-align:center; font-family:\'Bebas Neue\';">TOTAL</th>'
+            mgr_html += '<th style="padding:10px; color:#efb920; text-align:center; font-family:\'Bebas Neue\';">BOOSTER</th></tr></thead><tbody>'
+            
+            for mgr_name, row in df_match.iterrows():
+                # --- FIX FOR NAN BOOSTERS ---
+                booster_val = row["Booster"]
+                if pd.isna(booster_val) or str(booster_val).lower() in ['nan', 'none', '']:
+                    # Styling 'None' to look subtle and professional
+                    booster_display = '<span style="opacity: 0.4; font-style: italic;">None</span>'
+                else:
+                    # Highlighting active boosters with a subtle cyan glow
+                    booster_display = f'<span style="color: #00f2fe; font-weight: bold;">{booster_val}</span>'
+                
+                mgr_html += f'<tr style="border-bottom:1px solid rgba(255,255,255,0.05);">'
+                mgr_html += f'<td style="padding:10px; text-align:center; font-weight:bold;">{mgr_name}</td>'
+                mgr_html += f'<td style="padding:10px; text-align:center;">{format_points(row["Total Points"])}</td>'
+                mgr_html += f'<td style="padding:10px; text-align:center;">{booster_display}</td></tr>'
+            
+            st.markdown(mgr_html + '</tbody></table>', unsafe_allow_html=True)
             
             # Bar chart
             fig = go.Figure()
@@ -715,16 +732,55 @@ def show_matches(data):
             
             st.plotly_chart(fig, use_container_width=True)
         
-        # Player performance
-        if breakdown_sheet in data:
-            st.markdown("#### 🌟 Player Performance")
-            df_players = data[breakdown_sheet].sort_values("Player Points", ascending=False)
+    # Player performance
+    if breakdown_sheet in data:
+        st.markdown('<div class="section-header">🌟 Player Performance</div>', unsafe_allow_html=True)
+        
+        # Sort and select required columns
+        df_p = data[breakdown_sheet].sort_values("Player Points", ascending=False)
+        cols_to_show = ['Player Points', 'Role', "Man of the Match", 'Player Batting Points', 
+                        'Player Bowling Points', 'Player Fielding Points']
+        
+        # Start Manual HTML construction
+        p_html = '<table style="width:100%; border-collapse:collapse; background-color:transparent;">'
+        p_html += '<thead><tr style="border-bottom:2px solid #efb920;">'
+        
+        # Header: Player name (Index)
+        p_html += '<th style="padding:12px; color:#efb920; font-family:\'Bebas Neue\'; text-align:center;">PLAYER</th>'
+        
+        # Dynamic Headers based on column names
+        for col in cols_to_show:
+            p_html += f'<th style="padding:12px; color:#efb920; font-family:\'Bebas Neue\'; text-align:center;">{col.upper()}</th>'
+        p_html += '</tr></thead><tbody>'
+
+        for player_name, row in df_p.iterrows():
+            # Row styling for alternating dark theme
+            p_html += '<tr style="border-bottom:1px solid rgba(255,255,255,0.05); background-color:rgba(255,255,255,0.02);">'
             
-            st.dataframe(
-                df_players[['Player Points', 'Role',"Man of the Match", 'Player Batting Points', 
-                           'Player Bowling Points', 'Player Fielding Points']],
-                use_container_width=True
-            )
+            # Player Name (Index) - aligned left for readability
+            p_html += f'<td style="padding:12px; text-align:left; font-weight:bold; color:white;">{player_name}</td>'
+            
+            # Iterate through data columns
+            for col in cols_to_show:
+                val = row[col]
+                
+                # Format logic: handle MoM "None" and decimals
+                if col == "Man of the Match":
+                    if pd.isna(val) or str(val).lower() in ['nan', 'none', '']:
+                        display_val = '<span style="opacity: 0.4;">-</span>'
+                    else:
+                        display_val = f'<span style="color: #efb920; font-weight: bold;">{val}</span>'
+                else:
+                    display_val = format_points(val)
+                    
+                p_html += f'<td style="padding:12px; text-align:center; color:white;">{display_val}</td>'
+            
+            p_html += '</tr>'
+        
+        p_html += '</tbody></table>'
+        
+        # Inject the HTML
+        st.markdown(p_html, unsafe_allow_html=True)
 
 def show_analytics(data):
     """Display advanced analytics"""
