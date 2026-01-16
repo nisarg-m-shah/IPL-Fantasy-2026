@@ -150,7 +150,7 @@ def run_output_pipeline():
             'captain':['Shubman Gill'],
             'vice captain':['Ayush Mhatre', 'Ruturaj Gaikwad'],
             'trump card':['Sai Kishore'],
-            'replacement':{'Ryan Rickelton':'Richard Gleeson'}
+            'replacement':{'Ryan Rickelton':'Richard Gleeson','Ruturaj Gaikwad':'Ayush Mhatre'}
                         },    
         'Raging Raptors':{
             'squad':['KL Rahul', 'Venkatesh Iyer', 'Mitchell Starc', 'Arshdeep Singh', 'Shardul Thakur',

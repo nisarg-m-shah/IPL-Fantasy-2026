@@ -34,6 +34,14 @@ st.markdown("""
         color: white;
     }
     
+    /* FIX: Force Hosted Streamlit to respect transparency in tables */
+    [data-testid="stTable"], [data-testid="stMarkdownContainer"] table {
+        background-color: transparent !important;
+        width: 100% !important;
+        border-collapse: collapse !important;
+        color: white !important;
+    }
+
     /* Main title */
     .main-title {
         font-family: 'Bebas Neue', cursive;
@@ -123,9 +131,26 @@ st.markdown("""
         color: #060b26 !important;
     }
     
-    /* Dataframe styling */
-    .dataframe {
-        background-color: rgba(255, 255, 255, 0.05) !important;
+    /* Dataframe/Table styling for Dark Mode */
+    .dataframe, table {
+        background-color: transparent !important;
+        border: none !important;
+    }
+
+    th {
+        background-color: #060b26 !important;
+        color: #efb920 !important;
+        font-family: 'Bebas Neue', sans-serif !important;
+        font-size: 1.1rem !important;
+        text-transform: uppercase !important;
+        border-bottom: 2px solid #efb920 !important;
+        padding: 12px !important;
+    }
+
+    td {
+        padding: 12px !important;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.05) !important;
+        font-family: 'Roboto', sans-serif !important;
     }
     
     /* Trophy icons */
@@ -221,52 +246,87 @@ def load_data():
 
 # --- SQUAD CONFIGURATION ---
 SQUAD_INFO = {
-    'Gujju Gang': ['Varun Chakaravarthy', 'Travis Head', 'Prasidh Krishna', 'Harshit Rana', 
-                   'Rahul Chahar', 'Mukesh Choudhary', 'Ishant Sharma', 'Jaydev Unadkat', 
-                   'Mukesh Kumar', 'Abdul Samad', 'Riyan Parag', 'Khaleel Ahmed', 'Avesh Khan', 
-                   'Faf du Plessis', 'Arjun Tendulkar', 'Mohammed Shami', 'Shivam Dube', 
-                   'Lockie Ferguson', 'Josh Hazlewood', 'Prabhsimran Singh', 'Rishabh Pant', 
-                   'Corbin Bosch', 'Mohammed Siraj', 'Marcus Stoinis', 'Harpreet Brar', 
-                   'Rahmanullah Gurbaz', 'Rashid Khan', 'Washington Sundar'],
-    'Hilarious Hooligans': ['Yashasvi Jaiswal', 'Axar Patel', 'Hardik Pandya', 'Heinrich Klaasen', 
-                            'Rinku Singh', 'Nehal Wadhera', 'Romario Shepherd', 'Manav Suthar', 
-                            'Vijaykumar Vyshak', 'Himmat Singh', 'Ayush Badoni', 'Liam Livingstone', 
-                            'Nathan Ellis', 'Moeen Ali', 'Karn Sharma', 'Shimron Hetmyer', 'Mayank Yadav', 
-                            'Abhinav Manohar', 'Ashutosh Sharma', 'Rachin Ravindra', 'Shahrukh Khan', 
-                            'Anrich Nortje', 'Mayank Markande', 'Yuzvendra Chahal', 'Tushar Deshpande', 
-                            'Noor Ahmad', 'Kagiso Rabada', 'Marco Jansen'],
-    'Tormented Titans': ['Virat Kohli', 'Suryakumar Yadav', 'Kuldeep Yadav', 'Abhishek Sharma', 
-                         'Jitesh Sharma', 'Harnoor Singh', 'Bhuvneshwar Kumar', 'Abishek Porel', 
-                         'Angkrish Raghuvanshi', 'Dhruv Jurel', 'David Miller', 'Anuj Rawat', 
-                         'Josh Inglis', 'Kumar Kartikeya', 'Akash Deep', 'Rahul Tewatia', 
-                         'Ramandeep Singh', 'Sherfane Rutherford', 'Glenn Maxwell', 'Sandeep Sharma', 
-                         'Shamar Joseph', 'Pat Cummins', 'Quinton de Kock', 'Ravichandran Ashwin'],
-    'La Furia Roja': ['Shreyas Iyer', 'Sai Sudharsan', 'Phil Salt', 'Jasprit Bumrah', 
-                      'Swastik Chikara', 'Rajvardhan Hangargekar', 'Manoj Bhandage', 'Nitish Rana', 
-                      'Rasikh Dar Salam', 'Deepak Chahar', 'MS Dhoni', 'Aaron Hardie', 
-                      'Priyansh Arya', 'Sameer Rizvi', 'Mitchell Santner', 'Manish Pandey', 
-                      'Suyash Sharma', 'Kamlesh Nagarkoti', 'Will Jacks', 'Azmatullah Omarzai', 
-                      'Adam Zampa', 'Spencer Johnson', 'Jamie Overton', 'Shashank Singh', 
-                      'Rovman Powell', 'Suryansh Shedge', 'Maheesh Theekshana'],
-    'Supa Jinx Strikas': ['Shubman Gill', 'Ayush Mhatre', 'Ruturaj Gaikwad', 'Sai Kishore', 
-                          'Nitish Reddy', 'Mohit Sharma', 'Raj Bawa', 'Ishan Kishan', 'Mitchell Marsh', 
-                          'Karim Janat', 'Yash Dayal', 'Bevon Jacobs', 'Ryan Rickelton', 'Rajat Patidar', 
-                          'Tristan Stubbs', 'Gerald Coetzee', 'Glenn Phillips', 'Tim David', 
-                          'Ravi Bishnoi', 'Donovan Ferreira', 'Jayant Yadav', 'Trent Boult', 
-                          'Jofra Archer', 'Akash Madhwal', 'Darshan Nalkande', 'Kwena Maphaka'],
-    'Raging Raptors': ['KL Rahul', 'Venkatesh Iyer', 'Mitchell Starc', 'Arshdeep Singh', 
-                       'Shardul Thakur', 'Ravindra Jadeja', 'Aiden Markram', 'Sachin Baby', 
-                       'Dushmantha Chameera', 'Naman Dhir', 'Karun Nair', 'Wanindu Hasaranga', 
-                       'Arshad Khan', 'Devdutt Padikkal', 'Robin Minz', 'Shahbaz Ahmed', 
-                       'Mohsin Khan', 'Krunal Pandya', 'Sanju Samson', 'Jos Buttler', 
-                       'Atharva Taide', 'Musheer Khan', 'Devon Conway'],
-    'The Travelling Bankers': ['Sunil Narine', 'Andre Russell', 'Nicholas Pooran', 'Harshal Patel', 
-                               'Umran Malik', 'Chetan Sakariya', 'T Natarajan', 'Ajinkya Rahane', 
-                               'Shreyas Gopal', 'Tilak Varma', 'Vijay Shankar', 'Shubham Dubey', 
-                               'Anukul Roy', 'Deepak Hooda', 'Rahul Tripathi', 'Lungi Ngidi', 
-                               'Matheesha Pathirana', 'Vaibhav Arora', 'Jake Fraser-McGurk', 'Sam Curran', 
-                               'Rohit Sharma', 'Mujeeb Ur Rahman', 'Anshul Kamboj', 'Mahipal Lomror']
-}
+        'Gujju Gang':{ 
+            'squad':['Varun Chakaravarthy', 'Travis Head', 'Prasidh Krishna', 'Harshit Rana', 'Rahul Chahar',
+                       'Mukesh Choudhary', 'Ishant Sharma', 'Jaydev Unadkat', 'Mukesh Kumar', 'Abdul Samad',
+                       'Riyan Parag', 'Khaleel Ahmed', 'Avesh Khan', 'Faf du Plessis', 'Arjun Tendulkar',
+                       'Mohammed Shami', 'Shivam Dube', 'Lockie Ferguson', 'Josh Hazlewood', 'Prabhsimran Singh',
+                       'Rishabh Pant', 'Corbin Bosch', 'Mohammed Siraj', 'Marcus Stoinis', 'Harpreet Brar',
+                       'Rahmanullah Gurbaz', 'Rashid Khan', 'Washington Sundar'],
+            'captain':['Varun Chakravarthy'],
+            'vice captain':['Travis Head'],
+            'trump card':['Prasidh Krishna'],
+            'replacement':{'Lockie Ferguson':'Kyle Jamieson','Corbin Bosch':'Charith Asalanka'}
+                       },
+        'Hilarious Hooligans':{
+            'squad':['Yashasvi Jaiswal', 'Axar Patel', 'Hardik Pandya', 'Heinrich Klaasen', 'Rinku Singh',
+                                'Nehal Wadhera', 'Romario Shepherd', 'Manav Suthar', 'Vijaykumar Vyshak', 'Himmat Singh',
+                                'Ayush Badoni', 'Liam Livingstone', 'Nathan Ellis', 'Moeen Ali', 'Karn Sharma',
+                                'Shimron Hetmyer', 'Mayank Yadav', 'Abhinav Manohar', 'Ashutosh Sharma', 'Rachin Ravindra',
+                                'Shahrukh Khan', 'Anrich Nortje', 'Mayank Markande', 'Yuzvendra Chahal', 'Tushar Deshpande',
+                                'Noor Ahmad', 'Kagiso Rabada', 'Marco Jansen'],
+            'captain':['Yashasvi Jaiswal'],
+            'vice captain':['Axar Patel'],
+            'trump card':['Hardik Pandya'],
+            'replacement':{'Mayank Yadav':"Will O'Rourke"}
+                        },
+        'Tormented Titans':{
+            'squad':['Virat Kohli', 'Suryakumar Yadav', 'Kuldeep Yadav', 'Abhishek Sharma', 'Jitesh Sharma',
+                             'Harnoor Singh', 'Bhuvneshwar Kumar', 'Abishek Porel', 'Angkrish Raghuvanshi', 'Dhruv Jurel',
+                             'David Miller', 'Anuj Rawat', 'Josh Inglis', 'Kumar Kartikeya', 'Akash Deep', 'Rahul Tewatia',
+                             'Ramandeep Singh', 'Sherfane Rutherford', 'Glenn Maxwell', 'Sandeep Sharma', 'Shamar Joseph',
+                             'Pat Cummins', 'Quinton de Kock', 'Ravichandran Ashwin'],
+            'captain':['Virat Kohli'],
+            'vice captain':['Suryakumar Yadav'],
+            'trump card':['Kuldeep Yadav'],
+            'replacement':{'Glen Maxwell':"Mitch Owen"}
+                        },
+        'La Furia Roja':{
+            'squad':['Shreyas Iyer', 'Sai Sudharsan', 'Phil Salt', 'Jasprit Bumrah', 'Swastik Chikara',
+                          'Rajvardhan Hangargekar', 'Manoj Bhandage', 'Nitish Rana', 'Rasikh Dar Salam', 'Deepak Chahar',
+                          'MS Dhoni', 'Aaron Hardie', 'Priyansh Arya', 'Sameer Rizvi', 'Mitchell Santner', 'Manish Pandey',
+                          'Suyash Sharma', 'Kamlesh Nagarkoti', 'Will Jacks', 'Azmatullah Omarzai', 'Adam Zampa',
+                          'Spencer Johnson', 'Jamie Overton', 'Shashank Singh', 'Rovman Powell', 'Suryansh Shedge',
+                          'Maheesh Theekshana',"Smaran Ravichandran"],
+            'captain':['Shreyas Iyer'],
+            'vice captain':['Sai Sudharsan'],
+            'trump card':['Phil Salt'],
+            'replacement':{'Adam Zampa':"Smaran Ravichandran"}
+                        },
+        'Supa Jinx Strikas':{ 
+            'squad':['Shubman Gill', 'Ayush Mhatre', 'Ruturaj Gaikwad', 'Sai Kishore', 'Nitish Reddy',
+                              'Mohit Sharma', 'Raj Bawa', 'Ishan Kishan', 'Mitchell Marsh', 'Karim Janat', 'Yash Dayal',
+                              'Bevon Jacobs', 'Ryan Rickelton', 'Rajat Patidar', 'Tristan Stubbs', 'Gerald Coetzee',
+                              'Glenn Phillips', 'Tim David', 'Ravi Bishnoi', 'Donovan Ferreira', 'Jayant Yadav',
+                              'Trent Boult', 'Jofra Archer', 'Akash Madhwal', 'Darshan Nalkande', 'Kwena Maphaka','Richard Gleeson'],
+            'captain':['Shubman Gill'],
+            'vice captain':['Ayush Mhatre', 'Ruturaj Gaikwad'],
+            'trump card':['Sai Kishore'],
+            'replacement':{'Ryan Rickelton':'Richard Gleeson','Ruturaj Gaikwad':'Ayush Mhatre'}
+                        },    
+        'Raging Raptors':{
+            'squad':['KL Rahul', 'Venkatesh Iyer', 'Mitchell Starc', 'Arshdeep Singh', 'Shardul Thakur',
+                          'Ravindra Jadeja', 'Aiden Markram', 'Sachin Baby', 'Dushmantha Chameera', 'Naman Dhir',
+                          'Karun Nair', 'Wanindu Hasaranga', 'Arshad Khan', 'Devdutt Padikkal', 'Robin Minz',
+                          'Shahbaz Ahmed', 'Mohsin Khan', 'Krunal Pandya', 'Sanju Samson', 'Jos Buttler', 'Atharva Taide',
+                          'Musheer Khan', 'Devon Conway'],
+            'captain':['KL Rahul'],
+            'vice captain':['Venkatesh Iyer'],
+            'trump card':['Mitchell Starc'],
+            'replacement':{'Mohsin Khan':'Shardul Thakur'}
+                        },    
+        'The Travelling Bankers':{
+            'squad':['Sunil Narine', 'Andre Russell', 'Nicholas Pooran', 'Harshal Patel', 'Umran Malik',
+                                   'Chetan Sakariya', 'T Natarajan', 'Ajinkya Rahane', 'Shreyas Gopal', 'Tilak Varma',
+                                   'Vijay Shankar', 'Shubham Dubey', 'Anukul Roy', 'Deepak Hooda', 'Rahul Tripathi',
+                                   'Lungi Ngidi', 'Matheesha Pathirana', 'Vaibhav Arora', 'Jake Fraser-McGurk',
+                                   'Sam Curran', 'Rohit Sharma', 'Mujeeb Ur Rahman', 'Anshul Kamboj', 'Mahipal Lomror'],
+            'captain':['Sunil Narine'],
+            'vice captain':['Andre Russell'],
+            'trump card':['Nicholas Pooran'],
+            'replacement':{'Mohsin Khan':'Shardul Thakur'}
+                        },   
+    }
 
 # Injury mapping - update as needed
 INJURY_MAP = {
@@ -513,7 +573,7 @@ def show_squads(data):
             if selected_team in data[sheet].index:
                 row = data[sheet].loc[selected_team]
                 for player, pts in row.items():
-                    if player not in ["Total Points", "Booster"] and pd.notna(pts):
+                    if player not in ["Total Points", "Booster"] and pd.notna(pts) and player in SQUAD_INFO[selected_team]['squad']:
                         player_points[player] = player_points.get(player, 0) + pts
         
         # Display squad
@@ -530,24 +590,28 @@ def show_squads(data):
             col = col1 if i % 2 == 0 else col2
             
             with col:
-                if player in INJURY_MAP:
-                    replacement = INJURY_MAP[player]
-                    repl_pts = player_points.get(replacement, 0)
-                    
-                    st.markdown(f"""
-                        <div style="display: flex; gap: 10px; margin-bottom: 10px;">
-                            <div class="player-row injured" style="flex: 1;">
-                                <span>❌ {player}</span>
-                                <span style="color: #ff4b4b; font-weight: bold;">{int(pts)}</span>
+                c = 0
+                for team in SQUAD_INFO.keys():
+                    if player in SQUAD_INFO[team]['replacement'].keys():
+                        replacement = SQUAD_INFO[team]['replacement'][player]
+                        repl_pts = player_points.get(replacement, 0)
+                        
+                        st.markdown(f"""
+                            <div style="display: flex; gap: 10px; margin-bottom: 10px;">
+                                <div class="player-row injured" style="flex: 1;">
+                                    <span>❌ {player}</span>
+                                    <span style="color: #ff4b4b; font-weight: bold;">{int(pts)}</span>
+                                </div>
+                                <div class="player-row replacement" style="flex: 1;">
+                                    <span>✅ {replacement}</span>
+                                    <span style="color: #00f2fe; font-weight: bold;">{int(repl_pts)}</span>
+                                </div>
                             </div>
-                            <div class="player-row replacement" style="flex: 1;">
-                                <span>✅ {replacement}</span>
-                                <span style="color: #00f2fe; font-weight: bold;">{int(repl_pts)}</span>
-                            </div>
-                        </div>
-                    """, unsafe_allow_html=True)
-                    processed.update([player, replacement])
-                else:
+                        """, unsafe_allow_html=True)
+                        processed.update([player, replacement])
+                        c += 1
+                        break
+                if c == 0:
                     st.markdown(f"""
                         <div class="player-row">
                             <span>{player}</span>
@@ -574,6 +638,9 @@ def show_matches(data):
             st.markdown("#### 🎯 Manager Points")
             df_match = data[cfc_sheet][["Total Points", "Booster"]].sort_values("Total Points", ascending=False)
             
+            # styled_html = style_ipl_table(df_match).to_html()
+            # st.markdown(f'<div style="width:100%">{styled_html}</div>', unsafe_allow_html=True) 
+
             st.dataframe(
                 df_match.style.background_gradient(subset=['Total Points'], cmap='RdYlGn'),
                 use_container_width=True
@@ -606,10 +673,10 @@ def show_matches(data):
         # Player performance
         if breakdown_sheet in data:
             st.markdown("#### 🌟 Player Performance")
-            df_players = data[breakdown_sheet].sort_values("Player Points", ascending=False).head(10)
+            df_players = data[breakdown_sheet].sort_values("Player Points", ascending=False)
             
             st.dataframe(
-                df_players[['Player Points', 'Role', 'Player Batting Points', 
+                df_players[['Player Points', 'Role',"Man of the Match", 'Player Batting Points', 
                            'Player Bowling Points', 'Player Fielding Points']],
                 use_container_width=True
             )
