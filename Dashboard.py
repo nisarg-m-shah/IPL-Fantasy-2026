@@ -6,9 +6,18 @@ import os
 import time
 import subprocess
 
+def format_points(val):
+    """Removes trailing zeros, keeps .5 if present, otherwise returns integer."""
+    try:
+        if val % 1 == 0:
+            return int(val)
+        return round(val, 2)
+    except:
+        return val
+    
 # --- PAGE CONFIG ---
 st.set_page_config(
-    page_title="IPL Fantasy League 2025",
+    page_title="CFC Fantasy League 2025",
     page_icon="🏏",
     layout="wide",
     initial_sidebar_state="collapsed"
@@ -198,23 +207,17 @@ def run_output_script():
         return False
 
 # Use cache_resource instead of cache_data for Excel file
+EXCEL_FILE = "CFC Fantasy League 2025.xlsx"
 @st.cache_resource(ttl=300)
-def load_excel_file():
-    """Load the Excel file object (cached as resource)"""
-    if not os.path.exists(EXCEL_FILE):
-        return None
+def get_excel_engine():
+    if not os.path.exists(EXCEL_FILE): return None
     return pd.ExcelFile(EXCEL_FILE)
 
-def load_all_data():
-    """Load all data from Excel without caching (reads from cached file)"""
-    excel_file = load_excel_file()
-    if excel_file is None:
-        return None
-    
-    data = {}
-    for sheet_name in excel_file.sheet_names:
-        data[sheet_name] = pd.read_excel(excel_file, sheet_name, index_col=0)
-    return data
+def load_data():
+    engine = get_excel_engine()
+    if not engine: return None
+    # We drop completely empty rows and columns during load to keep tables clean
+    return {sheet: pd.read_excel(engine, sheet, index_col=0).dropna(how='all') for sheet in engine.sheet_names}
 
 # --- SQUAD CONFIGURATION ---
 SQUAD_INFO = {
@@ -272,7 +275,7 @@ INJURY_MAP = {
 
 def main():
     # Header
-    st.markdown('<h1 class="main-title">🏏 IPL FANTASY LEAGUE 2025 🏏</h1>', unsafe_allow_html=True)
+    st.markdown('<h1 class="main-title">🏏 CFC FANTASY LEAGUE 2025 🏏</h1>', unsafe_allow_html=True)
     st.markdown('<p class="subtitle">The Ultimate Cricket Fantasy Experience</p>', unsafe_allow_html=True)
     
     # Check for updates
@@ -282,10 +285,10 @@ def main():
                 st.cache_resource.clear()
                 st.rerun()
     
-    # Load data
-    data = load_all_data()
-    if data is None:
-        st.error("⚠️ Data file not found. Please run the scraper first.")
+    # Load data    
+    data = load_data()
+    if not data:
+        st.error("Excel File Not Found.")
         return
     
     # Create tabs
@@ -306,6 +309,74 @@ def main():
     # TAB 4: ANALYTICS
     with tab4:
         show_analytics(data)
+
+def highlight_top_3(row):
+    """Applies styling to the entire row, but unique border logic to the first cell."""
+    rank = row["Rank"]
+    styles = [""] * len(row)
+    
+    if rank == 1:
+        bg_color = "rgba(239, 185, 32, 0.15)"
+        border_color = "#efb920"
+    elif rank == 2:
+        bg_color = "rgba(192, 192, 192, 0.1)"
+        border_color = "#C0C0C0"
+    elif rank == 3:
+        bg_color = "rgba(205, 127, 50, 0.1)"
+        border_color = "#CD7F32"
+    else:
+        return styles
+
+    # Apply the background to every cell in the row
+    for i in range(len(row)):
+        styles[i] = f"background-color: {bg_color}; color: white;"
+        
+    # Apply the thick left border ONLY to the first column (Rank)
+    styles[0] += f" border-left: 6px solid {border_color};"
+    
+    return styles
+
+def style_ipl_table(df):
+    return (
+        df.style
+        .apply(highlight_top_3, axis=1)
+        .set_table_styles([
+            # Force table to cover the full width
+            {
+                "selector": "",
+                "props": [("width", "100%"), ("border-collapse", "collapse")]
+            },
+            # Header Styling
+            {
+                "selector": "th",
+                "props": [
+                    ("background-color", "#060b26"),
+                    ("color", "#efb920"),
+                    ("font-family", "'Bebas Neue', sans-serif"),
+                    ("text-transform", "uppercase"),
+                    ("border-bottom", "2px solid #efb920"),
+                    ("padding", "15px"),
+                    ("font-size", "18px"),
+                    ("text-align", "center")
+                ],
+            },
+            # Body Cell Styling
+            {
+                "selector": "td",
+                "props": [
+                    ("padding", "15px"),
+                    ("text-align", "center"),
+                    ("border-bottom", "1px solid rgba(255, 255, 255, 0.05)"),
+                    ("font-family", "'Roboto', sans-serif")
+                ],
+            },
+        ])
+        .format({"Total Points": format_points})
+        .hide(axis="index")
+    )
+
+
+
 
 def show_rankings(data):
     """Display team rankings with IPL styling"""
@@ -345,12 +416,17 @@ def show_rankings(data):
     # Reorder columns
     cols_order = ['Rank', 'Team', 'Total Points', 'Orange Cap', 'Purple Cap']
     df_display = df_display[cols_order]
+    df_display = df_display.dropna(subset=["Total Points"])
     
-    st.dataframe(
-        df_display.style.background_gradient(subset=['Total Points'], cmap='YlOrRd'),
-        use_container_width=True,
-        height=400
-    )
+    # st.dataframe(
+    #     style_ipl_table(df_display),
+    #     use_container_width=True
+    # )
+
+    # Render as HTML with a container div to ensure 100% width
+    styled_html = style_ipl_table(df_display).to_html()
+    st.markdown(f'<div style="width:100%">{styled_html}</div>', unsafe_allow_html=True)
+
     
     # Visualization
     fig = go.Figure()
