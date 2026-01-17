@@ -650,44 +650,29 @@ def show_squads(data):
     
     if selected_team:
         team_data = data["Team Final Points"].loc[selected_team]
+        rank = (data["Team Final Points"]['Total Points'] > team_data['Total Points']).sum() + 1
         
-        # Metric cards - 2x2 grid (both mobile and desktop)
-        # First row
-        col1, col2 = st.columns(2)
-        with col1:
-            st.markdown(f"""
+        # Metric cards - 2x2 grid using custom HTML/CSS for better mobile control
+        st.markdown(f"""
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 20px;">
                 <div class="metric-card">
                     <div style="font-size: clamp(0.8rem, 2.5vw, 0.9rem); color: #00f2fe;">Total Points</div>
                     <div style="font-size: clamp(1.5rem, 5vw, 2rem); font-weight: bold;">{int(team_data['Total Points'])}</div>
                 </div>
-            """, unsafe_allow_html=True)
-        
-        with col2:
-            rank = (data["Team Final Points"]['Total Points'] > team_data['Total Points']).sum() + 1
-            st.markdown(f"""
                 <div class="metric-card">
                     <div style="font-size: clamp(0.8rem, 2.5vw, 0.9rem); color: #00f2fe;">Rank</div>
                     <div style="font-size: clamp(1.5rem, 5vw, 2rem); font-weight: bold;">#{rank}</div>
                 </div>
-            """, unsafe_allow_html=True)
-        
-        # Second row
-        col3, col4 = st.columns(2)
-        with col3:
-            st.markdown(f"""
                 <div class="metric-card">
                     <div style="font-size: clamp(0.8rem, 2.5vw, 0.9rem); color: #00f2fe;">Orange Cap</div>
                     <div style="font-size: clamp(1.5rem, 5vw, 2rem); font-weight: bold;">{int(team_data['Orange Cap'])}</div>
                 </div>
-            """, unsafe_allow_html=True)
-        
-        with col4:
-            st.markdown(f"""
                 <div class="metric-card">
                     <div style="font-size: clamp(0.8rem, 2.5vw, 0.9rem); color: #00f2fe;">Purple Cap</div>
                     <div style="font-size: clamp(1.5rem, 5vw, 2rem); font-weight: bold;">{int(team_data['Purple Cap'])}</div>
                 </div>
-            """, unsafe_allow_html=True)
+            </div>
+        """, unsafe_allow_html=True)
         
         st.markdown("---")
         
