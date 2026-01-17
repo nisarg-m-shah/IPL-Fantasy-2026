@@ -54,6 +54,8 @@ st.markdown("""
         margin-bottom: 20px;
         letter-spacing: 2px;
         padding: 0 10px;
+        line-height: 1.2;
+        word-spacing: 0.2em;
     }
     
     /* MOBILE-RESPONSIVE: Subtitle */
@@ -434,8 +436,17 @@ INJURY_MAP = {
 }
 
 def main():
-    # Header
-    st.markdown('<h1 class="main-title">🏏 CFC FANTASY LEAGUE 2025 🏏</h1>', unsafe_allow_html=True)
+    # Header - Mobile-optimized with proper centering
+    st.markdown('''
+        <div style="text-align: center; margin: 20px 0;">
+            <div style="font-size: clamp(2.5rem, 8vw, 3.5rem); color: #efb920; font-family: 'Bebas Neue', cursive; line-height: 1.1; text-shadow: 0 0 20px rgba(239, 185, 32, 0.5);">
+                🏏 CFC FANTASY 🏏
+            </div>
+            <div style="font-size: clamp(2.5rem, 8vw, 3.5rem); color: #efb920; font-family: 'Bebas Neue', cursive; line-height: 1.1; text-shadow: 0 0 20px rgba(239, 185, 32, 0.5); margin-top: 5px;">
+                LEAGUE 2025
+            </div>
+        </div>
+    ''', unsafe_allow_html=True)
     st.markdown('<p class="subtitle">The Ultimate Cricket Fantasy Experience</p>', unsafe_allow_html=True)
     
     # Check for updates
