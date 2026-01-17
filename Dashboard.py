@@ -651,10 +651,9 @@ def show_squads(data):
     if selected_team:
         team_data = data["Team Final Points"].loc[selected_team]
         
-        # Metric cards - 2x2 grid on mobile, 4x1 on desktop
+        # Metric cards - 2x2 grid (both mobile and desktop)
+        # First row
         col1, col2 = st.columns(2)
-        col3, col4 = st.columns(2)
-        
         with col1:
             st.markdown(f"""
                 <div class="metric-card">
@@ -672,6 +671,8 @@ def show_squads(data):
                 </div>
             """, unsafe_allow_html=True)
         
+        # Second row
+        col3, col4 = st.columns(2)
         with col3:
             st.markdown(f"""
                 <div class="metric-card">
