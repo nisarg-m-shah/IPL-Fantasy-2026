@@ -101,7 +101,7 @@ def run_output_pipeline():
                        'Mohammed Shami', 'Shivam Dube', 'Lockie Ferguson', 'Josh Hazlewood', 'Prabhsimran Singh',
                        'Rishabh Pant', 'Corbin Bosch', 'Mohammed Siraj', 'Marcus Stoinis', 'Harpreet Brar',
                        'Rahmanullah Gurbaz', 'Rashid Khan', 'Washington Sundar','Kyle Jamieson'],
-            'captain':['Varun Chakravarthy'],
+            'captain':['Varun Chakaravarthy'],
             'vice captain':['Travis Head'],
             'trump card':['Prasidh Krishna'],
             'replacement':{'Lockie Ferguson':'Kyle Jamieson','Corbin Bosch':'Charith Asalanka'}

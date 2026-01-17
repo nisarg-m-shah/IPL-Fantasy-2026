@@ -25,7 +25,7 @@ st.set_page_config(
     initial_sidebar_state="collapsed"
 )
 
-# --- MOBILE-FRIENDLY IPL FANTASY STYLING ---
+# --- IPL FANTASY STYLING ---
 st.markdown("""
     <style>
     @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Roboto:wght@300;400;700&display=swap');
@@ -44,45 +44,36 @@ st.markdown("""
         color: white !important;
     }
 
-    /* MOBILE-RESPONSIVE: Main title */
+    /* Main title */
     .main-title {
         font-family: 'Bebas Neue', cursive;
-        font-size: clamp(2rem, 8vw, 4rem); /* Scales from 2rem to 4rem */
+        font-size: 4rem;
         color: #efb920;
         text-align: center;
         text-shadow: 0 0 20px rgba(239, 185, 32, 0.5);
-        margin-bottom: 20px;
-        letter-spacing: 2px;
-        padding: 0 10px;
+        margin-bottom: 30px;
+        letter-spacing: 3px;
     }
     
-    /* MOBILE-RESPONSIVE: Subtitle */
+    /* Subtitle */
     .subtitle {
         font-family: 'Roboto', sans-serif;
-        font-size: clamp(0.9rem, 3vw, 1.2rem);
+        font-size: 1.2rem;
         color: #00f2fe;
         text-align: center;
-        margin-bottom: 30px;
-        padding: 0 10px;
+        margin-bottom: 40px;
     }
     
-    /* MOBILE-RESPONSIVE: Metric cards */
+    /* Metric cards */
     .metric-card {
         background: linear-gradient(135deg, rgba(239, 185, 32, 0.1) 0%, rgba(0, 242, 254, 0.05) 100%);
         border-radius: 15px;
-        padding: 15px;
+        padding: 25px;
         text-align: center;
         border: 2px solid rgba(239, 185, 32, 0.3);
         box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
-        margin: 8px 0;
+        margin: 10px;
         transition: transform 0.3s ease;
-    }
-    
-    @media (min-width: 768px) {
-        .metric-card {
-            padding: 25px;
-            margin: 10px;
-        }
     }
     
     .metric-card:hover {
@@ -90,25 +81,17 @@ st.markdown("""
         border-color: #efb920;
     }
     
-    /* MOBILE-RESPONSIVE: Player rows */
+    /* Player rows */
     .player-row {
         background: rgba(255, 255, 255, 0.08);
         border-radius: 10px;
-        padding: 12px 15px;
-        margin: 6px 0;
+        padding: 15px 20px;
+        margin: 8px 0;
         display: flex;
         justify-content: space-between;
         align-items: center;
         border-left: 4px solid #efb920;
         transition: all 0.3s ease;
-        font-size: clamp(0.85rem, 2.5vw, 1rem);
-    }
-    
-    @media (min-width: 768px) {
-        .player-row {
-            padding: 15px 20px;
-            margin: 8px 0;
-        }
     }
     
     .player-row:hover {
@@ -129,13 +112,12 @@ st.markdown("""
         border-left: 4px solid #00f2fe !important;
     }
     
-    /* MOBILE-RESPONSIVE: Tabs styling */
+    /* Tabs styling */
     .stTabs [data-baseweb="tab-list"] {
-        gap: 5px;
+        gap: 10px;
         background-color: rgba(0, 0, 0, 0.3);
         border-radius: 10px;
         padding: 5px;
-        flex-wrap: wrap;
     }
     
     .stTabs [data-baseweb="tab"] {
@@ -143,15 +125,7 @@ st.markdown("""
         border-radius: 8px;
         color: white;
         font-weight: 600;
-        padding: 10px 15px;
-        font-size: clamp(0.8rem, 2.5vw, 1rem);
-        white-space: nowrap;
-    }
-    
-    @media (min-width: 768px) {
-        .stTabs [data-baseweb="tab"] {
-            padding: 12px 24px;
-        }
+        padding: 12px 24px;
     }
     
     .stTabs [aria-selected="true"] {
@@ -159,72 +133,41 @@ st.markdown("""
         color: #060b26 !important;
     }
     
-    /* MOBILE-RESPONSIVE: Table styling */
+    /* Dataframe/Table styling for Dark Mode */
     .dataframe, table {
         background-color: transparent !important;
         border: none !important;
-        font-size: clamp(0.75rem, 2vw, 1rem);
-        overflow-x: auto;
     }
 
     th {
         background-color: #060b26 !important;
         color: #efb920 !important;
         font-family: 'Bebas Neue', sans-serif !important;
-        font-size: clamp(0.9rem, 2.5vw, 1.1rem) !important;
+        font-size: 1.1rem !important;
         text-transform: uppercase !important;
         border-bottom: 2px solid #efb920 !important;
-        padding: 10px 8px !important;
-        white-space: nowrap;
-    }
-    
-    @media (min-width: 768px) {
-        th {
-            padding: 12px !important;
-        }
+        padding: 12px !important;
     }
 
     td {
-        padding: 10px 8px !important;
+        padding: 12px !important;
         border-bottom: 1px solid rgba(255, 255, 255, 0.05) !important;
         font-family: 'Roboto', sans-serif !important;
     }
     
-    @media (min-width: 768px) {
-        td {
-            padding: 12px !important;
-        }
-    }
-    
-    /* Trophy icons - responsive sizes */
-    .trophy-gold { 
-        color: #FFD700; 
-        font-size: clamp(2rem, 8vw, 3rem);
-    }
-    .trophy-silver { 
-        color: #C0C0C0; 
-        font-size: clamp(1.75rem, 7vw, 2.5rem);
-    }
-    .trophy-bronze { 
-        color: #CD7F32; 
-        font-size: clamp(1.5rem, 6vw, 2rem);
-    }
+    /* Trophy icons */
+    .trophy-gold { color: #FFD700; font-size: 3rem; }
+    .trophy-silver { color: #C0C0C0; font-size: 2.5rem; }
+    .trophy-bronze { color: #CD7F32; font-size: 2rem; }
     
     /* Section headers */
     .section-header {
         font-family: 'Bebas Neue', cursive;
-        font-size: clamp(1.5rem, 5vw, 2rem);
+        font-size: 2rem;
         color: #efb920;
-        margin: 20px 0 15px 0;
+        margin: 30px 0 20px 0;
         border-bottom: 3px solid #efb920;
-        padding-bottom: 8px;
-    }
-    
-    @media (min-width: 768px) {
-        .section-header {
-            margin: 30px 0 20px 0;
-            padding-bottom: 10px;
-        }
+        padding-bottom: 10px;
     }
     
     /* Stats box */
@@ -232,64 +175,21 @@ st.markdown("""
         background: rgba(0, 242, 254, 0.1);
         border-left: 4px solid #00f2fe;
         border-radius: 8px;
-        padding: 12px;
+        padding: 15px;
         margin: 10px 0;
-        font-size: clamp(0.85rem, 2.5vw, 1rem);
-    }
-    
-    @media (min-width: 768px) {
-        .stats-box {
-            padding: 15px;
-        }
     }
     
     /* Update indicator */
     .update-indicator {
         position: fixed;
         top: 70px;
-        right: 10px;
+        right: 20px;
         background: rgba(0, 242, 254, 0.9);
         color: #060b26;
-        padding: 8px 15px;
+        padding: 10px 20px;
         border-radius: 20px;
         font-weight: bold;
-        font-size: clamp(0.75rem, 2vw, 0.9rem);
         z-index: 1000;
-    }
-    
-    @media (min-width: 768px) {
-        .update-indicator {
-            right: 20px;
-            padding: 10px 20px;
-        }
-    }
-    
-    /* MOBILE: Make tables scrollable horizontally */
-    .table-container {
-        overflow-x: auto;
-        -webkit-overflow-scrolling: touch;
-        margin: 10px 0;
-    }
-    
-    /* MOBILE: Adjust selectbox */
-    .stSelectbox {
-        font-size: clamp(0.9rem, 2.5vw, 1rem);
-    }
-    
-    /* MOBILE: Responsive plotly charts */
-    .js-plotly-plot {
-        width: 100% !important;
-    }
-    
-    /* MOBILE: Column spacing adjustments */
-    [data-testid="column"] {
-        padding: 0 5px;
-    }
-    
-    @media (min-width: 768px) {
-        [data-testid="column"] {
-            padding: 0 12px;
-        }
     }
     </style>
 """, unsafe_allow_html=True)
@@ -343,6 +243,7 @@ def get_excel_engine():
 def load_data():
     engine = get_excel_engine()
     if not engine: return None
+    # We drop completely empty rows and columns during load to keep tables clean
     return {sheet: pd.read_excel(engine, sheet, index_col=0).dropna(how='all') for sheet in engine.sheet_names}
 
 # --- SQUAD CONFIGURATION ---
@@ -429,6 +330,7 @@ SQUAD_INFO = {
                         },   
     }
 
+# Injury mapping - update as needed
 INJURY_MAP = {
     "Ayush Mhatre": "Ruturaj Gaikwad"
 }
@@ -454,15 +356,19 @@ def main():
     # Create tabs
     tab1, tab2, tab3, tab4 = st.tabs(["🏆 RANKINGS", "🛡️ SQUADS", "🏏 MATCHES", "📊 ANALYTICS"])
     
+    # TAB 1: RANKINGS
     with tab1:
         show_rankings(data)
     
+    # TAB 2: SQUADS
     with tab2:
         show_squads(data)
     
+    # TAB 3: MATCHES
     with tab3:
         show_matches(data)
     
+    # TAB 4: ANALYTICS
     with tab4:
         show_analytics(data)
 
@@ -483,9 +389,11 @@ def highlight_top_3(row):
     else:
         return styles
 
+    # Apply the background to every cell in the row
     for i in range(len(row)):
         styles[i] = f"background-color: {bg_color}; color: white;"
         
+    # Apply the thick left border ONLY to the first column (Rank)
     styles[0] += f" border-left: 6px solid {border_color};"
     
     return styles
@@ -495,10 +403,12 @@ def style_ipl_table(df):
         df.style
         .apply(highlight_top_3, axis=1)
         .set_table_styles([
+            # Force table to cover the full width
             {
                 "selector": "",
                 "props": [("width", "100%"), ("border-collapse", "collapse")]
             },
+            # Header Styling
             {
                 "selector": "th",
                 "props": [
@@ -512,6 +422,7 @@ def style_ipl_table(df):
                     ("text-align", "center")
                 ],
             },
+            # Body Cell Styling
             {
                 "selector": "td",
                 "props": [
@@ -526,14 +437,17 @@ def style_ipl_table(df):
         .hide(axis="index")
     )
 
+
+
+
 def show_rankings(data):
-    """Display team rankings with IPL styling - MOBILE OPTIMIZED"""
+    """Display team rankings with IPL styling"""
     st.markdown('<div class="section-header">🏆 TEAM STANDINGS</div>', unsafe_allow_html=True)
     
     df_teams = data["Team Final Points"].sort_values(by="Total Points", ascending=False)
     
-    # Top 3 podium - stack on mobile
-    cols = st.columns([1, 1, 1])
+    # Top 3 podium
+    cols = st.columns(3)
     trophies = ["🥇", "🥈", "🥉"]
     trophy_classes = ["trophy-gold", "trophy-silver", "trophy-bronze"]
     
@@ -542,13 +456,13 @@ def show_rankings(data):
             st.markdown(f"""
                 <div class="metric-card">
                     <div class="{trophy_classes[i]}">{trophies[i]}</div>
-                    <div style="font-size: clamp(1.1rem, 4vw, 1.5rem); color: #efb920; font-weight: bold; margin: 8px 0;">
+                    <div style="font-size: 1.5rem; color: #efb920; font-weight: bold; margin: 10px 0;">
                         {team_name}
                     </div>
-                    <div style="font-size: clamp(1.8rem, 6vw, 2.5rem); font-weight: bold; color: white;">
+                    <div style="font-size: 2.5rem; font-weight: bold; color: white;">
                         {int(row['Total Points'])}
                     </div>
-                    <div style="font-size: clamp(0.8rem, 2.5vw, 0.9rem); color: #00f2fe; margin-top: 8px;">
+                    <div style="font-size: 0.9rem; color: #00f2fe; margin-top: 10px;">
                         Rank #{i+1}
                     </div>
                 </div>
@@ -556,26 +470,26 @@ def show_rankings(data):
     
     st.markdown("---")
     
-    # Full standings table - mobile scrollable
+    # Full standings table
     df_display = df_teams.reset_index()
     df_display.columns = ['Team'] + list(df_display.columns[1:])
     df_display['Rank'] = range(1, len(df_display) + 1)
     
+    # Reorder columns
     cols_order = ['Rank', 'Team', 'Total Points', 'Orange Cap', 'Purple Cap']
     df_display = df_display[cols_order]
     df_display = df_display.dropna(subset=["Total Points"])
     
-    # Wrap table in scrollable container for mobile
-    html_table = '<div class="table-container">'
-    html_table += """
-    <table style="width:100%; border-collapse: collapse; background-color: transparent; color: white; border: none; font-family: 'Roboto', sans-serif; min-width: 600px;">
+# 2. Build the HTML Table Manually (Bypasses all Streamlit styling)
+    html_table = """
+    <table style="width:100%; border-collapse: collapse; background-color: transparent; color: white; border: none; font-family: 'Roboto', sans-serif;">
         <thead>
             <tr style="border-bottom: 2px solid #efb920;">
-                <th style="padding: 12px 8px; color: #efb920; font-family: 'Bebas Neue', sans-serif; font-size: clamp(0.9rem, 2.5vw, 1.1rem); text-align: center;">RANK</th>
-                <th style="padding: 12px 8px; color: #efb920; font-family: 'Bebas Neue', sans-serif; font-size: clamp(0.9rem, 2.5vw, 1.1rem); text-align: center;">TEAM</th>
-                <th style="padding: 12px 8px; color: #efb920; font-family: 'Bebas Neue', sans-serif; font-size: clamp(0.9rem, 2.5vw, 1.1rem); text-align: center;">TOTAL POINTS</th>
-                <th style="padding: 12px 8px; color: #efb920; font-family: 'Bebas Neue', sans-serif; font-size: clamp(0.9rem, 2.5vw, 1.1rem); text-align: center;">ORANGE CAP</th>
-                <th style="padding: 12px 8px; color: #efb920; font-family: 'Bebas Neue', sans-serif; font-size: clamp(0.9rem, 2.5vw, 1.1rem); text-align: center;">PURPLE CAP</th>
+                <th style="padding: 15px; color: #efb920; font-family: 'Bebas Neue', sans-serif; font-size: 1.2rem; text-align: center;">RANK</th>
+                <th style="padding: 15px; color: #efb920; font-family: 'Bebas Neue', sans-serif; font-size: 1.2rem; text-align: center;">TEAM</th>
+                <th style="padding: 15px; color: #efb920; font-family: 'Bebas Neue', sans-serif; font-size: 1.2rem; text-align: center;">TOTAL POINTS</th>
+                <th style="padding: 15px; color: #efb920; font-family: 'Bebas Neue', sans-serif; font-size: 1.2rem; text-align: center;">ORANGE CAP</th>
+                <th style="padding: 15px; color: #efb920; font-family: 'Bebas Neue', sans-serif; font-size: 1.2rem; text-align: center;">PURPLE CAP</th>
             </tr>
         </thead>
         <tbody>
@@ -584,6 +498,7 @@ def show_rankings(data):
     for _, row in df_display.iterrows():
         rank = row['Rank']
         
+        # Row-specific styling logic
         row_style = "border-bottom: 1px solid rgba(255, 255, 255, 0.05);"
         first_cell_extra = ""
         
@@ -600,17 +515,27 @@ def show_rankings(data):
             row_style += " background-color: rgba(255, 255, 255, 0.02);"
 
         html_table += f'<tr style="{row_style}">'
-        html_table += f'<td style="padding: 10px 8px; text-align: center; font-weight: bold; {first_cell_extra}">{rank}</td>'
-        html_table += f'<td style="padding: 10px 8px; text-align: center; font-weight: bold;">{row["Team"]}</td>'
-        html_table += f'<td style="padding: 10px 8px; text-align: center;">{format_points(row["Total Points"])}</td>'
-        html_table += f'<td style="padding: 10px 8px; text-align: center;">{row["Orange Cap"]}</td>'
-        html_table += f'<td style="padding: 10px 8px; text-align: center;">{row["Purple Cap"]}</td>'
+        
+        # Add cells
+        # First cell (Rank) gets the single vertical line
+        html_table += f'<td style="padding: 15px; text-align: center; font-weight: bold; {first_cell_extra}">{rank}</td>'
+        # Second cell (Team)
+        html_table += f'<td style="padding: 15px; text-align: center; font-weight: bold;">{row["Team"]}</td>'
+        # Third cell (Total Points) with your format logic
+        html_table += f'<td style="padding: 15px; text-align: center;">{format_points(row["Total Points"])}</td>'
+        # Cap cells
+        html_table += f'<td style="padding: 15px; text-align: center;">{row["Orange Cap"]}</td>'
+        html_table += f'<td style="padding: 15px; text-align: center;">{row["Purple Cap"]}</td>'
+        
         html_table += "</tr>"
 
-    html_table += "</tbody></table></div>"
+    html_table += "</tbody></table>"
+
+    # 3. Final Injection
     st.markdown(html_table, unsafe_allow_html=True)
+
     
-    # Visualization - responsive height
+    # Visualization
     fig = go.Figure()
     fig.add_trace(go.Bar(
         x=df_teams.index,
@@ -630,18 +555,17 @@ def show_rankings(data):
         yaxis_title="Points",
         plot_bgcolor='rgba(0,0,0,0)',
         paper_bgcolor='rgba(0,0,0,0)',
-        font=dict(color='white', size=10),
-        height=400,
-        margin=dict(l=10, r=10, t=40, b=80),
-        xaxis=dict(tickangle=-45)
+        font=dict(color='white'),
+        height=500
     )
     
     st.plotly_chart(fig, use_container_width=True)
 
 def show_squads(data):
-    """Display team squads with injury tracking - MOBILE OPTIMIZED"""
+    """Display team squads with injury tracking"""
     st.markdown('<div class="section-header">🛡️ TEAM SQUADS</div>', unsafe_allow_html=True)
     
+    # Team selector
     selected_team = st.selectbox(
         "Select Team",
         list(SQUAD_INFO.keys()),
@@ -649,17 +573,15 @@ def show_squads(data):
     )
     
     if selected_team:
+        # Team summary
         team_data = data["Team Final Points"].loc[selected_team]
         
-        # Metric cards - 2x2 grid on mobile, 4x1 on desktop
-        col1, col2 = st.columns(2)
-        col3, col4 = st.columns(2)
-        
+        col1, col2, col3, col4 = st.columns(4)
         with col1:
             st.markdown(f"""
                 <div class="metric-card">
-                    <div style="font-size: clamp(0.8rem, 2.5vw, 0.9rem); color: #00f2fe;">Total Points</div>
-                    <div style="font-size: clamp(1.5rem, 5vw, 2rem); font-weight: bold;">{int(team_data['Total Points'])}</div>
+                    <div style="font-size: 0.9rem; color: #00f2fe;">Total Points</div>
+                    <div style="font-size: 2rem; font-weight: bold;">{int(team_data['Total Points'])}</div>
                 </div>
             """, unsafe_allow_html=True)
         
@@ -667,30 +589,30 @@ def show_squads(data):
             rank = (data["Team Final Points"]['Total Points'] > team_data['Total Points']).sum() + 1
             st.markdown(f"""
                 <div class="metric-card">
-                    <div style="font-size: clamp(0.8rem, 2.5vw, 0.9rem); color: #00f2fe;">Rank</div>
-                    <div style="font-size: clamp(1.5rem, 5vw, 2rem); font-weight: bold;">#{rank}</div>
+                    <div style="font-size: 0.9rem; color: #00f2fe;">Rank</div>
+                    <div style="font-size: 2rem; font-weight: bold;">#{rank}</div>
                 </div>
             """, unsafe_allow_html=True)
         
         with col3:
             st.markdown(f"""
                 <div class="metric-card">
-                    <div style="font-size: clamp(0.8rem, 2.5vw, 0.9rem); color: #00f2fe;">Orange Cap</div>
-                    <div style="font-size: clamp(1.5rem, 5vw, 2rem); font-weight: bold;">{int(team_data['Orange Cap'])}</div>
+                    <div style="font-size: 0.9rem; color: #00f2fe;">Orange Cap</div>
+                    <div style="font-size: 2rem; font-weight: bold;">{int(team_data['Orange Cap'])}</div>
                 </div>
             """, unsafe_allow_html=True)
         
         with col4:
             st.markdown(f"""
                 <div class="metric-card">
-                    <div style="font-size: clamp(0.8rem, 2.5vw, 0.9rem); color: #00f2fe;">Purple Cap</div>
-                    <div style="font-size: clamp(1.5rem, 5vw, 2rem); font-weight: bold;">{int(team_data['Purple Cap'])}</div>
+                    <div style="font-size: 0.9rem; color: #00f2fe;">Purple Cap</div>
+                    <div style="font-size: 2rem; font-weight: bold;">{int(team_data['Purple Cap'])}</div>
                 </div>
             """, unsafe_allow_html=True)
         
         st.markdown("---")
         
-        # Calculate player points
+        # Calculate player points from CFC Points sheets
         match_sheets = [sheet for sheet in data.keys() if ' - CFC Points' in sheet]
         player_points = {}
         
@@ -701,49 +623,55 @@ def show_squads(data):
                     if player not in ["Total Points", "Booster"] and pd.notna(pts) and player in SQUAD_INFO[selected_team]['squad']:
                         player_points[player] = player_points.get(player, 0) + pts
         
+        # Display squad
         st.markdown('<div class="section-header">Squad Players</div>', unsafe_allow_html=True)
         
         processed = set()
         squad_sorted = sorted(player_points.items(), key=lambda x: x[1], reverse=True)
         
-        # Single column on mobile, two on desktop
+        col1, col2 = st.columns(2)
         for i, (player, pts) in enumerate(squad_sorted):
             if player in processed:
                 continue
             
-            c = 0
-            for team in SQUAD_INFO.keys():
-                if player in SQUAD_INFO[team]['replacement'].keys():
-                    replacement = SQUAD_INFO[team]['replacement'][player]
-                    repl_pts = player_points.get(replacement, 0)
-                    
-                    # Stack on mobile
+            col = col1 if i % 2 == 0 else col2
+            
+            with col:
+                c = 0
+                for team in SQUAD_INFO.keys():
+                    if player in SQUAD_INFO[team]['replacement'].keys():
+                        replacement = SQUAD_INFO[team]['replacement'][player]
+                        repl_pts = player_points.get(replacement, 0)
+                        
+                        st.markdown(f"""
+                            <div style="display: flex; gap: 10px; margin-bottom: 10px;">
+                                <div class="player-row injured" style="flex: 1;">
+                                    <span>🚑 {player}</span>
+                                    <span style="color: #ff4b4b; font-weight: bold;">{int(pts)}</span>
+                                </div>
+                                <div class="player-row replacement" style="flex: 1;">
+                                    <span>🔁 {replacement}</span>
+                                    <span style="color: #00f2fe; font-weight: bold;">{int(repl_pts)}</span>
+                                </div>
+                            </div>
+                        """, unsafe_allow_html=True)
+                        processed.update([player, replacement])
+                        c += 1
+                        break
+                if c == 0:
                     st.markdown(f"""
-                        <div class="player-row injured" style="margin-bottom: 5px;">
-                            <span>🚑 {player}</span>
-                            <span style="color: #ff4b4b; font-weight: bold;">{int(pts)}</span>
-                        </div>
-                        <div class="player-row replacement" style="margin-bottom: 10px;">
-                            <span>🔁 {replacement}</span>
-                            <span style="color: #00f2fe; font-weight: bold;">{int(repl_pts)}</span>
+                        <div class="player-row">
+                            <span>{player}</span>
+                            <span style="color: #efb920; font-weight: bold;">{int(pts)}</span>
                         </div>
                     """, unsafe_allow_html=True)
-                    processed.update([player, replacement])
-                    c += 1
-                    break
-            if c == 0:
-                st.markdown(f"""
-                    <div class="player-row">
-                        <span>{player}</span>
-                        <span style="color: #efb920; font-weight: bold;">{int(pts)}</span>
-                    </div>
-                """, unsafe_allow_html=True)
-                processed.add(player)
+                    processed.add(player)
 
 def show_matches(data):
-    """Display match-wise breakdown - MOBILE OPTIMIZED"""
+    """Display match-wise breakdown"""
     st.markdown('<div class="section-header">🏏 MATCH CENTER</div>', unsafe_allow_html=True)
     
+    # Get match names
     match_names = [sheet.replace(" - CFC Points", "") for sheet in data.keys() if " - CFC Points" in sheet]
     
     selected_match = st.selectbox("Select Match", match_names, key="match_selector")
@@ -752,31 +680,35 @@ def show_matches(data):
         cfc_sheet = f"{selected_match} - CFC Points"
         breakdown_sheet = f"{selected_match} - Points Breakdown"
         
+        #Inside show_matches(data) under "Manager Points"
         if cfc_sheet in data:
             st.markdown("#### 🎯 Manager Points")
             df_match = data[cfc_sheet][["Total Points", "Booster"]].sort_values("Total Points", ascending=False)
             
-            # Mobile-friendly table
-            mgr_html = '<div class="table-container"><table style="width:100%; min-width: 400px;"><thead><tr style="border-bottom:2px solid #efb920;">'
-            mgr_html += '<th style="padding:10px 8px; color:#efb920; text-align:center; font-family:\'Bebas Neue\'; font-size: clamp(0.9rem, 2.5vw, 1.1rem);">TEAM</th>'
-            mgr_html += '<th style="padding:10px 8px; color:#efb920; text-align:center; font-family:\'Bebas Neue\'; font-size: clamp(0.9rem, 2.5vw, 1.1rem);">TOTAL</th>'
-            mgr_html += '<th style="padding:10px 8px; color:#efb920; text-align:center; font-family:\'Bebas Neue\'; font-size: clamp(0.9rem, 2.5vw, 1.1rem);">BOOSTER</th></tr></thead><tbody>'
+            # Manual HTML construction to ensure dark mode/full width
+            mgr_html = '<table style="width:100%;"><thead><tr style="border-bottom:2px solid #efb920;">'
+            mgr_html += '<th style="padding:10px; color:#efb920; text-align:center; font-family:\'Bebas Neue\';">TEAM</th>'
+            mgr_html += '<th style="padding:10px; color:#efb920; text-align:center; font-family:\'Bebas Neue\';">TOTAL</th>'
+            mgr_html += '<th style="padding:10px; color:#efb920; text-align:center; font-family:\'Bebas Neue\';">BOOSTER</th></tr></thead><tbody>'
             
             for mgr_name, row in df_match.iterrows():
+                # --- FIX FOR NAN BOOSTERS ---
                 booster_val = row["Booster"]
                 if pd.isna(booster_val) or str(booster_val).lower() in ['nan', 'none', '']:
+                    # Styling 'None' to look subtle and professional
                     booster_display = '<span style="opacity: 0.4; font-style: italic;">None</span>'
                 else:
+                    # Highlighting active boosters with a subtle cyan glow
                     booster_display = f'<span style="color: #00f2fe; font-weight: bold;">{booster_val}</span>'
                 
                 mgr_html += f'<tr style="border-bottom:1px solid rgba(255,255,255,0.05);">'
-                mgr_html += f'<td style="padding:10px 8px; text-align:center; font-weight:bold; font-size: clamp(0.8rem, 2.5vw, 1rem);">{mgr_name}</td>'
-                mgr_html += f'<td style="padding:10px 8px; text-align:center; font-size: clamp(0.8rem, 2.5vw, 1rem);">{format_points(row["Total Points"])}</td>'
-                mgr_html += f'<td style="padding:10px 8px; text-align:center; font-size: clamp(0.8rem, 2.5vw, 1rem);">{booster_display}</td></tr>'
+                mgr_html += f'<td style="padding:10px; text-align:center; font-weight:bold;">{mgr_name}</td>'
+                mgr_html += f'<td style="padding:10px; text-align:center;">{format_points(row["Total Points"])}</td>'
+                mgr_html += f'<td style="padding:10px; text-align:center;">{booster_display}</td></tr>'
             
-            st.markdown(mgr_html + '</tbody></table></div>', unsafe_allow_html=True)
+            st.markdown(mgr_html + '</tbody></table>', unsafe_allow_html=True)
             
-            # Bar chart - responsive
+            # Bar chart
             fig = go.Figure()
             fig.add_trace(go.Bar(
                 x=df_match.index,
@@ -794,54 +726,64 @@ def show_matches(data):
                 title=f"{selected_match} - Team Performance",
                 plot_bgcolor='rgba(0,0,0,0)',
                 paper_bgcolor='rgba(0,0,0,0)',
-                font=dict(color='white', size=10),
-                height=350,
-                margin=dict(l=10, r=10, t=40, b=80),
-                xaxis=dict(tickangle=-45)
+                font=dict(color='white'),
+                height=400
             )
             
             st.plotly_chart(fig, use_container_width=True)
         
-        if breakdown_sheet in data:
-            st.markdown('<div class="section-header">🌟 Player Performance</div>', unsafe_allow_html=True)
-            
-            df_p = data[breakdown_sheet].sort_values("Player Points", ascending=False)
-            cols_to_show = ['Player Points', 'Role', "Man of the Match", 'Player Batting Points', 
-                            'Player Bowling Points', 'Player Fielding Points']
-            
-            # Scrollable table for mobile
-            p_html = '<div class="table-container"><table style="width:100%; border-collapse:collapse; background-color:transparent; min-width: 700px;">'
-            p_html += '<thead><tr style="border-bottom:2px solid #efb920;">'
-            p_html += '<th style="padding:10px 8px; color:#efb920; font-family:\'Bebas Neue\'; text-align:center; font-size: clamp(0.85rem, 2.5vw, 1rem);">PLAYER</th>'
-            
-            for col in cols_to_show:
-                p_html += f'<th style="padding:10px 8px; color:#efb920; font-family:\'Bebas Neue\'; text-align:center; font-size: clamp(0.85rem, 2.5vw, 1rem);">{col.upper()}</th>'
-            p_html += '</tr></thead><tbody>'
+    # Player performance
+    if breakdown_sheet in data:
+        st.markdown('<div class="section-header">🌟 Player Performance</div>', unsafe_allow_html=True)
+        
+        # Sort and select required columns
+        df_p = data[breakdown_sheet].sort_values("Player Points", ascending=False)
+        cols_to_show = ['Player Points', 'Role', "Man of the Match", 'Player Batting Points', 
+                        'Player Bowling Points', 'Player Fielding Points']
+        
+        # Start Manual HTML construction
+        p_html = '<table style="width:100%; border-collapse:collapse; background-color:transparent;">'
+        p_html += '<thead><tr style="border-bottom:2px solid #efb920;">'
+        
+        # Header: Player name (Index)
+        p_html += '<th style="padding:12px; color:#efb920; font-family:\'Bebas Neue\'; text-align:center;">PLAYER</th>'
+        
+        # Dynamic Headers based on column names
+        for col in cols_to_show:
+            p_html += f'<th style="padding:12px; color:#efb920; font-family:\'Bebas Neue\'; text-align:center;">{col.upper()}</th>'
+        p_html += '</tr></thead><tbody>'
 
-            for player_name, row in df_p.iterrows():
-                p_html += '<tr style="border-bottom:1px solid rgba(255,255,255,0.05); background-color:rgba(255,255,255,0.02);">'
-                p_html += f'<td style="padding:10px 8px; text-align:left; font-weight:bold; color:white; font-size: clamp(0.8rem, 2.5vw, 0.95rem);">{player_name}</td>'
-                
-                for col in cols_to_show:
-                    val = row[col]
-                    
-                    if col == "Man of the Match":
-                        if pd.isna(val) or str(val).lower() in ['nan', 'none', '']:
-                            display_val = '<span style="opacity: 0.4;">-</span>'
-                        else:
-                            display_val = f'<span style="color: #efb920; font-weight: bold;">{val}</span>'
-                    else:
-                        display_val = format_points(val)
-                        
-                    p_html += f'<td style="padding:10px 8px; text-align:center; color:white; font-size: clamp(0.75rem, 2.5vw, 0.9rem);">{display_val}</td>'
-                
-                p_html += '</tr>'
+        for player_name, row in df_p.iterrows():
+            # Row styling for alternating dark theme
+            p_html += '<tr style="border-bottom:1px solid rgba(255,255,255,0.05); background-color:rgba(255,255,255,0.02);">'
             
-            p_html += '</tbody></table></div>'
-            st.markdown(p_html, unsafe_allow_html=True)
+            # Player Name (Index) - aligned left for readability
+            p_html += f'<td style="padding:12px; text-align:left; font-weight:bold; color:white;">{player_name}</td>'
+            
+            # Iterate through data columns
+            for col in cols_to_show:
+                val = row[col]
+                
+                # Format logic: handle MoM "None" and decimals
+                if col == "Man of the Match":
+                    if pd.isna(val) or str(val).lower() in ['nan', 'none', '']:
+                        display_val = '<span style="opacity: 0.4;">-</span>'
+                    else:
+                        display_val = f'<span style="color: #efb920; font-weight: bold;">{val}</span>'
+                else:
+                    display_val = format_points(val)
+                    
+                p_html += f'<td style="padding:12px; text-align:center; color:white;">{display_val}</td>'
+            
+            p_html += '</tr>'
+        
+        p_html += '</tbody></table>'
+        
+        # Inject the HTML
+        st.markdown(p_html, unsafe_allow_html=True)
 
 def show_analytics(data):
-    """Display advanced analytics - MOBILE OPTIMIZED"""
+    """Display advanced analytics"""
     st.markdown('<div class="section-header">📊 ANALYTICS DASHBOARD</div>', unsafe_allow_html=True)
     
     team_final = data["Team Final Points"]
@@ -859,8 +801,8 @@ def show_analytics(data):
             y=[team_final.loc[team, col] for col in match_cols],
             mode='lines+markers',
             name=team,
-            line=dict(width=2),
-            marker=dict(size=6)
+            line=dict(width=3),
+            marker=dict(size=8)
         ))
     
     fig.update_layout(
@@ -869,19 +811,9 @@ def show_analytics(data):
         yaxis_title="Points",
         plot_bgcolor='rgba(0,0,0,0)',
         paper_bgcolor='rgba(0,0,0,0)',
-        font=dict(color='white', size=9),
-        height=400,
-        hovermode='x unified',
-        margin=dict(l=10, r=10, t=40, b=80),
-        xaxis=dict(tickangle=-45),
-        legend=dict(
-            orientation="h",
-            yanchor="bottom",
-            y=-0.4,
-            xanchor="center",
-            x=0.5,
-            font=dict(size=8)
-        )
+        font=dict(color='white'),
+        height=500,
+        hovermode='x unified'
     )
     
     st.plotly_chart(fig, use_container_width=True)
@@ -910,9 +842,8 @@ def show_analytics(data):
         yaxis_title="Player",
         plot_bgcolor='rgba(0,0,0,0)',
         paper_bgcolor='rgba(0,0,0,0)',
-        font=dict(color='white', size=9),
-        height=450,
-        margin=dict(l=10, r=10, t=40, b=40)
+        font=dict(color='white'),
+        height=500
     )
     
     st.plotly_chart(fig, use_container_width=True)
