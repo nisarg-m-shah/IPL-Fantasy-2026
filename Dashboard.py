@@ -439,10 +439,10 @@ def main():
     # Header - Mobile-optimized with proper centering
     st.markdown('''
         <div style="text-align: center; margin: 20px 0;">
-            <div style="font-size: clamp(2.5rem, 8vw, 3.5rem); color: green; font-family: 'Bebas Neue', cursive; line-height: 1.1; text-shadow: 0 0 20px rgba(255, 255, 255, 0.8);">
+            <div style="font-size: clamp(2.5rem, 8vw, 3.5rem); color: white; font-family: 'Bebas Neue', cursive; line-height: 1.1; text-shadow: 0 0 20px rgba(255, 255, 255, 0.8);">
                 🏏 CFC FANTASY 🏏
             </div>
-            <div style="font-size: clamp(2.5rem, 8vw, 3.5rem); color: green; font-family: 'Bebas Neue', cursive; line-height: 1.1; text-shadow: 0 0 20px rgba(255, 255, 255, 0.8); margin-top: 5px;">
+            <div style="font-size: clamp(2.5rem, 8vw, 3.5rem); color: white; font-family: 'Bebas Neue', cursive; line-height: 1.1; text-shadow: 0 0 20px rgba(255, 255, 255, 0.8); margin-top: 5px;">
                 LEAGUE 2025
             </div>
         </div>
