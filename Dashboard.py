@@ -439,10 +439,10 @@ def main():
     # Header - Mobile-optimized with proper centering
     st.markdown('''
         <div style="text-align: center; margin: 20px 0;">
-            <div style="font-size: clamp(2.5rem, 8vw, 3.5rem); color: #efb920; font-family: 'Bebas Neue', cursive; line-height: 1.1; text-shadow: 0 0 20px rgba(239, 185, 32, 0.5);">
+            <div style="font-size: clamp(2.5rem, 8vw, 3.5rem); color: green; font-family: 'Bebas Neue', cursive; line-height: 1.1; text-shadow: 0 0 20px rgba(255, 255, 255, 0.8);">
                 🏏 CFC FANTASY 🏏
             </div>
-            <div style="font-size: clamp(2.5rem, 8vw, 3.5rem); color: #efb920; font-family: 'Bebas Neue', cursive; line-height: 1.1; text-shadow: 0 0 20px rgba(239, 185, 32, 0.5); margin-top: 5px;">
+            <div style="font-size: clamp(2.5rem, 8vw, 3.5rem); color: green; font-family: 'Bebas Neue', cursive; line-height: 1.1; text-shadow: 0 0 20px rgba(255, 255, 255, 0.8); margin-top: 5px;">
                 LEAGUE 2025
             </div>
         </div>
@@ -621,33 +621,33 @@ def show_rankings(data):
     html_table += "</tbody></table></div>"
     st.markdown(html_table, unsafe_allow_html=True)
     
-    # Visualization - responsive height
-    fig = go.Figure()
-    fig.add_trace(go.Bar(
-        x=df_teams.index,
-        y=df_teams['Total Points'],
-        marker=dict(
-            color=df_teams['Total Points'],
-            colorscale='Viridis',
-            line=dict(color='#efb920', width=2)
-        ),
-        text=df_teams['Total Points'].astype(int),
-        textposition='outside'
-    ))
+    # # # Visualization - responsive height
+    # # fig = go.Figure()
+    # # fig.add_trace(go.Bar(
+    # #     x=df_teams.index,
+    # #     y=df_teams['Total Points'],
+    # #     marker=dict(
+    # #         color=df_teams['Total Points'],
+    # #         colorscale='Viridis',
+    # #         line=dict(color='#efb920', width=2)
+    # #     ),
+    # #     text=df_teams['Total Points'].astype(int),
+    # #     textposition='outside'
+    # # ))
     
-    fig.update_layout(
-        title="Team Total Points",
-        xaxis_title="Team",
-        yaxis_title="Points",
-        plot_bgcolor='rgba(0,0,0,0)',
-        paper_bgcolor='rgba(0,0,0,0)',
-        font=dict(color='white', size=10),
-        height=400,
-        margin=dict(l=10, r=10, t=40, b=80),
-        xaxis=dict(tickangle=-45)
-    )
+    # fig.update_layout(
+    #     title="Team Total Points",
+    #     xaxis_title="Team",
+    #     yaxis_title="Points",
+    #     plot_bgcolor='rgba(0,0,0,0)',
+    #     paper_bgcolor='rgba(0,0,0,0)',
+    #     font=dict(color='white', size=10),
+    #     height=400,
+    #     margin=dict(l=10, r=10, t=40, b=80),
+    #     xaxis=dict(tickangle=-45)
+    # )
     
-    st.plotly_chart(fig, use_container_width=True)
+    # st.plotly_chart(fig, use_container_width=True)
 
 def show_squads(data):
     """Display team squads with injury tracking - MOBILE OPTIMIZED"""
@@ -773,31 +773,31 @@ def show_matches(data):
             
             st.markdown(mgr_html + '</tbody></table></div>', unsafe_allow_html=True)
             
-            # Bar chart - responsive
-            fig = go.Figure()
-            fig.add_trace(go.Bar(
-                x=df_match.index,
-                y=df_match['Total Points'],
-                marker=dict(
-                    color=df_match['Total Points'],
-                    colorscale='Plasma',
-                    line=dict(color='#efb920', width=2)
-                ),
-                text=df_match['Total Points'].astype(int),
-                textposition='outside'
-            ))
+            # # Bar chart - responsive
+            # fig = go.Figure()
+            # fig.add_trace(go.Bar(
+            #     x=df_match.index,
+            #     y=df_match['Total Points'],
+            #     marker=dict(
+            #         color=df_match['Total Points'],
+            #         colorscale='Plasma',
+            #         line=dict(color='#efb920', width=2)
+            #     ),
+            #     text=df_match['Total Points'].astype(int),
+            #     textposition='outside'
+            # ))
             
-            fig.update_layout(
-                title=f"{selected_match} - Team Performance",
-                plot_bgcolor='rgba(0,0,0,0)',
-                paper_bgcolor='rgba(0,0,0,0)',
-                font=dict(color='white', size=10),
-                height=350,
-                margin=dict(l=10, r=10, t=40, b=80),
-                xaxis=dict(tickangle=-45)
-            )
+            # fig.update_layout(
+            #     title=f"{selected_match} - Team Performance",
+            #     plot_bgcolor='rgba(0,0,0,0)',
+            #     paper_bgcolor='rgba(0,0,0,0)',
+            #     font=dict(color='white', size=10),
+            #     height=350,
+            #     margin=dict(l=10, r=10, t=40, b=80),
+            #     xaxis=dict(tickangle=-45)
+            # )
             
-            st.plotly_chart(fig, use_container_width=True)
+            # st.plotly_chart(fig, use_container_width=True)
         
         if breakdown_sheet in data:
             st.markdown('<div class="section-header">🌟 Player Performance</div>', unsafe_allow_html=True)
