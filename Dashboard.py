@@ -355,7 +355,7 @@ SQUAD_INFO = {
                        'Riyan Parag', 'Khaleel Ahmed', 'Avesh Khan', 'Faf du Plessis', 'Arjun Tendulkar',
                        'Mohammed Shami', 'Shivam Dube', 'Lockie Ferguson', 'Josh Hazlewood', 'Prabhsimran Singh',
                        'Rishabh Pant', 'Corbin Bosch', 'Mohammed Siraj', 'Marcus Stoinis', 'Harpreet Brar',
-                       'Rahmanullah Gurbaz', 'Rashid Khan', 'Washington Sundar','Kyle Jamieson'],
+                       'Rahmanullah Gurbaz', 'Rashid Khan', 'Washington Sundar','Kyle Jamieson','Charith Asalanka'],
             'captain':['Varun Chakravarthy'],
             'vice captain':['Travis Head'],
             'trump card':['Prasidh Krishna'],
@@ -696,7 +696,10 @@ def show_squads(data):
                 row = data[sheet].loc[selected_team]
                 for player, pts in row.items():
                     if player not in ["Total Points", "Booster"] and pd.notna(pts) and player in SQUAD_INFO[selected_team]['squad']:
-                        player_points[player] = player_points.get(player, 0) + pts
+                        if player not in player_points.keys():
+                            player_points[player] = 0
+                        else:
+                            player_points[player] += pts
         
         st.markdown('<div class="section-header">Squad Players</div>', unsafe_allow_html=True)
         
