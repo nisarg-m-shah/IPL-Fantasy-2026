@@ -689,6 +689,7 @@ def show_squads(data):
         
         # Calculate player points
         match_sheets = [sheet for sheet in data.keys() if ' - CFC Points' in sheet]
+
         player_points = {}
         
         for sheet in match_sheets:
@@ -696,10 +697,13 @@ def show_squads(data):
                 row = data[sheet].loc[selected_team]
                 for player, pts in row.items():
                     if player not in ["Total Points", "Booster"] and pd.notna(pts) and player in SQUAD_INFO[selected_team]['squad']:
+                        if "inal" in sheet:
+                            print(sheet,player_points,selected_team)
                         if player not in player_points.keys():
-                            player_points[player] = 0
+                            player_points[player] = pts
                         else:
                             player_points[player] += pts
+
         
         st.markdown('<div class="section-header">Squad Players</div>', unsafe_allow_html=True)
         
