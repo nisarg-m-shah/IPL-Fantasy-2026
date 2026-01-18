@@ -217,17 +217,18 @@ class Player:
         return role,player_mompoints,catches,stumpings,main_runouts,secondary_runouts,catching_points,stumping_points,direct_runout_points,second_runout_points,maidens, wickets, dots, economy, bowled_wickets, lbw_wickets, maidens_points, wicket_points, dot_points, economy_points, bowling_milestone_points, bowled_wickets_points, lbw_wickets_points, runs, fours, sixes, strike_rate, runs_points, fours_points, sixes_points, duck_points, strike_rate_points, batting_milestone_points,player_points,player_batpoints,player_bowlpoints,player_fieldpoints
 
 class Team:
-    def __init__(self, team, match_object, match_name, booster):  # Added match_name parameter
+    def __init__(self, team, match_object, match_name,match_type, booster):  # Added match_name parameter
         self.team = team
         self.match_object = match_object
         self.match_name = match_name  # Store match name
+        self.match_type = match_type
         self.booster = booster
         
         # Extract match number from match_name (e.g., "Match 5" -> 5)
         match_number = 0
-        if "Match" in match_name:
+        if "Match" in match_type:
             try:
-                match_number = int(match_name.split("Match")[1].strip())
+                match_number = int(match_type.split("Match")[1].strip())
             except:
                 match_number = 0
         elif match_name in ["Qualifier 1", "Eliminator", "Qualifier 2", "Final"]:
@@ -252,8 +253,10 @@ class Team:
                         player_points *= 2
                 elif player in team['vice captain']:
                     player_points *= 1.5
-                elif player in team['trump card'] and match_number > 35:  
-                    player_points *= 3     
+                elif player in team['trump card']:
+                    if match_number > 35:  
+                        player_points *= 3  
+                        #print("trump card successful: player points =",player_points)   
 
                 if "Bat" in self.booster and (player_object.role == 'BAT' or player_object.role == "WK"):
                     player_points *= 2
@@ -273,11 +276,12 @@ class Team:
 
 
 class Match:
-    def __init__(self, teams, match_object, match_name, boosters):  # Added match_name parameter
+    def __init__(self, teams, match_object, match_name,match_type, boosters):  # Added match_name parameter
         self.teams = teams
         self.boosters = boosters
         self.match_object = match_object
         self.match_name = match_name
+        self.match_type = match_type
         match_points_breakdown = {}
 
         for participant in self.teams.keys():
@@ -287,7 +291,7 @@ class Match:
             except:
                 booster = "None"
 
-            team_object = Team(team, self.match_object, match_name, booster)  # Pass match_name
+            team_object = Team(team, self.match_object, match_name,match_type,booster)  # Pass match_name
             points_list = team_object.points_list
             total_points = team_object.total_points
 
@@ -345,6 +349,7 @@ if __name__ == '__main__':
     begin = time.time()
 
     match_name = "RCB vs PBKS"
+    match_type = 34
     match_object = match_objects[match_name]
 
     # match_object = match_objects[60]
@@ -379,14 +384,14 @@ if __name__ == '__main__':
                              'Harnoor Singh', 'Bhuvneshwar Kumar', 'Abishek Porel', 'Angkrish Raghuvanshi', 'Dhruv Jurel',
                              'David Miller', 'Anuj Rawat', 'Josh Inglis', 'Kumar Kartikeya', 'Akash Deep', 'Rahul Tewatia',
                              'Ramandeep Singh', 'Sherfane Rutherford', 'Glenn Maxwell', 'Sandeep Sharma', 'Shamar Joseph',
-                             'Pat Cummins', 'Quinton de Kock', 'Ravichandran Ashwin',"Mitch Owen"],
+                             'Pat Cummins', 'Quinton de Kock', 'Ravichandran Ashwin',"Mitchell Owen"],
             'captain':['Virat Kohli'],
             'vice captain':['Suryakumar Yadav'],
             'trump card':['Kuldeep Yadav'],
-            'replacement':{'Glen Maxwell':"Mitch Owen"}
+            'replacement':{'Glen Maxwell':"Mitchell Owen"}
                         },
         'La Furia Roja':{
-            'squad':['Shreyas Iyer', 'Sai Sudharsan', 'Phil Salt', 'Jasprit Bumrah', 'Swastik Chikara',
+            'squad':['Shreyas Iyer', 'Sai Sudharsan', 'Philip Salt', 'Jasprit Bumrah', 'Swastik Chikara',
                           'Rajvardhan Hangargekar', 'Manoj Bhandage', 'Nitish Rana', 'Rasikh Dar Salam', 'Deepak Chahar',
                           'MS Dhoni', 'Aaron Hardie', 'Priyansh Arya', 'Sameer Rizvi', 'Mitchell Santner', 'Manish Pandey',
                           'Suyash Sharma', 'Kamlesh Nagarkoti', 'Will Jacks', 'Azmatullah Omarzai', 'Adam Zampa',
@@ -394,7 +399,7 @@ if __name__ == '__main__':
                           'Maheesh Theekshana',"Smaran Ravichandran"],
             'captain':['Shreyas Iyer'],
             'vice captain':['Sai Sudharsan'],
-            'trump card':['Phil Salt'],
+            'trump card':['Philip Salt'],
             'replacement':{'Adam Zampa':"Smaran Ravichandran"}
                         },
         'Supa Jinx Strikas':{ 
@@ -432,11 +437,13 @@ if __name__ == '__main__':
                         },   
     }
 
+    # ✅ UPDATED: Use match names instead of URLs
     boosters = {
         'Gujju Gang': {
             'KKR vs GT': "Double Power",
             'SRH vs MI': "Batting Powerplay",
-            'KKR vs RR': "Triple Captain"
+            'KKR vs RR': "Triple Captain",
+            "Eliminator": "Bowling Powerplay"
         },
         'Hilarious Hooligans': {
             'CSK vs PBKS': "Bowling Powerplay",
@@ -445,16 +452,18 @@ if __name__ == '__main__':
             'SRH vs DC': "Batting Powerplay"
         },
         'Tormented Titans': {
-            'SRH vs DC': "Bowling Powerplay"
+            'SRH vs DC': "Bowling Powerplay",
+            "RCB vs SRH": "Double Power"
         },
         'La Furia Roja': {
-            'KKR vs PBKS': "Batting Powerplay",  # Fixed typo from "Powrrplay"
+            'KKR vs PBKS': "Batting Powerplay",
             'PBKS vs DC': "Triple Captain"
         },
         'Supa Jinx Strikas': {
             'MI vs SRH': 'Batting Powerplay',
             'RR vs MI': "Bowling Powerplay",
-            'GT vs SRH': "Triple Captain"
+            'GT vs SRH': "Triple Captain",
+            "GT vs CSK": "Double Power"
         },
         'Raging Raptors': {
             'DC vs RR': 'Batting Powerplay',
@@ -470,7 +479,7 @@ if __name__ == '__main__':
         }
     }
 
-    match = Match(teams,match_object,match_name,boosters)
+    match = Match(teams,match_object,match_name,match_type,boosters)
     print()
     team_breakdown = match.match_points_breakdown
     print(team_breakdown)

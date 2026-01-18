@@ -356,7 +356,7 @@ SQUAD_INFO = {
                        'Mohammed Shami', 'Shivam Dube', 'Lockie Ferguson', 'Josh Hazlewood', 'Prabhsimran Singh',
                        'Rishabh Pant', 'Corbin Bosch', 'Mohammed Siraj', 'Marcus Stoinis', 'Harpreet Brar',
                        'Rahmanullah Gurbaz', 'Rashid Khan', 'Washington Sundar','Kyle Jamieson','Charith Asalanka'],
-            'captain':['Varun Chakravarthy'],
+            'captain':['Varun Chakaravarthy'],
             'vice captain':['Travis Head'],
             'trump card':['Prasidh Krishna'],
             'replacement':{'Lockie Ferguson':'Kyle Jamieson','Corbin Bosch':'Charith Asalanka'}
@@ -378,14 +378,14 @@ SQUAD_INFO = {
                              'Harnoor Singh', 'Bhuvneshwar Kumar', 'Abishek Porel', 'Angkrish Raghuvanshi', 'Dhruv Jurel',
                              'David Miller', 'Anuj Rawat', 'Josh Inglis', 'Kumar Kartikeya', 'Akash Deep', 'Rahul Tewatia',
                              'Ramandeep Singh', 'Sherfane Rutherford', 'Glenn Maxwell', 'Sandeep Sharma', 'Shamar Joseph',
-                             'Pat Cummins', 'Quinton de Kock', 'Ravichandran Ashwin',"Mitch Owen"],
+                             'Pat Cummins', 'Quinton de Kock', 'Ravichandran Ashwin',"Mitchell Owen"],
             'captain':['Virat Kohli'],
             'vice captain':['Suryakumar Yadav'],
             'trump card':['Kuldeep Yadav'],
-            'replacement':{'Glen Maxwell':"Mitch Owen"}
+            'replacement':{'Glen Maxwell':"Mitchell Owen"}
                         },
         'La Furia Roja':{
-            'squad':['Shreyas Iyer', 'Sai Sudharsan', 'Phil Salt', 'Jasprit Bumrah', 'Swastik Chikara',
+            'squad':['Shreyas Iyer', 'Sai Sudharsan', 'Philip Salt', 'Jasprit Bumrah', 'Swastik Chikara',
                           'Rajvardhan Hangargekar', 'Manoj Bhandage', 'Nitish Rana', 'Rasikh Dar Salam', 'Deepak Chahar',
                           'MS Dhoni', 'Aaron Hardie', 'Priyansh Arya', 'Sameer Rizvi', 'Mitchell Santner', 'Manish Pandey',
                           'Suyash Sharma', 'Kamlesh Nagarkoti', 'Will Jacks', 'Azmatullah Omarzai', 'Adam Zampa',
@@ -393,7 +393,7 @@ SQUAD_INFO = {
                           'Maheesh Theekshana',"Smaran Ravichandran"],
             'captain':['Shreyas Iyer'],
             'vice captain':['Sai Sudharsan'],
-            'trump card':['Phil Salt'],
+            'trump card':['Philip Salt'],
             'replacement':{'Adam Zampa':"Smaran Ravichandran"}
                         },
         'Supa Jinx Strikas':{ 
@@ -431,9 +431,9 @@ SQUAD_INFO = {
                         },   
     }
 
-INJURY_MAP = {
-    "Ayush Mhatre": "Ruturaj Gaikwad"
-}
+# INJURY_MAP = {
+#     "Ayush Mhatre": "Ruturaj Gaikwad"
+# }
 
 def main():
     # Header - Mobile-optimized with proper centering

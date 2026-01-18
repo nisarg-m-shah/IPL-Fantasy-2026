@@ -312,6 +312,7 @@ class Score:
 
     def __init__(self, match_id: int):
         self.match_id = match_id
+        self.match_type = "" #CHANGE THIS LATER
 
         self.catchers = []
         self.stumpers = []
@@ -567,7 +568,7 @@ class Series:
         attempt_limit = 3
 
         # ---------------- MAIN LOOP ----------------
-        for match_id, match_type, match_name, status in combined_sorted:
+        for match_id, match_type, match_name, status in reversed(combined_sorted): #UNRESOLVED
             print("Processing",match_id,match_type,match_name,status,)
 
             if match_name not in self.match_names:
@@ -590,6 +591,7 @@ class Series:
                 self._scrape_match(
                     match_id,
                     match_name,
+                    match_type,
                     is_final=True,
                     attempts=attempt_limit
                 )
@@ -602,6 +604,7 @@ class Series:
                 self._scrape_match(
                     match_id,
                     match_name,
+                    match_type,
                     is_final=False,
                     attempts=attempt_limit
                 )
@@ -621,7 +624,7 @@ class Series:
     # =====================================================
     # Internal scraper
     # =====================================================
-    def _scrape_match(self, match_id, match_name, is_final, attempts):
+    def _scrape_match(self, match_id, match_name,match_type, is_final, attempts):
 
         # ✅ HARD GUARD (MOST IMPORTANT FIX)
         if (
@@ -634,6 +637,7 @@ class Series:
         while attempt <= attempts:
             score = Score(match_id)
             score.is_final = is_final
+            score.match_type = match_type
 
             self.match_objects[match_name] = score
             self.match_states[match_id] = {"is_final": is_final}

@@ -123,14 +123,14 @@ def run_output_pipeline():
                              'Harnoor Singh', 'Bhuvneshwar Kumar', 'Abishek Porel', 'Angkrish Raghuvanshi', 'Dhruv Jurel',
                              'David Miller', 'Anuj Rawat', 'Josh Inglis', 'Kumar Kartikeya', 'Akash Deep', 'Rahul Tewatia',
                              'Ramandeep Singh', 'Sherfane Rutherford', 'Glenn Maxwell', 'Sandeep Sharma', 'Shamar Joseph',
-                             'Pat Cummins', 'Quinton de Kock', 'Ravichandran Ashwin',"Mitch Owen"],
+                             'Pat Cummins', 'Quinton de Kock', 'Ravichandran Ashwin',"Mitchell Owen"],
             'captain':['Virat Kohli'],
             'vice captain':['Suryakumar Yadav'],
             'trump card':['Kuldeep Yadav'],
-            'replacement':{'Glen Maxwell':"Mitch Owen"}
+            'replacement':{'Glen Maxwell':"Mitchell Owen"}
                         },
         'La Furia Roja':{
-            'squad':['Shreyas Iyer', 'Sai Sudharsan', 'Phil Salt', 'Jasprit Bumrah', 'Swastik Chikara',
+            'squad':['Shreyas Iyer', 'Sai Sudharsan', 'Philip Salt', 'Jasprit Bumrah', 'Swastik Chikara',
                           'Rajvardhan Hangargekar', 'Manoj Bhandage', 'Nitish Rana', 'Rasikh Dar Salam', 'Deepak Chahar',
                           'MS Dhoni', 'Aaron Hardie', 'Priyansh Arya', 'Sameer Rizvi', 'Mitchell Santner', 'Manish Pandey',
                           'Suyash Sharma', 'Kamlesh Nagarkoti', 'Will Jacks', 'Azmatullah Omarzai', 'Adam Zampa',
@@ -138,7 +138,7 @@ def run_output_pipeline():
                           'Maheesh Theekshana',"Smaran Ravichandran"],
             'captain':['Shreyas Iyer'],
             'vice captain':['Sai Sudharsan'],
-            'trump card':['Phil Salt'],
+            'trump card':['Philip Salt'],
             'replacement':{'Adam Zampa':"Smaran Ravichandran"}
                         },
         'Supa Jinx Strikas':{ 
@@ -176,12 +176,12 @@ def run_output_pipeline():
                         },   
     }
 
-    # ✅ UPDATED: Use match names instead of URLs
     boosters = {
         'Gujju Gang': {
             'KKR vs GT': "Double Power",
             'SRH vs MI': "Batting Powerplay",
-            'KKR vs RR': "Triple Captain"
+            'KKR vs RR': "Triple Captain",
+            "Eliminator": "Bowling Powerplay"
         },
         'Hilarious Hooligans': {
             'CSK vs PBKS': "Bowling Powerplay",
@@ -190,7 +190,8 @@ def run_output_pipeline():
             'SRH vs DC': "Batting Powerplay"
         },
         'Tormented Titans': {
-            'SRH vs DC': "Bowling Powerplay"
+            'SRH vs DC': "Bowling Powerplay",
+            "RCB vs SRH": "Double Power"
         },
         'La Furia Roja': {
             'KKR vs PBKS': "Batting Powerplay",
@@ -199,7 +200,8 @@ def run_output_pipeline():
         'Supa Jinx Strikas': {
             'MI vs SRH': 'Batting Powerplay',
             'RR vs MI': "Bowling Powerplay",
-            'GT vs SRH': "Triple Captain"
+            'GT vs SRH': "Triple Captain",
+            "GT vs CSK": "Double Power"
         },
         'Raging Raptors': {
             'DC vs RR': 'Batting Powerplay',
@@ -215,6 +217,7 @@ def run_output_pipeline():
         }
     }
 
+
     # Get list of match names (not URLs)
     match_names = list(match_objects.keys())
     number_of_matches = len(match_objects)
@@ -223,9 +226,10 @@ def run_output_pipeline():
     for match_idx in range(number_of_matches, 0, -1):
         match_name = match_names[match_idx - 1]
         match_object = match_objects[match_name]
+        match_type = match_object.match_type
 
         # Create Match object with match_name
-        match = Match(teams, match_object, match_name, boosters)
+        match = Match(teams, match_object, match_name,match_type, boosters)
         team_breakdown = match.match_points_breakdown
         General_points_list = match.general_player_points_list
         points_key = match_name + " - CFC Points"
@@ -241,7 +245,7 @@ def run_output_pipeline():
                         break
                 if count == 0:
                     print(f"Match {match_name} already processed and unchanged, skipping...")
-                    continue
+                    break
 
         spreadsheet[(match_name + " - Points Breakdown")] = General_points_list
         spreadsheet[(match_name + " - CFC Points")] = team_breakdown
