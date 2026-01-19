@@ -6,7 +6,17 @@ import os
 import time
 import subprocess
 import threading
+from datetime import datetime, time as dt_time
+import pytz
 from Output import run_output_pipeline
+
+# --- MATCH SCHEDULE CONFIGURATION ---
+MATCH_SCHEDULE = {
+    'single_header': 
+    ['2026-01-19','2025-03-22', '2025-03-24', '2025-03-25', '2025-03-26', '2025-03-27', '2025-03-28', '2025-03-29', '2025-03-31', '2025-04-01', '2025-04-02', '2025-04-03', '2025-04-04', '2025-04-06', '2025-04-07', '2025-04-09', '2025-04-10', '2025-04-11', '2025-04-14', '2025-04-15', '2025-04-16', '2025-04-17', '2025-04-18', '2025-04-21', '2025-04-22', '2025-04-23', '2025-04-24', '2025-04-25', '2025-04-26', '2025-04-28', '2025-04-29', '2025-04-30', '2025-05-01', '2025-05-02', '2025-05-03', '2025-05-05', '2025-05-06', '2025-05-07', '2025-05-17', '2025-05-19', '2025-05-20', '2025-05-21', '2025-05-22', '2025-05-23', '2025-05-24', '2025-05-26', '2025-05-27', '2025-05-29', '2025-05-30', '2025-06-01'], 
+    'double_header': 
+    ['2025-03-23', '2025-03-30', '2025-04-05', '2025-04-08', '2025-04-12', '2025-04-13', '2025-04-19', '2025-04-20', '2025-04-27', '2025-05-04', '2025-05-18', '2025-05-25']
+    }
 
 def format_points(val):
     """Removes trailing zeros, keeps .5 if present, otherwise returns integer."""
@@ -299,10 +309,11 @@ st.markdown("""
 # --- DATA LOADING ---
 TIMESTAMP_FILE = ".last_update_timestamp"
 EXCEL_FILE = "CFC Fantasy League 2025.xlsx"
-OUTPUT_SCRIPT = "Output.py"
-UPDATE_INTERVAL = 300  # 5 minutes
+OUTPUT_SCRIPT = "Run.py"
+UPDATE_INTERVAL = 300  # 5 minutes in seconds
 
 def get_last_update_time():
+    """Get the timestamp of last update"""
     try:
         if os.path.exists(TIMESTAMP_FILE):
             with open(TIMESTAMP_FILE, 'r') as f:
@@ -312,15 +323,76 @@ def get_last_update_time():
         return 0
 
 def save_update_time():
+    """Save current timestamp"""
     with open(TIMESTAMP_FILE, 'w') as f:
         f.write(str(time.time()))
 
+def is_match_time():
+    """
+    Check if current time falls within match hours based on schedule
+    Returns: (bool, str) - (is_match_time, reason)
+    """
+
+    # Get current time in IST
+    ist = pytz.timezone('Asia/Kolkata')
+    now = datetime.now(ist)
+    current_date = now.strftime('%Y-%m-%d')
+    current_time = now.time()
+    
+    # Single header: 7:30 PM - 12:30 AM next day
+    single_start = dt_time(19, 30)  # 7:30 PM
+    single_end = dt_time(0, 30)     # 12:30 AM
+    
+    # Double header: 3:30 PM - 12:30 AM next day
+    double_start = dt_time(15, 30)  # 3:30 PM
+    double_end = dt_time(0, 30)     # 12:30 AM
+    
+    # Check if today is a single header day
+    if current_date in MATCH_SCHEDULE['single_header']:
+        if current_time >= single_start or current_time <= single_end:
+            return True, f"Single header match day ({current_date})"
+    
+    # Check if today is a double header day
+    if current_date in MATCH_SCHEDULE['double_header']:
+        if current_time >= double_start or current_time <= double_end:
+            return True, f"Double header match day ({current_date})"
+    
+    # Check if yesterday was a match day (for post-midnight times)
+    yesterday = (now - pd.Timedelta(days=1)).strftime('%Y-%m-%d')
+    if current_time <= dt_time(0, 30):  # Before 12:30 AM
+        if yesterday in MATCH_SCHEDULE['single_header']:
+            return True, f"Single header match day continued ({yesterday})"
+        if yesterday in MATCH_SCHEDULE['double_header']:
+            return True, f"Double header match day continued ({yesterday})"
+    
+    return False, "No match scheduled"
+
 def should_update():
+    """
+    Determine if we should run the update pipeline
+    Returns: (bool, str) - (should_update, reason)
+    """
+    is_match, match_reason = is_match_time()
+    
+    if not is_match:
+        return False, f"Outside match hours - {match_reason}"
+    
     last_update = get_last_update_time()
     current_time = time.time()
-    return (current_time - last_update) >= UPDATE_INTERVAL
+    time_since_update = current_time - last_update
+    
+    if time_since_update >= UPDATE_INTERVAL:
+        mins = int(time_since_update // 60)
+        secs = int(time_since_update % 60)
+        return True, f"Match Ongoing - {match_reason} (Last update: {mins} min {secs} sec ago)"
+    else:
+        remaining_time = UPDATE_INTERVAL - time_since_update
+        mins = int(remaining_time // 60)
+        secs = int(remaining_time % 60)
+        return False, f"Match Ongoing | Updated Recently (Next update in {mins} min {secs} sec)"
 
 def run_output_script():
+    """Run the output pipeline to scrape and organize data"""
     try:
         result = subprocess.run(
             ['python', OUTPUT_SCRIPT],
@@ -330,21 +402,24 @@ def run_output_script():
         )
         if result.returncode == 0:
             save_update_time()
-            return True
-        return False
-    except:
-        return False
+            return True, "Update successful"
+        return False, f"Update failed with return code {result.returncode}"
+    except subprocess.TimeoutExpired:
+        return False, "Update timeout (>5 minutes)"
+    except Exception as e:
+        return False, f"Update error: {str(e)}"
 
 # Use cache_resource instead of cache_data for Excel file
-EXCEL_FILE = "CFC Fantasy League 2025.xlsx"
 @st.cache_resource(ttl=300)
 def get_excel_engine():
-    if not os.path.exists(EXCEL_FILE): return None
+    if not os.path.exists(EXCEL_FILE): 
+        return None
     return pd.ExcelFile(EXCEL_FILE)
 
 def load_data():
     engine = get_excel_engine()
-    if not engine: return None
+    if not engine: 
+        return None
     return {sheet: pd.read_excel(engine, sheet, index_col=0).dropna(how='all') for sheet in engine.sheet_names}
 
 # --- SQUAD CONFIGURATION ---
@@ -431,10 +506,6 @@ SQUAD_INFO = {
                         },   
     }
 
-# INJURY_MAP = {
-#     "Ayush Mhatre": "Ruturaj Gaikwad"
-# }
-
 def main():
     # Header - Mobile-optimized with proper centering
     st.markdown('''
@@ -447,19 +518,34 @@ def main():
             </div>
         </div>
     ''', unsafe_allow_html=True)
-    st.markdown('<p class="subtitle">The Ultimate Cricket Fantasy Experience</p>', unsafe_allow_html=True)
+    st.markdown('<p class="subtitle">The Ultimate Fantasy Cricket Experience</p>', unsafe_allow_html=True)
     
-    # Check for updates
-    if should_update():
-        with st.spinner("🔄 Fetching latest scores..."):
-            if run_output_script():
+    # Check for updates with smart scheduling
+    should_run_update, update_reason = should_update()
+    
+    # Display update status
+    status_color = "#00f2fe" if should_run_update else "#efb920"
+    st.markdown(f"""
+        <div style="background: rgba(0,0,0,0.3); padding: 10px; border-radius: 8px; margin-bottom: 20px; border-left: 4px solid {status_color};">
+            <span style="color: {status_color}; font-weight: bold;">📡 Update Status:</span> {update_reason}
+        </div>
+    """, unsafe_allow_html=True)
+    
+    if should_run_update:
+        with st.spinner("🔄 Fetching latest scores from live matches..."):
+            success, message = run_output_script()
+            if success:
+                st.success(f"✅ {message}")
                 st.cache_resource.clear()
+                time.sleep(1)  # Brief pause before rerun
                 st.rerun()
+            else:
+                st.warning(f"⚠️ {message} - Displaying cached data")
     
     # Load data    
     data = load_data()
     if not data:
-        st.error("Excel File Not Found.")
+        st.error("❌ Excel File Not Found. Please ensure data has been generated.")
         return
     
     # Create tabs
@@ -620,39 +706,10 @@ def show_rankings(data):
 
     html_table += "</tbody></table></div>"
     st.markdown(html_table, unsafe_allow_html=True)
-    
-    # # # Visualization - responsive height
-    # # fig = go.Figure()
-    # # fig.add_trace(go.Bar(
-    # #     x=df_teams.index,
-    # #     y=df_teams['Total Points'],
-    # #     marker=dict(
-    # #         color=df_teams['Total Points'],
-    # #         colorscale='Viridis',
-    # #         line=dict(color='#efb920', width=2)
-    # #     ),
-    # #     text=df_teams['Total Points'].astype(int),
-    # #     textposition='outside'
-    # # ))
-    
-    # fig.update_layout(
-    #     title="Team Total Points",
-    #     xaxis_title="Team",
-    #     yaxis_title="Points",
-    #     plot_bgcolor='rgba(0,0,0,0)',
-    #     paper_bgcolor='rgba(0,0,0,0)',
-    #     font=dict(color='white', size=10),
-    #     height=400,
-    #     margin=dict(l=10, r=10, t=40, b=80),
-    #     xaxis=dict(tickangle=-45)
-    # )
-    
-    # st.plotly_chart(fig, use_container_width=True)
 
 def show_squads(data):
     """Display team squads with injury tracking - MOBILE OPTIMIZED"""
     st.markdown('<div class="section-header">🛡️ TEAM SQUADS</div>', unsafe_allow_html=True)
-    
     selected_team = st.selectbox(
         "Select Team",
         list(SQUAD_INFO.keys()),
@@ -663,33 +720,31 @@ def show_squads(data):
         team_data = data["Team Final Points"].loc[selected_team]
         rank = (data["Team Final Points"]['Total Points'] > team_data['Total Points']).sum() + 1
         
-        # Metric cards - 2x2 grid using custom HTML/CSS for better mobile control
+        # Metric cards
         st.markdown(f"""
-            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 20px;">
-                <div class="metric-card">
-                    <div style="font-size: clamp(0.8rem, 2.5vw, 0.9rem); color: #00f2fe;">Total Points</div>
-                    <div style="font-size: clamp(1.5rem, 5vw, 2rem); font-weight: bold;">{int(team_data['Total Points'])}</div>
-                </div>
-                <div class="metric-card">
-                    <div style="font-size: clamp(0.8rem, 2.5vw, 0.9rem); color: #00f2fe;">Rank</div>
-                    <div style="font-size: clamp(1.5rem, 5vw, 2rem); font-weight: bold;">#{rank}</div>
-                </div>
-                <div class="metric-card">
-                    <div style="font-size: clamp(0.8rem, 2.5vw, 0.9rem); color: #00f2fe;">Orange Cap</div>
-                    <div style="font-size: clamp(1.5rem, 5vw, 2rem); font-weight: bold;">{int(team_data['Orange Cap'])}</div>
-                </div>
-                <div class="metric-card">
-                    <div style="font-size: clamp(0.8rem, 2.5vw, 0.9rem); color: #00f2fe;">Purple Cap</div>
-                    <div style="font-size: clamp(1.5rem, 5vw, 2rem); font-weight: bold;">{int(team_data['Purple Cap'])}</div>
-                </div>
-            </div>
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 20px;">
+        <div class="metric-card">
+        <div style="font-size: clamp(0.8rem, 2.5vw, 0.9rem); color: #00f2fe;">Total Points</div>
+        <div style="font-size: clamp(1.5rem, 5vw, 2rem); font-weight: bold;">{int(team_data['Total Points'])}</div>
+        </div>
+        <div class="metric-card">
+        <div style="font-size: clamp(0.8rem, 2.5vw, 0.9rem); color: #00f2fe;">Rank</div>
+        <div style="font-size: clamp(1.5rem, 5vw, 2rem); font-weight: bold;">#{rank}</div>
+        </div>
+        <div class="metric-card">
+        <div style="font-size: clamp(0.8rem, 2.5vw, 0.9rem); color: #00f2fe;">Orange Cap</div>
+        <div style="font-size: clamp(1.5rem, 5vw, 2rem); font-weight: bold;">{int(team_data['Orange Cap'])}</div>
+        </div>
+        <div class="metric-card">
+        <div style="font-size: clamp(0.8rem, 2.5vw, 0.9rem); color: #00f2fe;">Purple Cap</div>
+        <div style="font-size: clamp(1.5rem, 5vw, 2rem); font-weight: bold;">{int(team_data['Purple Cap'])}</div>
+        </div>
+        </div>
         """, unsafe_allow_html=True)
-        
         st.markdown("---")
         
         # Calculate player points
         match_sheets = [sheet for sheet in data.keys() if ' - CFC Points' in sheet]
-
         player_points = {}
         
         for sheet in match_sheets:
@@ -697,52 +752,84 @@ def show_squads(data):
                 row = data[sheet].loc[selected_team]
                 for player, pts in row.items():
                     if player not in ["Total Points", "Booster"] and pd.notna(pts) and player in SQUAD_INFO[selected_team]['squad']:
-                        if "inal" in sheet:
-                            print(sheet,player_points,selected_team)
                         if player not in player_points.keys():
                             player_points[player] = pts
                         else:
                             player_points[player] += pts
 
-        
         st.markdown('<div class="section-header">Squad Players</div>', unsafe_allow_html=True)
         
+        # --- FIX LOGIC START ---
         processed = set()
         squad_sorted = sorted(player_points.items(), key=lambda x: x[1], reverse=True)
         
-        # Single column on mobile, two on desktop
-        for i, (player, pts) in enumerate(squad_sorted):
+        # 1. Get the replacement map ONLY for the selected team
+        team_replacements = SQUAD_INFO[selected_team]['replacement'] # {Injured: Replacement}
+        
+        # 2. Create a reverse map to catch Replacement players if they appear first in the sort order
+        replacement_to_injured = {v: k for k, v in team_replacements.items()} # {Replacement: Injured}
+
+        for player, pts in squad_sorted:
             if player in processed:
                 continue
-            
-            c = 0
-            for team in SQUAD_INFO.keys():
-                if player in SQUAD_INFO[team]['replacement'].keys():
-                    replacement = SQUAD_INFO[team]['replacement'][player]
-                    repl_pts = player_points.get(replacement, 0)
-                    
-                    # Stack on mobile
-                    st.markdown(f"""
-                        <div class="player-row injured" style="margin-bottom: 5px;">
-                            <span>🚑 {player}</span>
-                            <span style="color: #ff4b4b; font-weight: bold;">{int(pts)}</span>
-                        </div>
-                        <div class="player-row replacement" style="margin-bottom: 10px;">
-                            <span>🔁 {replacement}</span>
-                            <span style="color: #00f2fe; font-weight: bold;">{int(repl_pts)}</span>
-                        </div>
-                    """, unsafe_allow_html=True)
-                    processed.update([player, replacement])
-                    c += 1
-                    break
-            if c == 0:
+
+            # SCENARIO A: The current player is the INJURED player
+            if player in team_replacements:
+                injured_player = player
+                replacement_player = team_replacements[player]
+                
+                # Get points for replacement
+                repl_pts = player_points.get(replacement_player, 0)
+
+                # Mark BOTH as processed so they don't appear again
+                processed.add(injured_player)
+                processed.add(replacement_player)
+
+                # Display the block
                 st.markdown(f"""
-                    <div class="player-row">
-                        <span>{player}</span>
-                        <span style="color: #efb920; font-weight: bold;">{int(pts)}</span>
-                    </div>
+                <div class="player-row injured" style="margin-bottom: 5px;">
+                <span>🚑 {injured_player}</span>
+                <span style="color: #ff4b4b; font-weight: bold;">{int(pts)}</span>
+                </div>
+                <div class="player-row replacement" style="margin-bottom: 10px;">
+                <span>🔁 {replacement_player}</span>
+                <span style="color: #00f2fe; font-weight: bold;">{int(repl_pts)}</span>
+                </div>
                 """, unsafe_allow_html=True)
+
+            # SCENARIO B: The current player is the REPLACEMENT player (appearing first due to higher points)
+            elif player in replacement_to_injured:
+                replacement_player = player
+                injured_player = replacement_to_injured[player]
+                
+                # Get points for injured player (who hasn't appeared yet)
+                injured_pts = player_points.get(injured_player, 0)
+
+                # Mark BOTH as processed
+                processed.add(injured_player)
+                processed.add(replacement_player)
+
+                # Display the block (Identical format to Scenario A)
+                st.markdown(f"""
+                <div class="player-row injured" style="margin-bottom: 5px;">
+                <span>🚑 {injured_player}</span>
+                <span style="color: #ff4b4b; font-weight: bold;">{int(injured_pts)}</span>
+                </div>
+                <div class="player-row replacement" style="margin-bottom: 10px;">
+                <span>🔁 {replacement_player}</span>
+                <span style="color: #00f2fe; font-weight: bold;">{int(pts)}</span>
+                </div>
+                """, unsafe_allow_html=True)
+
+            # SCENARIO C: Normal Player
+            else:
                 processed.add(player)
+                st.markdown(f"""
+                <div class="player-row">
+                <span>{player}</span>
+                <span style="color: #efb920; font-weight: bold;">{int(pts)}</span>
+                </div>
+                """, unsafe_allow_html=True)
 
 def show_matches(data):
     """Display match-wise breakdown - MOBILE OPTIMIZED"""
@@ -779,32 +866,6 @@ def show_matches(data):
                 mgr_html += f'<td style="padding:10px 8px; text-align:center; font-size: clamp(0.8rem, 2.5vw, 1rem);">{booster_display}</td></tr>'
             
             st.markdown(mgr_html + '</tbody></table></div>', unsafe_allow_html=True)
-            
-            # # Bar chart - responsive
-            # fig = go.Figure()
-            # fig.add_trace(go.Bar(
-            #     x=df_match.index,
-            #     y=df_match['Total Points'],
-            #     marker=dict(
-            #         color=df_match['Total Points'],
-            #         colorscale='Plasma',
-            #         line=dict(color='#efb920', width=2)
-            #     ),
-            #     text=df_match['Total Points'].astype(int),
-            #     textposition='outside'
-            # ))
-            
-            # fig.update_layout(
-            #     title=f"{selected_match} - Team Performance",
-            #     plot_bgcolor='rgba(0,0,0,0)',
-            #     paper_bgcolor='rgba(0,0,0,0)',
-            #     font=dict(color='white', size=10),
-            #     height=350,
-            #     margin=dict(l=10, r=10, t=40, b=80),
-            #     xaxis=dict(tickangle=-45)
-            # )
-            
-            # st.plotly_chart(fig, use_container_width=True)
         
         if breakdown_sheet in data:
             st.markdown('<div class="section-header">🌟 Player Performance</div>', unsafe_allow_html=True)

@@ -585,7 +585,7 @@ class Series:
             # ---------- FINISHED ----------
             if status == 2:
                 if self.match_states.get(match_id, {}).get("is_final", False):
-                    continue   # ✅ already scraped final
+                    break   # ✅ already scraped final
 
                 print(f"Scraping finished match: {match_name}")
                 self._scrape_match(
