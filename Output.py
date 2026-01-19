@@ -223,8 +223,8 @@ def run_output_pipeline():
     number_of_matches = len(match_objects)
 
     # Process matches in reverse order
-    for match_idx in range(number_of_matches, 0, -1):
-        match_name = match_names[match_idx - 1]
+    for match_idx in range(number_of_matches):
+        match_name = match_names[match_idx]
         match_object = match_objects[match_name]
         match_type = match_object.match_type
 
