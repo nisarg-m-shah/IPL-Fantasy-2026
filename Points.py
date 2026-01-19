@@ -38,6 +38,8 @@ class Player:
         try:
             #print("Points Role Name Before:",self.player_name)
             player_name = self.player_name
+            if "Jos" in player_name or "Akash Singh" in player_name or "Marco Jansen" in player_name or "Ryan Rickleton" in player_name or "Will Jacks" in player_name:
+                print(player_name)
             role = roles[names.index(player_name)]
             #print("Points Role Name After:",player_name)
         except:

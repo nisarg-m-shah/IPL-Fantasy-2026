@@ -344,6 +344,70 @@ def save_update_time():
     with open(TIMESTAMP_FILE, 'w') as f:
         f.write(str(time.time()))
 
+PKL_FILE = "ipl2025.pkl"  # The pickle file with match states
+FINAL_SCRAPE_TRACKER = ".final_scrape_tracker"  # Tracks which matches have been scraped after being marked final
+
+def get_final_scraped_matches():
+    """Get set of match names that have been scraped after being marked final"""
+    try:
+        if os.path.exists(FINAL_SCRAPE_TRACKER):
+            with open(FINAL_SCRAPE_TRACKER, 'r') as f:
+                import json
+                return set(json.load(f))
+        return set()
+    except:
+        return set()
+
+def mark_match_as_final_scraped(match_name):
+    """Mark a match as having been scraped after being final"""
+    try:
+        scraped = get_final_scraped_matches()
+        scraped.add(match_name)
+        with open(FINAL_SCRAPE_TRACKER, 'w') as f:
+            import json
+            json.dump(list(scraped), f)
+    except Exception as e:
+        print(f"Error marking match as scraped: {e}")
+
+def get_most_recent_match_state():
+    """
+    Load the pkl file and check if the most recent match is final
+    Returns: (is_final, match_name) or (None, None) if can't determine
+    """
+    try:
+        if not os.path.exists(PKL_FILE):
+            return None, None
+        
+        with open(PKL_FILE, "rb") as f:
+            payload = dill.load(f)
+        
+        match_states = payload.get("states", {})
+        match_objects = payload.get("objects", {})
+        
+        if not match_states or not match_objects:
+            return None, None
+        
+        # Get the most recent match (last key in match_objects)
+        match_names = list(match_objects.keys())
+        if not match_names:
+            return None, None
+        
+        most_recent_match = match_names[-1]  # Last match in the list
+        
+        # Use the last match_id in match_states since they're added in order
+        if match_states:
+            last_match_id = list(match_states.keys())[-1]
+            is_final = match_states[last_match_id].get("is_final", False)
+            return is_final, most_recent_match
+        
+        return None, None
+        
+    except Exception as e:
+        print(f"Error reading pkl file: {e}")
+        return None, None
+    
+
+
 def is_match_time():
     """
     Check if current time falls within match hours based on schedule
@@ -393,6 +457,13 @@ def should_update():
     if not is_match:
         return False, f"Outside match hours - {match_reason}"
     
+    # Check if most recent match is already finalized AND has been scraped post-final
+    is_final, match_name = get_most_recent_match_state()
+    if is_final and match_name:
+        final_scraped = get_final_scraped_matches()
+        if match_name in final_scraped:
+            return False, f"Latest match ({match_name}) already finalized and scraped - No update needed"
+    
     last_update = get_last_update_time()
     current_time = time.time()
     time_since_update = current_time - last_update
@@ -400,12 +471,13 @@ def should_update():
     if time_since_update >= UPDATE_INTERVAL:
         mins = int(time_since_update // 60)
         secs = int(time_since_update % 60)
-        return True, f"Match time - {match_reason} (Last update: {mins} min {secs} sec ago)"
+        return True, f"Match Ongoing - {match_reason} (Last update: {mins} min {secs} sec ago)"
     else:
         remaining_time = UPDATE_INTERVAL - time_since_update
         mins = int(remaining_time // 60)
         secs = int(remaining_time % 60)
-        return False, f"Match time but updated recently (Next update in {mins} min {secs} sec)"
+        return False, f"Match Ongoing | Updated Recently (Next update in {mins} min {secs} sec)"
+    
 
 def run_output_script():
     """Run the output pipeline to scrape and organize data"""
@@ -829,6 +901,9 @@ def show_squads(data):
                     """, unsafe_allow_html=True)
                     processed.update([player, replacement])
                     c += 1
+                    break
+                if player in SQUAD_INFO[team]['replacement'].values():
+                    c+=1
                     break
             if c == 0:
                 st.markdown(f"""
