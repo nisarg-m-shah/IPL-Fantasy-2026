@@ -596,8 +596,8 @@ SQUAD_INFO = {
             'captain':['Sunil Narine'],
             'vice captain':['Andre Russell'],
             'trump card':['Nicholas Pooran'],
-            'replacement':{}
-                        },   
+            'replacement':{'Umran Malik':'Chetan Sakariya'}
+                                                            },   
     }
 
 def main():

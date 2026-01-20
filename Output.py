@@ -172,8 +172,8 @@ def run_output_pipeline():
             'captain':['Sunil Narine'],
             'vice captain':['Andre Russell'],
             'trump card':['Nicholas Pooran'],
-            'replacement':{}
-                        },   
+            'replacement':{'Umran Malik':'Chetan Sakariya'}         
+                                          },   
     }
 
     boosters = {
