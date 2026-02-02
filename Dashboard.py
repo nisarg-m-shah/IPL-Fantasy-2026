@@ -159,31 +159,39 @@ st.markdown("""
         border-left: 4px solid #00f2fe !important;
     }
     
-    /* MOBILE-RESPONSIVE: Tabs styling */
+    # Add this to your st.markdown CSS section (in the <style> tag)
+
+    /* MOBILE-RESPONSIVE: Tabs styling - UPDATED */
     .stTabs [data-baseweb="tab-list"] {
         gap: 5px;
         background-color: rgba(0, 0, 0, 0.3);
         border-radius: 10px;
         padding: 5px;
-        flex-wrap: wrap;
+        display: flex;
+        justify-content: space-between;
+        width: 100%;
     }
-    
+
     .stTabs [data-baseweb="tab"] {
         background-color: transparent;
         border-radius: 8px;
         color: white;
         font-weight: 600;
-        padding: 10px 15px;
+        padding: 10px 8px;
         font-size: clamp(0.8rem, 2.5vw, 1rem);
         white-space: nowrap;
+        flex: 1;
+        text-align: center;
+        min-width: 0;
     }
-    
+
     @media (min-width: 768px) {
         .stTabs [data-baseweb="tab"] {
             padding: 12px 24px;
+            flex: initial;
         }
     }
-    
+
     .stTabs [aria-selected="true"] {
         background: linear-gradient(135deg, #efb920 0%, #d4a017 100%) !important;
         color: #060b26 !important;
