@@ -1345,9 +1345,7 @@ def show_live_score():
             ">
             <b style="font-size:1.1rem;">
                 {innings}
-                <span style="font-size:0.8rem; opacity:0.7; margin-left:6px;">
-                    · {innings_label}
-                </span>
+
             </b>
             <span style="float:right; font-weight:bold;">
                 {total_runs} ({overs} ov)
