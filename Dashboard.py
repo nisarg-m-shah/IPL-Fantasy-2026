@@ -159,14 +159,13 @@ st.markdown("""
         border-left: 4px solid #00f2fe !important;
     }
     
-    # Add this to your st.markdown CSS section (in the <style> tag)
-
-    /* MOBILE-RESPONSIVE: Tabs styling - UPDATED */
+        # Add this to your st.markdown CSS section (in the <style> tag)
+    /* MOBILE-FIRST: Bigger, thumb-friendly tabs */
     .stTabs [data-baseweb="tab-list"] {
-        gap: 8px;
-        background-color: rgba(0, 0, 0, 0.3);
-        border-radius: 10px;
-        padding: 5px;
+        gap: 10px;
+        background-color: rgba(0, 0, 0, 0.35);
+        border-radius: 14px;
+        padding: 8px;
         display: flex;
         justify-content: space-between;
         width: 100%;
@@ -174,27 +173,38 @@ st.markdown("""
 
     .stTabs [data-baseweb="tab"] {
         background-color: transparent;
-        border-radius: 8px;
+        border-radius: 12px;
         color: white;
-        font-weight: 600;
-        padding: 10px 2px;
-        font-size: clamp(0.8rem, 2.5vw, 1rem);
+        font-weight: 700;
+        padding: 14px 6px;          /* ⬅️ bigger tap area */
+        font-size: clamp(0.95rem, 3.5vw, 1.1rem);  /* ⬅️ bigger text on mobile */
         white-space: nowrap;
         flex: 1;
         text-align: center;
         min-width: 0;
+        min-height: 48px;           /* ⬅️ minimum touch target */
     }
 
-    @media (min-width: 1475px) {
-        .stTabs [data-baseweb="tab"] {
-            padding: 12px 24px;
-            flex: initial;
-        }
-    }
-
+    /* Selected tab */
     .stTabs [aria-selected="true"] {
         background: linear-gradient(135deg, #efb920 0%, #d4a017 100%) !important;
         color: #060b26 !important;
+    }
+
+    /* Tablet+ */
+    @media (min-width: 768px) {
+        .stTabs [data-baseweb="tab"] {
+            padding: 14px 14px;
+            font-size: 1.05rem;
+        }
+    }
+
+    /* Large screens */
+    @media (min-width: 1475px) {
+        .stTabs [data-baseweb="tab"] {
+            padding: 14px 24px;
+            flex: initial;
+        }
     }
     
     /* MOBILE-RESPONSIVE: Table styling */
