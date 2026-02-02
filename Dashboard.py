@@ -562,7 +562,7 @@ def main():
         return
     
     # Create tabs
-    tab1, tab2, tab3, tab4 = st.tabs(["🏆 RANKINGS", "🛡️ SQUADS", "🏏 MATCHES", "📊 ANALYTICS"])
+    tab1, tab2, tab3, tab4 = st.tabs(["🏆 RANKINGS", "🛡️ SQUADS", "🏏 MATCHES", "👤 PLAYERS"])
     
     with tab1:
         show_rankings(data)
@@ -719,6 +719,58 @@ def show_rankings(data):
 
     html_table += "</tbody></table></div>"
     st.markdown(html_table, unsafe_allow_html=True)
+    team_final = data["Team Final Points"]
+    player_final = data["Player Final Points"]
+    
+
+    # Team performance trends - CUMULATIVE
+    st.markdown('<div class="section-header">📊 POINTS RACE</div>', unsafe_allow_html=True)
+
+    match_cols = [col for col in team_final.columns if col not in ['Total Points', 'Orange Cap', 'Purple Cap']]
+
+    fig = go.Figure()
+
+    for team in team_final.index:
+        # Calculate cumulative points
+        points = [team_final.loc[team, col] for col in match_cols]
+        cumulative = []
+        total = 0
+        for p in points:
+            total += p
+            cumulative.append(total)
+        
+        fig.add_trace(go.Scatter(
+            x=match_cols,
+            y=cumulative,
+            mode='lines+markers',
+            name=team,
+            line=dict(width=2.5),
+            marker=dict(size=6),
+            hovertemplate=f'<b>{team}</b><br>Total: %{{y}}<extra></extra>'
+        ))
+
+    fig.update_layout(
+        title="Cumulative Points Progression",
+        xaxis_title="Match",
+        yaxis_title="Cumulative Points",
+        plot_bgcolor='rgba(0,0,0,0)',
+        paper_bgcolor='rgba(0,0,0,0)',
+        font=dict(color='white', size=9),
+        height=450,
+        hovermode='x unified',
+        margin=dict(l=10, r=10, t=40, b=100),
+        xaxis=dict(tickangle=-45),
+        legend=dict(
+            orientation="h",
+            yanchor="bottom",
+            y=-0.35,
+            xanchor="center",
+            x=0.5,
+            font=dict(size=8)
+        )
+    )
+
+    st.plotly_chart(fig, use_container_width=True,key="cumulative_performance_chart")
 
 def show_squads(data):
     """Display team squads with injury tracking - MOBILE OPTIMIZED"""
@@ -909,82 +961,208 @@ def show_matches(data):
 
 def show_analytics(data):
     """Display advanced analytics - MOBILE OPTIMIZED"""
-    st.markdown('<div class="section-header">📊 ANALYTICS DASHBOARD</div>', unsafe_allow_html=True)
     
     team_final = data["Team Final Points"]
     player_final = data["Player Final Points"]
     
-    # Team performance trends
-    st.markdown("#### Team Performance Across Season")
+    # # Top players
+    # st.markdown("#### 🌟 Top Performers")
+    # top_players = player_final.nlargest(10, 'Total Points')
     
-    match_cols = [col for col in team_final.columns if col not in ['Total Points', 'Orange Cap', 'Purple Cap']]
+    # fig = go.Figure()
+    # fig.add_trace(go.Bar(
+    #     y=top_players.index,
+    #     x=top_players['Total Points'],
+    #     orientation='h',
+    #     marker=dict(
+    #         color=top_players['Total Points'],
+    #         colorscale='Viridis',
+    #         line=dict(color='#efb920', width=2)
+    #     ),
+    #     text=top_players['Total Points'].astype(int),
+    #     textposition='outside'
+    # ))
     
-    fig = go.Figure()
-    for team in team_final.index:
-        fig.add_trace(go.Scatter(
-            x=match_cols,
-            y=[team_final.loc[team, col] for col in match_cols],
-            mode='lines+markers',
-            name=team,
-            line=dict(width=2),
-            marker=dict(size=6)
-        ))
+    # fig.update_layout(
+    #     title="Top 10 Players",
+    #     xaxis_title="Total Points",
+    #     yaxis_title="Player",
+    #     plot_bgcolor='rgba(0,0,0,0)',
+    #     paper_bgcolor='rgba(0,0,0,0)',
+    #     font=dict(color='white', size=9),
+    #     height=450,
+    #     margin=dict(l=10, r=10, t=40, b=40)
+    # )
     
-    fig.update_layout(
-        title="Points Progression",
-        xaxis_title="Match",
-        yaxis_title="Points",
-        plot_bgcolor='rgba(0,0,0,0)',
-        paper_bgcolor='rgba(0,0,0,0)',
-        font=dict(color='white', size=9),
-        height=400,
-        hovermode='x unified',
-        margin=dict(l=10, r=10, t=40, b=80),
-        xaxis=dict(tickangle=-45),
-        legend=dict(
-            orientation="h",
-            yanchor="bottom",
-            y=-0.4,
-            xanchor="center",
-            x=0.5,
-            font=dict(size=8)
-        )
+    # st.plotly_chart(fig, use_container_width=True)
+
+# NEW SECTION: Player Match-by-Match Performance
+    st.markdown('<div class="section-header">🎯 Player Match-by-Match Performance</div>', unsafe_allow_html=True)
+    st.markdown('<p style="color: #00f2fe; font-size: clamp(0.85rem, 2.5vw, 1rem); margin-bottom: 15px;">Select a player to see their performance across all matches</p>', unsafe_allow_html=True)
+    
+    # Get all player names sorted alphabetically
+    all_player_names = sorted(player_final.index.tolist())
+    
+    selected_player = st.selectbox(
+        "Select Player",
+        all_player_names,
+        key="player_performance_selector"
     )
     
-    st.plotly_chart(fig, use_container_width=True)
+    if selected_player:
+        # Get all match breakdown sheets
+        breakdown_sheets = [sheet for sheet in data.keys() if " - Points Breakdown" in sheet]
+        
+        # Collect match-wise performance
+        match_performance = []
+        
+        for sheet in breakdown_sheets:
+            match_name = sheet.replace(" - Points Breakdown", "")
+            df_breakdown = data[sheet]
+            
+            # Check if player played in this match
+            if selected_player in df_breakdown.index:
+                player_data = df_breakdown.loc[selected_player]
+                
+                match_performance.append({
+                    'Match': match_name,
+                    'Points': player_data.get('Player Points', 0),
+                    'Role': player_data.get('Role', '-'),
+                    'MoM': player_data.get('Man of the Match', 0),
+                    'Batting': player_data.get('Player Batting Points', 0),
+                    'Bowling': player_data.get('Player Bowling Points', 0),
+                    'Fielding': player_data.get('Player Fielding Points', 0)
+                })
+        
+        if match_performance:
+            # Create DataFrame
+            perf_df = pd.DataFrame(match_performance)
+            
+            # Get total points from player_final
+            total_points = player_final.loc[selected_player, 'Total Points']
+            avg_points = perf_df['Points'].mean()
+            best_performance = perf_df['Points'].max()
+            mom_count = perf_df['MoM'].apply(lambda x: 1 if pd.notna(x) and x != 0 else 0).sum()
+
+            # Display summary stats in metric cards - Mobile-friendly 2x3 grid
+            st.markdown(f"""
+                <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; margin-bottom: 20px;">
+                    <div class="metric-card" style="grid-column: span 2;">
+                        <div style="font-size: clamp(0.8rem, 2.5vw, 0.9rem); color: #00f2fe;">Total Points</div>
+                        <div style="font-size: clamp(2rem, 6vw, 2.5rem); font-weight: bold; color: #efb920;">{format_points(total_points)}</div>
+                    </div>
+                    <div class="metric-card">
+                        <div style="font-size: clamp(0.8rem, 2.5vw, 0.9rem); color: #00f2fe;">Matches</div>
+                        <div style="font-size: clamp(1.5rem, 5vw, 2rem); font-weight: bold;">{len(perf_df)}</div>
+                    </div>
+                    <div class="metric-card">
+                        <div style="font-size: clamp(0.8rem, 2.5vw, 0.9rem); color: #00f2fe;">Avg Points</div>
+                        <div style="font-size: clamp(1.5rem, 5vw, 2rem); font-weight: bold;">{format_points(avg_points)}</div>
+                    </div>
+                    <div class="metric-card">
+                        <div style="font-size: clamp(0.8rem, 2.5vw, 0.9rem); color: #00f2fe;">Best Score</div>
+                        <div style="font-size: clamp(1.5rem, 5vw, 2rem); font-weight: bold;">{format_points(best_performance)}</div>
+                    </div>
+                    <div class="metric-card">
+                        <div style="font-size: clamp(0.8rem, 2.5vw, 0.9rem); color: #00f2fe;">MoM Awards</div>
+                        <div style="font-size: clamp(1.5rem, 5vw, 2rem); font-weight: bold;">{int(mom_count)}</div>
+                    </div>
+                </div>
+            """, unsafe_allow_html=True)
+            
+            st.markdown("---")
+            
+            # Create bar chart for match-wise points
+            fig = go.Figure()
+            
+            # Color bars based on performance (green for high, yellow for medium, red for low)
+            colors = []
+            for pts in perf_df['Points']:
+                if pts >= avg_points:
+                    colors.append('#00f2fe')  # Above average - cyan
+                else:
+                    colors.append('#efb920')  # Below average - gold
+            
+            fig.add_trace(go.Bar(
+                x=perf_df['Match'],
+                y=perf_df['Points'],
+                marker=dict(
+                    color=colors,
+                    line=dict(color='white', width=1)
+                ),
+                text=perf_df['Points'].apply(format_points),
+                textposition='outside',
+                hovertemplate='<b>%{x}</b><br>Points: %{y}<extra></extra>'
+            ))
+            
+            # Add average line
+            fig.add_hline(
+                y=avg_points,
+                line_dash="dash",
+                line_color="#efb920",
+                annotation_text=f"Avg: {format_points(avg_points)}",
+                annotation_position="right"
+            )
+            
+            fig.update_layout(
+                title=f"{selected_player} - Match-by-Match Performance",
+                xaxis_title="Match",
+                yaxis_title="Points",
+                plot_bgcolor='rgba(0,0,0,0)',
+                paper_bgcolor='rgba(0,0,0,0)',
+                font=dict(color='white', size=9),
+                height=400,
+                margin=dict(l=10, r=10, t=60, b=100),
+                xaxis=dict(tickangle=-45),
+                showlegend=False
+            )
+            
+            st.plotly_chart(fig, use_container_width=True, key="player_match_performance_chart")
+            
+            # Detailed table
+            st.markdown('<div class="section-header">📊 Detailed Breakdown</div>', unsafe_allow_html=True)
+            
+            table_html = '<div class="table-container">'
+            table_html += '<table style="width:100%; border-collapse:collapse; background-color:transparent; min-width: 700px;">'
+            table_html += '<thead><tr style="border-bottom:2px solid #efb920;">'
+            table_html += '<th style="padding:10px 8px; color:#efb920; font-family:\'Bebas Neue\'; text-align:left; font-size: clamp(0.85rem, 2.5vw, 1rem);">MATCH</th>'
+            table_html += '<th style="padding:10px 8px; color:#efb920; font-family:\'Bebas Neue\'; text-align:center; font-size: clamp(0.85rem, 2.5vw, 1rem);">TOTAL</th>'
+            table_html += '<th style="padding:10px 8px; color:#efb920; font-family:\'Bebas Neue\'; text-align:center; font-size: clamp(0.85rem, 2.5vw, 1rem);">BATTING</th>'
+            table_html += '<th style="padding:10px 8px; color:#efb920; font-family:\'Bebas Neue\'; text-align:center; font-size: clamp(0.85rem, 2.5vw, 1rem);">BOWLING</th>'
+            table_html += '<th style="padding:10px 8px; color:#efb920; font-family:\'Bebas Neue\'; text-align:center; font-size: clamp(0.85rem, 2.5vw, 1rem);">FIELDING</th>'
+            table_html += '<th style="padding:10px 8px; color:#efb920; font-family:\'Bebas Neue\'; text-align:center; font-size: clamp(0.85rem, 2.5vw, 1rem);">MoM</th>'
+            table_html += '</tr></thead><tbody>'
+            
+            for _, row in perf_df.iterrows():
+                # Highlight best performance
+                if row['Points'] == best_performance:
+                    row_style = "border-bottom:1px solid rgba(255,255,255,0.05); background-color: rgba(239, 185, 32, 0.15); border-left: 4px solid #efb920;"
+                else:
+                    row_style = "border-bottom:1px solid rgba(255,255,255,0.05); background-color:rgba(255,255,255,0.02);"
+                
+                table_html += f'<tr style="{row_style}">'
+                table_html += f'<td style="padding:10px 8px; text-align:left; font-weight:bold; color:white; font-size: clamp(0.75rem, 2.5vw, 0.9rem);">{row["Match"]}</td>'
+                table_html += f'<td style="padding:10px 8px; text-align:center; color:#00f2fe; font-weight:bold; font-size: clamp(0.75rem, 2.5vw, 0.9rem);">{format_points(row["Points"])}</td>'
+                table_html += f'<td style="padding:10px 8px; text-align:center; color:white; font-size: clamp(0.75rem, 2.5vw, 0.9rem);">{format_points(row["Batting"])}</td>'
+                table_html += f'<td style="padding:10px 8px; text-align:center; color:white; font-size: clamp(0.75rem, 2.5vw, 0.9rem);">{format_points(row["Bowling"])}</td>'
+                table_html += f'<td style="padding:10px 8px; text-align:center; color:white; font-size: clamp(0.75rem, 2.5vw, 0.9rem);">{format_points(row["Fielding"])}</td>'
+                
+                mom_val = row['MoM']
+                if pd.notna(mom_val) and mom_val != 0:
+                    mom_display = f'<span style="color: #efb920; font-weight: bold;">⭐ {format_points(mom_val)}</span>'
+                else:
+                    mom_display = '<span style="opacity: 0.4;">-</span>'
+                
+                table_html += f'<td style="padding:10px 8px; text-align:center; font-size: clamp(0.75rem, 2.5vw, 0.9rem);">{mom_display}</td>'
+                table_html += '</tr>'
+            
+            table_html += '</tbody></table></div>'
+            st.markdown(table_html, unsafe_allow_html=True)
+            
+        else:
+            st.info(f"⚠️ {selected_player} hasn't played in any matches yet.")
     
-    # Top players
-    st.markdown("#### 🌟 Top Performers")
-    top_players = player_final.nlargest(10, 'Total Points')
-    
-    fig = go.Figure()
-    fig.add_trace(go.Bar(
-        y=top_players.index,
-        x=top_players['Total Points'],
-        orientation='h',
-        marker=dict(
-            color=top_players['Total Points'],
-            colorscale='Viridis',
-            line=dict(color='#efb920', width=2)
-        ),
-        text=top_players['Total Points'].astype(int),
-        textposition='outside'
-    ))
-    
-    fig.update_layout(
-        title="Top 10 Players",
-        xaxis_title="Total Points",
-        yaxis_title="Player",
-        plot_bgcolor='rgba(0,0,0,0)',
-        paper_bgcolor='rgba(0,0,0,0)',
-        font=dict(color='white', size=9),
-        height=450,
-        margin=dict(l=10, r=10, t=40, b=40)
-    )
-    
-    st.plotly_chart(fig, use_container_width=True)
-    
-    # All Players Table - NEW
+    # All Players Table
     st.markdown('<div class="section-header">📋 All Players Performance</div>', unsafe_allow_html=True)
     st.markdown('<p style="color: #00f2fe; font-size: clamp(0.85rem, 2.5vw, 1rem); margin-bottom: 15px;">Complete player rankings (without boosters or captain/vice-captain multipliers)</p>', unsafe_allow_html=True)
     
@@ -1038,6 +1216,7 @@ def show_analytics(data):
     
     players_html += '</tbody></table></div>'
     st.markdown(players_html, unsafe_allow_html=True)
+    
 
 if __name__ == "__main__":
     main()

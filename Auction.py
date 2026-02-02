@@ -384,38 +384,6 @@
 
 
 teams = {
-    'Gujju Gang': {
-        'squad': [
-            'Salil Arora',
-            'Arshad Khan',
-            'Anshul Kamboj',
-            'KL Rahul',
-            'Ayush Badoni',
-            'Harshal Patel',
-            'Ben Duckett',
-            'Hardik Pandya',
-            'Ravindra Jadeja',
-            'Prasidh Krishna',
-            'Prashant Veer',
-            'Mohammed Siraj',
-            'Marco Jansen',
-            'Akeal Hosein',
-            'Ravi Bishnoi',
-            'Sai Sudharsan',
-            'Jaydev Unadkat',
-            'Kuldeep Yadav',
-            'Eshan Malinga',
-            'Mukul Choudhary',
-            'Naman Tiwari',
-            'Ashwani Kumar',
-            'Kartik Sharma'
-        ],
-        'captain': [],
-        'vice captain': [],
-        'trump card': [],
-        'replacement': {}
-    },
-
     'Disruptors': {
         'squad': [
             'Sameer Rizvi',
@@ -536,6 +504,38 @@ teams = {
             'Mayank Markande',
             'Shubham Dubey',
             'Kyle Jamieson'
+        ],
+        'captain': [],
+        'vice captain': [],
+        'trump card': [],
+        'replacement': {}
+    },
+    
+    'Gujju Gang': {
+        'squad': [
+            'Salil Arora',
+            'Arshad Khan',
+            'Anshul Kamboj',
+            'KL Rahul',
+            'Ayush Badoni',
+            'Harshal Patel',
+            'Ben Duckett',
+            'Hardik Pandya',
+            'Ravindra Jadeja',
+            'Prasidh Krishna',
+            'Prashant Veer',
+            'Mohammed Siraj',
+            'Marco Jansen',
+            'Akeal Hosein',
+            'Ravi Bishnoi',
+            'Sai Sudharsan',
+            'Jaydev Unadkat',
+            'Kuldeep Yadav',
+            'Eshan Malinga',
+            'Mukul Choudhary',
+            'Naman Tiwari',
+            'Ashwani Kumar',
+            'Kartik Sharma'
         ],
         'captain': [],
         'vice captain': [],
