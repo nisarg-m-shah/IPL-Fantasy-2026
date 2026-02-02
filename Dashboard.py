@@ -527,7 +527,7 @@ def main():
                 🏏 CFC FANTASY 🏏
             </div>
             <div style="font-size: clamp(2.5rem, 8vw, 3.5rem); color: white; font-family: 'Bebas Neue', cursive; line-height: 1.1; text-shadow: 0 0 20px rgba(255, 255, 255, 0.8); margin-top: 5px;">
-                LEAGUE 2025
+                LEAGUE 2026
             </div>
         </div>
     ''', unsafe_allow_html=True)

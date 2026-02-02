@@ -524,7 +524,7 @@ teams = {
             'Rinku Singh',
             'Yuzvendra Chahal',
             'Swapnil Singh',
-            'Manimaran Siddharth'
+            'Manimaran Siddharth',
             'Axar Patel',
             'Jason Holder',
             'Romario Shepherd',
