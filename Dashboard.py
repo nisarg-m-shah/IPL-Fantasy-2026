@@ -163,7 +163,7 @@ st.markdown("""
 
     /* MOBILE-RESPONSIVE: Tabs styling - UPDATED */
     .stTabs [data-baseweb="tab-list"] {
-        gap: 4px;
+        gap: 8px;
         background-color: rgba(0, 0, 0, 0.3);
         border-radius: 10px;
         padding: 5px;
