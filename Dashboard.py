@@ -1303,7 +1303,7 @@ def show_live_score():
                 </span>
             </div>
             <div style="margin-top:8px; font-size:0.9rem; color:#00f2fe;">
-                Winner: <b>{score.winner or "-"}</b> &nbsp; | &nbsp;
+                Winner: <b>{score.winner or "-"}</b><br>
                 MoM: <b>{score.man_of_the_match or "-"}</b>
             </div>
         </div>
@@ -1311,6 +1311,7 @@ def show_live_score():
 
     # ---------------- INNINGS ----------------
     for innings in score.innings_list:
+        innings_name = team_names_sf[team_names_ff.index(innings)]
         bats = score.batsmen_list[
             score.batsmen_list["Innings Name"] == innings
         ]
@@ -1344,8 +1345,10 @@ def show_live_score():
                 border-left: 4px solid #efb920;
             ">
             <b style="font-size:1.1rem;">
-                {innings}
-
+                {innings_name}
+                <span style="font-size:0.8rem; opacity:0.7; margin-left:6px;">
+                    · {innings_label}
+                </span>
             </b>
             <span style="float:right; font-weight:bold;">
                 {total_runs} ({overs} ov)
