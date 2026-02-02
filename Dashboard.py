@@ -163,7 +163,7 @@ st.markdown("""
 
     /* MOBILE-RESPONSIVE: Tabs styling - UPDATED */
     .stTabs [data-baseweb="tab-list"] {
-        gap: 5px;
+        gap: 4px;
         background-color: rgba(0, 0, 0, 0.3);
         border-radius: 10px;
         padding: 5px;
@@ -177,7 +177,7 @@ st.markdown("""
         border-radius: 8px;
         color: white;
         font-weight: 600;
-        padding: 10px 8px;
+        padding: 10px 2px;
         font-size: clamp(0.8rem, 2.5vw, 1rem);
         white-space: nowrap;
         flex: 1;
@@ -185,7 +185,7 @@ st.markdown("""
         min-width: 0;
     }
 
-    @media (min-width: 768px) {
+    @media (min-width: 1475px) {
         .stTabs [data-baseweb="tab"] {
             padding: 12px 24px;
             flex: initial;
