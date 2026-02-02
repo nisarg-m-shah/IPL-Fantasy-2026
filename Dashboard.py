@@ -10,13 +10,14 @@ from datetime import datetime, time as dt_time
 import pytz
 import dill
 from Output import run_output_pipeline
+from Auction import teams,boosters,names,roles,squads,team_names_ff,team_names_sf,competition_id,database,file_path,json_filename 
 
 # --- MATCH SCHEDULE CONFIGURATION ---
 MATCH_SCHEDULE = {
     'single_header': [
         '2025-01-20',
         '2025-01-22',
-        '2025-01-24',
+        '2026-02-02',
         # Add more single header dates
     ],
     'double_header': [
@@ -325,8 +326,8 @@ st.markdown("""
 
 # --- DATA LOADING ---
 TIMESTAMP_FILE = ".last_update_timestamp"
-EXCEL_FILE = "CFC Fantasy League 2025.xlsx"
-OUTPUT_SCRIPT = "Output.py"
+EXCEL_FILE = file_path
+OUTPUT_SCRIPT = "Run.py"
 UPDATE_INTERVAL = 300  # 5 minutes in seconds
 
 def get_last_update_time():
@@ -344,8 +345,8 @@ def save_update_time():
     with open(TIMESTAMP_FILE, 'w') as f:
         f.write(str(time.time()))
 
-PKL_FILE = "ipl2025.pkl"  # The pickle file with match states
-FINAL_SCRAPE_TRACKER = ".final_scrape_tracker"  # Tracks which matches have been scraped after being marked final
+PKL_FILE = database  # The pickle file with match states
+# FINAL_SCRAPE_TRACKER = ".final_scrape_tracker"  # Tracks which matches have been scraped after being marked final
 
 def get_final_scraped_matches():
     """Get set of match names that have been scraped after being marked final"""
@@ -421,11 +422,11 @@ def is_match_time():
     
     # Single header: 7:30 PM - 12:30 AM next day
     single_start = dt_time(19, 30)  # 7:30 PM
-    single_end = dt_time(0, 30)     # 12:30 AM
+    single_end = dt_time(0, 55)     # 12:30 AM
     
     # Double header: 3:30 PM - 12:30 AM next day
     double_start = dt_time(15, 30)  # 3:30 PM
-    double_end = dt_time(0, 30)     # 12:30 AM
+    double_end = dt_time(0, 55)     # 12:30 AM
     
     # Check if today is a single header day
     if current_date in MATCH_SCHEDULE['single_header']:
@@ -439,7 +440,7 @@ def is_match_time():
     
     # Check if yesterday was a match day (for post-midnight times)
     yesterday = (now - pd.Timedelta(days=1)).strftime('%Y-%m-%d')
-    if current_time <= dt_time(0, 30):  # Before 12:30 AM
+    if current_time <= dt_time(0, 50):  # Before 12:30 AM
         if yesterday in MATCH_SCHEDULE['single_header']:
             return True, f"Single header match day continued ({yesterday})"
         if yesterday in MATCH_SCHEDULE['double_header']:
@@ -483,7 +484,7 @@ def run_output_script():
     """Run the output pipeline to scrape and organize data"""
     try:
         result = subprocess.run(
-            ['python', OUTPUT_SCRIPT],
+            ['python3', OUTPUT_SCRIPT],
             capture_output=True,
             text=True,
             timeout=300
@@ -517,89 +518,7 @@ def load_data():
     return {sheet: pd.read_excel(engine, sheet, index_col=0).dropna(how='all') for sheet in engine.sheet_names}
 
 # --- SQUAD CONFIGURATION ---
-SQUAD_INFO = {
-        'Gujju Gang':{ 
-            'squad':['Varun Chakaravarthy', 'Travis Head', 'Prasidh Krishna', 'Harshit Rana', 'Rahul Chahar',
-                       'Mukesh Choudhary', 'Ishant Sharma', 'Jaydev Unadkat', 'Mukesh Kumar', 'Abdul Samad',
-                       'Riyan Parag', 'Khaleel Ahmed', 'Avesh Khan', 'Faf du Plessis', 'Arjun Tendulkar',
-                       'Mohammed Shami', 'Shivam Dube', 'Lockie Ferguson', 'Josh Hazlewood', 'Prabhsimran Singh',
-                       'Rishabh Pant', 'Corbin Bosch', 'Mohammed Siraj', 'Marcus Stoinis', 'Harpreet Brar',
-                       'Rahmanullah Gurbaz', 'Rashid Khan', 'Washington Sundar','Kyle Jamieson','Charith Asalanka'],
-            'captain':['Varun Chakaravarthy'],
-            'vice captain':['Travis Head'],
-            'trump card':['Prasidh Krishna'],
-            'replacement':{'Lockie Ferguson':'Kyle Jamieson','Corbin Bosch':'Charith Asalanka'}
-                       },
-        'Hilarious Hooligans':{
-            'squad':['Yashasvi Jaiswal', 'Axar Patel', 'Hardik Pandya', 'Heinrich Klaasen', 'Rinku Singh',
-                                'Nehal Wadhera', 'Romario Shepherd', 'Manav Suthar', 'Vijaykumar Vyshak', 'Himmat Singh',
-                                'Ayush Badoni', 'Liam Livingstone', 'Nathan Ellis', 'Moeen Ali', 'Karn Sharma',
-                                'Shimron Hetmyer', 'Mayank Yadav', 'Abhinav Manohar', 'Ashutosh Sharma', 'Rachin Ravindra',
-                                'Shahrukh Khan', 'Anrich Nortje', 'Mayank Markande', 'Yuzvendra Chahal', 'Tushar Deshpande',
-                                'Noor Ahmad', 'Kagiso Rabada', 'Marco Jansen',"Will O'Rourke"],
-            'captain':['Yashasvi Jaiswal'],
-            'vice captain':['Axar Patel'],
-            'trump card':['Hardik Pandya'],
-            'replacement':{'Mayank Yadav':"Will O'Rourke"}
-                        },
-        'Tormented Titans':{
-            'squad':['Virat Kohli', 'Suryakumar Yadav', 'Kuldeep Yadav', 'Abhishek Sharma', 'Jitesh Sharma',
-                             'Harnoor Singh', 'Bhuvneshwar Kumar', 'Abishek Porel', 'Angkrish Raghuvanshi', 'Dhruv Jurel',
-                             'David Miller', 'Anuj Rawat', 'Josh Inglis', 'Kumar Kartikeya', 'Akash Deep', 'Rahul Tewatia',
-                             'Ramandeep Singh', 'Sherfane Rutherford', 'Glenn Maxwell', 'Sandeep Sharma', 'Shamar Joseph',
-                             'Pat Cummins', 'Quinton de Kock', 'Ravichandran Ashwin',"Mitchell Owen"],
-            'captain':['Virat Kohli'],
-            'vice captain':['Suryakumar Yadav'],
-            'trump card':['Kuldeep Yadav'],
-            'replacement':{'Glen Maxwell':"Mitchell Owen"}
-                        },
-        'La Furia Roja':{
-            'squad':['Shreyas Iyer', 'Sai Sudharsan', 'Philip Salt', 'Jasprit Bumrah', 'Swastik Chikara',
-                          'Rajvardhan Hangargekar', 'Manoj Bhandage', 'Nitish Rana', 'Rasikh Dar Salam', 'Deepak Chahar',
-                          'MS Dhoni', 'Aaron Hardie', 'Priyansh Arya', 'Sameer Rizvi', 'Mitchell Santner', 'Manish Pandey',
-                          'Suyash Sharma', 'Kamlesh Nagarkoti', 'Will Jacks', 'Azmatullah Omarzai', 'Adam Zampa',
-                          'Spencer Johnson', 'Jamie Overton', 'Shashank Singh', 'Rovman Powell', 'Suryansh Shedge',
-                          'Maheesh Theekshana',"Smaran Ravichandran"],
-            'captain':['Shreyas Iyer'],
-            'vice captain':['Sai Sudharsan'],
-            'trump card':['Philip Salt'],
-            'replacement':{'Adam Zampa':"Smaran Ravichandran"}
-                        },
-        'Supa Jinx Strikas':{ 
-            'squad':['Shubman Gill', 'Ayush Mhatre', 'Ruturaj Gaikwad', 'Sai Kishore', 'Nitish Reddy',
-                              'Mohit Sharma', 'Raj Bawa', 'Ishan Kishan', 'Mitchell Marsh', 'Karim Janat', 'Yash Dayal',
-                              'Bevon Jacobs', 'Ryan Rickelton', 'Rajat Patidar', 'Tristan Stubbs', 'Gerald Coetzee',
-                              'Glenn Phillips', 'Tim David', 'Ravi Bishnoi', 'Donovan Ferreira', 'Jayant Yadav',
-                              'Trent Boult', 'Jofra Archer', 'Akash Madhwal', 'Darshan Nalkande', 'Kwena Maphaka','Richard Gleeson'],
-            'captain':['Shubman Gill'],
-            'vice captain':['Ayush Mhatre', 'Ruturaj Gaikwad'],
-            'trump card':['Sai Kishore'],
-            'replacement':{'Ryan Rickelton':'Richard Gleeson','Ruturaj Gaikwad':'Ayush Mhatre'}
-                        },    
-        'Raging Raptors':{
-            'squad':['KL Rahul', 'Venkatesh Iyer', 'Mitchell Starc', 'Arshdeep Singh', 'Shardul Thakur',
-                          'Ravindra Jadeja', 'Aiden Markram', 'Sachin Baby', 'Dushmantha Chameera', 'Naman Dhir',
-                          'Karun Nair', 'Wanindu Hasaranga', 'Arshad Khan', 'Devdutt Padikkal', 'Robin Minz',
-                          'Shahbaz Ahmed', 'Mohsin Khan', 'Krunal Pandya', 'Sanju Samson', 'Jos Buttler', 'Atharva Taide',
-                          'Musheer Khan', 'Devon Conway'],
-            'captain':['KL Rahul'],
-            'vice captain':['Venkatesh Iyer'],
-            'trump card':['Mitchell Starc'],
-            'replacement':{'Mohsin Khan':'Shardul Thakur'}
-                        },    
-        'The Travelling Bankers':{
-            'squad':['Sunil Narine', 'Andre Russell', 'Nicholas Pooran', 'Harshal Patel', 'Umran Malik',
-                                   'Chetan Sakariya', 'T Natarajan', 'Ajinkya Rahane', 'Shreyas Gopal', 'Tilak Varma',
-                                   'Vijay Shankar', 'Shubham Dubey', 'Anukul Roy', 'Deepak Hooda', 'Rahul Tripathi',
-                                   'Lungi Ngidi', 'Matheesha Pathirana', 'Vaibhav Arora', 'Jake Fraser-McGurk',
-                                   'Sam Curran', 'Rohit Sharma', 'Mujeeb Ur Rahman', 'Anshul Kamboj', 'Mahipal Lomror'],
-            'captain':['Sunil Narine'],
-            'vice captain':['Andre Russell'],
-            'trump card':['Nicholas Pooran'],
-            'replacement':{'Umran Malik':'Chetan Sakariya'}
-                                                            },   
-    }
-
+SQUAD_INFO = teams
 def main():
     # Header - Mobile-optimized with proper centering
     st.markdown('''
