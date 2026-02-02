@@ -159,30 +159,27 @@ st.markdown("""
         border-left: 4px solid #00f2fe !important;
     }
     
-        # Add this to your st.markdown CSS section (in the <style> tag)
-    /* MOBILE-FIRST: Bigger, thumb-friendly tabs */
+    /* MOBILE-RESPONSIVE: Tabs styling - UPDATED (Scrollable on mobile) */
     .stTabs [data-baseweb="tab-list"] {
-        gap: 10px;
-        background-color: rgba(0, 0, 0, 0.35);
-        border-radius: 14px;
-        padding: 8px;
+        gap: 8px;
+        background-color: rgba(0, 0, 0, 0.3);
+        border-radius: 10px;
+        padding: 6px;
         display: flex;
-        justify-content: space-between;
+        justify-content: flex-start;
         width: 100%;
     }
 
+    /* Base tab styling */
     .stTabs [data-baseweb="tab"] {
         background-color: transparent;
-        border-radius: 12px;
+        border-radius: 8px;
         color: white;
-        font-weight: 700;
-        padding: 14px 6px;          /* ⬅️ bigger tap area */
-        font-size: clamp(0.95rem, 3.5vw, 1.1rem);  /* ⬅️ bigger text on mobile */
+        font-weight: 600;
+        padding: 12px 16px;
+        font-size: clamp(0.9rem, 2.8vw, 1.05rem);
         white-space: nowrap;
-        flex: 1;
         text-align: center;
-        min-width: 0;
-        min-height: 48px;           /* ⬅️ minimum touch target */
     }
 
     /* Selected tab */
@@ -191,19 +188,31 @@ st.markdown("""
         color: #060b26 !important;
     }
 
-    /* Tablet+ */
-    @media (min-width: 768px) {
+    /* Desktop only */
+    @media (min-width: 1475px) {
         .stTabs [data-baseweb="tab"] {
-            padding: 14px 14px;
-            font-size: 1.05rem;
+            padding: 12px 24px;
         }
     }
 
-    /* Large screens */
-    @media (min-width: 1475px) {
+    /* Mobile: make tabs horizontally scrollable */
+    @media (max-width: 768px) {
+        .stTabs [data-baseweb="tab-list"] {
+            overflow-x: auto;
+            overflow-y: hidden;
+            white-space: nowrap;
+            -webkit-overflow-scrolling: touch;
+            scrollbar-width: none;
+        }
+
+        .stTabs [data-baseweb="tab-list"]::-webkit-scrollbar {
+            display: none;
+        }
+
         .stTabs [data-baseweb="tab"] {
-            padding: 14px 24px;
-            flex: initial;
+            flex: 0 0 auto;      /* prevent shrinking */
+            min-width: 120px;   /* make each tab wider */
+            padding: 12px 18px; /* comfy touch target */
         }
     }
     
