@@ -510,7 +510,7 @@ teams = {
         'trump card': [],
         'replacement': {}
     },
-    
+
     'Gujju Gang': {
         'squad': [
             'Salil Arora',

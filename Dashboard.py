@@ -531,6 +531,17 @@ def run_output_script():
     except Exception as e:
         return False, f"Update error: {str(e)}"
 
+@st.cache_resource(ttl=300)
+def load_live_matches():
+    if not os.path.exists(PKL_FILE):
+        return {}, {}
+    with open(PKL_FILE, "rb") as f:
+        ipl_data = dill.load(f)
+    return (
+        ipl_data.get("objects", {}),
+        ipl_data.get("states", {})
+    )
+
 # Use cache_resource instead of cache_data for Excel file
 @st.cache_resource(ttl=300)
 def get_excel_engine():
@@ -589,8 +600,7 @@ def main():
         return
     
     # Create tabs
-    tab1, tab2, tab3, tab4 = st.tabs(["🏆 RANKINGS", "🛡️ SQUADS", "🏏 MATCHES", "👤 PLAYERS"])
-    
+    tab1, tab2, tab3, tab4, tab5 = st.tabs(["🏆 RANKINGS", "🛡️ SQUADS", "🏏 MATCHES", "👤 PLAYERS", "📺 LIVE SCORE"])    
     with tab1:
         show_rankings(data)
     
@@ -602,6 +612,10 @@ def main():
     
     with tab4:
         show_analytics(data)
+
+    with tab5:
+        show_live_score()
+
 
 def highlight_top_3(row):
     """Applies styling to the entire row, but unique border logic to the first cell."""
@@ -1243,7 +1257,168 @@ def show_analytics(data):
     
     players_html += '</tbody></table></div>'
     st.markdown(players_html, unsafe_allow_html=True)
-    
+
+def show_live_score():
+    st.markdown('<div class="section-header">📺 LIVE SCORECARD</div>', unsafe_allow_html=True)
+
+    match_objects, match_states = load_live_matches()
+
+    if not match_objects:
+        st.warning("No live match data available.")
+        return
+
+    match_name = st.selectbox(
+        "Select Match",
+        list(match_objects.keys()),
+        key="live_match_selector"
+    )
+
+    score = match_objects.get(match_name)
+    state = match_states.get(score.match_id, {}) if score else {}
+
+    if not score:
+        st.error("Match data not found.")
+        return
+
+    is_final = state.get("is_final", False)
+    status_text = "COMPLETED" if is_final else "LIVE"
+    status_color = "#efb920" if is_final else "#00f2fe"
+
+    # ---------------- MATCH HEADER ----------------
+    st.markdown(f"""
+        <div class="metric-card">
+            <div style="font-size: clamp(1.3rem, 5vw, 1.8rem); font-weight: bold;">
+                {match_name}
+            </div>
+            <div style="margin-top: 6px;">
+                <span style="
+                    background:{status_color};
+                    color:#060b26;
+                    padding:5px 14px;
+                    border-radius:20px;
+                    font-weight:bold;
+                    font-size:0.8rem;
+                ">
+                    {status_text}
+                </span>
+            </div>
+            <div style="margin-top:8px; font-size:0.9rem; color:#00f2fe;">
+                Winner: <b>{score.winner or "-"}</b> &nbsp; | &nbsp;
+                MoM: <b>{score.man_of_the_match or "-"}</b>
+            </div>
+        </div>
+    """, unsafe_allow_html=True)
+
+    # ---------------- INNINGS ----------------
+    for innings in score.innings_list:
+        bats = score.batsmen_list[
+            score.batsmen_list["Innings Name"] == innings
+        ]
+        innings_no = (
+            int(bats["Innings Number"].iloc[0])
+            if not bats.empty
+            else None
+        )
+
+        innings_label = (
+            "1st Innings" if innings_no == 1
+            else "2nd Innings" if innings_no == 2
+            else ""
+        )
+        
+        bowls = score.bowlers_info[
+            score.bowlers_info["Innings Name"] == innings
+        ]
+
+        total_runs = bats["Runs"].sum() if not bats.empty else 0
+        total_balls = bats["Balls"].sum() if not bats.empty else 0
+        overs = f"{total_balls//6}.{total_balls%6}"
+
+        # -------- INNINGS HEADER (Cricbuzz style) --------
+        st.markdown(f"""
+            <div style="
+                background: rgba(239,185,32,0.15);
+                padding: 12px 15px;
+                border-radius: 10px;
+                margin: 25px 0 10px 0;
+                border-left: 4px solid #efb920;
+            ">
+            <b style="font-size:1.1rem;">
+                {innings}
+                <span style="font-size:0.8rem; opacity:0.7; margin-left:6px;">
+                    · {innings_label}
+                </span>
+            </b>
+            <span style="float:right; font-weight:bold;">
+                {total_runs} ({overs} ov)
+            </span>
+        </div>
+    """, unsafe_allow_html=True)
+
+        # ================= BATTERS =================
+        st.markdown("""
+            <div style="display:grid; grid-template-columns: 3fr 1fr 1fr 1fr 1fr 1fr;
+                        font-weight:bold; color:#efb920; font-size:0.85rem;
+                        padding:6px 10px;">
+                <div>Batter</div><div>R</div><div>B</div><div>4s</div><div>6s</div><div>SR</div>
+            </div>
+        """, unsafe_allow_html=True)
+
+        for _, row in bats.iterrows():
+            dismissal = (
+                "not out"
+                if row["Dismissal"].lower() == "not out"
+                else row["Dismissal"]
+            )
+
+            st.markdown(f"""
+                <div style="
+                    display:grid;
+                    grid-template-columns: 3fr 1fr 1fr 1fr 1fr 1fr;
+                    padding:8px 10px;
+                    border-bottom:1px solid rgba(255,255,255,0.05);
+                    font-size:0.9rem;
+                ">
+                    <div>
+                        <b>{row['Batsman']}</b><br>
+                        <span style="opacity:0.6; font-size:0.75rem;">{dismissal}</span>
+                    </div>
+                    <div>{row['Runs']}</div>
+                    <div>{row['Balls']}</div>
+                    <div>{row['4s']}</div>
+                    <div>{row['6s']}</div>
+                    <div>{round(row['Strike Rate'],1)}</div>
+                </div>
+            """, unsafe_allow_html=True)
+
+        # ================= BOWLERS =================
+        st.markdown("<br>", unsafe_allow_html=True)
+        st.markdown("""
+            <div style="display:grid; grid-template-columns: 3fr 1fr 1fr 1fr 1fr 1fr;
+                        font-weight:bold; color:#efb920; font-size:0.85rem;
+                        padding:6px 10px;">
+                <div>Bowler</div><div>O</div><div>R</div><div>W</div><div>Dots</div><div>Econ</div>
+            </div>
+        """, unsafe_allow_html=True)
+
+        for _, row in bowls.iterrows():
+            st.markdown(f"""
+                <div style="
+                    display:grid;
+                    grid-template-columns: 3fr 1fr 1fr 1fr 1fr 1fr;
+                    padding:8px 10px;
+                    border-bottom:1px solid rgba(255,255,255,0.05);
+                    font-size:0.9rem;
+                ">
+                    <div><b>{row['Bowler']}</b></div>
+                    <div>{row['Overs']:.1f}</div>
+                    <div>{row['Runs']}</div>
+                    <div>{row['Wickets']}</div>
+                    <div>{row['0s']}</div>
+                    <div>{row['Economy']}</div>
+                </div>
+            """, unsafe_allow_html=True)
+
 
 if __name__ == "__main__":
     main()
