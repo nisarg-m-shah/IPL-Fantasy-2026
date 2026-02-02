@@ -2,10 +2,10 @@ def load_dill():
     import dill
     return dill
 dill = load_dill()
-from Scraping import Series, Score, find_full_name, names, roles
+from Scraping import Series, Score, find_full_name
 import pandas as pd
 import time
-from Auction import teams,boosters,names,roles,squads,team_names_ff,team_names_sf
+from Auction import teams,boosters,names,roles,squads,team_names_ff,team_names_sf,competition_id,database,file_path,json_filename 
 
 class Player:
     def __init__(self,player_name,match_object,booster):

@@ -1358,10 +1358,24 @@ def show_live_score():
 
         # ================= BATTERS =================
         st.markdown("""
-            <div style="display:grid; grid-template-columns: 3fr 1fr 1fr 1fr 1fr 1fr;
-                        font-weight:bold; color:#efb920; font-size:0.85rem;
-                        padding:6px 10px;">
-                <div>Batter</div><div>R</div><div>B</div><div>4s</div><div>6s</div><div>SR</div>
+            <div style="
+                margin-top: 6px;
+                margin-bottom: 2px;
+                padding: 6px 10px;
+                border-left: 3px solid #efb920;
+                background: rgba(255,255,255,0.04);
+            ">
+                <div style="
+                    display:grid;
+                    grid-template-columns: 3fr 1fr 1fr 1fr 1fr 1fr;
+                    font-size:0.75rem;
+                    font-weight:600;
+                    color:#efb920;
+                    text-transform: uppercase;
+                    letter-spacing: 0.04em;
+                ">
+                    <div>Batter</div><div>R</div><div>B</div><div>4s</div><div>6s</div><div>SR</div>
+                </div>
             </div>
         """, unsafe_allow_html=True)
 
@@ -1392,13 +1406,44 @@ def show_live_score():
                 </div>
             """, unsafe_allow_html=True)
 
-        # ================= BOWLERS =================
-        st.markdown("<br>", unsafe_allow_html=True)
         st.markdown("""
-            <div style="display:grid; grid-template-columns: 3fr 1fr 1fr 1fr 1fr 1fr;
-                        font-weight:bold; color:#efb920; font-size:0.85rem;
-                        padding:6px 10px;">
-                <div>Bowler</div><div>O</div><div>R</div><div>W</div><div>Dots</div><div>Econ</div>
+            <div style="
+                margin: 18px 0 10px 0;
+                height: 1px;
+                background: linear-gradient(
+                    to right,
+                    rgba(239,185,32,0),
+                    rgba(239,185,32,0.6),
+                    rgba(239,185,32,0)
+                );
+            "></div>
+        """, unsafe_allow_html=True)
+
+        # ================= BOWLERS =================
+        st.markdown("""
+            <div style="
+                margin-top: 10px;
+                margin-bottom: 2px;
+                padding: 6px 10px;
+                border-left: 3px solid #efb920;
+                background: rgba(255,255,255,0.04);
+            ">
+                <div style="
+                    display:grid;
+                    grid-template-columns: 3fr 1fr 1fr 1fr 1fr 1fr;
+                    font-size:0.75rem;
+                    font-weight:600;
+                    color:#efb920;
+                    text-transform: uppercase;
+                    letter-spacing: 0.04em;
+                ">
+                    <div>Bowler</div>
+                    <div>O</div>
+                    <div>R</div>
+                    <div>W</div>
+                    <div>Dots</div>
+                    <div>Econ</div>
+                </div>
             </div>
         """, unsafe_allow_html=True)
 

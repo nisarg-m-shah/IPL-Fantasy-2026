@@ -754,19 +754,74 @@ names = [
     'Mohammad Izhar','Danish Malewar'
 ]
 
-team_list =     ['Gujju Gang',
+roles = [
+    'BAT','AR','AR','BAT','AR','AR',
+    'BAT','AR','AR','BOWL','AR',
+    'BOWL','AR','BOWL','BOWL','AR',
+    'BOWL','BOWL','BOWL','BAT','BOWL',
+    'BOWL','BAT',
+
+    'AR','BAT','BAT','BOWL','BAT',
+    'BAT','BAT','BOWL','BAT','BOWL',
+    'BAT','BOWL','BOWL','BOWL','AR',
+    'BOWL','AR','BOWL','AR',
+    'BOWL','AR','BOWL','BAT',
+
+    'BOWL','BAT','BAT','BOWL','BOWL',
+    'AR','BOWL','AR','BOWL','BAT','BAT',
+    'AR','BAT','BOWL','AR','BOWL',
+    'BAT','BOWL','AR','BOWL','BOWL',
+    'AR','BOWL',
+
+    'AR','BOWL','BAT','BAT','BAT',
+    'AR','BOWL','AR','BOWL','BOWL',
+    'AR','AR','BAT','BAT','AR',
+    'BOWL','AR','AR','AR','AR',
+    'BOWL','BAT',
+
+    'AR','BAT','AR','BOWL','BOWL',
+    'BAT','BAT','BAT','BAT','BOWL',
+    'AR','BOWL','AR','AR','AR',
+    'BOWL','AR','AR','BAT',
+    'BOWL','BOWL','BAT','BOWL',
+
+    'BAT','BAT','BOWL','BOWL',
+    'BOWL','AR','BAT','AR','BAT',
+    'AR','BAT','AR','BOWL','AR',
+    'BAT','BAT','BAT','BAT','AR',
+    'BOWL','BOWL','BAT','BOWL',
+
+    'BOWL','BOWL','AR','BOWL','BOWL',
+    'AR','AR','BAT','BOWL','AR',
+    'AR','BAT','BOWL','BAT',
+    'BAT','AR','AR','BAT',
+    'AR','BAT','BOWL','BOWL',
+
+    'AR','AR','BAT','BOWL','BOWL',
+    'BAT','AR','BAT','BAT','AR',
+    'AR','BAT','BAT','AR','BOWL',
+    'AR','BOWL','BOWL','BAT','BAT',
+    'AR',
+
+    'BAT','BAT','BAT','BAT','BAT',
+    'BOWL','BOWL','BAT','AR','BOWL',
+    'BAT','BOWL','BAT','BOWL',
+    'BAT','AR','BOWL','BAT','BOWL',
+    'BOWL','BAT'
+]
+
+team_list = [
     'Disruptors',
     'Tormented Titans',
     'La Furia Roja',
     'Nasty Knights',
     'VS Stalwarts',
+    'Gujju Gang',
     'Alpha Acers',
     'Hilarious Hooligans',
     'Night Watchmen'
 ]
 
-#roles = []
-roles = [""] * len(names)
 squads = {}
 team_names_sf = ["KKR","GT","MI","CSK","RR","RCB","PBKS","DC","SRH","LSG"]
 team_names_ff = ["Kolkata Knight Riders", "Gujarat Titans", "Mumbai Indians", "Chennai Super Kings","Rajasthan Royals","Royal Challengers Bengaluru", "Punjab Kings","Delhi Capitals","Sunrisers Hyderabad","Lucknow Super Giants"]
