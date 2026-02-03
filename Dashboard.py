@@ -1312,6 +1312,7 @@ def show_live_score():
     # ---------------- INNINGS ----------------
     for innings in score.innings_list:
         innings_name = team_names_sf[team_names_ff.index(innings)]
+        score = score.innings_scores[innings_name]
         bats = score.batsmen_list[
             score.batsmen_list["Innings Name"] == innings
         ]
@@ -1351,7 +1352,7 @@ def show_live_score():
                 </span>
             </b>
             <span style="float:right; font-weight:bold;">
-                {total_runs} ({overs} ov)
+                {score}
             </span>
         </div>
     """, unsafe_allow_html=True)

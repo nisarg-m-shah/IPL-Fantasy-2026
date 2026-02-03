@@ -341,6 +341,8 @@ class Score:
         self.winner = ""
         self.man_of_the_match = ""
 
+        self.innings_scores = {}
+
         self._parse_match()
 
 
@@ -414,6 +416,10 @@ class Score:
             bat_team = innings["Extras"][0]["BattingTeamName"]
             bowl_team = innings["Extras"][0]["BowlingTeamName"]
             self.innings_list.append(bat_team)
+
+            innings_score = innings['Extras'][0]['Total']
+            innings_score = innings_score.replace('Overs','ov')
+            self.innings_scores[bat_team] = innings_score
 
             bat_players = squads.get(bat_team, [])
             bowl_players = squads.get(bowl_team, [])
