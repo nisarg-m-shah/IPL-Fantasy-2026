@@ -269,6 +269,7 @@ squads = {
 
 # ---------------- HELPERS (UNCHANGED) ----------------
 
+
 def split_camel_short(name):
     parts, word = [], ""
     for i, ch in enumerate(name):

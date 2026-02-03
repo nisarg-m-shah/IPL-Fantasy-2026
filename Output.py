@@ -9,7 +9,16 @@ def run_output_pipeline():
     import json
     import numpy as np
     import dill
+    import re
+    from Scraping import find_full_name
     from Auction import team_list,teams,boosters,names,roles,squads,team_names_ff,team_names_sf,competition_id,database,file_path,json_filename 
+
+
+    def fetch_jsonp(url, params=None):
+        r = requests.get(url, params=params)
+        r.raise_for_status()
+        clean = re.sub(r"^[^(]*\(|\);?$", "", r.text)
+        return json.loads(clean)
 
     def convert_values(obj):
         """ Recursively convert DataFrame and NumPy objects to serializable formats """
@@ -42,8 +51,31 @@ def run_output_pipeline():
         return parsed_dict
 
     def op_caps(url):
-        orange_cap, purple_cap = "",""#"Sai Sudharsan", "Prasidh Krishna"
-        return orange_cap, purple_cap
+        wickets_data = fetch_jsonp(
+            "https://ipl-stats-sports-mechanic.s3.ap-south-1.amazonaws.com/ipl/feeds/stats/203-mostwickets.js",
+            params={"callback": "onmostwickets"}
+        )
+
+        purple_cap = wickets_data["mostwickets"][0]["BowlerName"]
+        purple_cap = find_full_name(names,purple_cap)
+
+        runs_data = fetch_jsonp(
+            "https://ipl-stats-sports-mechanic.s3.ap-south-1.amazonaws.com/ipl/feeds/stats/203-toprunsscorers.js",
+            params={"callback": "ontoprunsscorers"}
+        )
+
+        orange_cap = runs_data["toprunsscorers"][0]["StrikerName"]
+        orange_cap = find_full_name(names,orange_cap)
+
+        mvp_data = fetch_jsonp(
+            "https://ipl-stats-sports-mechanic.s3.ap-south-1.amazonaws.com/ipl/feeds/stats/2025-mvpPlayersList.js",
+            params={"callback": "onMvp"}
+        )
+
+        mvp = mvp_data["mvp"][0]["PlayerName"]
+        mvp = find_full_name(names,mvp)
+
+        return orange_cap, purple_cap, mvp
 
     begin = time.time()
     team_names_sf = ["KKR", "GT", "MI", "CSK", "RR", "RCB", "PBKS", "DC", "SRH", "LSG"]
@@ -68,11 +100,6 @@ def run_output_pipeline():
         spreadsheet['Team Final Points'] = {}
         spreadsheet['Player Final Points'] = {}
 
-        # team_list = [
-        #     "Gujju Gang", "Hilarious Hooligans", "Tormented Titans",
-        #     "La Furia Roja", "Supa Jinx Strikas", "Raging Raptors", "The Travelling Bankers"
-        # ]
-
         data = {
             "Team Final Points": {
                 team: {"Total Points": 0} for team in team_list
@@ -94,130 +121,6 @@ def run_output_pipeline():
         ipl_data = dill.load(f)
         match_objects = ipl_data.get("objects", {})
         match_states = ipl_data.get("states", {})
-
-    # teams = {
-    #     'Gujju Gang':{ 
-    #         'squad':['Varun Chakaravarthy', 'Travis Head', 'Prasidh Krishna', 'Harshit Rana', 'Rahul Chahar',
-    #                    'Mukesh Choudhary', 'Ishant Sharma', 'Jaydev Unadkat', 'Mukesh Kumar', 'Abdul Samad',
-    #                    'Riyan Parag', 'Khaleel Ahmed', 'Avesh Khan', 'Faf du Plessis', 'Arjun Tendulkar',
-    #                    'Mohammed Shami', 'Shivam Dube', 'Lockie Ferguson', 'Josh Hazlewood', 'Prabhsimran Singh',
-    #                    'Rishabh Pant', 'Corbin Bosch', 'Mohammed Siraj', 'Marcus Stoinis', 'Harpreet Brar',
-    #                    'Rahmanullah Gurbaz', 'Rashid Khan', 'Washington Sundar','Kyle Jamieson','Charith Asalanka'],
-    #         'captain':['Varun Chakaravarthy'],
-    #         'vice captain':['Travis Head'],
-    #         'trump card':['Prasidh Krishna'],
-    #         'replacement':{'Lockie Ferguson':'Kyle Jamieson','Corbin Bosch':'Charith Asalanka'}
-    #                    },
-    #     'Hilarious Hooligans':{
-    #         'squad':['Yashasvi Jaiswal', 'Axar Patel', 'Hardik Pandya', 'Heinrich Klaasen', 'Rinku Singh',
-    #                             'Nehal Wadhera', 'Romario Shepherd', 'Manav Suthar', 'Vijaykumar Vyshak', 'Himmat Singh',
-    #                             'Ayush Badoni', 'Liam Livingstone', 'Nathan Ellis', 'Moeen Ali', 'Karn Sharma',
-    #                             'Shimron Hetmyer', 'Mayank Yadav', 'Abhinav Manohar', 'Ashutosh Sharma', 'Rachin Ravindra',
-    #                             'Shahrukh Khan', 'Anrich Nortje', 'Mayank Markande', 'Yuzvendra Chahal', 'Tushar Deshpande',
-    #                             'Noor Ahmad', 'Kagiso Rabada', 'Marco Jansen',"Will O'Rourke"],
-    #         'captain':['Yashasvi Jaiswal'],
-    #         'vice captain':['Axar Patel'],
-    #         'trump card':['Hardik Pandya'],
-    #         'replacement':{'Mayank Yadav':"Will O'Rourke"}
-    #                     },
-    #     'Tormented Titans':{
-    #         'squad':['Virat Kohli', 'Suryakumar Yadav', 'Kuldeep Yadav', 'Abhishek Sharma', 'Jitesh Sharma',
-    #                          'Harnoor Singh', 'Bhuvneshwar Kumar', 'Abishek Porel', 'Angkrish Raghuvanshi', 'Dhruv Jurel',
-    #                          'David Miller', 'Anuj Rawat', 'Josh Inglis', 'Kumar Kartikeya', 'Akash Deep', 'Rahul Tewatia',
-    #                          'Ramandeep Singh', 'Sherfane Rutherford', 'Glenn Maxwell', 'Sandeep Sharma', 'Shamar Joseph',
-    #                          'Pat Cummins', 'Quinton de Kock', 'Ravichandran Ashwin',"Mitchell Owen"],
-    #         'captain':['Virat Kohli'],
-    #         'vice captain':['Suryakumar Yadav'],
-    #         'trump card':['Kuldeep Yadav'],
-    #         'replacement':{'Glen Maxwell':"Mitchell Owen"}
-    #                     },
-    #     'La Furia Roja':{
-    #         'squad':['Shreyas Iyer', 'Sai Sudharsan', 'Philip Salt', 'Jasprit Bumrah', 'Swastik Chikara',
-    #                       'Rajvardhan Hangargekar', 'Manoj Bhandage', 'Nitish Rana', 'Rasikh Dar Salam', 'Deepak Chahar',
-    #                       'MS Dhoni', 'Aaron Hardie', 'Priyansh Arya', 'Sameer Rizvi', 'Mitchell Santner', 'Manish Pandey',
-    #                       'Suyash Sharma', 'Kamlesh Nagarkoti', 'Will Jacks', 'Azmatullah Omarzai', 'Adam Zampa',
-    #                       'Spencer Johnson', 'Jamie Overton', 'Shashank Singh', 'Rovman Powell', 'Suryansh Shedge',
-    #                       'Maheesh Theekshana',"Smaran Ravichandran"],
-    #         'captain':['Shreyas Iyer'],
-    #         'vice captain':['Sai Sudharsan'],
-    #         'trump card':['Philip Salt'],
-    #         'replacement':{'Adam Zampa':"Smaran Ravichandran"}
-    #                     },
-    #     'Supa Jinx Strikas':{ 
-    #         'squad':['Shubman Gill', 'Ayush Mhatre', 'Ruturaj Gaikwad', 'Sai Kishore', 'Nitish Reddy',
-    #                           'Mohit Sharma', 'Raj Bawa', 'Ishan Kishan', 'Mitchell Marsh', 'Karim Janat', 'Yash Dayal',
-    #                           'Bevon Jacobs', 'Ryan Rickelton', 'Rajat Patidar', 'Tristan Stubbs', 'Gerald Coetzee',
-    #                           'Glenn Phillips', 'Tim David', 'Ravi Bishnoi', 'Donovan Ferreira', 'Jayant Yadav',
-    #                           'Trent Boult', 'Jofra Archer', 'Akash Madhwal', 'Darshan Nalkande', 'Kwena Maphaka','Richard Gleeson'],
-    #         'captain':['Shubman Gill'],
-    #         'vice captain':['Ayush Mhatre', 'Ruturaj Gaikwad'],
-    #         'trump card':['Sai Kishore'],
-    #         'replacement':{'Ryan Rickelton':'Richard Gleeson','Ruturaj Gaikwad':'Ayush Mhatre'}
-    #                     },    
-    #     'Raging Raptors':{
-    #         'squad':['KL Rahul', 'Venkatesh Iyer', 'Mitchell Starc', 'Arshdeep Singh', 'Shardul Thakur',
-    #                       'Ravindra Jadeja', 'Aiden Markram', 'Sachin Baby', 'Dushmantha Chameera', 'Naman Dhir',
-    #                       'Karun Nair', 'Wanindu Hasaranga', 'Arshad Khan', 'Devdutt Padikkal', 'Robin Minz',
-    #                       'Shahbaz Ahmed', 'Mohsin Khan', 'Krunal Pandya', 'Sanju Samson', 'Jos Buttler', 'Atharva Taide',
-    #                       'Musheer Khan', 'Devon Conway'],
-    #         'captain':['KL Rahul'],
-    #         'vice captain':['Venkatesh Iyer'],
-    #         'trump card':['Mitchell Starc'],
-    #         'replacement':{'Mohsin Khan':'Shardul Thakur'}
-    #                     },    
-    #     'The Travelling Bankers':{
-    #         'squad':['Sunil Narine', 'Andre Russell', 'Nicholas Pooran', 'Harshal Patel', 'Umran Malik',
-    #                                'Chetan Sakariya', 'T Natarajan', 'Ajinkya Rahane', 'Shreyas Gopal', 'Tilak Varma',
-    #                                'Vijay Shankar', 'Shubham Dubey', 'Anukul Roy', 'Deepak Hooda', 'Rahul Tripathi',
-    #                                'Lungi Ngidi', 'Matheesha Pathirana', 'Vaibhav Arora', 'Jake Fraser-McGurk',
-    #                                'Sam Curran', 'Rohit Sharma', 'Mujeeb Ur Rahman', 'Anshul Kamboj', 'Mahipal Lomror'],
-    #         'captain':['Sunil Narine'],
-    #         'vice captain':['Andre Russell'],
-    #         'trump card':['Nicholas Pooran'],
-    #         'replacement':{'Umran Malik':'Chetan Sakariya'}         
-    #                                       },   
-    # }
-
-    # boosters = {
-    #     'Gujju Gang': {
-    #         'KKR vs GT': "Double Power",
-    #         'SRH vs MI': "Batting Powerplay",
-    #         'KKR vs RR': "Triple Captain",
-    #         "Eliminator": "Bowling Powerplay"
-    #     },
-    #     'Hilarious Hooligans': {
-    #         'CSK vs PBKS': "Bowling Powerplay",
-    #         'RR vs MI': "Double Power",
-    #         'KKR vs RR': "Triple Captain",
-    #         'SRH vs DC': "Batting Powerplay"
-    #     },
-    #     'Tormented Titans': {
-    #         'SRH vs DC': "Bowling Powerplay",
-    #         "RCB vs SRH": "Double Power"
-    #     },
-    #     'La Furia Roja': {
-    #         'KKR vs PBKS': "Batting Powerplay",
-    #         'PBKS vs DC': "Triple Captain"
-    #     },
-    #     'Supa Jinx Strikas': {
-    #         'MI vs SRH': 'Batting Powerplay',
-    #         'RR vs MI': "Bowling Powerplay",
-    #         'GT vs SRH': "Triple Captain",
-    #         "GT vs CSK": "Double Power"
-    #     },
-    #     'Raging Raptors': {
-    #         'DC vs RR': 'Batting Powerplay',
-    #         'LSG vs DC': "Double Power",
-    #         'MI vs DC': "Triple Captain",
-    #         'PBKS vs DC': "Bowling Powerplay"
-    #     },
-    #     'The Travelling Bankers': {
-    #         'KKR vs LSG': "Batting Powerplay",
-    #         'KKR vs PBKS': "Bowling Powerplay",
-    #         'SRH vs KKR': "Triple Captain",
-    #         'KKR vs CSK': "Double Power"
-    #     }
-    # }
 
 
     # Get list of match names (not URLs)
@@ -262,18 +165,23 @@ def run_output_pipeline():
 
     try:
         if number_of_matches >= 9:
-            orange_cap, purple_cap = op_caps("https://www.espncricinfo.com/series/ipl-2025-1449924/stats")
+            orange_cap, purple_cap,mvp = op_caps("https://www.espncricinfo.com/series/ipl-2025-1449924/stats")
             print(f"Orange Cap: {orange_cap}")
             print(f"Purple Cap: {purple_cap}")
+            print(f"MVP: {mvp}")
             for team in list(spreadsheet['Team Final Points'].keys()):
                 orange_cap_points = 0
                 purple_cap_points = 0
+                mvp_points = 0
                 if orange_cap in teams[team]['squad']:
                     orange_cap_points = 500
                 if purple_cap in teams[team]['squad']:
                     purple_cap_points = 500
+                if mvp in teams[team]['squad']:
+                    mvp_points = 750
                 spreadsheet['Team Final Points'][team]['Orange Cap'] = orange_cap_points
                 spreadsheet['Team Final Points'][team]['Purple Cap'] = purple_cap_points
+                spreadsheet['Team Final Points'][team]['MVP'] = mvp_points
             print("Purple Cap, Orange Cap, Total Points added")
 
         player_list_points = []
@@ -335,6 +243,10 @@ def run_output_pipeline():
                     spreadsheet['Player Final Points'][player]['Purple Cap'] = 500
                 else:
                     spreadsheet['Player Final Points'][player]['Purple Cap'] = 0
+                if player == mvp:
+                    spreadsheet['Player Final Points'][player]['MVP'] = 750
+                else:
+                    spreadsheet['Player Final Points'][player]['MVP'] = 0
 
         # Fill missing match entries for players
         for player in player_list_points:

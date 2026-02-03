@@ -6,6 +6,7 @@ import os
 import time
 import subprocess
 import threading
+import re
 from datetime import datetime, time as dt_time
 import pytz
 import dill
@@ -86,6 +87,21 @@ st.markdown("""
         word-spacing: 0.2em;
     }
     
+    .orange-cap-player {
+        background: rgba(239, 185, 32, 0.22) !important;
+        border-left: 4px solid #efb920 !important;
+    }
+
+    .purple-cap-player {
+        background: rgba(168, 85, 247, 0.22) !important;
+        border-left: 4px solid #a855f7 !important;
+    }
+
+    .mvp-player {
+        background: rgba(34, 197, 94, 0.22) !important;
+        border-left: 4px solid #22c55e !important;
+    }
+
     /* MOBILE-RESPONSIVE: Subtitle */
     .subtitle {
         font-family: 'Roboto', sans-serif;
@@ -108,10 +124,9 @@ st.markdown("""
         transition: transform 0.3s ease;
     }
     
-    @media (min-width: 768px) {
+    @media (max-width: 768px) {
         .metric-card {
-            padding: 25px;
-            margin: 10px;
+            width: 100%;
         }
     }
     
@@ -341,6 +356,35 @@ st.markdown("""
     /* MOBILE: Column spacing adjustments */
     [data-testid="column"] {
         padding: 0 5px;
+    }
+
+    /* Default hover stays gold */
+    .metric-card:hover {
+        transform: translateY(-5px);
+    }
+
+    /* ORANGE CAP */
+    .orange-card {
+        border-color: rgba(239, 185, 32, 0.4);
+    }
+    .orange-card:hover {
+        border-color: #efb920;
+    }
+
+    /* PURPLE CAP */
+    .purple-card {
+        border-color: rgba(168, 85, 247, 0.4);
+    }
+    .purple-card:hover {
+        border-color: #a855f7;
+    }
+
+    /* MVP */
+    .mvp-card {
+        border-color: rgba(34, 197, 94, 0.4);
+    }
+    .mvp-card:hover {
+        border-color: #22c55e;
     }
     
     @media (min-width: 768px) {
@@ -712,7 +756,7 @@ def show_rankings(data):
     df_display.columns = ['Team'] + list(df_display.columns[1:])
     df_display['Rank'] = range(1, len(df_display) + 1)
     
-    cols_order = ['Rank', 'Team', 'Total Points', 'Orange Cap', 'Purple Cap']
+    cols_order = ['Rank', 'Team', 'Total Points', 'Orange Cap', 'Purple Cap','MVP']
     df_display = df_display[cols_order]
     df_display = df_display.dropna(subset=["Total Points"])
     
@@ -727,6 +771,7 @@ def show_rankings(data):
                 <th style="padding: 12px 8px; color: #efb920; font-family: 'Bebas Neue', sans-serif; font-size: clamp(0.9rem, 2.5vw, 1.1rem); text-align: center;">TOTAL POINTS</th>
                 <th style="padding: 12px 8px; color: #efb920; font-family: 'Bebas Neue', sans-serif; font-size: clamp(0.9rem, 2.5vw, 1.1rem); text-align: center;">ORANGE CAP</th>
                 <th style="padding: 12px 8px; color: #efb920; font-family: 'Bebas Neue', sans-serif; font-size: clamp(0.9rem, 2.5vw, 1.1rem); text-align: center;">PURPLE CAP</th>
+                <th style="padding: 12px 8px; color: #efb920; font-family: 'Bebas Neue', sans-serif; font-size: clamp(0.9rem, 2.5vw, 1.1rem); text-align: center;">MVP</th>
             </tr>
         </thead>
         <tbody>
@@ -756,18 +801,66 @@ def show_rankings(data):
         html_table += f'<td style="padding: 10px 8px; text-align: center;">{format_points(row["Total Points"])}</td>'
         html_table += f'<td style="padding: 10px 8px; text-align: center;">{row["Orange Cap"]}</td>'
         html_table += f'<td style="padding: 10px 8px; text-align: center;">{row["Purple Cap"]}</td>'
+        html_table += f'<td style="padding: 10px 8px; text-align: center;">{row["MVP"]}</td>'
         html_table += "</tr>"
 
     html_table += "</tbody></table></div>"
     st.markdown(html_table, unsafe_allow_html=True)
     team_final = data["Team Final Points"]
     player_final = data["Player Final Points"]
-    
+
+
+    #Op caps
+    player_final = data["Player Final Points"]
+
+    orange_cap_holder = player_final[player_final["Orange Cap"] > 0]
+    purple_cap_holder = player_final[player_final["Purple Cap"] > 0]
+    mvp_holder = player_final[player_final["MVP"] > 0]
+
+    if not orange_cap_holder.empty:
+        for player, row in orange_cap_holder.iterrows():
+            st.markdown(f"""
+                <div class="metric-card orange-card" style="border-left:6px solid #efb920;">
+                    <div style="color:#efb920; font-weight:bold; font-size:1.1rem;">
+                        🟠 ORANGE CAP
+                    </div>
+                    <div style="font-size:1.6rem; font-weight:bold; margin-top:6px;">
+                        {player}
+                    </div>
+                </div>
+            """, unsafe_allow_html=True)
+
+    if not purple_cap_holder.empty:
+        for player, row in purple_cap_holder.iterrows():
+            st.markdown(f"""
+                <div class="metric-card purple-card" style="border-left:6px solid #a855f7;">
+                    <div style="color:#a855f7; font-weight:bold; font-size:1.1rem;">
+                        🟣 PURPLE CAP
+                    </div>
+                    <div style="font-size:1.6rem; font-weight:bold; margin-top:6px;">
+                        {player}
+                    </div>
+                </div>
+            """, unsafe_allow_html=True)
+
+    if not mvp_holder.empty:
+        for player, row in mvp_holder.iterrows():
+            st.markdown(f"""
+                <div class="metric-card mvp-card" style="border-left:6px solid #22c55e;">
+                    <div style="font-size:1.1rem; font-weight:bold; color:#22c55e;">
+                        ⭐ MVP
+                    </div>
+                    <div style="font-size:1.6rem; font-weight:bold; margin-top:6px;">
+                        {player}
+                    </div>
+                </div>
+            """, unsafe_allow_html=True)
+        
 
     # Team performance trends - CUMULATIVE
     st.markdown('<div class="section-header">📊 POINTS RACE</div>', unsafe_allow_html=True)
 
-    match_cols = [col for col in team_final.columns if col not in ['Total Points', 'Orange Cap', 'Purple Cap']]
+    match_cols = [col for col in team_final.columns if col not in ['Total Points', 'Orange Cap', 'Purple Cap','MVP']]
 
     fig = go.Figure()
 
@@ -815,7 +908,52 @@ def show_rankings(data):
 
 def show_squads(data):
     """Display team squads with injury tracking - MOBILE OPTIMIZED"""
+    # 1. Add specialized CSS for dynamic hovers and grid stability
+    st.markdown("""
+        <style>
+            .metric-card {
+                padding: 12px;
+                background: rgba(255, 255, 255, 0.05);
+                border-radius: 8px;
+                transition: all 0.2s ease;
+                border: 1px solid rgba(255, 255, 255, 0.1);
+            }
+            /* This fixes the orange hover issue by using the accent variable */
+            .metric-card:hover {
+                outline: 2px solid var(--accent-color) !important;
+                background: rgba(255, 255, 255, 0.1);
+                transform: translateY(-2px);
+            }
+            .grid-container {
+                display: grid;
+                gap: 10px;
+                margin-bottom: 20px;
+                width: 100%;
+            }
+        </style>
+    """, unsafe_allow_html=True)
+
     st.markdown('<div class="section-header">🛡️ TEAM SQUADS</div>', unsafe_allow_html=True)
+
+    player_final = data["Player Final Points"]
+
+    orange_cap_player = (
+        player_final[player_final["Orange Cap"] > 0].index[0]
+        if (player_final["Orange Cap"] > 0).any()
+        else None
+    )
+
+    purple_cap_player = (
+        player_final[player_final["Purple Cap"] > 0].index[0]
+        if (player_final["Purple Cap"] > 0).any()
+        else None
+    )
+
+    mvp_player = (
+        player_final[player_final["MVP"] > 0].index[0]
+        if (player_final["MVP"] > 0).any()
+        else None
+    )
     
     selected_team = st.selectbox(
         "Select Team",
@@ -826,102 +964,119 @@ def show_squads(data):
     if selected_team:
         team_data = data["Team Final Points"].loc[selected_team]
         rank = (data["Team Final Points"]['Total Points'] > team_data['Total Points']).sum() + 1
-        
-        # Metric cards - 2x2 grid using custom HTML/CSS for better mobile control
+
+        # --- Top Level Metrics ---
         st.markdown(f"""
-            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 20px;">
-                <div class="metric-card">
+            <div class="grid-container" style="grid-template-columns: 1fr 1fr;">
+                <div class="metric-card" style="--accent-color: #00f2fe;">
                     <div style="font-size: clamp(0.8rem, 2.5vw, 0.9rem); color: #00f2fe;">Total Points</div>
                     <div style="font-size: clamp(1.5rem, 5vw, 2rem); font-weight: bold;">{format_points(team_data['Total Points'])}</div>
                 </div>
-                <div class="metric-card">
+                <div class="metric-card" style="--accent-color: #00f2fe;">
                     <div style="font-size: clamp(0.8rem, 2.5vw, 0.9rem); color: #00f2fe;">Rank</div>
                     <div style="font-size: clamp(1.5rem, 5vw, 2rem); font-weight: bold;">#{rank}</div>
                 </div>
-                <div class="metric-card">
-                    <div style="font-size: clamp(0.8rem, 2.5vw, 0.9rem); color: #00f2fe;">Orange Cap</div>
-                    <div style="font-size: clamp(1.5rem, 5vw, 2rem); font-weight: bold;">{int(team_data['Orange Cap'])}</div>
-                </div>
-                <div class="metric-card">
-                    <div style="font-size: clamp(0.8rem, 2.5vw, 0.9rem); color: #00f2fe;">Purple Cap</div>
-                    <div style="font-size: clamp(1.5rem, 5vw, 2rem); font-weight: bold;">{int(team_data['Purple Cap'])}</div>
-                </div>
             </div>
         """, unsafe_allow_html=True)
+
+        # --- CAPTAIN / VC / TRUMP (Unified Grid) ---
+        team_meta = SQUAD_INFO[selected_team]
+        roles = [
+            ("🧢 CAPTAIN", team_meta.get("captain", []), "#efb920"),
+            ("🎽 VICE CAPTAIN", team_meta.get("vice captain", []), "#00f2fe"),
+            ("🃏 TRUMP CARD", team_meta.get("trump card", []), "#a855f7")
+        ]
+
+        role_html = '<div class="grid-container" style="grid-template-columns: repeat(3, 1fr);">'
+        for label, names, color in roles:
+            display_names = ", ".join(names) if names else "None"
+            role_html += f"""
+                <div class="metric-card" style="border-left:6px solid {color}; --accent-color: {color};">
+                    <div style="font-size:0.75rem; color:{color}; font-weight:bold;">{label}</div>
+                    <div style="margin-top:6px; font-weight:bold; font-size:0.9rem;">{display_names}</div>
+                </div>"""
+        role_html += "</div>"
+        st.markdown(role_html, unsafe_allow_html=True)
         
         st.markdown("---")
-        
-        # Calculate player points
-        match_sheets = [sheet for sheet in data.keys() if ' - CFC Points' in sheet]
 
+        # --- BOOSTERS (Unified Grid) ---
+#        st.markdown('<div class="section-header">Boosters</div>', unsafe_allow_html=True)
+        team_boosters = boosters.get(selected_team, {})
+        BOOSTER_STYLES = {
+            "Double Power": ("💥 DOUBLE POWER", "#efb920", "rgba(239,185,32,0.12)"),
+            "Batting Powerplay": ("🏏 BATTING POWERPLAY", "#fb923c", "rgba(251,146,60,0.12)"),
+            "Bowling Powerplay": ("🎯 BOWLING POWERPLAY", "#a855f7", "rgba(168,85,247,0.12)"),
+            "Triple Captain": ("👑 TRIPLE CAPTAIN", "#22c55e", "rgba(34,197,94,0.12)")
+        }
+
+        booster_html = '<div class="grid-container" style="grid-template-columns: repeat(2, 1fr);">'
+        for booster_name, (label, color, bg) in BOOSTER_STYLES.items():
+            match = team_boosters.get(booster_name) # Assuming boosters dict is {Team: {Booster: Match}}
+            # If your boosters dict is {Team: {Match: Booster}}, use your existing inversion logic here
+            
+            # Simple check for the inverted logic you had:
+            match_name = next((m for m, b in team_boosters.items() if b == booster_name), None)
+            
+            value = match_name if match_name else "Not Used"
+            value_style = "font-weight:bold;" if match_name else "opacity:0.45; font-style:italic;"
+            
+            booster_html += f"""
+                <div class="metric-card" style="border-left:6px solid {color}; background:{bg}; --accent-color: {color};">
+                    <div style="font-size:0.8rem; font-weight:700; color:{color};">{label}</div>
+                    <div style="margin-top:6px; {value_style}">{value}</div>
+                </div>"""
+        booster_html += "</div>"
+        st.markdown(booster_html, unsafe_allow_html=True)
+
+        # --- PLAYER LIST LOGIC ---
+        match_sheets = [sheet for sheet in data.keys() if ' - CFC Points' in sheet]
         player_points = {}
-        
         for sheet in match_sheets:
             if selected_team in data[sheet].index:
                 row = data[sheet].loc[selected_team]
                 for player, pts in row.items():
                     if player not in ["Total Points", "Booster"] and pd.notna(pts) and player in SQUAD_INFO[selected_team]['squad']:
-                        if player not in player_points.keys():
-                            player_points[player] = pts
-                        else:
-                            player_points[player] += pts
+                        player_points[player] = player_points.get(player, 0) + pts
 
-        
         st.markdown('<div class="section-header">Squad Players</div>', unsafe_allow_html=True)
         
         processed = set()
         squad_sorted = sorted(player_points.items(), key=lambda x: x[1], reverse=True)
         
-        # Single column on mobile, two on desktop
-        for i, (player, pts) in enumerate(squad_sorted):
-            if player in processed:
-                continue
-            total_with_caps = pts
-            orange_cap = 0
-            purple_cap = 0
-            if "Player Final Points" in data and player in data["Player Final Points"].index:
-                player_final_data = data["Player Final Points"].loc[player]
-                orange_cap = player_final_data.get('Orange Cap', 0) if pd.notna(player_final_data.get('Orange Cap', 0)) else 0
-                purple_cap = player_final_data.get('Purple Cap', 0) if pd.notna(player_final_data.get('Purple Cap', 0)) else 0
-                total_with_caps = pts + orange_cap + purple_cap
+        for player, pts in squad_sorted:
+            if player in processed: continue
             
-            c = 0
+            total_with_caps = pts
+            if "Player Final Points" in data and player in data["Player Final Points"].index:
+                pfd = data["Player Final Points"].loc[player]
+                total_with_caps += sum([pfd.get(k, 0) for k in ['Orange Cap', 'Purple Cap', 'MVP'] if pd.notna(pfd.get(k, 0))])
+            
+            # Injury/Replacement logic
+            is_replacement = False
             for team in SQUAD_INFO.keys():
-                if player in SQUAD_INFO[team]['replacement'].keys():
+                if player in SQUAD_INFO[team]['replacement']:
                     replacement = SQUAD_INFO[team]['replacement'][player]
                     repl_pts = player_points.get(replacement, 0)
-                    # Get caps for replacement
-                    repl_total_with_caps = repl_pts
-                    repl_orange = 0
-                    repl_purple = 0
-                    if "Player Final Points" in data and replacement in data["Player Final Points"].index:
-                        repl_final = data["Player Final Points"].loc[replacement]
-                        repl_orange = repl_final.get('Orange Cap', 0) if pd.notna(repl_final.get('Orange Cap', 0)) else 0
-                        repl_purple = repl_final.get('Purple Cap', 0) if pd.notna(repl_final.get('Purple Cap', 0)) else 0
-                        repl_total_with_caps = repl_pts + repl_orange + repl_purple
-                    
-                    # Stack on mobile
+                    # (Simplified point calculation for replacement for brevity)
                     st.markdown(f"""
-                        <div class="player-row injured" style="margin-bottom: 5px;">
-                            <span>🚑 {player}</span>
-                            <span style="color: #ff4b4b; font-weight: bold;">{format_points(total_with_caps)}</span>
-                        </div>
-                        <div class="player-row replacement" style="margin-bottom: 10px;">
-                            <span>🔁 {replacement}</span>
-                            <span style="color: #00f2fe; font-weight: bold;">{format_points(repl_total_with_caps)}</span>
-                        </div>
+                        <div class="player-row injured"><span>🚑 {player}</span><span>{format_points(total_with_caps)}</span></div>
+                        <div class="player-row replacement"><span>🔁 {replacement}</span><span>{format_points(repl_pts)}</span></div>
                     """, unsafe_allow_html=True)
                     processed.update([player, replacement])
-                    c += 1
+                    is_replacement = True
                     break
-                if player in SQUAD_INFO[team]['replacement'].values():
-                    c+=1
-                    break
-            if c == 0:
+            
+            if not is_replacement:
+                row_class = "player-row"
+                if player == mvp_player: row_class += " mvp-player"
+                elif player == orange_cap_player: row_class += " orange-cap-player"
+                elif player == purple_cap_player: row_class += " purple-cap-player"
+
                 st.markdown(f"""
-                    <div class="player-row">
+                    <div class="{row_class}">
                         <span>{player}</span>
-                        <span style="color: #efb920; font-weight: bold;">{format_points(total_with_caps)}</span>
+                        <span style="font-weight: bold;">{format_points(total_with_caps)}</span>
                     </div>
                 """, unsafe_allow_html=True)
                 processed.add(player)
@@ -1221,6 +1376,7 @@ def show_analytics(data):
     players_html += '<th style="padding:10px 8px; color:#efb920; font-family:\'Bebas Neue\'; text-align:center; font-size: clamp(0.85rem, 2.5vw, 1rem);">TOTAL POINTS</th>'
     players_html += '<th style="padding:10px 8px; color:#efb920; font-family:\'Bebas Neue\'; text-align:center; font-size: clamp(0.85rem, 2.5vw, 1rem);">ORANGE CAP</th>'
     players_html += '<th style="padding:10px 8px; color:#efb920; font-family:\'Bebas Neue\'; text-align:center; font-size: clamp(0.85rem, 2.5vw, 1rem);">PURPLE CAP</th>'
+    players_html += '<th style="padding:10px 8px; color:#efb920; font-family:\'Bebas Neue\'; text-align:center; font-size: clamp(0.85rem, 2.5vw, 1rem);">MVP</th>'
     players_html += '</tr></thead><tbody>'
     
     for _, row in all_players_df.iterrows():
@@ -1248,11 +1404,14 @@ def show_analytics(data):
         
         orange_val = row.get("Orange Cap", 0)
         purple_val = row.get("Purple Cap", 0)
+        mvp_val = row.get("MVP", 0)
         orange_display = format_points(orange_val) if pd.notna(orange_val) and orange_val > 0 else "-"
         purple_display = format_points(purple_val) if pd.notna(purple_val) and purple_val > 0 else "-"
+        mvp_display = format_points(mvp_val) if pd.notna(mvp_val) and mvp_val > 0 else "-"
         
         players_html += f'<td style="padding:10px 8px; text-align:center; color:#efb920; font-size: clamp(0.75rem, 2.5vw, 0.9rem);">{orange_display}</td>'
         players_html += f'<td style="padding:10px 8px; text-align:center; color:#a855f7; font-size: clamp(0.75rem, 2.5vw, 0.9rem);">{purple_display}</td>'
+        players_html += f'<td style="padding:10px 8px; text-align:center; color:#a855f7; font-size: clamp(0.75rem, 2.5vw, 0.9rem);">{mvp_display}</td>'
         players_html += '</tr>'
     
     players_html += '</tbody></table></div>'
