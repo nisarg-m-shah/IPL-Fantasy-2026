@@ -943,7 +943,7 @@ def show_squads(data):
         </style>
     """, unsafe_allow_html=True)
 
-    st.markdown('<div class="section-header">🛡️ TEAM SQUADS</div>', unsafe_allow_html=True)
+    st.markdown('<div class="section-header">🛡️ TEAM OVERVIEW</div>', unsafe_allow_html=True)
 
     player_final = data["Player Final Points"]
 
@@ -1027,10 +1027,10 @@ def show_squads(data):
 #        st.markdown('<div class="section-header">Boosters</div>', unsafe_allow_html=True)
         team_boosters = boosters.get(selected_team, {})
         BOOSTER_STYLES = {
-            "Double Power": ("💥 DOUBLE POWER", "#efb920", "rgba(239,185,32,0.12)"),
+            "Double Power": ("👑 DOUBLE POWER", "#efb920", "rgba(239,185,32,0.12)"),
             "Batting Powerplay": ("🏏 BATTING POWERPLAY", "#fb923c", "rgba(251,146,60,0.12)"),
-            "Bowling Powerplay": ("🎯 BOWLING POWERPLAY", "#a855f7", "rgba(168,85,247,0.12)"),
-            "Triple Captain": ("👑 TRIPLE CAPTAIN", "#22c55e", "rgba(34,197,94,0.12)")
+            "Bowling Powerplay": ("⚾ BOWLING POWERPLAY", "#a855f7", "rgba(168,85,247,0.12)"),
+            "Triple Captain": ("🧢 TRIPLE CAPTAIN", "#22c55e", "rgba(34,197,94,0.12)")
         }
 
         booster_html = '<div class="grid-container" style="grid-template-columns: repeat(2, 1fr);">'

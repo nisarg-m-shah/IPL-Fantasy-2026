@@ -660,9 +660,9 @@ teams = {
             'Mohammad Izhar',
             'Danish Malewar'
         ],
-        'captain': [],
-        'vice captain': [],
-        'trump card': [],
+        'captain': ['Matheesha Pathirana'],
+        'vice captain': ['Sanju Samson'],
+        'trump card': ['Tilak Varma'],
         'replacement': {}
     }
 }
