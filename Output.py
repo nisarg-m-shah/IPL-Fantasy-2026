@@ -193,27 +193,24 @@ def run_output_pipeline():
                 orange_cap, purple_cap, mvp = op_caps(current_match_name)
 
 
-                print(f"Orange Cap: {orange_cap}")
-                print(f"Purple Cap: {purple_cap}")
-                print(f"MVP: {mvp}")
-                for team in list(spreadsheet['Team Final Points'].keys()):
-                    orange_cap_points = 0
-                    purple_cap_points = 0
-                    mvp_points = 0
-                    if orange_cap in teams[team]['squad']:
-                        orange_cap_points = 500
-                    if purple_cap in teams[team]['squad']:
-                        purple_cap_points = 500
-                    if mvp in teams[team]['squad']:
-                        mvp_points = 750
-                    spreadsheet['Team Final Points'][team]['Orange Cap'] = orange_cap_points
-                    spreadsheet['Team Final Points'][team]['Purple Cap'] = purple_cap_points
-                    spreadsheet['Team Final Points'][team]['MVP'] = mvp_points
-                print("Purple Cap, Orange Cap, MVP, Total Points added")
-            else:
-                print(f"Orange Cap: {orange_cap}")
-                print(f"Purple Cap: {purple_cap}")
-                print(f"MVP: {mvp}")
+            print(f"Orange Cap: {orange_cap}")
+            print(f"Purple Cap: {purple_cap}")
+            print(f"MVP: {mvp}")
+            for team in list(spreadsheet['Team Final Points'].keys()):
+                orange_cap_points = 0
+                purple_cap_points = 0
+                mvp_points = 0
+                if orange_cap in teams[team]['squad']:
+                    orange_cap_points = 500
+                if purple_cap in teams[team]['squad']:
+                    purple_cap_points = 500
+                if mvp in teams[team]['squad']:
+                    mvp_points = 750
+                spreadsheet['Team Final Points'][team]['Orange Cap'] = orange_cap_points
+                spreadsheet['Team Final Points'][team]['Purple Cap'] = purple_cap_points
+                spreadsheet['Team Final Points'][team]['MVP'] = mvp_points
+            print("Purple Cap, Orange Cap, MVP, Total Points added")
+
 
         player_list_points = []
         match_list_points = []
