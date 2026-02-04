@@ -797,7 +797,17 @@ def show_rankings(data):
 
         html_table += f'<tr style="{row_style}">'
         html_table += f'<td style="padding: 10px 8px; text-align: center; font-weight: bold; {first_cell_extra}">{rank}</td>'
-        html_table += f'<td style="padding: 10px 8px; text-align: center; font-weight: bold;">{row["Team"]}</td>'
+        html_table += f'''
+        <td style="
+            padding: 10px 8px;
+            text-align: center;
+            font-weight: bold;
+            font-size: clamp(0.9rem, 2.6vw, 1.25rem);
+            letter-spacing: 0.03em;
+        ">
+            {row["Team"]}
+        </td>
+        '''
         html_table += f'<td style="padding: 10px 8px; text-align: center;">{format_points(row["Total Points"])}</td>'
         html_table += f'<td style="padding: 10px 8px; text-align: center;">{row["Orange Cap"]}</td>'
         html_table += f'<td style="padding: 10px 8px; text-align: center;">{row["Purple Cap"]}</td>'
@@ -992,8 +1002,21 @@ def show_squads(data):
             display_names = ", ".join(names) if names else "None"
             role_html += f"""
                 <div class="metric-card" style="border-left:6px solid {color}; --accent-color: {color};">
-                    <div style="font-size:0.75rem; color:{color}; font-weight:bold;">{label}</div>
-                    <div style="margin-top:6px; font-weight:bold; font-size:0.9rem;">{display_names}</div>
+                    <div style="
+                        font-size: clamp(0.85rem, 2.6vw, 1rem);
+                        color:{color};
+                        font-weight:700;
+                        letter-spacing:0.04em;
+                    ">
+                        {label}
+                    </div>
+                    <div style="
+                        margin-top:6px;
+                        font-weight:700;
+                        font-size: clamp(1rem, 3vw, 1.25rem);
+                    ">
+                        {display_names}
+                    </div>
                 </div>"""
         role_html += "</div>"
         st.markdown(role_html, unsafe_allow_html=True)
@@ -1021,11 +1044,24 @@ def show_squads(data):
             value = match_name if match_name else "Not Used"
             value_style = "font-weight:bold;" if match_name else "opacity:0.45; font-style:italic;"
             
-            booster_html += f"""
-                <div class="metric-card" style="border-left:6px solid {color}; background:{bg}; --accent-color: {color};">
-                    <div style="font-size:0.8rem; font-weight:700; color:{color};">{label}</div>
-                    <div style="margin-top:6px; {value_style}">{value}</div>
-                </div>"""
+            booster_html += f"""<div class="metric-card" style="border-left:6px solid {color}; background:{bg}; --accent-color: {color};">
+                <div style="
+                    font-size: clamp(0.9rem, 2.6vw, 1.05rem);
+                    font-weight:700;
+                    color:{color};
+                    letter-spacing:0.04em;
+                ">
+                    {label}
+                </div>
+                <div style="
+                    margin-top:6px;
+                    font-size: clamp(1rem, 3vw, 1.3rem);
+                    {value_style}
+                ">
+                    {value}
+                </div>
+            </div>"""
+
         booster_html += "</div>"
         st.markdown(booster_html, unsafe_allow_html=True)
 

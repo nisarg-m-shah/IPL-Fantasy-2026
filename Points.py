@@ -56,7 +56,6 @@ class Player:
         batting_info = self.match_object.batsmen_list
         bowling_info = self.match_object.bowlers_info
 
-        #catches=stumpings=main_runouts=secondary_runouts=catching_points=stumping_points=direct_runout_points=second_runout_points=maidens=wickets=dots=economy=bowled_wickets=lbw_wickets=maidens_points=wicket_points=dot_points=economy_points=bowling_milestone_points=bowled_wickets_points=lbw_wickets_points=runs=fours=sixes=strike_rate=runs_points=fours_points=sixes_points=duck_points=strike_rate_points=batting_milestone_points=player_points=player_batpoints=player_bowlpoints=player_fieldpoints=0
         try:
             runs = batting_info.loc[batting_info['Batsman'] == self.player_name,'Runs'].values[0]
             runs_points = runs
@@ -264,7 +263,7 @@ class Team:
                 self.points_list[player] = player_points
                 self.total_points += player_points
         
-        if self.total_points.is_integer():
+        if isinstance(self.total_points, (int, float)):
             self.total_points = int(self.total_points)
         
         points_entry = {'Total Points': self.total_points}

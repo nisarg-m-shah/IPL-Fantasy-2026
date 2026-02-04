@@ -10,6 +10,7 @@ def run_output_pipeline():
     import numpy as np
     import dill
     import re
+    import os
     from Scraping import find_full_name
     from Auction import team_list,teams,boosters,names,roles,squads,team_names_ff,team_names_sf,competition_id,database,file_path,json_filename 
 
@@ -50,14 +51,14 @@ def run_output_pipeline():
                 parsed_dict[sheet_name] = df.to_dict(orient='records')
         return parsed_dict
 
-    def op_caps(url):
+    def op_caps(current_match_name):
         wickets_data = fetch_jsonp(
             "https://ipl-stats-sports-mechanic.s3.ap-south-1.amazonaws.com/ipl/feeds/stats/203-mostwickets.js",
             params={"callback": "onmostwickets"}
         )
 
         purple_cap = wickets_data["mostwickets"][0]["BowlerName"]
-        purple_cap = find_full_name(names,purple_cap)
+        purple_cap = find_full_name(names, purple_cap)
 
         runs_data = fetch_jsonp(
             "https://ipl-stats-sports-mechanic.s3.ap-south-1.amazonaws.com/ipl/feeds/stats/203-toprunsscorers.js",
@@ -65,7 +66,7 @@ def run_output_pipeline():
         )
 
         orange_cap = runs_data["toprunsscorers"][0]["StrikerName"]
-        orange_cap = find_full_name(names,orange_cap)
+        orange_cap = find_full_name(names, orange_cap)
 
         mvp_data = fetch_jsonp(
             "https://ipl-stats-sports-mechanic.s3.ap-south-1.amazonaws.com/ipl/feeds/stats/2025-mvpPlayersList.js",
@@ -73,24 +74,40 @@ def run_output_pipeline():
         )
 
         mvp = mvp_data["mvp"][0]["PlayerName"]
-        mvp = find_full_name(names,mvp)
+        mvp = find_full_name(names, mvp)
+
+        # Save caps along with the match name
+        with open("caps.pkl", "wb") as f:
+            dill.dump({
+                "match": current_match_name,
+                "orange": orange_cap,
+                "purple": purple_cap,
+                "mvp": mvp
+            }, f)
 
         return orange_cap, purple_cap, mvp
 
+
     begin = time.time()
-    team_names_sf = ["KKR", "GT", "MI", "CSK", "RR", "RCB", "PBKS", "DC", "SRH", "LSG"]
-    team_names_ff = ["Kolkata Knight Riders", "Gujarat Titans", "Mumbai Indians", "Chennai Super Kings",
-                     "Rajasthan Royals", "Royal Challengers Bengaluru", "Punjab Kings", "Delhi Capitals",
-                     "Sunrisers Hyderabad", "Lucknow Super Giants"]
-    
-    # competition_id = 203  # IPL 2025 competition ID
-    # database = "ipl25.pkl"
-    # file_path = "CFC Fantasy League 2025.xlsx"
-    # json_filename = "CFC Fantasy League 2025.json"
-    # orange_cap, purple_cap = "",""
 
     # Load the Series object (this automatically scrapes new matches)
     ipl = Series(competition_id, database)
+
+    caps_file = "caps.pkl"
+    orange_cap, purple_cap, mvp = "", "", ""
+    caps_match_name = None
+
+    if os.path.exists(caps_file):
+        try:
+            with open(caps_file, "rb") as f:
+                caps_data = dill.load(f)
+                orange_cap = caps_data.get("orange", "")
+                purple_cap = caps_data.get("purple", "")
+                mvp = caps_data.get("mvp", "")
+                caps_match_name = caps_data.get("match", None)
+        except Exception:
+            orange_cap, purple_cap, mvp = "", "", ""
+            caps_match_name = None
 
     # Load existing spreadsheet or create new one
     try:
@@ -121,7 +138,6 @@ def run_output_pipeline():
         ipl_data = dill.load(f)
         match_objects = ipl_data.get("objects", {})
         match_states = ipl_data.get("states", {})
-
 
     # Get list of match names (not URLs)
     match_names = list(match_objects.keys())
@@ -164,25 +180,39 @@ def run_output_pipeline():
         print(match_name, "added")
 
     try:
+        current_match_name = match_names[-1]
+        current_match_state = match_states.get(current_match_name, "").lower()
+
+        # Only fetch caps if:
+        # 1. At least 9 matches have happened
+        # 2. Current match is final
+        # 3. Caps are missing or for a previous match
         if number_of_matches >= 9:
-            orange_cap, purple_cap,mvp = op_caps("https://www.espncricinfo.com/series/ipl-2025-1449924/stats")
-            print(f"Orange Cap: {orange_cap}")
-            print(f"Purple Cap: {purple_cap}")
-            print(f"MVP: {mvp}")
-            for team in list(spreadsheet['Team Final Points'].keys()):
-                orange_cap_points = 0
-                purple_cap_points = 0
-                mvp_points = 0
-                if orange_cap in teams[team]['squad']:
-                    orange_cap_points = 500
-                if purple_cap in teams[team]['squad']:
-                    purple_cap_points = 500
-                if mvp in teams[team]['squad']:
-                    mvp_points = 750
-                spreadsheet['Team Final Points'][team]['Orange Cap'] = orange_cap_points
-                spreadsheet['Team Final Points'][team]['Purple Cap'] = purple_cap_points
-                spreadsheet['Team Final Points'][team]['MVP'] = mvp_points
-            print("Purple Cap, Orange Cap, Total Points added")
+            if caps_match_name != current_match_name:
+                orange_cap, purple_cap, mvp = op_caps(current_match_name)
+
+
+                print(f"Orange Cap: {orange_cap}")
+                print(f"Purple Cap: {purple_cap}")
+                print(f"MVP: {mvp}")
+                for team in list(spreadsheet['Team Final Points'].keys()):
+                    orange_cap_points = 0
+                    purple_cap_points = 0
+                    mvp_points = 0
+                    if orange_cap in teams[team]['squad']:
+                        orange_cap_points = 500
+                    if purple_cap in teams[team]['squad']:
+                        purple_cap_points = 500
+                    if mvp in teams[team]['squad']:
+                        mvp_points = 750
+                    spreadsheet['Team Final Points'][team]['Orange Cap'] = orange_cap_points
+                    spreadsheet['Team Final Points'][team]['Purple Cap'] = purple_cap_points
+                    spreadsheet['Team Final Points'][team]['MVP'] = mvp_points
+                print("Purple Cap, Orange Cap, Total Points added")
+            else:
+                print(f"Orange Cap: {orange_cap}")
+                print(f"Purple Cap: {purple_cap}")
+                print(f"MVP: {mvp}")
 
         player_list_points = []
         match_list_points = []
