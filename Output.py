@@ -175,6 +175,7 @@ def run_output_pipeline():
             spreadsheet['Team Final Points'].setdefault(team, {}).setdefault("Total Points", 0)
             spreadsheet['Team Final Points'].setdefault(team, {}).setdefault("Orange Cap", 0)
             spreadsheet['Team Final Points'].setdefault(team, {}).setdefault("Purple Cap", 0)
+            spreadsheet['Team Final Points'].setdefault(team, {}).setdefault("MVP", 0)
             spreadsheet['Team Final Points'][team][match_name] = team_breakdown.loc[team, 'Total Points']
 
         print(match_name, "added")
@@ -208,7 +209,7 @@ def run_output_pipeline():
                     spreadsheet['Team Final Points'][team]['Orange Cap'] = orange_cap_points
                     spreadsheet['Team Final Points'][team]['Purple Cap'] = purple_cap_points
                     spreadsheet['Team Final Points'][team]['MVP'] = mvp_points
-                print("Purple Cap, Orange Cap, Total Points added")
+                print("Purple Cap, Orange Cap, MVP, Total Points added")
             else:
                 print(f"Orange Cap: {orange_cap}")
                 print(f"Purple Cap: {purple_cap}")
@@ -225,6 +226,7 @@ def run_output_pipeline():
                         spreadsheet['Player Final Points'].setdefault(player, {}).setdefault("Total Points", 0)
                         spreadsheet['Player Final Points'].setdefault(player, {}).setdefault("Orange Cap", 0)
                         spreadsheet['Player Final Points'].setdefault(player, {}).setdefault("Purple Cap", 0)
+                        spreadsheet['Player Final Points'].setdefault(player, {}).setdefault("MVP", 0)
                         spreadsheet['Player Final Points'].setdefault(player, {}).setdefault(match_name, 0)
                         player_points = match_breakdown.loc[player, 'Player Points']
                         spreadsheet['Player Final Points'][player][match_name] = player_points
@@ -233,6 +235,7 @@ def run_output_pipeline():
                         spreadsheet['Player Final Points'].setdefault(player, {}).setdefault("Total Points", 0)
                         spreadsheet['Player Final Points'].setdefault(player, {}).setdefault("Orange Cap", 0)
                         spreadsheet['Player Final Points'].setdefault(player, {}).setdefault("Purple Cap", 0)
+                        spreadsheet['Player Final Points'].setdefault(player, {}).setdefault("MVP", 0)
                         spreadsheet['Player Final Points'].setdefault(player, {}).setdefault(match_name, 0)
                         player_points = match_breakdown[player]['Player Points']
                         spreadsheet['Player Final Points'][player][match_name] = player_points

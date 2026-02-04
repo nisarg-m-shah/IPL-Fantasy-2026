@@ -621,7 +621,7 @@ teams = {
             'Shahrukh Khan',
             'Rovman Powell',
             'Anuj Rawat',
-            'Tim David'
+            'Tim David',
             'Nuwan Thushara',
             'Ramandeep Singh',
             'T Natarajan',
@@ -655,7 +655,7 @@ teams = {
             'Shashank Singh',
             'Harpreet Brar',
             'Rahul Chahar',
-            'Urvil Patel'
+            'Urvil Patel',
             'Mohsin Khan',
             'Mohammad Izhar',
             'Danish Malewar'
