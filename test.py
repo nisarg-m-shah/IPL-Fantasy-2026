@@ -13,7 +13,7 @@ with open("ipl25.pkl", "rb") as f:
 
 begin = time.time()
 
-match_name = "LSG vs RCB"
+match_name = "DC vs MI"
 match_object = match_objects[match_name]
 match_type = "Match 21"
 

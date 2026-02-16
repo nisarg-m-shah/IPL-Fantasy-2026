@@ -32,15 +32,46 @@ def find_full_name(team, short_name):
             short_name = short_name.split(' (IP')[0]
         if " (RP" in short_name:
             short_name = short_name.split(' (RP')[0]
+        if "(c)" in short_name:
+            short_name = short_name.split('(c)')[0]
+        if "(wk)" in short_name:
+            short_name = short_name.split('(wk)')[0]        
+        if "Rahul" in short_name and "K" in short_name and "L" in short_name:
+            return "KL Rahul"
         if "Fraser" in short_name:
             return "Jake Fraser-McGurk"
         if "Akash" in short_name and "Singh" in short_name:
             return "Akash Maharaj Singh"
         if "yshak" in short_name:
             return "Vijaykumar Vyshak"
+        if "Rasikh" in short_name and "Dar" in short_name:
+            return "Rasikh Dar Salam"
         if "Satyanarayana" in short_name:
             return "Satyanarayana Raju"
+        if "Salt" in short_name and "Phil" in short_name:
+            return "Phil Salt"
+        if "Siddharth" in short_name and "M" in short_name:
+            return "Manimaran Siddharth"
+        if "Shami" in short_name:
+            return "Mohammed Shami"
+        if "Mitch" in short_name and "Owen" in short_name:
+            return "Mitchell Owen"
+        if "Ngidi" in short_name:
+            return "Lungi Ngidi"
+        if "Arshad Khan" in short_name:
+            return "Arshad Khan"
+        if "Nitish" in short_name and "Reddy" in short_name:
+            return "Nitish Reddy"
+        if "Quinton" in short_name and "Kock" in short_name:
+            return "Quinton de Kock"
+        if "Digvesh" in short_name:
+            return "Digvesh Singh Rathi"
+        if "Tilak" in short_name:
+            return "Tilak Varma"
+        if "Surya" in short_name and "Yadav" in short_name and "umar" in short_name:
+            return "Suryakumar Yadav"
         s = short_name.strip()
+
         s = re.sub(r'^\(sub\)?\s*', '', s, flags=re.IGNORECASE)
         s = s.strip("() ").strip()
 

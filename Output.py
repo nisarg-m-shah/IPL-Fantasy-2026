@@ -12,7 +12,7 @@ def run_output_pipeline():
     import re
     import os
     from Scraping import find_full_name
-    from Auction import team_list,teams,boosters,names,roles,squads,team_names_ff,team_names_sf,competition_id,database,file_path,json_filename 
+    from Auction import team_list,teams,boosters,names,roles,squads,team_names_ff,team_names_sf,competition_id,database,file_path,json_filename,emerging_player 
 
 
     def fetch_jsonp(url, params=None):
@@ -196,19 +196,25 @@ def run_output_pipeline():
             print(f"Orange Cap: {orange_cap}")
             print(f"Purple Cap: {purple_cap}")
             print(f"MVP: {mvp}")
+            print(f"Emerging Player: {emerging_player}")
             for team in list(spreadsheet['Team Final Points'].keys()):
                 orange_cap_points = 0
                 purple_cap_points = 0
                 mvp_points = 0
+                emerging_points = 0
+                
                 if orange_cap in teams[team]['squad']:
                     orange_cap_points = 500
                 if purple_cap in teams[team]['squad']:
                     purple_cap_points = 500
                 if mvp in teams[team]['squad']:
                     mvp_points = 750
+                if emerging_player in teams[team]['squad']:
+                    emerging_points = 300
                 spreadsheet['Team Final Points'][team]['Orange Cap'] = orange_cap_points
                 spreadsheet['Team Final Points'][team]['Purple Cap'] = purple_cap_points
                 spreadsheet['Team Final Points'][team]['MVP'] = mvp_points
+                spreadsheet['Team Final Points'][team]['Emerging Player'] = emerging_points
             print("Purple Cap, Orange Cap, MVP, Total Points added")
 
 
@@ -277,6 +283,12 @@ def run_output_pipeline():
                     spreadsheet['Player Final Points'][player]['MVP'] = 750
                 else:
                     spreadsheet['Player Final Points'][player]['MVP'] = 0
+                if player == emerging_player:
+                    spreadsheet['Player Final Points'][player]['Emerging Player'] = 300
+                else:
+                    spreadsheet['Player Final Points'][player]['Emerging Player'] = 0
+
+
 
         # Fill missing match entries for players
         for player in player_list_points:
@@ -327,7 +339,8 @@ def run_output_pipeline():
                     df = pd.DataFrame(columns=["Placeholder"])
                 df.to_excel(writer, sheet_name=sheet_name)
 
-            print(f"Excel file saved successfully as {file_path} in the current folder.")
+        print(f"Excel file saved successfully as {file_path} in the current folder.")
+
     except Exception as e:
         print(f"Error during processing: {e}")
         print("No New Data was Added")

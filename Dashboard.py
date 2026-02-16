@@ -11,23 +11,10 @@ from datetime import datetime, time as dt_time
 import pytz
 import dill
 from Output import run_output_pipeline
-from Auction import teams,boosters,names,roles,squads,team_names_ff,team_names_sf,competition_id,database,file_path,json_filename 
+from Auction import teams,boosters,names,roles,squads,team_names_ff,team_names_sf,competition_id,database,file_path,json_filename, MATCH_SCHEDULE,emerging_player
 
 # --- MATCH SCHEDULE CONFIGURATION ---
-MATCH_SCHEDULE = {
-    'single_header': [
-        '2025-01-20',
-        '2025-01-22',
-        '2026-02-02',
-        # Add more single header dates
-    ],
-    'double_header': [
-        '2025-01-19',
-        '2025-01-21',
-        '2025-01-23',
-        # Add more double header dates
-    ]
-}
+
 
 def format_points(val):
     """Removes trailing zeros, keeps .5 if present, otherwise returns integer."""
@@ -386,7 +373,27 @@ st.markdown("""
     .mvp-card:hover {
         border-color: #22c55e;
     }
+            
+    /* EMERGING PLAYER - Standardized with the rest */
+    .emerging-card {
+        border-left: 6px solid #ff007f !important;
+        border-top: 1px solid rgba(255, 255, 255, 0.1);
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        border-right: 1px solid rgba(255, 255, 255, 0.1);
+    }
     
+    .emerging-card:hover {
+        outline: none !important;
+        border-color: #ff007f !important;
+        background: rgba(255, 0, 127, 0.05) !important;
+    }
+
+    /* Row highlight in the squad list stays the same for consistency */
+    .emerging-player-row {
+        background: rgba(255, 0, 127, 0.1) !important;
+        border-right: 6px solid #ff007f !important;
+    }
+            
     @media (min-width: 768px) {
         [data-testid="column"] {
             padding: 0 12px;
@@ -417,7 +424,7 @@ def save_update_time():
         f.write(str(time.time()))
 
 PKL_FILE = database  # The pickle file with match states
-# FINAL_SCRAPE_TRACKER = ".final_scrape_tracker"  # Tracks which matches have been scraped after being marked final
+FINAL_SCRAPE_TRACKER = ".final_scrape_tracker"  # Tracks which matches have been scraped after being marked final
 
 def get_final_scraped_matches():
     """Get set of match names that have been scraped after being marked final"""
@@ -464,11 +471,11 @@ def get_most_recent_match_state():
         if not match_names:
             return None, None
         
-        most_recent_match = match_names[-1]  # Last match in the list
+        most_recent_match = match_names[0]  # Last match in the list
         
         # Use the last match_id in match_states since they're added in order
         if match_states:
-            last_match_id = list(match_states.keys())[-1]
+            last_match_id = list(match_states.keys())[0]
             is_final = match_states[last_match_id].get("is_final", False)
             return is_final, most_recent_match
         
@@ -558,7 +565,7 @@ def run_output_script():
             ['python3', OUTPUT_SCRIPT],
             capture_output=True,
             text=True,
-            timeout=300
+            timeout=600
         )
         if result.returncode == 0:
             save_update_time()
@@ -755,27 +762,47 @@ def show_rankings(data):
     df_display = df_teams.reset_index()
     df_display.columns = ['Team'] + list(df_display.columns[1:])
     df_display['Rank'] = range(1, len(df_display) + 1)
-    
-    cols_order = ['Rank', 'Team', 'Total Points', 'Orange Cap', 'Purple Cap','MVP']
+
+    if emerging_player:    
+        cols_order = ['Rank', 'Team', 'Total Points', 'Orange Cap', 'Purple Cap','MVP','Emerging Player']
+    else:
+        cols_order = ['Rank', 'Team', 'Total Points', 'Orange Cap', 'Purple Cap','MVP']
     df_display = df_display[cols_order]
     df_display = df_display.dropna(subset=["Total Points"])
     
     # Wrap table in scrollable container for mobile
     html_table = '<div class="table-container">'
-    html_table += """
-    <table style="width:100%; border-collapse: collapse; background-color: transparent; color: white; border: none; font-family: 'Roboto', sans-serif; min-width: 600px;">
-        <thead>
-            <tr style="border-bottom: 2px solid #efb920;">
-                <th style="padding: 12px 8px; color: #efb920; font-family: 'Bebas Neue', sans-serif; font-size: clamp(0.9rem, 2.5vw, 1.1rem); text-align: center;">RANK</th>
-                <th style="padding: 12px 8px; color: #efb920; font-family: 'Bebas Neue', sans-serif; font-size: clamp(0.9rem, 2.5vw, 1.1rem); text-align: center;">TEAM</th>
-                <th style="padding: 12px 8px; color: #efb920; font-family: 'Bebas Neue', sans-serif; font-size: clamp(0.9rem, 2.5vw, 1.1rem); text-align: center;">TOTAL POINTS</th>
-                <th style="padding: 12px 8px; color: #efb920; font-family: 'Bebas Neue', sans-serif; font-size: clamp(0.9rem, 2.5vw, 1.1rem); text-align: center;">ORANGE CAP</th>
-                <th style="padding: 12px 8px; color: #efb920; font-family: 'Bebas Neue', sans-serif; font-size: clamp(0.9rem, 2.5vw, 1.1rem); text-align: center;">PURPLE CAP</th>
-                <th style="padding: 12px 8px; color: #efb920; font-family: 'Bebas Neue', sans-serif; font-size: clamp(0.9rem, 2.5vw, 1.1rem); text-align: center;">MVP</th>
-            </tr>
-        </thead>
-        <tbody>
-    """
+    if emerging_player:
+        html_table += """
+        <table style="width:100%; border-collapse: collapse; background-color: transparent; color: white; border: none; font-family: 'Roboto', sans-serif; min-width: 600px;">
+            <thead>
+                <tr style="border-bottom: 2px solid #efb920;">
+                    <th style="padding: 12px 8px; color: #efb920; font-family: 'Bebas Neue', sans-serif; font-size: clamp(0.9rem, 2.5vw, 1.1rem); text-align: center;">RANK</th>
+                    <th style="padding: 12px 8px; color: #efb920; font-family: 'Bebas Neue', sans-serif; font-size: clamp(0.9rem, 2.5vw, 1.1rem); text-align: center;">TEAM</th>
+                    <th style="padding: 12px 8px; color: #efb920; font-family: 'Bebas Neue', sans-serif; font-size: clamp(0.9rem, 2.5vw, 1.1rem); text-align: center;">TOTAL POINTS</th>
+                    <th style="padding: 12px 8px; color: #efb920; font-family: 'Bebas Neue', sans-serif; font-size: clamp(0.9rem, 2.5vw, 1.1rem); text-align: center;">ORANGE CAP</th>
+                    <th style="padding: 12px 8px; color: #efb920; font-family: 'Bebas Neue', sans-serif; font-size: clamp(0.9rem, 2.5vw, 1.1rem); text-align: center;">PURPLE CAP</th>
+                    <th style="padding: 12px 8px; color: #efb920; font-family: 'Bebas Neue', sans-serif; font-size: clamp(0.9rem, 2.5vw, 1.1rem); text-align: center;">MVP</th>
+                    <th style="padding: 12px 8px; color: #efb920; font-family: 'Bebas Neue', sans-serif; font-size: clamp(0.9rem, 2.5vw, 1.1rem); text-align: center;">Emerging Player</th>
+                </tr>
+            </thead>
+            <tbody>
+        """
+    else:
+        html_table += """
+        <table style="width:100%; border-collapse: collapse; background-color: transparent; color: white; border: none; font-family: 'Roboto', sans-serif; min-width: 600px;">
+            <thead>
+                <tr style="border-bottom: 2px solid #efb920;">
+                    <th style="padding: 12px 8px; color: #efb920; font-family: 'Bebas Neue', sans-serif; font-size: clamp(0.9rem, 2.5vw, 1.1rem); text-align: center;">RANK</th>
+                    <th style="padding: 12px 8px; color: #efb920; font-family: 'Bebas Neue', sans-serif; font-size: clamp(0.9rem, 2.5vw, 1.1rem); text-align: center;">TEAM</th>
+                    <th style="padding: 12px 8px; color: #efb920; font-family: 'Bebas Neue', sans-serif; font-size: clamp(0.9rem, 2.5vw, 1.1rem); text-align: center;">TOTAL POINTS</th>
+                    <th style="padding: 12px 8px; color: #efb920; font-family: 'Bebas Neue', sans-serif; font-size: clamp(0.9rem, 2.5vw, 1.1rem); text-align: center;">ORANGE CAP</th>
+                    <th style="padding: 12px 8px; color: #efb920; font-family: 'Bebas Neue', sans-serif; font-size: clamp(0.9rem, 2.5vw, 1.1rem); text-align: center;">PURPLE CAP</th>
+                    <th style="padding: 12px 8px; color: #efb920; font-family: 'Bebas Neue', sans-serif; font-size: clamp(0.9rem, 2.5vw, 1.1rem); text-align: center;">MVP</th>
+                </tr>
+            </thead>
+            <tbody>
+        """        
 
     for _, row in df_display.iterrows():
         rank = row['Rank']
@@ -812,6 +839,8 @@ def show_rankings(data):
         html_table += f'<td style="padding: 10px 8px; text-align: center;">{row["Orange Cap"]}</td>'
         html_table += f'<td style="padding: 10px 8px; text-align: center;">{row["Purple Cap"]}</td>'
         html_table += f'<td style="padding: 10px 8px; text-align: center;">{row["MVP"]}</td>'
+        if emerging_player:
+            html_table += f'<td style="padding: 10px 8px; text-align: center;">{row["Emerging Player"]}</td>'
         html_table += "</tr>"
 
     html_table += "</tbody></table></div>"
@@ -826,6 +855,7 @@ def show_rankings(data):
     orange_cap_holder = player_final[player_final["Orange Cap"] > 0]
     purple_cap_holder = player_final[player_final["Purple Cap"] > 0]
     mvp_holder = player_final[player_final["MVP"] > 0]
+
 
     if not orange_cap_holder.empty:
         for player, row in orange_cap_holder.iterrows():
@@ -865,12 +895,26 @@ def show_rankings(data):
                     </div>
                 </div>
             """, unsafe_allow_html=True)
-        
+
+    if emerging_player:
+            st.markdown(f"""
+                <div class="metric-card emerging-card" style="
+                    border-left: 6px solid #ff007f !important;
+                    --accent-color: #ff007f;
+                ">
+                    <div style="color:#ff007f; font-weight:bold; font-size:1.1rem;">
+                        ✨ EMERGING PLAYER
+                    </div>
+                    <div style="font-size:1.6rem; font-weight:bold; margin-top:6px; color: white;">
+                        {emerging_player}
+                    </div>
+                </div>
+            """, unsafe_allow_html=True)
 
     # Team performance trends - CUMULATIVE
     st.markdown('<div class="section-header">📊 POINTS RACE</div>', unsafe_allow_html=True)
 
-    match_cols = [col for col in team_final.columns if col not in ['Total Points', 'Orange Cap', 'Purple Cap','MVP']]
+    match_cols = [col for col in team_final.columns if col not in ['Total Points', 'Orange Cap', 'Purple Cap','MVP','Emerging Player']]
 
     fig = go.Figure()
 
@@ -988,6 +1032,56 @@ def show_squads(data):
                 </div>
             </div>
         """, unsafe_allow_html=True)
+
+        FRANCHISE_COLORS = {
+            "Gujarat Titans": "#1C3C6B",
+            "Chennai Super Kings": "#F9CD05",
+            "Mumbai Indians": "#004BA0",
+            "Royal Challengers Bengaluru": "#EC1C24",
+            "Kolkata Knight Riders": "#3A225D",
+            "Rajasthan Royals": "#EA1A85",
+            "Delhi Capitals": "#17479E",
+            "Sunrisers Hyderabad": "#F26522",
+            "Punjab Kings": "#D71920",
+            "Lucknow Super Giants": "#0057E2"
+        }
+
+        # --- FRANCHISE INFO (TEAM-COLORED) ---
+        franchise = SQUAD_INFO[selected_team].get("franchise")
+
+        if franchise:
+            franchise_color = FRANCHISE_COLORS.get(franchise, "#efb920")
+
+            st.markdown(f"""
+                <div class="metric-card" style="
+                    border-left: 6px solid {franchise_color};
+                    background: linear-gradient(
+                        135deg,
+                        {franchise_color}22,
+                        {franchise_color}08
+                    ) !important;
+                    --accent-color: {franchise_color};
+                ">
+                    <div style="
+                        font-size: clamp(0.75rem, 2.3vw, 0.85rem);
+                        font-weight: 800;
+                        letter-spacing: 0.12em;
+                        color: {franchise_color};
+                    ">
+                        🏟️ FRANCHISE
+                    </div>
+                    <div style="
+                        margin-top: 6px;
+                        font-size: clamp(1.3rem, 4vw, 1.6rem);
+                        font-weight: 900;
+                        color: white;
+                        text-shadow: 0 0 12px {franchise_color}55;
+                    ">
+                        {franchise}
+                    </div>
+                </div>
+            """, unsafe_allow_html=True)
+
 
         # --- CAPTAIN / VC / TRUMP (Unified Grid) ---
         team_meta = SQUAD_INFO[selected_team]
@@ -1108,6 +1202,7 @@ def show_squads(data):
                 if player == mvp_player: row_class += " mvp-player"
                 elif player == orange_cap_player: row_class += " orange-cap-player"
                 elif player == purple_cap_player: row_class += " purple-cap-player"
+                elif player == emerging_player: row_class += " emerging-player-row"
 
                 st.markdown(f"""
                     <div class="{row_class}">
@@ -1614,6 +1709,7 @@ def show_live_score():
                 );
             "></div>
         """, unsafe_allow_html=True)
+
 
         # ================= BOWLERS =================
         st.markdown("""

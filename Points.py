@@ -104,14 +104,16 @@ class Player:
                 strike_rate_points = -20
             elif strike_rate<90:
                 strike_rate_points = -15
-            elif strike_rate<100:
+            elif strike_rate<110:
                 strike_rate_points = 0
             elif strike_rate<130:
                 strike_rate_points = 15
             elif strike_rate<150:
                 strike_rate_points = 20
-            else:
+            elif strike_rate<175:
                 strike_rate_points = 30
+            else:
+                strike_rate_points = 40
 
         batting_milestone_points = 0
         if runs>=50:
@@ -132,7 +134,7 @@ class Player:
             balls_bowled = 0    
         try:
             maidens = bowling_info.loc[bowling_info['Bowler'] == self.player_name,'Maidens'].values[0]
-            maidens_points = maidens*20
+            maidens_points = maidens*25
         except:
             maidens = 0
             maidens_points = 0
@@ -142,7 +144,7 @@ class Player:
             runs_conceded = 0
         try:
             wickets = bowling_info.loc[bowling_info['Bowler'] == self.player_name,'Wickets'].values[0]
-            wicket_points = wickets * 25
+            wicket_points = wickets * 30
         except:
             wickets = 0
             wicket_points = 0
@@ -167,6 +169,8 @@ class Player:
 
         economy_points = 0
         if balls_bowled>=12:
+            if economy<3:
+                economy_points = 50
             if economy<4:
                 economy_points = 40
             elif economy<5:
@@ -190,8 +194,8 @@ class Player:
         elif wickets >= 5:
             bowling_milestone_points = 70
 
-        bowled_wickets_points = bowled_wickets * 8
-        lbw_wickets_points = lbw_wickets * 8
+        bowled_wickets_points = bowled_wickets * 10
+        lbw_wickets_points = lbw_wickets * 10
 
         player_bowlpoints = maidens_points + wicket_points + dot_points + economy_points + bowling_milestone_points + bowled_wickets_points + lbw_wickets_points
 
@@ -312,7 +316,7 @@ class Match:
         self.match_points_breakdown = self.match_points_breakdown[columns_order]
 
         # Generate general player points
-        # Get all unique players from both innings
+        # Get all unique players from both innings 
         all_players = set()
         all_players.update(self.match_object.batsmen_list['Batsman'].values)
         all_players.update(self.match_object.bowlers_info['Bowler'].values)

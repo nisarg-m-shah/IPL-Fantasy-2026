@@ -408,12 +408,14 @@ teams = {
             'Gurjapneet Singh',
             'Yudhvir Singh Charak',
             'Shivam Mavi',
-            'Pathum Nissanka'
+            'Pathum Nissanka',
+            'Phil Salt'
         ],
         'captain': [],
         'vice captain': [],
         'trump card': [],
-        'replacement': {}
+        'replacement': {},
+        'franchise': "SRH"
     },
 
     'Nasty Knights': {
@@ -440,12 +442,15 @@ teams = {
             'Mayank Yadav',
             'Allah Ghazanfar',
             'Ben Dwarshuis',
-            'Prithvi Raj Yarra'
+            'Prithvi Raj Yarra',
+            'Krunal Pandya',
+            'T Natarajan'
         ],
         'captain': [],
         'vice captain': [],
         'trump card': [],
-        'replacement': {}
+        'replacement': {},
+        'franchise': "RCB"
     },
 
     'Night Watchmen': {
@@ -471,12 +476,16 @@ teams = {
             'Mangesh Yadav',
             'Sarthak Ranjan',
             'Nandre Burger',
-            'Smaran Ravichandran'
+            'Smaran Ravichandran',
+            'Shahbaz Ahmed',
+            'Rashid Khan',
+            'Nuwan Thushara'
         ],
         'captain': [],
         'vice captain': [],
         'trump card': [],
-        'replacement': {}
+        'replacement': {},
+        'franchise': "DC"
     },
 
     'Hilarious Hooligans': {
@@ -503,12 +512,16 @@ teams = {
             'Nathan Ellis',
             'Mayank Markande',
             'Shubham Dubey',
-            'Kyle Jamieson'
+            'Kyle Jamieson',
+            'Rovman Powell',
+            'Aniket Verma',
+            'Abdul Samad'
         ],
         'captain': [],
         'vice captain': [],
         'trump card': [],
-        'replacement': {}
+        'replacement': {},
+        'franchise': "PBKS"
     },
 
     'Gujju Gang': {
@@ -535,12 +548,16 @@ teams = {
             'Mukul Choudhary',
             'Naman Tiwari',
             'Ashwani Kumar',
-            'Kartik Sharma'
+            'Kartik Sharma',
+            'Arshdeep Singh',
+            'Shahrukh Khan',
+            'Tim David'
         ],
         'captain': [],
         'vice captain': [],
         'trump card': [],
-        'replacement': {}
+        'replacement': {},
+        'franchise': "GT"
     },
 
     'Tormented Titans': {
@@ -568,11 +585,14 @@ teams = {
             'Digvesh Singh Rathi',
             'Harnoor Pannu',
             'Xavier Bartlett',
+            'Jitesh Sharma',
+            'Ramandeep Singh'
         ],
         'captain': [],
         'vice captain': [],
         'trump card': [],
-        'replacement': {}
+        'replacement': {},
+        'franchise': "CSK"
     },
 
     'VS Stalwarts': {
@@ -598,42 +618,14 @@ teams = {
             'Suryansh Shedge',
             'Vihaan Malhotra',
             'Prashant Solanki',
-            'Prince Yadav'
+            'Prince Yadav',
+            'Jasprit Bumrah'
         ],
         'captain': [],
         'vice captain': [],
         'trump card': [],
-        'replacement': {}
-    },
-
-    'La Furia Roja': {
-        'squad': [
-            'Shahbaz Ahmed',
-            'Abdul Samad',
-            'Phil Salt',
-            'Arshdeep Singh',
-            'Jasprit Bumrah',
-            'Aniket Verma',
-            'Krunal Pandya',
-            'Jitesh Sharma',
-            'Dewald Brevis',
-            'Rashid Khan',
-            'Shahrukh Khan',
-            'Rovman Powell',
-            'Anuj Rawat',
-            'Tim David',
-            'Nuwan Thushara',
-            'Ramandeep Singh',
-            'T Natarajan',
-            'Vignesh Puthur',
-            'Manish Pandey',
-            'Tom Banton',
-            'Ramakrishna Ghosh'
-        ],
-        'captain': [],
-        'vice captain': [],
-        'trump card': [],
-        'replacement': {}
+        'replacement': {},
+        'franchise': "KKR"
     },
 
     'Alpha Acers': {
@@ -658,12 +650,14 @@ teams = {
             'Urvil Patel',
             'Mohsin Khan',
             'Mohammad Izhar',
-            'Danish Malewar'
+            'Danish Malewar',
+            'Dewald Brevis'
         ],
         'captain': ['Matheesha Pathirana'],
         'vice captain': ['Sanju Samson'],
         'trump card': ['Tilak Varma'],
-        'replacement': {}
+        'replacement': {},
+        'franchise': "MI"
     }
 }
 
@@ -674,8 +668,6 @@ boosters = {
     'Disruptors': {
     },
     'Tormented Titans': {
-    },
-    'La Furia Roja': {
     },
     'Nasty Knights': {
     },
@@ -813,7 +805,6 @@ roles = [
 team_list = [
     'Disruptors',
     'Tormented Titans',
-    'La Furia Roja',
     'Nasty Knights',
     'VS Stalwarts',
     'Gujju Gang',
@@ -830,3 +821,21 @@ competition_id = 203  # IPL 2025 competition ID
 database = "ipl25.pkl"
 file_path = "CFC Fantasy League 2026.xlsx"
 json_filename = "CFC Fantasy League 2026.json"
+
+MATCH_SCHEDULE = {
+    'single_header': [
+        '2025-01-20',
+        '2025-01-22',
+        '2026-02-02'
+        # Add more single header dates
+    ],
+    'double_header': [
+        '2025-01-19',
+        '2025-01-21',
+        '2025-01-23',
+        '2026-02-15'
+        # Add more double header dates
+    ]
+}
+
+emerging_player = "Sai Sudharsan"
