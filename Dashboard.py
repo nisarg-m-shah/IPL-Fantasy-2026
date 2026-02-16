@@ -764,9 +764,9 @@ def show_rankings(data):
     df_display['Rank'] = range(1, len(df_display) + 1)
 
     if emerging_player:    
-        cols_order = ['Rank', 'Team', 'Total Points', 'Orange Cap', 'Purple Cap','MVP','Emerging Player']
+        cols_order = ['Rank', 'Team', 'Total Points', 'Franchise Points', 'Orange Cap', 'Purple Cap','MVP','Emerging Player']
     else:
-        cols_order = ['Rank', 'Team', 'Total Points', 'Orange Cap', 'Purple Cap','MVP']
+        cols_order = ['Rank', 'Team', 'Total Points', 'Franchise Points', 'Orange Cap', 'Purple Cap','MVP']
     df_display = df_display[cols_order]
     df_display = df_display.dropna(subset=["Total Points"])
     
@@ -774,28 +774,30 @@ def show_rankings(data):
     html_table = '<div class="table-container">'
     if emerging_player:
         html_table += """
-        <table style="width:100%; border-collapse: collapse; background-color: transparent; color: white; border: none; font-family: 'Roboto', sans-serif; min-width: 600px;">
+        <table style="width:100%; border-collapse: collapse; background-color: transparent; color: white; border: none; font-family: 'Roboto', sans-serif; min-width: 700px;">
             <thead>
                 <tr style="border-bottom: 2px solid #efb920;">
                     <th style="padding: 12px 8px; color: #efb920; font-family: 'Bebas Neue', sans-serif; font-size: clamp(0.9rem, 2.5vw, 1.1rem); text-align: center;">RANK</th>
                     <th style="padding: 12px 8px; color: #efb920; font-family: 'Bebas Neue', sans-serif; font-size: clamp(0.9rem, 2.5vw, 1.1rem); text-align: center;">TEAM</th>
                     <th style="padding: 12px 8px; color: #efb920; font-family: 'Bebas Neue', sans-serif; font-size: clamp(0.9rem, 2.5vw, 1.1rem); text-align: center;">TOTAL POINTS</th>
+                    <th style="padding: 12px 8px; color: #efb920; font-family: 'Bebas Neue', sans-serif; font-size: clamp(0.9rem, 2.5vw, 1.1rem); text-align: center;">FRANCHISE POINTS</th>
                     <th style="padding: 12px 8px; color: #efb920; font-family: 'Bebas Neue', sans-serif; font-size: clamp(0.9rem, 2.5vw, 1.1rem); text-align: center;">ORANGE CAP</th>
                     <th style="padding: 12px 8px; color: #efb920; font-family: 'Bebas Neue', sans-serif; font-size: clamp(0.9rem, 2.5vw, 1.1rem); text-align: center;">PURPLE CAP</th>
                     <th style="padding: 12px 8px; color: #efb920; font-family: 'Bebas Neue', sans-serif; font-size: clamp(0.9rem, 2.5vw, 1.1rem); text-align: center;">MVP</th>
-                    <th style="padding: 12px 8px; color: #efb920; font-family: 'Bebas Neue', sans-serif; font-size: clamp(0.9rem, 2.5vw, 1.1rem); text-align: center;">Emerging Player</th>
+                    <th style="padding: 12px 8px; color: #efb920; font-family: 'Bebas Neue', sans-serif; font-size: clamp(0.9rem, 2.5vw, 1.1rem); text-align: center;">EMERGING PLAYER</th>
                 </tr>
             </thead>
             <tbody>
         """
     else:
         html_table += """
-        <table style="width:100%; border-collapse: collapse; background-color: transparent; color: white; border: none; font-family: 'Roboto', sans-serif; min-width: 600px;">
+        <table style="width:100%; border-collapse: collapse; background-color: transparent; color: white; border: none; font-family: 'Roboto', sans-serif; min-width: 700px;">
             <thead>
                 <tr style="border-bottom: 2px solid #efb920;">
                     <th style="padding: 12px 8px; color: #efb920; font-family: 'Bebas Neue', sans-serif; font-size: clamp(0.9rem, 2.5vw, 1.1rem); text-align: center;">RANK</th>
                     <th style="padding: 12px 8px; color: #efb920; font-family: 'Bebas Neue', sans-serif; font-size: clamp(0.9rem, 2.5vw, 1.1rem); text-align: center;">TEAM</th>
                     <th style="padding: 12px 8px; color: #efb920; font-family: 'Bebas Neue', sans-serif; font-size: clamp(0.9rem, 2.5vw, 1.1rem); text-align: center;">TOTAL POINTS</th>
+                    <th style="padding: 12px 8px; color: #efb920; font-family: 'Bebas Neue', sans-serif; font-size: clamp(0.9rem, 2.5vw, 1.1rem); text-align: center;">FRANCHISE POINTS</th>
                     <th style="padding: 12px 8px; color: #efb920; font-family: 'Bebas Neue', sans-serif; font-size: clamp(0.9rem, 2.5vw, 1.1rem); text-align: center;">ORANGE CAP</th>
                     <th style="padding: 12px 8px; color: #efb920; font-family: 'Bebas Neue', sans-serif; font-size: clamp(0.9rem, 2.5vw, 1.1rem); text-align: center;">PURPLE CAP</th>
                     <th style="padding: 12px 8px; color: #efb920; font-family: 'Bebas Neue', sans-serif; font-size: clamp(0.9rem, 2.5vw, 1.1rem); text-align: center;">MVP</th>
@@ -836,6 +838,7 @@ def show_rankings(data):
         </td>
         '''
         html_table += f'<td style="padding: 10px 8px; text-align: center;">{format_points(row["Total Points"])}</td>'
+        html_table += f'<td style="padding: 10px 8px; text-align: center;">{format_points(row["Franchise Points"])}</td>'
         html_table += f'<td style="padding: 10px 8px; text-align: center;">{row["Orange Cap"]}</td>'
         html_table += f'<td style="padding: 10px 8px; text-align: center;">{row["Purple Cap"]}</td>'
         html_table += f'<td style="padding: 10px 8px; text-align: center;">{row["MVP"]}</td>'
@@ -914,7 +917,7 @@ def show_rankings(data):
     # Team performance trends - CUMULATIVE
     st.markdown('<div class="section-header">📊 POINTS RACE</div>', unsafe_allow_html=True)
 
-    match_cols = [col for col in team_final.columns if col not in ['Total Points', 'Orange Cap', 'Purple Cap','MVP','Emerging Player']]
+    match_cols = [col for col in team_final.columns if col not in ['Total Points', 'Franchise Points', 'Orange Cap', 'Purple Cap','MVP','Emerging Player']]
 
     fig = go.Figure()
 
@@ -1033,40 +1036,54 @@ def show_squads(data):
             </div>
         """, unsafe_allow_html=True)
 
+        # Franchise color mapping
+        FRANCHISE_SHORT_TO_FULL = {
+            "GT": "Gujarat Titans",
+            "CSK": "Chennai Super Kings",
+            "MI": "Mumbai Indians",
+            "RCB": "Royal Challengers Bengaluru",
+            "KKR": "Kolkata Knight Riders",
+            "RR": "Rajasthan Royals",
+            "DC": "Delhi Capitals",
+            "SRH": "Sunrisers Hyderabad",
+            "PBKS": "Punjab Kings",
+            "LSG": "Lucknow Super Giants"
+        }
+        
         FRANCHISE_COLORS = {
-            "Gujarat Titans": "#1C3C6B",
-            "Chennai Super Kings": "#F9CD05",
-            "Mumbai Indians": "#004BA0",
-            "Royal Challengers Bengaluru": "#EC1C24",
-            "Kolkata Knight Riders": "#3A225D",
-            "Rajasthan Royals": "#EA1A85",
-            "Delhi Capitals": "#17479E",
-            "Sunrisers Hyderabad": "#F26522",
-            "Punjab Kings": "#D71920",
-            "Lucknow Super Giants": "#0057E2"
+            "Gujarat Titans": "#001f3f",              # Navy Blue
+            "Chennai Super Kings": "#FFD700",          # Yellow
+            "Mumbai Indians": "#004BA0",               # Royal Blue
+            "Royal Challengers Bengaluru": "#FF0000",  # Red
+            "Kolkata Knight Riders": "#3A225D",        # Purple
+            "Rajasthan Royals": "#EA1A85",             # Pink
+            "Delhi Capitals": "#87CEEB",               # Cotton Blue
+            "Sunrisers Hyderabad": "#FF8C00",          # Orange
+            "Punjab Kings": "#DD1F2D",                 # RGB(221, 31, 45)
+            "Lucknow Super Giants": "#0057E2"          # Blue
         }
 
-        # --- FRANCHISE INFO (TEAM-COLORED) ---
-        franchise = SQUAD_INFO[selected_team].get("franchise")
+        # --- FRANCHISE INFO (TEAM-COLORED & FILLED) ---
+        franchise_short = SQUAD_INFO[selected_team].get("franchise")
 
-        if franchise:
-            franchise_color = FRANCHISE_COLORS.get(franchise, "#efb920")
-
+        if franchise_short:
+            franchise_full = FRANCHISE_SHORT_TO_FULL.get(franchise_short, franchise_short)
+            franchise_color = FRANCHISE_COLORS.get(franchise_full, "#efb920")
+            
+            # Create solid background color from the franchise color
+            # Convert hex to rgba for consistency with other cards
             st.markdown(f"""
                 <div class="metric-card" style="
                     border-left: 6px solid {franchise_color};
-                    background: linear-gradient(
-                        135deg,
-                        {franchise_color}22,
-                        {franchise_color}08
-                    ) !important;
+                    background: {franchise_color} !important;
                     --accent-color: {franchise_color};
                 ">
                     <div style="
                         font-size: clamp(0.75rem, 2.3vw, 0.85rem);
                         font-weight: 800;
                         letter-spacing: 0.12em;
-                        color: {franchise_color};
+                        color: white;
+                        text-shadow: 0 2px 4px rgba(0,0,0,0.5);
                     ">
                         🏟️ FRANCHISE
                     </div>
@@ -1075,13 +1092,63 @@ def show_squads(data):
                         font-size: clamp(1.3rem, 4vw, 1.6rem);
                         font-weight: 900;
                         color: white;
-                        text-shadow: 0 0 12px {franchise_color}55;
+                        text-shadow: 0 2px 4px rgba(0,0,0,0.5);
                     ">
-                        {franchise}
+                        {franchise_full}
                     </div>
                 </div>
             """, unsafe_allow_html=True)
 
+        # --- FRANCHISE WINS & POINTS BLOCKS ---
+        franchise_short = SQUAD_INFO[selected_team].get("franchise")
+        franchise_wins = 0
+        franchise_points = 0
+        
+        if franchise_short and "Team Final Points" in data:
+            if selected_team in data["Team Final Points"].index:
+                franchise_points = data["Team Final Points"].loc[selected_team].get("Franchise Points", 0)
+                franchise_wins = int(franchise_points / 200) if franchise_points > 0 else 0
+        
+        st.markdown(f"""
+            <div class="grid-container" style="grid-template-columns: 1fr 1fr;">
+                <div class="metric-card" style="border-left:6px solid #10b981; --accent-color: #10b981;">
+                    <div style="
+                        font-size: clamp(0.75rem, 2.3vw, 0.85rem);
+                        font-weight: 800;
+                        letter-spacing: 0.12em;
+                        color: #10b981;
+                    ">
+                        🏆 FRANCHISE WINS
+                    </div>
+                    <div style="
+                        margin-top: 6px;
+                        font-size: clamp(1.8rem, 5vw, 2.5rem);
+                        font-weight: 900;
+                        color: white;
+                    ">
+                        {franchise_wins}
+                    </div>
+                </div>
+                <div class="metric-card" style="border-left:6px solid #f59e0b; --accent-color: #f59e0b;">
+                    <div style="
+                        font-size: clamp(0.75rem, 2.3vw, 0.85rem);
+                        font-weight: 800;
+                        letter-spacing: 0.12em;
+                        color: #f59e0b;
+                    ">
+                        ⭐ WIN POINTS
+                    </div>
+                    <div style="
+                        margin-top: 6px;
+                        font-size: clamp(1.8rem, 5vw, 2.5rem);
+                        font-weight: 900;
+                        color: white;
+                    ">
+                        {format_points(franchise_points)}
+                    </div>
+                </div>
+            </div>
+        """, unsafe_allow_html=True)
 
         # --- CAPTAIN / VC / TRUMP (Unified Grid) ---
         team_meta = SQUAD_INFO[selected_team]

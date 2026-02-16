@@ -13,6 +13,8 @@ def run_output_pipeline():
     import os
     from Scraping import find_full_name
     from Auction import team_list,teams,boosters,names,roles,squads,team_names_ff,team_names_sf,competition_id,database,file_path,json_filename,emerging_player 
+    team_names_sf = ["KKR","GT","MI","CSK","RR","RCB","PBKS","DC","SRH","LSG"]
+    team_names_ff = ["Kolkata Knight Riders", "Gujarat Titans", "Mumbai Indians", "Chennai Super Kings","Rajasthan Royals","Royal Challengers Bengaluru", "Punjab Kings","Delhi Capitals","Sunrisers Hyderabad","Lucknow Super Giants"]
 
 
     def fetch_jsonp(url, params=None):
@@ -112,6 +114,11 @@ def run_output_pipeline():
     # Load existing spreadsheet or create new one
     try:
         spreadsheet = excel_to_dict(file_path)
+        # Ensure required sheets exist
+        if 'Team Final Points' not in spreadsheet:
+            spreadsheet['Team Final Points'] = {}
+        if 'Player Final Points' not in spreadsheet:
+            spreadsheet['Player Final Points'] = {}
     except:
         spreadsheet = {}
         spreadsheet['Team Final Points'] = {}
@@ -142,18 +149,53 @@ def run_output_pipeline():
     # Get list of match names (not URLs)
     match_names = list(match_objects.keys())
     number_of_matches = len(match_objects)
+    
+    # Initialize franchise tracking
+    franchise_wins = {team: 0 for team in team_list}
+    
+    # Create mapping from full IPL names to custom team names
+    ipl_full_to_short = {
+        "Kolkata Knight Riders": "KKR",
+        "Gujarat Titans": "GT",
+        "Mumbai Indians": "MI",
+        "Chennai Super Kings": "CSK",
+        "Rajasthan Royals": "RR",
+        "Royal Challengers Bengaluru": "RCB",
+        "Punjab Kings": "PBKS",
+        "Delhi Capitals": "DC",
+        "Sunrisers Hyderabad": "SRH",
+        "Lucknow Super Giants": "LSG"
+    }
+    
+    franchise_map = {}  # Maps full IPL name to custom team name
+    for custom_team in team_list:
+        franchise_short = teams[custom_team]['franchise']  # e.g., "MI"
+        # Find the full IPL name for this franchise
+        for ipl_full, ipl_short in ipl_full_to_short.items():
+            if ipl_short == franchise_short:
+                franchise_map[ipl_full] = custom_team
+                break
 
-    # Process matches in reverse order
+    # Process matches
     for match_idx in range(number_of_matches):
         match_name = match_names[match_idx]
         match_object = match_objects[match_name]
         match_type = match_object.match_type
 
         # Create Match object with match_name
-        match = Match(teams, match_object, match_name,match_type, boosters)
+        match = Match(teams, match_object, match_name, match_type, boosters)
         team_breakdown = match.match_points_breakdown
         General_points_list = match.general_player_points_list
         points_key = match_name + " - CFC Points"
+
+        # Track franchise wins for ALL matches
+        if hasattr(match_object, 'winner') and match_object.winner:
+            winner_ipl_name = match_object.winner
+            
+            if winner_ipl_name in franchise_map:
+                custom_team = franchise_map[winner_ipl_name]
+                franchise_wins[custom_team] += 1
+            # Silently ignore teams not in franchise_map (RR, LSG not owned by anyone)
 
         # Check if data has changed
         if points_key in spreadsheet.keys():
@@ -176,9 +218,16 @@ def run_output_pipeline():
             spreadsheet['Team Final Points'].setdefault(team, {}).setdefault("Orange Cap", 0)
             spreadsheet['Team Final Points'].setdefault(team, {}).setdefault("Purple Cap", 0)
             spreadsheet['Team Final Points'].setdefault(team, {}).setdefault("MVP", 0)
+            spreadsheet['Team Final Points'].setdefault(team, {}).setdefault("Franchise Points", 0)
             spreadsheet['Team Final Points'][team][match_name] = team_breakdown.loc[team, 'Total Points']
 
         print(match_name, "added")
+
+    # Add franchise points (200 per win)
+    for team in team_list:
+        franchise_points = franchise_wins[team] * 200
+        spreadsheet['Team Final Points'].setdefault(team, {})['Franchise Points'] = franchise_points
+        print(f"{team}: {franchise_wins[team]} wins = {franchise_points} franchise points")
 
     try:
         current_match_name = match_names[-1]
@@ -288,8 +337,6 @@ def run_output_pipeline():
                 else:
                     spreadsheet['Player Final Points'][player]['Emerging Player'] = 0
 
-
-
         # Fill missing match entries for players
         for player in player_list_points:
             for match in match_list_points:
@@ -342,7 +389,10 @@ def run_output_pipeline():
         print(f"Excel file saved successfully as {file_path} in the current folder.")
 
     except Exception as e:
+        import traceback
         print(f"Error during processing: {e}")
+        print("Full traceback:")
+        traceback.print_exc()
         print("No New Data was Added")
 
     end = time.time()
