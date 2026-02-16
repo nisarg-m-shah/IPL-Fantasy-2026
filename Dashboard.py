@@ -76,18 +76,19 @@ st.markdown("""
     
     .orange-cap-player {
         background: rgba(239, 185, 32, 0.22) !important;
-        border-left: 4px solid #efb920 !important;
+        border-left: 6px solid #efb920 !important;
     }
 
     .purple-cap-player {
         background: rgba(168, 85, 247, 0.22) !important;
-        border-left: 4px solid #a855f7 !important;
+        border-left: 6px solid #a855f7 !important;
     }
 
     .mvp-player {
         background: rgba(34, 197, 94, 0.22) !important;
-        border-left: 4px solid #22c55e !important;
+        border-left: 6px solid #22c55e !important;
     }
+
 
     /* MOBILE-RESPONSIVE: Subtitle */
     .subtitle {
@@ -99,7 +100,6 @@ st.markdown("""
         padding: 0 10px;
     }
     
-    /* MOBILE-RESPONSIVE: Metric cards */
     .metric-card {
         background: linear-gradient(135deg, rgba(239, 185, 32, 0.1) 0%, rgba(0, 242, 254, 0.05) 100%);
         border-radius: 15px;
@@ -110,16 +110,17 @@ st.markdown("""
         margin: 8px 0;
         transition: transform 0.3s ease;
     }
-    
+
     @media (max-width: 768px) {
         .metric-card {
             width: 100%;
         }
     }
-    
+
     .metric-card:hover {
         transform: translateY(-5px);
-        border-color: #efb920;
+        /* REMOVED: border-color: #efb920; */
+        /* This allows franchise and booster cards to maintain their custom border colors */
     }
     
     /* MOBILE-RESPONSIVE: Player rows */
@@ -350,43 +351,36 @@ st.markdown("""
         transform: translateY(-5px);
     }
 
-    /* ORANGE CAP */
-    .orange-card {
-        border-color: rgba(239, 185, 32, 0.4);
-    }
-    .orange-card:hover {
-        border-color: #efb920;
-    }
-
-    /* PURPLE CAP */
-    .purple-card {
-        border-color: rgba(168, 85, 247, 0.4);
-    }
-    .purple-card:hover {
-        border-color: #a855f7;
+/* UNIFIED AWARDS STYLING */
+/* UNIFIED THICK AWARDS STYLING */
+    .orange-card, .purple-card, .mvp-card, .emerging-card {
+        border-left: 6px solid !important;
+        border-top: 1px solid rgba(255, 255, 255, 0.1) !important;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1) !important;
+        border-right: 1px solid rgba(255, 255, 255, 0.1) !important;
     }
 
-    /* MVP */
-    .mvp-card {
-        border-color: rgba(34, 197, 94, 0.4);
-    }
-    .mvp-card:hover {
-        border-color: #22c55e;
-    }
-            
-    /* EMERGING PLAYER - Standardized with the rest */
-    .emerging-card {
-        border-left: 6px solid #ff007f !important;
-        border-top: 1px solid rgba(255, 255, 255, 0.1);
-        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-        border-right: 1px solid rgba(255, 255, 255, 0.1);
-    }
-    
-    .emerging-card:hover {
+    /* Individual Colors */
+    .orange-card   { border-left-color: #efb920 !important; }
+    .purple-card   { border-left-color: #a855f7 !important; }
+    .mvp-card      { border-left-color: #22c55e !important; }
+    .emerging-card { border-left-color: #ff007f !important; }
+
+    /* Unified Hover - Thick Border Effect */
+    .orange-card:hover, .purple-card:hover, .mvp-card:hover, .emerging-card:hover {
         outline: none !important;
-        border-color: #ff007f !important;
-        background: rgba(255, 0, 127, 0.05) !important;
+        background: rgba(255, 255, 255, 0.05) !important;
+        border-top: 2px solid !important;
+        border-bottom: 2px solid !important;
+        border-right: 2px solid !important;
+        transform: translateY(-5px);
     }
+
+    /* Hover Colors */
+    .orange-card:hover   { border-color: #efb920 !important; }
+    .purple-card:hover   { border-color: #a855f7 !important; }
+    .mvp-card:hover      { border-color: #22c55e !important; }
+    .emerging-card:hover { border-color: #ff007f !important; }
 
     /* Row highlight in the squad list stays the same for consistency */
     .emerging-player-row {
@@ -860,59 +854,44 @@ def show_rankings(data):
     mvp_holder = player_final[player_final["MVP"] > 0]
 
 
+# ORANGE CAP
     if not orange_cap_holder.empty:
         for player, row in orange_cap_holder.iterrows():
             st.markdown(f"""
-                <div class="metric-card orange-card" style="border-left:6px solid #efb920;">
-                    <div style="color:#efb920; font-weight:bold; font-size:1.1rem;">
-                        🟠 ORANGE CAP
-                    </div>
-                    <div style="font-size:1.6rem; font-weight:bold; margin-top:6px;">
-                        {player}
-                    </div>
+                <div class="metric-card orange-card">
+                    <div style="color:#efb920; font-weight:bold; font-size:1.1rem;">🟠 ORANGE CAP</div>
+                    <div style="font-size:1.6rem; font-weight:bold; margin-top:6px; color: white;">{player}</div>
                 </div>
             """, unsafe_allow_html=True)
 
+    # PURPLE CAP
     if not purple_cap_holder.empty:
         for player, row in purple_cap_holder.iterrows():
             st.markdown(f"""
-                <div class="metric-card purple-card" style="border-left:6px solid #a855f7;">
-                    <div style="color:#a855f7; font-weight:bold; font-size:1.1rem;">
-                        🟣 PURPLE CAP
-                    </div>
-                    <div style="font-size:1.6rem; font-weight:bold; margin-top:6px;">
-                        {player}
-                    </div>
+                <div class="metric-card purple-card">
+                    <div style="color:#a855f7; font-weight:bold; font-size:1.1rem;">🟣 PURPLE CAP</div>
+                    <div style="font-size:1.6rem; font-weight:bold; margin-top:6px; color: white;">{player}</div>
                 </div>
             """, unsafe_allow_html=True)
 
+    # MVP
     if not mvp_holder.empty:
         for player, row in mvp_holder.iterrows():
             st.markdown(f"""
-                <div class="metric-card mvp-card" style="border-left:6px solid #22c55e;">
-                    <div style="font-size:1.1rem; font-weight:bold; color:#22c55e;">
-                        ⭐ MVP
-                    </div>
-                    <div style="font-size:1.6rem; font-weight:bold; margin-top:6px;">
-                        {player}
-                    </div>
+                <div class="metric-card mvp-card">
+                    <div style="color:#22c55e; font-weight:bold; font-size:1.1rem;">⭐ MVP</div>
+                    <div style="font-size:1.6rem; font-weight:bold; margin-top:6px; color: white;">{player}</div>
                 </div>
             """, unsafe_allow_html=True)
 
+    # EMERGING PLAYER
     if emerging_player:
-            st.markdown(f"""
-                <div class="metric-card emerging-card" style="
-                    border-left: 6px solid #ff007f !important;
-                    --accent-color: #ff007f;
-                ">
-                    <div style="color:#ff007f; font-weight:bold; font-size:1.1rem;">
-                        ✨ EMERGING PLAYER
-                    </div>
-                    <div style="font-size:1.6rem; font-weight:bold; margin-top:6px; color: white;">
-                        {emerging_player}
-                    </div>
-                </div>
-            """, unsafe_allow_html=True)
+        st.markdown(f"""
+            <div class="metric-card emerging-card">
+                <div style="color:#ff007f; font-weight:bold; font-size:1.1rem;">✨ EMERGING PLAYER</div>
+                <div style="font-size:1.6rem; font-weight:bold; margin-top:6px; color: white;">{emerging_player}</div>
+            </div>
+        """, unsafe_allow_html=True)
 
     # Team performance trends - CUMULATIVE
     st.markdown('<div class="section-header">📊 POINTS RACE</div>', unsafe_allow_html=True)
@@ -1053,14 +1032,14 @@ def show_squads(data):
         FRANCHISE_COLORS = {
             "Gujarat Titans": "#001f3f",              # Navy Blue
             "Chennai Super Kings": "#FFD700",          # Yellow
-            "Mumbai Indians": "#004BA0",               # Royal Blue
+            "Mumbai Indians": "#0966D0",               # Royal Blue
             "Royal Challengers Bengaluru": "#FF0000",  # Red
-            "Kolkata Knight Riders": "#3A225D",        # Purple
+            "Kolkata Knight Riders": "#4B2684",        # Purple
             "Rajasthan Royals": "#EA1A85",             # Pink
-            "Delhi Capitals": "#87CEEB",               # Cotton Blue
+            "Delhi Capitals": "#151BBD",               # Cotton Blue
             "Sunrisers Hyderabad": "#FF8C00",          # Orange
-            "Punjab Kings": "#DD1F2D",                 # RGB(221, 31, 45)
-            "Lucknow Super Giants": "#0057E2"          # Blue
+            "Punjab Kings": "#E25760",                 # RGB(221, 31, 45)
+            "Lucknow Super Giants": "#00E2AD"          # Blue
         }
 
         # --- FRANCHISE INFO (TEAM-COLORED & FILLED) ---
@@ -1337,6 +1316,12 @@ def show_matches(data):
                 
                 for col in cols_to_show:
                     val = row[col]
+                    
+                    if col == "Role":
+                        if val in ["BAT","BOWL","AR"]:
+                            display_val = val
+                        else:
+                            display_val = "N/A"
                     
                     if col == "Man of the Match":
                         if pd.isna(val) or str(val).lower() in ['nan', 'none', '']:

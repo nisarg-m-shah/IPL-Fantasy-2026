@@ -411,9 +411,9 @@ teams = {
             'Pathum Nissanka',
             'Phil Salt'
         ],
-        'captain': [],
-        'vice captain': [],
-        'trump card': [],
+        'captain': ['Shubman Gill'],
+        'vice captain': ['Noor Ahmad'],
+        'trump card': ['Phil Salt'],
         'replacement': {},
         'franchise': "SRH"
     },
@@ -446,9 +446,9 @@ teams = {
             'Krunal Pandya',
             'T Natarajan'
         ],
-        'captain': [],
-        'vice captain': [],
-        'trump card': [],
+        'captain': ['Sunil Narine'],
+        'vice captain': ['Shreyas Iyer'],
+        'trump card': ['Krunal Pandya'],
         'replacement': {},
         'franchise': "RCB"
     },
@@ -481,9 +481,9 @@ teams = {
             'Rashid Khan',
             'Nuwan Thushara'
         ],
-        'captain': [],
-        'vice captain': [],
-        'trump card': [],
+        'captain': ['Virat Kohli'],
+        'vice captain': ['Heinrich Klaasen'],
+        'trump card': ['Priyansh Arya'],
         'replacement': {},
         'franchise': "DC"
     },
@@ -517,9 +517,9 @@ teams = {
             'Aniket Verma',
             'Abdul Samad'
         ],
-        'captain': [],
-        'vice captain': [],
-        'trump card': [],
+        'captain': ['Prabhsimran Singh'],
+        'vice captain': ['Axar Patel'],
+        'trump card': ['Rohit Sharma'],
         'replacement': {},
         'franchise': "PBKS"
     },
@@ -553,9 +553,9 @@ teams = {
             'Shahrukh Khan',
             'Tim David'
         ],
-        'captain': [],
-        'vice captain': [],
-        'trump card': [],
+        'captain': ['Sai Sudharsan'],
+        'vice captain': ['Arshdeep Singh'],
+        'trump card': ['Prasidh Krishna'],
         'replacement': {},
         'franchise': "GT"
     },
@@ -588,9 +588,9 @@ teams = {
             'Jitesh Sharma',
             'Ramandeep Singh'
         ],
-        'captain': [],
-        'vice captain': [],
-        'trump card': [],
+        'captain': ['Suryakumar Yadav'],
+        'vice captain': ['Jos Buttler'],
+        'trump card': ['Aiden Markram'],
         'replacement': {},
         'franchise': "CSK"
     },
@@ -621,9 +621,9 @@ teams = {
             'Prince Yadav',
             'Jasprit Bumrah'
         ],
-        'captain': [],
-        'vice captain': [],
-        'trump card': [],
+        'captain': ['Mitchell Marsh'],
+        'vice captain': ['Josh Hazlewood'],
+        'trump card': ['Jasprit Bumrah'],
         'replacement': {},
         'franchise': "KKR"
     },
@@ -653,9 +653,9 @@ teams = {
             'Danish Malewar',
             'Dewald Brevis'
         ],
-        'captain': ['Matheesha Pathirana'],
-        'vice captain': ['Sanju Samson'],
-        'trump card': ['Tilak Varma'],
+        'captain': ['Tilak Varma'],
+        'vice captain': ['Yashasvi Jaiswal'],
+        'trump card': ['Trent Boult'],
         'replacement': {},
         'franchise': "MI"
     }
