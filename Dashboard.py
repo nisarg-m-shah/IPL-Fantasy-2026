@@ -1147,6 +1147,9 @@ def show_squads(data):
                         color:{color};
                         font-weight:700;
                         letter-spacing:0.04em;
+                        min-height: 2.5em;
+                        display: flex;
+                        align-items: center;
                     ">
                         {label}
                     </div>
