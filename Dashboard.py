@@ -1149,7 +1149,7 @@ def show_squads(data):
                         letter-spacing:0.04em;
                         min-height: 2.5em;
                         display: flex;
-                        align-items: center;
+                        align-items: flex-end;
                     ">
                         {label}
                     </div>
