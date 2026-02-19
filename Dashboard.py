@@ -776,9 +776,9 @@ def show_rankings(data):
                     <th style="padding: 12px 8px; color: #efb920; font-family: 'Bebas Neue', sans-serif; font-size: clamp(0.9rem, 2.5vw, 1.1rem); text-align: center;">TOTAL POINTS</th>
                     <th style="padding: 12px 8px; color: #efb920; font-family: 'Bebas Neue', sans-serif; font-size: clamp(0.9rem, 2.5vw, 1.1rem); text-align: center;">FRANCHISE POINTS</th>
                     <th style="padding: 12px 8px; color: #efb920; font-family: 'Bebas Neue', sans-serif; font-size: clamp(0.9rem, 2.5vw, 1.1rem); text-align: center;">ORANGE CAP</th>
-                    <th style="padding: 12px 8px; color: #efb920; font-family: 'Bebas Neue', sans-serif; font-size: clamp(0.9rem, 2.5vw, 1.1rem); text-align: center;">PURPLE CAP</th>
-                    <th style="padding: 12px 8px; color: #efb920; font-family: 'Bebas Neue', sans-serif; font-size: clamp(0.9rem, 2.5vw, 1.1rem); text-align: center;">MVP</th>
-                    <th style="padding: 12px 8px; color: #efb920; font-family: 'Bebas Neue', sans-serif; font-size: clamp(0.9rem, 2.5vw, 1.1rem); text-align: center;">EMERGING PLAYER</th>
+                    <th style="padding: 12px 8px; color: #a855f7; font-family: 'Bebas Neue', sans-serif; font-size: clamp(0.9rem, 2.5vw, 1.1rem); text-align: center;">PURPLE CAP</th>
+                    <th style="padding: 12px 8px; color: #22c55e; font-family: 'Bebas Neue', sans-serif; font-size: clamp(0.9rem, 2.5vw, 1.1rem); text-align: center;">MVP</th>
+                    <th style="padding: 12px 8px; color: #ff007f; font-family: 'Bebas Neue', sans-serif; font-size: clamp(0.9rem, 2.5vw, 1.1rem); text-align: center;">EMERGING PLAYER</th>
                 </tr>
             </thead>
             <tbody>
@@ -793,8 +793,8 @@ def show_rankings(data):
                     <th style="padding: 12px 8px; color: #efb920; font-family: 'Bebas Neue', sans-serif; font-size: clamp(0.9rem, 2.5vw, 1.1rem); text-align: center;">TOTAL POINTS</th>
                     <th style="padding: 12px 8px; color: #efb920; font-family: 'Bebas Neue', sans-serif; font-size: clamp(0.9rem, 2.5vw, 1.1rem); text-align: center;">FRANCHISE POINTS</th>
                     <th style="padding: 12px 8px; color: #efb920; font-family: 'Bebas Neue', sans-serif; font-size: clamp(0.9rem, 2.5vw, 1.1rem); text-align: center;">ORANGE CAP</th>
-                    <th style="padding: 12px 8px; color: #efb920; font-family: 'Bebas Neue', sans-serif; font-size: clamp(0.9rem, 2.5vw, 1.1rem); text-align: center;">PURPLE CAP</th>
-                    <th style="padding: 12px 8px; color: #efb920; font-family: 'Bebas Neue', sans-serif; font-size: clamp(0.9rem, 2.5vw, 1.1rem); text-align: center;">MVP</th>
+                    <th style="padding: 12px 8px; color: #a855f7; font-family: 'Bebas Neue', sans-serif; font-size: clamp(0.9rem, 2.5vw, 1.1rem); text-align: center;">PURPLE CAP</th>
+                    <th style="padding: 12px 8px; color: #22c55e; font-family: 'Bebas Neue', sans-serif; font-size: clamp(0.9rem, 2.5vw, 1.1rem); text-align: center;">MVP</th>
                 </tr>
             </thead>
             <tbody>
@@ -833,11 +833,11 @@ def show_rankings(data):
         '''
         html_table += f'<td style="padding: 10px 8px; text-align: center;">{format_points(row["Total Points"])}</td>'
         html_table += f'<td style="padding: 10px 8px; text-align: center;">{format_points(row["Franchise Points"])}</td>'
-        html_table += f'<td style="padding: 10px 8px; text-align: center;">{row["Orange Cap"]}</td>'
-        html_table += f'<td style="padding: 10px 8px; text-align: center;">{row["Purple Cap"]}</td>'
-        html_table += f'<td style="padding: 10px 8px; text-align: center;">{row["MVP"]}</td>'
+        html_table += f'<td style="padding: 10px 8px; text-align: center; color: #efb920;">{row["Orange Cap"]}</td>'
+        html_table += f'<td style="padding: 10px 8px; text-align: center; color: #a855f7;">{row["Purple Cap"]}</td>'
+        html_table += f'<td style="padding: 10px 8px; text-align: center; color: #22c55e;">{row["MVP"]}</td>'
         if emerging_player:
-            html_table += f'<td style="padding: 10px 8px; text-align: center;">{row["Emerging Player"]}</td>'
+            html_table += f'<td style="padding: 10px 8px; text-align: center; color: #ff007f;">{row["Emerging Player"]}</td>'
         html_table += "</tr>"
 
     html_table += "</tbody></table></div>"
@@ -1086,7 +1086,7 @@ def show_squads(data):
         if franchise_short and "Team Final Points" in data:
             if selected_team in data["Team Final Points"].index:
                 franchise_points = data["Team Final Points"].loc[selected_team].get("Franchise Points", 0)
-                franchise_wins = int(franchise_points / 200) if franchise_points > 0 else 0
+                franchise_wins = int(franchise_points / 150) if franchise_points > 0 else 0
         
         st.markdown(f"""
             <div class="grid-container" style="grid-template-columns: 1fr 1fr;">
@@ -1570,6 +1570,7 @@ def show_analytics(data):
     players_html += '<th style="padding:10px 8px; color:#efb920; font-family:\'Bebas Neue\'; text-align:center; font-size: clamp(0.85rem, 2.5vw, 1rem);">ORANGE CAP</th>'
     players_html += '<th style="padding:10px 8px; color:#efb920; font-family:\'Bebas Neue\'; text-align:center; font-size: clamp(0.85rem, 2.5vw, 1rem);">PURPLE CAP</th>'
     players_html += '<th style="padding:10px 8px; color:#efb920; font-family:\'Bebas Neue\'; text-align:center; font-size: clamp(0.85rem, 2.5vw, 1rem);">MVP</th>'
+    players_html += '<th style="padding:10px 8px; color:#efb920; font-family:\'Bebas Neue\'; text-align:center; font-size: clamp(0.85rem, 2.5vw, 1rem);">EMERGING PLAYER</th>'
     players_html += '</tr></thead><tbody>'
     
     for _, row in all_players_df.iterrows():
@@ -1598,13 +1599,16 @@ def show_analytics(data):
         orange_val = row.get("Orange Cap", 0)
         purple_val = row.get("Purple Cap", 0)
         mvp_val = row.get("MVP", 0)
+        emerging_val = row.get("Emerging Player", 0)
         orange_display = format_points(orange_val) if pd.notna(orange_val) and orange_val > 0 else "-"
         purple_display = format_points(purple_val) if pd.notna(purple_val) and purple_val > 0 else "-"
         mvp_display = format_points(mvp_val) if pd.notna(mvp_val) and mvp_val > 0 else "-"
+        emerging_display = format_points(emerging_val) if pd.notna(emerging_val) and emerging_val > 0 else "-"
         
         players_html += f'<td style="padding:10px 8px; text-align:center; color:#efb920; font-size: clamp(0.75rem, 2.5vw, 0.9rem);">{orange_display}</td>'
         players_html += f'<td style="padding:10px 8px; text-align:center; color:#a855f7; font-size: clamp(0.75rem, 2.5vw, 0.9rem);">{purple_display}</td>'
-        players_html += f'<td style="padding:10px 8px; text-align:center; color:#a855f7; font-size: clamp(0.75rem, 2.5vw, 0.9rem);">{mvp_display}</td>'
+        players_html += f'<td style="padding:10px 8px; text-align:center; color:#22c55e; font-size: clamp(0.75rem, 2.5vw, 0.9rem);">{mvp_display}</td>'
+        players_html += f'<td style="padding:10px 8px; text-align:center; color:#ff007f; font-size: clamp(0.75rem, 2.5vw, 0.9rem);">{emerging_display}</td>'
         players_html += '</tr>'
     
     players_html += '</tbody></table></div>'
