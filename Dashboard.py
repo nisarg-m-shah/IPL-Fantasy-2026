@@ -1137,27 +1137,22 @@ def show_squads(data):
             ("🃏 TRUMP CARD", team_meta.get("trump card", []), "#a855f7")
         ]
 
-        role_html = '<div class="grid-container" style="grid-template-columns: repeat(3, 1fr); align-items: stretch;">'
+        role_html = '<div class="grid-container" style="grid-template-columns: repeat(3, 1fr);">'
         for label, names, color in roles:
             display_names = ", ".join(names) if names else "None"
             role_html += f"""
-                <div class="metric-card" style="
-                    border-left:6px solid {color};
-                    --accent-color: {color};
-                    display: flex;
-                    flex-direction: column;
-                    justify-content: space-between;
-                ">
+                <div class="metric-card" style="border-left:6px solid {color}; --accent-color: {color};">
                     <div style="
                         font-size: clamp(0.85rem, 2.6vw, 1rem);
                         color:{color};
                         font-weight:700;
                         letter-spacing:0.04em;
+                        min-height: 3em;
+                        line-height: 1.5em;
                     ">
                         {label}
                     </div>
                     <div style="
-                        margin-top:6px;
                         font-weight:700;
                         font-size: clamp(1rem, 3vw, 1.25rem);
                     ">
