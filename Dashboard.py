@@ -1139,7 +1139,15 @@ def show_squads(data):
 
         role_html = '<div class="grid-container" style="grid-template-columns: repeat(3, 1fr);">'
         for label, names, color in roles:
-            display_names = ", ".join(names) if names else "None"
+            if names:
+                words = names[0].split(" ")
+                if len(words) == 2:
+                    display_names = f"{words[0]}<br>{words[1]}"
+                else:
+                    display_names = names[0]
+            else:
+                display_names = "None"
+            
             role_html += f"""
                 <div class="metric-card" style="border-left:6px solid {color}; --accent-color: {color};">
                     <div style="
@@ -1155,6 +1163,7 @@ def show_squads(data):
                     <div style="
                         font-weight:700;
                         font-size: clamp(1rem, 3vw, 1.25rem);
+                        line-height: 1.4em;
                     ">
                         {display_names}
                     </div>
