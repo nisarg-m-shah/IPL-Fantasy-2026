@@ -1173,7 +1173,13 @@ def show_squads(data):
         role_html += "</div>"
         st.markdown(role_html, unsafe_allow_html=True)
         
-        st.markdown("---")
+        st.markdown("""
+        <div style="
+            height: 3px;
+            background: linear-gradient(90deg, transparent, #6b7280, transparent);
+            margin: 20px 0;
+        "></div>
+        """, unsafe_allow_html=True)
 
         # --- BOOSTERS (Unified Grid) ---
 #        st.markdown('<div class="section-header">Boosters</div>', unsafe_allow_html=True)
