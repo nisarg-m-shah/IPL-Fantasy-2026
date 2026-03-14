@@ -1096,6 +1096,7 @@ def show_squads(data):
                         font-weight: 800;
                         letter-spacing: 0.12em;
                         color: #10b981;
+                        white-space: nowrap;
                     ">
                         🏆 FRANCHISE WINS
                     </div>
@@ -1114,6 +1115,7 @@ def show_squads(data):
                         font-weight: 800;
                         letter-spacing: 0.12em;
                         color: #f59e0b;
+                        white-space: nowrap;
                     ">
                         ⭐ WIN POINTS
                     </div>
