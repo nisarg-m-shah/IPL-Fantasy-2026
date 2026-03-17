@@ -15,6 +15,10 @@ from Auction import teams,boosters,names,roles,squads,team_names_ff,team_names_s
 
 # --- MATCH SCHEDULE CONFIGURATION ---
 
+def hex_to_rgb(hex_color):
+    hex_color = hex_color.lstrip("#")
+    return ",".join(str(int(hex_color[i:i+2], 16)) for i in (0, 2, 4))
+
 
 def format_points(val):
     """Removes trailing zeros, keeps .5 if present, otherwise returns integer."""
@@ -1022,6 +1026,25 @@ def show_squads(data):
                 margin-bottom: 20px;
                 width: 100%;
             }
+            .franchise-card {
+                background: linear-gradient(135deg, 
+                    var(--color-primary) 0%, 
+                    var(--color-secondary) 100%) !important;
+                border: 1px solid rgba(255, 255, 255, 0.2) !important;
+                box-shadow: 0 10px 20px rgba(0, 0, 0, 0.4), 
+                            0 0 15px color-mix(in srgb, var(--color-primary) 40%, transparent) !important;
+                position: relative;
+                overflow: hidden;
+            }
+
+            /* Subtle shine effect over the card */
+            .franchise-card::after {
+                content: '';
+                position: absolute;
+                top: 0; left: 0; right: 0; bottom: 0;
+                background: linear-gradient(135deg, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0) 50%);
+                pointer-events: none;
+            }
         </style>
     """, unsafe_allow_html=True)
 
@@ -1085,49 +1108,49 @@ def show_squads(data):
             "LSG": "Lucknow Super Giants"
         }
         
-        FRANCHISE_COLORS = {
-            "Gujarat Titans": "#001f3f",              # Navy Blue
-            "Chennai Super Kings": "#FFD700",          # Yellow
-            "Mumbai Indians": "#0966D0",               # Royal Blue
-            "Royal Challengers Bengaluru": "#FF0000",  # Red
-            "Kolkata Knight Riders": "#4B2684",        # Purple
-            "Rajasthan Royals": "#EA1A85",             # Pink
-            "Delhi Capitals": "#151BBD",               # Cotton Blue
-            "Sunrisers Hyderabad": "#FF8C00",          # Orange
-            "Punjab Kings": "#E25760",                 # RGB(221, 31, 45)
-            "Lucknow Super Giants": "#00E2AD"          # Blue
+# High-End Dual-Tone Gradient Colors
+        FRANCHISE_GRADIENTS = {
+            "GT":   {"p": "#001c3d", "s": "#00356b"}, # Deep Navy to Blue
+            "CSK":  {"p": "#f9cd05", "s": "#f29d00"}, # Gold to Amber
+            "MI":   {"p": "#004ba0", "s": "#002d62"}, # Royal Blue to Deep Night
+            "RCB":  {"p": "#dc1a22", "s": "#8b0000"}, # Red to Dark Maroon
+            "KKR":  {"p": "#3a225d", "s": "#25163c"}, # Purple to Dark Grape
+            "RR":   {"p": "#ea1a85", "s": "#b01264"}, # Pink to Deep Rose
+            "DC":   {"p": "#0078bc", "s": "#004b76"}, # Blue to Navy
+            "SRH":  {"p": "#f26522", "s": "#c24e18"}, # Orange to Burnt Orange
+            "PBKS": {"p": "#d71920", "s": "#9e1116"}, # Red to Blood Red
+            "LSG":  {"p": "#0057e2", "s": "#00b9ff"}  # Blue to Sky Blue
         }
 
-        # --- FRANCHISE INFO (TEAM-COLORED & FILLED) ---
         franchise_short = SQUAD_INFO[selected_team].get("franchise")
 
         if franchise_short:
             franchise_full = FRANCHISE_SHORT_TO_FULL.get(franchise_short, franchise_short)
-            franchise_color = FRANCHISE_COLORS.get(franchise_full, "#efb920")
+            grad = FRANCHISE_GRADIENTS.get(franchise_short, {"p": "#efb920", "s": "#d4a017"})
             
-            # Create solid background color from the franchise color
-            # Convert hex to rgba for consistency with other cards
             st.markdown(f"""
-                <div class="metric-card" style="
-                    border: none !important;
-                    background: {franchise_color} !important;
-                    --accent-color: {franchise_color};
+                <div class="metric-card franchise-card" style="
+                    --color-primary: {grad['p']};
+                    --color-secondary: {grad['s']};
+                    --accent-color: white;
                 ">
                     <div style="
                         font-size: clamp(0.75rem, 2.3vw, 0.85rem);
                         font-weight: 800;
-                        letter-spacing: 0.12em;
+                        letter-spacing: 0.15em;
                         color: white;
-                        text-shadow: 0 2px 4px rgba(0,0,0,0.5);
+                        opacity: 0.85;
+                        text-transform: uppercase;
                     ">
-                        🏟️ FRANCHISE
+                        🏟️ Franchise
                     </div>
                     <div style="
-                        margin-top: 6px;
-                        font-size: clamp(1.3rem, 4vw, 1.6rem);
+                        margin-top: 4px;
+                        font-size: clamp(1.4rem, 4.5vw, 1.8rem);
                         font-weight: 900;
                         color: white;
-                        text-shadow: 0 2px 4px rgba(0,0,0,0.5);
+                        text-shadow: 0 2px 8px rgba(0,0,0,0.4);
+                        letter-spacing: 0.02em;
                     ">
                         {franchise_full}
                     </div>
