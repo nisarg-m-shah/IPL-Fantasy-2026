@@ -63,7 +63,7 @@ def run_output_pipeline():
         purple_cap = find_full_name(names, purple_cap)
 
         runs_data = fetch_jsonp(
-            "https://ipl-stats-sports-mechanic.s3.ap-south-1.amazonaws.com/ipl/feeds/stats/284-toprunsscorers.js",
+            "https://ipl-stats-sports-mechanic.s3.ap-south-1.amazonaws.com/ipl/feeds/stats/203-toprunsscorers.js",
             params={"callback": "ontoprunsscorers"}
         )
 
@@ -71,7 +71,7 @@ def run_output_pipeline():
         orange_cap = find_full_name(names, orange_cap)
 
         mvp_data = fetch_jsonp(
-            "https://ipl-stats-sports-mechanic.s3.ap-south-1.amazonaws.com/ipl/feeds/stats/2026-mvpPlayersList.js",
+            "https://ipl-stats-sports-mechanic.s3.ap-south-1.amazonaws.com/ipl/feeds/stats/2025-mvpPlayersList.js",
             params={"callback": "onMvp"}
         )
 
