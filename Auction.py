@@ -817,25 +817,46 @@ squads = {}
 team_names_sf = ["KKR","GT","MI","CSK","RR","RCB","PBKS","DC","SRH","LSG"]
 team_names_ff = ["Kolkata Knight Riders", "Gujarat Titans", "Mumbai Indians", "Chennai Super Kings","Rajasthan Royals","Royal Challengers Bengaluru", "Punjab Kings","Delhi Capitals","Sunrisers Hyderabad","Lucknow Super Giants"]
 
-competition_id = 203  # IPL 2025 competition ID
-database = "ipl25.pkl"
-file_path = "CFC Fantasy League 2026.xlsx"
-json_filename = "CFC Fantasy League 2026.json"
+#competition_id = 203  # IPL 2025 competition ID
+competition_id = 284  # IPL 2025 competition ID
+#database = "ipl25.pkl"
+database = "ipl26.pkl"
+file_path = "CFC Fantasy League Live 2026.xlsx"
+json_filename = "CFC Fantasy League Live 2026.json"
+
+# MATCH_SCHEDULE = {
+#     'single_header': [
+#         '2025-01-20',
+#         '2025-01-22',
+#         '2026-02-02'
+#         # Add more single header dates
+#     ],
+#     'double_header': [
+#         '2025-01-19',
+#         '2025-01-21',
+#         '2025-01-23',
+#         '2026-02-15'
+#         # Add more double header dates
+#     ]
+# }
 
 MATCH_SCHEDULE = {
     'single_header': [
-        '2025-01-20',
-        '2025-01-22',
-        '2026-02-02'
-        # Add more single header dates
-    ],
+        '2026-04-10', 
+        '2026-04-09', 
+        '2026-04-08',
+        '2026-04-07',
+        '2026-04-06',
+        '2026-04-03', 
+        '2026-04-02', 
+        '2026-04-01', 
+        '2026-03-31', 
+        '2026-03-30', 
+        '2026-03-29'], 
     'double_header': [
-        '2025-01-19',
-        '2025-01-21',
-        '2025-01-23',
-        '2026-02-15'
-        # Add more double header dates
-    ]
-}
+        '2026-04-12', 
+        '2026-04-11', 
+        '2026-04-05', 
+        '2026-04-04']}
 
 emerging_player = "Sai Sudharsan"

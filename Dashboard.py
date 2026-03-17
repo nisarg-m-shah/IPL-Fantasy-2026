@@ -35,7 +35,7 @@ def format_points(val):
     
 # --- PAGE CONFIG ---
 st.set_page_config(
-    page_title="CFC Fantasy League 2025",
+    page_title="CFC Fantasy League 2026",
     page_icon="🏏",
     layout="wide",
     initial_sidebar_state="collapsed"
