@@ -75,8 +75,8 @@ st.markdown("""
     }
     
     .orange-cap-player {
-        background: rgba(239, 185, 32, 0.22) !important;
-        border-left: 6px solid #efb920 !important;
+        background: rgba(251,146,60,0.12) !important;
+        border-left: 6px solid #fb923c !important;
     }
 
     .purple-cap-player {
