@@ -521,4 +521,4 @@ class Series:
 
 
 if __name__ == "__main__":
-    ipl2025 = Series(203,"ipl25.pkl")
+    ipl2025 = Series(284,"ipl26.pkl")
