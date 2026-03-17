@@ -3,7 +3,7 @@ import json
 import re
 
 BASE_URL = "https://ipl-stats-sports-mechanic.s3.ap-south-1.amazonaws.com/ipl/feeds"
-competition_id = 203
+competition_id = 284
 url = f"{BASE_URL}/{competition_id}-matchschedule.js"
 
 params = {"MatchSchedule": "_jqjsp"}

@@ -400,7 +400,42 @@ st.markdown("""
 TIMESTAMP_FILE = ".last_update_timestamp"
 EXCEL_FILE = file_path
 OUTPUT_SCRIPT = "Run.py"
-UPDATE_INTERVAL = 300  # 5 minutes in seconds
+UPDATE_INTERVAL = 600  # 10 minutes in seconds
+LOCK_FILE = ".update_lock"  # Lock file to prevent concurrent updates
+LOCK_TIMEOUT = 600  # 10 minutes - max time for update to complete
+
+def acquire_lock():
+    """
+    Try to acquire update lock
+    Returns: (bool, str) - (success, message)
+    """
+    try:
+        if os.path.exists(LOCK_FILE):
+            # Check if lock is stale (older than LOCK_TIMEOUT)
+            lock_age = time.time() - os.path.getmtime(LOCK_FILE)
+            if lock_age < LOCK_TIMEOUT:
+                # Lock is still active
+                mins = int(lock_age // 60)
+                secs = int(lock_age % 60)
+                return False, f"Update in progress by another user ({mins}m {secs}s ago)"
+            else:
+                # Stale lock - remove it
+                os.remove(LOCK_FILE)
+        
+        # Create lock file with current timestamp
+        with open(LOCK_FILE, 'w') as f:
+            f.write(str(time.time()))
+        return True, "Lock acquired"
+    except Exception as e:
+        return False, f"Lock error: {str(e)}"
+
+def release_lock():
+    """Release update lock"""
+    try:
+        if os.path.exists(LOCK_FILE):
+            os.remove(LOCK_FILE)
+    except Exception as e:
+        print(f"Error releasing lock: {e}")
 
 def get_last_update_time():
     """Get the timestamp of last update"""
@@ -530,6 +565,14 @@ def should_update():
     if not is_match:
         return False, f"Outside match hours - {match_reason}"
     
+    # Check if an update is already in progress
+    if os.path.exists(LOCK_FILE):
+        lock_age = time.time() - os.path.getmtime(LOCK_FILE)
+        if lock_age < LOCK_TIMEOUT:
+            mins = int(lock_age // 60)
+            secs = int(lock_age % 60)
+            return False, f"Update in progress by another user ({mins}m {secs}s ago)"
+    
     # Check if most recent match is already finalized AND has been scraped post-final
     is_final, match_name = get_most_recent_match_state()
     if is_final and match_name:
@@ -628,15 +671,28 @@ def main():
     """, unsafe_allow_html=True)
     
     if should_run_update:
-        with st.spinner("🔄 Fetching latest scores from live matches..."):
-            success, message = run_output_script()
-            if success:
-                st.success(f"✅ {message}")
-                st.cache_resource.clear()
-                time.sleep(1)  # Brief pause before rerun
-                st.rerun()
-            else:
-                st.warning(f"⚠️ {message} - Displaying cached data")
+        # Try to acquire lock
+        lock_acquired, lock_message = acquire_lock()
+        
+        if lock_acquired:
+            try:
+                with st.spinner("🔄 Fetching latest scores from live matches..."):
+                    success, message = run_output_script()
+                    if success:
+                        st.success(f"✅ {message}")
+                        st.cache_resource.clear()
+                        time.sleep(1)  # Brief pause before rerun
+                        st.rerun()
+                    else:
+                        st.warning(f"⚠️ {message} - Displaying cached data")
+            finally:
+                # Always release lock, even if update failed
+                release_lock()
+        else:
+            # Another user is updating - show current data without refresh
+            st.info(f"⏳ {lock_message}")
+            st.info("💡 Displaying data from last update. Manually refresh in ~1 minute to see latest scores.")
+            # NO st.rerun() - user continues with current data
     
     # Load data    
     data = load_data()
@@ -1053,7 +1109,7 @@ def show_squads(data):
             # Convert hex to rgba for consistency with other cards
             st.markdown(f"""
                 <div class="metric-card" style="
-                    border-left: 6px solid {franchise_color};
+                    border: none !important;
                     background: {franchise_color} !important;
                     --accent-color: {franchise_color};
                 ">
@@ -1183,6 +1239,7 @@ def show_squads(data):
 
         # --- BOOSTERS (Unified Grid) ---
 #        st.markdown('<div class="section-header">Boosters</div>', unsafe_allow_html=True)
+
         team_boosters = boosters.get(selected_team, {})
         BOOSTER_STYLES = {
             "Double Power": ("👑 DOUBLE POWER", "#efb920", "rgba(239,185,32,0.12)"),
