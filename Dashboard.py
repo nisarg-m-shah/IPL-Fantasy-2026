@@ -616,7 +616,8 @@ def run_output_script():
                 mark_match_as_final_scraped(match_name)
             
             return True, "Update successful"
-        return False, f"Update failed with return code {result.returncode}"
+        error_detail = result.stderr or result.stdout or "No output captured"
+        return False, f"Update failed (code {result.returncode}): {error_detail[-500:]}"
     except subprocess.TimeoutExpired:
         return False, "Update timeout (>5 minutes)"
     except Exception as e:
