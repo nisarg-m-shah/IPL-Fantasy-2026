@@ -601,7 +601,7 @@ def should_update():
 def run_output_script():
     try:
         result = subprocess.run(
-            ['python3', OUTPUT_SCRIPT],
+            [sys.executable, OUTPUT_SCRIPT],
             capture_output=True,
             text=True,
             timeout=600
