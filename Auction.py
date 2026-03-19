@@ -890,22 +890,6 @@ database = "ipl25.pkl"
 file_path = "CFC Fantasy League 2026.xlsx"
 json_filename = "CFC Fantasy League 2026.json"
 
-# MATCH_SCHEDULE = {
-#     'single_header': [
-#         '2025-01-20',
-#         '2025-01-22',
-#         '2026-02-02'
-#         # Add more single header dates
-#     ],
-#     'double_header': [
-#         '2025-01-19',
-#         '2025-01-21',
-#         '2025-01-23',
-#         '2026-02-15'
-#         # Add more double header dates
-#     ]
-# }
-
 MATCH_SCHEDULE = {
     'single_header': [
         '2026-04-10', 
@@ -926,5 +910,5 @@ MATCH_SCHEDULE = {
         '2026-04-05', 
         '2026-04-04']}
 
-# emerging_player = "Sai Sudharsan"
-emerging_player = ""
+emerging_player = "Sai Sudharsan"
+# emerging_player = ""

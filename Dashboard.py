@@ -533,11 +533,11 @@ def is_match_time():
     
     # Single header: 7:30 PM - 12:30 AM next day
     single_start = dt_time(19, 30)  # 7:30 PM
-    single_end = dt_time(0, 55)     # 12:30 AM
+    single_end = dt_time(3, 55)     # 12:30 AM
     
     # Double header: 3:30 PM - 12:30 AM next day
     double_start = dt_time(15, 30)  # 3:30 PM
-    double_end = dt_time(0, 55)     # 12:30 AM
+    double_end = dt_time(3, 55)     # 12:30 AM
     
     # Check if today is a single header day
     if current_date in MATCH_SCHEDULE['single_header']:
@@ -551,7 +551,7 @@ def is_match_time():
     
     # Check if yesterday was a match day (for post-midnight times)
     yesterday = (now - pd.Timedelta(days=1)).strftime('%Y-%m-%d')
-    if current_time <= dt_time(0, 50):  # Before 12:30 AM
+    if current_time <= dt_time(3, 50):  # Before 12:30 AM
         if yesterday in MATCH_SCHEDULE['single_header']:
             return True, f"Single header match day continued ({yesterday})"
         if yesterday in MATCH_SCHEDULE['double_header']:
