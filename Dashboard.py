@@ -669,61 +669,53 @@ def main():
     status_color = "#00f2fe" if should_run_update else "#efb920"
 
     if remaining_seconds > 0:
-        # st.markdown strips <script> tags — use components.html so JS actually executes
         import streamlit.components.v1 as components
-        components.html(f"""
-            <div id="status-bar" style="
-                background: rgba(0,0,0,0.3);
-                padding: 10px 14px;
-                border-radius: 8px;
-                border-left: 4px solid {status_color};
-                font-family: sans-serif;
-                font-size: 0.95rem;
-                color: white;
-                display: flex;
-                align-items: center;
-                gap: 8px;
-                flex-wrap: wrap;
-            ">
-                <span style="color: {status_color}; font-weight: bold;">&#128225; Update Status:</span>
-                <span>{update_reason} &mdash; Next update in
-                    <span id="cfc-countdown" style="color: {status_color}; font-weight: bold; font-variant-numeric: tabular-nums;">
-                        {remaining_seconds // 60}m {remaining_seconds % 60:02d}s
-                    </span>
+        # Status bar rendered via st.markdown (full width, no iframe clipping)
+        # It reads the countdown value written into a shared DOM id by the script below
+        st.markdown(f"""
+            <div style="background: rgba(0,0,0,0.3); padding: 10px; border-radius: 8px;
+                        margin-bottom: 4px; border-left: 4px solid {status_color};">
+                <span style="color: {status_color}; font-weight: bold;">📡 Update Status:</span>
+                {update_reason} &mdash; Next update in
+                <span id="cfc-countdown" style="color: {status_color}; font-weight: bold;
+                       font-variant-numeric: tabular-nums;">
+                    {remaining_seconds // 60}m {remaining_seconds % 60:02d}s
                 </span>
-                <button id="refresh-btn" onclick="window.parent.location.reload()" style="
+                <button id="refresh-btn" onclick="window.location.reload()" style="
                     display: none;
-                    margin-left: 8px;
-                    padding: 5px 14px;
+                    margin-left: 10px;
+                    padding: 4px 12px;
                     background: {status_color};
                     color: #060b26;
                     border: none;
                     border-radius: 20px;
                     font-weight: bold;
-                    font-size: 0.85rem;
+                    font-size: 0.82rem;
                     cursor: pointer;
                 ">🔄 Refresh Now</button>
             </div>
+        """, unsafe_allow_html=True)
+        # Tiny hidden iframe just to run the JS — targets parent DOM via window.parent
+        components.html(f"""
             <script>
                 var endTime = Date.now() + {remaining_seconds} * 1000;
-                var el = document.getElementById('cfc-countdown');
-                var btn = document.getElementById('refresh-btn');
                 function tick() {{
-                    if (!el) return;
+                    var el = window.parent.document.getElementById('cfc-countdown');
+                    var btn = window.parent.document.getElementById('refresh-btn');
                     var remaining = Math.round((endTime - Date.now()) / 1000);
                     if (remaining <= 0) {{
-                        el.textContent = '0m 00s';
+                        if (el) el.textContent = '0m 00s';
                         if (btn) btn.style.display = 'inline-block';
                         return;
                     }}
                     var m = Math.floor(remaining / 60);
                     var s = remaining % 60;
-                    el.textContent = m + 'm ' + (s < 10 ? '0' : '') + s + 's';
+                    if (el) el.textContent = m + 'm ' + (s < 10 ? '0' : '') + s + 's';
                     setTimeout(tick, 1000);
                 }}
                 tick();
             </script>
-        """, height=55)
+        """, height=0)
     else:
         st.markdown(f"""
             <div style="background: rgba(0,0,0,0.3); padding: 10px; border-radius: 8px; margin-bottom: 20px; border-left: 4px solid {status_color};">
