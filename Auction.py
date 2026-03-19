@@ -883,9 +883,9 @@ team_names_ff = ["Kolkata Knight Riders", "Gujarat Titans", "Mumbai Indians", "C
 #competition_id = 203  # IPL 2025 competition ID
 competition_id = 203  # IPL 2025 competition ID
 #database = "ipl25.pkl"
-database = "ipl25.pkl"
-file_path = "CFC Fantasy League 2026.xlsx"
-json_filename = "CFC Fantasy League 2026.json"
+database = "/tmp/ipl25.pkl"
+file_path = "/tmp/CFC Fantasy League 2026.xlsx"
+json_filename = "/tmp/CFC Fantasy League 2026.json"
 
 MATCH_SCHEDULE = {
     'single_header': [

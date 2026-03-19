@@ -402,11 +402,11 @@ st.markdown("""
 """, unsafe_allow_html=True)
 
 # --- DATA LOADING ---
-TIMESTAMP_FILE = ".last_update_timestamp"
+TIMESTAMP_FILE = "/tmp/.last_update_timestamp"
 EXCEL_FILE = file_path
 OUTPUT_SCRIPT = "Run.py"
 UPDATE_INTERVAL = 600  # 10 minutes in seconds
-LOCK_FILE = ".update_lock"  # Lock file to prevent concurrent updates
+LOCK_FILE = "/tmp/.update_lock"  # Lock file to prevent concurrent updates
 LOCK_TIMEOUT = 600  # 10 minutes - max time for update to complete
 
 def acquire_lock():
@@ -458,7 +458,7 @@ def save_update_time():
         f.write(str(time.time()))
 
 PKL_FILE = database  # The pickle file with match states
-FINAL_SCRAPE_TRACKER = ".final_scrape_tracker"  # Tracks which matches have been scraped after being marked final
+FINAL_SCRAPE_TRACKER = "/tmp/.final_scrape_tracker"  # Tracks which matches have been scraped after being marked final
 
 def get_final_scraped_matches():
     """Get set of match names that have been scraped after being final"""
@@ -534,11 +534,11 @@ def is_match_time():
     
     # Single header: 7:30 PM - 12:30 AM next day
     single_start = dt_time(19, 30)  # 7:30 PM
-    single_end = dt_time(4, 55)     # 12:30 AM
+    single_end = dt_time(6, 55)     # 12:30 AM
     
     # Double header: 3:30 PM - 12:30 AM next day
     double_start = dt_time(15, 30)  # 3:30 PM
-    double_end = dt_time(4, 55)     # 12:30 AM
+    double_end = dt_time(6, 55)     # 12:30 AM
     
     # Check if today is a single header day
     if current_date in MATCH_SCHEDULE['single_header']:
@@ -552,7 +552,7 @@ def is_match_time():
     
     # Check if yesterday was a match day (for post-midnight times)
     yesterday = (now - pd.Timedelta(days=1)).strftime('%Y-%m-%d')
-    if current_time <= dt_time(4, 50):  # Before 12:30 AM
+    if current_time <= single_end:  # Before 12:30 AM
         if yesterday in MATCH_SCHEDULE['single_header']:
             return True, f"Single header match day continued ({yesterday})"
         if yesterday in MATCH_SCHEDULE['double_header']:
