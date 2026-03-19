@@ -7,4 +7,3 @@ openpyxl
 pandas
 bs4
 xlsxwriter
-sys
