@@ -16,7 +16,6 @@ def run_output_pipeline():
     team_names_sf = ["KKR","GT","MI","CSK","RR","RCB","PBKS","DC","SRH","LSG"]
     team_names_ff = ["Kolkata Knight Riders", "Gujarat Titans", "Mumbai Indians", "Chennai Super Kings","Rajasthan Royals","Royal Challengers Bengaluru", "Punjab Kings","Delhi Capitals","Sunrisers Hyderabad","Lucknow Super Giants"]
 
-
     def fetch_jsonp(url, params=None):
         r = requests.get(url, params=params)
         r.raise_for_status()

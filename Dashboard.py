@@ -602,12 +602,15 @@ def should_update():
 def run_output_script():
     """Run the output pipeline to scrape and organize data"""
     try:
-        result = subprocess.run(
-            [sys.executable, OUTPUT_SCRIPT],
-            capture_output=True,
-            text=True,
-            timeout=600
-        )
+        run_output_pipeline()
+        save_update_time()
+        is_final, match_name = get_most_recent_match_state()
+        if is_final and match_name:
+            mark_match_as_final_scraped(match_name)
+        return True, "Update successful"
+    except Exception as e:
+        import traceback
+        return False, f"Update error: {traceback.format_exc()[-500:]}"
         if result.returncode == 0:
             save_update_time()
             
