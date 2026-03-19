@@ -813,7 +813,73 @@ team_list = [
     'Night Watchmen'
 ]
 
-squads = {}
+squads = {
+    'Chennai Super Kings': [
+        'Anshul Kamboj', 'Gurjapneet Singh', 'Jamie Overton', 'MS Dhoni', 
+        'Mukesh Choudhary', 'Nathan Ellis', 'Noor Ahmad', 'Ramakrishna Ghosh', 
+        'Sanju Samson', 'Ruturaj Gaikwad', 'Shivam Dube', 'Shreyas Gopal', 
+        'Syed Khaleel Ahmed', 'Ayush Mhatre', 'Dewald Brevis', 'Urvil Patel'
+    ],
+    'Delhi Capitals': [
+        'Abhishek Porel', 'Ajay Mandal', 'Ashutosh Sharma', 'Axar Patel', 
+        'Dushmantha Chameera', 'Karun Nair', 'KL Rahul', 'Kuldeep Yadav', 
+        'Madhav Tiwari', 'Mitchell Starc', 'Mukesh Kumar', 'Nitish Rana', 
+        'Sameer Rizvi', 'T. Natarajan', 'Tripurana Vijay', 'Tristan Stubbs', 
+        'Vipraj Nigam'
+    ],
+    'Gujarat Titans': [
+        'Anuj Rawat', 'Glenn Phillips', 'Gurnoor Singh Brar', 'Ishant Sharma', 
+        'Jayant Yadav', 'los Buttler', 'Kagiso Rabada', 'Kumar Kushagra', 
+        'Manav Suthar', 'Mohammad Siraj', 'Mohd. Arshad Khan', 'Nishant Sindhu', 
+        'Prasidh Krishna', 'R. Sai Kishore', 'Rahul Tewatia', 'Rashid Khan', 
+        'Sai Sudharsan', 'Shahrukh Khan', 'Shubman Gill', 'Washington Sundar'
+    ],
+    'Kolkata Knight Riders': [
+        'Ajinkya Rahane', 'Angkrish Raghuvanshi', 'Anukul Roy', 'Harshit Rana', 
+        'Manish Pandey', 'Ramandeep Singh', 'Rinku Singh', 'Rovman Powell', 
+        'Sunil Narine', 'Umran Malik', 'Vaibhav Arora', 'Varun Chakaravarthy'
+    ],
+    'Lucknow Super Giants': [
+        'Abdul Samad', 'Aiden Markram', 'Akash Singh', 'Arjun Tendulkar', 
+        'Arshin Kulkarni', 'Avesh Khan', 'Ayush Badoni', 'Digvesh Rathi', 
+        'Himmat Singh', 'Manimaran Siddharth', 'Matthew Breetzke', 'Mayank Yadav', 
+        'Md Shami', 'Mitchell Marsh', 'Mohsin Khan', 'Nicholas Pooran', 
+        'Prince Yadav', 'Rishabh Pant', 'Shahbaz Ahmed'
+    ],
+    'Mumbai Indians': [
+        'Allah Ghazanfar', 'Ashwani Kumar', 'Corbin Bosch', 'Deepak Chahar', 
+        'Hardik Pandya', 'Jasprit Bumrah', 'Mayank Markande', 'Mitchell Santner', 
+        'Naman Dhir', 'Raghu Sharma', 'Raj Angad Bawa', 'Robin Minz', 
+        'Rohit Sharma', 'Ryan Rickelton', 'Shardul Thakur', 'Sherfane Rutherford', 
+        'Suryakumar Yadav', 'Tilak Verma', 'Trent Boult', 'Will Jacks'
+    ],
+    'Punjab Kings': [
+        'Arshdeep Singh', 'Azmatullah Omarzai', 'Harnoor Pannu', 'Harpreet Brar', 
+        'Lockie Ferguson', 'Marco Jansen', 'Marcus Stoinis', 'Mitch Owen', 
+        'Musheer Khan', 'Nehal Wadhera', 'Prabhsimran Singh', 'Priyansh Arya', 
+        'Pyla Avinash', 'Shashank Singh', 'Shreyas lyer', 'Suryansh Shedge', 
+        'Vishnu Vinod', 'Vyshak Vijaykumar', 'Xavier Bartlett', 'Yash Thakur', 
+        'Yuzvendra Chahal'
+    ],
+    'Rajasthan Royals': [
+        'Dhruv Jurel', 'Donovan Ferreira', 'Jofra Archer', 'Kwena Maphaka', 
+        'Lhuan-Dre Pretorious', 'Nandre Burger', 'Ravindra Jadeja', 'Riyan Parag', 
+        'Sam Curran', 'Sandeep Sharma', 'Shimron Hetmyer', 'Shubham Dubey', 
+        'Tushar Deshpande', 'Vaibhav Suryavanshi', 'Yashaswi Jaiswal', 'Yudhvir Charak'
+    ],
+    'Royal Challengers Bengaluru': [
+        'Abhinandan Singh', 'Bhuvneshwar Kumar', 'Devdutt Padikkal', 'Jacob Bethell', 
+        'Jitesh Sharma', 'Josh Hazlewood', 'Krunal Pandya', 'Nuwan Thushara', 
+        'Phil Salt', 'Rajat Patidar', 'Rasikh Dar', 'Romario Shepherd', 
+        'Suyash Sharma', 'Swapnil Singh', 'Tim David', 'Virat Kohli', 'Yash Dayal'
+    ],
+    'Sunrisers Hyderabad': [
+        'Abhishek Sharma', 'Aniket Verma', 'Brydon Canse', 'Eshan Malinga', 
+        'Harsh Dubey', 'Harshal Patel', 'Heinrich Klaasen', 'Ishan Kishan', 
+        'Jaydev Unadkat', 'Kamindu Mendis', 'Nitish Kumar Reddy', 'Pat Cummins', 
+        'Smaran Ravichandaran', 'Travis Head', 'Zeeshan Ansari'
+    ]
+}
 team_names_sf = ["KKR","GT","MI","CSK","RR","RCB","PBKS","DC","SRH","LSG"]
 team_names_ff = ["Kolkata Knight Riders", "Gujarat Titans", "Mumbai Indians", "Chennai Super Kings", "Rajasthan Royals", "Royal Challengers Bengaluru", "Punjab Kings", "Delhi Capitals", "Sunrisers Hyderabad", "Lucknow Super Giants"]
 
