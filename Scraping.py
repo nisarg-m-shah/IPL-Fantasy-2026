@@ -437,9 +437,7 @@ class Series:
     # =====================================================
     # Internal scraper
     # =====================================================
-    def _scrape_match(self, match_id, match_name,match_type, is_final, attempts):
-
-        # ✅ HARD GUARD (MOST IMPORTANT FIX)
+    def _scrape_match(self, match_id, match_name, match_type, is_final, attempts):
         if (
             match_name in self.match_objects
             and self.match_states.get(match_id, {}).get("is_final", False)
@@ -454,14 +452,19 @@ class Series:
 
             self.match_objects[match_name] = score
             self.match_states[match_id] = {"is_final": is_final}
-            self._dirty = True   # ✅ mark DB dirty
+            self._dirty = True
 
-            print("Scraped:", match_name,"\n")
+            # ✅ Save immediately after each match so progress isn't lost
+            with open(self.database_name, "wb") as f:
+                dill.dump({
+                    "objects": self.match_objects,
+                    "states": self.match_states
+                }, f)
+
+            print("Scraped:", match_name, "\n")
             return
 
             attempt += 1
-
-        print(f"[FAILED] {match_name}")
 
     # =====================================================
     # Match schedule + ordering (UNCHANGED)
