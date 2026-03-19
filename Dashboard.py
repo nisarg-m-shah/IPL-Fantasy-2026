@@ -533,11 +533,11 @@ def is_match_time():
     
     # Single header: 7:30 PM - 12:30 AM next day
     single_start = dt_time(19, 30)  # 7:30 PM
-    single_end = dt_time(0, 55)     # 12:30 AM
+    single_end = dt_time(2, 55)     # 12:30 AM
     
     # Double header: 3:30 PM - 12:30 AM next day
     double_start = dt_time(15, 30)  # 3:30 PM
-    double_end = dt_time(0, 55)     # 12:30 AM
+    double_end = dt_time(2, 55)     # 12:30 AM
     
     # Check if today is a single header day
     if current_date in MATCH_SCHEDULE['single_header']:
@@ -551,7 +551,7 @@ def is_match_time():
     
     # Check if yesterday was a match day (for post-midnight times)
     yesterday = (now - pd.Timedelta(days=1)).strftime('%Y-%m-%d')
-    if current_time <= dt_time(0, 50):  # Before 12:30 AM
+    if current_time <= dt_time(2, 50):  # Before 12:30 AM
         if yesterday in MATCH_SCHEDULE['single_header']:
             return True, f"Single header match day continued ({yesterday})"
         if yesterday in MATCH_SCHEDULE['double_header']:
@@ -599,7 +599,6 @@ def should_update():
     
 
 def run_output_script():
-    """Run the output pipeline to scrape and organize data"""
     try:
         result = subprocess.run(
             ['python3', OUTPUT_SCRIPT],
@@ -609,14 +608,13 @@ def run_output_script():
         )
         if result.returncode == 0:
             save_update_time()
-            
-            # Check if we just scraped a final match, and mark it
             is_final, match_name = get_most_recent_match_state()
             if is_final and match_name:
                 mark_match_as_final_scraped(match_name)
-            
             return True, "Update successful"
-        return False, f"Update failed with return code {result.returncode}"
+        # ✅ Show the actual error
+        error_detail = result.stderr or result.stdout or "No output captured"
+        return False, f"Update failed (code {result.returncode}): {error_detail[-500:]}"
     except subprocess.TimeoutExpired:
         return False, "Update timeout (>5 minutes)"
     except Exception as e:
