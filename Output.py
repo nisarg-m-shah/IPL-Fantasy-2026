@@ -135,7 +135,7 @@ def run_output_pipeline():
             json.dump(data, file, indent=4, cls=NumpyEncoder)
         print("JSON file created successfully!")
 
-        with pd.ExcelWriter(file_path, engine="xlsxwriter") as writer:
+        with pd.ExcelWriter(file_path, engine="openpyxl") as writer:
             # Team Final Points sheet
             df_teams = pd.DataFrame(index=team_list, columns=["Total Points"])
             df_teams.to_excel(writer, sheet_name="Team Final Points")
@@ -386,7 +386,7 @@ def run_output_pipeline():
         print("JSON file created successfully!")
 
         # Save to Excel
-        with pd.ExcelWriter(file_path, engine="xlsxwriter") as writer:
+        with pd.ExcelWriter(file_path, engine="openpyxl") as writer:
             for sheet_name, data in spreadsheet.items():
                 if isinstance(data, dict):
                     df = pd.DataFrame.from_dict(data, orient='index')
