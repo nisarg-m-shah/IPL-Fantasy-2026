@@ -10,7 +10,6 @@ import re
 from datetime import datetime, time as dt_time
 import pytz
 import dill
-import sys
 from Output import run_output_pipeline
 from Auction import teams,boosters,names,roles,squads,team_names_ff,team_names_sf,competition_id,database,file_path,json_filename, MATCH_SCHEDULE,emerging_player
 
@@ -534,11 +533,11 @@ def is_match_time():
     
     # Single header: 7:30 PM - 12:30 AM next day
     single_start = dt_time(19, 30)  # 7:30 PM
-    single_end = dt_time(2, 55)     # 12:30 AM
+    single_end = dt_time(0, 55)     # 12:30 AM
     
     # Double header: 3:30 PM - 12:30 AM next day
     double_start = dt_time(15, 30)  # 3:30 PM
-    double_end = dt_time(2, 55)     # 12:30 AM
+    double_end = dt_time(0, 55)     # 12:30 AM
     
     # Check if today is a single header day
     if current_date in MATCH_SCHEDULE['single_header']:
@@ -552,7 +551,7 @@ def is_match_time():
     
     # Check if yesterday was a match day (for post-midnight times)
     yesterday = (now - pd.Timedelta(days=1)).strftime('%Y-%m-%d')
-    if current_time <= dt_time(2, 50):  # Before 12:30 AM
+    if current_time <= dt_time(0, 50):  # Before 12:30 AM
         if yesterday in MATCH_SCHEDULE['single_header']:
             return True, f"Single header match day continued ({yesterday})"
         if yesterday in MATCH_SCHEDULE['double_header']:
@@ -600,22 +599,24 @@ def should_update():
     
 
 def run_output_script():
+    """Run the output pipeline to scrape and organize data"""
     try:
         result = subprocess.run(
-            [sys.executable, OUTPUT_SCRIPT],
+            ['python3', OUTPUT_SCRIPT],
             capture_output=True,
             text=True,
             timeout=600
         )
         if result.returncode == 0:
             save_update_time()
+            
+            # Check if we just scraped a final match, and mark it
             is_final, match_name = get_most_recent_match_state()
             if is_final and match_name:
                 mark_match_as_final_scraped(match_name)
+            
             return True, "Update successful"
-        # ✅ Show the actual error
-        error_detail = result.stderr or result.stdout or "No output captured"
-        return False, f"Update failed (code {result.returncode}): {error_detail[-500:]}"
+        return False, f"Update failed with return code {result.returncode}"
     except subprocess.TimeoutExpired:
         return False, "Update timeout (>5 minutes)"
     except Exception as e:
@@ -749,8 +750,12 @@ def main():
     # Load data    
     data = load_data()
     if not data:
-        st.error("❌ Excel File Not Found. Please ensure data has been generated.")
-        return
+        # Excel not yet generated — build a zero-points skeleton from Auction.py
+        from Auction import team_list as _team_list
+        data = {
+            "Team Final Points": pd.DataFrame({"Total Points": {t: 0 for t in _team_list}}),
+            "Player Final Points": pd.DataFrame()
+        }
     
     # Create tabs
     tab1, tab2, tab3, tab4, tab5 = st.tabs(["🏆 RANKINGS", "🛡️ SQUADS", "🏏 MATCHES", "👤 PLAYERS", "📺 LIVE SCORE"])    
@@ -899,11 +904,11 @@ def show_rankings(data):
     
     # Wrap table in scrollable container for mobile
     html_table = '<div class="table-container">'
-    html_table += '<table style="width:100%; border-collapse: collapse; background-color: transparent; color: white; border: none; font-family: \'Roboto\', sans-serif; min-width: 700px;">'
+    html_table += '<table style="width:100%; border-collapse: collapse; background-color: transparent; color: white; border: none; font-family: \'Roboto\', sans-serif;">'
     html_table += '<thead><tr style="border-bottom: 2px solid #efb920;">'
-    html_table += '<th style="padding: 12px 8px; color: #efb920; font-family: \'Bebas Neue\', sans-serif; font-size: clamp(0.9rem, 2.5vw, 1.1rem); text-align: center;">RANK</th>'
+    html_table += '<th style="padding: 12px 4px; width: 10%; color: #efb920; font-family: \'Bebas Neue\', sans-serif; font-size: clamp(0.9rem, 2.5vw, 1.1rem); text-align: center;">RANK</th>'
     html_table += '<th style="padding: 12px 8px; color: #efb920; font-family: \'Bebas Neue\', sans-serif; font-size: clamp(0.9rem, 2.5vw, 1.1rem); text-align: center;">TEAM</th>'
-    html_table += '<th style="padding: 12px 8px; color: #efb920; font-family: \'Bebas Neue\', sans-serif; font-size: clamp(0.9rem, 2.5vw, 1.1rem); text-align: center;">TOTAL POINTS</th>'
+    html_table += '<th style="padding: 12px 4px; width: 20%; color: #efb920; font-family: \'Bebas Neue\', sans-serif; font-size: clamp(0.9rem, 2.5vw, 1.1rem); text-align: center;">PTS</th>'
     
     if has_franchise:
         html_table += '<th style="padding: 12px 8px; color: #efb920; font-family: \'Bebas Neue\', sans-serif; font-size: clamp(0.9rem, 2.5vw, 1.1rem); text-align: center;">FRANCHISE POINTS</th>'
@@ -965,6 +970,13 @@ def show_rankings(data):
         html_table += "</tr>"
 
     html_table += "</tbody></table></div>"
+    # Add vertical separators between all columns
+    import re as _re
+    html_table = _re.sub(
+        r'(<t[hd][^>]*style="[^"]*)(padding: \d+px \d+px;)',
+        lambda m: m.group(0) + ' border-right: 1px solid rgba(255,255,255,0.1);',
+        html_table
+    )
     st.markdown(html_table, unsafe_allow_html=True)
     
     # ✅ Use the (possibly reconstructed) df for the rest of the function
