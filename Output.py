@@ -63,7 +63,7 @@ def run_output_pipeline():
         purple_cap = find_full_name(names, purple_cap)
 
         runs_data = fetch_jsonp(
-            "https://ipl-stats-sports-mechanic.s3.ap-south-1.amazonaws.com/ipl/feeds/stats/203-toprunsscorers.js",
+            "https://ipl-stats-sports-mechanic.s3.ap-south-1.amazonaws.com/ipl/feeds/stats/284-toprunsscorers.js",
             params={"callback": "ontoprunsscorers"}
         )
 
@@ -71,7 +71,7 @@ def run_output_pipeline():
         orange_cap = find_full_name(names, orange_cap)
 
         mvp_data = fetch_jsonp(
-            "https://ipl-stats-sports-mechanic.s3.ap-south-1.amazonaws.com/ipl/feeds/stats/2025-mvpPlayersList.js",
+            "https://ipl-stats-sports-mechanic.s3.ap-south-1.amazonaws.com/ipl/feeds/stats/2026-mvpPlayersList.js",
             params={"callback": "onMvp"}
         )
 
@@ -135,16 +135,27 @@ def run_output_pipeline():
             json.dump(data, file, indent=4, cls=NumpyEncoder)
         print("JSON file created successfully!")
 
-        df = pd.DataFrame(index=team_list, columns=["Total Points"])
         with pd.ExcelWriter(file_path, engine="xlsxwriter") as writer:
-            df.to_excel(writer, sheet_name="Team Final Points")
+            # Team Final Points sheet
+            df_teams = pd.DataFrame(index=team_list, columns=["Total Points"])
+            df_teams.to_excel(writer, sheet_name="Team Final Points")
+            
+            # Player Final Points sheet (empty but exists)
+            df_players = pd.DataFrame(columns=["Total Points"])
+            df_players.to_excel(writer, sheet_name="Player Final Points")
         print(f"Excel file '{file_path}' created successfully!")
 
     # Load match objects from the pickle file
-    with open(database, "rb") as f:
-        ipl_data = dill.load(f)
-        match_objects = ipl_data.get("objects", {})
-        match_states = ipl_data.get("states", {})
+    try:
+        with open(database, "rb") as f:
+            ipl_data = dill.load(f)
+            match_objects = ipl_data.get("objects", {})
+            match_states = ipl_data.get("states", {})
+    except (FileNotFoundError, EOFError):
+        # First run - no database exists yet
+        match_objects = {}
+        match_states = {}
+        print("No existing match data found - starting fresh")
 
     # Get list of match names (not URLs)
     match_names = list(match_objects.keys())
@@ -354,18 +365,19 @@ def run_output_pipeline():
                         spreadsheet['Player Final Points'][player][match_name]
 
         # Sort players by total points
-        first_player = next(iter(spreadsheet['Player Final Points'].values()))
-        column_order = list(first_player.keys())
+        if spreadsheet['Player Final Points']: 
+            first_player = next(iter(spreadsheet['Player Final Points'].values()))
+            column_order = list(first_player.keys())
 
-        sorted_players = OrderedDict(
-            sorted(spreadsheet['Player Final Points'].items(), key=lambda x: x[1]['Total Points'], reverse=True)
-        )
+            sorted_players = OrderedDict(
+                sorted(spreadsheet['Player Final Points'].items(), key=lambda x: x[1]['Total Points'], reverse=True)
+            )
 
-        for player in sorted_players:
-            sorted_players[player] = OrderedDict((key, sorted_players[player][key]) for key in column_order)
+            for player in sorted_players:
+                sorted_players[player] = OrderedDict((key, sorted_players[player][key]) for key in column_order)
 
-        spreadsheet['Player Final Points'] = sorted_players
-        print("Player Points Added")
+            spreadsheet['Player Final Points'] = sorted_players
+            print("Player Points Added")
 
         # Save to JSON
         spreadsheet_serializable = convert_values(spreadsheet)
