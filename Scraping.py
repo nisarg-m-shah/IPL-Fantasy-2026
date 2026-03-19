@@ -423,11 +423,13 @@ class Series:
 
         # ---------------- SAVE ONLY IF NEEDED ----------------
         if self._dirty:   # ✅ NEW
-            with open(self.database_name, "wb") as f:
+            tmp_path = self.database_name + ".tmp"
+            with open(tmp_path, "wb") as f:
                 dill.dump({
                     "objects": self.match_objects,
                     "states": self.match_states
                 }, f)
+            os.replace(tmp_path, self.database_name)
 
         print("\nLOADING SUCCESSFUL")
         print("Matches stored:", len(self.match_objects))
