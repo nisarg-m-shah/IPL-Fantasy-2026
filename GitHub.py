@@ -67,33 +67,9 @@ def pull_file_from_github(repo_path, local_path):
         print(f"Error pulling {repo_path} from GitHub: {e}")
         return False
 
-def sync_files_from_github(database, file_path, json_filename):
-    """Pull all data files from GitHub to /tmp on startup"""
-    if not os.path.exists('/mount/src'):
-        return  # Only needed on Streamlit Cloud
-    
-    # Repo paths (filenames in root of repo)
-    db_repo_path = os.path.basename(database)
-    excel_repo_path = os.path.basename(file_path)
-    json_repo_path = os.path.basename(json_filename)
-    
-    # Only pull if not already in /tmp (i.e. fresh start)
-    if not os.path.exists(database):
-        pull_file_from_github(db_repo_path, database)
-    if not os.path.exists(file_path):
-        pull_file_from_github(excel_repo_path, file_path)
-    if not os.path.exists(json_filename):
-        pull_file_from_github(json_repo_path, json_filename)
-
 def push_all_files(database, file_path, json_filename):
     if not os.path.exists('/mount/src'):
-        print("Not on Streamlit Cloud, skipping push")
         return
-    
-    print(f"GITHUB_TOKEN set: {bool(GITHUB_TOKEN)}")
-    print(f"GITHUB_REPO: {GITHUB_REPO}")
-    print(f"database exists: {os.path.exists(database)}")
-    print(f"excel exists: {os.path.exists(file_path)}")
     
     db_repo_path = os.path.basename(database)
     excel_repo_path = os.path.basename(file_path)
@@ -105,3 +81,37 @@ def push_all_files(database, file_path, json_filename):
         push_file_to_github(file_path, excel_repo_path)
     if os.path.exists(json_filename):
         push_file_to_github(json_filename, json_repo_path)
+    
+    # Push trackers
+    for tracker in ["/tmp/.final_scrape_tracker", "/tmp/.last_update_timestamp"]:
+        if os.path.exists(tracker):
+            push_file_to_github(tracker, os.path.basename(tracker))
+    
+    # Push caps
+    if os.path.exists("/tmp/caps.pkl"):
+        push_file_to_github("/tmp/caps.pkl", "caps.pkl")
+
+def sync_files_from_github(database, file_path, json_filename):
+    if not os.path.exists('/mount/src'):
+        return
+    
+    db_repo_path = os.path.basename(database)
+    excel_repo_path = os.path.basename(file_path)
+    json_repo_path = os.path.basename(json_filename)
+    
+    if not os.path.exists(database):
+        pull_file_from_github(db_repo_path, database)
+    if not os.path.exists(file_path):
+        pull_file_from_github(excel_repo_path, file_path)
+    if not os.path.exists(json_filename):
+        pull_file_from_github(json_repo_path, json_filename)
+    
+    # Pull trackers
+    for tracker in [".final_scrape_tracker", ".last_update_timestamp"]:
+        local_path = f"/tmp/{tracker}"
+        if not os.path.exists(local_path):
+            pull_file_from_github(tracker, local_path)
+    
+    # Pull caps
+    if not os.path.exists("/tmp/caps.pkl"):
+        pull_file_from_github("caps.pkl", "/tmp/caps.pkl")

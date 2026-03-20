@@ -78,7 +78,8 @@ def run_output_pipeline():
         mvp = find_full_name(names, mvp)
 
         # Save caps along with the match name
-        with open("caps.pkl", "wb") as f:
+        caps_path = "/tmp/caps.pkl" if os.path.exists('/mount/src') else "caps.pkl"
+        with open(caps_path, "wb") as f:
             dill.dump({
                 "match": current_match_name,
                 "orange": orange_cap,
@@ -102,10 +103,10 @@ def run_output_pipeline():
         if os.path.exists("/tmp/.fully_caught_up"):
             os.remove("/tmp/.fully_caught_up")
 
-    caps_file = "caps.pkl"
     orange_cap, purple_cap, mvp = "", "", ""
     caps_match_name = None
 
+    caps_file = "/tmp/caps.pkl" if os.path.exists('/mount/src') else "caps.pkl"
     if os.path.exists(caps_file):
         try:
             with open(caps_file, "rb") as f:
