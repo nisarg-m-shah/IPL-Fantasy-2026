@@ -614,7 +614,6 @@ def run_output_script():
         save_update_time()
         push_all_files(database, file_path, json_filename)
         
-        # Only mark as final scraped if Series found nothing new
         if os.path.exists("/tmp/.fully_caught_up"):
             is_final, match_name = get_most_recent_match_state()
             if is_final and match_name:

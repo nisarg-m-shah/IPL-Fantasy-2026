@@ -102,7 +102,7 @@ def run_output_pipeline():
     else:
         if os.path.exists("/tmp/.more_matches_pending"):
             os.remove("/tmp/.more_matches_pending")
-            
+
     if not ipl._dirty:
         # Nothing new was scraped - we are fully caught up
         with open("/tmp/.fully_caught_up", "w") as f:
@@ -235,7 +235,7 @@ def run_output_pipeline():
                         break
                 if count == 0:
                     print(f"Match {match_name} already processed and unchanged, skipping...")
-                    break
+                    continue
 
         spreadsheet[(match_name + " - Points Breakdown")] = General_points_list
         spreadsheet[(match_name + " - CFC Points")] = team_breakdown
