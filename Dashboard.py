@@ -604,15 +604,17 @@ def run_output_script():
     try:
         run_output_pipeline()
         save_update_time()
-        # Push files to GitHub so progress persists across redeploys
         push_all_files(database, file_path, json_filename)
-        is_final, match_name = get_most_recent_match_state()
-        if is_final and match_name:
-            mark_match_as_final_scraped(match_name)
+        
+        # Only mark as final scraped if Series found nothing new
+        if os.path.exists("/tmp/.fully_caught_up"):
+            is_final, match_name = get_most_recent_match_state()
+            if is_final and match_name:
+                mark_match_as_final_scraped(match_name)
+        
         return True, "Update successful"
     except Exception as e:
         import traceback
-        # Even on error, push whatever pkl progress we have
         push_all_files(database, file_path, json_filename)
         return False, f"Update error: {traceback.format_exc()[-500:]}"
 

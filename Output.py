@@ -94,6 +94,14 @@ def run_output_pipeline():
     # Load the Series object (this automatically scrapes new matches)
     ipl = Series(competition_id, database)
 
+    if not ipl._dirty:
+        # Nothing new was scraped - we are fully caught up
+        with open("/tmp/.fully_caught_up", "w") as f:
+            f.write("1")
+    else:
+        if os.path.exists("/tmp/.fully_caught_up"):
+            os.remove("/tmp/.fully_caught_up")
+
     caps_file = "caps.pkl"
     orange_cap, purple_cap, mvp = "", "", ""
     caps_match_name = None
