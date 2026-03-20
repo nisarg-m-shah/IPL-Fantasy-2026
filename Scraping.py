@@ -382,6 +382,7 @@ class Series:
 
         # ---------------- MAIN LOOP ----------------
         _start_time = _time.time()
+        self._hit_time_limit = False  # ← add this line
         for match_id, match_type, match_name, status in combined_sorted:
             # Stop after 50 seconds - progress is saved to GitHub per match
             if _time.time() - _start_time > 50:
