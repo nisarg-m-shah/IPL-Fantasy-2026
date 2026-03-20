@@ -599,16 +599,37 @@ def should_update():
         return False, f"Match Ongoing | Updated Recently", int(remaining_time)
     
 
-def run_output_script():
-    """Run the output pipeline to scrape and organize data"""
+_pipeline_running = False
+_pipeline_lock = threading.Lock()
+
+def _background_pipeline():
+    global _pipeline_running
     try:
         run_output_pipeline()
         save_update_time()
         is_final, match_name = get_most_recent_match_state()
         if is_final and match_name:
             mark_match_as_final_scraped(match_name)
-        return True, "Update successful"
     except Exception as e:
+        import traceback
+        print(f"Background pipeline error: {traceback.format_exc()}")
+    finally:
+        _pipeline_running = False
+        release_lock()
+
+def run_output_script():
+    global _pipeline_running
+    with _pipeline_lock:
+        if _pipeline_running:
+            return False, "Pipeline already running in background"
+        _pipeline_running = True
+    
+    try:
+        t = threading.Thread(target=_background_pipeline, daemon=True)
+        t.start()
+        return True, "Update started in background"
+    except Exception as e:
+        _pipeline_running = False
         import traceback
         return False, f"Update error: {traceback.format_exc()[-500:]}"
 
@@ -718,37 +739,28 @@ def main():
         """, unsafe_allow_html=True)
     
     if should_run_update:
-        # Try to acquire lock
         lock_acquired, lock_message = acquire_lock()
         
         if lock_acquired:
-            try:
-                with st.spinner("🔄 Fetching latest scores from live matches..."):
-                    success, message = run_output_script()
-                    if success:
-                        st.success(f"✅ {message}")
-                        st.cache_resource.clear()
-                        time.sleep(1)  # Brief pause before rerun
-                        st.rerun()
-                    else:
-                        st.warning(f"⚠️ {message} - Displaying cached data")
-            finally:
-                # Always release lock, even if update failed
-                release_lock()
+            success, message = run_output_script()
+            if success:
+                st.info("🔄 Scraping in progress — refresh in a minute to see latest data")
+                st.cache_resource.clear()
+            else:
+                st.warning(f"⚠️ {message}")
+                release_lock()  # release lock if thread didn't start
         else:
-            # Another user is updating - show current data without refresh
             st.info(f"⏳ {lock_message}")
             st.info("💡 Displaying data from last update. Manually refresh in ~1 minute to see latest scores.")
-            # NO st.rerun() - user continues with current data
-    
-    # Load data    
-    data = load_data()
-    if not data:
-        # Excel not yet generated — build a zero-points skeleton from Auction.py
-        from Auction import team_list as _team_list
-        data = {
-            "Team Final Points": pd.DataFrame({"Total Points": {t: 0 for t in _team_list}}),
-            "Player Final Points": pd.DataFrame()
+        
+        # Load data    
+        data = load_data()
+        if not data:
+            # Excel not yet generated — build a zero-points skeleton from Auction.py
+            from Auction import team_list as _team_list
+            data = {
+                "Team Final Points": pd.DataFrame({"Total Points": {t: 0 for t in _team_list}}),
+                "Player Final Points": pd.DataFrame()
         }
     
     # Create tabs
