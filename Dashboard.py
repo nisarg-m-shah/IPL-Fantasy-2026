@@ -404,11 +404,18 @@ st.markdown("""
 """, unsafe_allow_html=True)
 
 # --- DATA LOADING ---
-TIMESTAMP_FILE = "/tmp/.last_update_timestamp"
+import os
+if os.path.exists('/mount/src'):
+    TIMESTAMP_FILE = "/tmp/.last_update_timestamp"
+    LOCK_FILE = "/tmp/.update_lock"
+    FINAL_SCRAPE_TRACKER = "/tmp/.final_scrape_tracker"
+else:
+    TIMESTAMP_FILE = ".last_update_timestamp"
+    LOCK_FILE = ".update_lock"
+    FINAL_SCRAPE_TRACKER = ".final_scrape_tracker"
 EXCEL_FILE = file_path
 OUTPUT_SCRIPT = "Run.py"
 UPDATE_INTERVAL = 600  # 10 minutes in seconds
-LOCK_FILE = "/tmp/.update_lock"  # Lock file to prevent concurrent updates
 LOCK_TIMEOUT = 600  # 10 minutes - max time for update to complete
 
 def acquire_lock():
@@ -460,7 +467,6 @@ def save_update_time():
         f.write(str(time.time()))
 
 PKL_FILE = database  # The pickle file with match states
-FINAL_SCRAPE_TRACKER = "/tmp/.final_scrape_tracker"  # Tracks which matches have been scraped after being marked final
 
 def get_final_scraped_matches():
     """Get set of match names that have been scraped after being final"""
