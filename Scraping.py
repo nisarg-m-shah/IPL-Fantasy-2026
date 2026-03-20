@@ -5,6 +5,7 @@ import pandas as pd
 from typing import Dict, List, Any
 import difflib
 from datetime import datetime
+import os
 def load_dill():
     import dill
     return dill
@@ -382,7 +383,7 @@ class Series:
 # ---------------- MAIN LOOP ----------------
         import time as _time
         _start_time = _time.time()
-        for match_id, match_type, match_name, status in reversed(combined_sorted):
+        for match_id, match_type, match_name, status in combined_sorted:
             if _time.time() - _start_time > 50:
                 print("Time limit reached, saving progress")
                 break
@@ -396,7 +397,6 @@ class Series:
             # ---------- NOT STARTED ----------
             if status == 0:
                 print(match_id,match_name,"not started")
-                time.sleep(5)
                 continue
 
             # ---------- FINISHED ----------
