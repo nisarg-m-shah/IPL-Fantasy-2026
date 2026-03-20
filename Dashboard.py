@@ -505,11 +505,11 @@ def get_most_recent_match_state():
         if not match_names:
             return None, None
         
-        most_recent_match = match_names[0]  # Last match in the list
+        most_recent_match = match_names[-1]  # Last match in the list
         
         # Use the last match_id in match_states since they're added in order
         if match_states:
-            last_match_id = list(match_states.keys())[0]
+            last_match_id = list(match_states.keys())[-1]
             is_final = match_states[last_match_id].get("is_final", False)
             return is_final, most_recent_match
         
