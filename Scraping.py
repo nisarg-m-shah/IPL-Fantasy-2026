@@ -379,7 +379,13 @@ class Series:
         attempt_limit = 3
 
         # ---------------- MAIN LOOP ----------------
-        for match_id, match_type, match_name, status in reversed(combined_sorted): #UNRESOLVED
+# ---------------- MAIN LOOP ----------------
+        import time as _time
+        _start_time = _time.time()
+        for match_id, match_type, match_name, status in reversed(combined_sorted):
+            if _time.time() - _start_time > 50:
+                print("Time limit reached, saving progress")
+                break
             print("Processing",match_id,match_type,match_name,status,)
 
             if match_name not in self.match_names:
@@ -397,7 +403,7 @@ class Series:
             if status == 2:
                 if self.match_states.get(match_id, {}).get("is_final", False):
                     print(match_name, "already scraped, skipping")
-                    continue   # skip already scraped, keep going through all matches
+                    continue
 
                 print(f"Scraping finished match: {match_name}")
                 self._scrape_match(
@@ -455,14 +461,14 @@ class Series:
             self.match_states[match_id] = {"is_final": is_final}
             self._dirty = True
 
-            # ✅ Save immediately after each match so progress isn't lost
+            # Save immediately after each match
             with open(self.database_name, "wb") as f:
                 dill.dump({
                     "objects": self.match_objects,
                     "states": self.match_states
                 }, f)
 
-            print("Scraped:", match_name, "\n")
+            print("Scraped:", match_name,"\n")
             return
 
             attempt += 1

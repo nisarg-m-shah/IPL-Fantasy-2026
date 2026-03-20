@@ -597,39 +597,17 @@ def should_update():
     else:
         remaining_time = UPDATE_INTERVAL - time_since_update
         return False, f"Match Ongoing | Updated Recently", int(remaining_time)
-    
 
-_pipeline_running = False
-_pipeline_lock = threading.Lock()
-
-def _background_pipeline():
-    global _pipeline_running
+def run_output_script():
+    """Run the output pipeline to scrape and organize data"""
     try:
         run_output_pipeline()
         save_update_time()
         is_final, match_name = get_most_recent_match_state()
         if is_final and match_name:
             mark_match_as_final_scraped(match_name)
+        return True, "Update successful"
     except Exception as e:
-        import traceback
-        print(f"Background pipeline error: {traceback.format_exc()}")
-    finally:
-        _pipeline_running = False
-        release_lock()
-
-def run_output_script():
-    global _pipeline_running
-    with _pipeline_lock:
-        if _pipeline_running:
-            return False, "Pipeline already running in background"
-        _pipeline_running = True
-    
-    try:
-        t = threading.Thread(target=_background_pipeline, daemon=True)
-        t.start()
-        return True, "Update started in background"
-    except Exception as e:
-        _pipeline_running = False
         import traceback
         return False, f"Update error: {traceback.format_exc()[-500:]}"
 
@@ -740,15 +718,19 @@ def main():
     
     if should_run_update:
         lock_acquired, lock_message = acquire_lock()
-        
         if lock_acquired:
-            success, message = run_output_script()
-            if success:
-                st.info("🔄 Scraping in progress — refresh in a minute to see latest data")
-                st.cache_resource.clear()
-            else:
-                st.warning(f"⚠️ {message}")
-                release_lock()  # release lock if thread didn't start
+            try:
+                with st.spinner("🔄 Fetching latest match data..."):
+                    success, message = run_output_script()
+                    if success:
+                        st.success(f"✅ {message}")
+                        st.cache_resource.clear()
+                        time.sleep(1)
+                        st.rerun()
+                    else:
+                        st.warning(f"⚠️ {message} - Displaying cached data")
+            finally:
+                release_lock()
         else:
             st.info(f"⏳ {lock_message}")
             st.info("💡 Displaying data from last update. Manually refresh in ~1 minute to see latest scores.")
