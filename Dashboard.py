@@ -11,6 +11,8 @@ from datetime import datetime, time as dt_time
 import pytz
 import dill
 import sys
+from GitHub import sync_files_from_github, push_all_files
+from Auction import database, file_path, json_filename
 from Output import run_output_pipeline
 from Auction import teams,boosters,names,roles,squads,team_names_ff,team_names_sf,competition_id,database,file_path,json_filename, MATCH_SCHEDULE,emerging_player
 
@@ -599,16 +601,19 @@ def should_update():
         return False, f"Match Ongoing | Updated Recently", int(remaining_time)
 
 def run_output_script():
-    """Run the output pipeline to scrape and organize data"""
     try:
         run_output_pipeline()
         save_update_time()
+        # Push files to GitHub so progress persists across redeploys
+        push_all_files(database, file_path, json_filename)
         is_final, match_name = get_most_recent_match_state()
         if is_final and match_name:
             mark_match_as_final_scraped(match_name)
         return True, "Update successful"
     except Exception as e:
         import traceback
+        # Even on error, push whatever pkl progress we have
+        push_all_files(database, file_path, json_filename)
         return False, f"Update error: {traceback.format_exc()[-500:]}"
 
 @st.cache_resource(ttl=300)
@@ -641,6 +646,8 @@ def load_data():
 
 # --- SQUAD CONFIGURATION ---
 SQUAD_INFO = teams
+# Pull data files from GitHub on startup (Streamlit Cloud only)
+sync_files_from_github(database, file_path, json_filename)
 def main():
     # Header - Mobile-optimized with proper centering
     st.markdown('''

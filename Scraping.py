@@ -462,13 +462,26 @@ class Series:
             self._dirty = True
 
             # Save immediately after each match
+            
+            # After the dill.dump in _scrape_match:
             with open(self.database_name, "wb") as f:
                 dill.dump({
                     "objects": self.match_objects,
                     "states": self.match_states
                 }, f)
 
-            print("Scraped:", match_name,"\n")
+            # Push to GitHub so progress survives restarts
+            try:
+                from GitHub import push_file_to_github
+                import os
+                push_file_to_github(
+                    self.database_name,
+                    os.path.basename(self.database_name)
+                )
+            except Exception:
+                pass  # Don't crash scraping if GitHub push fails
+
+            print("Scraped:", match_name, "\n")
             return
 
             attempt += 1
