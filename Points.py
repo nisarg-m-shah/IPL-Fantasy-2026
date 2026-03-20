@@ -267,8 +267,8 @@ class Team:
                 self.points_list[player] = player_points
                 self.total_points += player_points
         
-        if isinstance(self.total_points, (int, float)):
-            self.total_points = int(self.total_points)
+        # if isinstance(self.total_points, (int, float)):
+        #     self.total_points = int(self.total_points)
         
         points_entry = {'Total Points': self.total_points}
         self.points_list = {**points_entry, **self.points_list}

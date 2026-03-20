@@ -1820,7 +1820,7 @@ def show_live_score():
 
     match_name = st.selectbox(
         "Select Match",
-        list(match_objects.keys()),
+        reversed(list(match_objects.keys())),
         key="live_match_selector"
     )
 
