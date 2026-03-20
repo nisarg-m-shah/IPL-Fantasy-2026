@@ -752,15 +752,15 @@ def main():
         else:
             st.info(f"⏳ {lock_message}")
             st.info("💡 Displaying data from last update. Manually refresh in ~1 minute to see latest scores.")
-        
-        # Load data    
-        data = load_data()
-        if not data:
-            # Excel not yet generated — build a zero-points skeleton from Auction.py
-            from Auction import team_list as _team_list
-            data = {
-                "Team Final Points": pd.DataFrame({"Total Points": {t: 0 for t in _team_list}}),
-                "Player Final Points": pd.DataFrame()
+    
+    # Load data    
+    data = load_data()
+    if not data:
+        # Excel not yet generated — build a zero-points skeleton from Auction.py
+        from Auction import team_list as _team_list
+        data = {
+            "Team Final Points": pd.DataFrame({"Total Points": {t: 0 for t in _team_list}}),
+            "Player Final Points": pd.DataFrame()
         }
     
     # Create tabs
