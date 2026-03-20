@@ -381,12 +381,7 @@ class Series:
 
         # ---------------- MAIN LOOP ----------------
 # ---------------- MAIN LOOP ----------------
-        import time as _time
-        _start_time = _time.time()
         for match_id, match_type, match_name, status in combined_sorted:
-            if _time.time() - _start_time > 50:
-                print("Time limit reached, saving progress")
-                break
             print("Processing",match_id,match_type,match_name,status,)
 
             if match_name not in self.match_names:
