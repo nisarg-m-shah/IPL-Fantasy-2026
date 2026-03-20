@@ -563,17 +563,13 @@ def is_match_time():
     return False, "No match scheduled"
 
 def should_update():
-    """
-    Determine if we should run the update pipeline
-    Returns: (bool, str, int) - (should_update, reason, remaining_seconds)
-    remaining_seconds is set only when waiting for next update interval, else -1
-    """
     is_match, match_reason = is_match_time()
     
     if not is_match:
-        return False, f"Outside match hours - {match_reason}", -1
+        # But still update if there are pending matches
+        if not os.path.exists("/tmp/.more_matches_pending"):
+            return False, f"Outside match hours - {match_reason}", -1
     
-    # Check if an update is already in progress
     if os.path.exists(LOCK_FILE):
         lock_age = time.time() - os.path.getmtime(LOCK_FILE)
         if lock_age < LOCK_TIMEOUT:
@@ -581,12 +577,18 @@ def should_update():
             secs = int(lock_age % 60)
             return False, f"Update in progress by another user ({mins}m {secs}s ago)", -1
     
-    # Check if most recent match is already finalized AND has been scraped post-final
     is_final, match_name = get_most_recent_match_state()
     if is_final and match_name:
         final_scraped = get_final_scraped_matches()
-        if match_name in final_scraped:
-            return False, f"Latest match ({match_name}) already finalized and scraped - No update needed", -1
+        if match_name in final_scraped and os.path.exists(EXCEL_FILE):
+            pkl_mtime = os.path.getmtime(PKL_FILE) if os.path.exists(PKL_FILE) else 0
+            excel_mtime = os.path.getmtime(EXCEL_FILE)
+            if excel_mtime >= pkl_mtime:
+                return False, f"Latest match ({match_name}) already finalized and scraped - No update needed", -1
+    
+    # If there are pending matches, update immediately regardless of interval
+    if os.path.exists("/tmp/.more_matches_pending"):
+        return True, f"More matches pending - continuing scrape", -1
     
     last_update = get_last_update_time()
     current_time = time.time()

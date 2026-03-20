@@ -95,6 +95,14 @@ def run_output_pipeline():
     # Load the Series object (this automatically scrapes new matches)
     ipl = Series(competition_id, database)
 
+    if ipl._hit_time_limit:
+        # More matches to scrape - signal immediate rerun
+        with open("/tmp/.more_matches_pending", "w") as f:
+            f.write("1")
+    else:
+        if os.path.exists("/tmp/.more_matches_pending"):
+            os.remove("/tmp/.more_matches_pending")
+            
     if not ipl._dirty:
         # Nothing new was scraped - we are fully caught up
         with open("/tmp/.fully_caught_up", "w") as f:
