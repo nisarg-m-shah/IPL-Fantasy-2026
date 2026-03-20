@@ -387,6 +387,7 @@ class Series:
             # Stop after 50 seconds - progress is saved to GitHub per match
             if _time.time() - _start_time > 50:
                 print("Time limit reached, saving progress")
+                self._hit_time_limit = True
                 break
             
             print("Processing",match_id,match_type,match_name,status,)
