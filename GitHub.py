@@ -86,9 +86,14 @@ def sync_files_from_github(database, file_path, json_filename):
         pull_file_from_github(json_repo_path, json_filename)
 
 def push_all_files(database, file_path, json_filename):
-    """Push all data files from /tmp back to GitHub"""
     if not os.path.exists('/mount/src'):
-        return  # Only needed on Streamlit Cloud
+        print("Not on Streamlit Cloud, skipping push")
+        return
+    
+    print(f"GITHUB_TOKEN set: {bool(GITHUB_TOKEN)}")
+    print(f"GITHUB_REPO: {GITHUB_REPO}")
+    print(f"database exists: {os.path.exists(database)}")
+    print(f"excel exists: {os.path.exists(file_path)}")
     
     db_repo_path = os.path.basename(database)
     excel_repo_path = os.path.basename(file_path)

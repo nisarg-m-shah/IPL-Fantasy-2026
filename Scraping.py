@@ -6,6 +6,7 @@ from typing import Dict, List, Any
 import difflib
 from datetime import datetime
 import os
+import time as _time
 def load_dill():
     import dill
     return dill
@@ -380,8 +381,13 @@ class Series:
         attempt_limit = 3
 
         # ---------------- MAIN LOOP ----------------
-# ---------------- MAIN LOOP ----------------
+        _start_time = _time.time()
         for match_id, match_type, match_name, status in combined_sorted:
+            # Stop after 50 seconds - progress is saved to GitHub per match
+            if _time.time() - _start_time > 50:
+                print("Time limit reached, saving progress")
+                break
+            
             print("Processing",match_id,match_type,match_name,status,)
 
             if match_name not in self.match_names:
