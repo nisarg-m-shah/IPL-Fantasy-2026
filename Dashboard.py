@@ -658,19 +658,78 @@ SQUAD_INFO = teams
 # Pull data files from GitHub on startup (Streamlit Cloud only)
 sync_files_from_github(database, file_path, json_filename)
 def main():
-    # Header - Mobile-optimized with proper centering
+# Header - Professional IPL Broadcast Style
     st.markdown('''
-        <div style="text-align: center; margin: 20px 0;">
-            <div style="font-size: clamp(2.5rem, 8vw, 3.5rem); color: white; font-family: 'Bebas Neue', cursive; line-height: 1.1; text-shadow: 0 0 20px rgba(255, 255, 255, 0.8);">
-                🏏 CFC FANTASY 🏏
-            </div>
-            <div style="font-size: clamp(2.5rem, 8vw, 3.5rem); color: white; font-family: 'Bebas Neue', cursive; line-height: 1.1; text-shadow: 0 0 20px rgba(255, 255, 255, 0.8); margin-top: 5px;">
-                LEAGUE 2026
-            </div>
+        <style>
+            @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Outfit:wght@300;700&display=swap');
+            
+            .broadcast-header {
+                background: linear-gradient(135deg, rgba(255,255,255,0.05) 0%, rgba(255,255,255,0) 100%);
+                backdrop-filter: blur(10px);
+                border-radius: 20px;
+                padding: 30px 10px;
+                border: 1px solid rgba(255,255,255,0.1);
+                margin: 20px 0;
+                position: relative;
+                overflow: hidden;
+                text-align: center;
+            }
+            
+            /* The IPL-style accent bar at the bottom */
+            .broadcast-header::after {
+                content: "";
+                position: absolute;
+                bottom: 0;
+                left: 25%;
+                width: 50%;
+                height: 4px;
+                background: linear-gradient(90deg, transparent, #ff0000, #1d419b, transparent);
+                box-shadow: 0 0 15px rgba(255,255,255,0.5);
+            }
+
+            .main-title {
+                font-family: 'Bebas Neue', cursive;
+                font-size: clamp(3rem, 10vw, 4.5rem);
+                letter-spacing: 4px;
+                background: linear-gradient(to bottom, #ffffff 40%, #cccccc 100%);
+                -webkit-background-clip: text;
+                -webkit-text-fill-color: transparent;
+                filter: drop-shadow(0 0 10px rgba(255,255,255,0.3));
+                line-height: 1;
+                margin: 0;
+            }
+
+            .year-badge {
+                display: inline-block;
+                background: #1d419b; /* Using your MI Royal Blue */
+                color: white;
+                font-family: 'Outfit', sans-serif;
+                font-weight: 700;
+                padding: 2px 15px;
+                border-radius: 5px;
+                font-size: 1.2rem;
+                vertical-align: middle;
+                margin-top: -20px;
+                box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+                border: 1px solid rgba(255,255,255,0.2);
+            }
+
+            .subtitle-v2 {
+                font-family: 'Outfit', sans-serif;
+                color: #aaaaaa;
+                text-transform: uppercase;
+                letter-spacing: 5px;
+                font-size: 0.9rem;
+                margin-top: 15px;
+            }
+        </style>
+
+        <div class="broadcast-header">
+            <div class="main-title">CFC FANTASY</div>
+            <div class="year-badge">LEAGUE 2026</div>
+            <div class="subtitle-v2">The Ultimate Cricket Experience</div>
         </div>
     ''', unsafe_allow_html=True)
-    st.markdown('<p class="subtitle">The Ultimate Cricket Fantasy Experience</p>', unsafe_allow_html=True)
-    
     # Check for updates with smart scheduling
     should_run_update, update_reason, remaining_seconds = should_update()
 
@@ -705,7 +764,7 @@ def main():
                     var remaining = Math.round((endTime - Date.now()) / 1000);
                     if (remaining <= 0) {{
                         if (el) el.textContent = '0m 00s';
-                        window.parent.location.href = window.parent.location.pathname + '?refresh=1';
+                        window.parent.location.reload();
                         return;
                     }}
                     var m = Math.floor(remaining / 60);

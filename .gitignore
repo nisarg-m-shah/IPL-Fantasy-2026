@@ -6,4 +6,4 @@ caps.pkl
 .last_update_timestamp
 .final_scrape_tracker
 .update_lock
-__pycache__/
+__pycache__/.last_update_timestamp
