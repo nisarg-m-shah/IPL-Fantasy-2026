@@ -737,11 +737,7 @@ def main():
         </style>
 
         <div class="broadcast-header">
-            <div style="display: flex; align-items: center; justify-content: center; gap: 12px; flex-wrap: nowrap;">
-                <span style="font-size: clamp(1.5rem, 4vw, 2.5rem);">🏏</span>
-                <div class="main-title"><span class="main-title-text">CFC FANTASY LEAGUE 2026</span></div>
-                <span style="font-size: clamp(1.5rem, 4vw, 2.5rem);">🏏</span>
-            </div>
+            <div class="main-title"><span class="main-title-text">CFC FANTASY LEAGUE 2026</span></div>
             <div class="year-badge">SEASON 2</div>
             <div class="subtitle-v2">The Ultimate Fantasy Cricket Experience</div>
         </div>
