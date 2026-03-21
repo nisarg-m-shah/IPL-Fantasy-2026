@@ -697,12 +697,16 @@ def main():
                 font-family: 'Bebas Neue', cursive;
                 font-size: clamp(3rem, 10vw, 4.5rem);
                 letter-spacing: 4px;
+                color: white;
+                filter: drop-shadow(0 0 10px rgba(255,255,255,0.3));
+                line-height: 1.1;
+                margin: 0 0 10px 0;
+            }
+
+            .main-title-text {
                 background: linear-gradient(to bottom, #ffffff 40%, #cccccc 100%);
                 -webkit-background-clip: text;
                 -webkit-text-fill-color: transparent;
-                filter: drop-shadow(0 0 10px rgba(255,255,255,0.3));
-                line-height: 1.1; /* Slightly increased line height */
-                margin: 0 0 10px 0; /* Added bottom margin to push the badge down */
             }
 
             .year-badge {
@@ -733,7 +737,7 @@ def main():
         </style>
 
         <div class="broadcast-header">
-            <div class="main-title">🏏 CFC FANTASY LEAGUE 2026 🏏</div>
+            <div class="main-title">🏏 <span class="main-title-text">CFC FANTASY LEAGUE 2026</span> 🏏</div>
             <div class="year-badge">SEASON 2</div>
             <div class="subtitle-v2">The Ultimate Fantasy Cricket Experience</div>
         </div>
