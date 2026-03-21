@@ -15,7 +15,14 @@ from GitHub import sync_files_from_github, push_all_files
 from Auction import database, file_path, json_filename
 from Output import run_output_pipeline
 from Auction import teams,boosters,names,roles,squads,team_names_ff,team_names_sf,competition_id,database,file_path,json_filename, MATCH_SCHEDULE,emerging_player
+import base64
 
+def get_base64_image(image_path):
+    with open(image_path, "rb") as img_file:
+        return base64.b64encode(img_file.read()).decode()
+
+# Assuming your logo is named 'cfc_logo.png' in the same folder
+logo_base64 = get_base64_image("cfc_logo.png")
 # --- MATCH SCHEDULE CONFIGURATION ---
 
 def hex_to_rgb(hex_color):
@@ -658,11 +665,6 @@ SQUAD_INFO = teams
 # Pull data files from GitHub on startup (Streamlit Cloud only)
 sync_files_from_github(database, file_path, json_filename)
 def main():
-# Header - Professional IPL Broadcast Style
-# Unified IPL Master Logo Header
-# Unified IPL Style Header - High Glow & Integrated Colors
-# Unified Horizontal IPL Style Header
-# Header - Professional IPL Broadcast Style
 # Header - Professional IPL Broadcast Style (Balanced Spacing)
     st.markdown('''
         <style>
@@ -731,12 +733,12 @@ def main():
         </style>
 
         <div class="broadcast-header">
-            <div class="main-title">CFC FANTASY</div>
-            <div class="year-badge">LEAGUE 2026</div>
+            <div class="main-title">CFC FANTASY LEAGUE 2026</div>
+            <div class="year-badge">SEASON 2</div>
             <div class="subtitle-v2">The Ultimate Fantasy Cricket Experience</div>
         </div>
     ''', unsafe_allow_html=True)
-    
+
     # Check for updates with smart scheduling
     should_run_update, update_reason, remaining_seconds = should_update()
 
