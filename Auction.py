@@ -883,16 +883,16 @@ team_names_ff = ["Kolkata Knight Riders", "Gujarat Titans", "Mumbai Indians", "C
 import os
 
 if os.path.exists('/mount/src'):
-    database = "/tmp/ipl25.pkl"
-    file_path = "/tmp/CFC Fantasy League 2026.xlsx"
-    json_filename = "/tmp/CFC Fantasy League 2026.json"
+    database = "/tmp/ipl26.pkl"
+    file_path = "/tmp/CFC Fantasy League Live 2026.xlsx"
+    json_filename = "/tmp/CFC Fantasy League Live 2026.json"
 else:
-    database = "ipl25.pkl"
-    file_path = "CFC Fantasy League 2026.xlsx"
-    json_filename = "CFC Fantasy League 2026.json"
+    database = "ipl26.pkl"
+    file_path = "CFC Fantasy League Live 2026.xlsx"
+    json_filename = "CFC Fantasy League Live 2026.json"
 
 #competition_id = 203  # IPL 2025 competition ID
-competition_id = 203  # IPL 2025 competition ID
+competition_id = 284  # IPL 2025 competition ID
 #database = "ipl25.pkl"
 # database = "/tmp/ipl25.pkl"
 # file_path = "/tmp/CFC Fantasy League 2026.xlsx"
@@ -918,5 +918,5 @@ MATCH_SCHEDULE = {
         '2026-04-05', 
         '2026-04-04']}
 
-emerging_player = "Sai Sudharsan"
-# emerging_player = ""
+# emerging_player = "Sai Sudharsan"
+emerging_player = ""

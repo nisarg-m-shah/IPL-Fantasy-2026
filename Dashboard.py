@@ -1213,18 +1213,17 @@ def show_squads(data):
         
         # High-End Dual-Tone Gradient Colors
         FRANCHISE_GRADIENTS = {
-            "GT":   {"p": "#001c3d", "s": "#00356b"},
-            "CSK":  {"p": "#f9cd05", "s": "#f29d00"},
-            "MI":   {"p": "#004ba0", "s": "#002d62"},
-            "RCB":  {"p": "#dc1a22", "s": "#8b0000"},
-            "KKR":  {"p": "#3a225d", "s": "#25163c"},
-            "RR":   {"p": "#ea1a85", "s": "#b01264"},
-            "DC":   {"p": "#0078bc", "s": "#004b76"},
-            "SRH":  {"p": "#f26522", "s": "#c24e18"},
-            "PBKS": {"p": "#d71920", "s": "#9e1116"},
-            "LSG":  {"p": "#0057e2", "s": "#00b9ff"}
-        }
-
+                    "GT":   {"p": "#001c3d", "s": "#00356b"},
+                    "CSK":  {"p": "#f9cd05", "s": "#f29d00"},
+                    "RCB":  {"p": "#db1921", "s": "#b3141a"},                
+                    "KKR":  {"p": "#3a225d", "s": "#25163c"},
+                    "RR":   {"p": "#ea1a85", "s": "#b01264"},
+                    "DC":   {"p": "#0057a8", "s": "#b30000"},   # Blue and a much "Redder" Red
+                    "SRH":  {"p": "#f26522", "s": "#c24e18"},
+                    "MI":   {"p": "#004ba0", "s": "#002d62"},   # Classic MI Dark Blue Tones
+                    "PBKS": {"p": "#dc1e2b", "s": "#f0e6e8"},   # Slightly Darker Red and Silver            
+                    "LSG":  {"p": "#0057e2", "s": "#00b9ff"}
+                }
         franchise_short = SQUAD_INFO[selected_team].get("franchise")
 
         if franchise_short:
