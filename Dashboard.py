@@ -663,6 +663,7 @@ def main():
 # Unified IPL Style Header - High Glow & Integrated Colors
 # Unified Horizontal IPL Style Header
 # Header - Professional IPL Broadcast Style
+# Header - Professional IPL Broadcast Style (Balanced Spacing)
     st.markdown('''
         <style>
             @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Outfit:wght@300;700&display=swap');
@@ -671,7 +672,7 @@ def main():
                 background: linear-gradient(135deg, rgba(255,255,255,0.05) 0%, rgba(255,255,255,0) 100%);
                 backdrop-filter: blur(10px);
                 border-radius: 20px;
-                padding: 30px 10px;
+                padding: 40px 10px; /* Increased padding for better vertical balance */
                 border: 1px solid rgba(255,255,255,0.1);
                 margin: 20px 0;
                 position: relative;
@@ -679,7 +680,6 @@ def main():
                 text-align: center;
             }
             
-            /* The IPL-style accent bar at the bottom */
             .broadcast-header::after {
                 content: "";
                 position: absolute;
@@ -687,7 +687,7 @@ def main():
                 left: 25%;
                 width: 50%;
                 height: 4px;
-                background: linear-gradient(90deg, transparent, #ff0000, #1d419b, transparent);
+                background: linear-gradient(90deg, transparent, #db1921, #1d419b, transparent);
                 box-shadow: 0 0 15px rgba(255,255,255,0.5);
             }
 
@@ -699,23 +699,25 @@ def main():
                 -webkit-background-clip: text;
                 -webkit-text-fill-color: transparent;
                 filter: drop-shadow(0 0 10px rgba(255,255,255,0.3));
-                line-height: 1;
-                margin: 0;
+                line-height: 1.1; /* Slightly increased line height */
+                margin: 0 0 10px 0; /* Added bottom margin to push the badge down */
             }
 
             .year-badge {
                 display: inline-block;
-                background: #1d419b; /* Using your MI Royal Blue */
+                background: #1d419b; 
                 color: white;
                 font-family: 'Outfit', sans-serif;
                 font-weight: 700;
-                padding: 2px 15px;
+                padding: 4px 20px; /* Slightly larger padding for the badge */
                 border-radius: 5px;
                 font-size: 1.2rem;
                 vertical-align: middle;
-                margin-top: -20px;
+                margin-top: 5px; /* Changed from negative to positive to create space */
                 box-shadow: 0 4px 15px rgba(0,0,0,0.3);
                 border: 1px solid rgba(255,255,255,0.2);
+                text-transform: uppercase;
+                letter-spacing: 2px;
             }
 
             .subtitle-v2 {
@@ -724,14 +726,14 @@ def main():
                 text-transform: uppercase;
                 letter-spacing: 5px;
                 font-size: 0.9rem;
-                margin-top: 15px;
+                margin-top: 20px;
             }
         </style>
 
         <div class="broadcast-header">
             <div class="main-title">CFC FANTASY</div>
             <div class="year-badge">LEAGUE 2026</div>
-            <div class="subtitle-v2">The Ultimate Cricket Experience</div>
+            <div class="subtitle-v2">The Ultimate Fantasy Cricket Experience</div>
         </div>
     ''', unsafe_allow_html=True)
     # Check for updates with smart scheduling
