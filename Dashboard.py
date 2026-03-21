@@ -661,14 +661,15 @@ def main():
 # Header - Professional IPL Broadcast Style
 # Unified IPL Master Logo Header
 # Unified IPL Style Header - High Glow & Integrated Colors
+# Unified Horizontal IPL Style Header
     st.markdown('''
         <style>
             @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
             
             .unified-neon-header {
                 text-align: center;
-                padding: 40px 10px;
-                background: radial-gradient(circle, rgba(29, 65, 155, 0.1) 0%, rgba(0,0,0,0) 70%);
+                padding: 50px 10px;
+                background: radial-gradient(circle, rgba(29, 65, 155, 0.15) 0%, rgba(0,0,0,0) 70%);
                 margin-bottom: 20px;
             }
 
@@ -679,38 +680,38 @@ def main():
 
             .main-brand-title {
                 font-family: 'Bebas Neue', cursive;
-                line-height: 0.85;
+                display: flex;
+                flex-direction: row; /* Force horizontal layout */
+                align-items: baseline;
+                justify-content: center;
+                gap: 15px; /* Space between the words */
                 margin: 0;
                 padding: 0;
-                display: flex;
-                flex-direction: column;
-                align-items: center;
             }
 
-            .top-row {
-                font-size: clamp(3.5rem, 12vw, 6rem);
+            .brand-part {
+                font-size: clamp(2.5rem, 8vw, 5rem);
                 color: white;
                 letter-spacing: 2px;
                 text-shadow: 0 0 20px rgba(255, 255, 255, 0.6),
                              0 0 40px rgba(29, 65, 155, 0.4); /* MI Blue Glow */
             }
 
-            .bottom-row {
-                font-size: clamp(2.5rem, 8vw, 4rem);
-                color: #db1921; /* Your RCB Red */
-                letter-spacing: 12px;
-                margin-top: -5px;
+            .league-part {
+                font-size: clamp(1.8rem, 6vw, 3.5rem);
+                color: #db1921; /* RCB Red from logo */
+                letter-spacing: 4px;
                 text-shadow: 0 0 15px rgba(219, 25, 33, 0.5),
                              0 0 30px rgba(219, 25, 33, 0.3); /* RCB Red Glow */
             }
 
-            .subtitle-v3 {
+            .subtitle-v4 {
                 font-family: 'Outfit', sans-serif;
                 color: rgba(255,255,255,0.6);
                 text-transform: uppercase;
                 letter-spacing: 6px;
                 font-size: 0.85rem;
-                margin-top: 20px;
+                margin-top: 15px;
                 border-top: 1px solid rgba(255,255,255,0.1);
                 display: inline-block;
                 padding-top: 10px;
@@ -720,10 +721,10 @@ def main():
         <div class="unified-neon-header">
             <div class="logo-container">
                 <div class="main-brand-title">
-                    <span class="top-row">CFC FANTASY</span>
-                    <span class="bottom-row">LEAGUE 2026</span>
+                    <span class="brand-part">CFC FANTASY</span>
+                    <span class="league-part">LEAGUE 2026</span>
                 </div>
-                <div class="subtitle-v3">The Ultimate Cricket Experience</div>
+                <div class="subtitle-v4">The Ultimate Cricket Experience</div>
             </div>
         </div>
     ''', unsafe_allow_html=True)
