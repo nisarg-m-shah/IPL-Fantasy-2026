@@ -659,75 +659,74 @@ SQUAD_INFO = teams
 sync_files_from_github(database, file_path, json_filename)
 def main():
 # Header - Professional IPL Broadcast Style
+# Unified IPL Master Logo Header
     st.markdown('''
         <style>
             @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Outfit:wght@300;700&display=swap');
             
-            .broadcast-header {
+            .unified-header {
                 background: linear-gradient(135deg, rgba(255,255,255,0.05) 0%, rgba(255,255,255,0) 100%);
-                backdrop-filter: blur(10px);
-                border-radius: 20px;
-                padding: 30px 10px;
+                backdrop-filter: blur(12px);
+                border-radius: 24px;
+                padding: 40px 20px;
                 border: 1px solid rgba(255,255,255,0.1);
                 margin: 20px 0;
-                position: relative;
-                overflow: hidden;
                 text-align: center;
-            }
-            
-            /* The IPL-style accent bar at the bottom */
-            .broadcast-header::after {
-                content: "";
-                position: absolute;
-                bottom: 0;
-                left: 25%;
-                width: 50%;
-                height: 4px;
-                background: linear-gradient(90deg, transparent, #ff0000, #1d419b, transparent);
-                box-shadow: 0 0 15px rgba(255,255,255,0.5);
+                position: relative;
             }
 
-            .main-title {
+            .logo-lockup {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+            }
+
+            .brand-text {
                 font-family: 'Bebas Neue', cursive;
-                font-size: clamp(3rem, 10vw, 4.5rem);
-                letter-spacing: 4px;
-                background: linear-gradient(to bottom, #ffffff 40%, #cccccc 100%);
-                -webkit-background-clip: text;
-                -webkit-text-fill-color: transparent;
-                filter: drop-shadow(0 0 10px rgba(255,255,255,0.3));
-                line-height: 1;
+                font-size: clamp(3.5rem, 12vw, 5.5rem);
+                letter-spacing: 2px;
+                line-height: 0.9;
+                color: #ffffff;
+                text-shadow: 0 0 30px rgba(255, 255, 255, 0.2);
                 margin: 0;
             }
 
-            .year-badge {
-                display: inline-block;
-                background: #1d419b; /* Using your MI Royal Blue */
-                color: white;
-                font-family: 'Outfit', sans-serif;
-                font-weight: 700;
-                padding: 2px 15px;
-                border-radius: 5px;
-                font-size: 1.2rem;
-                vertical-align: middle;
-                margin-top: -20px;
-                box-shadow: 0 4px 15px rgba(0,0,0,0.3);
-                border: 1px solid rgba(255,255,255,0.2);
+            .season-text {
+                font-family: 'Bebas Neue', cursive;
+                font-size: clamp(1.5rem, 5vw, 2.2rem);
+                letter-spacing: 8px;
+                color: #1d419b; /* Your MI Royal Blue */
+                background: rgba(255, 255, 255, 0.9);
+                padding: 0 15px;
+                margin-top: 10px;
+                border-radius: 4px;
             }
 
-            .subtitle-v2 {
+            .accent-line {
+                width: 100px;
+                height: 3px;
+                background: #db1921; /* Your RCB Red */
+                margin: 20px auto 10px;
+                border-radius: 2px;
+            }
+
+            .tagline {
                 font-family: 'Outfit', sans-serif;
-                color: #aaaaaa;
+                color: rgba(255,255,255,0.5);
                 text-transform: uppercase;
-                letter-spacing: 5px;
-                font-size: 0.9rem;
-                margin-top: 15px;
+                letter-spacing: 6px;
+                font-size: 0.8rem;
             }
         </style>
 
-        <div class="broadcast-header">
-            <div class="main-title">CFC FANTASY</div>
-            <div class="year-badge">LEAGUE 2026</div>
-            <div class="subtitle-v2">The Ultimate Cricket Experience</div>
+        <div class="unified-header">
+            <div class="logo-lockup">
+                <h1 class="brand-text">CFC FANTASY</h1>
+                <div class="season-text">LEAGUE 2026</div>
+            </div>
+            <div class="accent-line"></div>
+            <div class="tagline">The Ultimate Cricket Experience</div>
         </div>
     ''', unsafe_allow_html=True)
     # Check for updates with smart scheduling
