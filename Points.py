@@ -257,12 +257,13 @@ class Team:
                         player_points *= 3  
                         #print("trump card successful: player points =",player_points)   
 
-                if "Bat" in self.booster and (player_object.role == 'BAT' or player_object.role == "WK"):
-                    player_points *= 2
-                elif "Bowl" in self.booster and player_object.role == 'BOWL':
-                    player_points *= 2
-                elif "Double" in self.booster:            
-                    player_points *= 2
+                else:
+                    if "Bat" in self.booster and (player_object.role == 'BAT' or player_object.role == "WK"):
+                        player_points *= 2
+                    elif "Bowl" in self.booster and player_object.role == 'BOWL':
+                        player_points *= 2
+                    elif "Double" in self.booster:            
+                        player_points *= 2
 
                 self.points_list[player] = player_points
                 self.total_points += player_points
