@@ -673,14 +673,19 @@ def main():
     
     # Check for updates with smart scheduling
     should_run_update, update_reason, remaining_seconds = should_update()
+
+    # Show refresh button if countdown finished
+    query_params = st.query_params
+    if query_params.get("refresh") == "1":
+        if st.button("🔄 Refresh Now", type="primary"):
+            st.query_params.clear()
+            st.rerun()
     
     # Display update status
     status_color = "#00f2fe" if should_run_update else "#efb920"
 
     if remaining_seconds > 0:
         import streamlit.components.v1 as components
-        # Status bar rendered via st.markdown (full width, no iframe clipping)
-        # It reads the countdown value written into a shared DOM id by the script below
         st.markdown(f"""
             <div style="background: rgba(0,0,0,0.3); padding: 10px; border-radius: 8px;
                         margin-bottom: 4px; border-left: 4px solid {status_color};">
@@ -690,31 +695,17 @@ def main():
                        font-variant-numeric: tabular-nums;">
                     {remaining_seconds // 60}m {remaining_seconds % 60:02d}s
                 </span>
-                <button id="refresh-btn" onclick="window.location.reload()" style="
-                    display: none;
-                    margin-left: 10px;
-                    padding: 4px 12px;
-                    background: {status_color};
-                    color: #060b26;
-                    border: none;
-                    border-radius: 20px;
-                    font-weight: bold;
-                    font-size: 0.82rem;
-                    cursor: pointer;
-                ">🔄 Refresh Now</button>
             </div>
         """, unsafe_allow_html=True)
-        # Tiny hidden iframe just to run the JS — targets parent DOM via window.parent
         components.html(f"""
             <script>
                 var endTime = Date.now() + {remaining_seconds} * 1000;
                 function tick() {{
                     var el = window.parent.document.getElementById('cfc-countdown');
-                    var btn = window.parent.document.getElementById('refresh-btn');
                     var remaining = Math.round((endTime - Date.now()) / 1000);
                     if (remaining <= 0) {{
                         if (el) el.textContent = '0m 00s';
-                        if (btn) btn.style.display = 'inline-block';
+                        window.parent.location.href = window.parent.location.pathname + '?refresh=1';
                         return;
                     }}
                     var m = Math.floor(remaining / 60);
@@ -754,7 +745,6 @@ def main():
     # Load data    
     data = load_data()
     if not data:
-        # Excel not yet generated — build a zero-points skeleton from Auction.py
         from Auction import team_list as _team_list
         data = {
             "Team Final Points": pd.DataFrame({"Total Points": {t: 0 for t in _team_list}}),
@@ -777,7 +767,6 @@ def main():
 
     with tab5:
         show_live_score()
-
 
 def highlight_top_3(row):
     """Applies styling to the entire row, but unique border logic to the first cell."""
