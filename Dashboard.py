@@ -733,7 +733,7 @@ def main():
         </style>
 
         <div class="broadcast-header">
-            <div class="main-title">CFC FANTASY LEAGUE 2026</div>
+            <div class="main-title">🏏 CFC FANTASY LEAGUE 2026 🏏</div>
             <div class="year-badge">SEASON 2</div>
             <div class="subtitle-v2">The Ultimate Fantasy Cricket Experience</div>
         </div>
