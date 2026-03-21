@@ -736,6 +736,7 @@ def main():
             <div class="subtitle-v2">The Ultimate Fantasy Cricket Experience</div>
         </div>
     ''', unsafe_allow_html=True)
+    
     # Check for updates with smart scheduling
     should_run_update, update_reason, remaining_seconds = should_update()
 
