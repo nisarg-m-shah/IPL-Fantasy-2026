@@ -662,70 +662,76 @@ def main():
 # Unified IPL Master Logo Header
 # Unified IPL Style Header - High Glow & Integrated Colors
 # Unified Horizontal IPL Style Header
+# Header - Professional IPL Broadcast Style
     st.markdown('''
         <style>
-            @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
+            @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Outfit:wght@300;700&display=swap');
             
-            .unified-neon-header {
-                text-align: center;
-                padding: 50px 10px;
-                background: radial-gradient(circle, rgba(29, 65, 155, 0.15) 0%, rgba(0,0,0,0) 70%);
-                margin-bottom: 20px;
-            }
-
-            .logo-container {
-                display: inline-block;
+            .broadcast-header {
+                background: linear-gradient(135deg, rgba(255,255,255,0.05) 0%, rgba(255,255,255,0) 100%);
+                backdrop-filter: blur(10px);
+                border-radius: 20px;
+                padding: 30px 10px;
+                border: 1px solid rgba(255,255,255,0.1);
+                margin: 20px 0;
                 position: relative;
+                overflow: hidden;
+                text-align: center;
+            }
+            
+            /* The IPL-style accent bar at the bottom */
+            .broadcast-header::after {
+                content: "";
+                position: absolute;
+                bottom: 0;
+                left: 25%;
+                width: 50%;
+                height: 4px;
+                background: linear-gradient(90deg, transparent, #ff0000, #1d419b, transparent);
+                box-shadow: 0 0 15px rgba(255,255,255,0.5);
             }
 
-            .main-brand-title {
+            .main-title {
                 font-family: 'Bebas Neue', cursive;
-                display: flex;
-                flex-direction: row; /* Force horizontal layout */
-                align-items: baseline;
-                justify-content: center;
-                gap: 15px; /* Space between the words */
-                margin: 0;
-                padding: 0;
-            }
-
-            .brand-part {
-                font-size: clamp(2.5rem, 8vw, 5rem);
-                color: white;
-                letter-spacing: 2px;
-                text-shadow: 0 0 20px rgba(255, 255, 255, 0.6),
-                             0 0 40px rgba(29, 65, 155, 0.4); /* MI Blue Glow */
-            }
-
-            .league-part {
-                font-size: clamp(1.8rem, 6vw, 3.5rem);
-                color: #db1921; /* RCB Red from logo */
+                font-size: clamp(3rem, 10vw, 4.5rem);
                 letter-spacing: 4px;
-                text-shadow: 0 0 15px rgba(219, 25, 33, 0.5),
-                             0 0 30px rgba(219, 25, 33, 0.3); /* RCB Red Glow */
+                background: linear-gradient(to bottom, #ffffff 40%, #cccccc 100%);
+                -webkit-background-clip: text;
+                -webkit-text-fill-color: transparent;
+                filter: drop-shadow(0 0 10px rgba(255,255,255,0.3));
+                line-height: 1;
+                margin: 0;
             }
 
-            .subtitle-v4 {
-                font-family: 'Outfit', sans-serif;
-                color: rgba(255,255,255,0.6);
-                text-transform: uppercase;
-                letter-spacing: 6px;
-                font-size: 0.85rem;
-                margin-top: 15px;
-                border-top: 1px solid rgba(255,255,255,0.1);
+            .year-badge {
                 display: inline-block;
-                padding-top: 10px;
+                background: #1d419b; /* Using your MI Royal Blue */
+                color: white;
+                font-family: 'Outfit', sans-serif;
+                font-weight: 700;
+                padding: 2px 15px;
+                border-radius: 5px;
+                font-size: 1.2rem;
+                vertical-align: middle;
+                margin-top: -20px;
+                box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+                border: 1px solid rgba(255,255,255,0.2);
+            }
+
+            .subtitle-v2 {
+                font-family: 'Outfit', sans-serif;
+                color: #aaaaaa;
+                text-transform: uppercase;
+                letter-spacing: 5px;
+                font-size: 0.9rem;
+                margin-top: 15px;
             }
         </style>
 
-        <div class="unified-neon-header">
-            <div class="logo-container">
-                <div class="main-brand-title">
-                    <span class="brand-part">CFC FANTASY</span>
-                    <span class="league-part">LEAGUE 2026</span>
-                </div>
-                <div class="subtitle-v4">The Ultimate Cricket Experience</div>
-            </div>
+        <div class="broadcast-header">
+            <div class="main-title">CFC FANTASY</div>
+            <div class="year-badge">LEAGUE 2026</div>
+            <div class="subtitle-v2">The Ultimate Cricket Experience</div>
         </div>
     ''', unsafe_allow_html=True)
     # Check for updates with smart scheduling
