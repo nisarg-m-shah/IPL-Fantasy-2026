@@ -660,73 +660,71 @@ sync_files_from_github(database, file_path, json_filename)
 def main():
 # Header - Professional IPL Broadcast Style
 # Unified IPL Master Logo Header
+# Unified IPL Style Header - High Glow & Integrated Colors
     st.markdown('''
         <style>
-            @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Outfit:wght@300;700&display=swap');
+            @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
             
-            .unified-header {
-                background: linear-gradient(135deg, rgba(255,255,255,0.05) 0%, rgba(255,255,255,0) 100%);
-                backdrop-filter: blur(12px);
-                border-radius: 24px;
-                padding: 40px 20px;
-                border: 1px solid rgba(255,255,255,0.1);
-                margin: 20px 0;
+            .unified-neon-header {
                 text-align: center;
+                padding: 40px 10px;
+                background: radial-gradient(circle, rgba(29, 65, 155, 0.1) 0%, rgba(0,0,0,0) 70%);
+                margin-bottom: 20px;
+            }
+
+            .logo-container {
+                display: inline-block;
                 position: relative;
             }
 
-            .logo-lockup {
+            .main-brand-title {
+                font-family: 'Bebas Neue', cursive;
+                line-height: 0.85;
+                margin: 0;
+                padding: 0;
                 display: flex;
                 flex-direction: column;
                 align-items: center;
-                justify-content: center;
             }
 
-            .brand-text {
-                font-family: 'Bebas Neue', cursive;
-                font-size: clamp(3.5rem, 12vw, 5.5rem);
+            .top-row {
+                font-size: clamp(3.5rem, 12vw, 6rem);
+                color: white;
                 letter-spacing: 2px;
-                line-height: 0.9;
-                color: #ffffff;
-                text-shadow: 0 0 30px rgba(255, 255, 255, 0.2);
-                margin: 0;
+                text-shadow: 0 0 20px rgba(255, 255, 255, 0.6),
+                             0 0 40px rgba(29, 65, 155, 0.4); /* MI Blue Glow */
             }
 
-            .season-text {
-                font-family: 'Bebas Neue', cursive;
-                font-size: clamp(1.5rem, 5vw, 2.2rem);
-                letter-spacing: 8px;
-                color: #1d419b; /* Your MI Royal Blue */
-                background: rgba(255, 255, 255, 0.9);
-                padding: 0 15px;
-                margin-top: 10px;
-                border-radius: 4px;
+            .bottom-row {
+                font-size: clamp(2.5rem, 8vw, 4rem);
+                color: #db1921; /* Your RCB Red */
+                letter-spacing: 12px;
+                margin-top: -5px;
+                text-shadow: 0 0 15px rgba(219, 25, 33, 0.5),
+                             0 0 30px rgba(219, 25, 33, 0.3); /* RCB Red Glow */
             }
 
-            .accent-line {
-                width: 100px;
-                height: 3px;
-                background: #db1921; /* Your RCB Red */
-                margin: 20px auto 10px;
-                border-radius: 2px;
-            }
-
-            .tagline {
+            .subtitle-v3 {
                 font-family: 'Outfit', sans-serif;
-                color: rgba(255,255,255,0.5);
+                color: rgba(255,255,255,0.6);
                 text-transform: uppercase;
                 letter-spacing: 6px;
-                font-size: 0.8rem;
+                font-size: 0.85rem;
+                margin-top: 20px;
+                border-top: 1px solid rgba(255,255,255,0.1);
+                display: inline-block;
+                padding-top: 10px;
             }
         </style>
 
-        <div class="unified-header">
-            <div class="logo-lockup">
-                <h1 class="brand-text">CFC FANTASY</h1>
-                <div class="season-text">LEAGUE 2026</div>
+        <div class="unified-neon-header">
+            <div class="logo-container">
+                <div class="main-brand-title">
+                    <span class="top-row">CFC FANTASY</span>
+                    <span class="bottom-row">LEAGUE 2026</span>
+                </div>
+                <div class="subtitle-v3">The Ultimate Cricket Experience</div>
             </div>
-            <div class="accent-line"></div>
-            <div class="tagline">The Ultimate Cricket Experience</div>
         </div>
     ''', unsafe_allow_html=True)
     # Check for updates with smart scheduling
