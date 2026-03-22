@@ -1104,7 +1104,7 @@ def show_rankings(data):
     match_cols = [col for col in team_final.columns if col not in exclude_cols]
 
     if not match_cols:
-        st.info("⏳ Points progression chart will appear once matches begin!")
+        st.info("⏳ Points progression chart will appear once matches begin. Stay tuned!")
     else:
         fig = go.Figure()
 

@@ -412,8 +412,8 @@ teams = {
             'Phil Salt'
         ],
         'captain': ['Shubman Gill'],
-        'vice captain': ['Noor Ahmad'],
-        'trump card': ['Phil Salt'],
+        'vice captain': ['Rajat Patidar'],
+        'trump card': [''],
         'replacement': {},
         'franchise': "SRH"
     },
@@ -446,9 +446,9 @@ teams = {
             'Krunal Pandya',
             'T Natarajan'
         ],
-        'captain': ['Sunil Narine'],
-        'vice captain': ['Shreyas Iyer'],
-        'trump card': ['Krunal Pandya'],
+        'captain': ['Shreyas Iyer'],
+        'vice captain': ['Sunil Narine'],
+        'trump card': [''],
         'replacement': {},
         'franchise': "RCB"
     },
@@ -482,8 +482,8 @@ teams = {
             'Nuwan Thushara'
         ],
         'captain': ['Virat Kohli'],
-        'vice captain': ['Heinrich Klaasen'],
-        'trump card': ['Priyansh Arya'],
+        'vice captain': ['Rashid Khan'],
+        'trump card': [''],
         'replacement': {},
         'franchise': "DC"
     },
@@ -517,9 +517,9 @@ teams = {
             'Aniket Verma',
             'Abdul Samad'
         ],
-        'captain': ['Prabhsimran Singh'],
+        'captain': ['Ishan Kishan'],
         'vice captain': ['Axar Patel'],
-        'trump card': ['Rohit Sharma'],
+        'trump card': [''],
         'replacement': {},
         'franchise': "PBKS"
     },
@@ -554,8 +554,8 @@ teams = {
             'Tim David'
         ],
         'captain': ['Sai Sudharsan'],
-        'vice captain': ['Arshdeep Singh'],
-        'trump card': ['Prasidh Krishna'],
+        'vice captain': ['Ravindra Jadeja'],
+        'trump card': [''],
         'replacement': {},
         'franchise': "GT"
     },
@@ -589,8 +589,8 @@ teams = {
             'Ramandeep Singh'
         ],
         'captain': ['Suryakumar Yadav'],
-        'vice captain': ['Jos Buttler'],
-        'trump card': ['Aiden Markram'],
+        'vice captain': ['Ruturaj Gaikwad'],
+        'trump card': [''],
         'replacement': {},
         'franchise': "CSK"
     },
@@ -621,9 +621,9 @@ teams = {
             'Prince Yadav',
             'Jasprit Bumrah'
         ],
-        'captain': ['Mitchell Marsh'],
-        'vice captain': ['Josh Hazlewood'],
-        'trump card': ['Jasprit Bumrah'],
+        'captain': ['Abhishek Sharma'],
+        'vice captain': ['Cameron Green'],
+        'trump card': [''],
         'replacement': {},
         'franchise': "KKR"
     },
@@ -653,7 +653,7 @@ teams = {
             'Danish Malewar',
             'Dewald Brevis'
         ],
-        'captain': ['Tilak Varma'],
+        'captain': ['Sanju Samson'],
         'vice captain': ['Yashasvi Jaiswal'],
         'trump card': ['Trent Boult'],
         'replacement': {},
@@ -883,16 +883,16 @@ team_names_ff = ["Kolkata Knight Riders", "Gujarat Titans", "Mumbai Indians", "C
 import os
 
 if os.path.exists('/mount/src'):
-    database = "/tmp/ipl25.pkl"
-    file_path = "/tmp/CFC Fantasy League 2026.xlsx"
-    json_filename = "/tmp/CFC Fantasy League 2026.json"
+    database = "/tmp/ipl26.pkl"
+    file_path = "/tmp/CFC Fantasy League Live 2026.xlsx"
+    json_filename = "/tmp/CFC Fantasy League Live 2026.json"
 else:
     database = "ipl25.pkl"
-    file_path = "CFC Fantasy League 2026.xlsx"
-    json_filename = "CFC Fantasy League 2026.json"
+    file_path = "CFC Fantasy League Live 2026.xlsx"
+    json_filename = "CFC Fantasy League Live 2026.json"
 
-competition_id = 203  # IPL 2025 competition ID
-# competition_id = 284  # IPL 2025 competition ID
+# competition_id = 203  # IPL 2025 competition ID
+competition_id = 284  # IPL 2025 competition ID
 
 MATCH_SCHEDULE = {
     'single_header': [
@@ -914,5 +914,5 @@ MATCH_SCHEDULE = {
         '2026-04-05', 
         '2026-04-04']}
 
-emerging_player = "Sai Sudharsan"
-# emerging_player = ""
+# emerging_player = "Sai Sudharsan"
+emerging_player = ""
