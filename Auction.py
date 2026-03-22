@@ -449,7 +449,7 @@ teams = {
         'captain': ['Shreyas Iyer'],
         'vice captain': ['Sunil Narine'],
         'trump card': [],
-        'replacement': {},
+        'replacement': {'Akash Deep':'Saurabh Dubey','Sam Curran':'Dasun Shanaka'},
         'franchise': "RCB"
     },
 
@@ -743,7 +743,10 @@ names = [
     'Auqib Nabi','Harshit Rana','Sarfaraz Khan','Nitish Reddy','Trent Boult',
     'Glenn Phillips','Mohammed Shami','Tilak Varma','Matheesha Pathirana',
     'Shashank Singh','Harpreet Brar','Rahul Chahar','Urvil Patel','Mohsin Khan',
-    'Mohammad Izhar','Danish Malewar'
+    'Mohammad Izhar','Danish Malewar',
+
+    #Replacements
+    'Dasun Shanaka','Saurabh Dubey','Blessing Muzarabani'
 ]
 
 roles = [
@@ -799,7 +802,9 @@ roles = [
     'BOWL','BOWL','BAT','AR','BOWL',
     'BAT','BOWL','BAT','BOWL',
     'BAT','AR','BOWL','BAT','BOWL',
-    'BOWL','BAT'
+    'BOWL','BAT',
+
+    'AR','BOWL','BOWL'
 ]
 
 team_list = [
@@ -835,7 +840,7 @@ squads = {
     'Kolkata Knight Riders': [
         'Ajinkya Rahane', 'Angkrish Raghuvanshi', 'Anukul Roy', 'Harshit Rana', 
         'Ramandeep Singh', 'Rinku Singh', 'Rovman Powell', 'Sunil Narine', 
-        'Umran Malik', 'Vaibhav Arora', 'Varun Chakaravarthy'
+        'Umran Malik', 'Vaibhav Arora', 'Varun Chakaravarthy','Blessing Muzarabani','Saurabh Dubey'
     ],
     'Lucknow Super Giants': [
         'Abdul Samad', 'Aiden Markram', 'Arjun Tendulkar', 'Arshin Kulkarni', 
@@ -862,7 +867,7 @@ squads = {
         'Dhruv Jurel', 'Donovan Ferreira', 'Jofra Archer', 'Nandre Burger', 
         'Ravindra Jadeja', 'Riyan Parag', 'Sam Curran', 'Sandeep Sharma', 
         'Shimron Hetmyer', 'Shubham Dubey', 'Tushar Deshpande', 
-        'Vaibhav Suryavanshi', 'Yashasvi Jaiswal', 'Yudhvir Singh Charak'
+        'Vaibhav Suryavanshi', 'Yashasvi Jaiswal', 'Yudhvir Singh Charak','Dasun Shanaka'
     ],
     'Royal Challengers Bengaluru': [
         'Bhuvneshwar Kumar', 'Devdutt Padikkal', 'Jacob Bethell', 'Jitesh Sharma', 
@@ -874,7 +879,7 @@ squads = {
         'Abhishek Sharma', 'Aniket Verma', 'Eshan Malinga', 'Harsh Dubey', 
         'Harshal Patel', 'Heinrich Klaasen', 'Ishan Kishan', 'Jaydev Unadkat', 
         'Kamindu Mendis', 'Nitish Reddy', 'Pat Cummins', 'Travis Head', 
-        'Zeeshan Ansari'
+        'Zeeshan Ansari','Jack Edwards'
     ]
 }
 team_names_sf = ["KKR","GT","MI","CSK","RR","RCB","PBKS","DC","SRH","LSG"]
