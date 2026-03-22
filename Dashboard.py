@@ -1461,20 +1461,38 @@ def show_squads(data):
 
         # --- PLAYER LIST LOGIC ---
         match_sheets = [sheet for sheet in data.keys() if ' - CFC Points' in sheet]
+        match_names_list = [sheet.replace(' - CFC Points', '') for sheet in match_sheets]
+
+        st.markdown('<div class="section-header">Squad Players</div>', unsafe_allow_html=True)
+
+        filter_options = ['Season Total'] + match_names_list[::-1]
+        selected_match_filter = st.selectbox(
+            "Filter by Match",
+            filter_options,
+            key="squad_match_filter"
+        )
+
         player_points = {}
-        for sheet in match_sheets:
-            if selected_team in data[sheet].index:
+        if selected_match_filter == '🏆 Season Total':
+            for sheet in match_sheets:
+                if selected_team in data[sheet].index:
+                    row = data[sheet].loc[selected_team]
+                    for player, pts in row.items():
+                        if player not in ["Total Points", "Booster"] and pd.notna(pts) and player in SQUAD_INFO[selected_team]['squad']:
+                            player_points[player] = player_points.get(player, 0) + pts
+        else:
+            sheet = f"{selected_match_filter} - CFC Points"
+            if sheet in data and selected_team in data[sheet].index:
                 row = data[sheet].loc[selected_team]
                 for player, pts in row.items():
                     if player not in ["Total Points", "Booster"] and pd.notna(pts) and player in SQUAD_INFO[selected_team]['squad']:
-                        player_points[player] = player_points.get(player, 0) + pts
-        
+                        player_points[player] = pts
+
         for player in SQUAD_INFO[selected_team]['squad']:
             if player not in player_points:
                 player_points[player] = 0
 
-        st.markdown('<div class="section-header">Squad Players</div>', unsafe_allow_html=True)
-        
+
         processed = set()
         squad_sorted = sorted(player_points.items(), key=lambda x: x[1], reverse=True)
         
