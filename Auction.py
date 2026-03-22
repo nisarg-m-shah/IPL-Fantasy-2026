@@ -413,7 +413,7 @@ teams = {
         ],
         'captain': ['Shubman Gill'],
         'vice captain': ['Rajat Patidar'],
-        'trump card': [''],
+        'trump card': [],
         'replacement': {},
         'franchise': "SRH"
     },
@@ -448,7 +448,7 @@ teams = {
         ],
         'captain': ['Shreyas Iyer'],
         'vice captain': ['Sunil Narine'],
-        'trump card': [''],
+        'trump card': [],
         'replacement': {},
         'franchise': "RCB"
     },
@@ -483,7 +483,7 @@ teams = {
         ],
         'captain': ['Virat Kohli'],
         'vice captain': ['Rashid Khan'],
-        'trump card': [''],
+        'trump card': [],
         'replacement': {},
         'franchise': "DC"
     },
@@ -519,7 +519,7 @@ teams = {
         ],
         'captain': ['Ishan Kishan'],
         'vice captain': ['Axar Patel'],
-        'trump card': [''],
+        'trump card': [],
         'replacement': {},
         'franchise': "PBKS"
     },
@@ -555,7 +555,7 @@ teams = {
         ],
         'captain': ['Sai Sudharsan'],
         'vice captain': ['Ravindra Jadeja'],
-        'trump card': [''],
+        'trump card': [],
         'replacement': {},
         'franchise': "GT"
     },
@@ -590,7 +590,7 @@ teams = {
         ],
         'captain': ['Suryakumar Yadav'],
         'vice captain': ['Ruturaj Gaikwad'],
-        'trump card': [''],
+        'trump card': [],
         'replacement': {},
         'franchise': "CSK"
     },
@@ -623,7 +623,7 @@ teams = {
         ],
         'captain': ['Abhishek Sharma'],
         'vice captain': ['Cameron Green'],
-        'trump card': [''],
+        'trump card': [],
         'replacement': {},
         'franchise': "KKR"
     },
@@ -655,7 +655,7 @@ teams = {
         ],
         'captain': ['Sanju Samson'],
         'vice captain': ['Yashasvi Jaiswal'],
-        'trump card': ['Trent Boult'],
+        'trump card': [],
         'replacement': {},
         'franchise': "MI"
     }
