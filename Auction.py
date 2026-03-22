@@ -444,7 +444,9 @@ teams = {
             'Ben Dwarshuis',
             'Prithvi Raj Yarra',
             'Krunal Pandya',
-            'T Natarajan'
+            'T Natarajan',
+            'Saurabh Dubey',
+            'Dasun Shanaka'
         ],
         'captain': ['Shreyas Iyer'],
         'vice captain': ['Sunil Narine'],
