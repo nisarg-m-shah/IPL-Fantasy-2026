@@ -1282,7 +1282,7 @@ def show_squads(data):
                     "DC":   {"p": "#0057a8", "s": "#b30000"},   # Blue and a much "Redder" Red
                     "SRH":  {"p": "#f26522", "s": "#c24e18"},
                     "MI":   {"p": "#004ba0", "s": "#002d62"},   # Classic MI Dark Blue Tones
-                    "PBKS": {"p": "#dc1e2b", "s": "#f0e6e8"},   # Slightly Darker Red and Silver            
+                    "PBKS": {"p": "#de1616", "s": "#f0e6e8"},   # Slightly Darker Red and Silver            
                     "LSG":  {"p": "#0057e2", "s": "#00b9ff"}
                 }
         franchise_short = SQUAD_INFO[selected_team].get("franchise")
