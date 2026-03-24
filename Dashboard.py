@@ -17,8 +17,6 @@ from Output import run_output_pipeline
 from Auction import teams,boosters,names,roles,squads,team_names_ff,team_names_sf,competition_id,database,file_path,json_filename, MATCH_SCHEDULE,emerging_player
 import base64
 
-POST_MATCH_SCRAPE_FILE = "/tmp/.post_match_scraped" if os.path.exists('/mount/src') else ".post_match_scraped"
-
 def get_post_match_scraped():
     try:
         if os.path.exists(POST_MATCH_SCRAPE_FILE):
@@ -435,10 +433,12 @@ if os.path.exists('/mount/src'):
     TIMESTAMP_FILE = "/tmp/.last_update_timestamp"
     LOCK_FILE = "/tmp/.update_lock"
     FINAL_SCRAPE_TRACKER = "/tmp/.final_scrape_tracker"
+    POST_MATCH_SCRAPE_FILE = "/tmp/.post_match_scraped"
 else:
     TIMESTAMP_FILE = ".last_update_timestamp"
     LOCK_FILE = ".update_lock"
     FINAL_SCRAPE_TRACKER = ".final_scrape_tracker"
+    POST_MATCH_SCRAPE_FILE = ".post_match_scraped"
 EXCEL_FILE = file_path
 OUTPUT_SCRIPT = "Run.py"
 UPDATE_INTERVAL = 600  # 10 minutes in seconds
