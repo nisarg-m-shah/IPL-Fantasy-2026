@@ -83,7 +83,7 @@ def push_all_files(database, file_path, json_filename):
         push_file_to_github(json_filename, json_repo_path)
     
     # Push trackers
-    for tracker in ["/tmp/.final_scrape_tracker", "/tmp/.last_update_timestamp"]:
+    for tracker in ["/tmp/.final_scrape_tracker", "/tmp/.last_update_timestamp" "/tmp/.post_match_scraped"]:
         if os.path.exists(tracker):
             push_file_to_github(tracker, os.path.basename(tracker))
     
@@ -107,7 +107,7 @@ def sync_files_from_github(database, file_path, json_filename):
         pull_file_from_github(json_repo_path, json_filename)
     
     # Pull trackers
-    for tracker in [".final_scrape_tracker", ".last_update_timestamp"]:
+    for tracker in [".final_scrape_tracker", ".last_update_timestamp", "/tmp/.post_match_scraped"]:
         local_path = f"/tmp/{tracker}"
         if not os.path.exists(local_path):
             pull_file_from_github(tracker, local_path)

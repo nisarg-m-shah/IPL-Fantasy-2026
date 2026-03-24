@@ -17,6 +17,25 @@ from Output import run_output_pipeline
 from Auction import teams,boosters,names,roles,squads,team_names_ff,team_names_sf,competition_id,database,file_path,json_filename, MATCH_SCHEDULE,emerging_player
 import base64
 
+POST_MATCH_SCRAPE_FILE = "/tmp/.post_match_scraped" if os.path.exists('/mount/src') else ".post_match_scraped"
+
+def get_post_match_scraped():
+    try:
+        if os.path.exists(POST_MATCH_SCRAPE_FILE):
+            with open(POST_MATCH_SCRAPE_FILE, 'r') as f:
+                return f.read().strip() == '1'
+        return False
+    except:
+        return False
+
+def set_post_match_scraped():
+    with open(POST_MATCH_SCRAPE_FILE, 'w') as f:
+        f.write('1')
+
+def reset_post_match_scraped():
+    if os.path.exists(POST_MATCH_SCRAPE_FILE):
+        os.remove(POST_MATCH_SCRAPE_FILE)
+
 def get_base64_image(image_path):
     with open(image_path, "rb") as img_file:
         return base64.b64encode(img_file.read()).decode()
@@ -577,36 +596,34 @@ def is_match_time():
 
 def should_update():
     is_match, match_reason = is_match_time()
-    
-    if not is_match:
-        # But still update if there are pending matches
-        if not os.path.exists("/tmp/.more_matches_pending"):
-            return False, f"Outside match hours - {match_reason}", -1
-    
+
     if os.path.exists(LOCK_FILE):
         lock_age = time.time() - os.path.getmtime(LOCK_FILE)
         if lock_age < LOCK_TIMEOUT:
             mins = int(lock_age // 60)
             secs = int(lock_age % 60)
             return False, f"Update in progress by another user ({mins}m {secs}s ago)", -1
-    
+
     is_final, match_name = get_most_recent_match_state()
     if is_final and match_name:
         final_scraped = get_final_scraped_matches()
-        if match_name in final_scraped and os.path.exists(EXCEL_FILE):
-            pkl_mtime = os.path.getmtime(PKL_FILE) if os.path.exists(PKL_FILE) else 0
-            excel_mtime = os.path.getmtime(EXCEL_FILE)
-            if excel_mtime >= pkl_mtime:
-                return False, f"Latest match ({match_name}) already finalized and scraped - No update needed", -1
-    
-    # If there are pending matches, update immediately regardless of interval
-    if os.path.exists("/tmp/.more_matches_pending"):
-        return True, f"More matches pending - continuing scrape", -1
-    
+        if match_name in final_scraped:
+            return False, f"Latest match ({match_name}) already finalized and scraped - No update needed", -1
+
+    # Reset counter when match hours begin
+    if is_match:
+        reset_post_match_scraped()
+
+    if not is_match:
+        # Allow one scrape after match hours if counter is 0
+        if not get_post_match_scraped():
+            return True, "Post-match scrape - collecting final match data", -1
+        return False, f"Outside match hours - {match_reason}", -1
+
     last_update = get_last_update_time()
     current_time = time.time()
     time_since_update = current_time - last_update
-    
+
     if time_since_update >= UPDATE_INTERVAL:
         mins = int(time_since_update // 60)
         secs = int(time_since_update % 60)
@@ -625,6 +642,9 @@ def run_output_script():
             is_final, match_name = get_most_recent_match_state()
             if is_final and match_name:
                 mark_match_as_final_scraped(match_name)
+        
+        # Mark post-match scrape as done
+        set_post_match_scraped()
         
         return True, "Update successful"
     except Exception as e:
