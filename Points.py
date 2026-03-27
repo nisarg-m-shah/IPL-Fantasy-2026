@@ -245,25 +245,41 @@ class Team:
                 player_object = Player(player, self.match_object, self.booster)
                 player_points = player_object.player_points
 
-                if player in team['captain']:
-                    if "Triple" in self.booster:
-                        player_points *= 3
-                    else:
-                        player_points *= 2
-                elif player in team['vice captain']:
-                    player_points *= 1.5
-                elif player in team['trump card']:
-                    if match_number > 35:  
-                        player_points *= 3  
-                        #print("trump card successful: player points =",player_points)   
+                multiplier = 1
 
+                # --- Triple Captain case ---
+                if isinstance(self.booster, tuple):
+                    if self.booster[1] == player:
+                        multiplier = 3  # override everything
+                    else:
+                        if player in team['captain']:
+                            multiplier *= 2
+                        elif player in team['vice captain']:
+                            multiplier *= 1.5
+                        elif player in team['trump card'] and match_number > 35:
+                            multiplier *= 3
+
+                # --- Normal booster case ---
                 else:
-                    if "Bat" in self.booster and (player_object.role == 'BAT' or player_object.role == "WK"):
-                        player_points *= 2
-                    elif "Bowl" in self.booster and player_object.role == 'BOWL':
-                        player_points *= 2
-                    elif "Double" in self.booster:            
-                        player_points *= 2
+                    if player in team['captain']:
+                        multiplier *= 2
+
+                    elif player in team['vice captain']:
+                        multiplier *= 1.5
+
+                    elif player in team['trump card'] and match_number > 35:
+                        multiplier *= 3
+
+                    else:
+                        # ONLY non C/VC/TRUMP reach here → eligible for booster
+                        if "Bat" in self.booster and player_object.role in ['BAT', 'WK']:
+                            multiplier *= 2
+                        elif "Bowl" in self.booster and player_object.role == 'BOWL':
+                            multiplier *= 2
+                        elif "Double" in self.booster:
+                            multiplier *= 2
+
+                player_points *= multiplier
 
                 self.points_list[player] = player_points
                 self.total_points += player_points
