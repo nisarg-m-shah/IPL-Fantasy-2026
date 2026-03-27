@@ -451,7 +451,7 @@ teams = {
         'captain': ['Shreyas Iyer'],
         'vice captain': ['Sunil Narine'],
         'trump card': [],
-        'replacement': {'Akash Deep':'Saurabh Dubey','Sam Curran':'Dasun Shanaka'},
+        'replacement': {'Akash Deep':'Saurabh Dubey','Sam Curran':'Dasun Shanaka','Prithvi Raj Yarra':'Kulwant Khejroliya'},
         'franchise': "RCB"
     },
 
@@ -522,7 +522,7 @@ teams = {
         'captain': ['Ishan Kishan'],
         'vice captain': ['Axar Patel'],
         'trump card': [],
-        'replacement': {},
+        'replacement': {'Nathan Ellis':'Spencer Johnson'},
         'franchise': "PBKS"
     },
 
@@ -658,7 +658,7 @@ teams = {
         'captain': ['Sanju Samson'],
         'vice captain': ['Yashasvi Jaiswal'],
         'trump card': [],
-        'replacement': {},
+        'replacement': {'Harshit Rana':'Navdeep Saini'},
         'franchise': "MI"
     }
 }
@@ -748,7 +748,7 @@ names = [
     'Mohammad Izhar','Danish Malewar',
 
     #Replacements
-    'Dasun Shanaka','Saurabh Dubey','Blessing Muzarabani'
+    'Dasun Shanaka','Saurabh Dubey','Blessing Muzarabani','Navdeep Saini','Kulwant Khejroliya','Spencer Johnson','David Payne'
 ]
 
 roles = [
@@ -806,7 +806,7 @@ roles = [
     'BAT','AR','BOWL','BAT','BOWL',
     'BOWL','BAT',
 
-    'AR','BOWL','BOWL'
+    'AR','BOWL','BOWL','BOWL','BOWL','BOWL','BOWL'
 ]
 
 team_list = [
@@ -825,7 +825,7 @@ squads = {
         'Anshul Kamboj', 'Jamie Overton', 'MS Dhoni', 'Mukesh Choudhary', 
         'Nathan Ellis', 'Noor Ahmad', 'Ramakrishna Ghosh', 'Sanju Samson', 
         'Ruturaj Gaikwad', 'Shivam Dube', 'Ayush Mhatre', 'Dewald Brevis', 
-        'Urvil Patel', 'Khaleel Ahmed'
+        'Urvil Patel', 'Khaleel Ahmed', 'Spencer Johnson'
     ],
     'Delhi Capitals': [
         'Abishek Porel', 'Ashutosh Sharma', 'Axar Patel', 'Dushmantha Chameera', 
@@ -837,12 +837,12 @@ squads = {
         'Anuj Rawat', 'Glenn Phillips', 'Ishant Sharma', 'los Buttler', 
         'Kagiso Rabada', 'Kumar Kushagra', 'Mohammad Siraj', 'Prasidh Krishna', 
         'Rahul Tewatia', 'Rashid Khan', 'Sai Sudharsan', 'Shahrukh Khan', 
-        'Shubman Gill', 'Washington Sundar', 'Sai Kishore'
+        'Shubman Gill', 'Washington Sundar', 'Sai Kishore','Kulwant Khejroliya'
     ],
     'Kolkata Knight Riders': [
         'Ajinkya Rahane', 'Angkrish Raghuvanshi', 'Anukul Roy', 'Harshit Rana', 
         'Ramandeep Singh', 'Rinku Singh', 'Rovman Powell', 'Sunil Narine', 
-        'Umran Malik', 'Vaibhav Arora', 'Varun Chakaravarthy','Blessing Muzarabani','Saurabh Dubey'
+        'Umran Malik', 'Vaibhav Arora', 'Varun Chakaravarthy','Blessing Muzarabani','Saurabh Dubey','Navdeep Saini'
     ],
     'Lucknow Super Giants': [
         'Abdul Samad', 'Aiden Markram', 'Arjun Tendulkar', 'Arshin Kulkarni', 
@@ -881,7 +881,7 @@ squads = {
         'Abhishek Sharma', 'Aniket Verma', 'Eshan Malinga', 'Harsh Dubey', 
         'Harshal Patel', 'Heinrich Klaasen', 'Ishan Kishan', 'Jaydev Unadkat', 
         'Kamindu Mendis', 'Nitish Reddy', 'Pat Cummins', 'Travis Head', 
-        'Zeeshan Ansari','Jack Edwards'
+        'Zeeshan Ansari', 'Jack Edwards', 'David Payne'
     ]
 }
 team_names_sf = ["KKR","GT","MI","CSK","RR","RCB","PBKS","DC","SRH","LSG"]
