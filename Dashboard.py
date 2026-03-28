@@ -1626,6 +1626,13 @@ def show_matches(data):
 
         # --- TEAM PLAYING XI BREAKDOWN ---
         if breakdown_sheet in data:
+            st.markdown("""
+            <div style="
+                height: 3px;
+                background: linear-gradient(90deg, transparent, #6b7280, transparent);
+                margin: 20px 0;
+            "></div>
+            """, unsafe_allow_html=True)
             st.markdown('#### ⚔️ Teams in Action')
             st.markdown(
                         "<hr style='border: none; border-top: 3px solid #efb920; margin: 0;'>",
@@ -1681,6 +1688,13 @@ def show_matches(data):
             st.markdown(xi_html, unsafe_allow_html=True)
 
         if breakdown_sheet in data:
+            st.markdown("""
+            <div style="
+                height: 3px;
+                background: linear-gradient(90deg, transparent, #6b7280, transparent);
+                margin: 20px 0;
+            "></div>
+            """, unsafe_allow_html=True)
             st.markdown('#### 🌟 Player Performance')
             st.markdown(
                         "<hr style='border: none; border-top: 3px solid #efb920; margin: 0;'>",
