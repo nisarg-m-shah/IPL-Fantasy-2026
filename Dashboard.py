@@ -1597,7 +1597,7 @@ def show_matches(data):
         if cfc_sheet in data:
             st.markdown('#### 🎯 Manager Points')
             st.markdown(
-                        "<hr style='border: none; border-top: 3px solid #efb920;'>",
+                        "<hr style='border: none; border-top: 3px solid #efb920; margin: 0;'>",
                         unsafe_allow_html=True
                     )
             df_match = data[cfc_sheet][["Total Points", "Booster"]].sort_values("Total Points", ascending=False)
@@ -1628,7 +1628,7 @@ def show_matches(data):
         if breakdown_sheet in data:
             st.markdown('#### ⚔️ Teams in Action')
             st.markdown(
-                        "<hr style='border: none; border-top: 3px solid #efb920;'>",
+                        "<hr style='border: none; border-top: 3px solid #efb920; margin: 0;'>",
                         unsafe_allow_html=True
                     )            
             df_breakdown = data[breakdown_sheet]
@@ -1683,7 +1683,7 @@ def show_matches(data):
         if breakdown_sheet in data:
             st.markdown('#### 🌟 Player Performance')
             st.markdown(
-                        "<hr style='border: none; border-top: 3px solid #efb920;'>",
+                        "<hr style='border: none; border-top: 3px solid #efb920; margin: 0;'>",
                         unsafe_allow_html=True
                     )
             
