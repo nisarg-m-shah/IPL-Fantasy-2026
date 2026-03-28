@@ -1595,7 +1595,7 @@ def show_matches(data):
         breakdown_sheet = f"{selected_match} - Points Breakdown"
         
         if cfc_sheet in data:
-            st.markdown('<div class="section-header">🎯 Manager Points</div>', unsafe_allow_html=True)
+            st.markdown('# 🎯 Manager Points')
             df_match = data[cfc_sheet][["Total Points", "Booster"]].sort_values("Total Points", ascending=False)
             
             # Mobile-friendly table
@@ -1619,11 +1619,12 @@ def show_matches(data):
             st.markdown(mgr_html + '</tbody></table></div>', unsafe_allow_html=True)
         
 
-# --- TEAM PLAYING XI BREAKDOWN ---
+        # --- TEAM PLAYING XI BREAKDOWN ---
         if breakdown_sheet in data:
-            st.markdown('<div class="section-header">👥 Fantasy Teams in This Match</div>', unsafe_allow_html=True)
+            st.markdown('<div class="section-header">⚔️ Teams in Action</div>', unsafe_allow_html=True)
             
             df_breakdown = data[breakdown_sheet]
+            df_cfc = data[cfc_sheet] if cfc_sheet in data else None
             players_in_match = set(df_breakdown.index.tolist())
             
             team_match_data = []
@@ -1632,7 +1633,14 @@ def show_matches(data):
                 playing = [p for p in squad if p in players_in_match]
                 
                 if playing:
-                    total_pts = sum(df_breakdown.loc[p, 'Player Points'] for p in playing if p in df_breakdown.index)
+                    # Use CFC points sheet for post-multiplier points
+                    total_pts = 0
+                    if df_cfc is not None and team_name in df_cfc.index:
+                        row = df_cfc.loc[team_name]
+                        for p in playing:
+                            if p in row.index and pd.notna(row[p]):
+                                total_pts += row[p]
+                    
                     avg_pts = total_pts / len(playing) if playing else 0
                     team_match_data.append({
                         'team': team_name,
@@ -1641,7 +1649,6 @@ def show_matches(data):
                         'avg': avg_pts
                     })
             
-            # Sort by count descending
             team_match_data.sort(key=lambda x: x['count'], reverse=True)
             
             xi_html = '<div class="table-container"><table style="width:100%; border-collapse:collapse; background-color:transparent; min-width: 500px;">'
