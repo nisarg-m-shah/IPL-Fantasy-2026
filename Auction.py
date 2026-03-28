@@ -748,7 +748,7 @@ names = [
     'Mohammad Izhar','Danish Malewar',
 
     #Replacements
-    'Dasun Shanaka','Saurabh Dubey','Blessing Muzarabani','Navdeep Saini','Kulwant Khejroliya','Spencer Johnson','David Payne'
+    'Dasun Shanaka','Saurabh Dubey','Blessing Muzarabani','Navdeep Saini','Kulwant Khejroliya','Spencer Johnson','David Payne','Abhinandan Singh','Zakary Foulkes'
 ]
 
 roles = [
@@ -806,7 +806,7 @@ roles = [
     'BAT','AR','BOWL','BAT','BOWL',
     'BOWL','BAT',
 
-    'AR','BOWL','BOWL','BOWL','BOWL','BOWL','BOWL'
+    'AR','BOWL','BOWL','BOWL','BOWL','BOWL','BOWL','BOWL','BOWL'
 ]
 
 team_list = [
@@ -875,7 +875,7 @@ squads = {
         'Bhuvneshwar Kumar', 'Devdutt Padikkal', 'Jacob Bethell', 'Jitesh Sharma', 
         'Josh Hazlewood', 'Krunal Pandya', 'Nuwan Thushara', 'Phil Salt', 
         'Rajat Patidar', 'Rasikh Dar Salam', 'Romario Shepherd', 'Suyash Sharma', 
-        'Swapnil Singh', 'Tim David', 'Virat Kohli'
+        'Swapnil Singh', 'Tim David', 'Virat Kohli','Abhinandan Singh'
     ],
     'Sunrisers Hyderabad': [
         'Abhishek Sharma', 'Aniket Verma', 'Eshan Malinga', 'Harsh Dubey', 
