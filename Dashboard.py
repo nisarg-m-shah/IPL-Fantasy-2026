@@ -1519,7 +1519,7 @@ def show_squads(data):
         )
 
         player_points = {}
-        if selected_match_filter == '🏆 Season Total':
+        if selected_match_filter == 'Season Total':
             for sheet in match_sheets:
                 if selected_team in data[sheet].index:
                     row = data[sheet].loc[selected_team]
