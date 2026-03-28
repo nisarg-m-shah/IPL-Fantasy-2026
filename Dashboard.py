@@ -1616,8 +1616,9 @@ def show_matches(data):
                 mgr_html += f'<td style="padding:10px 8px; text-align:center; font-size: clamp(0.8rem, 2.5vw, 1rem);">{format_points(row["Total Points"])}</td>'
                 mgr_html += f'<td style="padding:10px 8px; text-align:center; font-size: clamp(0.8rem, 2.5vw, 1rem);">{booster_display}</td></tr>'
             
-            st.markdown(mgr_html + '</tbody></table></div>', unsafe_allow_html=True)
-        
+            mgr_html = mgr_html + '</tbody></table></div>'
+            mgr_html = re.sub(r'(<t[hd][^>]*style="[^"]*)(padding:\s*\d+px\s*\d+px;)', lambda m: m.group(0) + ' border-right: 1px solid rgba(255,255,255,0.1);', mgr_html)
+            st.markdown(mgr_html, unsafe_allow_html=True)               
 
         # --- TEAM PLAYING XI BREAKDOWN ---
         if breakdown_sheet in data:
@@ -1669,8 +1670,8 @@ def show_matches(data):
                 xi_html += '</tr>'
             
             xi_html += '</tbody></table></div>'
+            xi_html = re.sub(r'(<t[hd][^>]*style="[^"]*)(padding:\s*\d+px\s*\d+px;)', lambda m: m.group(0) + ' border-right: 1px solid rgba(255,255,255,0.1);', xi_html)
             st.markdown(xi_html, unsafe_allow_html=True)
-
 
         if breakdown_sheet in data:
             st.markdown('<div class="section-header">🌟 Player Performance</div>', unsafe_allow_html=True)
@@ -1714,6 +1715,7 @@ def show_matches(data):
                 p_html += '</tr>'
             
             p_html += '</tbody></table></div>'
+            p_html = re.sub(r'(<t[hd][^>]*style="[^"]*)(padding:\s*\d+px\s*\d+px;)', lambda m: m.group(0) + ' border-right: 1px solid rgba(255,255,255,0.1);', p_html)
             st.markdown(p_html, unsafe_allow_html=True)
 
 def show_analytics(data):
