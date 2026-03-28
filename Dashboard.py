@@ -1595,7 +1595,7 @@ def show_matches(data):
         breakdown_sheet = f"{selected_match} - Points Breakdown"
         
         if cfc_sheet in data:
-            st.markdown('# 🎯 Manager Points')
+            st.markdown('### 🎯 Manager Points')
             df_match = data[cfc_sheet][["Total Points", "Booster"]].sort_values("Total Points", ascending=False)
             
             # Mobile-friendly table
@@ -1621,7 +1621,7 @@ def show_matches(data):
 
         # --- TEAM PLAYING XI BREAKDOWN ---
         if breakdown_sheet in data:
-            st.markdown('<div class="section-header">⚔️ Teams in Action</div>', unsafe_allow_html=True)
+            st.markdown('### ⚔️ Teams in Action')
             
             df_breakdown = data[breakdown_sheet]
             df_cfc = data[cfc_sheet] if cfc_sheet in data else None
