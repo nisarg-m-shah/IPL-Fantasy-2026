@@ -1595,7 +1595,7 @@ def show_matches(data):
         breakdown_sheet = f"{selected_match} - Points Breakdown"
         
         if cfc_sheet in data:
-            st.markdown("#### 🎯 Manager Points")
+            st.markdown('<div class="section-header">🎯 Manager Points</div>', unsafe_allow_html=True)
             df_match = data[cfc_sheet][["Total Points", "Booster"]].sort_values("Total Points", ascending=False)
             
             # Mobile-friendly table
@@ -1618,6 +1618,53 @@ def show_matches(data):
             
             st.markdown(mgr_html + '</tbody></table></div>', unsafe_allow_html=True)
         
+
+# --- TEAM PLAYING XI BREAKDOWN ---
+        if breakdown_sheet in data:
+            st.markdown('<div class="section-header">👥 Fantasy Teams in This Match</div>', unsafe_allow_html=True)
+            
+            df_breakdown = data[breakdown_sheet]
+            players_in_match = set(df_breakdown.index.tolist())
+            
+            team_match_data = []
+            for team_name, team_info in SQUAD_INFO.items():
+                squad = set(team_info['squad'])
+                playing = [p for p in squad if p in players_in_match]
+                
+                if playing:
+                    total_pts = sum(df_breakdown.loc[p, 'Player Points'] for p in playing if p in df_breakdown.index)
+                    avg_pts = total_pts / len(playing) if playing else 0
+                    team_match_data.append({
+                        'team': team_name,
+                        'players': playing,
+                        'count': len(playing),
+                        'avg': avg_pts
+                    })
+            
+            # Sort by count descending
+            team_match_data.sort(key=lambda x: x['count'], reverse=True)
+            
+            xi_html = '<div class="table-container"><table style="width:100%; border-collapse:collapse; background-color:transparent; min-width: 500px;">'
+            xi_html += '<thead><tr style="border-bottom:2px solid #efb920;">'
+            xi_html += '<th style="padding:10px 8px; color:#efb920; font-family:\'Bebas Neue\'; text-align:left; font-size: clamp(0.85rem, 2.5vw, 1rem);">TEAM</th>'
+            xi_html += '<th style="padding:10px 8px; color:#efb920; font-family:\'Bebas Neue\'; text-align:center; font-size: clamp(0.85rem, 2.5vw, 1rem);">PLAYERS IN MATCH</th>'
+            xi_html += '<th style="padding:10px 8px; color:#efb920; font-family:\'Bebas Neue\'; text-align:center; font-size: clamp(0.85rem, 2.5vw, 1rem);">COUNT</th>'
+            xi_html += '<th style="padding:10px 8px; color:#efb920; font-family:\'Bebas Neue\'; text-align:center; font-size: clamp(0.85rem, 2.5vw, 1rem);">AVG PTS</th>'
+            xi_html += '</tr></thead><tbody>'
+            
+            for item in team_match_data:
+                players_str = ', '.join(item['players'])
+                xi_html += f'<tr style="border-bottom:1px solid rgba(255,255,255,0.05); background-color:rgba(255,255,255,0.02);">'
+                xi_html += f'<td style="padding:10px 8px; text-align:left; font-weight:bold; color:white; font-size: clamp(0.8rem, 2.5vw, 0.95rem);">{item["team"]}</td>'
+                xi_html += f'<td style="padding:10px 8px; text-align:center; color:#00f2fe; font-size: clamp(0.75rem, 2.5vw, 0.9rem);">{players_str}</td>'
+                xi_html += f'<td style="padding:10px 8px; text-align:center; font-weight:bold; color:#efb920; font-size: clamp(0.85rem, 2.5vw, 1rem);">{item["count"]}</td>'
+                xi_html += f'<td style="padding:10px 8px; text-align:center; font-weight:bold; color:white; font-size: clamp(0.85rem, 2.5vw, 1rem);">{format_points(item["avg"])}</td>'
+                xi_html += '</tr>'
+            
+            xi_html += '</tbody></table></div>'
+            st.markdown(xi_html, unsafe_allow_html=True)
+
+
         if breakdown_sheet in data:
             st.markdown('<div class="section-header">🌟 Player Performance</div>', unsafe_allow_html=True)
             
