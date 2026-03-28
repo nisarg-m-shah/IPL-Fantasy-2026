@@ -608,7 +608,7 @@ def should_update():
     if is_final and match_name:
         final_scraped = get_final_scraped_matches()
         if match_name in final_scraped:
-            return False, f"Latest match ({match_name}) already finalized and scraped - No update needed", -1
+            return False, f"{match_name} has ended - No update needed", -1
 
     # Reset counter when match hours begin
     if is_match:
@@ -1595,7 +1595,11 @@ def show_matches(data):
         breakdown_sheet = f"{selected_match} - Points Breakdown"
         
         if cfc_sheet in data:
-            st.markdown('### 🎯 Manager Points')
+            st.markdown('#### 🎯 Manager Points')
+            st.markdown(
+                        "<hr style='border: none; border-top: 3px solid #efb920;'>",
+                        unsafe_allow_html=True
+                    )
             df_match = data[cfc_sheet][["Total Points", "Booster"]].sort_values("Total Points", ascending=False)
             
             # Mobile-friendly table
@@ -1622,8 +1626,11 @@ def show_matches(data):
 
         # --- TEAM PLAYING XI BREAKDOWN ---
         if breakdown_sheet in data:
-            st.markdown('### ⚔️ Teams in Action')
-            
+            st.markdown('#### ⚔️ Teams in Action')
+            st.markdown(
+                        "<hr style='border: none; border-top: 3px solid #efb920;'>",
+                        unsafe_allow_html=True
+                    )            
             df_breakdown = data[breakdown_sheet]
             df_cfc = data[cfc_sheet] if cfc_sheet in data else None
             players_in_match = set(df_breakdown.index.tolist())
@@ -1674,7 +1681,11 @@ def show_matches(data):
             st.markdown(xi_html, unsafe_allow_html=True)
 
         if breakdown_sheet in data:
-            st.markdown('<div class="section-header">🌟 Player Performance</div>', unsafe_allow_html=True)
+            st.markdown('#### 🌟 Player Performance')
+            st.markdown(
+                        "<hr style='border: none; border-top: 3px solid #efb920;'>",
+                        unsafe_allow_html=True
+                    )
             
             df_p = data[breakdown_sheet].sort_values("Player Points", ascending=False)
             cols_to_show = ['Player Points', 'Role', "Man of the Match", 'Player Batting Points', 
