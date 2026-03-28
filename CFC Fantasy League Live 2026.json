@@ -1,5 +1,13 @@
 {
     "Team Final Points": {
+        "Hilarious Hooligans": {
+            "Total Points": 292.0,
+            "Orange Cap": 0,
+            "Purple Cap": 0,
+            "MVP": 0,
+            "Franchise Points": 0,
+            "RCB vs SRH": 292.0
+        },
         "Disruptors": {
             "Total Points": 221.0,
             "Orange Cap": 0,
@@ -8,21 +16,21 @@
             "Franchise Points": 0,
             "RCB vs SRH": 221.0
         },
-        "Hilarious Hooligans": {
-            "Total Points": 198.0,
-            "Orange Cap": 0,
-            "Purple Cap": 0,
-            "MVP": 0,
-            "Franchise Points": 0,
-            "RCB vs SRH": 198.0
-        },
         "Night Watchmen": {
-            "Total Points": 82.0,
+            "Total Points": 96.0,
             "Orange Cap": 0,
             "Purple Cap": 0,
             "MVP": 0,
             "Franchise Points": 0,
-            "RCB vs SRH": 82.0
+            "RCB vs SRH": 96.0
+        },
+        "Nasty Knights": {
+            "Total Points": 15.0,
+            "Orange Cap": 0,
+            "Purple Cap": 0,
+            "MVP": 0,
+            "Franchise Points": 0,
+            "RCB vs SRH": 15.0
         },
         "Tormented Titans": {
             "Total Points": 10.0,
@@ -31,14 +39,6 @@
             "MVP": 0,
             "Franchise Points": 0,
             "RCB vs SRH": 10.0
-        },
-        "Nasty Knights": {
-            "Total Points": 2.0,
-            "Orange Cap": 0,
-            "Purple Cap": 0,
-            "MVP": 0,
-            "Franchise Points": 0,
-            "RCB vs SRH": 2.0
         },
         "Alpha Acers": {
             "Total Points": 1.0,
@@ -74,18 +74,18 @@
             "RCB vs SRH": 181
         },
         "Ishan Kishan": {
-            "Total Points": 99,
+            "Total Points": 146,
             "Orange Cap": 0,
             "Purple Cap": 0,
             "MVP": 0,
-            "RCB vs SRH": 99
+            "RCB vs SRH": 146
         },
         "Heinrich Klaasen": {
-            "Total Points": 52,
+            "Total Points": 66,
             "Orange Cap": 0,
             "Purple Cap": 0,
             "MVP": 0,
-            "RCB vs SRH": 52
+            "RCB vs SRH": 66
         },
         "Travis Head": {
             "Total Points": 30,
@@ -102,6 +102,13 @@
             "RCB vs SRH": 30
         },
         "Suyash Sharma": {
+            "Total Points": 13,
+            "Orange Cap": 0,
+            "Purple Cap": 0,
+            "MVP": 0,
+            "RCB vs SRH": 13
+        },
+        "Krunal Pandya": {
             "Total Points": 2,
             "Orange Cap": 0,
             "Purple Cap": 0,
@@ -178,7 +185,7 @@
             "Second Runout Points": 0
         },
         {
-            "Player Points": 2,
+            "Player Points": 13,
             "Man of the Match": 0,
             "Role": "BOWL",
             "Player Batting Points": 0,
@@ -192,15 +199,15 @@
             "Strike Rate Points": 0,
             "Duck Points": 0,
             "Batting Milestone Points": 0,
-            "Player Bowling Points": 2,
+            "Player Bowling Points": 13,
             "Maidens": 0,
             "Maidens Points": 0,
             "Wickets": 0,
             "Wicket Points": 0,
-            "Dots": 1,
-            "Dot Points": 2,
-            "Economy": 10.0,
-            "Economy Points": 0,
+            "Dots": 4,
+            "Dot Points": 8,
+            "Economy": 10.5,
+            "Economy Points": 5,
             "Bowled Wickets": 0,
             "Bowled Wickets Points": 0,
             "LBW Wickets": 0,
@@ -256,17 +263,17 @@
             "Second Runout Points": 0
         },
         {
-            "Player Points": 52,
+            "Player Points": 66,
             "Man of the Match": 0,
             "Role": "BAT",
-            "Player Batting Points": 52,
-            "Runs": 18,
-            "Runs Points": 18,
+            "Player Batting Points": 66,
+            "Runs": 29,
+            "Runs Points": 29,
             "Fours": 2,
             "Fours Points": 4,
-            "Sixes": 0,
-            "Sixes Points": 0,
-            "Strike Rate": 150.0,
+            "Sixes": 1,
+            "Sixes Points": 3,
+            "Strike Rate": 152.63,
             "Strike Rate Points": 30,
             "Duck Points": 0,
             "Batting Milestone Points": 0,
@@ -412,20 +419,20 @@
             "Second Runout Points": 0
         },
         {
-            "Player Points": 99,
+            "Player Points": 146,
             "Man of the Match": 0,
             "Role": "BAT",
-            "Player Batting Points": 99,
-            "Runs": 43,
-            "Runs Points": 43,
-            "Fours": 5,
-            "Fours Points": 10,
+            "Player Batting Points": 146,
+            "Runs": 59,
+            "Runs Points": 59,
+            "Fours": 8,
+            "Fours Points": 16,
             "Sixes": 2,
             "Sixes Points": 6,
-            "Strike Rate": 195.45,
+            "Strike Rate": 190.32,
             "Strike Rate Points": 40,
             "Duck Points": 0,
-            "Batting Milestone Points": 0,
+            "Batting Milestone Points": 25,
             "Player Bowling Points": 0,
             "Maidens": 0,
             "Maidens Points": 0,
@@ -434,6 +441,45 @@
             "Dots": 0,
             "Dot Points": 0,
             "Economy": 0.0,
+            "Economy Points": 0,
+            "Bowled Wickets": 0,
+            "Bowled Wickets Points": 0,
+            "LBW Wickets": 0,
+            "LBW Wickets Points": 0,
+            "Bowling Milestone Points": 0,
+            "Player Fielding Points": 0,
+            "Catches": 0,
+            "Catching Points": 0,
+            "Stumpings": 0,
+            "Stumping Points": 0,
+            "Main Runouts": 0,
+            "Direct Runout Points": 0,
+            "Secondary Runouts": 0,
+            "Second Runout Points": 0
+        },
+        {
+            "Player Points": 2,
+            "Man of the Match": 0,
+            "Role": "AR",
+            "Player Batting Points": 0,
+            "Runs": 0,
+            "Runs Points": 0,
+            "Fours": 0,
+            "Fours Points": 0,
+            "Sixes": 0,
+            "Sixes Points": 0,
+            "Strike Rate": 0.0,
+            "Strike Rate Points": 0,
+            "Duck Points": 0,
+            "Batting Milestone Points": 0,
+            "Player Bowling Points": 2,
+            "Maidens": 0,
+            "Maidens Points": 0,
+            "Wickets": 0,
+            "Wicket Points": 0,
+            "Dots": 1,
+            "Dot Points": 2,
+            "Economy": 9.43,
             "Economy Points": 0,
             "Bowled Wickets": 0,
             "Bowled Wickets Points": 0,
@@ -733,7 +779,7 @@
             "Dewald Brevis": 0.0
         },
         {
-            "Total Points": 2.0,
+            "Total Points": 15.0,
             "Booster": "None",
             "Sameer Rizvi": 0.0,
             "Shubman Gill": 0.0,
@@ -776,13 +822,13 @@
             "Kamindu Mendis": 0.0,
             "Luke Wood": 0.0,
             "Dhruv Jurel": 0.0,
-            "Suyash Sharma": 2.0,
+            "Suyash Sharma": 13.0,
             "Wanindu Hasaranga": 0.0,
             "Mayank Yadav": 0.0,
             "Allah Ghazanfar": 0.0,
             "Ben Dwarshuis": 0.0,
             "Prithvi Raj Yarra": 0.0,
-            "Krunal Pandya": 0.0,
+            "Krunal Pandya": 2.0,
             "T Natarajan": 0.0,
             "Saurabh Dubey": 0.0,
             "Dasun Shanaka": 0.0,
@@ -935,7 +981,7 @@
             "Dewald Brevis": 0.0
         },
         {
-            "Total Points": 82.0,
+            "Total Points": 96.0,
             "Booster": "None",
             "Sameer Rizvi": 0.0,
             "Shubman Gill": 0.0,
@@ -992,7 +1038,7 @@
             "Bhuvneshwar Kumar": 30.0,
             "Virat Kohli": 0.0,
             "Quinton de Kock": 0.0,
-            "Heinrich Klaasen": 52.0,
+            "Heinrich Klaasen": 66.0,
             "Harsh Dubey": 0.0,
             "Yash Thakur": 0.0,
             "Washington Sundar": 0.0,
@@ -1137,7 +1183,7 @@
             "Dewald Brevis": 0.0
         },
         {
-            "Total Points": 198.0,
+            "Total Points": 292.0,
             "Booster": "None",
             "Sameer Rizvi": 0.0,
             "Shubman Gill": 0.0,
@@ -1221,7 +1267,7 @@
             "Anrich Nortje": 0.0,
             "Zeeshan Ansari": 0.0,
             "Prabhsimran Singh": 0.0,
-            "Ishan Kishan": 198.0,
+            "Ishan Kishan": 292.0,
             "MS Dhoni": 0.0,
             "Rinku Singh": 0.0,
             "Yuzvendra Chahal": 0.0,
