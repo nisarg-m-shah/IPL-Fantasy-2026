@@ -1175,22 +1175,29 @@ def show_rankings(data):
 
         fig.update_layout(
             title="Cumulative Points Progression",
-            xaxis_title="Match",
+            xaxis_title="",  # remove "Match" label since it overlaps
             yaxis_title="Cumulative Points",
             plot_bgcolor='rgba(0,0,0,0)',
             paper_bgcolor='rgba(0,0,0,0)',
             font=dict(color='white', size=9),
-            height=450,
+            height=500,  # increase height to give more room
             hovermode='x unified',
-            margin=dict(l=10, r=10, t=40, b=100),
-            xaxis=dict(tickangle=-45),
+            margin=dict(l=10, r=10, t=40, b=160),  # increase bottom margin
+            xaxis=dict(
+                tickangle=-45,
+                tickfont=dict(color='white', size=8),  # force white tick labels
+                title_font=dict(color='white')
+            ),
+            yaxis=dict(
+                tickfont=dict(color='white')
+            ),
             legend=dict(
                 orientation="h",
                 yanchor="bottom",
-                y=-0.35,
+                y=-0.55,  # push legend further down
                 xanchor="center",
                 x=0.5,
-                font=dict(size=8)
+                font=dict(size=8, color='white')
             )
         )
 
