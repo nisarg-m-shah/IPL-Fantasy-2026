@@ -224,7 +224,7 @@ class Score:
         batsmen_rows, bowlers_rows = [], []
 
         for inn in [1, 2]:
-            url = f"{BASE_URL}/{self.match_id}-Innings{inn}.js"
+            url = f"{BASE_URL}/{str(self.match_id)}-Innings{inn}.js"
             r = requests.get(url, params={"onScoring": "_jqjsp"}, headers={"User-Agent": "Mozilla/5.0"})
             if r.status_code != 200:
                 continue
