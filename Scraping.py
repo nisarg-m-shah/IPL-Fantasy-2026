@@ -198,7 +198,7 @@ class Score:
         BASE_URL = "https://ipl-stats-sports-mechanic.s3.ap-south-1.amazonaws.com/ipl/feeds"
         self.is_final = False
 
-        squads_url = "https://ipl-stats-sports-mechanic.s3.ap-south-1.amazonaws.com/ipl/feeds/"+self.match_id+"-squad.js"
+        squads_url = "https://ipl-stats-sports-mechanic.s3.ap-south-1.amazonaws.com/ipl/feeds/"+str(self.match_id)+"-squad.js"
 
         res = requests.get(squads_url)
         text = res.text
