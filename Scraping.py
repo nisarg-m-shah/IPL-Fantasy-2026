@@ -214,7 +214,7 @@ class Score:
             name = player['PlayerName'].strip()
             name = find_full_name(squads.get(team, []),name)
             position = int(player["PlayingOrder"])
-            if team not in match_squads.keys():
+            if team not in self.match_squads.keys():
                 self.match_squads[team] = []
             else:
                 self.match_squads[team].append(name)
