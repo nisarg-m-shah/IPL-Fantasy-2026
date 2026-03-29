@@ -120,6 +120,8 @@ class Score:
     def __init__(self, match_id: int):
         self.match_id = match_id
         self.match_type = "" #CHANGE THIS LATER
+        self.match_squads = {}
+        self.playing_24 = []
 
         self.catchers = []
         self.stumpers = []
@@ -195,6 +197,29 @@ class Score:
     def _parse_match(self):
         BASE_URL = "https://ipl-stats-sports-mechanic.s3.ap-south-1.amazonaws.com/ipl/feeds"
         self.is_final = False
+
+        squads_url = "https://ipl-stats-sports-mechanic.s3.ap-south-1.amazonaws.com/ipl/feeds/"+self.match_id+"-squad.js"
+
+        res = requests.get(squads_url)
+        text = res.text
+        start = text.find("(")
+        end = text.rfind(")")
+        json_str = text[start+1:end]
+        score = json.loads(json_str)
+
+        self.match_squads = {}
+        self.playing_24 = []
+        for player in score['squadA']:
+            name = player['PlayerName'].strip()
+            name = find_full_name(squads.get(bat_team, []),name)
+            position = int(player["PlayingOrder"])
+            team = player["TeamName"]
+            if team not in match_squads.keys():
+                self.match_squads[team] = []
+            else:
+                self.match_squads[team].append(name)
+            if position <= 11:
+                self.playing_24.append(name)
 
         batsmen_rows, bowlers_rows = [], []
 

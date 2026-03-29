@@ -1624,7 +1624,7 @@ def show_matches(data):
             mgr_html = re.sub(r'(<t[hd][^>]*style="[^"]*)(padding:\s*\d+px\s*\d+px;)', lambda m: m.group(0) + ' border-right: 1px solid rgba(255,255,255,0.1);', mgr_html)
             st.markdown(mgr_html, unsafe_allow_html=True)               
 
-        # --- TEAM PLAYING XI BREAKDOWN ---
+        # --- TEAM PLAYING XII BREAKDOWN ---
         if breakdown_sheet in data:
             st.markdown("""
             <div style="
@@ -1640,7 +1640,14 @@ def show_matches(data):
                     )            
             df_breakdown = data[breakdown_sheet]
             df_cfc = data[cfc_sheet] if cfc_sheet in data else None
-            players_in_match = set(df_breakdown.index.tolist())
+            
+            # Try to get playing 24 from pkl, fall back to breakdown sheet index
+            match_objects, _ = load_live_matches()
+            score_obj = match_objects.get(selected_match)
+            if score_obj and hasattr(score_obj, 'playing_24') and score_obj.playing_24:
+                players_in_match = set(score_obj.playing_24)
+            else:
+                players_in_match = set(df_breakdown.index.tolist())
             
             team_match_data = []
             for team_name, team_info in SQUAD_INFO.items():
