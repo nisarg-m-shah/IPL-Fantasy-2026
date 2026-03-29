@@ -220,6 +220,17 @@ class Score:
                 self.match_squads[team].append(name)
             if position <= 11:
                 self.playing_24.append(name)
+        for player in score['squadB']:
+            team = player["TeamName"]
+            name = player['PlayerName'].strip()
+            name = find_full_name(squads.get(team, []),name)
+            position = int(player["PlayingOrder"])
+            if team not in self.match_squads.keys():
+                self.match_squads[team] = []
+            else:
+                self.match_squads[team].append(name)
+            if position <= 11:
+                self.playing_24.append(name)
 
         batsmen_rows, bowlers_rows = [], []
 
