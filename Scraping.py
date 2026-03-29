@@ -210,10 +210,10 @@ class Score:
         self.match_squads = {}
         self.playing_24 = []
         for player in score['squadA']:
-            name = player['PlayerName'].strip()
-            name = find_full_name(squads.get(bat_team, []),name)
-            position = int(player["PlayingOrder"])
             team = player["TeamName"]
+            name = player['PlayerName'].strip()
+            name = find_full_name(squads.get(team, []),name)
+            position = int(player["PlayingOrder"])
             if team not in match_squads.keys():
                 self.match_squads[team] = []
             else:
