@@ -1633,7 +1633,7 @@ def show_matches(data):
                 margin: 20px 0;
             "></div>
             """, unsafe_allow_html=True)
-            st.markdown('#### ⚔️ Teams in Action')
+            st.markdown('#### ⚔️ Players in Action')
             st.markdown(
                         "<hr style='border: none; border-top: 3px solid #efb920; margin: 0;'>",
                         unsafe_allow_html=True
