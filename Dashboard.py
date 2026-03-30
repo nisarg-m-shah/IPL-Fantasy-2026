@@ -1164,10 +1164,7 @@ def show_rankings(data):
             for p in points:
                 total += p
                 if count == length:
-                    cap_points_list = sum(team_final.loc[team, col] for col in cap_cols)
-                    cap_points = 0
-                    for i in cap_points_list:
-                        cap_points += i
+                    cap_points = sum(team_final.loc[team, col] for col in cap_cols)
                     total += cap_points
                 cumulative.append(total)
                 count += 1
