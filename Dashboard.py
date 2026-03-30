@@ -1146,8 +1146,8 @@ def show_rankings(data):
 
     # Safely get match columns
     all_cols = set(team_final.columns)
-    exclude_cols = {'Total Points', 'Franchise Points', 'Orange Cap', 'Purple Cap', 'MVP', 'Emerging Player'}
-    match_cols = [col for col in team_final.columns if col not in exclude_cols]
+    exclude_cols = ['Total Points']
+    match_cols = [col for col in team_final.columns if col in exclude_cols]
 
     if not match_cols:
         st.info("⏳ Points progression chart will appear once matches begin. Stay tuned!")
@@ -1595,7 +1595,7 @@ def show_matches(data):
         st.info("⏳ No matches played yet. Match data will appear once the first match begins!")
         return
         
-    selected_match = st.selectbox("Select Match", reversed(match_names), key="match_selector")
+    selected_match = st.selectbox("Select Match", match_names, key="match_selector")
     
     if selected_match:
         cfc_sheet = f"{selected_match} - CFC Points"
