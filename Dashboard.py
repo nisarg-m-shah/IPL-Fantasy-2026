@@ -1146,22 +1146,32 @@ def show_rankings(data):
 
     # Safely get match columns
     all_cols = set(team_final.columns)
-    exclude_cols = ['Total Points']
-    match_cols = [col for col in team_final.columns if col in exclude_cols]
+    exclude_cols = ['Total Points','Orange Cap','Purple Cap','MVP','Franchise Points','Emerging Player']
+    match_cols = [col for col in team_final.columns if col not in exclude_cols]
 
     if not match_cols:
         st.info("⏳ Points progression chart will appear once matches begin. Stay tuned!")
     else:
         fig = go.Figure()
-
         for team in team_final.index:
             # Calculate cumulative points
             points = [team_final.loc[team, col] for col in match_cols]
+            length = len(points) - 1
             cumulative = []
             total = 0
+            count = 0
             for p in points:
                 total += p
+                if count == length:
+                    new_lst = exclude_cols.copy()
+                    new_lst.remove('Total Points')
+                    cap = [team_final.loc[team, col] for col in new_lst]
+                    cap_points = 0
+                    for i in cap:
+                        cap_points += i
+                    total += cap_points
                 cumulative.append(total)
+                count += 1
             
             fig.add_trace(go.Scatter(
                 x=match_cols,
