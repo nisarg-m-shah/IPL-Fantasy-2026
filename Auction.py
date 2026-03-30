@@ -748,7 +748,7 @@ names = [
     'Mohammad Izhar','Danish Malewar',
 
     #Replacements
-    'Dasun Shanaka','Saurabh Dubey','Blessing Muzarabani','Navdeep Saini','Kulwant Khejroliya','Spencer Johnson','David Payne','Abhinandan Singh','Zakary Foulkes'
+    'Dasun Shanaka','Saurabh Dubey','Blessing Muzarabani','Navdeep Saini','Kulwant Khejroliya','Spencer Johnson','David Payne','Abhinandan Singh','Zakary Foulkes','Brijesh Sharma'
 ]
 
 roles = [
@@ -806,7 +806,7 @@ roles = [
     'BAT','AR','BOWL','BAT','BOWL',
     'BOWL','BAT',
 
-    'AR','BOWL','BOWL','BOWL','BOWL','BOWL','BOWL','BOWL','BOWL'
+    'AR','BOWL','BOWL','BOWL','BOWL','BOWL','BOWL','BOWL','BOWL','BOWL'
 ]
 
 team_list = [
@@ -869,7 +869,7 @@ squads = {
         'Dhruv Jurel', 'Donovan Ferreira', 'Jofra Archer', 'Nandre Burger', 
         'Ravindra Jadeja', 'Riyan Parag', 'Sam Curran', 'Sandeep Sharma', 
         'Shimron Hetmyer', 'Shubham Dubey', 'Tushar Deshpande', 
-        'Vaibhav Suryavanshi', 'Yashasvi Jaiswal', 'Yudhvir Singh Charak','Dasun Shanaka'
+        'Vaibhav Suryavanshi', 'Yashasvi Jaiswal', 'Yudhvir Singh Charak','Dasun Shanaka', 'Brijesh Sharma'
     ],
     'Royal Challengers Bengaluru': [
         'Bhuvneshwar Kumar', 'Devdutt Padikkal', 'Jacob Bethell', 'Jitesh Sharma', 
