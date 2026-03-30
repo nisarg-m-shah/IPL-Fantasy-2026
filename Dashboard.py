@@ -1595,7 +1595,7 @@ def show_matches(data):
         st.info("⏳ No matches played yet. Match data will appear once the first match begins!")
         return
         
-    selected_match = st.selectbox("Select Match", match_names, key="match_selector")
+    selected_match = st.selectbox("Select Match", reversed(match_names), key="match_selector")
     
     if selected_match:
         cfc_sheet = f"{selected_match} - CFC Points"
