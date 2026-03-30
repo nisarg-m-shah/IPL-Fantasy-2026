@@ -1148,6 +1148,7 @@ def show_rankings(data):
     all_cols = set(team_final.columns)
     exclude_cols = ['Total Points','Orange Cap','Purple Cap','MVP','Franchise Points','Emerging Player']
     match_cols = [col for col in team_final.columns if col not in exclude_cols]
+    cap_cols = [col for col in exclude_cols if col != 'Total Points' and col in team_final.columns]
 
     if not match_cols:
         st.info("⏳ Points progression chart will appear once matches begin. Stay tuned!")
@@ -1163,11 +1164,9 @@ def show_rankings(data):
             for p in points:
                 total += p
                 if count == length:
-                    new_lst = exclude_cols.copy()
-                    new_lst.remove('Total Points')
-                    cap = [team_final.loc[team, col] for col in new_lst]
+                    
                     cap_points = 0
-                    for i in cap:
+                    for i in cap_cols:
                         cap_points += i
                     total += cap_points
                 cumulative.append(total)
