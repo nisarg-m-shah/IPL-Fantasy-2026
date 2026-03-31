@@ -604,18 +604,19 @@ def should_update():
             secs = int(lock_age % 60)
             return False, f"Update in progress by another user ({mins}m {secs}s ago)", -1
 
+    # Reset counters when match hours begin
+    if is_match:
+        reset_post_match_scraped()
+
     is_final, match_name = get_most_recent_match_state()
     if is_final and match_name:
         final_scraped = get_final_scraped_matches()
         if match_name in final_scraped:
-            return False, f"{match_name} has ended - No update needed", -1
-
-    # Reset counter when match hours begin
-    if is_match:
-        reset_post_match_scraped()
+            # Only block if we're outside match hours AND post match scrape is done
+            if not is_match and get_post_match_scraped():
+                return False, f"Latest match ({match_name}) already finalized and scraped - No update needed", -1
 
     if not is_match:
-        # Allow one scrape after match hours if counter is 0
         if not get_post_match_scraped():
             return True, "Post-match scrape - collecting final match data", -1
         return False, f"Outside match hours - {match_reason}", -1
