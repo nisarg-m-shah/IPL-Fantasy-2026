@@ -1,15 +1,15 @@
 {
     "Team Final Points": {
         "Hilarious Hooligans": {
-            "Total Points": 1216.0,
+            "Total Points": 1373.0,
             "Orange Cap": 0,
             "Purple Cap": 0,
             "MVP": 0,
-            "Franchise Points": 0,
+            "Franchise Points": 150,
             "RCB vs SRH": 573,
             "MI vs KKR": 256.0,
             "RR vs CSK": 0.0,
-            "PBKS vs GT": 387.0
+            "PBKS vs GT": 394.0
         },
         "Gujju Gang": {
             "Total Points": 1034.5,
@@ -201,14 +201,14 @@
             "PBKS vs GT": 0
         },
         "Cooper Connolly": {
-            "Total Points": 155,
+            "Total Points": 162,
             "Orange Cap": 0,
             "Purple Cap": 0,
             "MVP": 0,
             "RCB vs SRH": 0,
             "MI vs KKR": 0,
             "RR vs CSK": 0,
-            "PBKS vs GT": 155
+            "PBKS vs GT": 162
         },
         "Ajinkya Rahane": {
             "Total Points": 143,
@@ -8896,17 +8896,17 @@
             "Second Runout Points": 0
         },
         {
-            "Player Points": 155,
+            "Player Points": 162,
             "Man of the Match": 0,
             "Role": "AR",
-            "Player Batting Points": 145,
-            "Runs": 67,
-            "Runs Points": 67,
-            "Fours": 4,
-            "Fours Points": 8,
+            "Player Batting Points": 152,
+            "Runs": 72,
+            "Runs Points": 72,
+            "Fours": 5,
+            "Fours Points": 10,
             "Sixes": 5,
             "Sixes Points": 15,
-            "Strike Rate": 159.52,
+            "Strike Rate": 163.64,
             "Strike Rate Points": 30,
             "Duck Points": 0,
             "Batting Milestone Points": 25,
@@ -9190,7 +9190,7 @@
             "Wicket Points": 30,
             "Dots": 6,
             "Dot Points": 12,
-            "Economy": 7.67,
+            "Economy": 8.53,
             "Economy Points": 20,
             "Bowled Wickets": 0,
             "Bowled Wickets Points": 0,
@@ -9385,7 +9385,7 @@
             "Wicket Points": 90,
             "Dots": 11,
             "Dot Points": 22,
-            "Economy": 7.3,
+            "Economy": 7.25,
             "Economy Points": 20,
             "Bowled Wickets": 0,
             "Bowled Wickets Points": 0,
@@ -10128,7 +10128,7 @@
             "Dewald Brevis": 0.0
         },
         {
-            "Total Points": 387.0,
+            "Total Points": 394.0,
             "Booster": "None",
             "Sameer Rizvi": 0.0,
             "Shubman Gill": 0.0,
@@ -10208,7 +10208,7 @@
             "Nuwan Thushara": 0.0,
             "Marcus Stoinis": -10.0,
             "Rohit Sharma": 0.0,
-            "Cooper Connolly": 155.0,
+            "Cooper Connolly": 162.0,
             "Anrich Nortje": 0.0,
             "Zeeshan Ansari": 0.0,
             "Prabhsimran Singh": 81.0,
