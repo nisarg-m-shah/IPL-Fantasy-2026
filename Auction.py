@@ -748,7 +748,7 @@ names = [
     'Mohammad Izhar','Danish Malewar',
 
     #Replacements
-    'Dasun Shanaka','Saurabh Dubey','Blessing Muzarabani','Navdeep Saini','Kulwant Khejroliya','Spencer Johnson','David Payne','Abhinandan Singh','Zakary Foulkes','Brijesh Sharma'
+    'Dasun Shanaka','Saurabh Dubey','Blessing Muzarabani','Navdeep Saini','Kulwant Khejroliya','Spencer Johnson','David Payne','Abhinandan Singh','Zakary Foulkes','Brijesh Sharma','Ashok Sharma'
 ]
 
 roles = [
@@ -806,7 +806,7 @@ roles = [
     'BAT','AR','BOWL','BAT','BOWL',
     'BOWL','BAT',
 
-    'AR','BOWL','BOWL','BOWL','BOWL','BOWL','BOWL','BOWL','BOWL','BOWL'
+    'AR','BOWL','BOWL','BOWL','BOWL','BOWL','BOWL','BOWL','BOWL','BOWL','BOWL'
 ]
 
 team_list = [
@@ -837,7 +837,7 @@ squads = {
         'Anuj Rawat', 'Glenn Phillips', 'Ishant Sharma', 'los Buttler', 
         'Kagiso Rabada', 'Kumar Kushagra', 'Mohammad Siraj', 'Prasidh Krishna', 
         'Rahul Tewatia', 'Rashid Khan', 'Sai Sudharsan', 'Shahrukh Khan', 
-        'Shubman Gill', 'Washington Sundar', 'Sai Kishore','Kulwant Khejroliya'
+        'Shubman Gill', 'Washington Sundar', 'Sai Kishore','Kulwant Khejroliya','Ashok Sharma'
     ],
     'Kolkata Knight Riders': [
         'Ajinkya Rahane', 'Angkrish Raghuvanshi', 'Anukul Roy', 'Harshit Rana', 

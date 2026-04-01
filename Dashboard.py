@@ -816,7 +816,7 @@ def main():
             </div>
         """, unsafe_allow_html=True)
 
-    # Load data before scraping is done
+    # Load and display cached data FIRST
     data = load_data()
     if not data:
         from Auction import team_list as _team_list
@@ -825,23 +825,15 @@ def main():
             "Player Final Points": pd.DataFrame()
         }
     
-    # Create tabs
-    tab1, tab2, tab3, tab4, tab5 = st.tabs(["🏆 RANKINGS", "🛡️ SQUADS", "🏏 MATCHES", "👤 PLAYERS", "📺 LIVE SCORE"])    
-    with tab1:
-        show_rankings(data)
-    
-    with tab2:
-        show_squads(data)
-    
-    with tab3:
-        show_matches(data)
-    
-    with tab4:
-        show_analytics(data)
+    # Render tabs ONCE
+    tab1, tab2, tab3, tab4, tab5 = st.tabs(["🏆 RANKINGS", "🛡️ SQUADS", "🏏 MATCHES", "👤 PLAYERS", "📺 LIVE SCORE"])
+    with tab1: show_rankings(data)
+    with tab2: show_squads(data)
+    with tab3: show_matches(data)
+    with tab4: show_analytics(data)
+    with tab5: show_live_score()
 
-    with tab5:
-        show_live_score()
-    
+    # Update block AFTER tabs — spinner appears below tabs
     if should_run_update:
         lock_acquired, lock_message = acquire_lock()
         if lock_acquired:
@@ -850,7 +842,6 @@ def main():
                     success, message = run_output_script()
                     if success:
                         st.success(f"✅ {message}")
-                        st.cache_resource.clear()
                         time.sleep(1)
                         st.rerun()
                     else:
@@ -859,33 +850,7 @@ def main():
                 release_lock()
         else:
             st.info(f"⏳ {lock_message}")
-            st.info("💡 Displaying data from last update. Manually refresh in ~1 minute to see latest scores.")
-    
-        # Load data after scraping is done
-        data = load_data()
-        if not data:
-            from Auction import team_list as _team_list
-            data = {
-                "Team Final Points": pd.DataFrame({"Total Points": {t: 0 for t in _team_list}}),
-                "Player Final Points": pd.DataFrame()
-            }
-        
-        # Create tabs
-        tab1, tab2, tab3, tab4, tab5 = st.tabs(["🏆 RANKINGS", "🛡️ SQUADS", "🏏 MATCHES", "👤 PLAYERS", "📺 LIVE SCORE"])    
-        with tab1:
-            show_rankings(data)
-        
-        with tab2:
-            show_squads(data)
-        
-        with tab3:
-            show_matches(data)
-        
-        with tab4:
-            show_analytics(data)
-
-        with tab5:
-            show_live_score()
+            st.info("💡 Displaying data from last update. Manually refresh in ~1 minute.")
 
 def highlight_top_3(row):
     """Applies styling to the entire row, but unique border logic to the first cell."""

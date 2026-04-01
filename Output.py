@@ -46,10 +46,7 @@ def run_output_pipeline():
         excel_data = pd.read_excel(file_path, sheet_name=None, index_col=0)
         parsed_dict = {}
         for sheet_name, df in excel_data.items():
-            if df.index.dtype == 'O':
-                parsed_dict[sheet_name] = df.to_dict(orient='index')
-            else:
-                parsed_dict[sheet_name] = df.to_dict(orient='records')
+            parsed_dict[sheet_name] = df.to_dict(orient='index')
         return parsed_dict
 
     def op_caps(current_match_name):
@@ -227,15 +224,18 @@ def run_output_pipeline():
         # Check if data has changed
         if points_key in spreadsheet.keys():
             existing_data = spreadsheet[points_key]
-            if len(list(existing_data.keys())) == len(list(team_breakdown.index)):
-                count = 0
-                for player in list(team_breakdown.index):
-                    if existing_data[player]['Total Points'] != team_breakdown['Total Points'][player]:
-                        count += 1
-                        break
-                if count == 0:
-                    print(f"Match {match_name} already processed and unchanged, skipping...")
-                    continue
+            if not isinstance(existing_data, dict):
+                pass  # not a dict, reprocess this match
+            else:
+                if len(list(existing_data.keys())) == len(list(team_breakdown.index)):
+                    count = 0
+                    for player in list(team_breakdown.index):
+                        if existing_data[player]['Total Points'] != team_breakdown['Total Points'][player]:
+                            count += 1
+                            break
+                    if count == 0:
+                        print(f"Match {match_name} already processed and unchanged, skipping...")
+                        continue
 
         spreadsheet[(match_name + " - Points Breakdown")] = General_points_list
         spreadsheet[(match_name + " - CFC Points")] = team_breakdown
