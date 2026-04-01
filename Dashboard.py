@@ -39,7 +39,6 @@ def get_base64_image(image_path):
         return base64.b64encode(img_file.read()).decode()
 
 # Assuming your logo is named 'cfc_logo.png' in the same folder
-logo_base64 = get_base64_image("cfc_logo.png")
 # --- MATCH SCHEDULE CONFIGURATION ---
 
 def hex_to_rgb(hex_color):
