@@ -7,7 +7,7 @@ import time
 import subprocess
 import threading
 import re
-from datetime import datetime, time as dt_time
+from datetime import datetime, time as dt_time, timedelta
 import pytz
 import dill
 import sys
@@ -552,45 +552,51 @@ def get_most_recent_match_state():
         print(f"Error reading pkl file: {e}")
         return None, None
     
+def is_time_between(start, end, now):
+    """
+    Handles time ranges that may cross midnight.
+    """
+    if start <= end:
+        return start <= now <= end
+    else:
+        return now >= start or now <= end
 
 
 def is_match_time():
     """
     Check if current time falls within match hours based on schedule
-    Returns: (bool, str) - (is_match_time, reason)
+    Returns: (bool, str)
     """
-    # Get current time in IST
     ist = pytz.timezone('Asia/Kolkata')
     now = datetime.now(ist)
+
     current_date = now.strftime('%Y-%m-%d')
+    yesterday_date = (now - timedelta(days=1)).strftime('%Y-%m-%d')
     current_time = now.time()
-    
-    # Single header: 7:30 PM - 12:30 AM next day
-    single_start = dt_time(19, 30)  # 7:30 PM
-    single_end = dt_time(12, 55)     # 12:30 AM
-    
-    # Double header: 3:30 PM - 12:30 AM next day
-    double_start = dt_time(15, 30)  # 3:30 PM
-    double_end = dt_time(12, 55)     # 12:30 AM
-    
-    # Check if today is a single header day
-    if current_date in MATCH_SCHEDULE['single_header']:
-        if current_time >= single_start or current_time <= single_end:
+
+    # Define windows
+    SINGLE_START = dt_time(19, 30)   # 7:30 PM
+    DOUBLE_START = dt_time(15, 30)   # 3:30 PM
+    END_TIME = dt_time(1, 30)        # 1:30 AM (safe upper bound)
+
+    # --- TODAY checks ---
+    if current_date in MATCH_SCHEDULE.get('single_header', []):
+        if is_time_between(SINGLE_START, END_TIME, current_time):
             return True, f"Single header match day ({current_date})"
-    
-    # Check if today is a double header day
-    if current_date in MATCH_SCHEDULE['double_header']:
-        if current_time >= double_start or current_time <= double_end:
+
+    if current_date in MATCH_SCHEDULE.get('double_header', []):
+        if is_time_between(DOUBLE_START, END_TIME, current_time):
             return True, f"Double header match day ({current_date})"
-    
-    # Check if yesterday was a match day (for post-midnight times)
-    yesterday = (now - pd.Timedelta(days=1)).strftime('%Y-%m-%d')
-    if current_time <= single_end:  # Before 12:30 AM
-        if yesterday in MATCH_SCHEDULE['single_header']:
-            return True, f"Single header match day continued ({yesterday})"
-        if yesterday in MATCH_SCHEDULE['double_header']:
-            return True, f"Double header match day continued ({yesterday})"
-    
+
+    # --- YESTERDAY spillover (post-midnight only) ---
+    if current_time <= END_TIME:
+        if yesterday_date in MATCH_SCHEDULE.get('single_header', []):
+            return True, f"Single header continued ({yesterday_date})"
+
+        if yesterday_date in MATCH_SCHEDULE.get('double_header', []):
+            return True, f"Double header continued ({yesterday_date})"
+
+    # --- Otherwise ---
     return False, "No match scheduled"
 
 def should_update():
