@@ -171,7 +171,7 @@ class Player:
         if balls_bowled>=12:
             if economy<3:
                 economy_points = 50
-            if economy<4:
+            elif economy<4:
                 economy_points = 40
             elif economy<5:
                 economy_points = 35
