@@ -748,7 +748,9 @@ names = [
     'Mohammad Izhar','Danish Malewar',
 
     #Replacements
-    'Dasun Shanaka','Saurabh Dubey','Blessing Muzarabani','Navdeep Saini','Kulwant Khejroliya','Spencer Johnson','David Payne','Abhinandan Singh','Zakary Foulkes','Brijesh Sharma','Ashok Sharma', 'Shivang Kumar'
+    'Dasun Shanaka','Saurabh Dubey','Blessing Muzarabani','Navdeep Saini','Kulwant Khejroliya','Spencer Johnson','David Payne','Abhinandan Singh','Zakary Foulkes','Brijesh Sharma','Ashok Sharma', 'Shivang Kumar','Aman Khan','Shreyas Gopal','Sahil Parakh','Ajay Mandal','Madhav Tiwari','Tripurana Vijay','Manav Suthar'
+
+    ,'Gurnoor Brar','Daksh Kamra','Mayank Rawat','Raghu Sharma','Pyla Avanish','Vishnu Vinod','Musheer Khan', 'Praveen Dubey', 'Vishal Nishad', 'Aman Rao Perala', 'Ravi Singh', 'Lhuan-dre Pretorius', 'Yash Raj Punja', 'Jordan Cox', 'Kanishk Chouhan', 'Satwik Deswal', 'Vicky Ostwal', 'Krains Fuletra'
 ]
 
 roles = [
@@ -806,7 +808,9 @@ roles = [
     'BAT','AR','BOWL','BAT','BOWL',
     'BOWL','BAT',
 
-    'AR','BOWL','BOWL','BOWL','BOWL','BOWL','BOWL','BOWL','BOWL','BOWL','BOWL','BOWL'
+    'AR','BOWL','BOWL','BOWL','BOWL','BOWL','BOWL','BOWL','BOWL','BOWL','BOWL','AR','AR','AR','BAT','AR','AR','AR','BOWL','BOWL',
+
+    'AR','AR','BOWL','BAT','BAT','AR','BOWL','BOWL','BAT','BAT','BAT','BOWL','BAT','AR', 'BOWL', 'BOWL', 'BOWL'
 ]
 
 team_list = [
@@ -825,24 +829,24 @@ squads = {
         'Anshul Kamboj', 'Jamie Overton', 'MS Dhoni', 'Mukesh Choudhary', 
         'Nathan Ellis', 'Noor Ahmad', 'Ramakrishna Ghosh', 'Sanju Samson', 
         'Ruturaj Gaikwad', 'Shivam Dube', 'Ayush Mhatre', 'Dewald Brevis', 
-        'Urvil Patel', 'Khaleel Ahmed', 'Spencer Johnson'
+        'Urvil Patel', 'Khaleel Ahmed', 'Spencer Johnson','Aman Khan','Shreyas Gopal'
     ],
     'Delhi Capitals': [
         'Abishek Porel', 'Ashutosh Sharma', 'Axar Patel', 'Dushmantha Chameera', 
         'Karun Nair', 'KL Rahul', 'Kuldeep Yadav', 'Mitchell Starc', 
         'Mukesh Kumar', 'Nitish Rana', 'Sameer Rizvi', 'Tristan Stubbs', 
-        'Vipraj Nigam', 'T Natarajan'
+        'Vipraj Nigam', 'T Natarajan','Sahil Parakh','Ajay Mandal','Madhav Tiwari','Tripurana Vijay'
     ],
     'Gujarat Titans': [
         'Anuj Rawat', 'Glenn Phillips', 'Ishant Sharma', 'los Buttler', 
         'Kagiso Rabada', 'Kumar Kushagra', 'Mohammad Siraj', 'Prasidh Krishna', 
         'Rahul Tewatia', 'Rashid Khan', 'Sai Sudharsan', 'Shahrukh Khan', 
-        'Shubman Gill', 'Washington Sundar', 'Sai Kishore','Kulwant Khejroliya','Ashok Sharma'
+        'Shubman Gill', 'Washington Sundar', 'Sai Kishore','Kulwant Khejroliya','Ashok Sharma','Manav Suthar','Gurnoor Brar'
     ],
     'Kolkata Knight Riders': [
         'Ajinkya Rahane', 'Angkrish Raghuvanshi', 'Anukul Roy', 'Harshit Rana', 
         'Ramandeep Singh', 'Rinku Singh', 'Rovman Powell', 'Sunil Narine', 
-        'Umran Malik', 'Vaibhav Arora', 'Varun Chakaravarthy','Blessing Muzarabani','Saurabh Dubey','Navdeep Saini'
+        'Umran Malik', 'Vaibhav Arora', 'Varun Chakaravarthy','Blessing Muzarabani','Saurabh Dubey','Navdeep Saini','Daksh Kamra'
     ],
     'Lucknow Super Giants': [
         'Abdul Samad', 'Aiden Markram', 'Arjun Tendulkar', 'Arshin Kulkarni', 
@@ -856,32 +860,32 @@ squads = {
         'Hardik Pandya', 'Jasprit Bumrah', 'Mayank Markande', 'Mitchell Santner', 
         'Naman Dhir', 'Raj Angad Bawa', 'Robin Minz', 'Rohit Sharma', 
         'Ryan Rickelton', 'Shardul Thakur', 'Sherfane Rutherford', 
-        'Suryakumar Yadav', 'Tilak Varma', 'Trent Boult', 'Will Jacks'
+        'Suryakumar Yadav', 'Tilak Varma', 'Trent Boult', 'Will Jacks', 'Mayank Rawat', 'Raghu Sharma'
     ],
     'Punjab Kings': [
         'Arshdeep Singh', 'Azmatullah Omarzai', 'Harnoor Pannu', 'Harpreet Brar', 
         'Lockie Ferguson', 'Marco Jansen', 'Marcus Stoinis', 'Musheer Khan', 
         'Nehal Wadhera', 'Prabhsimran Singh', 'Priyansh Arya', 'Shashank Singh', 
         'Shreyas Iyer', 'Suryansh Shedge', 'Vishnu Vinod', 'Vijaykumar Vyshak', 
-        'Xavier Bartlett', 'Yash Thakur', 'Yuzvendra Chahal'
+        'Xavier Bartlett', 'Yash Thakur', 'Yuzvendra Chahal', 'Pyla Avanish','Praveen Dubey','Vishal Nishad'
     ],
     'Rajasthan Royals': [
         'Dhruv Jurel', 'Donovan Ferreira', 'Jofra Archer', 'Nandre Burger', 
         'Ravindra Jadeja', 'Riyan Parag', 'Sam Curran', 'Sandeep Sharma', 
         'Shimron Hetmyer', 'Shubham Dubey', 'Tushar Deshpande', 
-        'Vaibhav Suryavanshi', 'Yashasvi Jaiswal', 'Yudhvir Singh Charak','Dasun Shanaka', 'Brijesh Sharma'
+        'Vaibhav Suryavanshi', 'Yashasvi Jaiswal', 'Yudhvir Singh Charak','Dasun Shanaka', 'Brijesh Sharma', 'Aman Rao Perala', 'Ravi Singh', 'Lhuan-dre Pretorius', 'Yash Raj Punja'
     ],
     'Royal Challengers Bengaluru': [
         'Bhuvneshwar Kumar', 'Devdutt Padikkal', 'Jacob Bethell', 'Jitesh Sharma', 
         'Josh Hazlewood', 'Krunal Pandya', 'Nuwan Thushara', 'Phil Salt', 
         'Rajat Patidar', 'Rasikh Dar Salam', 'Romario Shepherd', 'Suyash Sharma', 
-        'Swapnil Singh', 'Tim David', 'Virat Kohli','Abhinandan Singh'
+        'Swapnil Singh', 'Tim David', 'Virat Kohli','Abhinandan Singh','Jordan Cox','Kanishk Chouhan','Satwik Deswal', 'Vicky Ostwal'
     ],
     'Sunrisers Hyderabad': [
         'Abhishek Sharma', 'Aniket Verma', 'Eshan Malinga', 'Harsh Dubey', 
         'Harshal Patel', 'Heinrich Klaasen', 'Ishan Kishan', 'Jaydev Unadkat', 
         'Kamindu Mendis', 'Nitish Reddy', 'Pat Cummins', 'Travis Head', 
-        'Zeeshan Ansari', 'Jack Edwards', 'David Payne','Shivang Kumar'
+        'Zeeshan Ansari', 'Jack Edwards', 'David Payne', 'Shivang Kumar', 'Krains Fuletra'
     ]
 }
 team_names_sf = ["KKR","GT","MI","CSK","RR","RCB","PBKS","DC","SRH","LSG"]
