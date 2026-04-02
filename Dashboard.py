@@ -567,11 +567,11 @@ def is_match_time():
     
     # Single header: 7:30 PM - 12:30 AM next day
     single_start = dt_time(19, 30)  # 7:30 PM
-    single_end = dt_time(4, 55)     # 12:30 AM
+    single_end = dt_time(12, 55)     # 12:30 AM
     
     # Double header: 3:30 PM - 12:30 AM next day
     double_start = dt_time(15, 30)  # 3:30 PM
-    double_end = dt_time(4, 55)     # 12:30 AM
+    double_end = dt_time(12, 55)     # 12:30 AM
     
     # Check if today is a single header day
     if current_date in MATCH_SCHEDULE['single_header']:
@@ -612,7 +612,7 @@ def should_update():
         final_scraped = get_final_scraped_matches()
         if match_name in final_scraped:
             # Only block if we're outside match hours AND post match scrape is done
-            if not is_match and get_post_match_scraped():
+            if not is_match or get_post_match_scraped():
                 return False, f"Latest match ({match_name}) already finalized and scraped - No update needed", -1
 
     if not is_match:
