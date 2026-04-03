@@ -619,7 +619,7 @@ def should_update():
         if match_name in final_scraped:
             # Only block if we're outside match hours AND post match scrape is done
             if not is_match or get_post_match_scraped():
-                return False, f"Latest match ({match_name}) already finalized and scraped - No update needed", -1
+                return False, f"Latest match ({match_name}) over - No update needed", -1
 
     if not is_match:
         if not get_post_match_scraped():
