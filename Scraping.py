@@ -316,6 +316,7 @@ class Score:
         summary = json.loads(re.sub(r"^[^(]*\(|\);?$", "", r.text))["MatchSummary"][0]
 
         self.man_of_the_match = summary.get("MOM", "").split(" (")[0].strip()
+        self.man_of_the_match = find_full_name(self.playing_24,self.man_of_the_match)
         comments = summary.get("Comments", "")
         self.winner = comments.split(" Won")[0].strip() if "Won" in comments else ""
 
