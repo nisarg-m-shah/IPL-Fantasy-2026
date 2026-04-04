@@ -1,7 +1,7 @@
 {
     "Team Final Points": {
         "Nasty Knights": {
-            "Total Points": 3044.0,
+            "Total Points": 3036.0,
             "Orange Cap": 0,
             "Purple Cap": 500,
             "MVP": 0,
@@ -14,7 +14,7 @@
             "KKR vs SRH": 238.5,
             "CSK vs PBKS": 690.0,
             "DC vs MI": 58.0,
-            "GT vs RR": 403.0,
+            "GT vs RR": 395.0,
             "Emerging Player": 0
         },
         "Disruptors": {
@@ -69,7 +69,7 @@
             "Emerging Player": 0
         },
         "Night Watchmen": {
-            "Total Points": 2122.0,
+            "Total Points": 2108.5,
             "Orange Cap": 0,
             "Purple Cap": 0,
             "MVP": 0,
@@ -82,7 +82,7 @@
             "KKR vs SRH": 187.0,
             "CSK vs PBKS": 150.0,
             "DC vs MI": 132.0,
-            "GT vs RR": 268.0,
+            "GT vs RR": 254.5,
             "Emerging Player": 0
         },
         "Alpha Acers": {
@@ -103,7 +103,7 @@
             "Emerging Player": 0
         },
         "VS Stalwarts": {
-            "Total Points": 1441.5,
+            "Total Points": 1453.5,
             "Orange Cap": 0,
             "Purple Cap": 0,
             "MVP": 0,
@@ -116,11 +116,11 @@
             "KKR vs SRH": 240.0,
             "CSK vs PBKS": 0.0,
             "DC vs MI": 138.0,
-            "GT vs RR": 34.0,
+            "GT vs RR": 46.0,
             "Emerging Player": 0
         },
         "Tormented Titans": {
-            "Total Points": 1381.5,
+            "Total Points": 1432.5,
             "Orange Cap": 0,
             "Purple Cap": 0,
             "MVP": 0,
@@ -133,7 +133,7 @@
             "KKR vs SRH": 141.0,
             "CSK vs PBKS": 104.5,
             "DC vs MI": 452.0,
-            "GT vs RR": 243.0,
+            "GT vs RR": 294.0,
             "Emerging Player": 0
         }
     },
@@ -362,38 +362,6 @@
             "GT vs RR": 49,
             "Emerging Player": 0
         },
-        "Rashid Khan": {
-            "Total Points": 222,
-            "Orange Cap": 0,
-            "Purple Cap": 0,
-            "MVP": 0,
-            "RCB vs SRH": 0,
-            "MI vs KKR": 0,
-            "RR vs CSK": 0,
-            "PBKS vs GT": 80,
-            "LSG vs DC": 0,
-            "KKR vs SRH": 0,
-            "CSK vs PBKS": 0,
-            "DC vs MI": 0,
-            "GT vs RR": 142,
-            "Emerging Player": 0
-        },
-        "Kagiso Rabada": {
-            "Total Points": 215,
-            "Orange Cap": 0,
-            "Purple Cap": 0,
-            "MVP": 0,
-            "RCB vs SRH": 0,
-            "MI vs KKR": 0,
-            "RR vs CSK": 0,
-            "PBKS vs GT": 34,
-            "LSG vs DC": 0,
-            "KKR vs SRH": 0,
-            "CSK vs PBKS": 0,
-            "DC vs MI": 0,
-            "GT vs RR": 181,
-            "Emerging Player": 0
-        },
         "Vaibhav Suryavanshi": {
             "Total Points": 214,
             "Orange Cap": 0,
@@ -408,6 +376,22 @@
             "CSK vs PBKS": 0,
             "DC vs MI": 0,
             "GT vs RR": 74,
+            "Emerging Player": 0
+        },
+        "Rashid Khan": {
+            "Total Points": 213,
+            "Orange Cap": 0,
+            "Purple Cap": 0,
+            "MVP": 0,
+            "RCB vs SRH": 0,
+            "MI vs KKR": 0,
+            "RR vs CSK": 0,
+            "PBKS vs GT": 80,
+            "LSG vs DC": 0,
+            "KKR vs SRH": 0,
+            "CSK vs PBKS": 0,
+            "DC vs MI": 0,
+            "GT vs RR": 133,
             "Emerging Player": 0
         },
         "Mukesh Kumar": {
@@ -442,6 +426,38 @@
             "GT vs RR": 0,
             "Emerging Player": 0
         },
+        "Jofra Archer": {
+            "Total Points": 210,
+            "Orange Cap": 0,
+            "Purple Cap": 0,
+            "MVP": 0,
+            "RCB vs SRH": 0,
+            "MI vs KKR": 0,
+            "RR vs CSK": 164,
+            "PBKS vs GT": 0,
+            "LSG vs DC": 0,
+            "KKR vs SRH": 0,
+            "CSK vs PBKS": 0,
+            "DC vs MI": 0,
+            "GT vs RR": 46,
+            "Emerging Player": 0
+        },
+        "Kagiso Rabada": {
+            "Total Points": 207,
+            "Orange Cap": 0,
+            "Purple Cap": 0,
+            "MVP": 0,
+            "RCB vs SRH": 0,
+            "MI vs KKR": 0,
+            "RR vs CSK": 0,
+            "PBKS vs GT": 34,
+            "LSG vs DC": 0,
+            "KKR vs SRH": 0,
+            "CSK vs PBKS": 0,
+            "DC vs MI": 0,
+            "GT vs RR": 173,
+            "Emerging Player": 0
+        },
         "Anshul Kamboj": {
             "Total Points": 203,
             "Orange Cap": 0,
@@ -456,22 +472,6 @@
             "CSK vs PBKS": 93,
             "DC vs MI": 0,
             "GT vs RR": 0,
-            "Emerging Player": 0
-        },
-        "Jofra Archer": {
-            "Total Points": 198,
-            "Orange Cap": 0,
-            "Purple Cap": 0,
-            "MVP": 0,
-            "RCB vs SRH": 0,
-            "MI vs KKR": 0,
-            "RR vs CSK": 164,
-            "PBKS vs GT": 0,
-            "LSG vs DC": 0,
-            "KKR vs SRH": 0,
-            "CSK vs PBKS": 0,
-            "DC vs MI": 0,
-            "GT vs RR": 34,
             "Emerging Player": 0
         },
         "Yuzvendra Chahal": {
@@ -1322,6 +1322,22 @@
             "GT vs RR": 0,
             "Emerging Player": 0
         },
+        "Tushar Deshpande": {
+            "Total Points": 74,
+            "Orange Cap": 0,
+            "Purple Cap": 0,
+            "MVP": 0,
+            "RCB vs SRH": 0,
+            "MI vs KKR": 0,
+            "RR vs CSK": 0,
+            "PBKS vs GT": 0,
+            "LSG vs DC": 0,
+            "KKR vs SRH": 0,
+            "CSK vs PBKS": 0,
+            "DC vs MI": 0,
+            "GT vs RR": 74,
+            "Emerging Player": 0
+        },
         "Glenn Phillips": {
             "Total Points": 73,
             "Orange Cap": 0,
@@ -1784,22 +1800,6 @@
             "CSK vs PBKS": 0,
             "DC vs MI": 21,
             "GT vs RR": 0,
-            "Emerging Player": 0
-        },
-        "Tushar Deshpande": {
-            "Total Points": 23,
-            "Orange Cap": 0,
-            "Purple Cap": 0,
-            "MVP": 0,
-            "RCB vs SRH": 0,
-            "MI vs KKR": 0,
-            "RR vs CSK": 0,
-            "PBKS vs GT": 0,
-            "LSG vs DC": 0,
-            "KKR vs SRH": 0,
-            "CSK vs PBKS": 0,
-            "DC vs MI": 0,
-            "GT vs RR": 23,
             "Emerging Player": 0
         },
         "Shashank Singh": {
@@ -22715,18 +22715,18 @@
             "Second Runout Points": 0
         },
         {
-            "Player Points": 181,
+            "Player Points": 173,
             "Man of the Match": 0,
             "Role": "BOWL",
-            "Player Batting Points": 59,
-            "Runs": 21,
-            "Runs Points": 21,
+            "Player Batting Points": 51,
+            "Runs": 23,
+            "Runs Points": 23,
             "Fours": 1,
             "Fours Points": 2,
             "Sixes": 2,
             "Sixes Points": 6,
-            "Strike Rate": 161.54,
-            "Strike Rate Points": 30,
+            "Strike Rate": 143.75,
+            "Strike Rate Points": 20,
             "Duck Points": 0,
             "Batting Milestone Points": 0,
             "Player Bowling Points": 122,
@@ -23144,18 +23144,18 @@
             "Second Runout Points": 0
         },
         {
-            "Player Points": 142,
+            "Player Points": 133,
             "Man of the Match": 30,
             "Role": "AR",
-            "Player Batting Points": 69,
-            "Runs": 23,
-            "Runs Points": 23,
+            "Player Batting Points": 60,
+            "Runs": 24,
+            "Runs Points": 24,
             "Fours": 3,
             "Fours Points": 6,
             "Sixes": 0,
             "Sixes Points": 0,
-            "Strike Rate": 176.92,
-            "Strike Rate Points": 40,
+            "Strike Rate": 150.0,
+            "Strike Rate Points": 30,
             "Duck Points": 0,
             "Batting Milestone Points": 0,
             "Player Bowling Points": 43,
@@ -23183,7 +23183,7 @@
             "Second Runout Points": 0
         },
         {
-            "Player Points": 34,
+            "Player Points": 46,
             "Man of the Match": 0,
             "Role": "BOWL",
             "Player Batting Points": 1,
@@ -23197,23 +23197,23 @@
             "Strike Rate Points": 0,
             "Duck Points": 0,
             "Batting Milestone Points": 0,
-            "Player Bowling Points": 23,
+            "Player Bowling Points": 25,
             "Maidens": 0,
             "Maidens Points": 0,
             "Wickets": 0,
             "Wicket Points": 0,
-            "Dots": 9,
-            "Dot Points": 18,
-            "Economy": 9.91,
+            "Dots": 10,
+            "Dot Points": 20,
+            "Economy": 9.5,
             "Economy Points": 5,
             "Bowled Wickets": 0,
             "Bowled Wickets Points": 0,
             "LBW Wickets": 0,
             "LBW Wickets Points": 0,
             "Bowling Milestone Points": 0,
-            "Player Fielding Points": 10,
-            "Catches": 1,
-            "Catching Points": 10,
+            "Player Fielding Points": 20,
+            "Catches": 2,
+            "Catching Points": 20,
             "Stumpings": 0,
             "Stumping Points": 0,
             "Main Runouts": 0,
@@ -23261,7 +23261,7 @@
             "Second Runout Points": 0
         },
         {
-            "Player Points": 23,
+            "Player Points": 74,
             "Man of the Match": 0,
             "Role": "BOWL",
             "Player Batting Points": 0,
@@ -23275,15 +23275,15 @@
             "Strike Rate Points": 0,
             "Duck Points": 0,
             "Batting Milestone Points": 0,
-            "Player Bowling Points": 13,
+            "Player Bowling Points": 64,
             "Maidens": 0,
             "Maidens Points": 0,
-            "Wickets": 0,
-            "Wicket Points": 0,
-            "Dots": 4,
-            "Dot Points": 8,
-            "Economy": 10.0,
-            "Economy Points": 5,
+            "Wickets": 1,
+            "Wicket Points": 30,
+            "Dots": 7,
+            "Dot Points": 14,
+            "Economy": 8.0,
+            "Economy Points": 20,
             "Bowled Wickets": 0,
             "Bowled Wickets Points": 0,
             "LBW Wickets": 0,
@@ -23621,7 +23621,7 @@
             "Dewald Brevis": 0.0
         },
         {
-            "Total Points": 403.0,
+            "Total Points": 395.0,
             "Booster": "None",
             "Sameer Rizvi": 0.0,
             "Shubman Gill": 0.0,
@@ -23647,7 +23647,7 @@
             "Shivam Mavi": 0.0,
             "Pathum Nissanka": 0.0,
             "Phil Salt": 0.0,
-            "Kagiso Rabada": 181.0,
+            "Kagiso Rabada": 173.0,
             "Shreyas Iyer": 0.0,
             "Ayush Mhatre": 0.0,
             "Sunil Narine": 0.0,
@@ -23823,7 +23823,7 @@
             "Dewald Brevis": 0.0
         },
         {
-            "Total Points": 268.0,
+            "Total Points": 254.5,
             "Booster": "None",
             "Sameer Rizvi": 0.0,
             "Shubman Gill": 0.0,
@@ -23899,7 +23899,7 @@
             "Nandre Burger": 49.0,
             "Smaran Ravichandran": 0.0,
             "Shahbaz Ahmed": 0.0,
-            "Rashid Khan": 213.0,
+            "Rashid Khan": 199.5,
             "Nuwan Thushara": 0.0,
             "Marcus Stoinis": 0.0,
             "Rohit Sharma": 0.0,
@@ -24429,7 +24429,7 @@
             "Dewald Brevis": 0.0
         },
         {
-            "Total Points": 243.0,
+            "Total Points": 294.0,
             "Booster": "None",
             "Sameer Rizvi": 0.0,
             "Shubman Gill": 0.0,
@@ -24562,7 +24562,7 @@
             "Ruturaj Gaikwad": 0.0,
             "Suryakumar Yadav": 0.0,
             "Sandeep Sharma": 8.0,
-            "Tushar Deshpande": 23.0,
+            "Tushar Deshpande": 74.0,
             "Vaibhav Arora": 0.0,
             "Corbin Bosch": 0.0,
             "Jos Buttler": 86.0,
@@ -24631,7 +24631,7 @@
             "Dewald Brevis": 0.0
         },
         {
-            "Total Points": 34.0,
+            "Total Points": 46.0,
             "Booster": "None",
             "Sameer Rizvi": 0.0,
             "Shubman Gill": 0.0,
@@ -24798,7 +24798,7 @@
             "Liam Livingstone": 0.0,
             "Arjun Tendulkar": 0.0,
             "Rahul Tripathi": 0.0,
-            "Jofra Archer": 34.0,
+            "Jofra Archer": 46.0,
             "Nicholas Pooran": 0.0,
             "Sherfane Rutherford": 0.0,
             "Cameron Green": 0.0,
