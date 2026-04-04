@@ -1,7 +1,7 @@
 {
     "Team Final Points": {
         "Hilarious Hooligans": {
-            "Total Points": 2591.0,
+            "Total Points": 2546.0,
             "Orange Cap": 0,
             "Purple Cap": 0,
             "MVP": 0,
@@ -13,7 +13,7 @@
             "LSG vs DC": 203.5,
             "KKR vs SRH": 237.0,
             "CSK vs PBKS": 244.0,
-            "DC vs MI": 363.5
+            "DC vs MI": 318.5
         },
         "Nasty Knights": {
             "Total Points": 2141.0,
@@ -61,7 +61,7 @@
             "DC vs MI": 14.0
         },
         "Disruptors": {
-            "Total Points": 1623.0,
+            "Total Points": 1653.0,
             "Orange Cap": 0,
             "Purple Cap": 0,
             "MVP": 0,
@@ -73,7 +73,7 @@
             "LSG vs DC": 172.0,
             "KKR vs SRH": 107.0,
             "CSK vs PBKS": 75.0,
-            "DC vs MI": 339.0
+            "DC vs MI": 369.0
         },
         "VS Stalwarts": {
             "Total Points": 1407.5,
@@ -123,7 +123,7 @@
     },
     "Player Final Points": {
         "Sameer Rizvi": {
-            "Total Points": 357,
+            "Total Points": 387,
             "Orange Cap": 0,
             "Purple Cap": 0,
             "MVP": 0,
@@ -134,7 +134,7 @@
             "LSG vs DC": 167,
             "KKR vs SRH": 0,
             "CSK vs PBKS": 0,
-            "DC vs MI": 190
+            "DC vs MI": 220
         },
         "Vijaykumar Vyshak": {
             "Total Points": 272,
@@ -360,20 +360,6 @@
             "CSK vs PBKS": 0,
             "DC vs MI": 8
         },
-        "Axar Patel": {
-            "Total Points": 184,
-            "Orange Cap": 0,
-            "Purple Cap": 0,
-            "MVP": 0,
-            "RCB vs SRH": 0,
-            "MI vs KKR": 0,
-            "RR vs CSK": 0,
-            "PBKS vs GT": 0,
-            "LSG vs DC": 73,
-            "KKR vs SRH": 0,
-            "CSK vs PBKS": 0,
-            "DC vs MI": 111
-        },
         "Devdutt Padikkal": {
             "Total Points": 182,
             "Orange Cap": 0,
@@ -541,6 +527,20 @@
             "KKR vs SRH": 0,
             "CSK vs PBKS": 67,
             "DC vs MI": 0
+        },
+        "Axar Patel": {
+            "Total Points": 154,
+            "Orange Cap": 0,
+            "Purple Cap": 0,
+            "MVP": 0,
+            "RCB vs SRH": 0,
+            "MI vs KKR": 0,
+            "RR vs CSK": 0,
+            "PBKS vs GT": 0,
+            "LSG vs DC": 73,
+            "KKR vs SRH": 0,
+            "CSK vs PBKS": 0,
+            "DC vs MI": 81
         },
         "Kuldeep Yadav": {
             "Total Points": 154,
@@ -20377,8 +20377,8 @@
             "Second Runout Points": 0
         },
         {
-            "Player Points": 190,
-            "Man of the Match": 0,
+            "Player Points": 220,
+            "Man of the Match": 30,
             "Role": "AR",
             "Player Batting Points": 190,
             "Runs": 90,
@@ -20455,8 +20455,8 @@
             "Second Runout Points": 0
         },
         {
-            "Player Points": 111,
-            "Man of the Match": 30,
+            "Player Points": 81,
+            "Man of the Match": 0,
             "Role": "AR",
             "Player Batting Points": 0,
             "Runs": 0,
@@ -20535,9 +20535,9 @@
     ],
     "DC vs MI - CFC Points": [
         {
-            "Total Points": 339.0,
+            "Total Points": 369.0,
             "Booster": "None",
-            "Sameer Rizvi": 190.0,
+            "Sameer Rizvi": 220.0,
             "Shubman Gill": 0.0,
             "Travis Head": 0.0,
             "Jacob Duffy": 0.0,
@@ -21141,7 +21141,7 @@
             "Dewald Brevis": 0.0
         },
         {
-            "Total Points": 363.5,
+            "Total Points": 318.5,
             "Booster": "None",
             "Sameer Rizvi": 0.0,
             "Shubman Gill": 0.0,
@@ -21231,7 +21231,7 @@
             "Yuzvendra Chahal": 0.0,
             "Swapnil Singh": 0.0,
             "Manimaran Siddharth": 0.0,
-            "Axar Patel": 166.5,
+            "Axar Patel": 121.5,
             "Jason Holder": 0.0,
             "Romario Shepherd": 0.0,
             "Rahul Tewatia": 0.0,
