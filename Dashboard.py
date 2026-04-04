@@ -612,33 +612,49 @@ def should_update():
 
     is_final, match_name = get_most_recent_match_state()
 
-    # Reset counters when match hours begin
-    if is_match:
+    if is_final is None:
+        return True, "Unknown match state - checking", -1
+
+    # ----------------------------
+    # RESET LOGIC (FIXED)
+    # ----------------------------
+    # Only reset when match is NOT final
+    if not is_final:
         reset_post_match_scraped()
 
-    if is_final and match_name:
-        final_scraped = get_final_scraped_matches()
-        if match_name in final_scraped:
-            # Only block if we're outside match hours AND post match scrape is done
-            if not is_match or get_post_match_scraped():
-                return False, f"Latest match ({match_name}) over - No update needed", -1
+    # ----------------------------
+    # DURING MATCH HOURS
+    # ----------------------------
+    if is_match:
+        if not is_final:
+            last_update = get_last_update_time()
+            time_since_update = time.time() - last_update
+            hours = int(time_since_update // 3600)
+            mins = int((time_since_update%3600) // 60)
+            secs = int(time_since_update % 60)
+            # Match ongoing → periodic scraping
+            if time_since_update >= UPDATE_INTERVAL:
+                return True, f"Match Ongoing - {match_reason} (Last update: {hours}h {mins} min {secs} sec ago)", -1
+            else:
+                remaining = UPDATE_INTERVAL - time_since_update
+                return False, "Match ongoing | Updated Recently", int(remaining)
 
-    if not is_match:
-        if not get_post_match_scraped():
-            return True, "Post-match scrape - collecting final match data", -1
-        return False, f"Outside match hours - {match_reason}", -1
+        else:
+            # Match finished → do ONE final scrape
+            if not get_post_match_scraped():
+                return True, f"Finalizing match ({match_name})", -1
 
-    last_update = get_last_update_time()
-    current_time = time.time()
-    time_since_update = current_time - last_update
+            return False, f"Latest match ({match_name}) over - No update needed", -1
 
-    if time_since_update >= UPDATE_INTERVAL:
-        mins = int(time_since_update // 60)
-        secs = int(time_since_update % 60)
-        return True, f"Match Ongoing - {match_reason} (Last update: {mins} min {secs} sec ago)", -1
+    # ----------------------------
+    # OUTSIDE MATCH HOURS
+    # ----------------------------
     else:
-        remaining_time = UPDATE_INTERVAL - time_since_update
-        return False, f"Match Ongoing | Updated Recently", int(remaining_time)
+        # Recovery: if something was missed
+        if not get_post_match_scraped():
+            return True, f"Post-match scrape ({match_name})", -1
+
+        return False, f"Outside match hours - {match_reason}", -1
 
 def run_output_script():
     try:
