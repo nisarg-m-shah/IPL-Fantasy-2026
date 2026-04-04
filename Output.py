@@ -256,6 +256,16 @@ def run_output_pipeline():
         spreadsheet['Team Final Points'].setdefault(team, {})['Franchise Points'] = franchise_points
         print(f"{team}: {franchise_wins[team]} wins = {franchise_points} franchise points")
 
+    final_matches = [
+        name for name in match_names
+        if match_states.get(name, {}).get("is_final", False)
+    ]
+
+    if final_matches:
+        last_final_match = final_matches[-1]
+    else:
+        last_final_match = None
+
     try:
         current_match_name = match_names[-1]
         current_match_state = match_states.get(current_match_name, "").lower()
@@ -265,8 +275,8 @@ def run_output_pipeline():
         # 2. Current match is final
         # 3. Caps are missing or for a previous match
         if number_of_matches >= 9:
-            if caps_match_name != current_match_name:
-                orange_cap, purple_cap, mvp = op_caps(current_match_name)
+            if last_final_match and caps_match_name != last_final_match:
+                orange_cap, purple_cap, mvp = op_caps(last_final_match)
 
 
             print(f"Orange Cap: {orange_cap}")
