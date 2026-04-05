@@ -20,7 +20,7 @@
             "RCB vs CSK": 513.0
         },
         "Gujju Gang": {
-            "Total Points": 3378.0,
+            "Total Points": 3408.0,
             "Orange Cap": 0,
             "Purple Cap": 500,
             "MVP": 0,
@@ -36,7 +36,7 @@
             "GT vs RR": 675.5,
             "Emerging Player": 0,
             "SRH vs LSG": 139,
-            "RCB vs CSK": 328.0
+            "RCB vs CSK": 358.0
         },
         "Nasty Knights": {
             "Total Points": 2914.0,
@@ -478,6 +478,24 @@
             "SRH vs LSG": -8,
             "RCB vs CSK": 0
         },
+        "Tim David": {
+            "Total Points": 246,
+            "Orange Cap": 0,
+            "Purple Cap": 0,
+            "MVP": 0,
+            "RCB vs SRH": 51,
+            "MI vs KKR": 0,
+            "RR vs CSK": 0,
+            "PBKS vs GT": 0,
+            "LSG vs DC": 0,
+            "KKR vs SRH": 0,
+            "CSK vs PBKS": 0,
+            "DC vs MI": 0,
+            "GT vs RR": 0,
+            "Emerging Player": 0,
+            "SRH vs LSG": 0,
+            "RCB vs CSK": 195
+        },
         "Virat Kohli": {
             "Total Points": 244,
             "Orange Cap": 0,
@@ -585,24 +603,6 @@
             "Emerging Player": 0,
             "SRH vs LSG": 0,
             "RCB vs CSK": 0
-        },
-        "Tim David": {
-            "Total Points": 216,
-            "Orange Cap": 0,
-            "Purple Cap": 0,
-            "MVP": 0,
-            "RCB vs SRH": 51,
-            "MI vs KKR": 0,
-            "RR vs CSK": 0,
-            "PBKS vs GT": 0,
-            "LSG vs DC": 0,
-            "KKR vs SRH": 0,
-            "CSK vs PBKS": 0,
-            "DC vs MI": 0,
-            "GT vs RR": 0,
-            "Emerging Player": 0,
-            "SRH vs LSG": 0,
-            "RCB vs CSK": 165
         },
         "Vaibhav Suryavanshi": {
             "Total Points": 214,
@@ -28717,8 +28717,8 @@
             "Second Runout Points": 0
         },
         {
-            "Player Points": 165,
-            "Man of the Match": 0,
+            "Player Points": 195,
+            "Man of the Match": 30,
             "Role": "AR",
             "Player Batting Points": 165,
             "Runs": 70,
@@ -29644,7 +29644,7 @@
             "Dewald Brevis": 0.0
         },
         {
-            "Total Points": 328.0,
+            "Total Points": 358.0,
             "Booster": "None",
             "Sameer Rizvi": 0.0,
             "Shubman Gill": 0.0,
@@ -29773,7 +29773,7 @@
             "Kartik Sharma": 9.0,
             "Arshdeep Singh": 0.0,
             "Shahrukh Khan": 0.0,
-            "Tim David": 165.0,
+            "Tim David": 195.0,
             "Ruturaj Gaikwad": 0.0,
             "Suryakumar Yadav": 0.0,
             "Sandeep Sharma": 0.0,
