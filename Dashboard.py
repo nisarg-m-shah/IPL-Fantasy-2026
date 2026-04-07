@@ -577,7 +577,7 @@ def is_match_time():
     # Define windows
     SINGLE_START = dt_time(19, 30)   # 7:30 PM
     DOUBLE_START = dt_time(15, 30)   # 3:30 PM
-    END_TIME = dt_time(18, 0)        # 1:30 AM (safe upper bound)
+    END_TIME = dt_time(1, 0)        # 1:30 AM (safe upper bound)
 
     # --- TODAY checks ---
     if current_date in MATCH_SCHEDULE.get('single_header', []):
