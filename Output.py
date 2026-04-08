@@ -275,7 +275,7 @@ def run_output_pipeline():
         # 2. Current match is final
         # 3. Caps are missing or for a previous match
         if number_of_matches >= 9:
-            if last_final_match and caps_match_name != last_final_match:
+            if last_final_match == current_match_name and caps_match_name != last_final_match:
                 orange_cap, purple_cap, mvp = op_caps(last_final_match)
 
 
