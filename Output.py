@@ -257,8 +257,8 @@ def run_output_pipeline():
         print(f"{team}: {franchise_wins[team]} wins = {franchise_points} franchise points")
 
     final_matches = [
-        name for name in match_names
-        if match_states.get(name, {}).get("is_final", False)
+        name for name, obj in match_objects.items()
+        if match_states.get(obj.match_id, {}).get("is_final", False)
     ]
 
     if final_matches:
