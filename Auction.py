@@ -446,7 +446,8 @@ teams = {
             'Krunal Pandya',
             'T Natarajan',
             'Saurabh Dubey',
-            'Dasun Shanaka'
+            'Dasun Shanaka',
+            'Kulwant Khejroliya'
         ],
         'captain': ['Shreyas Iyer'],
         'vice captain': ['Sunil Narine'],
@@ -517,7 +518,8 @@ teams = {
             'Kyle Jamieson',
             'Rovman Powell',
             'Aniket Verma',
-            'Abdul Samad'
+            'Abdul Samad',
+            'Spencer Johnson'
         ],
         'captain': ['Ishan Kishan'],
         'vice captain': ['Axar Patel'],
@@ -653,7 +655,8 @@ teams = {
             'Mohsin Khan',
             'Mohammad Izhar',
             'Danish Malewar',
-            'Dewald Brevis'
+            'Dewald Brevis',
+            'Navdeep Saini'
         ],
         'captain': ['Sanju Samson'],
         'vice captain': ['Yashasvi Jaiswal'],
