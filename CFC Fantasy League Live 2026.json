@@ -93,7 +93,7 @@
             "KKR vs LSG": 166.0
         },
         "Hilarious Hooligans": {
-            "Total Points": 2944.5,
+            "Total Points": 2934.5,
             "Orange Cap": 0,
             "Purple Cap": 0,
             "MVP": 0,
@@ -113,7 +113,7 @@
             "KKR vs PBKS": 20,
             "RR vs MI": 5,
             "DC vs GT": 27.5,
-            "KKR vs LSG": 165.0
+            "KKR vs LSG": 155.0
         },
         "Disruptors": {
             "Total Points": 2893.0,
@@ -162,7 +162,7 @@
             "KKR vs LSG": 88.0
         },
         "VS Stalwarts": {
-            "Total Points": 2055.0,
+            "Total Points": 2059.0,
             "Orange Cap": 0,
             "Purple Cap": 0,
             "MVP": 0,
@@ -182,7 +182,7 @@
             "KKR vs PBKS": 9,
             "RR vs MI": 208,
             "DC vs GT": 72.0,
-            "KKR vs LSG": 119.5
+            "KKR vs LSG": 123.5
         }
     },
     "Player Final Points": {
@@ -384,6 +384,28 @@
             "DC vs GT": 0,
             "KKR vs LSG": 0
         },
+        "Prince Yadav": {
+            "Total Points": 324,
+            "Orange Cap": 0,
+            "Purple Cap": 0,
+            "MVP": 0,
+            "RCB vs SRH": 0,
+            "MI vs KKR": 0,
+            "RR vs CSK": 0,
+            "PBKS vs GT": 0,
+            "LSG vs DC": 135,
+            "KKR vs SRH": 0,
+            "CSK vs PBKS": 0,
+            "DC vs MI": 0,
+            "GT vs RR": 0,
+            "Emerging Player": 0,
+            "SRH vs LSG": 157,
+            "RCB vs CSK": 0,
+            "KKR vs PBKS": 0,
+            "RR vs MI": 0,
+            "DC vs GT": 0,
+            "KKR vs LSG": 32
+        },
         "Devdutt Padikkal": {
             "Total Points": 323,
             "Orange Cap": 0,
@@ -405,28 +427,6 @@
             "RR vs MI": 0,
             "DC vs GT": 0,
             "KKR vs LSG": 0
-        },
-        "Prince Yadav": {
-            "Total Points": 320,
-            "Orange Cap": 0,
-            "Purple Cap": 0,
-            "MVP": 0,
-            "RCB vs SRH": 0,
-            "MI vs KKR": 0,
-            "RR vs CSK": 0,
-            "PBKS vs GT": 0,
-            "LSG vs DC": 135,
-            "KKR vs SRH": 0,
-            "CSK vs PBKS": 0,
-            "DC vs MI": 0,
-            "GT vs RR": 0,
-            "Emerging Player": 0,
-            "SRH vs LSG": 157,
-            "RCB vs CSK": 0,
-            "KKR vs PBKS": 0,
-            "RR vs MI": 0,
-            "DC vs GT": 0,
-            "KKR vs LSG": 28
         },
         "Heinrich Klaasen": {
             "Total Points": 319,
@@ -2144,28 +2144,6 @@
             "DC vs GT": 0,
             "KKR vs LSG": 0
         },
-        "Rovman Powell": {
-            "Total Points": 93,
-            "Orange Cap": 0,
-            "Purple Cap": 0,
-            "MVP": 0,
-            "RCB vs SRH": 0,
-            "MI vs KKR": 0,
-            "RR vs CSK": 0,
-            "PBKS vs GT": 0,
-            "LSG vs DC": 0,
-            "KKR vs SRH": 0,
-            "CSK vs PBKS": 0,
-            "DC vs MI": 0,
-            "GT vs RR": 0,
-            "Emerging Player": 0,
-            "SRH vs LSG": 0,
-            "RCB vs CSK": 0,
-            "KKR vs PBKS": 0,
-            "RR vs MI": 0,
-            "DC vs GT": 0,
-            "KKR vs LSG": 93
-        },
         "Kartik Tyagi": {
             "Total Points": 92,
             "Orange Cap": 0,
@@ -2363,6 +2341,28 @@
             "RR vs MI": 0,
             "DC vs GT": 0,
             "KKR vs LSG": 0
+        },
+        "Rovman Powell": {
+            "Total Points": 83,
+            "Orange Cap": 0,
+            "Purple Cap": 0,
+            "MVP": 0,
+            "RCB vs SRH": 0,
+            "MI vs KKR": 0,
+            "RR vs CSK": 0,
+            "PBKS vs GT": 0,
+            "LSG vs DC": 0,
+            "KKR vs SRH": 0,
+            "CSK vs PBKS": 0,
+            "DC vs MI": 0,
+            "GT vs RR": 0,
+            "Emerging Player": 0,
+            "SRH vs LSG": 0,
+            "RCB vs CSK": 0,
+            "KKR vs PBKS": 0,
+            "RR vs MI": 0,
+            "DC vs GT": 0,
+            "KKR vs LSG": 83
         },
         "Sunil Narine": {
             "Total Points": 82,
@@ -38041,7 +38041,7 @@
             "Second Runout Points": 0
         },
         {
-            "Player Points": 28,
+            "Player Points": 32,
             "Man of the Match": 0,
             "Role": "BOWL",
             "Player Batting Points": 0,
@@ -38055,14 +38055,14 @@
             "Strike Rate Points": 0,
             "Duck Points": 0,
             "Batting Milestone Points": 0,
-            "Player Bowling Points": 28,
+            "Player Bowling Points": 32,
             "Maidens": 0,
             "Maidens Points": 0,
             "Wickets": 1,
             "Wicket Points": 30,
-            "Dots": 4,
-            "Dot Points": 8,
-            "Economy": 12.82,
+            "Dots": 6,
+            "Dot Points": 12,
+            "Economy": 11.75,
             "Economy Points": -10,
             "Bowled Wickets": 0,
             "Bowled Wickets Points": 0,
@@ -38158,18 +38158,18 @@
             "Second Runout Points": 0
         },
         {
-            "Player Points": 93,
+            "Player Points": 83,
             "Man of the Match": 0,
             "Role": "BAT",
-            "Player Batting Points": 93,
+            "Player Batting Points": 83,
             "Runs": 39,
             "Runs Points": 39,
             "Fours": 4,
             "Fours Points": 8,
             "Sixes": 2,
             "Sixes Points": 6,
-            "Strike Rate": 177.27,
-            "Strike Rate Points": 40,
+            "Strike Rate": 162.5,
+            "Strike Rate Points": 30,
             "Duck Points": 0,
             "Batting Milestone Points": 0,
             "Player Bowling Points": 0,
@@ -38922,7 +38922,7 @@
             "Dewald Brevis": 0.0
         },
         {
-            "Total Points": 165.0,
+            "Total Points": 155.0,
             "Booster": "None",
             "Sameer Rizvi": 0.0,
             "Shubman Gill": 0.0,
@@ -39023,7 +39023,7 @@
             "Mayank Markande": 0.0,
             "Shubham Dubey": 0.0,
             "Kyle Jamieson": 0.0,
-            "Rovman Powell": 93.0,
+            "Rovman Powell": 83.0,
             "Aniket Verma": 0.0,
             "Abdul Samad": 0.0,
             "Salil Arora": 0.0,
@@ -39528,7 +39528,7 @@
             "Dewald Brevis": 0.0
         },
         {
-            "Total Points": 119.5,
+            "Total Points": 123.5,
             "Booster": "None",
             "Sameer Rizvi": 0.0,
             "Shubman Gill": 0.0,
@@ -39704,7 +39704,7 @@
             "Suryansh Shedge": 0.0,
             "Vihaan Malhotra": 0.0,
             "Prashant Solanki": 0.0,
-            "Prince Yadav": 28.0,
+            "Prince Yadav": 32.0,
             "Jasprit Bumrah": 0.0,
             "Sanju Samson": 0.0,
             "Finn Allen": 0.0,
