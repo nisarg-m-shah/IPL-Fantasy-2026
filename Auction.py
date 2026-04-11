@@ -754,7 +754,7 @@ names = [
     #Replacements
     'Dasun Shanaka','Saurabh Dubey','Blessing Muzarabani','Navdeep Saini','Kulwant Khejroliya','Spencer Johnson','David Payne','Abhinandan Singh','Zakary Foulkes','Brijesh Sharma','Ashok Sharma', 'Shivang Kumar','Aman Khan','Shreyas Gopal','Sahil Parakh','Ajay Mandal','Madhav Tiwari','Tripurana Vijay','Manav Suthar'
 
-    ,'Gurnoor Brar','Daksh Kamra','Mayank Rawat','Raghu Sharma','Pyla Avanish','Vishnu Vinod','Musheer Khan', 'Praveen Dubey', 'Vishal Nishad', 'Aman Rao Perala', 'Ravi Singh', 'Lhuan-dre Pretorius', 'Yash Raj Punja', 'Jordan Cox', 'Kanishk Chouhan', 'Satwik Deswal', 'Vicky Ostwal', 'Krains Fuletra','Kartik Tyagi'
+    ,'Gurnoor Brar','Daksh Kamra','Mayank Rawat','Raghu Sharma','Pyla Avanish','Vishnu Vinod','Musheer Khan', 'Praveen Dubey', 'Vishal Nishad', 'Aman Rao Perala', 'Ravi Singh', 'Lhuan-dre Pretorius', 'Yash Raj Punja', 'Jordan Cox', 'Kanishk Chouhan', 'Satwik Deswal', 'Vicky Ostwal', 'Krains Fuletra','Kartik Tyagi', 'George Linde'
 ]
 
 roles = [
@@ -814,7 +814,7 @@ roles = [
 
     'AR','BOWL','BOWL','BOWL','BOWL','BOWL','BOWL','BOWL','BOWL','BOWL','BOWL','AR','AR','AR','BAT','AR','AR','AR','BOWL','BOWL',
 
-    'AR','AR','BOWL','BAT','BAT','AR','BOWL','BOWL','BAT','BAT','BAT','BOWL','BAT','AR', 'BOWL', 'BOWL', 'BOWL','BOWL'
+    'AR','AR','BOWL','BAT','BAT','AR','BOWL','BOWL','BAT','BAT','BAT','BOWL','BAT','AR', 'BOWL', 'BOWL', 'BOWL','BOWL','AR'
 ]
 
 team_list = [
@@ -857,7 +857,7 @@ squads = {
         'Avesh Khan', 'Ayush Badoni', 'Digvesh Singh Rathi', 'Himmat Singh', 
         'Manimaran Siddharth', 'Matthew Breetzke', 'Mayank Yadav', 
         'Mitchell Marsh', 'Mohsin Khan', 'Nicholas Pooran', 'Prince Yadav', 
-        'Rishabh Pant', 'Shahbaz Ahmed'
+        'Rishabh Pant', 'Shahbaz Ahmed','George Linde'
     ],
     'Mumbai Indians': [
         'Allah Ghazanfar', 'Ashwani Kumar', 'Corbin Bosch', 'Deepak Chahar', 
