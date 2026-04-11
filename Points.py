@@ -116,12 +116,12 @@ class Player:
                 strike_rate_points = 40
 
         batting_milestone_points = 0
-        if runs>=50:
-            batting_milestone_points = 25
+        if runs>=100:
+            batting_milestone_points = 50
         elif runs>=75:
             batting_milestone_points = 35
-        elif runs>=100:
-            batting_milestone_points = 50
+        elif runs>=50:
+            batting_milestone_points = 25
         
         player_batpoints = runs_points + fours_points + sixes_points + duck_points + strike_rate_points + batting_milestone_points
 
