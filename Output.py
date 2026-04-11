@@ -222,7 +222,7 @@ def run_output_pipeline():
             # Silently ignore teams not in franchise_map (RR, LSG not owned by anyone)
 
         # Check if data has changed
-        if points_key in spreadsheet.keys():
+        if points_key in spreadsheet.keys() and spreadsheet:
             existing_data = spreadsheet[points_key]
             if not isinstance(existing_data, dict):
                 pass  # not a dict, reprocess this match
