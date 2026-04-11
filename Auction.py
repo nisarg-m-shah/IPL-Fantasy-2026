@@ -669,7 +669,7 @@ teams = {
 
 
 boosters = {
-    'Gujju Gang': {'CSK vs DC' : 'Batting Powerplay'
+    'Gujju Gang': {
     },
     'Disruptors': {
     },
