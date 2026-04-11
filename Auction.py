@@ -447,12 +447,13 @@ teams = {
             'T Natarajan',
             'Saurabh Dubey',
             'Dasun Shanaka',
-            'Kulwant Khejroliya'
+            'Kulwant Khejroliya',
+            'George Linde'
         ],
         'captain': ['Shreyas Iyer'],
         'vice captain': ['Sunil Narine'],
         'trump card': [],
-        'replacement': {'Akash Deep':'Saurabh Dubey','Sam Curran':'Dasun Shanaka','Prithvi Raj Yarra':'Kulwant Khejroliya'},
+        'replacement': {'Akash Deep':'Saurabh Dubey','Sam Curran':'Dasun Shanaka','Prithvi Raj Yarra':'Kulwant Khejroliya','Wanindu Hasaranga':'George Linde'},
         'franchise': "RCB"
     },
 
