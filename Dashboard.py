@@ -1481,7 +1481,7 @@ def show_squads(data):
 
         booster_html = '<div class="grid-container" style="grid-template-columns: repeat(2, 1fr);">'
         for booster_name, (label, color, bg) in BOOSTER_STYLES.items():
-            match_name_val = next((m for m, b in team_boosters.items() if b == booster_name), None)
+            match_name_val = next((m for m, b in team_boosters.items() if b == booster_name or (isinstance(b, list) and b[0] == booster_name)), None)
             
             value = match_name_val if match_name_val else "Not Used"
             value_style = "font-weight:bold;" if match_name_val else "opacity:0.45; font-style:italic;"

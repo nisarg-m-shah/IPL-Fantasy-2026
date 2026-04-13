@@ -317,7 +317,7 @@ class Match:
 
             ordered_player_points = {
                 "Total Points": total_points,
-                "Booster": boosters[participant].get(match_name, "None")  # Use match_name
+                "Booster": (lambda b: f"{b[0]} ({b[1]})" if isinstance(b, list) else b)(boosters[participant].get(match_name, "None"))
             }
             ordered_player_points.update(player_points_list)
 
