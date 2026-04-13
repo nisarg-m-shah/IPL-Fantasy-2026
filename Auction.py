@@ -671,7 +671,7 @@ teams = {
 boosters = {
     'Gujju Gang': {
     },
-    'Disruptors': {'SRH vs RR':['Triple Captain','Vaibhav Suryavanshi']
+    'Disruptors': {'SRH vs RR':('Triple Captain','Vaibhav Suryavanshi')
     },
     'Tormented Titans': {
     },
