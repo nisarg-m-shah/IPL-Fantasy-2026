@@ -679,7 +679,7 @@ boosters = {
     },
     'VS Stalwarts': {
     },
-    'Alpha Acers': {
+    'Alpha Acers': {'CSK vs KKR':'Batting Poweplay'
     },
     'Hilarious Hooligans': {
     },
