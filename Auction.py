@@ -755,7 +755,9 @@ names = [
     #Replacements
     'Dasun Shanaka','Saurabh Dubey','Blessing Muzarabani','Navdeep Saini','Kulwant Khejroliya','Spencer Johnson','David Payne','Abhinandan Singh','Zakary Foulkes','Brijesh Sharma','Ashok Sharma', 'Shivang Kumar','Aman Khan','Shreyas Gopal','Sahil Parakh','Ajay Mandal','Madhav Tiwari','Tripurana Vijay','Manav Suthar'
 
-    ,'Gurnoor Brar','Daksh Kamra','Mayank Rawat','Raghu Sharma','Pyla Avanish','Vishnu Vinod','Musheer Khan', 'Praveen Dubey', 'Vishal Nishad', 'Aman Rao Perala', 'Ravi Singh', 'Lhuan-dre Pretorius', 'Yash Raj Punja', 'Jordan Cox', 'Kanishk Chouhan', 'Satwik Deswal', 'Vicky Ostwal', 'Krains Fuletra','Kartik Tyagi', 'George Linde', 'Praful Hinge', 'Sakib Hussain'
+    ,'Gurnoor Brar','Daksh Kamra','Mayank Rawat','Raghu Sharma','Pyla Avanish','Vishnu Vinod','Musheer Khan', 'Praveen Dubey', 'Vishal Nishad', 'Aman Rao Perala', 'Ravi Singh', 'Lhuan-dre Pretorius', 'Yash Raj Punja', 'Jordan Cox', 'Kanishk Chouhan', 'Satwik Deswal', 'Vicky Ostwal', 'Krains Fuletra','Kartik Tyagi', 'George Linde', 'Praful Hinge', 'Sakib Hussain',
+
+    'Dilshan Madushanka','Krish Bhagat','Gerald Coetzee'
 ]
 
 roles = [
@@ -815,7 +817,7 @@ roles = [
 
     'AR','BOWL','BOWL','BOWL','BOWL','BOWL','BOWL','BOWL','BOWL','BOWL','BOWL','AR','AR','AR','BAT','AR','AR','AR','BOWL','BOWL',
 
-    'AR','AR','BOWL','BAT','BAT','AR','BOWL','BOWL','BAT','BAT','BAT','BOWL','BAT','AR', 'BOWL', 'BOWL', 'BOWL','BOWL','AR','BOWL','BOWL'
+    'AR','AR','BOWL','BAT','BAT','AR','BOWL','BOWL','BAT','BAT','BAT','BOWL','BAT','AR', 'BOWL', 'BOWL', 'BOWL','BOWL','AR','BOWL','BOWL','BOWL','AR','BOWL'
 ]
 
 team_list = [
@@ -865,7 +867,7 @@ squads = {
         'Hardik Pandya', 'Jasprit Bumrah', 'Mayank Markande', 'Mitchell Santner', 
         'Naman Dhir', 'Raj Angad Bawa', 'Robin Minz', 'Rohit Sharma', 
         'Ryan Rickelton', 'Shardul Thakur', 'Sherfane Rutherford', 
-        'Suryakumar Yadav', 'Tilak Varma', 'Trent Boult', 'Will Jacks', 'Mayank Rawat', 'Raghu Sharma'
+        'Suryakumar Yadav', 'Tilak Varma', 'Trent Boult', 'Will Jacks', 'Mayank Rawat', 'Raghu Sharma','Krish Bhagat'
     ],
     'Punjab Kings': [
         'Arshdeep Singh', 'Azmatullah Omarzai', 'Harnoor Pannu', 'Harpreet Brar', 
@@ -890,7 +892,7 @@ squads = {
         'Abhishek Sharma', 'Aniket Verma', 'Eshan Malinga', 'Harsh Dubey', 
         'Harshal Patel', 'Heinrich Klaasen', 'Ishan Kishan', 'Jaydev Unadkat', 
         'Kamindu Mendis', 'Nitish Reddy', 'Pat Cummins', 'Travis Head', 
-        'Zeeshan Ansari', 'Jack Edwards', 'David Payne', 'Shivang Kumar', 'Krains Fuletra', 'Praful Hinge', 'Sakib Hussain'
+        'Zeeshan Ansari', 'Jack Edwards', 'David Payne', 'Shivang Kumar', 'Krains Fuletra', 'Praful Hinge', 'Sakib Hussain', 'Dilshan Madushanka','Gerald Coetzee'
     ]
 }
 team_names_sf = ["KKR","GT","MI","CSK","RR","RCB","PBKS","DC","SRH","LSG"]
