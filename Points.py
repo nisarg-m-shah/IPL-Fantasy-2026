@@ -263,17 +263,16 @@ class Team:
                 else:
                     if player in team['trump card'] and match_number > 35:
                         multiplier *= 3
-                    # ONLY non C/VC/TRUMP reach here → eligible for booster
+
                     elif "Bat" in self.booster and player_object.role in ['BAT', 'WK']:
                         multiplier *= 2
                     elif "Bowl" in self.booster and player_object.role == 'BOWL':
                         multiplier *= 2
                     elif "Double" in self.booster:
                         multiplier *= 2
-
+                        
                     elif player in team['captain']:
                         multiplier *= 2
-
                     elif player in team['vice captain']:
                         multiplier *= 1.5
 
