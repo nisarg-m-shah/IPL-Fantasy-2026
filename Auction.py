@@ -676,7 +676,7 @@ boosters = {
     },
     'Tormented Titans': {
     },
-    'Nasty Knights': {
+    'Nasty Knights': {'KKR vs RR':'Double Power'
     },
     'VS Stalwarts': {
     },
@@ -905,7 +905,7 @@ if os.path.exists('/mount/src'):
     file_path = "/tmp/CFC Fantasy League Live 2026.xlsx"
     json_filename = "/tmp/CFC Fantasy League Live 2026.json"
 else:
-    database = "ipl25.pkl"
+    database = "ipl26.pkl"
     file_path = "CFC Fantasy League Live 2026.xlsx"
     json_filename = "CFC Fantasy League Live 2026.json"
 
