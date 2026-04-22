@@ -81,7 +81,7 @@
             "LSG vs RR": 76.0
         },
         "VS Stalwarts": {
-            "Total Points": 7773.0,
+            "Total Points": 7774.0,
             "Orange Cap": 500,
             "Purple Cap": 0,
             "MVP": 750,
@@ -118,7 +118,7 @@
             "PBKS vs LSG": 248,
             "GT vs MI": 78,
             "SRH vs DC": 679,
-            "LSG vs RR": 505.0
+            "LSG vs RR": 506.0
         },
         "Night Watchmen": {
             "Total Points": 7650.0,
@@ -1961,7 +1961,7 @@
             "LSG vs RR": 0
         },
         "Mitchell Marsh": {
-            "Total Points": 428,
+            "Total Points": 429,
             "Orange Cap": 0,
             "Purple Cap": 0,
             "MVP": 0,
@@ -1997,7 +1997,7 @@
             "PBKS vs LSG": 92,
             "GT vs MI": 0,
             "SRH vs DC": 0,
-            "LSG vs RR": 117
+            "LSG vs RR": 118
         },
         "Aiden Markram": {
             "Total Points": 421,
@@ -2858,7 +2858,7 @@
             "LSG vs RR": 0
         },
         "Brijesh Sharma": {
-            "Total Points": 348,
+            "Total Points": 341,
             "Orange Cap": 0,
             "Purple Cap": 0,
             "MVP": 0,
@@ -2894,7 +2894,7 @@
             "PBKS vs LSG": 0,
             "GT vs MI": 0,
             "SRH vs DC": 0,
-            "LSG vs RR": 136
+            "LSG vs RR": 129
         },
         "Ashok Sharma": {
             "Total Points": 337,
@@ -85896,7 +85896,7 @@
             "Second Runout Points": 0
         },
         {
-            "Player Points": 136,
+            "Player Points": 129,
             "Man of the Match": 0,
             "Role": "BOWL",
             "Player Batting Points": 0,
@@ -85910,15 +85910,15 @@
             "Strike Rate Points": 0,
             "Duck Points": 0,
             "Batting Milestone Points": 0,
-            "Player Bowling Points": 136,
+            "Player Bowling Points": 129,
             "Maidens": 0,
             "Maidens Points": 0,
             "Wickets": 2,
             "Wicket Points": 60,
-            "Dots": 8,
-            "Dot Points": 16,
-            "Economy": 5.67,
-            "Economy Points": 25,
+            "Dots": 7,
+            "Dot Points": 14,
+            "Economy": 6.0,
+            "Economy Points": 20,
             "Bowled Wickets": 1,
             "Bowled Wickets Points": 10,
             "LBW Wickets": 0,
@@ -86013,17 +86013,17 @@
             "Second Runout Points": 0
         },
         {
-            "Player Points": 117,
+            "Player Points": 118,
             "Man of the Match": 0,
             "Role": "AR",
-            "Player Batting Points": 117,
-            "Runs": 54,
-            "Runs Points": 54,
+            "Player Batting Points": 118,
+            "Runs": 55,
+            "Runs Points": 55,
             "Fours": 6,
             "Fours Points": 12,
             "Sixes": 2,
             "Sixes Points": 6,
-            "Strike Rate": 131.71,
+            "Strike Rate": 134.15,
             "Strike Rate Points": 20,
             "Duck Points": 0,
             "Batting Milestone Points": 25,
@@ -87485,7 +87485,7 @@
             "Navdeep Saini": 0.0
         },
         {
-            "Total Points": 505.0,
+            "Total Points": 506.0,
             "Booster": "None",
             "Sameer Rizvi": 0.0,
             "Shubman Gill": 0.0,
@@ -87659,7 +87659,7 @@
             "Nicholas Pooran": 23.0,
             "Sherfane Rutherford": 0.0,
             "Cameron Green": 0.0,
-            "Mitchell Marsh": 117.0,
+            "Mitchell Marsh": 118.0,
             "Ryan Rickelton": 0.0,
             "Suryansh Shedge": 0.0,
             "Vihaan Malhotra": 0.0,
