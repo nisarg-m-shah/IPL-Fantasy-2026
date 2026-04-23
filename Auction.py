@@ -596,7 +596,7 @@ teams = {
         ],
         'captain': ['Suryakumar Yadav'],
         'vice captain': ['Ruturaj Gaikwad'],
-        'trump card': [],
+        'trump card': ['Jos Buttler'],
         'replacement': {},
         'franchise': "CSK"
     },
