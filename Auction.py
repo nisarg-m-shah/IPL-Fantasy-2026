@@ -557,12 +557,13 @@ teams = {
             'Kartik Sharma',
             'Arshdeep Singh',
             'Shahrukh Khan',
-            'Tim David'
+            'Tim David',
+            'Rehan Ahmed'
         ],
         'captain': ['Sai Sudharsan'],
         'vice captain': ['Ravindra Jadeja'],
-        'trump card': [],
-        'replacement': {},
+        'trump card': ['Anshul Kamboj'],
+        'replacement': {'Ben Duckett':'Rehan Ahmed'},
         'franchise': "GT"
     },
 
@@ -758,7 +759,7 @@ names = [
 
     ,'Gurnoor Brar','Daksh Kamra','Mayank Rawat','Raghu Sharma','Pyla Avanish','Vishnu Vinod','Musheer Khan', 'Praveen Dubey', 'Vishal Nishad', 'Aman Rao Perala', 'Ravi Singh', 'Lhuan-dre Pretorius', 'Yash Raj Punja', 'Jordan Cox', 'Kanishk Chouhan', 'Satwik Deswal', 'Vicky Ostwal', 'Krains Fuletra','Kartik Tyagi', 'George Linde', 'Praful Hinge', 'Sakib Hussain',
 
-    'Dilshan Madushanka','Krish Bhagat','Gerald Coetzee','Akash Madhwal','Himmat Singh'
+    'Dilshan Madushanka','Krish Bhagat','Gerald Coetzee','Akash Madhwal','Himmat Singh','Rehan Ahmed'
 ]
 
 roles = [
@@ -818,7 +819,7 @@ roles = [
 
     'AR','BOWL','BOWL','BOWL','BOWL','BOWL','BOWL','BOWL','BOWL','BOWL','BOWL','AR','AR','AR','BAT','AR','AR','AR','BOWL','BOWL',
 
-    'AR','AR','BOWL','BAT','BAT','AR','BOWL','BOWL','BAT','BAT','BAT','BOWL','BAT','AR', 'BOWL', 'BOWL', 'BOWL','BOWL','AR','BOWL','BOWL','BOWL','AR','BOWL','BOWL','BAT'
+    'AR','AR','BOWL','BAT','BAT','AR','BOWL','BOWL','BAT','BAT','BAT','BOWL','BAT','AR', 'BOWL', 'BOWL', 'BOWL','BOWL','AR','BOWL','BOWL','BOWL','AR','BOWL','BOWL','BAT','AR'
 ]
 
 team_list = [
@@ -843,7 +844,7 @@ squads = {
         'Abishek Porel', 'Ashutosh Sharma', 'Axar Patel', 'Dushmantha Chameera', 
         'Karun Nair', 'KL Rahul', 'Kuldeep Yadav', 'Mitchell Starc', 
         'Mukesh Kumar', 'Nitish Rana', 'Sameer Rizvi', 'Tristan Stubbs', 
-        'Vipraj Nigam', 'T Natarajan','Sahil Parakh','Ajay Mandal','Madhav Tiwari','Tripurana Vijay'
+        'Vipraj Nigam', 'T Natarajan','Sahil Parakh','Ajay Mandal','Madhav Tiwari','Tripurana Vijay','Rehan Ahmed'
     ],
     'Gujarat Titans': [
         'Anuj Rawat', 'Glenn Phillips', 'Ishant Sharma', 'los Buttler', 
