@@ -758,7 +758,7 @@ names = [
 
     ,'Gurnoor Brar','Daksh Kamra','Mayank Rawat','Raghu Sharma','Pyla Avanish','Vishnu Vinod','Musheer Khan', 'Praveen Dubey', 'Vishal Nishad', 'Aman Rao Perala', 'Ravi Singh', 'Lhuan-dre Pretorius', 'Yash Raj Punja', 'Jordan Cox', 'Kanishk Chouhan', 'Satwik Deswal', 'Vicky Ostwal', 'Krains Fuletra','Kartik Tyagi', 'George Linde', 'Praful Hinge', 'Sakib Hussain',
 
-    'Dilshan Madushanka','Krish Bhagat','Gerald Coetzee','Akash Madhwal'
+    'Dilshan Madushanka','Krish Bhagat','Gerald Coetzee','Akash Madhwal','Himmat Singh'
 ]
 
 roles = [
@@ -818,7 +818,7 @@ roles = [
 
     'AR','BOWL','BOWL','BOWL','BOWL','BOWL','BOWL','BOWL','BOWL','BOWL','BOWL','AR','AR','AR','BAT','AR','AR','AR','BOWL','BOWL',
 
-    'AR','AR','BOWL','BAT','BAT','AR','BOWL','BOWL','BAT','BAT','BAT','BOWL','BAT','AR', 'BOWL', 'BOWL', 'BOWL','BOWL','AR','BOWL','BOWL','BOWL','AR','BOWL','BOWL'
+    'AR','AR','BOWL','BAT','BAT','AR','BOWL','BOWL','BAT','BAT','BAT','BOWL','BAT','AR', 'BOWL', 'BOWL', 'BOWL','BOWL','AR','BOWL','BOWL','BOWL','AR','BOWL','BOWL','BAT'
 ]
 
 team_list = [
