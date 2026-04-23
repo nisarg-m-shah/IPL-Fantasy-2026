@@ -448,12 +448,13 @@ teams = {
             'Saurabh Dubey',
             'Dasun Shanaka',
             'Kulwant Khejroliya',
-            'George Linde'
+            'George Linde',
+            'Akash Madhwal'
         ],
         'captain': ['Shreyas Iyer'],
         'vice captain': ['Sunil Narine'],
         'trump card': [],
-        'replacement': {'Akash Deep':'Saurabh Dubey','Sam Curran':'Dasun Shanaka','Prithvi Raj Yarra':'Kulwant Khejroliya','Wanindu Hasaranga':'George Linde'},
+        'replacement': {'Akash Deep':'Saurabh Dubey','Sam Curran':'Dasun Shanaka','Prithvi Raj Yarra':'Kulwant Khejroliya','Wanindu Hasaranga':'George Linde','Ayush Mhatre':'Akash Madhwal'},
         'franchise': "RCB"
     },
 
@@ -757,7 +758,7 @@ names = [
 
     ,'Gurnoor Brar','Daksh Kamra','Mayank Rawat','Raghu Sharma','Pyla Avanish','Vishnu Vinod','Musheer Khan', 'Praveen Dubey', 'Vishal Nishad', 'Aman Rao Perala', 'Ravi Singh', 'Lhuan-dre Pretorius', 'Yash Raj Punja', 'Jordan Cox', 'Kanishk Chouhan', 'Satwik Deswal', 'Vicky Ostwal', 'Krains Fuletra','Kartik Tyagi', 'George Linde', 'Praful Hinge', 'Sakib Hussain',
 
-    'Dilshan Madushanka','Krish Bhagat','Gerald Coetzee'
+    'Dilshan Madushanka','Krish Bhagat','Gerald Coetzee','Akash Madhwal'
 ]
 
 roles = [
@@ -817,7 +818,7 @@ roles = [
 
     'AR','BOWL','BOWL','BOWL','BOWL','BOWL','BOWL','BOWL','BOWL','BOWL','BOWL','AR','AR','AR','BAT','AR','AR','AR','BOWL','BOWL',
 
-    'AR','AR','BOWL','BAT','BAT','AR','BOWL','BOWL','BAT','BAT','BAT','BOWL','BAT','AR', 'BOWL', 'BOWL', 'BOWL','BOWL','AR','BOWL','BOWL','BOWL','AR','BOWL'
+    'AR','AR','BOWL','BAT','BAT','AR','BOWL','BOWL','BAT','BAT','BAT','BOWL','BAT','AR', 'BOWL', 'BOWL', 'BOWL','BOWL','AR','BOWL','BOWL','BOWL','AR','BOWL','BOWL'
 ]
 
 team_list = [
@@ -836,7 +837,7 @@ squads = {
         'Anshul Kamboj', 'Jamie Overton', 'MS Dhoni', 'Mukesh Choudhary', 
         'Nathan Ellis', 'Noor Ahmad', 'Ramakrishna Ghosh', 'Sanju Samson', 
         'Ruturaj Gaikwad', 'Shivam Dube', 'Ayush Mhatre', 'Dewald Brevis', 
-        'Urvil Patel', 'Khaleel Ahmed', 'Spencer Johnson','Aman Khan','Shreyas Gopal'
+        'Urvil Patel', 'Khaleel Ahmed', 'Spencer Johnson','Aman Khan','Shreyas Gopal','Akash Madhwal'
     ],
     'Delhi Capitals': [
         'Abishek Porel', 'Ashutosh Sharma', 'Axar Patel', 'Dushmantha Chameera', 
