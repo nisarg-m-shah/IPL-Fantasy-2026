@@ -85,7 +85,7 @@
             "RCB vs GT": 682.5
         },
         "Nasty Knights": {
-            "Total Points": 8231.5,
+            "Total Points": 8232.5,
             "Orange Cap": 0,
             "Purple Cap": 0,
             "MVP": 0,
@@ -124,7 +124,7 @@
             "SRH vs DC": 11,
             "LSG vs RR": 76,
             "MI vs CSK": 114.0,
-            "RCB vs GT": 118.0
+            "RCB vs GT": 119.0
         },
         "Disruptors": {
             "Total Points": 8180.0,
@@ -1405,7 +1405,7 @@
             "RCB vs GT": 0
         },
         "Krunal Pandya": {
-            "Total Points": 544,
+            "Total Points": 545,
             "Orange Cap": 0,
             "Purple Cap": 0,
             "MVP": 0,
@@ -1443,7 +1443,7 @@
             "SRH vs DC": 0,
             "LSG vs RR": 0,
             "MI vs CSK": 0,
-            "RCB vs GT": 69
+            "RCB vs GT": 70
         },
         "Shreyas Iyer": {
             "Total Points": 543,
@@ -91363,7 +91363,7 @@
             "Wicket Points": 30,
             "Dots": 8,
             "Dot Points": 16,
-            "Economy": 9.27,
+            "Economy": 9.13,
             "Economy Points": 5,
             "Bowled Wickets": 1,
             "Bowled Wickets Points": 10,
@@ -91498,17 +91498,17 @@
             "Second Runout Points": 0
         },
         {
-            "Player Points": 69,
+            "Player Points": 70,
             "Man of the Match": 0,
             "Role": "AR",
-            "Player Batting Points": 71,
-            "Runs": 22,
-            "Runs Points": 22,
+            "Player Batting Points": 72,
+            "Runs": 23,
+            "Runs Points": 23,
             "Fours": 3,
             "Fours Points": 6,
             "Sixes": 1,
             "Sixes Points": 3,
-            "Strike Rate": 200.0,
+            "Strike Rate": 191.67,
             "Strike Rate Points": 40,
             "Duck Points": 0,
             "Batting Milestone Points": 0,
@@ -92059,7 +92059,7 @@
             "Navdeep Saini": 0.0
         },
         {
-            "Total Points": 118.0,
+            "Total Points": 119.0,
             "Booster": "None",
             "Sameer Rizvi": 0.0,
             "Shubman Gill": 0.0,
@@ -92108,7 +92108,7 @@
             "Allah Ghazanfar": 0.0,
             "Ben Dwarshuis": 0.0,
             "Prithvi Raj Yarra": 0.0,
-            "Krunal Pandya": 69.0,
+            "Krunal Pandya": 70.0,
             "T Natarajan": 0.0,
             "Saurabh Dubey": 0.0,
             "Dasun Shanaka": 0.0,
