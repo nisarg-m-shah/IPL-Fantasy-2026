@@ -525,7 +525,7 @@ teams = {
         ],
         'captain': ['Ishan Kishan'],
         'vice captain': ['Axar Patel'],
-        'trump card': ['Jason Holder'],
+        'trump card': ['Prabhsimran Singh'],
         'replacement': {'Nathan Ellis':'Spencer Johnson'},
         'franchise': "PBKS"
     },
