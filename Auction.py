@@ -413,7 +413,7 @@ teams = {
         ],
         'captain': ['Shubman Gill'],
         'vice captain': ['Rajat Patidar'],
-        'trump card': [],
+        'trump card': ['Vaibhav Suryavanshi'],
         'replacement': {},
         'franchise': "SRH"
     },
@@ -453,7 +453,7 @@ teams = {
         ],
         'captain': ['Shreyas Iyer'],
         'vice captain': ['Sunil Narine'],
-        'trump card': [],
+        'trump card': ['Dhruv Jurel'],
         'replacement': {'Akash Deep':'Saurabh Dubey','Sam Curran':'Dasun Shanaka','Prithvi Raj Yarra':'Kulwant Khejroliya','Wanindu Hasaranga':'George Linde','Ayush Mhatre':'Akash Madhwal'},
         'franchise': "RCB"
     },
@@ -488,7 +488,7 @@ teams = {
         ],
         'captain': ['Virat Kohli'],
         'vice captain': ['Rashid Khan'],
-        'trump card': [],
+        'trump card': ['Heinrich Klaasen'],
         'replacement': {},
         'franchise': "DC"
     },
@@ -525,7 +525,7 @@ teams = {
         ],
         'captain': ['Ishan Kishan'],
         'vice captain': ['Axar Patel'],
-        'trump card': [],
+        'trump card': ['Jason Holder'],
         'replacement': {'Nathan Ellis':'Spencer Johnson'},
         'franchise': "PBKS"
     },
@@ -630,7 +630,7 @@ teams = {
         ],
         'captain': ['Abhishek Sharma'],
         'vice captain': ['Cameron Green'],
-        'trump card': [],
+        'trump card': ['Prince Yadav'],
         'replacement': {},
         'franchise': "KKR"
     },
@@ -663,7 +663,7 @@ teams = {
         ],
         'captain': ['Sanju Samson'],
         'vice captain': ['Yashasvi Jaiswal'],
-        'trump card': [],
+        'trump card': ['Devdutt Padikkal'],
         'replacement': {'Harshit Rana':'Navdeep Saini'},
         'franchise': "MI"
     }
@@ -684,7 +684,7 @@ boosters = {
     },
     'Alpha Acers': {'CSK vs KKR':'Batting Powerplay','MI vs CSK':'Double Power'
     },
-    'Hilarious Hooligans': {
+    'Hilarious Hooligans': {'DC vs PBKS':("Triple Captain",'Prabhsimran Singh')
     },
     'Night Watchmen': {
     }

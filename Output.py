@@ -250,7 +250,7 @@ def run_output_pipeline():
 
         print(match_name, "added")
 
-    # Add franchise points (200 per win)
+    # Add franchise points (150 per win)
     for team in team_list:
         franchise_points = franchise_wins[team] * 150
         spreadsheet['Team Final Points'].setdefault(team, {})['Franchise Points'] = franchise_points
