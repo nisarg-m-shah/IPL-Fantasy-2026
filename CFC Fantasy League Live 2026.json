@@ -1,7 +1,7 @@
 {
     "Team Final Points": {
         "Gujju Gang": {
-            "Total Points": 11908.5,
+            "Total Points": 11909.5,
             "Orange Cap": 0,
             "Purple Cap": 500,
             "MVP": 750,
@@ -41,7 +41,7 @@
             "LSG vs RR": 324,
             "MI vs CSK": 494.0,
             "RCB vs GT": 522.0,
-            "DC vs PBKS": 330.0
+            "DC vs PBKS": 331.0
         },
         "Night Watchmen": {
             "Total Points": 9087.5,
@@ -515,7 +515,7 @@
             "DC vs PBKS": 0
         },
         "KL Rahul": {
-            "Total Points": 795,
+            "Total Points": 796,
             "Orange Cap": 0,
             "Purple Cap": 0,
             "MVP": 0,
@@ -554,7 +554,7 @@
             "LSG vs RR": 0,
             "MI vs CSK": 0,
             "RCB vs GT": 0,
-            "DC vs PBKS": 300
+            "DC vs PBKS": 301
         },
         "Abhishek Sharma": {
             "Total Points": 743,
@@ -93882,17 +93882,17 @@
             "Second Runout Points": 0
         },
         {
-            "Player Points": 300,
+            "Player Points": 301,
             "Man of the Match": 0,
             "Role": "BAT",
-            "Player Batting Points": 300,
-            "Runs": 151,
-            "Runs Points": 151,
+            "Player Batting Points": 301,
+            "Runs": 152,
+            "Runs Points": 152,
             "Fours": 16,
             "Fours Points": 32,
             "Sixes": 9,
             "Sixes Points": 27,
-            "Strike Rate": 228.79,
+            "Strike Rate": 226.87,
             "Strike Rate Points": 40,
             "Duck Points": 0,
             "Batting Milestone Points": 50,
@@ -94020,7 +94020,7 @@
             "Wicket Points": 30,
             "Dots": 3,
             "Dot Points": 6,
-            "Economy": 12.52,
+            "Economy": 12.25,
             "Economy Points": -10,
             "Bowled Wickets": 0,
             "Bowled Wickets Points": 0,
@@ -94914,7 +94914,7 @@
             "Navdeep Saini": 0.0
         },
         {
-            "Total Points": 330.0,
+            "Total Points": 331.0,
             "Booster": "None",
             "Sameer Rizvi": 0.0,
             "Shubman Gill": 0.0,
@@ -95025,7 +95025,7 @@
             "Salil Arora": 0.0,
             "Arshad Khan": 0.0,
             "Anshul Kamboj": 0.0,
-            "KL Rahul": 300.0,
+            "KL Rahul": 301.0,
             "Ayush Badoni": 0.0,
             "Harshal Patel": 0.0,
             "Ben Duckett": 0.0,
