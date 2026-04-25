@@ -684,7 +684,7 @@ boosters = {
     },
     'Alpha Acers': {'CSK vs KKR':'Batting Powerplay','MI vs CSK':'Double Power'
     },
-    'Hilarious Hooligans': {'DC vs PBKS':("Triple Captain",'Prabhsimran Singh')
+    'Hilarious Hooligans': {'DC vs PBKS':('Triple Captain','Prabhsimran Singh')
     },
     'Night Watchmen': {
     }
