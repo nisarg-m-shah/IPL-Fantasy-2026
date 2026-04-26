@@ -680,7 +680,7 @@ boosters = {
     },
     'Nasty Knights': {'KKR vs RR':'Double Power'
     },
-    'VS Stalwarts': {
+    'VS Stalwarts': {'LSG vs KKR':'Double Power'
     },
     'Alpha Acers': {'CSK vs KKR':'Batting Powerplay','MI vs CSK':'Double Power'
     },
