@@ -674,7 +674,7 @@ boosters = {
     'Gujju Gang': {
     },
     'Disruptors': {'SRH vs RR':('Triple Captain','Vaibhav Suryavanshi'),
-    'RCB vs DC':'Batting Powerplay'
+    'RCB vs DC':'Batting Powerplay','SRH vs KKR':'Ultimate Team Booster'
     },
     'Tormented Titans': {
     },
