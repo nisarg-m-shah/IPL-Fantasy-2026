@@ -521,12 +521,13 @@ teams = {
             'Rovman Powell',
             'Aniket Verma',
             'Abdul Samad',
-            'Spencer Johnson'
+            'Spencer Johnson',
+            'Keshav Maharaj'
         ],
         'captain': ['Ishan Kishan'],
         'vice captain': ['Axar Patel'],
         'trump card': ['Prabhsimran Singh'],
-        'replacement': {'Nathan Ellis':'Spencer Johnson'},
+        'replacement': {'Nathan Ellis':'Spencer Johnson','Mitchell Santner':'Keshav Maharaj'},
         'franchise': "PBKS"
     },
 
@@ -759,7 +760,7 @@ names = [
 
     ,'Gurnoor Brar','Daksh Kamra','Mayank Rawat','Raghu Sharma','Pyla Avanish','Vishnu Vinod','Musheer Khan', 'Praveen Dubey', 'Vishal Nishad', 'Aman Rao Perala', 'Ravi Singh', 'Lhuan-dre Pretorius', 'Yash Raj Punja', 'Jordan Cox', 'Kanishk Chouhan', 'Satwik Deswal', 'Vicky Ostwal', 'Krains Fuletra','Kartik Tyagi', 'George Linde', 'Praful Hinge', 'Sakib Hussain',
 
-    'Dilshan Madushanka','Krish Bhagat','Gerald Coetzee','Akash Madhwal','Himmat Singh','Rehan Ahmed'
+    'Dilshan Madushanka','Krish Bhagat','Gerald Coetzee','Akash Madhwal','Himmat Singh','Rehan Ahmed','Keshav Maharaj'
 ]
 
 roles = [
@@ -819,7 +820,7 @@ roles = [
 
     'AR','BOWL','BOWL','BOWL','BOWL','BOWL','BOWL','BOWL','BOWL','BOWL','BOWL','AR','AR','AR','BAT','AR','AR','AR','BOWL','BOWL',
 
-    'AR','AR','BOWL','BAT','BAT','AR','BOWL','BOWL','BAT','BAT','BAT','BOWL','BAT','AR', 'BOWL', 'BOWL', 'BOWL','BOWL','AR','BOWL','BOWL','BOWL','AR','BOWL','BOWL','BAT','AR'
+    'AR','AR','BOWL','BAT','BAT','AR','BOWL','BOWL','BAT','BAT','BAT','BOWL','BAT','AR', 'BOWL', 'BOWL', 'BOWL','BOWL','AR','BOWL','BOWL','BOWL','AR','BOWL','BOWL','BAT','AR','BOWL'
 ]
 
 team_list = [
@@ -869,7 +870,7 @@ squads = {
         'Hardik Pandya', 'Jasprit Bumrah', 'Mayank Markande', 'Mitchell Santner', 
         'Naman Dhir', 'Raj Angad Bawa', 'Robin Minz', 'Rohit Sharma', 
         'Ryan Rickelton', 'Shardul Thakur', 'Sherfane Rutherford', 
-        'Suryakumar Yadav', 'Tilak Varma', 'Trent Boult', 'Will Jacks', 'Mayank Rawat', 'Raghu Sharma','Krish Bhagat'
+        'Suryakumar Yadav', 'Tilak Varma', 'Trent Boult', 'Will Jacks', 'Mayank Rawat', 'Raghu Sharma','Krish Bhagat','Keshav Maharaj'
     ],
     'Punjab Kings': [
         'Arshdeep Singh', 'Azmatullah Omarzai', 'Harnoor Pannu', 'Harpreet Brar', 
