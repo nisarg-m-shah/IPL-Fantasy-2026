@@ -679,7 +679,7 @@ boosters = {
     },
     'Tormented Titans': {
     },
-    'Nasty Knights': {'KKR vs RR':'Double Power'
+    'Nasty Knights': {'KKR vs RR':'Double Power','GT vs RCB':'Bowling Powerplay'
     },
     'VS Stalwarts': {'LSG vs KKR':'Double Power'
     },
