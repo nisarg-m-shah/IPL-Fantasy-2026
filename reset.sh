@@ -23,7 +23,6 @@ git push origin main --force
 # ----------------------------
 echo "🧹 Deleting data files..."
 
-rm -f ipl26.pkl
 rm -f caps.pkl
 rm -f "CFC Fantasy League Live 2026.xlsx"
 rm -f "CFC Fantasy League Live 2026.json"
