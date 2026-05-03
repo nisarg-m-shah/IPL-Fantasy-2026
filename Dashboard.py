@@ -1375,7 +1375,8 @@ def show_squads(data):
         if not team_final_df.empty and selected_team in team_final_df.index:
             fp = team_final_df.loc[selected_team].get("Franchise Points", 0)
             franchise_points = fp if pd.notna(fp) else 0
-            franchise_wins = int(franchise_points / 150) if franchise_points > 0 else 0
+            fw = team_final_df.loc[selected_team].get("Franchise Wins", 0)
+            franchise_wins = fw if pd.notna(fw) else 0
         
         st.markdown(f"""
             <div class="grid-container" style="grid-template-columns: 1fr 1fr;">
