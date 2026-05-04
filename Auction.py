@@ -684,7 +684,8 @@ boosters = {
     },
     'VS Stalwarts': {'LSG vs KKR':'Double Power'
     },
-    'Alpha Acers': {'CSK vs KKR':'Batting Powerplay','MI vs CSK':'Double Power'
+    'Alpha Acers': {'CSK vs KKR':'Batting Powerplay','MI vs CSK':'Double Power',
+    'MI vs LSG':'Ultimate Team Booster'
     },
     'Hilarious Hooligans': {'DC vs PBKS':('Triple Captain','Prabhsimran Singh')
     },
