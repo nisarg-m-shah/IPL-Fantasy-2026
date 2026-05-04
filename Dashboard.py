@@ -1599,6 +1599,8 @@ def show_matches(data):
         
         if cfc_sheet in data:
             st.markdown('#### 🎯 Manager Points')
+        st.markdown('<p style="color: #00f2fe; font-size: clamp(0.85rem, 2.5vw, 1rem); margin-bottom: 15px;">Manager wise points (does not include win points)</p>', unsafe_allow_html=True)
+
             st.markdown(
                         "<hr style='border: none; border-top: 3px solid #efb920; margin: 0;'>",
                         unsafe_allow_html=True
