@@ -254,6 +254,7 @@ def run_output_pipeline():
     for team in team_list:
         franchise_points = franchise_wins[team] * 150
         team_franchise = teams[team]['franchise']
+        team_franchise = team_names_sf[team_names_ff.index(team_franchise)]
         for booster_match in boosters[team].keys():
             if boosters[team][booster_match] == 'Ultimate Team Booster':
                 if booster_match in match_objects.keys():
