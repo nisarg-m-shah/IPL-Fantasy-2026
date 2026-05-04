@@ -409,12 +409,13 @@ teams = {
             'Yudhvir Singh Charak',
             'Shivam Mavi',
             'Pathum Nissanka',
-            'Phil Salt'
+            'Phil Salt',
+            'RS Ambrish'
         ],
         'captain': ['Shubman Gill'],
         'vice captain': ['Rajat Patidar'],
         'trump card': ['Vaibhav Suryavanshi'],
-        'replacement': {},
+        'replacement': {'Shivam Mavi':'RS Ambrish'},
         'franchise': "SRH"
     },
 
@@ -760,7 +761,7 @@ names = [
 
     ,'Gurnoor Brar','Daksh Kamra','Mayank Rawat','Raghu Sharma','Pyla Avanish','Vishnu Vinod','Musheer Khan', 'Praveen Dubey', 'Vishal Nishad', 'Aman Rao Perala', 'Ravi Singh', 'Lhuan-dre Pretorius', 'Yash Raj Punja', 'Jordan Cox', 'Kanishk Chouhan', 'Satwik Deswal', 'Vicky Ostwal', 'Krains Fuletra','Kartik Tyagi', 'George Linde', 'Praful Hinge', 'Sakib Hussain',
 
-    'Dilshan Madushanka','Krish Bhagat','Gerald Coetzee','Akash Madhwal','Himmat Singh','Rehan Ahmed','Keshav Maharaj'
+    'Dilshan Madushanka','Krish Bhagat','Gerald Coetzee','Akash Madhwal','Himmat Singh','Rehan Ahmed','Keshav Maharaj','RS Ambrish'
 ]
 
 roles = [
@@ -820,7 +821,7 @@ roles = [
 
     'AR','BOWL','BOWL','BOWL','BOWL','BOWL','BOWL','BOWL','BOWL','BOWL','BOWL','AR','AR','AR','BAT','AR','AR','AR','BOWL','BOWL',
 
-    'AR','AR','BOWL','BAT','BAT','AR','BOWL','BOWL','BAT','BAT','BAT','BOWL','BAT','AR', 'BOWL', 'BOWL', 'BOWL','BOWL','AR','BOWL','BOWL','BOWL','AR','BOWL','BOWL','BAT','AR','BOWL'
+    'AR','AR','BOWL','BAT','BAT','AR','BOWL','BOWL','BAT','BAT','BAT','BOWL','BAT','AR', 'BOWL', 'BOWL', 'BOWL','BOWL','AR','BOWL','BOWL','BOWL','AR','BOWL','BOWL','BAT','AR','BOWL','AR'
 ]
 
 team_list = [
@@ -895,7 +896,7 @@ squads = {
         'Abhishek Sharma', 'Aniket Verma', 'Eshan Malinga', 'Harsh Dubey', 
         'Harshal Patel', 'Heinrich Klaasen', 'Ishan Kishan', 'Jaydev Unadkat', 
         'Kamindu Mendis', 'Nitish Reddy', 'Pat Cummins', 'Travis Head', 
-        'Zeeshan Ansari', 'Jack Edwards', 'David Payne', 'Shivang Kumar', 'Krains Fuletra', 'Praful Hinge', 'Sakib Hussain', 'Dilshan Madushanka','Gerald Coetzee'
+        'Zeeshan Ansari', 'Jack Edwards', 'David Payne', 'Shivang Kumar', 'Krains Fuletra', 'Praful Hinge', 'Sakib Hussain', 'Dilshan Madushanka','Gerald Coetzee','RS Ambrish'
     ]
 }
 team_names_sf = ["KKR","GT","MI","CSK","RR","RCB","PBKS","DC","SRH","LSG"]
