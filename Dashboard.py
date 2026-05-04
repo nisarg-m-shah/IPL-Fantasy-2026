@@ -423,6 +423,37 @@ st.markdown("""
             padding: 0 12px;
         }
     }
+
+    /* BOOSTER GRID RESPONSIVE FIX */
+
+    .grid-container {
+    display: grid;
+    gap: 12px;
+    width: 100%;
+    }
+
+    /* Desktop layout */
+    @media (min-width: 768px) {
+    .row-1 {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    .row-2 {
+        grid-template-columns: repeat(3, 1fr);
+    }
+    }
+
+    /* Mobile layout */
+    @media (max-width: 767px) {
+    .row-1,
+    .row-2 {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    /* Make last booster full width */
+    .row-2 > div:last-child {
+        grid-column: span 2;
+    }
+    }
     </style>
 """, unsafe_allow_html=True)
 
@@ -1481,32 +1512,46 @@ def show_squads(data):
             "Ultimate Team Booster": ("👥 ULTIMATE TEAM BOOSTER",  "#f87171", "rgba(248,113,113,0.12)")
 
         }
+        
+        booster_items = list(BOOSTER_STYLES.items())
 
-        booster_html = '<div class="grid-container" style="grid-template-columns: repeat(2, 1fr);">'
-        for booster_name, (label, color, bg) in BOOSTER_STYLES.items():
+        booster_html = ""
+
+        # Row 1 (first 2 boosters)
+        booster_html += '<div class="grid-container row-1">'
+        for booster_name, (label, color, bg) in booster_items[:2]:
             match_name_val = next((m for m, b in team_boosters.items() if b == booster_name or (isinstance(b, tuple) and b[0] == booster_name)), None)
             raw = team_boosters.get(match_name_val)
             value = f"{match_name_val} : {raw[1]}" if match_name_val and isinstance(raw, tuple) else (match_name_val if match_name_val else "Not Used")
             value_style = "font-weight:bold;" if match_name_val else "opacity:0.45; font-style:italic;"
-            
+
             booster_html += f"""<div class="metric-card" style="border-left:6px solid {color}; background:{bg}; --accent-color: {color};">
-                <div style="
-                    font-size: clamp(0.9rem, 2.6vw, 1.05rem);
-                    font-weight:700;
-                    color:{color};
-                    letter-spacing:0.04em;
-                ">
+                <div style="font-size: clamp(0.9rem, 2.6vw, 1.05rem); font-weight:700; color:{color}; letter-spacing:0.04em;">
                     {label}
                 </div>
-                <div style="
-                    margin-top:6px;
-                    font-size: clamp(1rem, 3vw, 1.3rem);
-                    {value_style}
-                ">
+                <div style="margin-top:6px; font-size: clamp(1rem, 3vw, 1.3rem); {value_style}">
                     {value}
                 </div>
             </div>"""
+        booster_html += "</div>"
 
+
+        # Row 2 (remaining 3 boosters)
+        booster_html += '<div class="grid-container row-2">'
+        for booster_name, (label, color, bg) in booster_items[2:]:
+            match_name_val = next((m for m, b in team_boosters.items() if b == booster_name or (isinstance(b, tuple) and b[0] == booster_name)), None)
+            raw = team_boosters.get(match_name_val)
+            value = f"{match_name_val} : {raw[1]}" if match_name_val and isinstance(raw, tuple) else (match_name_val if match_name_val else "Not Used")
+            value_style = "font-weight:bold;" if match_name_val else "opacity:0.45; font-style:italic;"
+
+            booster_html += f"""<div class="metric-card" style="border-left:6px solid {color}; background:{bg}; --accent-color: {color};">
+                <div style="font-size: clamp(0.9rem, 2.6vw, 1.05rem); font-weight:700; color:{color}; letter-spacing:0.04em;">
+                    {label}
+                </div>
+                <div style="margin-top:6px; font-size: clamp(1rem, 3vw, 1.3rem); {value_style}">
+                    {value}
+                </div>
+            </div>"""
         booster_html += "</div>"
         st.markdown(booster_html, unsafe_allow_html=True)
 
