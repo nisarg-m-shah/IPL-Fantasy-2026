@@ -261,7 +261,7 @@ def run_output_pipeline():
                     if winner_booster_match == team_franchise:
                         franchise_points += 300
                     else:
-                        franchise_points -= 450
+                        franchise_points -= 600
         spreadsheet['Team Final Points'].setdefault(team, {})['Franchise Points'] = franchise_points
         spreadsheet['Team Final Points'].setdefault(team, {})['Franchise Wins'] = franchise_wins[team]
         print(f"{team}: {franchise_wins[team]} wins = {franchise_points} franchise points")
