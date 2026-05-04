@@ -1484,7 +1484,7 @@ def show_squads(data):
         for booster_name, (label, color, bg) in BOOSTER_STYLES.items():
             match_name_val = next((m for m, b in team_boosters.items() if b == booster_name or (isinstance(b, tuple) and b[0] == booster_name)), None)
             raw = team_boosters.get(match_name_val)
-            value = f"{match_name_val} : {raw[1]}" if match_name_val and isinstance(raw, list) else (match_name_val if match_name_val else "Not Used")
+            value = f"{match_name_val} : {raw[1]}" if match_name_val and isinstance(raw, tuple) else (match_name_val if match_name_val else "Not Used")
             value_style = "font-weight:bold;" if match_name_val else "opacity:0.45; font-style:italic;"
             
             booster_html += f"""<div class="metric-card" style="border-left:6px solid {color}; background:{bg}; --accent-color: {color};">
