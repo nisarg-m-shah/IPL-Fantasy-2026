@@ -1478,7 +1478,7 @@ def show_squads(data):
             "Batting Powerplay": ("🏏 BATTING POWERPLAY", "#fb923c", "rgba(251,146,60,0.12)"),
             "Bowling Powerplay": ("⚾ BOWLING POWERPLAY", "#a855f7", "rgba(168,85,247,0.12)"),
             "Triple Captain": ("🧢 TRIPLE CAPTAIN", "#22c55e", "rgba(34,197,94,0.12)"),
-            "Ultimate Team Booster": ("👥 ULTIMATE TEAM BOOSTER", "#14b8a6", "rgba(20,184,166,0.12)")
+            "Ultimate Team Booster": ("👥 ULTIMATE TEAM BOOSTER", "#64748b", "rgba(100,116,139,0.12)")
         }
 
         booster_items = list(BOOSTER_STYLES.items())
