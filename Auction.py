@@ -676,20 +676,25 @@ boosters = {
     'Gujju Gang': {
     },
     'Disruptors': {'SRH vs RR':('Triple Captain','Vaibhav Suryavanshi'),
-    'RCB vs DC':'Batting Powerplay','SRH vs KKR':'Ultimate Team Booster'
+    'RCB vs DC':'Batting Powerplay',
+    'SRH vs KKR':'Ultimate Team Booster',
+    'DC vs CSK':"Bowling Powerplay",
+    'CSK vs SRH':'Double Power'
     },
     'Tormented Titans': {
     },
-    'Nasty Knights': {'KKR vs RR':'Double Power','GT vs RCB':'Bowling Powerplay'
+    'Nasty Knights': {'KKR vs RR':'Double Power',
+    'GT vs RCB':'Bowling Powerplay'
     },
     'VS Stalwarts': {'LSG vs KKR':'Double Power'
     },
-    'Alpha Acers': {'CSK vs KKR':'Batting Powerplay','MI vs CSK':'Double Power',
+    'Alpha Acers': {'CSK vs KKR':'Batting Powerplay',
+    'MI vs CSK':'Double Power',
     'MI vs LSG':'Ultimate Team Booster'
     },
     'Hilarious Hooligans': {'DC vs PBKS':('Triple Captain','Prabhsimran Singh')
     },
-    'Night Watchmen': {
+    'Night Watchmen': {'DC vs CSK':'Batting Powerplay'
     }
 }
 
