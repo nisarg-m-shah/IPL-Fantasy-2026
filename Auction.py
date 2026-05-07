@@ -684,7 +684,8 @@ boosters = {
     'Tormented Titans': {
     },
     'Nasty Knights': {'KKR vs RR':'Double Power',
-    'GT vs RCB':'Bowling Powerplay'
+    'GT vs RCB':'Bowling Powerplay',
+'LSG vs RCB':'Ultimate Team Booster'
     },
     'VS Stalwarts': {'LSG vs KKR':'Double Power'
     },
@@ -694,7 +695,8 @@ boosters = {
     },
     'Hilarious Hooligans': {'DC vs PBKS':('Triple Captain','Prabhsimran Singh')
     },
-    'Night Watchmen': {'DC vs CSK':'Batting Powerplay'
+    'Night Watchmen': {'DC vs CSK':'Batting Powerplay',
+'LSG vs RCB':'Bowling Powerplay'
     }
 }
 
