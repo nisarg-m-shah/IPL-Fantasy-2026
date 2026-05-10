@@ -1,7 +1,7 @@
 {
     "Team Final Points": {
         "Gujju Gang": {
-            "Total Points": 16213.0,
+            "Total Points": 16225.0,
             "Orange Cap": 0,
             "Purple Cap": 0,
             "MVP": 0,
@@ -60,10 +60,11 @@
             "LSG vs RCB": 97,
             "DC vs KKR": 53.0,
             "RR vs GT": 608.0,
-            "CSK vs LSG": 324.0
+            "CSK vs LSG": 336.0,
+            "RCB vs MI": 0.0
         },
         "Night Watchmen": {
-            "Total Points": 13857.0,
+            "Total Points": 13880.0,
             "Orange Cap": 500,
             "Purple Cap": 0,
             "MVP": 0,
@@ -122,10 +123,11 @@
             "LSG vs RCB": 159,
             "DC vs KKR": 7.0,
             "RR vs GT": 550.0,
-            "CSK vs LSG": 234.0
+            "CSK vs LSG": 257.0,
+            "RCB vs MI": 0.0
         },
         "Nasty Knights": {
-            "Total Points": 13468.0,
+            "Total Points": 13469.0,
             "Orange Cap": 0,
             "Purple Cap": 500,
             "MVP": 750,
@@ -184,7 +186,8 @@
             "LSG vs RCB": 177,
             "DC vs KKR": 368.5,
             "RR vs GT": 358.0,
-            "CSK vs LSG": 1.0
+            "CSK vs LSG": 2.0,
+            "RCB vs MI": 0.0
         },
         "Disruptors": {
             "Total Points": 13255.5,
@@ -246,10 +249,11 @@
             "LSG vs RCB": 356,
             "DC vs KKR": 201.0,
             "RR vs GT": 665.0,
-            "CSK vs LSG": 279.0
+            "CSK vs LSG": 279.0,
+            "RCB vs MI": 0.0
         },
         "VS Stalwarts": {
-            "Total Points": 12418.5,
+            "Total Points": 12431.5,
             "Orange Cap": 0,
             "Purple Cap": 0,
             "MVP": 0,
@@ -308,10 +312,11 @@
             "LSG vs RCB": 981,
             "DC vs KKR": 238.0,
             "RR vs GT": 5.0,
-            "CSK vs LSG": 77.0
+            "CSK vs LSG": 89.0,
+            "RCB vs MI": 1.0
         },
         "Hilarious Hooligans": {
-            "Total Points": 11670.0,
+            "Total Points": 11671.0,
             "Orange Cap": 0,
             "Purple Cap": 0,
             "MVP": 0,
@@ -370,7 +375,8 @@
             "LSG vs RCB": 66,
             "DC vs KKR": 113.5,
             "RR vs GT": 240.0,
-            "CSK vs LSG": 0.0
+            "CSK vs LSG": 0.0,
+            "RCB vs MI": 1.0
         },
         "Alpha Acers": {
             "Total Points": 11128.5,
@@ -432,7 +438,8 @@
             "LSG vs RCB": 265,
             "DC vs KKR": 260.0,
             "RR vs GT": 19.5,
-            "CSK vs LSG": 412.0
+            "CSK vs LSG": 412.0,
+            "RCB vs MI": 0.0
         },
         "Tormented Titans": {
             "Total Points": 9498.5,
@@ -494,7 +501,8 @@
             "LSG vs RCB": 20,
             "DC vs KKR": 45.0,
             "RR vs GT": 175.0,
-            "CSK vs LSG": 679.0
+            "CSK vs LSG": 679.0,
+            "RCB vs MI": 0.0
         }
     },
     "Player Final Points": {
@@ -556,7 +564,8 @@
             "LSG vs RCB": 0,
             "DC vs KKR": 0,
             "RR vs GT": 93,
-            "CSK vs LSG": 0
+            "CSK vs LSG": 0,
+            "RCB vs MI": 0
         },
         "Heinrich Klaasen": {
             "Total Points": 1680,
@@ -616,7 +625,8 @@
             "LSG vs RCB": 0,
             "DC vs KKR": 0,
             "RR vs GT": 0,
-            "CSK vs LSG": 0
+            "CSK vs LSG": 0,
+            "RCB vs MI": 0
         },
         "Anshul Kamboj": {
             "Total Points": 1248,
@@ -676,7 +686,8 @@
             "LSG vs RCB": 0,
             "DC vs KKR": 0,
             "RR vs GT": 0,
-            "CSK vs LSG": 101
+            "CSK vs LSG": 101,
+            "RCB vs MI": 0
         },
         "Abhishek Sharma": {
             "Total Points": 1181,
@@ -736,7 +747,8 @@
             "LSG vs RCB": 0,
             "DC vs KKR": 0,
             "RR vs GT": 0,
-            "CSK vs LSG": 0
+            "CSK vs LSG": 0,
+            "RCB vs MI": 0
         },
         "Bhuvneshwar Kumar": {
             "Total Points": 1160,
@@ -796,7 +808,8 @@
             "LSG vs RCB": 36,
             "DC vs KKR": 0,
             "RR vs GT": 0,
-            "CSK vs LSG": 0
+            "CSK vs LSG": 0,
+            "RCB vs MI": 0
         },
         "Rashid Khan": {
             "Total Points": 1148,
@@ -856,10 +869,11 @@
             "LSG vs RCB": 0,
             "DC vs KKR": 0,
             "RR vs GT": 274,
-            "CSK vs LSG": 0
+            "CSK vs LSG": 0,
+            "RCB vs MI": 0
         },
         "Prince Yadav": {
-            "Total Points": 1108,
+            "Total Points": 1112,
             "Orange Cap": 0,
             "Purple Cap": 0,
             "MVP": 0,
@@ -916,7 +930,8 @@
             "LSG vs RCB": 196,
             "DC vs KKR": 0,
             "RR vs GT": 0,
-            "CSK vs LSG": 21
+            "CSK vs LSG": 25,
+            "RCB vs MI": 0
         },
         "KL Rahul": {
             "Total Points": 1091,
@@ -976,7 +991,8 @@
             "LSG vs RCB": 0,
             "DC vs KKR": 61,
             "RR vs GT": 0,
-            "CSK vs LSG": 0
+            "CSK vs LSG": 0,
+            "RCB vs MI": 0
         },
         "Jamie Overton": {
             "Total Points": 1070,
@@ -1036,7 +1052,8 @@
             "LSG vs RCB": 0,
             "DC vs KKR": 0,
             "RR vs GT": 0,
-            "CSK vs LSG": 167
+            "CSK vs LSG": 167,
+            "RCB vs MI": 0
         },
         "Shubman Gill": {
             "Total Points": 1070,
@@ -1096,7 +1113,8 @@
             "LSG vs RCB": 0,
             "DC vs KKR": 0,
             "RR vs GT": 196,
-            "CSK vs LSG": 0
+            "CSK vs LSG": 0,
+            "RCB vs MI": 0
         },
         "Sanju Samson": {
             "Total Points": 1054,
@@ -1156,7 +1174,8 @@
             "LSG vs RCB": 0,
             "DC vs KKR": 0,
             "RR vs GT": 0,
-            "CSK vs LSG": 100
+            "CSK vs LSG": 100,
+            "RCB vs MI": 0
         },
         "Vaibhav Suryavanshi": {
             "Total Points": 1051,
@@ -1216,7 +1235,8 @@
             "LSG vs RCB": 0,
             "DC vs KKR": 0,
             "RR vs GT": 91,
-            "CSK vs LSG": 0
+            "CSK vs LSG": 0,
+            "RCB vs MI": 0
         },
         "Jofra Archer": {
             "Total Points": 1045,
@@ -1276,7 +1296,8 @@
             "LSG vs RCB": 0,
             "DC vs KKR": 0,
             "RR vs GT": 5,
-            "CSK vs LSG": 0
+            "CSK vs LSG": 0,
+            "RCB vs MI": 0
         },
         "Nitish Reddy": {
             "Total Points": 1041,
@@ -1336,7 +1357,8 @@
             "LSG vs RCB": 0,
             "DC vs KKR": 0,
             "RR vs GT": 0,
-            "CSK vs LSG": 0
+            "CSK vs LSG": 0,
+            "RCB vs MI": 0
         },
         "Ishan Kishan": {
             "Total Points": 1037,
@@ -1396,7 +1418,8 @@
             "LSG vs RCB": 0,
             "DC vs KKR": 0,
             "RR vs GT": 0,
-            "CSK vs LSG": 0
+            "CSK vs LSG": 0,
+            "RCB vs MI": 0
         },
         "Eshan Malinga": {
             "Total Points": 979,
@@ -1456,7 +1479,8 @@
             "LSG vs RCB": 0,
             "DC vs KKR": 0,
             "RR vs GT": 0,
-            "CSK vs LSG": 0
+            "CSK vs LSG": 0,
+            "RCB vs MI": 0
         },
         "Jos Buttler": {
             "Total Points": 972,
@@ -1516,7 +1540,8 @@
             "LSG vs RCB": 0,
             "DC vs KKR": 0,
             "RR vs GT": 48,
-            "CSK vs LSG": 0
+            "CSK vs LSG": 0,
+            "RCB vs MI": 0
         },
         "Sai Sudharsan": {
             "Total Points": 963,
@@ -1576,7 +1601,8 @@
             "LSG vs RCB": 0,
             "DC vs KKR": 0,
             "RR vs GT": 128,
-            "CSK vs LSG": 0
+            "CSK vs LSG": 0,
+            "RCB vs MI": 0
         },
         "Virat Kohli": {
             "Total Points": 943,
@@ -1636,7 +1662,8 @@
             "LSG vs RCB": -10,
             "DC vs KKR": 0,
             "RR vs GT": 0,
-            "CSK vs LSG": 0
+            "CSK vs LSG": 0,
+            "RCB vs MI": 0
         },
         "Cooper Connolly": {
             "Total Points": 917,
@@ -1696,7 +1723,8 @@
             "LSG vs RCB": 0,
             "DC vs KKR": 0,
             "RR vs GT": 0,
-            "CSK vs LSG": 0
+            "CSK vs LSG": 0,
+            "RCB vs MI": 0
         },
         "Ravindra Jadeja": {
             "Total Points": 914,
@@ -1756,7 +1784,8 @@
             "LSG vs RCB": 0,
             "DC vs KKR": 0,
             "RR vs GT": 140,
-            "CSK vs LSG": 0
+            "CSK vs LSG": 0,
+            "RCB vs MI": 0
         },
         "Jason Holder": {
             "Total Points": 871,
@@ -1816,10 +1845,11 @@
             "LSG vs RCB": 0,
             "DC vs KKR": 0,
             "RR vs GT": 200,
-            "CSK vs LSG": 0
+            "CSK vs LSG": 0,
+            "RCB vs MI": 0
         },
         "Ryan Rickelton": {
-            "Total Points": 859,
+            "Total Points": 860,
             "Orange Cap": 0,
             "Purple Cap": 0,
             "MVP": 0,
@@ -1876,7 +1906,8 @@
             "LSG vs RCB": 0,
             "DC vs KKR": 0,
             "RR vs GT": 0,
-            "CSK vs LSG": 0
+            "CSK vs LSG": 0,
+            "RCB vs MI": 1
         },
         "Sunil Narine": {
             "Total Points": 859,
@@ -1936,7 +1967,8 @@
             "LSG vs RCB": 0,
             "DC vs KKR": 103,
             "RR vs GT": 0,
-            "CSK vs LSG": 0
+            "CSK vs LSG": 0,
+            "RCB vs MI": 0
         },
         "Prabhsimran Singh": {
             "Total Points": 848,
@@ -1996,7 +2028,8 @@
             "LSG vs RCB": 0,
             "DC vs KKR": 0,
             "RR vs GT": 0,
-            "CSK vs LSG": 0
+            "CSK vs LSG": 0,
+            "RCB vs MI": 0
         },
         "Dhruv Jurel": {
             "Total Points": 836,
@@ -2056,7 +2089,8 @@
             "LSG vs RCB": 0,
             "DC vs KKR": 0,
             "RR vs GT": 75,
-            "CSK vs LSG": 0
+            "CSK vs LSG": 0,
+            "RCB vs MI": 0
         },
         "Mitchell Marsh": {
             "Total Points": 831,
@@ -2116,7 +2150,8 @@
             "LSG vs RCB": 276,
             "DC vs KKR": 0,
             "RR vs GT": 0,
-            "CSK vs LSG": 13
+            "CSK vs LSG": 13,
+            "RCB vs MI": 0
         },
         "Shreyas Iyer": {
             "Total Points": 828,
@@ -2176,7 +2211,8 @@
             "LSG vs RCB": 0,
             "DC vs KKR": 0,
             "RR vs GT": 0,
-            "CSK vs LSG": 0
+            "CSK vs LSG": 0,
+            "RCB vs MI": 0
         },
         "Devdutt Padikkal": {
             "Total Points": 828,
@@ -2236,7 +2272,8 @@
             "LSG vs RCB": 63,
             "DC vs KKR": 0,
             "RR vs GT": 0,
-            "CSK vs LSG": 0
+            "CSK vs LSG": 0,
+            "RCB vs MI": 0
         },
         "Kartik Tyagi": {
             "Total Points": 818,
@@ -2296,7 +2333,8 @@
             "LSG vs RCB": 0,
             "DC vs KKR": 125,
             "RR vs GT": 0,
-            "CSK vs LSG": 0
+            "CSK vs LSG": 0,
+            "RCB vs MI": 0
         },
         "Noor Ahmad": {
             "Total Points": 813,
@@ -2356,7 +2394,8 @@
             "LSG vs RCB": 0,
             "DC vs KKR": 0,
             "RR vs GT": 0,
-            "CSK vs LSG": 70
+            "CSK vs LSG": 70,
+            "RCB vs MI": 0
         },
         "Rajat Patidar": {
             "Total Points": 812,
@@ -2416,7 +2455,8 @@
             "LSG vs RCB": 160,
             "DC vs KKR": 0,
             "RR vs GT": 0,
-            "CSK vs LSG": 0
+            "CSK vs LSG": 0,
+            "RCB vs MI": 0
         },
         "Krunal Pandya": {
             "Total Points": 796,
@@ -2476,7 +2516,8 @@
             "LSG vs RCB": 162,
             "DC vs KKR": 0,
             "RR vs GT": 0,
-            "CSK vs LSG": 0
+            "CSK vs LSG": 0,
+            "RCB vs MI": 0
         },
         "Mohammad Siraj": {
             "Total Points": 794,
@@ -2536,7 +2577,8 @@
             "LSG vs RCB": 0,
             "DC vs KKR": 0,
             "RR vs GT": 26,
-            "CSK vs LSG": 0
+            "CSK vs LSG": 0,
+            "RCB vs MI": 0
         },
         "Yashasvi Jaiswal": {
             "Total Points": 789,
@@ -2596,7 +2638,8 @@
             "LSG vs RCB": 0,
             "DC vs KKR": 0,
             "RR vs GT": 13,
-            "CSK vs LSG": 0
+            "CSK vs LSG": 0,
+            "RCB vs MI": 0
         },
         "Travis Head": {
             "Total Points": 788,
@@ -2656,7 +2699,8 @@
             "LSG vs RCB": 0,
             "DC vs KKR": 0,
             "RR vs GT": 0,
-            "CSK vs LSG": 0
+            "CSK vs LSG": 0,
+            "RCB vs MI": 0
         },
         "Mohammed Shami": {
             "Total Points": 777,
@@ -2716,7 +2760,8 @@
             "LSG vs RCB": 76,
             "DC vs KKR": 0,
             "RR vs GT": 0,
-            "CSK vs LSG": 17
+            "CSK vs LSG": 17,
+            "RCB vs MI": 0
         },
         "Priyansh Arya": {
             "Total Points": 741,
@@ -2776,7 +2821,8 @@
             "LSG vs RCB": 0,
             "DC vs KKR": 0,
             "RR vs GT": 0,
-            "CSK vs LSG": 0
+            "CSK vs LSG": 0,
+            "RCB vs MI": 0
         },
         "Varun Chakaravarthy": {
             "Total Points": 737,
@@ -2836,7 +2882,8 @@
             "LSG vs RCB": 0,
             "DC vs KKR": 40,
             "RR vs GT": 0,
-            "CSK vs LSG": 0
+            "CSK vs LSG": 0,
+            "RCB vs MI": 0
         },
         "Washington Sundar": {
             "Total Points": 706,
@@ -2896,7 +2943,8 @@
             "LSG vs RCB": 0,
             "DC vs KKR": 0,
             "RR vs GT": 137,
-            "CSK vs LSG": 0
+            "CSK vs LSG": 0,
+            "RCB vs MI": 0
         },
         "Mohsin Khan": {
             "Total Points": 694,
@@ -2956,7 +3004,8 @@
             "LSG vs RCB": 0,
             "DC vs KKR": 0,
             "RR vs GT": 0,
-            "CSK vs LSG": 0
+            "CSK vs LSG": 0,
+            "RCB vs MI": 0
         },
         "Arshdeep Singh": {
             "Total Points": 688,
@@ -3016,7 +3065,8 @@
             "LSG vs RCB": 0,
             "DC vs KKR": 0,
             "RR vs GT": 0,
-            "CSK vs LSG": 0
+            "CSK vs LSG": 0,
+            "RCB vs MI": 0
         },
         "Cameron Green": {
             "Total Points": 686,
@@ -3076,7 +3126,8 @@
             "LSG vs RCB": 0,
             "DC vs KKR": 98,
             "RR vs GT": 0,
-            "CSK vs LSG": 0
+            "CSK vs LSG": 0,
+            "RCB vs MI": 0
         },
         "Allah Ghazanfar": {
             "Total Points": 683,
@@ -3136,7 +3187,8 @@
             "LSG vs RCB": 0,
             "DC vs KKR": 0,
             "RR vs GT": 0,
-            "CSK vs LSG": 0
+            "CSK vs LSG": 0,
+            "RCB vs MI": 0
         },
         "Donovan Ferreira": {
             "Total Points": 657,
@@ -3196,7 +3248,8 @@
             "LSG vs RCB": 0,
             "DC vs KKR": 0,
             "RR vs GT": 18,
-            "CSK vs LSG": 0
+            "CSK vs LSG": 0,
+            "RCB vs MI": 0
         },
         "Tim David": {
             "Total Points": 643,
@@ -3256,7 +3309,8 @@
             "LSG vs RCB": 97,
             "DC vs KKR": 0,
             "RR vs GT": 0,
-            "CSK vs LSG": 0
+            "CSK vs LSG": 0,
+            "RCB vs MI": 0
         },
         "Ravi Bishnoi": {
             "Total Points": 639,
@@ -3316,7 +3370,8 @@
             "LSG vs RCB": 0,
             "DC vs KKR": 0,
             "RR vs GT": 0,
-            "CSK vs LSG": 0
+            "CSK vs LSG": 0,
+            "RCB vs MI": 0
         },
         "Rishabh Pant": {
             "Total Points": 633,
@@ -3376,7 +3431,8 @@
             "LSG vs RCB": 96,
             "DC vs KKR": 0,
             "RR vs GT": 0,
-            "CSK vs LSG": 34
+            "CSK vs LSG": 34,
+            "RCB vs MI": 0
         },
         "Josh Hazlewood": {
             "Total Points": 632,
@@ -3436,7 +3492,8 @@
             "LSG vs RCB": 38,
             "DC vs KKR": 0,
             "RR vs GT": 0,
-            "CSK vs LSG": 0
+            "CSK vs LSG": 0,
+            "RCB vs MI": 0
         },
         "Naman Dhir": {
             "Total Points": 631,
@@ -3496,7 +3553,8 @@
             "LSG vs RCB": 0,
             "DC vs KKR": 0,
             "RR vs GT": 0,
-            "CSK vs LSG": 0
+            "CSK vs LSG": 0,
+            "RCB vs MI": 0
         },
         "Axar Patel": {
             "Total Points": 630,
@@ -3556,7 +3614,8 @@
             "LSG vs RCB": 0,
             "DC vs KKR": 69,
             "RR vs GT": 0,
-            "CSK vs LSG": 0
+            "CSK vs LSG": 0,
+            "RCB vs MI": 0
         },
         "Rinku Singh": {
             "Total Points": 618,
@@ -3616,7 +3675,8 @@
             "LSG vs RCB": 0,
             "DC vs KKR": 0,
             "RR vs GT": 0,
-            "CSK vs LSG": 0
+            "CSK vs LSG": 0,
+            "RCB vs MI": 0
         },
         "Prasidh Krishna": {
             "Total Points": 616,
@@ -3676,7 +3736,8 @@
             "LSG vs RCB": 0,
             "DC vs KKR": 0,
             "RR vs GT": 0,
-            "CSK vs LSG": 0
+            "CSK vs LSG": 0,
+            "RCB vs MI": 0
         },
         "Pathum Nissanka": {
             "Total Points": 615,
@@ -3736,7 +3797,8 @@
             "LSG vs RCB": 0,
             "DC vs KKR": 124,
             "RR vs GT": 0,
-            "CSK vs LSG": 0
+            "CSK vs LSG": 0,
+            "RCB vs MI": 0
         },
         "Vaibhav Arora": {
             "Total Points": 613,
@@ -3796,7 +3858,8 @@
             "LSG vs RCB": 0,
             "DC vs KKR": 45,
             "RR vs GT": 0,
-            "CSK vs LSG": 0
+            "CSK vs LSG": 0,
+            "RCB vs MI": 0
         },
         "Angkrish Raghuvanshi": {
             "Total Points": 609,
@@ -3856,7 +3919,8 @@
             "LSG vs RCB": 0,
             "DC vs KKR": 21,
             "RR vs GT": 0,
-            "CSK vs LSG": 0
+            "CSK vs LSG": 0,
+            "RCB vs MI": 0
         },
         "Anukul Roy": {
             "Total Points": 608,
@@ -3916,7 +3980,8 @@
             "LSG vs RCB": 0,
             "DC vs KKR": 145,
             "RR vs GT": 0,
-            "CSK vs LSG": 0
+            "CSK vs LSG": 0,
+            "RCB vs MI": 0
         },
         "Aiden Markram": {
             "Total Points": 605,
@@ -3976,7 +4041,8 @@
             "LSG vs RCB": 11,
             "DC vs KKR": 0,
             "RR vs GT": 0,
-            "CSK vs LSG": 6
+            "CSK vs LSG": 6,
+            "RCB vs MI": 0
         },
         "Lungi Ngidi": {
             "Total Points": 592,
@@ -4036,7 +4102,8 @@
             "LSG vs RCB": 0,
             "DC vs KKR": 51,
             "RR vs GT": 0,
-            "CSK vs LSG": 0
+            "CSK vs LSG": 0,
+            "RCB vs MI": 0
         },
         "Nandre Burger": {
             "Total Points": 588,
@@ -4096,7 +4163,8 @@
             "LSG vs RCB": 0,
             "DC vs KKR": 0,
             "RR vs GT": 0,
-            "CSK vs LSG": 0
+            "CSK vs LSG": 0,
+            "RCB vs MI": 0
         },
         "Tristan Stubbs": {
             "Total Points": 585,
@@ -4156,7 +4224,8 @@
             "LSG vs RCB": 0,
             "DC vs KKR": 2,
             "RR vs GT": 0,
-            "CSK vs LSG": 0
+            "CSK vs LSG": 0,
+            "RCB vs MI": 0
         },
         "Ruturaj Gaikwad": {
             "Total Points": 585,
@@ -4216,7 +4285,8 @@
             "LSG vs RCB": 0,
             "DC vs KKR": 0,
             "RR vs GT": 0,
-            "CSK vs LSG": 84
+            "CSK vs LSG": 84,
+            "RCB vs MI": 0
         },
         "Finn Allen": {
             "Total Points": 555,
@@ -4276,7 +4346,8 @@
             "LSG vs RCB": 0,
             "DC vs KKR": 260,
             "RR vs GT": 0,
-            "CSK vs LSG": 0
+            "CSK vs LSG": 0,
+            "RCB vs MI": 0
         },
         "Brijesh Sharma": {
             "Total Points": 553,
@@ -4336,7 +4407,8 @@
             "LSG vs RCB": 0,
             "DC vs KKR": 0,
             "RR vs GT": 96,
-            "CSK vs LSG": 0
+            "CSK vs LSG": 0,
+            "RCB vs MI": 0
         },
         "Marco Jansen": {
             "Total Points": 546,
@@ -4396,7 +4468,8 @@
             "LSG vs RCB": 0,
             "DC vs KKR": 0,
             "RR vs GT": 0,
-            "CSK vs LSG": 0
+            "CSK vs LSG": 0,
+            "RCB vs MI": 0
         },
         "Sameer Rizvi": {
             "Total Points": 543,
@@ -4456,7 +4529,8 @@
             "LSG vs RCB": 0,
             "DC vs KKR": 3,
             "RR vs GT": 0,
-            "CSK vs LSG": 0
+            "CSK vs LSG": 0,
+            "RCB vs MI": 0
         },
         "Riyan Parag": {
             "Total Points": 525,
@@ -4516,7 +4590,8 @@
             "LSG vs RCB": 0,
             "DC vs KKR": 0,
             "RR vs GT": 0,
-            "CSK vs LSG": 0
+            "CSK vs LSG": 0,
+            "RCB vs MI": 0
         },
         "Sakib Hussain": {
             "Total Points": 524,
@@ -4576,7 +4651,8 @@
             "LSG vs RCB": 0,
             "DC vs KKR": 0,
             "RR vs GT": 0,
-            "CSK vs LSG": 0
+            "CSK vs LSG": 0,
+            "RCB vs MI": 0
         },
         "Romario Shepherd": {
             "Total Points": 522,
@@ -4636,7 +4712,8 @@
             "LSG vs RCB": 66,
             "DC vs KKR": 0,
             "RR vs GT": 0,
-            "CSK vs LSG": 0
+            "CSK vs LSG": 0,
+            "RCB vs MI": 0
         },
         "Shivang Kumar": {
             "Total Points": 510,
@@ -4696,7 +4773,8 @@
             "LSG vs RCB": 0,
             "DC vs KKR": 0,
             "RR vs GT": 0,
-            "CSK vs LSG": 0
+            "CSK vs LSG": 0,
+            "RCB vs MI": 0
         },
         "Hardik Pandya": {
             "Total Points": 508,
@@ -4756,10 +4834,11 @@
             "LSG vs RCB": 0,
             "DC vs KKR": 0,
             "RR vs GT": 0,
-            "CSK vs LSG": 0
+            "CSK vs LSG": 0,
+            "RCB vs MI": 0
         },
         "Rohit Sharma": {
-            "Total Points": 494,
+            "Total Points": 495,
             "Orange Cap": 0,
             "Purple Cap": 0,
             "MVP": 0,
@@ -4816,7 +4895,8 @@
             "LSG vs RCB": 0,
             "DC vs KKR": 0,
             "RR vs GT": 0,
-            "CSK vs LSG": 0
+            "CSK vs LSG": 0,
+            "RCB vs MI": 1
         },
         "Akeal Hosein": {
             "Total Points": 494,
@@ -4876,7 +4956,8 @@
             "LSG vs RCB": 0,
             "DC vs KKR": 0,
             "RR vs GT": 0,
-            "CSK vs LSG": -2
+            "CSK vs LSG": -2,
+            "RCB vs MI": 0
         },
         "Phil Salt": {
             "Total Points": 492,
@@ -4936,7 +5017,8 @@
             "LSG vs RCB": 0,
             "DC vs KKR": 0,
             "RR vs GT": 0,
-            "CSK vs LSG": 0
+            "CSK vs LSG": 0,
+            "RCB vs MI": 0
         },
         "Suyash Sharma": {
             "Total Points": 491,
@@ -4996,7 +5078,8 @@
             "LSG vs RCB": 9,
             "DC vs KKR": 0,
             "RR vs GT": 0,
-            "CSK vs LSG": 0
+            "CSK vs LSG": 0,
+            "RCB vs MI": 0
         },
         "Suryakumar Yadav": {
             "Total Points": 476,
@@ -5056,7 +5139,8 @@
             "LSG vs RCB": 0,
             "DC vs KKR": 0,
             "RR vs GT": 0,
-            "CSK vs LSG": 0
+            "CSK vs LSG": 0,
+            "RCB vs MI": 0
         },
         "Nitish Rana": {
             "Total Points": 473,
@@ -5116,7 +5200,8 @@
             "LSG vs RCB": 0,
             "DC vs KKR": -5,
             "RR vs GT": 0,
-            "CSK vs LSG": 0
+            "CSK vs LSG": 0,
+            "RCB vs MI": 0
         },
         "Tilak Varma": {
             "Total Points": 470,
@@ -5176,7 +5261,8 @@
             "LSG vs RCB": 0,
             "DC vs KKR": 0,
             "RR vs GT": 0,
-            "CSK vs LSG": 0
+            "CSK vs LSG": 0,
+            "RCB vs MI": 0
         },
         "Vijaykumar Vyshak": {
             "Total Points": 469,
@@ -5236,7 +5322,8 @@
             "LSG vs RCB": 0,
             "DC vs KKR": 0,
             "RR vs GT": 0,
-            "CSK vs LSG": 0
+            "CSK vs LSG": 0,
+            "RCB vs MI": 0
         },
         "Harsh Dubey": {
             "Total Points": 458,
@@ -5296,7 +5383,8 @@
             "LSG vs RCB": 0,
             "DC vs KKR": 0,
             "RR vs GT": 0,
-            "CSK vs LSG": 0
+            "CSK vs LSG": 0,
+            "RCB vs MI": 0
         },
         "Ayush Mhatre": {
             "Total Points": 457,
@@ -5356,7 +5444,8 @@
             "LSG vs RCB": 0,
             "DC vs KKR": 0,
             "RR vs GT": 0,
-            "CSK vs LSG": 0
+            "CSK vs LSG": 0,
+            "RCB vs MI": 0
         },
         "Marcus Stoinis": {
             "Total Points": 456,
@@ -5416,7 +5505,8 @@
             "LSG vs RCB": 0,
             "DC vs KKR": 0,
             "RR vs GT": 0,
-            "CSK vs LSG": 0
+            "CSK vs LSG": 0,
+            "RCB vs MI": 0
         },
         "Sarfaraz Khan": {
             "Total Points": 455,
@@ -5476,7 +5566,8 @@
             "LSG vs RCB": 0,
             "DC vs KKR": 0,
             "RR vs GT": 0,
-            "CSK vs LSG": 0
+            "CSK vs LSG": 0,
+            "RCB vs MI": 0
         },
         "Yuzvendra Chahal": {
             "Total Points": 448,
@@ -5536,7 +5627,8 @@
             "LSG vs RCB": 0,
             "DC vs KKR": 0,
             "RR vs GT": 0,
-            "CSK vs LSG": 0
+            "CSK vs LSG": 0,
+            "RCB vs MI": 0
         },
         "Kuldeep Yadav": {
             "Total Points": 418,
@@ -5596,7 +5688,8 @@
             "LSG vs RCB": 0,
             "DC vs KKR": -8,
             "RR vs GT": 0,
-            "CSK vs LSG": 0
+            "CSK vs LSG": 0,
+            "RCB vs MI": 0
         },
         "Ajinkya Rahane": {
             "Total Points": 410,
@@ -5656,7 +5749,8 @@
             "LSG vs RCB": 0,
             "DC vs KKR": 48,
             "RR vs GT": 0,
-            "CSK vs LSG": 0
+            "CSK vs LSG": 0,
+            "RCB vs MI": 0
         },
         "Praful Hinge": {
             "Total Points": 395,
@@ -5716,7 +5810,8 @@
             "LSG vs RCB": 0,
             "DC vs KKR": 0,
             "RR vs GT": 0,
-            "CSK vs LSG": 0
+            "CSK vs LSG": 0,
+            "RCB vs MI": 0
         },
         "Jasprit Bumrah": {
             "Total Points": 391,
@@ -5776,7 +5871,8 @@
             "LSG vs RCB": 0,
             "DC vs KKR": 0,
             "RR vs GT": 0,
-            "CSK vs LSG": 0
+            "CSK vs LSG": 0,
+            "RCB vs MI": 0
         },
         "Mukul Choudhary": {
             "Total Points": 390,
@@ -5836,7 +5932,8 @@
             "LSG vs RCB": 0,
             "DC vs KKR": 0,
             "RR vs GT": 0,
-            "CSK vs LSG": 0
+            "CSK vs LSG": 0,
+            "RCB vs MI": 0
         },
         "Shashank Singh": {
             "Total Points": 390,
@@ -5896,7 +5993,8 @@
             "LSG vs RCB": 0,
             "DC vs KKR": 0,
             "RR vs GT": 0,
-            "CSK vs LSG": 0
+            "CSK vs LSG": 0,
+            "RCB vs MI": 0
         },
         "Rasikh Dar Salam": {
             "Total Points": 387,
@@ -5956,7 +6054,8 @@
             "LSG vs RCB": 20,
             "DC vs KKR": 0,
             "RR vs GT": 0,
-            "CSK vs LSG": 0
+            "CSK vs LSG": 0,
+            "RCB vs MI": 0
         },
         "Mukesh Kumar": {
             "Total Points": 366,
@@ -6016,7 +6115,8 @@
             "LSG vs RCB": 0,
             "DC vs KKR": 0,
             "RR vs GT": 0,
-            "CSK vs LSG": 0
+            "CSK vs LSG": 0,
+            "RCB vs MI": 0
         },
         "Mitchell Santner": {
             "Total Points": 361,
@@ -6076,7 +6176,8 @@
             "LSG vs RCB": 0,
             "DC vs KKR": 0,
             "RR vs GT": 0,
-            "CSK vs LSG": 0
+            "CSK vs LSG": 0,
+            "RCB vs MI": 0
         },
         "Ayush Badoni": {
             "Total Points": 351,
@@ -6136,10 +6237,11 @@
             "LSG vs RCB": 0,
             "DC vs KKR": 0,
             "RR vs GT": 0,
-            "CSK vs LSG": 0
+            "CSK vs LSG": 0,
+            "RCB vs MI": 0
         },
         "Shivam Dube": {
-            "Total Points": 350,
+            "Total Points": 351,
             "Orange Cap": 0,
             "Purple Cap": 0,
             "MVP": 0,
@@ -6196,7 +6298,69 @@
             "LSG vs RCB": 0,
             "DC vs KKR": 0,
             "RR vs GT": 0,
-            "CSK vs LSG": 1
+            "CSK vs LSG": 2,
+            "RCB vs MI": 0
+        },
+        "Avesh Khan": {
+            "Total Points": 347,
+            "Orange Cap": 0,
+            "Purple Cap": 0,
+            "MVP": 0,
+            "RCB vs SRH": 0,
+            "MI vs KKR": 0,
+            "RR vs CSK": 0,
+            "PBKS vs GT": 0,
+            "LSG vs DC": 0,
+            "KKR vs SRH": 0,
+            "CSK vs PBKS": 0,
+            "DC vs MI": 0,
+            "GT vs RR": 0,
+            "SRH vs LSG": 114,
+            "RCB vs CSK": 0,
+            "KKR vs PBKS": 0,
+            "RR vs MI": 0,
+            "DC vs GT": 0,
+            "KKR vs LSG": 51,
+            "RR vs RCB": 0,
+            "PBKS vs SRH": 0,
+            "CSK vs DC": 0,
+            "LSG vs GT": 12,
+            "MI vs RCB": 0,
+            "SRH vs RR": 0,
+            "CSK vs KKR": 0,
+            "RCB vs LSG": 131,
+            "MI vs PBKS": 0,
+            "GT vs KKR": 0,
+            "RCB vs DC": 0,
+            "SRH vs CSK": 0,
+            "KKR vs RR": 0,
+            "PBKS vs LSG": -10,
+            "GT vs MI": 0,
+            "SRH vs DC": 0,
+            "LSG vs RR": 0,
+            "MI vs CSK": 0,
+            "RCB vs GT": 0,
+            "DC vs PBKS": 0,
+            "RR vs SRH": 0,
+            "CSK vs GT": 0,
+            "LSG vs KKR": 0,
+            "DC vs RCB": 0,
+            "PBKS vs RR": 0,
+            "MI vs SRH": 0,
+            "GT vs RCB": 0,
+            "RR vs DC": 0,
+            "CSK vs MI": 0,
+            "SRH vs KKR": 0,
+            "GT vs PBKS": 0,
+            "MI vs LSG": -14,
+            "Emerging Player": 0,
+            "DC vs CSK": 0,
+            "SRH vs PBKS": 0,
+            "LSG vs RCB": 0,
+            "DC vs KKR": 0,
+            "RR vs GT": 0,
+            "CSK vs LSG": 63,
+            "RCB vs MI": 0
         },
         "Kartik Sharma": {
             "Total Points": 344,
@@ -6256,7 +6420,8 @@
             "LSG vs RCB": 0,
             "DC vs KKR": 0,
             "RR vs GT": 0,
-            "CSK vs LSG": 22
+            "CSK vs LSG": 22,
+            "RCB vs MI": 0
         },
         "Xavier Bartlett": {
             "Total Points": 343,
@@ -6316,7 +6481,8 @@
             "LSG vs RCB": 0,
             "DC vs KKR": 0,
             "RR vs GT": 0,
-            "CSK vs LSG": 0
+            "CSK vs LSG": 0,
+            "RCB vs MI": 0
         },
         "Nicholas Pooran": {
             "Total Points": 343,
@@ -6376,7 +6542,8 @@
             "LSG vs RCB": 79,
             "DC vs KKR": 0,
             "RR vs GT": 0,
-            "CSK vs LSG": 1
+            "CSK vs LSG": 1,
+            "RCB vs MI": 0
         },
         "Digvesh Singh Rathi": {
             "Total Points": 343,
@@ -6436,7 +6603,8 @@
             "LSG vs RCB": 8,
             "DC vs KKR": 0,
             "RR vs GT": 0,
-            "CSK vs LSG": 109
+            "CSK vs LSG": 109,
+            "RCB vs MI": 0
         },
         "Ashok Sharma": {
             "Total Points": 337,
@@ -6496,7 +6664,8 @@
             "LSG vs RCB": 0,
             "DC vs KKR": 0,
             "RR vs GT": 0,
-            "CSK vs LSG": 0
+            "CSK vs LSG": 0,
+            "RCB vs MI": 0
         },
         "Pat Cummins": {
             "Total Points": 336,
@@ -6556,7 +6725,8 @@
             "LSG vs RCB": 0,
             "DC vs KKR": 0,
             "RR vs GT": 0,
-            "CSK vs LSG": 0
+            "CSK vs LSG": 0,
+            "RCB vs MI": 0
         },
         "Jacob Duffy": {
             "Total Points": 330,
@@ -6616,67 +6786,8 @@
             "LSG vs RCB": 0,
             "DC vs KKR": 0,
             "RR vs GT": 0,
-            "CSK vs LSG": 0
-        },
-        "Avesh Khan": {
-            "Total Points": 324,
-            "Orange Cap": 0,
-            "Purple Cap": 0,
-            "MVP": 0,
-            "RCB vs SRH": 0,
-            "MI vs KKR": 0,
-            "RR vs CSK": 0,
-            "PBKS vs GT": 0,
-            "LSG vs DC": 0,
-            "KKR vs SRH": 0,
-            "CSK vs PBKS": 0,
-            "DC vs MI": 0,
-            "GT vs RR": 0,
-            "SRH vs LSG": 114,
-            "RCB vs CSK": 0,
-            "KKR vs PBKS": 0,
-            "RR vs MI": 0,
-            "DC vs GT": 0,
-            "KKR vs LSG": 51,
-            "RR vs RCB": 0,
-            "PBKS vs SRH": 0,
-            "CSK vs DC": 0,
-            "LSG vs GT": 12,
-            "MI vs RCB": 0,
-            "SRH vs RR": 0,
-            "CSK vs KKR": 0,
-            "RCB vs LSG": 131,
-            "MI vs PBKS": 0,
-            "GT vs KKR": 0,
-            "RCB vs DC": 0,
-            "SRH vs CSK": 0,
-            "KKR vs RR": 0,
-            "PBKS vs LSG": -10,
-            "GT vs MI": 0,
-            "SRH vs DC": 0,
-            "LSG vs RR": 0,
-            "MI vs CSK": 0,
-            "RCB vs GT": 0,
-            "DC vs PBKS": 0,
-            "RR vs SRH": 0,
-            "CSK vs GT": 0,
-            "LSG vs KKR": 0,
-            "DC vs RCB": 0,
-            "PBKS vs RR": 0,
-            "MI vs SRH": 0,
-            "GT vs RCB": 0,
-            "RR vs DC": 0,
-            "CSK vs MI": 0,
-            "SRH vs KKR": 0,
-            "GT vs PBKS": 0,
-            "MI vs LSG": -14,
-            "Emerging Player": 0,
-            "DC vs CSK": 0,
-            "SRH vs PBKS": 0,
-            "LSG vs RCB": 0,
-            "DC vs KKR": 0,
-            "RR vs GT": 0,
-            "CSK vs LSG": 40
+            "CSK vs LSG": 0,
+            "RCB vs MI": 0
         },
         "Arshad Khan": {
             "Total Points": 323,
@@ -6736,7 +6847,8 @@
             "LSG vs RCB": 0,
             "DC vs KKR": 0,
             "RR vs GT": 0,
-            "CSK vs LSG": 0
+            "CSK vs LSG": 0,
+            "RCB vs MI": 0
         },
         "Manimaran Siddharth": {
             "Total Points": 322,
@@ -6796,7 +6908,8 @@
             "LSG vs RCB": 0,
             "DC vs KKR": 0,
             "RR vs GT": 0,
-            "CSK vs LSG": 0
+            "CSK vs LSG": 0,
+            "RCB vs MI": 0
         },
         "Mukesh Choudhary": {
             "Total Points": 322,
@@ -6856,7 +6969,8 @@
             "LSG vs RCB": 0,
             "DC vs KKR": 0,
             "RR vs GT": 0,
-            "CSK vs LSG": 8
+            "CSK vs LSG": 8,
+            "RCB vs MI": 0
         },
         "Urvil Patel": {
             "Total Points": 321,
@@ -6916,7 +7030,8 @@
             "LSG vs RCB": 0,
             "DC vs KKR": 0,
             "RR vs GT": 0,
-            "CSK vs LSG": 168
+            "CSK vs LSG": 168,
+            "RCB vs MI": 0
         },
         "Gurjapneet Singh": {
             "Total Points": 315,
@@ -6976,7 +7091,8 @@
             "LSG vs RCB": 0,
             "DC vs KKR": 0,
             "RR vs GT": 0,
-            "CSK vs LSG": 0
+            "CSK vs LSG": 0,
+            "RCB vs MI": 0
         },
         "T Natarajan": {
             "Total Points": 302,
@@ -7036,7 +7152,8 @@
             "LSG vs RCB": 0,
             "DC vs KKR": 0,
             "RR vs GT": 0,
-            "CSK vs LSG": 0
+            "CSK vs LSG": 0,
+            "RCB vs MI": 0
         },
         "Shahbaz Ahmed": {
             "Total Points": 302,
@@ -7096,7 +7213,8 @@
             "LSG vs RCB": 91,
             "DC vs KKR": 0,
             "RR vs GT": 0,
-            "CSK vs LSG": 194
+            "CSK vs LSG": 194,
+            "RCB vs MI": 0
         },
         "Quinton de Kock": {
             "Total Points": 297,
@@ -7156,7 +7274,8 @@
             "LSG vs RCB": 0,
             "DC vs KKR": 0,
             "RR vs GT": 0,
-            "CSK vs LSG": 0
+            "CSK vs LSG": 0,
+            "RCB vs MI": 0
         },
         "Ashwani Kumar": {
             "Total Points": 295,
@@ -7216,7 +7335,8 @@
             "LSG vs RCB": 0,
             "DC vs KKR": 0,
             "RR vs GT": 0,
-            "CSK vs LSG": 0
+            "CSK vs LSG": 0,
+            "RCB vs MI": 0
         },
         "David Miller": {
             "Total Points": 285,
@@ -7276,7 +7396,8 @@
             "LSG vs RCB": 0,
             "DC vs KKR": 0,
             "RR vs GT": 0,
-            "CSK vs LSG": 0
+            "CSK vs LSG": 0,
+            "RCB vs MI": 0
         },
         "Ashutosh Sharma": {
             "Total Points": 282,
@@ -7336,7 +7457,8 @@
             "LSG vs RCB": 0,
             "DC vs KKR": 74,
             "RR vs GT": 0,
-            "CSK vs LSG": 0
+            "CSK vs LSG": 0,
+            "RCB vs MI": 0
         },
         "Rovman Powell": {
             "Total Points": 275,
@@ -7396,7 +7518,8 @@
             "LSG vs RCB": 0,
             "DC vs KKR": 0,
             "RR vs GT": 0,
-            "CSK vs LSG": 0
+            "CSK vs LSG": 0,
+            "RCB vs MI": 0
         },
         "Sandeep Sharma": {
             "Total Points": 273,
@@ -7456,7 +7579,8 @@
             "LSG vs RCB": 0,
             "DC vs KKR": 0,
             "RR vs GT": 0,
-            "CSK vs LSG": 0
+            "CSK vs LSG": 0,
+            "RCB vs MI": 0
         },
         "Salil Arora": {
             "Total Points": 246,
@@ -7516,7 +7640,8 @@
             "LSG vs RCB": 0,
             "DC vs KKR": 0,
             "RR vs GT": 0,
-            "CSK vs LSG": 0
+            "CSK vs LSG": 0,
+            "RCB vs MI": 0
         },
         "Tushar Deshpande": {
             "Total Points": 242,
@@ -7576,7 +7701,8 @@
             "LSG vs RCB": 0,
             "DC vs KKR": 0,
             "RR vs GT": 5,
-            "CSK vs LSG": 0
+            "CSK vs LSG": 0,
+            "RCB vs MI": 0
         },
         "Sherfane Rutherford": {
             "Total Points": 239,
@@ -7636,7 +7762,8 @@
             "LSG vs RCB": 0,
             "DC vs KKR": 0,
             "RR vs GT": 0,
-            "CSK vs LSG": 0
+            "CSK vs LSG": 0,
+            "RCB vs MI": 0
         },
         "Jaydev Unadkat": {
             "Total Points": 235,
@@ -7696,7 +7823,8 @@
             "LSG vs RCB": 0,
             "DC vs KKR": 0,
             "RR vs GT": 0,
-            "CSK vs LSG": 0
+            "CSK vs LSG": 0,
+            "RCB vs MI": 0
         },
         "Mitchell Starc": {
             "Total Points": 232,
@@ -7756,7 +7884,8 @@
             "LSG vs RCB": 0,
             "DC vs KKR": 25,
             "RR vs GT": 0,
-            "CSK vs LSG": 0
+            "CSK vs LSG": 0,
+            "RCB vs MI": 0
         },
         "Suryansh Shedge": {
             "Total Points": 229,
@@ -7816,7 +7945,8 @@
             "LSG vs RCB": 0,
             "DC vs KKR": 0,
             "RR vs GT": 0,
-            "CSK vs LSG": 0
+            "CSK vs LSG": 0,
+            "RCB vs MI": 0
         },
         "Yash Raj Punja": {
             "Total Points": 229,
@@ -7876,7 +8006,8 @@
             "LSG vs RCB": 0,
             "DC vs KKR": 0,
             "RR vs GT": 47,
-            "CSK vs LSG": 0
+            "CSK vs LSG": 0,
+            "RCB vs MI": 0
         },
         "Josh Inglis": {
             "Total Points": 227,
@@ -7936,7 +8067,8 @@
             "LSG vs RCB": 0,
             "DC vs KKR": 0,
             "RR vs GT": 0,
-            "CSK vs LSG": 198
+            "CSK vs LSG": 198,
+            "RCB vs MI": 0
         },
         "Aniket Verma": {
             "Total Points": 211,
@@ -7996,7 +8128,8 @@
             "LSG vs RCB": 0,
             "DC vs KKR": 0,
             "RR vs GT": 0,
-            "CSK vs LSG": 0
+            "CSK vs LSG": 0,
+            "RCB vs MI": 0
         },
         "Shardul Thakur": {
             "Total Points": 205,
@@ -8056,7 +8189,8 @@
             "LSG vs RCB": 0,
             "DC vs KKR": 0,
             "RR vs GT": 0,
-            "CSK vs LSG": 0
+            "CSK vs LSG": 0,
+            "RCB vs MI": 0
         },
         "Ramandeep Singh": {
             "Total Points": 196,
@@ -8116,7 +8250,8 @@
             "LSG vs RCB": 0,
             "DC vs KKR": 0,
             "RR vs GT": 0,
-            "CSK vs LSG": 0
+            "CSK vs LSG": 0,
+            "RCB vs MI": 0
         },
         "Himmat Singh": {
             "Total Points": 192,
@@ -8176,7 +8311,8 @@
             "LSG vs RCB": 0,
             "DC vs KKR": 0,
             "RR vs GT": 0,
-            "CSK vs LSG": 42
+            "CSK vs LSG": 42,
+            "RCB vs MI": 0
         },
         "Shimron Hetmyer": {
             "Total Points": 192,
@@ -8236,7 +8372,8 @@
             "LSG vs RCB": 0,
             "DC vs KKR": 0,
             "RR vs GT": 8,
-            "CSK vs LSG": 0
+            "CSK vs LSG": 0,
+            "RCB vs MI": 0
         },
         "Glenn Phillips": {
             "Total Points": 191,
@@ -8296,7 +8433,8 @@
             "LSG vs RCB": 0,
             "DC vs KKR": 0,
             "RR vs GT": 0,
-            "CSK vs LSG": 0
+            "CSK vs LSG": 0,
+            "RCB vs MI": 0
         },
         "Rahul Tewatia": {
             "Total Points": 182,
@@ -8356,7 +8494,8 @@
             "LSG vs RCB": 0,
             "DC vs KKR": 0,
             "RR vs GT": 20,
-            "CSK vs LSG": 0
+            "CSK vs LSG": 0,
+            "RCB vs MI": 0
         },
         "Blessing Muzarabani": {
             "Total Points": 181,
@@ -8416,7 +8555,8 @@
             "LSG vs RCB": 0,
             "DC vs KKR": 0,
             "RR vs GT": 0,
-            "CSK vs LSG": 0
+            "CSK vs LSG": 0,
+            "RCB vs MI": 0
         },
         "Khaleel Ahmed": {
             "Total Points": 181,
@@ -8476,7 +8616,8 @@
             "LSG vs RCB": 0,
             "DC vs KKR": 0,
             "RR vs GT": 0,
-            "CSK vs LSG": 0
+            "CSK vs LSG": 0,
+            "RCB vs MI": 0
         },
         "Dewald Brevis": {
             "Total Points": 178,
@@ -8536,7 +8677,8 @@
             "LSG vs RCB": 0,
             "DC vs KKR": 0,
             "RR vs GT": 0,
-            "CSK vs LSG": 17
+            "CSK vs LSG": 17,
+            "RCB vs MI": 0
         },
         "Shubham Dubey": {
             "Total Points": 166,
@@ -8596,7 +8738,8 @@
             "LSG vs RCB": 0,
             "DC vs KKR": 0,
             "RR vs GT": 20,
-            "CSK vs LSG": 0
+            "CSK vs LSG": 0,
+            "RCB vs MI": 0
         },
         "Abhinandan Singh": {
             "Total Points": 155,
@@ -8656,7 +8799,8 @@
             "LSG vs RCB": 0,
             "DC vs KKR": 0,
             "RR vs GT": 0,
-            "CSK vs LSG": 0
+            "CSK vs LSG": 0,
+            "RCB vs MI": 0
         },
         "Corbin Bosch": {
             "Total Points": 147,
@@ -8716,7 +8860,8 @@
             "LSG vs RCB": 0,
             "DC vs KKR": 0,
             "RR vs GT": 0,
-            "CSK vs LSG": 0
+            "CSK vs LSG": 0,
+            "RCB vs MI": 0
         },
         "Will Jacks": {
             "Total Points": 145,
@@ -8776,7 +8921,8 @@
             "LSG vs RCB": 0,
             "DC vs KKR": 0,
             "RR vs GT": 0,
-            "CSK vs LSG": 0
+            "CSK vs LSG": 0,
+            "RCB vs MI": 0
         },
         "Jitesh Sharma": {
             "Total Points": 143,
@@ -8836,7 +8982,8 @@
             "LSG vs RCB": 1,
             "DC vs KKR": 0,
             "RR vs GT": 0,
-            "CSK vs LSG": 0
+            "CSK vs LSG": 0,
+            "RCB vs MI": 0
         },
         "Nehal Wadhera": {
             "Total Points": 140,
@@ -8896,7 +9043,8 @@
             "LSG vs RCB": 0,
             "DC vs KKR": 0,
             "RR vs GT": 0,
-            "CSK vs LSG": 0
+            "CSK vs LSG": 0,
+            "RCB vs MI": 0
         },
         "George Linde": {
             "Total Points": 133,
@@ -8956,7 +9104,8 @@
             "LSG vs RCB": 0,
             "DC vs KKR": 0,
             "RR vs GT": 0,
-            "CSK vs LSG": 0
+            "CSK vs LSG": 0,
+            "RCB vs MI": 0
         },
         "Trent Boult": {
             "Total Points": 131,
@@ -9016,7 +9165,8 @@
             "LSG vs RCB": 0,
             "DC vs KKR": 0,
             "RR vs GT": 0,
-            "CSK vs LSG": 0
+            "CSK vs LSG": 0,
+            "RCB vs MI": 0
         },
         "Manav Suthar": {
             "Total Points": 131,
@@ -9076,7 +9226,8 @@
             "LSG vs RCB": 0,
             "DC vs KKR": 0,
             "RR vs GT": 0,
-            "CSK vs LSG": 0
+            "CSK vs LSG": 0,
+            "RCB vs MI": 0
         },
         "Jacob Bethell": {
             "Total Points": 131,
@@ -9136,7 +9287,8 @@
             "LSG vs RCB": 16,
             "DC vs KKR": 0,
             "RR vs GT": 0,
-            "CSK vs LSG": 0
+            "CSK vs LSG": 0,
+            "RCB vs MI": 0
         },
         "Abdul Samad": {
             "Total Points": 114,
@@ -9196,7 +9348,69 @@
             "LSG vs RCB": 0,
             "DC vs KKR": 0,
             "RR vs GT": 0,
-            "CSK vs LSG": 0
+            "CSK vs LSG": 0,
+            "RCB vs MI": 0
+        },
+        "Prashant Veer": {
+            "Total Points": 99,
+            "Orange Cap": 0,
+            "Purple Cap": 0,
+            "MVP": 0,
+            "RCB vs SRH": 0,
+            "MI vs KKR": 0,
+            "RR vs CSK": 0,
+            "PBKS vs GT": 0,
+            "LSG vs DC": 0,
+            "KKR vs SRH": 0,
+            "CSK vs PBKS": 8,
+            "DC vs MI": 0,
+            "GT vs RR": 0,
+            "SRH vs LSG": 0,
+            "RCB vs CSK": 78,
+            "KKR vs PBKS": 0,
+            "RR vs MI": 0,
+            "DC vs GT": 0,
+            "KKR vs LSG": 0,
+            "RR vs RCB": 0,
+            "PBKS vs SRH": 0,
+            "CSK vs DC": 0,
+            "LSG vs GT": 0,
+            "MI vs RCB": 0,
+            "SRH vs RR": 0,
+            "CSK vs KKR": 0,
+            "RCB vs LSG": 0,
+            "MI vs PBKS": 0,
+            "GT vs KKR": 0,
+            "RCB vs DC": 0,
+            "SRH vs CSK": 0,
+            "KKR vs RR": 0,
+            "PBKS vs LSG": 0,
+            "GT vs MI": 0,
+            "SRH vs DC": 0,
+            "LSG vs RR": 0,
+            "MI vs CSK": 0,
+            "RCB vs GT": 0,
+            "DC vs PBKS": 0,
+            "RR vs SRH": 0,
+            "CSK vs GT": 0,
+            "LSG vs KKR": 0,
+            "DC vs RCB": 0,
+            "PBKS vs RR": 0,
+            "MI vs SRH": 0,
+            "GT vs RCB": 0,
+            "RR vs DC": 0,
+            "CSK vs MI": 0,
+            "SRH vs KKR": 0,
+            "GT vs PBKS": 0,
+            "MI vs LSG": 0,
+            "Emerging Player": 0,
+            "DC vs CSK": 0,
+            "SRH vs PBKS": 0,
+            "LSG vs RCB": 0,
+            "DC vs KKR": 0,
+            "RR vs GT": 0,
+            "CSK vs LSG": 13,
+            "RCB vs MI": 0
         },
         "Vipraj Nigam": {
             "Total Points": 97,
@@ -9256,7 +9470,8 @@
             "LSG vs RCB": 0,
             "DC vs KKR": -15,
             "RR vs GT": 0,
-            "CSK vs LSG": 0
+            "CSK vs LSG": 0,
+            "RCB vs MI": 0
         },
         "Deepak Chahar": {
             "Total Points": 89,
@@ -9316,7 +9531,8 @@
             "LSG vs RCB": 0,
             "DC vs KKR": 0,
             "RR vs GT": 0,
-            "CSK vs LSG": 0
+            "CSK vs LSG": 0,
+            "RCB vs MI": 0
         },
         "Raghu Sharma": {
             "Total Points": 89,
@@ -9376,67 +9592,8 @@
             "LSG vs RCB": 0,
             "DC vs KKR": 0,
             "RR vs GT": 0,
-            "CSK vs LSG": 0
-        },
-        "Prashant Veer": {
-            "Total Points": 87,
-            "Orange Cap": 0,
-            "Purple Cap": 0,
-            "MVP": 0,
-            "RCB vs SRH": 0,
-            "MI vs KKR": 0,
-            "RR vs CSK": 0,
-            "PBKS vs GT": 0,
-            "LSG vs DC": 0,
-            "KKR vs SRH": 0,
-            "CSK vs PBKS": 8,
-            "DC vs MI": 0,
-            "GT vs RR": 0,
-            "SRH vs LSG": 0,
-            "RCB vs CSK": 78,
-            "KKR vs PBKS": 0,
-            "RR vs MI": 0,
-            "DC vs GT": 0,
-            "KKR vs LSG": 0,
-            "RR vs RCB": 0,
-            "PBKS vs SRH": 0,
-            "CSK vs DC": 0,
-            "LSG vs GT": 0,
-            "MI vs RCB": 0,
-            "SRH vs RR": 0,
-            "CSK vs KKR": 0,
-            "RCB vs LSG": 0,
-            "MI vs PBKS": 0,
-            "GT vs KKR": 0,
-            "RCB vs DC": 0,
-            "SRH vs CSK": 0,
-            "KKR vs RR": 0,
-            "PBKS vs LSG": 0,
-            "GT vs MI": 0,
-            "SRH vs DC": 0,
-            "LSG vs RR": 0,
-            "MI vs CSK": 0,
-            "RCB vs GT": 0,
-            "DC vs PBKS": 0,
-            "RR vs SRH": 0,
-            "CSK vs GT": 0,
-            "LSG vs KKR": 0,
-            "DC vs RCB": 0,
-            "PBKS vs RR": 0,
-            "MI vs SRH": 0,
-            "GT vs RCB": 0,
-            "RR vs DC": 0,
-            "CSK vs MI": 0,
-            "SRH vs KKR": 0,
-            "GT vs PBKS": 0,
-            "MI vs LSG": 0,
-            "Emerging Player": 0,
-            "DC vs CSK": 0,
-            "SRH vs PBKS": 0,
-            "LSG vs RCB": 0,
-            "DC vs KKR": 0,
-            "RR vs GT": 0,
-            "CSK vs LSG": 1
+            "CSK vs LSG": 0,
+            "RCB vs MI": 0
         },
         "Matt Henry": {
             "Total Points": 84,
@@ -9496,7 +9653,8 @@
             "LSG vs RCB": 0,
             "DC vs KKR": 0,
             "RR vs GT": 0,
-            "CSK vs LSG": 0
+            "CSK vs LSG": 0,
+            "RCB vs MI": 0
         },
         "Kyle Jamieson": {
             "Total Points": 79,
@@ -9556,7 +9714,8 @@
             "LSG vs RCB": 0,
             "DC vs KKR": 0,
             "RR vs GT": 0,
-            "CSK vs LSG": 0
+            "CSK vs LSG": 0,
+            "RCB vs MI": 0
         },
         "Venkatesh Iyer": {
             "Total Points": 76,
@@ -9616,7 +9775,8 @@
             "LSG vs RCB": 0,
             "DC vs KKR": 0,
             "RR vs GT": 0,
-            "CSK vs LSG": 0
+            "CSK vs LSG": 0,
+            "RCB vs MI": 0
         },
         "Shahrukh Khan": {
             "Total Points": 75,
@@ -9676,7 +9836,8 @@
             "LSG vs RCB": 0,
             "DC vs KKR": 0,
             "RR vs GT": 0,
-            "CSK vs LSG": 0
+            "CSK vs LSG": 0,
+            "RCB vs MI": 0
         },
         "Ramakrishna Ghosh": {
             "Total Points": 72,
@@ -9736,7 +9897,8 @@
             "LSG vs RCB": 0,
             "DC vs KKR": 0,
             "RR vs GT": 0,
-            "CSK vs LSG": 0
+            "CSK vs LSG": 0,
+            "RCB vs MI": 0
         },
         "David Payne": {
             "Total Points": 71,
@@ -9796,7 +9958,8 @@
             "LSG vs RCB": 0,
             "DC vs KKR": 0,
             "RR vs GT": 0,
-            "CSK vs LSG": 0
+            "CSK vs LSG": 0,
+            "RCB vs MI": 0
         },
         "Dilshan Madushanka": {
             "Total Points": 71,
@@ -9856,7 +10019,8 @@
             "LSG vs RCB": 0,
             "DC vs KKR": 0,
             "RR vs GT": 0,
-            "CSK vs LSG": 0
+            "CSK vs LSG": 0,
+            "RCB vs MI": 0
         },
         "Matthew Short": {
             "Total Points": 67,
@@ -9916,7 +10080,8 @@
             "LSG vs RCB": 0,
             "DC vs KKR": 0,
             "RR vs GT": 0,
-            "CSK vs LSG": 0
+            "CSK vs LSG": 0,
+            "RCB vs MI": 0
         },
         "Tim Seifert": {
             "Total Points": 56,
@@ -9976,7 +10141,8 @@
             "LSG vs RCB": 0,
             "DC vs KKR": 0,
             "RR vs GT": 0,
-            "CSK vs LSG": 0
+            "CSK vs LSG": 0,
+            "RCB vs MI": 0
         },
         "Kumar Kushagra": {
             "Total Points": 49,
@@ -10036,7 +10202,8 @@
             "LSG vs RCB": 0,
             "DC vs KKR": 0,
             "RR vs GT": 0,
-            "CSK vs LSG": 0
+            "CSK vs LSG": 0,
+            "RCB vs MI": 0
         },
         "Nishant Sindhu": {
             "Total Points": 48,
@@ -10096,7 +10263,8 @@
             "LSG vs RCB": 0,
             "DC vs KKR": 0,
             "RR vs GT": 0,
-            "CSK vs LSG": 0
+            "CSK vs LSG": 0,
+            "RCB vs MI": 0
         },
         "Lockie Ferguson": {
             "Total Points": 47,
@@ -10156,7 +10324,8 @@
             "LSG vs RCB": 0,
             "DC vs KKR": 0,
             "RR vs GT": 0,
-            "CSK vs LSG": 0
+            "CSK vs LSG": 0,
+            "RCB vs MI": 0
         },
         "Liam Livingstone": {
             "Total Points": 43,
@@ -10216,7 +10385,8 @@
             "LSG vs RCB": 0,
             "DC vs KKR": 0,
             "RR vs GT": 0,
-            "CSK vs LSG": 0
+            "CSK vs LSG": 0,
+            "RCB vs MI": 0
         },
         "Dasun Shanaka": {
             "Total Points": 40,
@@ -10276,7 +10446,8 @@
             "LSG vs RCB": 0,
             "DC vs KKR": 0,
             "RR vs GT": 40,
-            "CSK vs LSG": 0
+            "CSK vs LSG": 0,
+            "RCB vs MI": 0
         },
         "Abishek Porel": {
             "Total Points": 36,
@@ -10336,7 +10507,8 @@
             "LSG vs RCB": 0,
             "DC vs KKR": 0,
             "RR vs GT": 0,
-            "CSK vs LSG": 0
+            "CSK vs LSG": 0,
+            "RCB vs MI": 0
         },
         "Harpreet Brar": {
             "Total Points": 36,
@@ -10396,7 +10568,8 @@
             "LSG vs RCB": 0,
             "DC vs KKR": 0,
             "RR vs GT": 0,
-            "CSK vs LSG": 0
+            "CSK vs LSG": 0,
+            "RCB vs MI": 0
         },
         "Harshal Patel": {
             "Total Points": 35,
@@ -10456,7 +10629,8 @@
             "LSG vs RCB": 0,
             "DC vs KKR": 0,
             "RR vs GT": 0,
-            "CSK vs LSG": 0
+            "CSK vs LSG": 0,
+            "RCB vs MI": 0
         },
         "Karun Nair": {
             "Total Points": 24,
@@ -10516,7 +10690,8 @@
             "LSG vs RCB": 0,
             "DC vs KKR": 0,
             "RR vs GT": 0,
-            "CSK vs LSG": 0
+            "CSK vs LSG": 0,
+            "RCB vs MI": 0
         },
         "Krish Bhagat": {
             "Total Points": 20,
@@ -10576,7 +10751,8 @@
             "LSG vs RCB": 0,
             "DC vs KKR": 0,
             "RR vs GT": 0,
-            "CSK vs LSG": 0
+            "CSK vs LSG": 0,
+            "RCB vs MI": 0
         },
         "Anrich Nortje": {
             "Total Points": 19,
@@ -10636,7 +10812,8 @@
             "LSG vs RCB": 0,
             "DC vs KKR": 0,
             "RR vs GT": 0,
-            "CSK vs LSG": 0
+            "CSK vs LSG": 0,
+            "RCB vs MI": 0
         },
         "Auqib Nabi": {
             "Total Points": 16,
@@ -10696,7 +10873,8 @@
             "LSG vs RCB": 0,
             "DC vs KKR": 0,
             "RR vs GT": 0,
-            "CSK vs LSG": 0
+            "CSK vs LSG": 0,
+            "RCB vs MI": 0
         },
         "Smaran Ravichandran": {
             "Total Points": 16,
@@ -10756,7 +10934,8 @@
             "LSG vs RCB": 0,
             "DC vs KKR": 0,
             "RR vs GT": 0,
-            "CSK vs LSG": 0
+            "CSK vs LSG": 0,
+            "RCB vs MI": 0
         },
         "Dushmantha Chameera": {
             "Total Points": 15,
@@ -10816,7 +10995,8 @@
             "LSG vs RCB": 0,
             "DC vs KKR": 0,
             "RR vs GT": 0,
-            "CSK vs LSG": 0
+            "CSK vs LSG": 0,
+            "RCB vs MI": 0
         },
         "Rahul Chahar": {
             "Total Points": 8,
@@ -10876,7 +11056,8 @@
             "LSG vs RCB": 0,
             "DC vs KKR": 0,
             "RR vs GT": 0,
-            "CSK vs LSG": 0
+            "CSK vs LSG": 0,
+            "RCB vs MI": 0
         },
         "Robin Minz": {
             "Total Points": 8,
@@ -10936,7 +11117,8 @@
             "LSG vs RCB": 0,
             "DC vs KKR": 0,
             "RR vs GT": 0,
-            "CSK vs LSG": 0
+            "CSK vs LSG": 0,
+            "RCB vs MI": 0
         },
         "Mayank Markande": {
             "Total Points": 5,
@@ -10996,7 +11178,8 @@
             "LSG vs RCB": 0,
             "DC vs KKR": 0,
             "RR vs GT": 0,
-            "CSK vs LSG": 0
+            "CSK vs LSG": 0,
+            "RCB vs MI": 0
         },
         "Mayank Yadav": {
             "Total Points": 5,
@@ -11056,7 +11239,8 @@
             "LSG vs RCB": 6,
             "DC vs KKR": 0,
             "RR vs GT": 0,
-            "CSK vs LSG": 0
+            "CSK vs LSG": 0,
+            "RCB vs MI": 0
         },
         "Arshin Kulkarni": {
             "Total Points": 4,
@@ -11116,7 +11300,8 @@
             "LSG vs RCB": 4,
             "DC vs KKR": 0,
             "RR vs GT": 0,
-            "CSK vs LSG": 0
+            "CSK vs LSG": 0,
+            "RCB vs MI": 0
         },
         "Navdeep Saini": {
             "Total Points": 2,
@@ -11176,7 +11361,8 @@
             "LSG vs RCB": 0,
             "DC vs KKR": 0,
             "RR vs GT": 0,
-            "CSK vs LSG": 0
+            "CSK vs LSG": 0,
+            "RCB vs MI": 0
         },
         "Sai Kishore": {
             "Total Points": 2,
@@ -11236,7 +11422,8 @@
             "LSG vs RCB": 0,
             "DC vs KKR": 0,
             "RR vs GT": 2,
-            "CSK vs LSG": 0
+            "CSK vs LSG": 0,
+            "RCB vs MI": 0
         },
         "Mayank Rawat": {
             "Total Points": 0,
@@ -11296,7 +11483,8 @@
             "LSG vs RCB": 0,
             "DC vs KKR": 0,
             "RR vs GT": 0,
-            "CSK vs LSG": 0
+            "CSK vs LSG": 0,
+            "RCB vs MI": 0
         },
         "Danish Malewar": {
             "Total Points": -8,
@@ -11356,7 +11544,8 @@
             "LSG vs RCB": 0,
             "DC vs KKR": 0,
             "RR vs GT": 0,
-            "CSK vs LSG": 0
+            "CSK vs LSG": 0,
+            "RCB vs MI": 0
         },
         "Lhuan-dre Pretorius": {
             "Total Points": -10,
@@ -11416,7 +11605,8 @@
             "LSG vs RCB": 0,
             "DC vs KKR": 0,
             "RR vs GT": 0,
-            "CSK vs LSG": 0
+            "CSK vs LSG": 0,
+            "RCB vs MI": 0
         },
         "Sahil Parakh": {
             "Total Points": -10,
@@ -11476,7 +11666,8 @@
             "LSG vs RCB": 0,
             "DC vs KKR": 0,
             "RR vs GT": 0,
-            "CSK vs LSG": 0
+            "CSK vs LSG": 0,
+            "RCB vs MI": 0
         }
     },
     "RCB vs SRH - Points Breakdown": {
@@ -145186,7 +145377,7 @@
             "Second Runout Points": 0
         },
         {
-            "Player Points": 40,
+            "Player Points": 63,
             "Man of the Match": 0,
             "Role": "BOWL",
             "Player Batting Points": 0,
@@ -145200,15 +145391,15 @@
             "Strike Rate Points": 0,
             "Duck Points": 0,
             "Batting Milestone Points": 0,
-            "Player Bowling Points": 30,
+            "Player Bowling Points": 53,
             "Maidens": 0,
             "Maidens Points": 0,
             "Wickets": 1,
             "Wicket Points": 30,
-            "Dots": 5,
-            "Dot Points": 10,
-            "Economy": 12.75,
-            "Economy Points": -10,
+            "Dots": 9,
+            "Dot Points": 18,
+            "Economy": 10.29,
+            "Economy Points": 5,
             "Bowled Wickets": 0,
             "Bowled Wickets Points": 0,
             "LBW Wickets": 0,
@@ -145303,12 +145494,12 @@
             "Second Runout Points": 0
         },
         {
-            "Player Points": 1,
+            "Player Points": 2,
             "Man of the Match": 0,
             "Role": "AR",
-            "Player Batting Points": 1,
-            "Runs": 1,
-            "Runs Points": 1,
+            "Player Batting Points": 2,
+            "Runs": 2,
+            "Runs Points": 2,
             "Fours": 0,
             "Fours Points": 0,
             "Sixes": 0,
@@ -145810,7 +146001,7 @@
             "Second Runout Points": 0
         },
         {
-            "Player Points": 21,
+            "Player Points": 25,
             "Man of the Match": 0,
             "Role": "BOWL",
             "Player Batting Points": 0,
@@ -145824,13 +146015,13 @@
             "Strike Rate Points": 0,
             "Duck Points": 0,
             "Batting Milestone Points": 0,
-            "Player Bowling Points": 21,
+            "Player Bowling Points": 25,
             "Maidens": 0,
             "Maidens Points": 0,
             "Wickets": 0,
             "Wicket Points": 0,
-            "Dots": 8,
-            "Dot Points": 16,
+            "Dots": 10,
+            "Dot Points": 20,
             "Economy": 9.0,
             "Economy Points": 5,
             "Bowled Wickets": 0,
@@ -145888,16 +146079,16 @@
             "Second Runout Points": 0
         },
         {
-            "Player Points": 1,
+            "Player Points": 13,
             "Man of the Match": 0,
             "Role": "AR",
-            "Player Batting Points": 1,
-            "Runs": 1,
-            "Runs Points": 1,
+            "Player Batting Points": 13,
+            "Runs": 10,
+            "Runs Points": 10,
             "Fours": 0,
             "Fours Points": 0,
-            "Sixes": 0,
-            "Sixes Points": 0,
+            "Sixes": 1,
+            "Sixes Points": 3,
             "Strike Rate": 100.0,
             "Strike Rate Points": 0,
             "Duck Points": 0,
@@ -146217,7 +146408,7 @@
             "Navdeep Saini": 0.0
         },
         {
-            "Total Points": 1.0,
+            "Total Points": 2.0,
             "Booster": "None",
             "Sameer Rizvi": 0.0,
             "Shubman Gill": 0.0,
@@ -146251,7 +146442,7 @@
             "Vijaykumar Vyshak": 0.0,
             "Anukul Roy": 0.0,
             "Akash Maharaj Singh": 0.0,
-            "Shivam Dube": 1.0,
+            "Shivam Dube": 2.0,
             "Matt Henry": 0.0,
             "Ajinkya Rahane": 0.0,
             "Riyan Parag": 0.0,
@@ -146427,7 +146618,7 @@
             "Navdeep Saini": 0.0
         },
         {
-            "Total Points": 234.0,
+            "Total Points": 257.0,
             "Booster": "None",
             "Sameer Rizvi": 0.0,
             "Shubman Gill": 0.0,
@@ -146492,7 +146683,7 @@
             "Harsh Dubey": 0.0,
             "Yash Thakur": 0.0,
             "Washington Sundar": 0.0,
-            "Avesh Khan": 40.0,
+            "Avesh Khan": 63.0,
             "Khaleel Ahmed": 0.0,
             "Priyansh Arya": 0.0,
             "Naman Dhir": 0.0,
@@ -146847,7 +147038,7 @@
             "Navdeep Saini": 0.0
         },
         {
-            "Total Points": 324.0,
+            "Total Points": 336.0,
             "Booster": "None",
             "Sameer Rizvi": 0.0,
             "Shubman Gill": 0.0,
@@ -146967,7 +147158,7 @@
             "Hardik Pandya": 0.0,
             "Ravindra Jadeja": 0.0,
             "Prasidh Krishna": 0.0,
-            "Prashant Veer": 1.0,
+            "Prashant Veer": 13.0,
             "Mohammad Siraj": 0.0,
             "Marco Jansen": 0.0,
             "Akeal Hosein": -2.0,
@@ -147267,7 +147458,7 @@
             "Navdeep Saini": 0.0
         },
         {
-            "Total Points": 77.0,
+            "Total Points": 89.0,
             "Booster": "None",
             "Sameer Rizvi": 0.0,
             "Shubman Gill": 0.0,
@@ -147450,7 +147641,7 @@
             "Suryansh Shedge": 0.0,
             "Vihaan Malhotra": 0.0,
             "Prashant Solanki": 0.0,
-            "Prince Yadav": 63.0,
+            "Prince Yadav": 75.0,
             "Jasprit Bumrah": 0.0,
             "Sanju Samson": 0.0,
             "Finn Allen": 0.0,
@@ -147684,6 +147875,1807 @@
             "Mohammad Izhar": 0.0,
             "Danish Malewar": 0.0,
             "Dewald Brevis": 17.0,
+            "Navdeep Saini": 0.0
+        }
+    ],
+    "RCB vs MI - Points Breakdown": [
+        {
+            "Player Points": 1,
+            "Man of the Match": 0,
+            "Role": "BAT",
+            "Player Batting Points": 1,
+            "Runs": 1,
+            "Runs Points": 1,
+            "Fours": 0,
+            "Fours Points": 0,
+            "Sixes": 0,
+            "Sixes Points": 0,
+            "Strike Rate": 100.0,
+            "Strike Rate Points": 0,
+            "Duck Points": 0,
+            "Batting Milestone Points": 0,
+            "Player Bowling Points": 0,
+            "Maidens": 0,
+            "Maidens Points": 0,
+            "Wickets": 0,
+            "Wicket Points": 0,
+            "Dots": 0,
+            "Dot Points": 0,
+            "Economy": 0.0,
+            "Economy Points": 0,
+            "Bowled Wickets": 0,
+            "Bowled Wickets Points": 0,
+            "LBW Wickets": 0,
+            "LBW Wickets Points": 0,
+            "Bowling Milestone Points": 0,
+            "Player Fielding Points": 0,
+            "Catches": 0,
+            "Catching Points": 0,
+            "Stumpings": 0,
+            "Stumping Points": 0,
+            "Main Runouts": 0,
+            "Direct Runout Points": 0,
+            "Secondary Runouts": 0,
+            "Second Runout Points": 0
+        },
+        {
+            "Player Points": 1,
+            "Man of the Match": 0,
+            "Role": "BAT",
+            "Player Batting Points": 1,
+            "Runs": 1,
+            "Runs Points": 1,
+            "Fours": 0,
+            "Fours Points": 0,
+            "Sixes": 0,
+            "Sixes Points": 0,
+            "Strike Rate": 100.0,
+            "Strike Rate Points": 0,
+            "Duck Points": 0,
+            "Batting Milestone Points": 0,
+            "Player Bowling Points": 0,
+            "Maidens": 0,
+            "Maidens Points": 0,
+            "Wickets": 0,
+            "Wicket Points": 0,
+            "Dots": 0,
+            "Dot Points": 0,
+            "Economy": 0.0,
+            "Economy Points": 0,
+            "Bowled Wickets": 0,
+            "Bowled Wickets Points": 0,
+            "LBW Wickets": 0,
+            "LBW Wickets Points": 0,
+            "Bowling Milestone Points": 0,
+            "Player Fielding Points": 0,
+            "Catches": 0,
+            "Catching Points": 0,
+            "Stumpings": 0,
+            "Stumping Points": 0,
+            "Main Runouts": 0,
+            "Direct Runout Points": 0,
+            "Secondary Runouts": 0,
+            "Second Runout Points": 0
+        },
+        {
+            "Player Points": 0,
+            "Man of the Match": 0,
+            "Role": "BOWL",
+            "Player Batting Points": 0,
+            "Runs": 0,
+            "Runs Points": 0,
+            "Fours": 0,
+            "Fours Points": 0,
+            "Sixes": 0,
+            "Sixes Points": 0,
+            "Strike Rate": 0.0,
+            "Strike Rate Points": 0,
+            "Duck Points": 0,
+            "Batting Milestone Points": 0,
+            "Player Bowling Points": 0,
+            "Maidens": 0,
+            "Maidens Points": 0,
+            "Wickets": 0,
+            "Wicket Points": 0,
+            "Dots": 0,
+            "Dot Points": 0,
+            "Economy": 6.0,
+            "Economy Points": 0,
+            "Bowled Wickets": 0,
+            "Bowled Wickets Points": 0,
+            "LBW Wickets": 0,
+            "LBW Wickets Points": 0,
+            "Bowling Milestone Points": 0,
+            "Player Fielding Points": 0,
+            "Catches": 0,
+            "Catching Points": 0,
+            "Stumpings": 0,
+            "Stumping Points": 0,
+            "Main Runouts": 0,
+            "Direct Runout Points": 0,
+            "Secondary Runouts": 0,
+            "Second Runout Points": 0
+        }
+    ],
+    "RCB vs MI - CFC Points": [
+        {
+            "Total Points": 0.0,
+            "Booster": "None",
+            "Sameer Rizvi": 0.0,
+            "Shubman Gill": 0.0,
+            "Travis Head": 0.0,
+            "Jacob Duffy": 0.0,
+            "Rajat Patidar": 0.0,
+            "Vaibhav Suryavanshi": 0.0,
+            "Abishek Porel": 0.0,
+            "Rasikh Dar Salam": 0.0,
+            "Nehal Wadhera": 0.0,
+            "Noor Ahmad": 0.0,
+            "Rishabh Pant": 0.0,
+            "Mukesh Choudhary": 0.0,
+            "Kuldeep Sen": 0.0,
+            "Umran Malik": 0.0,
+            "Ashutosh Sharma": 0.0,
+            "Deepak Chahar": 0.0,
+            "Jamie Overton": 0.0,
+            "Dushmantha Chameera": 0.0,
+            "Matthew Short": 0.0,
+            "Gurjapneet Singh": 0.0,
+            "Yudhvir Singh Charak": 0.0,
+            "Shivam Mavi": 0.0,
+            "Pathum Nissanka": 0.0,
+            "Phil Salt": 0.0,
+            "RS Ambrish": 0.0,
+            "Kagiso Rabada": 0.0,
+            "Shreyas Iyer": 0.0,
+            "Ayush Mhatre": 0.0,
+            "Sunil Narine": 0.0,
+            "Vijaykumar Vyshak": 0.0,
+            "Anukul Roy": 0.0,
+            "Akash Maharaj Singh": 0.0,
+            "Shivam Dube": 0.0,
+            "Matt Henry": 0.0,
+            "Ajinkya Rahane": 0.0,
+            "Riyan Parag": 0.0,
+            "Sam Curran": 0.0,
+            "Angkrish Raghuvanshi": 0.0,
+            "Akash Deep": 0.0,
+            "Kamindu Mendis": 0.0,
+            "Luke Wood": 0.0,
+            "Dhruv Jurel": 0.0,
+            "Suyash Sharma": 0.0,
+            "Wanindu Hasaranga": 0.0,
+            "Mayank Yadav": 0.0,
+            "Allah Ghazanfar": 0.0,
+            "Ben Dwarshuis": 0.0,
+            "Prithvi Raj Yarra": 0.0,
+            "Krunal Pandya": 0.0,
+            "T Natarajan": 0.0,
+            "Saurabh Dubey": 0.0,
+            "Dasun Shanaka": 0.0,
+            "Kulwant Khejroliya": 0.0,
+            "George Linde": 0.0,
+            "Akash Madhwal": 0.0,
+            "Jacob Bethell": 0.0,
+            "Bhuvneshwar Kumar": 0.0,
+            "Virat Kohli": 0.0,
+            "Quinton de Kock": 0.0,
+            "Heinrich Klaasen": 0.0,
+            "Harsh Dubey": 0.0,
+            "Yash Thakur": 0.0,
+            "Washington Sundar": 0.0,
+            "Avesh Khan": 0.0,
+            "Khaleel Ahmed": 0.0,
+            "Priyansh Arya": 0.0,
+            "Naman Dhir": 0.0,
+            "Prithvi Shaw": 0.0,
+            "Tristan Stubbs": 0.0,
+            "Vipraj Nigam": 0.0,
+            "Mitchell Starc": 0.0,
+            "Nitish Rana": 0.0,
+            "Sai Kishore": 0.0,
+            "Mangesh Yadav": 0.0,
+            "Sarthak Ranjan": 0.0,
+            "Nandre Burger": 0.0,
+            "Smaran Ravichandran": 0.0,
+            "Shahbaz Ahmed": 0.0,
+            "Rashid Khan": 0.0,
+            "Nuwan Thushara": 0.0,
+            "Marcus Stoinis": 0.0,
+            "Rohit Sharma": 0.0,
+            "Cooper Connolly": 0.0,
+            "Anrich Nortje": 0.0,
+            "Zeeshan Ansari": 0.0,
+            "Prabhsimran Singh": 0.0,
+            "Ishan Kishan": 0.0,
+            "MS Dhoni": 0.0,
+            "Rinku Singh": 0.0,
+            "Yuzvendra Chahal": 0.0,
+            "Swapnil Singh": 0.0,
+            "Manimaran Siddharth": 0.0,
+            "Axar Patel": 0.0,
+            "Jason Holder": 0.0,
+            "Romario Shepherd": 0.0,
+            "Rahul Tewatia": 0.0,
+            "Lockie Ferguson": 0.0,
+            "Mitchell Santner": 0.0,
+            "Matthew Breetzke": 0.0,
+            "Nathan Ellis": 0.0,
+            "Mayank Markande": 0.0,
+            "Shubham Dubey": 0.0,
+            "Kyle Jamieson": 0.0,
+            "Rovman Powell": 0.0,
+            "Aniket Verma": 0.0,
+            "Abdul Samad": 0.0,
+            "Spencer Johnson": 0.0,
+            "Keshav Maharaj": 0.0,
+            "Salil Arora": 0.0,
+            "Arshad Khan": 0.0,
+            "Anshul Kamboj": 0.0,
+            "KL Rahul": 0.0,
+            "Ayush Badoni": 0.0,
+            "Harshal Patel": 0.0,
+            "Ben Duckett": 0.0,
+            "Hardik Pandya": 0.0,
+            "Ravindra Jadeja": 0.0,
+            "Prasidh Krishna": 0.0,
+            "Prashant Veer": 0.0,
+            "Mohammad Siraj": 0.0,
+            "Marco Jansen": 0.0,
+            "Akeal Hosein": 0.0,
+            "Ravi Bishnoi": 0.0,
+            "Sai Sudharsan": 0.0,
+            "Jaydev Unadkat": 0.0,
+            "Kuldeep Yadav": 0.0,
+            "Eshan Malinga": 0.0,
+            "Mukul Choudhary": 0.0,
+            "Naman Tiwari": 0.0,
+            "Ashwani Kumar": 0.0,
+            "Kartik Sharma": 0.0,
+            "Arshdeep Singh": 0.0,
+            "Shahrukh Khan": 0.0,
+            "Tim David": 0.0,
+            "Rehan Ahmed": 0.0,
+            "Ruturaj Gaikwad": 0.0,
+            "Suryakumar Yadav": 0.0,
+            "Sandeep Sharma": 0.0,
+            "Tushar Deshpande": 0.0,
+            "Vaibhav Arora": 0.0,
+            "Corbin Bosch": 0.0,
+            "Jos Buttler": 0.0,
+            "Venkatesh Iyer": 0.0,
+            "Donovan Ferreira": 0.0,
+            "Azmatullah Omarzai": 0.0,
+            "Kumar Kushagra": 0.0,
+            "Aiden Markram": 0.0,
+            "Ishant Sharma": 0.0,
+            "Will Jacks": 0.0,
+            "Josh Inglis": 0.0,
+            "David Miller": 0.0,
+            "Shimron Hetmyer": 0.0,
+            "Tim Seifert": 0.0,
+            "Mitchell Owen": 0.0,
+            "Mukesh Kumar": 0.0,
+            "Digvesh Singh Rathi": 0.0,
+            "Harnoor Pannu": 0.0,
+            "Xavier Bartlett": 0.0,
+            "Jitesh Sharma": 0.0,
+            "Ramandeep Singh": 0.0,
+            "Varun Chakaravarthy": 0.0,
+            "Josh Hazlewood": 0.0,
+            "Abhishek Sharma": 0.0,
+            "Adam Milne": 0.0,
+            "Lungi Ngidi": 0.0,
+            "Shardul Thakur": 0.0,
+            "Rachin Ravindra": 0.0,
+            "Karun Nair": 0.0,
+            "Pat Cummins": 0.0,
+            "Liam Livingstone": 0.0,
+            "Arjun Tendulkar": 0.0,
+            "Rahul Tripathi": 0.0,
+            "Jofra Archer": 0.0,
+            "Nicholas Pooran": 0.0,
+            "Sherfane Rutherford": 0.0,
+            "Cameron Green": 0.0,
+            "Mitchell Marsh": 0.0,
+            "Ryan Rickelton": 0.0,
+            "Suryansh Shedge": 0.0,
+            "Vihaan Malhotra": 0.0,
+            "Prashant Solanki": 0.0,
+            "Prince Yadav": 0.0,
+            "Jasprit Bumrah": 0.0,
+            "Sanju Samson": 0.0,
+            "Finn Allen": 0.0,
+            "Devdutt Padikkal": 0.0,
+            "Yashasvi Jaiswal": 0.0,
+            "Tejasvi Singh": 0.0,
+            "Auqib Nabi": 0.0,
+            "Harshit Rana": 0.0,
+            "Sarfaraz Khan": 0.0,
+            "Nitish Reddy": 0.0,
+            "Trent Boult": 0.0,
+            "Glenn Phillips": 0.0,
+            "Mohammed Shami": 0.0,
+            "Tilak Varma": 0.0,
+            "Matheesha Pathirana": 0.0,
+            "Shashank Singh": 0.0,
+            "Harpreet Brar": 0.0,
+            "Rahul Chahar": 0.0,
+            "Urvil Patel": 0.0,
+            "Mohsin Khan": 0.0,
+            "Mohammad Izhar": 0.0,
+            "Danish Malewar": 0.0,
+            "Dewald Brevis": 0.0,
+            "Navdeep Saini": 0.0
+        },
+        {
+            "Total Points": 0.0,
+            "Booster": "None",
+            "Sameer Rizvi": 0.0,
+            "Shubman Gill": 0.0,
+            "Travis Head": 0.0,
+            "Jacob Duffy": 0.0,
+            "Rajat Patidar": 0.0,
+            "Vaibhav Suryavanshi": 0.0,
+            "Abishek Porel": 0.0,
+            "Rasikh Dar Salam": 0.0,
+            "Nehal Wadhera": 0.0,
+            "Noor Ahmad": 0.0,
+            "Rishabh Pant": 0.0,
+            "Mukesh Choudhary": 0.0,
+            "Kuldeep Sen": 0.0,
+            "Umran Malik": 0.0,
+            "Ashutosh Sharma": 0.0,
+            "Deepak Chahar": 0.0,
+            "Jamie Overton": 0.0,
+            "Dushmantha Chameera": 0.0,
+            "Matthew Short": 0.0,
+            "Gurjapneet Singh": 0.0,
+            "Yudhvir Singh Charak": 0.0,
+            "Shivam Mavi": 0.0,
+            "Pathum Nissanka": 0.0,
+            "Phil Salt": 0.0,
+            "RS Ambrish": 0.0,
+            "Kagiso Rabada": 0.0,
+            "Shreyas Iyer": 0.0,
+            "Ayush Mhatre": 0.0,
+            "Sunil Narine": 0.0,
+            "Vijaykumar Vyshak": 0.0,
+            "Anukul Roy": 0.0,
+            "Akash Maharaj Singh": 0.0,
+            "Shivam Dube": 0.0,
+            "Matt Henry": 0.0,
+            "Ajinkya Rahane": 0.0,
+            "Riyan Parag": 0.0,
+            "Sam Curran": 0.0,
+            "Angkrish Raghuvanshi": 0.0,
+            "Akash Deep": 0.0,
+            "Kamindu Mendis": 0.0,
+            "Luke Wood": 0.0,
+            "Dhruv Jurel": 0.0,
+            "Suyash Sharma": 0.0,
+            "Wanindu Hasaranga": 0.0,
+            "Mayank Yadav": 0.0,
+            "Allah Ghazanfar": 0.0,
+            "Ben Dwarshuis": 0.0,
+            "Prithvi Raj Yarra": 0.0,
+            "Krunal Pandya": 0.0,
+            "T Natarajan": 0.0,
+            "Saurabh Dubey": 0.0,
+            "Dasun Shanaka": 0.0,
+            "Kulwant Khejroliya": 0.0,
+            "George Linde": 0.0,
+            "Akash Madhwal": 0.0,
+            "Jacob Bethell": 0.0,
+            "Bhuvneshwar Kumar": 0.0,
+            "Virat Kohli": 0.0,
+            "Quinton de Kock": 0.0,
+            "Heinrich Klaasen": 0.0,
+            "Harsh Dubey": 0.0,
+            "Yash Thakur": 0.0,
+            "Washington Sundar": 0.0,
+            "Avesh Khan": 0.0,
+            "Khaleel Ahmed": 0.0,
+            "Priyansh Arya": 0.0,
+            "Naman Dhir": 0.0,
+            "Prithvi Shaw": 0.0,
+            "Tristan Stubbs": 0.0,
+            "Vipraj Nigam": 0.0,
+            "Mitchell Starc": 0.0,
+            "Nitish Rana": 0.0,
+            "Sai Kishore": 0.0,
+            "Mangesh Yadav": 0.0,
+            "Sarthak Ranjan": 0.0,
+            "Nandre Burger": 0.0,
+            "Smaran Ravichandran": 0.0,
+            "Shahbaz Ahmed": 0.0,
+            "Rashid Khan": 0.0,
+            "Nuwan Thushara": 0.0,
+            "Marcus Stoinis": 0.0,
+            "Rohit Sharma": 0.0,
+            "Cooper Connolly": 0.0,
+            "Anrich Nortje": 0.0,
+            "Zeeshan Ansari": 0.0,
+            "Prabhsimran Singh": 0.0,
+            "Ishan Kishan": 0.0,
+            "MS Dhoni": 0.0,
+            "Rinku Singh": 0.0,
+            "Yuzvendra Chahal": 0.0,
+            "Swapnil Singh": 0.0,
+            "Manimaran Siddharth": 0.0,
+            "Axar Patel": 0.0,
+            "Jason Holder": 0.0,
+            "Romario Shepherd": 0.0,
+            "Rahul Tewatia": 0.0,
+            "Lockie Ferguson": 0.0,
+            "Mitchell Santner": 0.0,
+            "Matthew Breetzke": 0.0,
+            "Nathan Ellis": 0.0,
+            "Mayank Markande": 0.0,
+            "Shubham Dubey": 0.0,
+            "Kyle Jamieson": 0.0,
+            "Rovman Powell": 0.0,
+            "Aniket Verma": 0.0,
+            "Abdul Samad": 0.0,
+            "Spencer Johnson": 0.0,
+            "Keshav Maharaj": 0.0,
+            "Salil Arora": 0.0,
+            "Arshad Khan": 0.0,
+            "Anshul Kamboj": 0.0,
+            "KL Rahul": 0.0,
+            "Ayush Badoni": 0.0,
+            "Harshal Patel": 0.0,
+            "Ben Duckett": 0.0,
+            "Hardik Pandya": 0.0,
+            "Ravindra Jadeja": 0.0,
+            "Prasidh Krishna": 0.0,
+            "Prashant Veer": 0.0,
+            "Mohammad Siraj": 0.0,
+            "Marco Jansen": 0.0,
+            "Akeal Hosein": 0.0,
+            "Ravi Bishnoi": 0.0,
+            "Sai Sudharsan": 0.0,
+            "Jaydev Unadkat": 0.0,
+            "Kuldeep Yadav": 0.0,
+            "Eshan Malinga": 0.0,
+            "Mukul Choudhary": 0.0,
+            "Naman Tiwari": 0.0,
+            "Ashwani Kumar": 0.0,
+            "Kartik Sharma": 0.0,
+            "Arshdeep Singh": 0.0,
+            "Shahrukh Khan": 0.0,
+            "Tim David": 0.0,
+            "Rehan Ahmed": 0.0,
+            "Ruturaj Gaikwad": 0.0,
+            "Suryakumar Yadav": 0.0,
+            "Sandeep Sharma": 0.0,
+            "Tushar Deshpande": 0.0,
+            "Vaibhav Arora": 0.0,
+            "Corbin Bosch": 0.0,
+            "Jos Buttler": 0.0,
+            "Venkatesh Iyer": 0.0,
+            "Donovan Ferreira": 0.0,
+            "Azmatullah Omarzai": 0.0,
+            "Kumar Kushagra": 0.0,
+            "Aiden Markram": 0.0,
+            "Ishant Sharma": 0.0,
+            "Will Jacks": 0.0,
+            "Josh Inglis": 0.0,
+            "David Miller": 0.0,
+            "Shimron Hetmyer": 0.0,
+            "Tim Seifert": 0.0,
+            "Mitchell Owen": 0.0,
+            "Mukesh Kumar": 0.0,
+            "Digvesh Singh Rathi": 0.0,
+            "Harnoor Pannu": 0.0,
+            "Xavier Bartlett": 0.0,
+            "Jitesh Sharma": 0.0,
+            "Ramandeep Singh": 0.0,
+            "Varun Chakaravarthy": 0.0,
+            "Josh Hazlewood": 0.0,
+            "Abhishek Sharma": 0.0,
+            "Adam Milne": 0.0,
+            "Lungi Ngidi": 0.0,
+            "Shardul Thakur": 0.0,
+            "Rachin Ravindra": 0.0,
+            "Karun Nair": 0.0,
+            "Pat Cummins": 0.0,
+            "Liam Livingstone": 0.0,
+            "Arjun Tendulkar": 0.0,
+            "Rahul Tripathi": 0.0,
+            "Jofra Archer": 0.0,
+            "Nicholas Pooran": 0.0,
+            "Sherfane Rutherford": 0.0,
+            "Cameron Green": 0.0,
+            "Mitchell Marsh": 0.0,
+            "Ryan Rickelton": 0.0,
+            "Suryansh Shedge": 0.0,
+            "Vihaan Malhotra": 0.0,
+            "Prashant Solanki": 0.0,
+            "Prince Yadav": 0.0,
+            "Jasprit Bumrah": 0.0,
+            "Sanju Samson": 0.0,
+            "Finn Allen": 0.0,
+            "Devdutt Padikkal": 0.0,
+            "Yashasvi Jaiswal": 0.0,
+            "Tejasvi Singh": 0.0,
+            "Auqib Nabi": 0.0,
+            "Harshit Rana": 0.0,
+            "Sarfaraz Khan": 0.0,
+            "Nitish Reddy": 0.0,
+            "Trent Boult": 0.0,
+            "Glenn Phillips": 0.0,
+            "Mohammed Shami": 0.0,
+            "Tilak Varma": 0.0,
+            "Matheesha Pathirana": 0.0,
+            "Shashank Singh": 0.0,
+            "Harpreet Brar": 0.0,
+            "Rahul Chahar": 0.0,
+            "Urvil Patel": 0.0,
+            "Mohsin Khan": 0.0,
+            "Mohammad Izhar": 0.0,
+            "Danish Malewar": 0.0,
+            "Dewald Brevis": 0.0,
+            "Navdeep Saini": 0.0
+        },
+        {
+            "Total Points": 0.0,
+            "Booster": "None",
+            "Sameer Rizvi": 0.0,
+            "Shubman Gill": 0.0,
+            "Travis Head": 0.0,
+            "Jacob Duffy": 0.0,
+            "Rajat Patidar": 0.0,
+            "Vaibhav Suryavanshi": 0.0,
+            "Abishek Porel": 0.0,
+            "Rasikh Dar Salam": 0.0,
+            "Nehal Wadhera": 0.0,
+            "Noor Ahmad": 0.0,
+            "Rishabh Pant": 0.0,
+            "Mukesh Choudhary": 0.0,
+            "Kuldeep Sen": 0.0,
+            "Umran Malik": 0.0,
+            "Ashutosh Sharma": 0.0,
+            "Deepak Chahar": 0.0,
+            "Jamie Overton": 0.0,
+            "Dushmantha Chameera": 0.0,
+            "Matthew Short": 0.0,
+            "Gurjapneet Singh": 0.0,
+            "Yudhvir Singh Charak": 0.0,
+            "Shivam Mavi": 0.0,
+            "Pathum Nissanka": 0.0,
+            "Phil Salt": 0.0,
+            "RS Ambrish": 0.0,
+            "Kagiso Rabada": 0.0,
+            "Shreyas Iyer": 0.0,
+            "Ayush Mhatre": 0.0,
+            "Sunil Narine": 0.0,
+            "Vijaykumar Vyshak": 0.0,
+            "Anukul Roy": 0.0,
+            "Akash Maharaj Singh": 0.0,
+            "Shivam Dube": 0.0,
+            "Matt Henry": 0.0,
+            "Ajinkya Rahane": 0.0,
+            "Riyan Parag": 0.0,
+            "Sam Curran": 0.0,
+            "Angkrish Raghuvanshi": 0.0,
+            "Akash Deep": 0.0,
+            "Kamindu Mendis": 0.0,
+            "Luke Wood": 0.0,
+            "Dhruv Jurel": 0.0,
+            "Suyash Sharma": 0.0,
+            "Wanindu Hasaranga": 0.0,
+            "Mayank Yadav": 0.0,
+            "Allah Ghazanfar": 0.0,
+            "Ben Dwarshuis": 0.0,
+            "Prithvi Raj Yarra": 0.0,
+            "Krunal Pandya": 0.0,
+            "T Natarajan": 0.0,
+            "Saurabh Dubey": 0.0,
+            "Dasun Shanaka": 0.0,
+            "Kulwant Khejroliya": 0.0,
+            "George Linde": 0.0,
+            "Akash Madhwal": 0.0,
+            "Jacob Bethell": 0.0,
+            "Bhuvneshwar Kumar": 0.0,
+            "Virat Kohli": 0.0,
+            "Quinton de Kock": 0.0,
+            "Heinrich Klaasen": 0.0,
+            "Harsh Dubey": 0.0,
+            "Yash Thakur": 0.0,
+            "Washington Sundar": 0.0,
+            "Avesh Khan": 0.0,
+            "Khaleel Ahmed": 0.0,
+            "Priyansh Arya": 0.0,
+            "Naman Dhir": 0.0,
+            "Prithvi Shaw": 0.0,
+            "Tristan Stubbs": 0.0,
+            "Vipraj Nigam": 0.0,
+            "Mitchell Starc": 0.0,
+            "Nitish Rana": 0.0,
+            "Sai Kishore": 0.0,
+            "Mangesh Yadav": 0.0,
+            "Sarthak Ranjan": 0.0,
+            "Nandre Burger": 0.0,
+            "Smaran Ravichandran": 0.0,
+            "Shahbaz Ahmed": 0.0,
+            "Rashid Khan": 0.0,
+            "Nuwan Thushara": 0.0,
+            "Marcus Stoinis": 0.0,
+            "Rohit Sharma": 0.0,
+            "Cooper Connolly": 0.0,
+            "Anrich Nortje": 0.0,
+            "Zeeshan Ansari": 0.0,
+            "Prabhsimran Singh": 0.0,
+            "Ishan Kishan": 0.0,
+            "MS Dhoni": 0.0,
+            "Rinku Singh": 0.0,
+            "Yuzvendra Chahal": 0.0,
+            "Swapnil Singh": 0.0,
+            "Manimaran Siddharth": 0.0,
+            "Axar Patel": 0.0,
+            "Jason Holder": 0.0,
+            "Romario Shepherd": 0.0,
+            "Rahul Tewatia": 0.0,
+            "Lockie Ferguson": 0.0,
+            "Mitchell Santner": 0.0,
+            "Matthew Breetzke": 0.0,
+            "Nathan Ellis": 0.0,
+            "Mayank Markande": 0.0,
+            "Shubham Dubey": 0.0,
+            "Kyle Jamieson": 0.0,
+            "Rovman Powell": 0.0,
+            "Aniket Verma": 0.0,
+            "Abdul Samad": 0.0,
+            "Spencer Johnson": 0.0,
+            "Keshav Maharaj": 0.0,
+            "Salil Arora": 0.0,
+            "Arshad Khan": 0.0,
+            "Anshul Kamboj": 0.0,
+            "KL Rahul": 0.0,
+            "Ayush Badoni": 0.0,
+            "Harshal Patel": 0.0,
+            "Ben Duckett": 0.0,
+            "Hardik Pandya": 0.0,
+            "Ravindra Jadeja": 0.0,
+            "Prasidh Krishna": 0.0,
+            "Prashant Veer": 0.0,
+            "Mohammad Siraj": 0.0,
+            "Marco Jansen": 0.0,
+            "Akeal Hosein": 0.0,
+            "Ravi Bishnoi": 0.0,
+            "Sai Sudharsan": 0.0,
+            "Jaydev Unadkat": 0.0,
+            "Kuldeep Yadav": 0.0,
+            "Eshan Malinga": 0.0,
+            "Mukul Choudhary": 0.0,
+            "Naman Tiwari": 0.0,
+            "Ashwani Kumar": 0.0,
+            "Kartik Sharma": 0.0,
+            "Arshdeep Singh": 0.0,
+            "Shahrukh Khan": 0.0,
+            "Tim David": 0.0,
+            "Rehan Ahmed": 0.0,
+            "Ruturaj Gaikwad": 0.0,
+            "Suryakumar Yadav": 0.0,
+            "Sandeep Sharma": 0.0,
+            "Tushar Deshpande": 0.0,
+            "Vaibhav Arora": 0.0,
+            "Corbin Bosch": 0.0,
+            "Jos Buttler": 0.0,
+            "Venkatesh Iyer": 0.0,
+            "Donovan Ferreira": 0.0,
+            "Azmatullah Omarzai": 0.0,
+            "Kumar Kushagra": 0.0,
+            "Aiden Markram": 0.0,
+            "Ishant Sharma": 0.0,
+            "Will Jacks": 0.0,
+            "Josh Inglis": 0.0,
+            "David Miller": 0.0,
+            "Shimron Hetmyer": 0.0,
+            "Tim Seifert": 0.0,
+            "Mitchell Owen": 0.0,
+            "Mukesh Kumar": 0.0,
+            "Digvesh Singh Rathi": 0.0,
+            "Harnoor Pannu": 0.0,
+            "Xavier Bartlett": 0.0,
+            "Jitesh Sharma": 0.0,
+            "Ramandeep Singh": 0.0,
+            "Varun Chakaravarthy": 0.0,
+            "Josh Hazlewood": 0.0,
+            "Abhishek Sharma": 0.0,
+            "Adam Milne": 0.0,
+            "Lungi Ngidi": 0.0,
+            "Shardul Thakur": 0.0,
+            "Rachin Ravindra": 0.0,
+            "Karun Nair": 0.0,
+            "Pat Cummins": 0.0,
+            "Liam Livingstone": 0.0,
+            "Arjun Tendulkar": 0.0,
+            "Rahul Tripathi": 0.0,
+            "Jofra Archer": 0.0,
+            "Nicholas Pooran": 0.0,
+            "Sherfane Rutherford": 0.0,
+            "Cameron Green": 0.0,
+            "Mitchell Marsh": 0.0,
+            "Ryan Rickelton": 0.0,
+            "Suryansh Shedge": 0.0,
+            "Vihaan Malhotra": 0.0,
+            "Prashant Solanki": 0.0,
+            "Prince Yadav": 0.0,
+            "Jasprit Bumrah": 0.0,
+            "Sanju Samson": 0.0,
+            "Finn Allen": 0.0,
+            "Devdutt Padikkal": 0.0,
+            "Yashasvi Jaiswal": 0.0,
+            "Tejasvi Singh": 0.0,
+            "Auqib Nabi": 0.0,
+            "Harshit Rana": 0.0,
+            "Sarfaraz Khan": 0.0,
+            "Nitish Reddy": 0.0,
+            "Trent Boult": 0.0,
+            "Glenn Phillips": 0.0,
+            "Mohammed Shami": 0.0,
+            "Tilak Varma": 0.0,
+            "Matheesha Pathirana": 0.0,
+            "Shashank Singh": 0.0,
+            "Harpreet Brar": 0.0,
+            "Rahul Chahar": 0.0,
+            "Urvil Patel": 0.0,
+            "Mohsin Khan": 0.0,
+            "Mohammad Izhar": 0.0,
+            "Danish Malewar": 0.0,
+            "Dewald Brevis": 0.0,
+            "Navdeep Saini": 0.0
+        },
+        {
+            "Total Points": 1.0,
+            "Booster": "None",
+            "Sameer Rizvi": 0.0,
+            "Shubman Gill": 0.0,
+            "Travis Head": 0.0,
+            "Jacob Duffy": 0.0,
+            "Rajat Patidar": 0.0,
+            "Vaibhav Suryavanshi": 0.0,
+            "Abishek Porel": 0.0,
+            "Rasikh Dar Salam": 0.0,
+            "Nehal Wadhera": 0.0,
+            "Noor Ahmad": 0.0,
+            "Rishabh Pant": 0.0,
+            "Mukesh Choudhary": 0.0,
+            "Kuldeep Sen": 0.0,
+            "Umran Malik": 0.0,
+            "Ashutosh Sharma": 0.0,
+            "Deepak Chahar": 0.0,
+            "Jamie Overton": 0.0,
+            "Dushmantha Chameera": 0.0,
+            "Matthew Short": 0.0,
+            "Gurjapneet Singh": 0.0,
+            "Yudhvir Singh Charak": 0.0,
+            "Shivam Mavi": 0.0,
+            "Pathum Nissanka": 0.0,
+            "Phil Salt": 0.0,
+            "RS Ambrish": 0.0,
+            "Kagiso Rabada": 0.0,
+            "Shreyas Iyer": 0.0,
+            "Ayush Mhatre": 0.0,
+            "Sunil Narine": 0.0,
+            "Vijaykumar Vyshak": 0.0,
+            "Anukul Roy": 0.0,
+            "Akash Maharaj Singh": 0.0,
+            "Shivam Dube": 0.0,
+            "Matt Henry": 0.0,
+            "Ajinkya Rahane": 0.0,
+            "Riyan Parag": 0.0,
+            "Sam Curran": 0.0,
+            "Angkrish Raghuvanshi": 0.0,
+            "Akash Deep": 0.0,
+            "Kamindu Mendis": 0.0,
+            "Luke Wood": 0.0,
+            "Dhruv Jurel": 0.0,
+            "Suyash Sharma": 0.0,
+            "Wanindu Hasaranga": 0.0,
+            "Mayank Yadav": 0.0,
+            "Allah Ghazanfar": 0.0,
+            "Ben Dwarshuis": 0.0,
+            "Prithvi Raj Yarra": 0.0,
+            "Krunal Pandya": 0.0,
+            "T Natarajan": 0.0,
+            "Saurabh Dubey": 0.0,
+            "Dasun Shanaka": 0.0,
+            "Kulwant Khejroliya": 0.0,
+            "George Linde": 0.0,
+            "Akash Madhwal": 0.0,
+            "Jacob Bethell": 0.0,
+            "Bhuvneshwar Kumar": 0.0,
+            "Virat Kohli": 0.0,
+            "Quinton de Kock": 0.0,
+            "Heinrich Klaasen": 0.0,
+            "Harsh Dubey": 0.0,
+            "Yash Thakur": 0.0,
+            "Washington Sundar": 0.0,
+            "Avesh Khan": 0.0,
+            "Khaleel Ahmed": 0.0,
+            "Priyansh Arya": 0.0,
+            "Naman Dhir": 0.0,
+            "Prithvi Shaw": 0.0,
+            "Tristan Stubbs": 0.0,
+            "Vipraj Nigam": 0.0,
+            "Mitchell Starc": 0.0,
+            "Nitish Rana": 0.0,
+            "Sai Kishore": 0.0,
+            "Mangesh Yadav": 0.0,
+            "Sarthak Ranjan": 0.0,
+            "Nandre Burger": 0.0,
+            "Smaran Ravichandran": 0.0,
+            "Shahbaz Ahmed": 0.0,
+            "Rashid Khan": 0.0,
+            "Nuwan Thushara": 0.0,
+            "Marcus Stoinis": 0.0,
+            "Rohit Sharma": 1.0,
+            "Cooper Connolly": 0.0,
+            "Anrich Nortje": 0.0,
+            "Zeeshan Ansari": 0.0,
+            "Prabhsimran Singh": 0.0,
+            "Ishan Kishan": 0.0,
+            "MS Dhoni": 0.0,
+            "Rinku Singh": 0.0,
+            "Yuzvendra Chahal": 0.0,
+            "Swapnil Singh": 0.0,
+            "Manimaran Siddharth": 0.0,
+            "Axar Patel": 0.0,
+            "Jason Holder": 0.0,
+            "Romario Shepherd": 0.0,
+            "Rahul Tewatia": 0.0,
+            "Lockie Ferguson": 0.0,
+            "Mitchell Santner": 0.0,
+            "Matthew Breetzke": 0.0,
+            "Nathan Ellis": 0.0,
+            "Mayank Markande": 0.0,
+            "Shubham Dubey": 0.0,
+            "Kyle Jamieson": 0.0,
+            "Rovman Powell": 0.0,
+            "Aniket Verma": 0.0,
+            "Abdul Samad": 0.0,
+            "Spencer Johnson": 0.0,
+            "Keshav Maharaj": 0.0,
+            "Salil Arora": 0.0,
+            "Arshad Khan": 0.0,
+            "Anshul Kamboj": 0.0,
+            "KL Rahul": 0.0,
+            "Ayush Badoni": 0.0,
+            "Harshal Patel": 0.0,
+            "Ben Duckett": 0.0,
+            "Hardik Pandya": 0.0,
+            "Ravindra Jadeja": 0.0,
+            "Prasidh Krishna": 0.0,
+            "Prashant Veer": 0.0,
+            "Mohammad Siraj": 0.0,
+            "Marco Jansen": 0.0,
+            "Akeal Hosein": 0.0,
+            "Ravi Bishnoi": 0.0,
+            "Sai Sudharsan": 0.0,
+            "Jaydev Unadkat": 0.0,
+            "Kuldeep Yadav": 0.0,
+            "Eshan Malinga": 0.0,
+            "Mukul Choudhary": 0.0,
+            "Naman Tiwari": 0.0,
+            "Ashwani Kumar": 0.0,
+            "Kartik Sharma": 0.0,
+            "Arshdeep Singh": 0.0,
+            "Shahrukh Khan": 0.0,
+            "Tim David": 0.0,
+            "Rehan Ahmed": 0.0,
+            "Ruturaj Gaikwad": 0.0,
+            "Suryakumar Yadav": 0.0,
+            "Sandeep Sharma": 0.0,
+            "Tushar Deshpande": 0.0,
+            "Vaibhav Arora": 0.0,
+            "Corbin Bosch": 0.0,
+            "Jos Buttler": 0.0,
+            "Venkatesh Iyer": 0.0,
+            "Donovan Ferreira": 0.0,
+            "Azmatullah Omarzai": 0.0,
+            "Kumar Kushagra": 0.0,
+            "Aiden Markram": 0.0,
+            "Ishant Sharma": 0.0,
+            "Will Jacks": 0.0,
+            "Josh Inglis": 0.0,
+            "David Miller": 0.0,
+            "Shimron Hetmyer": 0.0,
+            "Tim Seifert": 0.0,
+            "Mitchell Owen": 0.0,
+            "Mukesh Kumar": 0.0,
+            "Digvesh Singh Rathi": 0.0,
+            "Harnoor Pannu": 0.0,
+            "Xavier Bartlett": 0.0,
+            "Jitesh Sharma": 0.0,
+            "Ramandeep Singh": 0.0,
+            "Varun Chakaravarthy": 0.0,
+            "Josh Hazlewood": 0.0,
+            "Abhishek Sharma": 0.0,
+            "Adam Milne": 0.0,
+            "Lungi Ngidi": 0.0,
+            "Shardul Thakur": 0.0,
+            "Rachin Ravindra": 0.0,
+            "Karun Nair": 0.0,
+            "Pat Cummins": 0.0,
+            "Liam Livingstone": 0.0,
+            "Arjun Tendulkar": 0.0,
+            "Rahul Tripathi": 0.0,
+            "Jofra Archer": 0.0,
+            "Nicholas Pooran": 0.0,
+            "Sherfane Rutherford": 0.0,
+            "Cameron Green": 0.0,
+            "Mitchell Marsh": 0.0,
+            "Ryan Rickelton": 0.0,
+            "Suryansh Shedge": 0.0,
+            "Vihaan Malhotra": 0.0,
+            "Prashant Solanki": 0.0,
+            "Prince Yadav": 0.0,
+            "Jasprit Bumrah": 0.0,
+            "Sanju Samson": 0.0,
+            "Finn Allen": 0.0,
+            "Devdutt Padikkal": 0.0,
+            "Yashasvi Jaiswal": 0.0,
+            "Tejasvi Singh": 0.0,
+            "Auqib Nabi": 0.0,
+            "Harshit Rana": 0.0,
+            "Sarfaraz Khan": 0.0,
+            "Nitish Reddy": 0.0,
+            "Trent Boult": 0.0,
+            "Glenn Phillips": 0.0,
+            "Mohammed Shami": 0.0,
+            "Tilak Varma": 0.0,
+            "Matheesha Pathirana": 0.0,
+            "Shashank Singh": 0.0,
+            "Harpreet Brar": 0.0,
+            "Rahul Chahar": 0.0,
+            "Urvil Patel": 0.0,
+            "Mohsin Khan": 0.0,
+            "Mohammad Izhar": 0.0,
+            "Danish Malewar": 0.0,
+            "Dewald Brevis": 0.0,
+            "Navdeep Saini": 0.0
+        },
+        {
+            "Total Points": 0.0,
+            "Booster": "None",
+            "Sameer Rizvi": 0.0,
+            "Shubman Gill": 0.0,
+            "Travis Head": 0.0,
+            "Jacob Duffy": 0.0,
+            "Rajat Patidar": 0.0,
+            "Vaibhav Suryavanshi": 0.0,
+            "Abishek Porel": 0.0,
+            "Rasikh Dar Salam": 0.0,
+            "Nehal Wadhera": 0.0,
+            "Noor Ahmad": 0.0,
+            "Rishabh Pant": 0.0,
+            "Mukesh Choudhary": 0.0,
+            "Kuldeep Sen": 0.0,
+            "Umran Malik": 0.0,
+            "Ashutosh Sharma": 0.0,
+            "Deepak Chahar": 0.0,
+            "Jamie Overton": 0.0,
+            "Dushmantha Chameera": 0.0,
+            "Matthew Short": 0.0,
+            "Gurjapneet Singh": 0.0,
+            "Yudhvir Singh Charak": 0.0,
+            "Shivam Mavi": 0.0,
+            "Pathum Nissanka": 0.0,
+            "Phil Salt": 0.0,
+            "RS Ambrish": 0.0,
+            "Kagiso Rabada": 0.0,
+            "Shreyas Iyer": 0.0,
+            "Ayush Mhatre": 0.0,
+            "Sunil Narine": 0.0,
+            "Vijaykumar Vyshak": 0.0,
+            "Anukul Roy": 0.0,
+            "Akash Maharaj Singh": 0.0,
+            "Shivam Dube": 0.0,
+            "Matt Henry": 0.0,
+            "Ajinkya Rahane": 0.0,
+            "Riyan Parag": 0.0,
+            "Sam Curran": 0.0,
+            "Angkrish Raghuvanshi": 0.0,
+            "Akash Deep": 0.0,
+            "Kamindu Mendis": 0.0,
+            "Luke Wood": 0.0,
+            "Dhruv Jurel": 0.0,
+            "Suyash Sharma": 0.0,
+            "Wanindu Hasaranga": 0.0,
+            "Mayank Yadav": 0.0,
+            "Allah Ghazanfar": 0.0,
+            "Ben Dwarshuis": 0.0,
+            "Prithvi Raj Yarra": 0.0,
+            "Krunal Pandya": 0.0,
+            "T Natarajan": 0.0,
+            "Saurabh Dubey": 0.0,
+            "Dasun Shanaka": 0.0,
+            "Kulwant Khejroliya": 0.0,
+            "George Linde": 0.0,
+            "Akash Madhwal": 0.0,
+            "Jacob Bethell": 0.0,
+            "Bhuvneshwar Kumar": 0.0,
+            "Virat Kohli": 0.0,
+            "Quinton de Kock": 0.0,
+            "Heinrich Klaasen": 0.0,
+            "Harsh Dubey": 0.0,
+            "Yash Thakur": 0.0,
+            "Washington Sundar": 0.0,
+            "Avesh Khan": 0.0,
+            "Khaleel Ahmed": 0.0,
+            "Priyansh Arya": 0.0,
+            "Naman Dhir": 0.0,
+            "Prithvi Shaw": 0.0,
+            "Tristan Stubbs": 0.0,
+            "Vipraj Nigam": 0.0,
+            "Mitchell Starc": 0.0,
+            "Nitish Rana": 0.0,
+            "Sai Kishore": 0.0,
+            "Mangesh Yadav": 0.0,
+            "Sarthak Ranjan": 0.0,
+            "Nandre Burger": 0.0,
+            "Smaran Ravichandran": 0.0,
+            "Shahbaz Ahmed": 0.0,
+            "Rashid Khan": 0.0,
+            "Nuwan Thushara": 0.0,
+            "Marcus Stoinis": 0.0,
+            "Rohit Sharma": 0.0,
+            "Cooper Connolly": 0.0,
+            "Anrich Nortje": 0.0,
+            "Zeeshan Ansari": 0.0,
+            "Prabhsimran Singh": 0.0,
+            "Ishan Kishan": 0.0,
+            "MS Dhoni": 0.0,
+            "Rinku Singh": 0.0,
+            "Yuzvendra Chahal": 0.0,
+            "Swapnil Singh": 0.0,
+            "Manimaran Siddharth": 0.0,
+            "Axar Patel": 0.0,
+            "Jason Holder": 0.0,
+            "Romario Shepherd": 0.0,
+            "Rahul Tewatia": 0.0,
+            "Lockie Ferguson": 0.0,
+            "Mitchell Santner": 0.0,
+            "Matthew Breetzke": 0.0,
+            "Nathan Ellis": 0.0,
+            "Mayank Markande": 0.0,
+            "Shubham Dubey": 0.0,
+            "Kyle Jamieson": 0.0,
+            "Rovman Powell": 0.0,
+            "Aniket Verma": 0.0,
+            "Abdul Samad": 0.0,
+            "Spencer Johnson": 0.0,
+            "Keshav Maharaj": 0.0,
+            "Salil Arora": 0.0,
+            "Arshad Khan": 0.0,
+            "Anshul Kamboj": 0.0,
+            "KL Rahul": 0.0,
+            "Ayush Badoni": 0.0,
+            "Harshal Patel": 0.0,
+            "Ben Duckett": 0.0,
+            "Hardik Pandya": 0.0,
+            "Ravindra Jadeja": 0.0,
+            "Prasidh Krishna": 0.0,
+            "Prashant Veer": 0.0,
+            "Mohammad Siraj": 0.0,
+            "Marco Jansen": 0.0,
+            "Akeal Hosein": 0.0,
+            "Ravi Bishnoi": 0.0,
+            "Sai Sudharsan": 0.0,
+            "Jaydev Unadkat": 0.0,
+            "Kuldeep Yadav": 0.0,
+            "Eshan Malinga": 0.0,
+            "Mukul Choudhary": 0.0,
+            "Naman Tiwari": 0.0,
+            "Ashwani Kumar": 0.0,
+            "Kartik Sharma": 0.0,
+            "Arshdeep Singh": 0.0,
+            "Shahrukh Khan": 0.0,
+            "Tim David": 0.0,
+            "Rehan Ahmed": 0.0,
+            "Ruturaj Gaikwad": 0.0,
+            "Suryakumar Yadav": 0.0,
+            "Sandeep Sharma": 0.0,
+            "Tushar Deshpande": 0.0,
+            "Vaibhav Arora": 0.0,
+            "Corbin Bosch": 0.0,
+            "Jos Buttler": 0.0,
+            "Venkatesh Iyer": 0.0,
+            "Donovan Ferreira": 0.0,
+            "Azmatullah Omarzai": 0.0,
+            "Kumar Kushagra": 0.0,
+            "Aiden Markram": 0.0,
+            "Ishant Sharma": 0.0,
+            "Will Jacks": 0.0,
+            "Josh Inglis": 0.0,
+            "David Miller": 0.0,
+            "Shimron Hetmyer": 0.0,
+            "Tim Seifert": 0.0,
+            "Mitchell Owen": 0.0,
+            "Mukesh Kumar": 0.0,
+            "Digvesh Singh Rathi": 0.0,
+            "Harnoor Pannu": 0.0,
+            "Xavier Bartlett": 0.0,
+            "Jitesh Sharma": 0.0,
+            "Ramandeep Singh": 0.0,
+            "Varun Chakaravarthy": 0.0,
+            "Josh Hazlewood": 0.0,
+            "Abhishek Sharma": 0.0,
+            "Adam Milne": 0.0,
+            "Lungi Ngidi": 0.0,
+            "Shardul Thakur": 0.0,
+            "Rachin Ravindra": 0.0,
+            "Karun Nair": 0.0,
+            "Pat Cummins": 0.0,
+            "Liam Livingstone": 0.0,
+            "Arjun Tendulkar": 0.0,
+            "Rahul Tripathi": 0.0,
+            "Jofra Archer": 0.0,
+            "Nicholas Pooran": 0.0,
+            "Sherfane Rutherford": 0.0,
+            "Cameron Green": 0.0,
+            "Mitchell Marsh": 0.0,
+            "Ryan Rickelton": 0.0,
+            "Suryansh Shedge": 0.0,
+            "Vihaan Malhotra": 0.0,
+            "Prashant Solanki": 0.0,
+            "Prince Yadav": 0.0,
+            "Jasprit Bumrah": 0.0,
+            "Sanju Samson": 0.0,
+            "Finn Allen": 0.0,
+            "Devdutt Padikkal": 0.0,
+            "Yashasvi Jaiswal": 0.0,
+            "Tejasvi Singh": 0.0,
+            "Auqib Nabi": 0.0,
+            "Harshit Rana": 0.0,
+            "Sarfaraz Khan": 0.0,
+            "Nitish Reddy": 0.0,
+            "Trent Boult": 0.0,
+            "Glenn Phillips": 0.0,
+            "Mohammed Shami": 0.0,
+            "Tilak Varma": 0.0,
+            "Matheesha Pathirana": 0.0,
+            "Shashank Singh": 0.0,
+            "Harpreet Brar": 0.0,
+            "Rahul Chahar": 0.0,
+            "Urvil Patel": 0.0,
+            "Mohsin Khan": 0.0,
+            "Mohammad Izhar": 0.0,
+            "Danish Malewar": 0.0,
+            "Dewald Brevis": 0.0,
+            "Navdeep Saini": 0.0
+        },
+        {
+            "Total Points": 0.0,
+            "Booster": "None",
+            "Sameer Rizvi": 0.0,
+            "Shubman Gill": 0.0,
+            "Travis Head": 0.0,
+            "Jacob Duffy": 0.0,
+            "Rajat Patidar": 0.0,
+            "Vaibhav Suryavanshi": 0.0,
+            "Abishek Porel": 0.0,
+            "Rasikh Dar Salam": 0.0,
+            "Nehal Wadhera": 0.0,
+            "Noor Ahmad": 0.0,
+            "Rishabh Pant": 0.0,
+            "Mukesh Choudhary": 0.0,
+            "Kuldeep Sen": 0.0,
+            "Umran Malik": 0.0,
+            "Ashutosh Sharma": 0.0,
+            "Deepak Chahar": 0.0,
+            "Jamie Overton": 0.0,
+            "Dushmantha Chameera": 0.0,
+            "Matthew Short": 0.0,
+            "Gurjapneet Singh": 0.0,
+            "Yudhvir Singh Charak": 0.0,
+            "Shivam Mavi": 0.0,
+            "Pathum Nissanka": 0.0,
+            "Phil Salt": 0.0,
+            "RS Ambrish": 0.0,
+            "Kagiso Rabada": 0.0,
+            "Shreyas Iyer": 0.0,
+            "Ayush Mhatre": 0.0,
+            "Sunil Narine": 0.0,
+            "Vijaykumar Vyshak": 0.0,
+            "Anukul Roy": 0.0,
+            "Akash Maharaj Singh": 0.0,
+            "Shivam Dube": 0.0,
+            "Matt Henry": 0.0,
+            "Ajinkya Rahane": 0.0,
+            "Riyan Parag": 0.0,
+            "Sam Curran": 0.0,
+            "Angkrish Raghuvanshi": 0.0,
+            "Akash Deep": 0.0,
+            "Kamindu Mendis": 0.0,
+            "Luke Wood": 0.0,
+            "Dhruv Jurel": 0.0,
+            "Suyash Sharma": 0.0,
+            "Wanindu Hasaranga": 0.0,
+            "Mayank Yadav": 0.0,
+            "Allah Ghazanfar": 0.0,
+            "Ben Dwarshuis": 0.0,
+            "Prithvi Raj Yarra": 0.0,
+            "Krunal Pandya": 0.0,
+            "T Natarajan": 0.0,
+            "Saurabh Dubey": 0.0,
+            "Dasun Shanaka": 0.0,
+            "Kulwant Khejroliya": 0.0,
+            "George Linde": 0.0,
+            "Akash Madhwal": 0.0,
+            "Jacob Bethell": 0.0,
+            "Bhuvneshwar Kumar": 0.0,
+            "Virat Kohli": 0.0,
+            "Quinton de Kock": 0.0,
+            "Heinrich Klaasen": 0.0,
+            "Harsh Dubey": 0.0,
+            "Yash Thakur": 0.0,
+            "Washington Sundar": 0.0,
+            "Avesh Khan": 0.0,
+            "Khaleel Ahmed": 0.0,
+            "Priyansh Arya": 0.0,
+            "Naman Dhir": 0.0,
+            "Prithvi Shaw": 0.0,
+            "Tristan Stubbs": 0.0,
+            "Vipraj Nigam": 0.0,
+            "Mitchell Starc": 0.0,
+            "Nitish Rana": 0.0,
+            "Sai Kishore": 0.0,
+            "Mangesh Yadav": 0.0,
+            "Sarthak Ranjan": 0.0,
+            "Nandre Burger": 0.0,
+            "Smaran Ravichandran": 0.0,
+            "Shahbaz Ahmed": 0.0,
+            "Rashid Khan": 0.0,
+            "Nuwan Thushara": 0.0,
+            "Marcus Stoinis": 0.0,
+            "Rohit Sharma": 0.0,
+            "Cooper Connolly": 0.0,
+            "Anrich Nortje": 0.0,
+            "Zeeshan Ansari": 0.0,
+            "Prabhsimran Singh": 0.0,
+            "Ishan Kishan": 0.0,
+            "MS Dhoni": 0.0,
+            "Rinku Singh": 0.0,
+            "Yuzvendra Chahal": 0.0,
+            "Swapnil Singh": 0.0,
+            "Manimaran Siddharth": 0.0,
+            "Axar Patel": 0.0,
+            "Jason Holder": 0.0,
+            "Romario Shepherd": 0.0,
+            "Rahul Tewatia": 0.0,
+            "Lockie Ferguson": 0.0,
+            "Mitchell Santner": 0.0,
+            "Matthew Breetzke": 0.0,
+            "Nathan Ellis": 0.0,
+            "Mayank Markande": 0.0,
+            "Shubham Dubey": 0.0,
+            "Kyle Jamieson": 0.0,
+            "Rovman Powell": 0.0,
+            "Aniket Verma": 0.0,
+            "Abdul Samad": 0.0,
+            "Spencer Johnson": 0.0,
+            "Keshav Maharaj": 0.0,
+            "Salil Arora": 0.0,
+            "Arshad Khan": 0.0,
+            "Anshul Kamboj": 0.0,
+            "KL Rahul": 0.0,
+            "Ayush Badoni": 0.0,
+            "Harshal Patel": 0.0,
+            "Ben Duckett": 0.0,
+            "Hardik Pandya": 0.0,
+            "Ravindra Jadeja": 0.0,
+            "Prasidh Krishna": 0.0,
+            "Prashant Veer": 0.0,
+            "Mohammad Siraj": 0.0,
+            "Marco Jansen": 0.0,
+            "Akeal Hosein": 0.0,
+            "Ravi Bishnoi": 0.0,
+            "Sai Sudharsan": 0.0,
+            "Jaydev Unadkat": 0.0,
+            "Kuldeep Yadav": 0.0,
+            "Eshan Malinga": 0.0,
+            "Mukul Choudhary": 0.0,
+            "Naman Tiwari": 0.0,
+            "Ashwani Kumar": 0.0,
+            "Kartik Sharma": 0.0,
+            "Arshdeep Singh": 0.0,
+            "Shahrukh Khan": 0.0,
+            "Tim David": 0.0,
+            "Rehan Ahmed": 0.0,
+            "Ruturaj Gaikwad": 0.0,
+            "Suryakumar Yadav": 0.0,
+            "Sandeep Sharma": 0.0,
+            "Tushar Deshpande": 0.0,
+            "Vaibhav Arora": 0.0,
+            "Corbin Bosch": 0.0,
+            "Jos Buttler": 0.0,
+            "Venkatesh Iyer": 0.0,
+            "Donovan Ferreira": 0.0,
+            "Azmatullah Omarzai": 0.0,
+            "Kumar Kushagra": 0.0,
+            "Aiden Markram": 0.0,
+            "Ishant Sharma": 0.0,
+            "Will Jacks": 0.0,
+            "Josh Inglis": 0.0,
+            "David Miller": 0.0,
+            "Shimron Hetmyer": 0.0,
+            "Tim Seifert": 0.0,
+            "Mitchell Owen": 0.0,
+            "Mukesh Kumar": 0.0,
+            "Digvesh Singh Rathi": 0.0,
+            "Harnoor Pannu": 0.0,
+            "Xavier Bartlett": 0.0,
+            "Jitesh Sharma": 0.0,
+            "Ramandeep Singh": 0.0,
+            "Varun Chakaravarthy": 0.0,
+            "Josh Hazlewood": 0.0,
+            "Abhishek Sharma": 0.0,
+            "Adam Milne": 0.0,
+            "Lungi Ngidi": 0.0,
+            "Shardul Thakur": 0.0,
+            "Rachin Ravindra": 0.0,
+            "Karun Nair": 0.0,
+            "Pat Cummins": 0.0,
+            "Liam Livingstone": 0.0,
+            "Arjun Tendulkar": 0.0,
+            "Rahul Tripathi": 0.0,
+            "Jofra Archer": 0.0,
+            "Nicholas Pooran": 0.0,
+            "Sherfane Rutherford": 0.0,
+            "Cameron Green": 0.0,
+            "Mitchell Marsh": 0.0,
+            "Ryan Rickelton": 0.0,
+            "Suryansh Shedge": 0.0,
+            "Vihaan Malhotra": 0.0,
+            "Prashant Solanki": 0.0,
+            "Prince Yadav": 0.0,
+            "Jasprit Bumrah": 0.0,
+            "Sanju Samson": 0.0,
+            "Finn Allen": 0.0,
+            "Devdutt Padikkal": 0.0,
+            "Yashasvi Jaiswal": 0.0,
+            "Tejasvi Singh": 0.0,
+            "Auqib Nabi": 0.0,
+            "Harshit Rana": 0.0,
+            "Sarfaraz Khan": 0.0,
+            "Nitish Reddy": 0.0,
+            "Trent Boult": 0.0,
+            "Glenn Phillips": 0.0,
+            "Mohammed Shami": 0.0,
+            "Tilak Varma": 0.0,
+            "Matheesha Pathirana": 0.0,
+            "Shashank Singh": 0.0,
+            "Harpreet Brar": 0.0,
+            "Rahul Chahar": 0.0,
+            "Urvil Patel": 0.0,
+            "Mohsin Khan": 0.0,
+            "Mohammad Izhar": 0.0,
+            "Danish Malewar": 0.0,
+            "Dewald Brevis": 0.0,
+            "Navdeep Saini": 0.0
+        },
+        {
+            "Total Points": 1.0,
+            "Booster": "None",
+            "Sameer Rizvi": 0.0,
+            "Shubman Gill": 0.0,
+            "Travis Head": 0.0,
+            "Jacob Duffy": 0.0,
+            "Rajat Patidar": 0.0,
+            "Vaibhav Suryavanshi": 0.0,
+            "Abishek Porel": 0.0,
+            "Rasikh Dar Salam": 0.0,
+            "Nehal Wadhera": 0.0,
+            "Noor Ahmad": 0.0,
+            "Rishabh Pant": 0.0,
+            "Mukesh Choudhary": 0.0,
+            "Kuldeep Sen": 0.0,
+            "Umran Malik": 0.0,
+            "Ashutosh Sharma": 0.0,
+            "Deepak Chahar": 0.0,
+            "Jamie Overton": 0.0,
+            "Dushmantha Chameera": 0.0,
+            "Matthew Short": 0.0,
+            "Gurjapneet Singh": 0.0,
+            "Yudhvir Singh Charak": 0.0,
+            "Shivam Mavi": 0.0,
+            "Pathum Nissanka": 0.0,
+            "Phil Salt": 0.0,
+            "RS Ambrish": 0.0,
+            "Kagiso Rabada": 0.0,
+            "Shreyas Iyer": 0.0,
+            "Ayush Mhatre": 0.0,
+            "Sunil Narine": 0.0,
+            "Vijaykumar Vyshak": 0.0,
+            "Anukul Roy": 0.0,
+            "Akash Maharaj Singh": 0.0,
+            "Shivam Dube": 0.0,
+            "Matt Henry": 0.0,
+            "Ajinkya Rahane": 0.0,
+            "Riyan Parag": 0.0,
+            "Sam Curran": 0.0,
+            "Angkrish Raghuvanshi": 0.0,
+            "Akash Deep": 0.0,
+            "Kamindu Mendis": 0.0,
+            "Luke Wood": 0.0,
+            "Dhruv Jurel": 0.0,
+            "Suyash Sharma": 0.0,
+            "Wanindu Hasaranga": 0.0,
+            "Mayank Yadav": 0.0,
+            "Allah Ghazanfar": 0.0,
+            "Ben Dwarshuis": 0.0,
+            "Prithvi Raj Yarra": 0.0,
+            "Krunal Pandya": 0.0,
+            "T Natarajan": 0.0,
+            "Saurabh Dubey": 0.0,
+            "Dasun Shanaka": 0.0,
+            "Kulwant Khejroliya": 0.0,
+            "George Linde": 0.0,
+            "Akash Madhwal": 0.0,
+            "Jacob Bethell": 0.0,
+            "Bhuvneshwar Kumar": 0.0,
+            "Virat Kohli": 0.0,
+            "Quinton de Kock": 0.0,
+            "Heinrich Klaasen": 0.0,
+            "Harsh Dubey": 0.0,
+            "Yash Thakur": 0.0,
+            "Washington Sundar": 0.0,
+            "Avesh Khan": 0.0,
+            "Khaleel Ahmed": 0.0,
+            "Priyansh Arya": 0.0,
+            "Naman Dhir": 0.0,
+            "Prithvi Shaw": 0.0,
+            "Tristan Stubbs": 0.0,
+            "Vipraj Nigam": 0.0,
+            "Mitchell Starc": 0.0,
+            "Nitish Rana": 0.0,
+            "Sai Kishore": 0.0,
+            "Mangesh Yadav": 0.0,
+            "Sarthak Ranjan": 0.0,
+            "Nandre Burger": 0.0,
+            "Smaran Ravichandran": 0.0,
+            "Shahbaz Ahmed": 0.0,
+            "Rashid Khan": 0.0,
+            "Nuwan Thushara": 0.0,
+            "Marcus Stoinis": 0.0,
+            "Rohit Sharma": 0.0,
+            "Cooper Connolly": 0.0,
+            "Anrich Nortje": 0.0,
+            "Zeeshan Ansari": 0.0,
+            "Prabhsimran Singh": 0.0,
+            "Ishan Kishan": 0.0,
+            "MS Dhoni": 0.0,
+            "Rinku Singh": 0.0,
+            "Yuzvendra Chahal": 0.0,
+            "Swapnil Singh": 0.0,
+            "Manimaran Siddharth": 0.0,
+            "Axar Patel": 0.0,
+            "Jason Holder": 0.0,
+            "Romario Shepherd": 0.0,
+            "Rahul Tewatia": 0.0,
+            "Lockie Ferguson": 0.0,
+            "Mitchell Santner": 0.0,
+            "Matthew Breetzke": 0.0,
+            "Nathan Ellis": 0.0,
+            "Mayank Markande": 0.0,
+            "Shubham Dubey": 0.0,
+            "Kyle Jamieson": 0.0,
+            "Rovman Powell": 0.0,
+            "Aniket Verma": 0.0,
+            "Abdul Samad": 0.0,
+            "Spencer Johnson": 0.0,
+            "Keshav Maharaj": 0.0,
+            "Salil Arora": 0.0,
+            "Arshad Khan": 0.0,
+            "Anshul Kamboj": 0.0,
+            "KL Rahul": 0.0,
+            "Ayush Badoni": 0.0,
+            "Harshal Patel": 0.0,
+            "Ben Duckett": 0.0,
+            "Hardik Pandya": 0.0,
+            "Ravindra Jadeja": 0.0,
+            "Prasidh Krishna": 0.0,
+            "Prashant Veer": 0.0,
+            "Mohammad Siraj": 0.0,
+            "Marco Jansen": 0.0,
+            "Akeal Hosein": 0.0,
+            "Ravi Bishnoi": 0.0,
+            "Sai Sudharsan": 0.0,
+            "Jaydev Unadkat": 0.0,
+            "Kuldeep Yadav": 0.0,
+            "Eshan Malinga": 0.0,
+            "Mukul Choudhary": 0.0,
+            "Naman Tiwari": 0.0,
+            "Ashwani Kumar": 0.0,
+            "Kartik Sharma": 0.0,
+            "Arshdeep Singh": 0.0,
+            "Shahrukh Khan": 0.0,
+            "Tim David": 0.0,
+            "Rehan Ahmed": 0.0,
+            "Ruturaj Gaikwad": 0.0,
+            "Suryakumar Yadav": 0.0,
+            "Sandeep Sharma": 0.0,
+            "Tushar Deshpande": 0.0,
+            "Vaibhav Arora": 0.0,
+            "Corbin Bosch": 0.0,
+            "Jos Buttler": 0.0,
+            "Venkatesh Iyer": 0.0,
+            "Donovan Ferreira": 0.0,
+            "Azmatullah Omarzai": 0.0,
+            "Kumar Kushagra": 0.0,
+            "Aiden Markram": 0.0,
+            "Ishant Sharma": 0.0,
+            "Will Jacks": 0.0,
+            "Josh Inglis": 0.0,
+            "David Miller": 0.0,
+            "Shimron Hetmyer": 0.0,
+            "Tim Seifert": 0.0,
+            "Mitchell Owen": 0.0,
+            "Mukesh Kumar": 0.0,
+            "Digvesh Singh Rathi": 0.0,
+            "Harnoor Pannu": 0.0,
+            "Xavier Bartlett": 0.0,
+            "Jitesh Sharma": 0.0,
+            "Ramandeep Singh": 0.0,
+            "Varun Chakaravarthy": 0.0,
+            "Josh Hazlewood": 0.0,
+            "Abhishek Sharma": 0.0,
+            "Adam Milne": 0.0,
+            "Lungi Ngidi": 0.0,
+            "Shardul Thakur": 0.0,
+            "Rachin Ravindra": 0.0,
+            "Karun Nair": 0.0,
+            "Pat Cummins": 0.0,
+            "Liam Livingstone": 0.0,
+            "Arjun Tendulkar": 0.0,
+            "Rahul Tripathi": 0.0,
+            "Jofra Archer": 0.0,
+            "Nicholas Pooran": 0.0,
+            "Sherfane Rutherford": 0.0,
+            "Cameron Green": 0.0,
+            "Mitchell Marsh": 0.0,
+            "Ryan Rickelton": 1.0,
+            "Suryansh Shedge": 0.0,
+            "Vihaan Malhotra": 0.0,
+            "Prashant Solanki": 0.0,
+            "Prince Yadav": 0.0,
+            "Jasprit Bumrah": 0.0,
+            "Sanju Samson": 0.0,
+            "Finn Allen": 0.0,
+            "Devdutt Padikkal": 0.0,
+            "Yashasvi Jaiswal": 0.0,
+            "Tejasvi Singh": 0.0,
+            "Auqib Nabi": 0.0,
+            "Harshit Rana": 0.0,
+            "Sarfaraz Khan": 0.0,
+            "Nitish Reddy": 0.0,
+            "Trent Boult": 0.0,
+            "Glenn Phillips": 0.0,
+            "Mohammed Shami": 0.0,
+            "Tilak Varma": 0.0,
+            "Matheesha Pathirana": 0.0,
+            "Shashank Singh": 0.0,
+            "Harpreet Brar": 0.0,
+            "Rahul Chahar": 0.0,
+            "Urvil Patel": 0.0,
+            "Mohsin Khan": 0.0,
+            "Mohammad Izhar": 0.0,
+            "Danish Malewar": 0.0,
+            "Dewald Brevis": 0.0,
+            "Navdeep Saini": 0.0
+        },
+        {
+            "Total Points": 0.0,
+            "Booster": "None",
+            "Sameer Rizvi": 0.0,
+            "Shubman Gill": 0.0,
+            "Travis Head": 0.0,
+            "Jacob Duffy": 0.0,
+            "Rajat Patidar": 0.0,
+            "Vaibhav Suryavanshi": 0.0,
+            "Abishek Porel": 0.0,
+            "Rasikh Dar Salam": 0.0,
+            "Nehal Wadhera": 0.0,
+            "Noor Ahmad": 0.0,
+            "Rishabh Pant": 0.0,
+            "Mukesh Choudhary": 0.0,
+            "Kuldeep Sen": 0.0,
+            "Umran Malik": 0.0,
+            "Ashutosh Sharma": 0.0,
+            "Deepak Chahar": 0.0,
+            "Jamie Overton": 0.0,
+            "Dushmantha Chameera": 0.0,
+            "Matthew Short": 0.0,
+            "Gurjapneet Singh": 0.0,
+            "Yudhvir Singh Charak": 0.0,
+            "Shivam Mavi": 0.0,
+            "Pathum Nissanka": 0.0,
+            "Phil Salt": 0.0,
+            "RS Ambrish": 0.0,
+            "Kagiso Rabada": 0.0,
+            "Shreyas Iyer": 0.0,
+            "Ayush Mhatre": 0.0,
+            "Sunil Narine": 0.0,
+            "Vijaykumar Vyshak": 0.0,
+            "Anukul Roy": 0.0,
+            "Akash Maharaj Singh": 0.0,
+            "Shivam Dube": 0.0,
+            "Matt Henry": 0.0,
+            "Ajinkya Rahane": 0.0,
+            "Riyan Parag": 0.0,
+            "Sam Curran": 0.0,
+            "Angkrish Raghuvanshi": 0.0,
+            "Akash Deep": 0.0,
+            "Kamindu Mendis": 0.0,
+            "Luke Wood": 0.0,
+            "Dhruv Jurel": 0.0,
+            "Suyash Sharma": 0.0,
+            "Wanindu Hasaranga": 0.0,
+            "Mayank Yadav": 0.0,
+            "Allah Ghazanfar": 0.0,
+            "Ben Dwarshuis": 0.0,
+            "Prithvi Raj Yarra": 0.0,
+            "Krunal Pandya": 0.0,
+            "T Natarajan": 0.0,
+            "Saurabh Dubey": 0.0,
+            "Dasun Shanaka": 0.0,
+            "Kulwant Khejroliya": 0.0,
+            "George Linde": 0.0,
+            "Akash Madhwal": 0.0,
+            "Jacob Bethell": 0.0,
+            "Bhuvneshwar Kumar": 0.0,
+            "Virat Kohli": 0.0,
+            "Quinton de Kock": 0.0,
+            "Heinrich Klaasen": 0.0,
+            "Harsh Dubey": 0.0,
+            "Yash Thakur": 0.0,
+            "Washington Sundar": 0.0,
+            "Avesh Khan": 0.0,
+            "Khaleel Ahmed": 0.0,
+            "Priyansh Arya": 0.0,
+            "Naman Dhir": 0.0,
+            "Prithvi Shaw": 0.0,
+            "Tristan Stubbs": 0.0,
+            "Vipraj Nigam": 0.0,
+            "Mitchell Starc": 0.0,
+            "Nitish Rana": 0.0,
+            "Sai Kishore": 0.0,
+            "Mangesh Yadav": 0.0,
+            "Sarthak Ranjan": 0.0,
+            "Nandre Burger": 0.0,
+            "Smaran Ravichandran": 0.0,
+            "Shahbaz Ahmed": 0.0,
+            "Rashid Khan": 0.0,
+            "Nuwan Thushara": 0.0,
+            "Marcus Stoinis": 0.0,
+            "Rohit Sharma": 0.0,
+            "Cooper Connolly": 0.0,
+            "Anrich Nortje": 0.0,
+            "Zeeshan Ansari": 0.0,
+            "Prabhsimran Singh": 0.0,
+            "Ishan Kishan": 0.0,
+            "MS Dhoni": 0.0,
+            "Rinku Singh": 0.0,
+            "Yuzvendra Chahal": 0.0,
+            "Swapnil Singh": 0.0,
+            "Manimaran Siddharth": 0.0,
+            "Axar Patel": 0.0,
+            "Jason Holder": 0.0,
+            "Romario Shepherd": 0.0,
+            "Rahul Tewatia": 0.0,
+            "Lockie Ferguson": 0.0,
+            "Mitchell Santner": 0.0,
+            "Matthew Breetzke": 0.0,
+            "Nathan Ellis": 0.0,
+            "Mayank Markande": 0.0,
+            "Shubham Dubey": 0.0,
+            "Kyle Jamieson": 0.0,
+            "Rovman Powell": 0.0,
+            "Aniket Verma": 0.0,
+            "Abdul Samad": 0.0,
+            "Spencer Johnson": 0.0,
+            "Keshav Maharaj": 0.0,
+            "Salil Arora": 0.0,
+            "Arshad Khan": 0.0,
+            "Anshul Kamboj": 0.0,
+            "KL Rahul": 0.0,
+            "Ayush Badoni": 0.0,
+            "Harshal Patel": 0.0,
+            "Ben Duckett": 0.0,
+            "Hardik Pandya": 0.0,
+            "Ravindra Jadeja": 0.0,
+            "Prasidh Krishna": 0.0,
+            "Prashant Veer": 0.0,
+            "Mohammad Siraj": 0.0,
+            "Marco Jansen": 0.0,
+            "Akeal Hosein": 0.0,
+            "Ravi Bishnoi": 0.0,
+            "Sai Sudharsan": 0.0,
+            "Jaydev Unadkat": 0.0,
+            "Kuldeep Yadav": 0.0,
+            "Eshan Malinga": 0.0,
+            "Mukul Choudhary": 0.0,
+            "Naman Tiwari": 0.0,
+            "Ashwani Kumar": 0.0,
+            "Kartik Sharma": 0.0,
+            "Arshdeep Singh": 0.0,
+            "Shahrukh Khan": 0.0,
+            "Tim David": 0.0,
+            "Rehan Ahmed": 0.0,
+            "Ruturaj Gaikwad": 0.0,
+            "Suryakumar Yadav": 0.0,
+            "Sandeep Sharma": 0.0,
+            "Tushar Deshpande": 0.0,
+            "Vaibhav Arora": 0.0,
+            "Corbin Bosch": 0.0,
+            "Jos Buttler": 0.0,
+            "Venkatesh Iyer": 0.0,
+            "Donovan Ferreira": 0.0,
+            "Azmatullah Omarzai": 0.0,
+            "Kumar Kushagra": 0.0,
+            "Aiden Markram": 0.0,
+            "Ishant Sharma": 0.0,
+            "Will Jacks": 0.0,
+            "Josh Inglis": 0.0,
+            "David Miller": 0.0,
+            "Shimron Hetmyer": 0.0,
+            "Tim Seifert": 0.0,
+            "Mitchell Owen": 0.0,
+            "Mukesh Kumar": 0.0,
+            "Digvesh Singh Rathi": 0.0,
+            "Harnoor Pannu": 0.0,
+            "Xavier Bartlett": 0.0,
+            "Jitesh Sharma": 0.0,
+            "Ramandeep Singh": 0.0,
+            "Varun Chakaravarthy": 0.0,
+            "Josh Hazlewood": 0.0,
+            "Abhishek Sharma": 0.0,
+            "Adam Milne": 0.0,
+            "Lungi Ngidi": 0.0,
+            "Shardul Thakur": 0.0,
+            "Rachin Ravindra": 0.0,
+            "Karun Nair": 0.0,
+            "Pat Cummins": 0.0,
+            "Liam Livingstone": 0.0,
+            "Arjun Tendulkar": 0.0,
+            "Rahul Tripathi": 0.0,
+            "Jofra Archer": 0.0,
+            "Nicholas Pooran": 0.0,
+            "Sherfane Rutherford": 0.0,
+            "Cameron Green": 0.0,
+            "Mitchell Marsh": 0.0,
+            "Ryan Rickelton": 0.0,
+            "Suryansh Shedge": 0.0,
+            "Vihaan Malhotra": 0.0,
+            "Prashant Solanki": 0.0,
+            "Prince Yadav": 0.0,
+            "Jasprit Bumrah": 0.0,
+            "Sanju Samson": 0.0,
+            "Finn Allen": 0.0,
+            "Devdutt Padikkal": 0.0,
+            "Yashasvi Jaiswal": 0.0,
+            "Tejasvi Singh": 0.0,
+            "Auqib Nabi": 0.0,
+            "Harshit Rana": 0.0,
+            "Sarfaraz Khan": 0.0,
+            "Nitish Reddy": 0.0,
+            "Trent Boult": 0.0,
+            "Glenn Phillips": 0.0,
+            "Mohammed Shami": 0.0,
+            "Tilak Varma": 0.0,
+            "Matheesha Pathirana": 0.0,
+            "Shashank Singh": 0.0,
+            "Harpreet Brar": 0.0,
+            "Rahul Chahar": 0.0,
+            "Urvil Patel": 0.0,
+            "Mohsin Khan": 0.0,
+            "Mohammad Izhar": 0.0,
+            "Danish Malewar": 0.0,
+            "Dewald Brevis": 0.0,
             "Navdeep Saini": 0.0
         }
     ]
