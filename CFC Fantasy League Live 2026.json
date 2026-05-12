@@ -196,7 +196,7 @@
             "GT vs SRH": 24.0
         },
         "Nasty Knights": {
-            "Total Points": 13131.0,
+            "Total Points": 13161.0,
             "Orange Cap": 0,
             "Purple Cap": 0,
             "MVP": 0,
@@ -258,7 +258,7 @@
             "CSK vs LSG": 61,
             "RCB vs MI": 208,
             "PBKS vs DC": 308.0,
-            "GT vs SRH": 186.0
+            "GT vs SRH": 216.0
         },
         "VS Stalwarts": {
             "Total Points": 12822.5,
@@ -649,7 +649,7 @@
             "GT vs SRH": 23
         },
         "Kagiso Rabada": {
-            "Total Points": 1366,
+            "Total Points": 1396,
             "Orange Cap": 0,
             "Purple Cap": 0,
             "MVP": 0,
@@ -709,7 +709,7 @@
             "CSK vs LSG": 0,
             "RCB vs MI": 0,
             "PBKS vs DC": 0,
-            "GT vs SRH": 186
+            "GT vs SRH": 216
         },
         "Anshul Kamboj": {
             "Total Points": 1248,
@@ -153754,8 +153754,8 @@
             "Second Runout Points": 0
         },
         {
-            "Player Points": 186,
-            "Man of the Match": 0,
+            "Player Points": 216,
+            "Man of the Match": 30,
             "Role": "BOWL",
             "Player Batting Points": 0,
             "Runs": 0,
@@ -154785,7 +154785,7 @@
             "Navdeep Saini": 0.0
         },
         {
-            "Total Points": 186.0,
+            "Total Points": 216.0,
             "Booster": "None",
             "Sameer Rizvi": 0.0,
             "Shubman Gill": 0.0,
@@ -154812,7 +154812,7 @@
             "Pathum Nissanka": 0.0,
             "Phil Salt": 0.0,
             "RS Ambrish": 0.0,
-            "Kagiso Rabada": 186.0,
+            "Kagiso Rabada": 216.0,
             "Shreyas Iyer": 0.0,
             "Ayush Mhatre": 0.0,
             "Sunil Narine": 0.0,
