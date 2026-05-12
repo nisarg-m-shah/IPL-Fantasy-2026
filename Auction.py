@@ -674,7 +674,8 @@ teams = {
 
 boosters = {
     'Gujju Gang': {'RR vs GT':'Double Power',
-'PBKS vs DC':'Batting Powerplay'
+    'PBKS vs DC':'Batting Powerplay',
+    'GT vs SRH':'Bowling Powerplay'
     },
     'Disruptors': {'SRH vs RR':('Triple Captain','Vaibhav Suryavanshi'),
     'RCB vs DC':'Batting Powerplay',
