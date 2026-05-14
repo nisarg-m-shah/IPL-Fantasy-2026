@@ -689,13 +689,15 @@ boosters = {
     'GT vs RCB':'Bowling Powerplay',
 'LSG vs RCB':'Ultimate Team Booster'
     },
-    'VS Stalwarts': {'LSG vs KKR':'Double Power'
+    'VS Stalwarts': {'LSG vs KKR':'Double Power',
+    'PBKS vs MI':('Triple Captain','Ryan Rickelton')
     },
     'Alpha Acers': {'CSK vs KKR':'Batting Powerplay',
     'MI vs CSK':'Double Power',
     'MI vs LSG':'Ultimate Team Booster'
     },
-    'Hilarious Hooligans': {'DC vs PBKS':('Triple Captain','Prabhsimran Singh')
+    'Hilarious Hooligans': {'DC vs PBKS':('Triple Captain','Prabhsimran Singh'),
+    'PBKS vs MI':'Double Power'
     },
     'Night Watchmen': {'DC vs CSK':'Batting Powerplay',
 'LSG vs RCB':'Bowling Powerplay'
