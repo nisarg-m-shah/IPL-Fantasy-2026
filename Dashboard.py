@@ -1662,8 +1662,8 @@ def show_matches(data):
             
             for mgr_name, row in df_match.iterrows():
                 booster_val = row["Booster"]
-                if isinstance(booster_val,list):
-                    booster_val = 'Triple Captain : '+booster_val[1]
+                if 'Triple Captain' in booster_val:
+                    booster_val = 'Triple Captain : '+ booster_val.split("'Triple Captain', '")[-1].split("'")[0]
                 if pd.isna(booster_val) or str(booster_val).lower() in ['nan', 'none', '']:
                     booster_display = '<span style="opacity: 0.4; font-style: italic;">None</span>'
                 else:
