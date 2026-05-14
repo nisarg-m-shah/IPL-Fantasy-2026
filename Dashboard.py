@@ -1427,7 +1427,7 @@ def show_squads(data):
                         font-weight: 900;
                         color: white;
                     ">
-                        {franchise_wins}
+                        {int(franchise_wins)}
                     </div>
                 </div>
                 <div class="metric-card" style="border-left:6px solid #f59e0b; --accent-color: #f59e0b;">
@@ -1662,6 +1662,8 @@ def show_matches(data):
             
             for mgr_name, row in df_match.iterrows():
                 booster_val = row["Booster"]
+                if isinstance(booster_val,list):
+                    booster_val = 'Triple Captain : '+booster_val[1]
                 if pd.isna(booster_val) or str(booster_val).lower() in ['nan', 'none', '']:
                     booster_display = '<span style="opacity: 0.4; font-style: italic;">None</span>'
                 else:
