@@ -410,12 +410,13 @@ teams = {
             'Shivam Mavi',
             'Pathum Nissanka',
             'Phil Salt',
-            'RS Ambrish'
+            'RS Ambrish',
+            'Dian Forrester'
         ],
         'captain': ['Shubman Gill'],
         'vice captain': ['Rajat Patidar'],
         'trump card': ['Vaibhav Suryavanshi'],
-        'replacement': {'Shivam Mavi':'RS Ambrish'},
+        'replacement': {'Shivam Mavi':'RS Ambrish','Jamie Overton':'Dian Forrester'},
         'franchise': "SRH"
     },
 
@@ -485,12 +486,14 @@ teams = {
             'Smaran Ravichandran',
             'Shahbaz Ahmed',
             'Rashid Khan',
-            'Nuwan Thushara'
+            'Nuwan Thushara',
+            'Kuldip Yadav',
+            'Richard Gleeson'
         ],
         'captain': ['Virat Kohli'],
         'vice captain': ['Rashid Khan'],
         'trump card': ['Heinrich Klaasen'],
-        'replacement': {},
+        'replacement': {'Khaleel Ahmed':'Kuldip Yadav','Nuwan Thushara':'Richard Gleeson'},
         'franchise': "DC"
     },
 
@@ -773,7 +776,7 @@ names = [
 
     ,'Gurnoor Brar','Daksh Kamra','Mayank Rawat','Raghu Sharma','Pyla Avanish','Vishnu Vinod','Musheer Khan', 'Praveen Dubey', 'Vishal Nishad', 'Aman Rao Perala', 'Ravi Singh', 'Lhuan-dre Pretorius', 'Yash Raj Punja', 'Jordan Cox', 'Kanishk Chouhan', 'Satwik Deswal', 'Vicky Ostwal', 'Krains Fuletra','Kartik Tyagi', 'George Linde', 'Praful Hinge', 'Sakib Hussain',
 
-    'Dilshan Madushanka','Krish Bhagat','Gerald Coetzee','Akash Madhwal','Himmat Singh','Rehan Ahmed','Keshav Maharaj','RS Ambrish'
+    'Dilshan Madushanka','Krish Bhagat','Gerald Coetzee','Akash Madhwal','Himmat Singh','Rehan Ahmed','Keshav Maharaj','RS Ambrish','Dian Forrester','Kuldip Yadav','Richard Gleeson'
 ]
 
 roles = [
@@ -833,7 +836,7 @@ roles = [
 
     'AR','BOWL','BOWL','BOWL','BOWL','BOWL','BOWL','BOWL','BOWL','BOWL','BOWL','AR','AR','AR','BAT','AR','AR','AR','BOWL','BOWL',
 
-    'AR','AR','BOWL','BAT','BAT','AR','BOWL','BOWL','BAT','BAT','BAT','BOWL','BAT','AR', 'BOWL', 'BOWL', 'BOWL','BOWL','AR','BOWL','BOWL','BOWL','AR','BOWL','BOWL','BAT','AR','BOWL','AR'
+    'AR','AR','BOWL','BAT','BAT','AR','BOWL','BOWL','BAT','BAT','BAT','BOWL','BAT','AR', 'BOWL', 'BOWL', 'BOWL','BOWL','AR','BOWL','BOWL','BOWL','AR','BOWL','BOWL','BAT','AR','BOWL','AR','AR','BOWL','BOWL'
 ]
 
 team_list = [
@@ -852,7 +855,7 @@ squads = {
         'Anshul Kamboj', 'Jamie Overton', 'MS Dhoni', 'Mukesh Choudhary', 
         'Nathan Ellis', 'Noor Ahmad', 'Ramakrishna Ghosh', 'Sanju Samson', 
         'Ruturaj Gaikwad', 'Shivam Dube', 'Ayush Mhatre', 'Dewald Brevis', 
-        'Urvil Patel', 'Khaleel Ahmed', 'Spencer Johnson','Aman Khan','Shreyas Gopal','Akash Madhwal'
+        'Urvil Patel', 'Khaleel Ahmed', 'Spencer Johnson','Aman Khan','Shreyas Gopal','Akash Madhwal','Dian Forrester','Kuldip Yadav'
     ],
     'Delhi Capitals': [
         'Abishek Porel', 'Ashutosh Sharma', 'Axar Patel', 'Dushmantha Chameera', 
@@ -902,7 +905,7 @@ squads = {
         'Bhuvneshwar Kumar', 'Devdutt Padikkal', 'Jacob Bethell', 'Jitesh Sharma', 
         'Josh Hazlewood', 'Krunal Pandya', 'Nuwan Thushara', 'Phil Salt', 
         'Rajat Patidar', 'Rasikh Dar Salam', 'Romario Shepherd', 'Suyash Sharma', 
-        'Swapnil Singh', 'Tim David', 'Virat Kohli','Abhinandan Singh','Jordan Cox','Kanishk Chouhan','Satwik Deswal', 'Vicky Ostwal'
+        'Swapnil Singh', 'Tim David', 'Virat Kohli','Abhinandan Singh','Jordan Cox','Kanishk Chouhan','Satwik Deswal', 'Vicky Ostwal','Richard Gleeson'
     ],
     'Sunrisers Hyderabad': [
         'Abhishek Sharma', 'Aniket Verma', 'Eshan Malinga', 'Harsh Dubey', 
