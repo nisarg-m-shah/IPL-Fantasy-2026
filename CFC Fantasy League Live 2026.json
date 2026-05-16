@@ -1,7 +1,7 @@
 {
     "Team Final Points": {
         "Gujju Gang": {
-            "Total Points": 17992.0,
+            "Total Points": 17994.0,
             "Orange Cap": 0,
             "Purple Cap": 0,
             "MVP": 0,
@@ -67,7 +67,7 @@
             "RCB vs KKR": 2.0,
             "PBKS vs MI": 70,
             "LSG vs CSK": 199.0,
-            "KKR vs GT": 326.0
+            "KKR vs GT": 328.0
         },
         "Night Watchmen": {
             "Total Points": 16202.0,
@@ -890,7 +890,7 @@
             "KKR vs GT": 0
         },
         "Sai Sudharsan": {
-            "Total Points": 1223,
+            "Total Points": 1224,
             "Orange Cap": 0,
             "Purple Cap": 0,
             "MVP": 0,
@@ -954,7 +954,7 @@
             "RCB vs KKR": 0,
             "PBKS vs MI": 0,
             "LSG vs CSK": 0,
-            "KKR vs GT": 138
+            "KKR vs GT": 139
         },
         "Virat Kohli": {
             "Total Points": 1199,
@@ -2163,7 +2163,7 @@
             "KKR vs GT": 0
         },
         "Kartik Tyagi": {
-            "Total Points": 994,
+            "Total Points": 992,
             "Orange Cap": 0,
             "Purple Cap": 0,
             "MVP": 0,
@@ -2227,7 +2227,7 @@
             "RCB vs KKR": 182,
             "PBKS vs MI": 0,
             "LSG vs CSK": 0,
-            "KKR vs GT": -6
+            "KKR vs GT": -8
         },
         "Krunal Pandya": {
             "Total Points": 984,
@@ -165401,7 +165401,7 @@
             "Second Runout Points": 0
         },
         {
-            "Player Points": -6,
+            "Player Points": -8,
             "Man of the Match": 0,
             "Role": "BOWL",
             "Player Batting Points": 0,
@@ -165415,14 +165415,14 @@
             "Strike Rate Points": 0,
             "Duck Points": 0,
             "Batting Milestone Points": 0,
-            "Player Bowling Points": -6,
+            "Player Bowling Points": -8,
             "Maidens": 0,
             "Maidens Points": 0,
             "Wickets": 0,
             "Wicket Points": 0,
-            "Dots": 7,
-            "Dot Points": 14,
-            "Economy": 14.5,
+            "Dots": 6,
+            "Dot Points": 12,
+            "Economy": 14.75,
             "Economy Points": -20,
             "Bowled Wickets": 0,
             "Bowled Wickets Points": 0,
@@ -165830,17 +165830,17 @@
             "Second Runout Points": 0
         },
         {
-            "Player Points": 138,
+            "Player Points": 139,
             "Man of the Match": 0,
             "Role": "AR",
-            "Player Batting Points": 138,
-            "Runs": 52,
-            "Runs Points": 52,
+            "Player Batting Points": 139,
+            "Runs": 53,
+            "Runs Points": 53,
             "Fours": 6,
             "Fours Points": 12,
             "Sixes": 3,
             "Sixes Points": 9,
-            "Strike Rate": 185.71,
+            "Strike Rate": 189.29,
             "Strike Rate Points": 40,
             "Duck Points": 0,
             "Batting Milestone Points": 25,
@@ -166801,7 +166801,7 @@
             "Navdeep Saini": 0.0
         },
         {
-            "Total Points": 326.0,
+            "Total Points": 328.0,
             "Booster": "None",
             "Sameer Rizvi": 0.0,
             "Shubman Gill": 0.0,
@@ -166929,7 +166929,7 @@
             "Marco Jansen": 0.0,
             "Akeal Hosein": 0.0,
             "Ravi Bishnoi": 0.0,
-            "Sai Sudharsan": 276.0,
+            "Sai Sudharsan": 278.0,
             "Jaydev Unadkat": 0.0,
             "Kuldeep Yadav": 0.0,
             "Eshan Malinga": 0.0,
