@@ -678,7 +678,8 @@ teams = {
 boosters = {
     'Gujju Gang': {'RR vs GT':'Double Power',
     'PBKS vs DC':'Batting Powerplay',
-    'GT vs SRH':'Bowling Powerplay'
+    'GT vs SRH':'Bowling Powerplay',
+'DC vs RR':('Triple Captain','KL Rahul')
     },
     'Disruptors': {'SRH vs RR':('Triple Captain','Vaibhav Suryavanshi'),
     'RCB vs DC':'Batting Powerplay',
@@ -693,7 +694,8 @@ boosters = {
 'LSG vs RCB':'Ultimate Team Booster'
     },
     'VS Stalwarts': {'LSG vs KKR':'Double Power',
-    'PBKS vs MI':('Triple Captain','Ryan Rickelton')
+    'PBKS vs MI':('Triple Captain','Ryan Rickelton'),
+'DC vs RR':'Bowling Powerplay'
     },
     'Alpha Acers': {'CSK vs KKR':'Batting Powerplay',
     'MI vs CSK':'Double Power',
