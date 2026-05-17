@@ -700,7 +700,8 @@ boosters = {
     'MI vs LSG':'Ultimate Team Booster'
     },
     'Hilarious Hooligans': {'DC vs PBKS':('Triple Captain','Prabhsimran Singh'),
-    'PBKS vs MI':'Double Power'
+    'PBKS vs MI':'Double Power',
+    'PBKS vs RCB':'Ultimate Team Booster'
     },
     'Night Watchmen': {'DC vs CSK':'Batting Powerplay',
 'LSG vs RCB':'Bowling Powerplay'
