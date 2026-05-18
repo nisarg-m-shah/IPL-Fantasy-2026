@@ -687,7 +687,8 @@ boosters = {
     'DC vs CSK':"Bowling Powerplay",
     'CSK vs SRH':'Double Power'
     },
-    'Tormented Titans': {'CSK vs LSG':'Batting Powerplay'
+    'Tormented Titans': {'CSK vs LSG':'Batting Powerplay',
+    'CSK vs SRH':'Ultimate Team Booster'
     },
     'Nasty Knights': {'KKR vs RR':'Double Power',
     'GT vs RCB':'Bowling Powerplay',
