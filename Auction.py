@@ -679,7 +679,8 @@ boosters = {
     'Gujju Gang': {'RR vs GT':'Double Power',
     'PBKS vs DC':'Batting Powerplay',
     'GT vs SRH':'Bowling Powerplay',
-'DC vs RR':('Triple Captain','KL Rahul')
+'DC vs RR':('Triple Captain','KL Rahul'),
+'Final':'Ultimate Team Booster'
     },
     'Disruptors': {'SRH vs RR':('Triple Captain','Vaibhav Suryavanshi'),
     'RCB vs DC':'Batting Powerplay',
@@ -709,7 +710,8 @@ boosters = {
     'KKR vs MI':'Batting Powerplay'
     },
     'Night Watchmen': {'DC vs CSK':'Batting Powerplay',
-'LSG vs RCB':'Bowling Powerplay'
+'LSG vs RCB':'Bowling Powerplay',
+'SRH vs RCB':('Triple Captain','Virat Kohli'),
     }
 }
 
