@@ -694,24 +694,29 @@ boosters = {
     'Nasty Knights': {'KKR vs RR':'Double Power',
     'GT vs RCB':'Bowling Powerplay',
 'LSG vs RCB':'Ultimate Team Booster',
-'KKR vs MI':'Batting Powerplay'
+'KKR vs MI':'Batting Powerplay',
+'Qualifier 1':('Triple Captain','Kagiso Rabada')
     },
     'VS Stalwarts': {'LSG vs KKR':'Double Power',
     'PBKS vs MI':('Triple Captain','Ryan Rickelton'),
-'DC vs RR':'Bowling Powerplay'
+'DC vs RR':'Bowling Powerplay',
+'KKR vs DC':'Ultimate Team Booster'
     },
     'Alpha Acers': {'CSK vs KKR':'Batting Powerplay',
     'MI vs CSK':'Double Power',
-    'MI vs LSG':'Ultimate Team Booster'
+    'MI vs LSG':'Ultimate Team Booster',
+    'LSG vs PBKS':'Bowling Powerplay'
     },
     'Hilarious Hooligans': {'DC vs PBKS':('Triple Captain','Prabhsimran Singh'),
     'PBKS vs MI':'Double Power',
     'PBKS vs RCB':'Ultimate Team Booster',
-    'KKR vs MI':'Batting Powerplay'
+    'KKR vs MI':'Batting Powerplay',
+    'LSG vs PBKS':'Bowling Powerplay'
     },
     'Night Watchmen': {'DC vs CSK':'Batting Powerplay',
 'LSG vs RCB':'Bowling Powerplay',
 'SRH vs RCB':('Triple Captain','Virat Kohli'),
+'KKR vs DC':'Ultimate Team Booster'
     }
 }
 
