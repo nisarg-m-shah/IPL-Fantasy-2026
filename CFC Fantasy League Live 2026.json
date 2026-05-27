@@ -163,7 +163,7 @@
             "Eliminator": 0.0
         },
         "Disruptors": {
-            "Total Points": 18999.0,
+            "Total Points": 19062.0,
             "Orange Cap": 0,
             "Purple Cap": 0,
             "MVP": 0,
@@ -241,7 +241,7 @@
             "Franchise Wins": 9,
             "Emerging Player": 0,
             "Qualifier 1": 710.5,
-            "Eliminator": 564.0
+            "Eliminator": 627.0
         },
         "Night Watchmen": {
             "Total Points": 18896.5,
@@ -888,7 +888,7 @@
             "Eliminator": 0
         },
         "Vaibhav Suryavanshi": {
-            "Total Points": 1600,
+            "Total Points": 1621,
             "Orange Cap": 0,
             "Purple Cap": 0,
             "MVP": 0,
@@ -964,7 +964,7 @@
             "KKR vs DC": 0,
             "Emerging Player": 0,
             "Qualifier 1": 0,
-            "Eliminator": 188
+            "Eliminator": 209
         },
         "Jofra Archer": {
             "Total Points": 1561,
@@ -201019,17 +201019,17 @@
             "Second Runout Points": 0
         },
         {
-            "Player Points": 188,
+            "Player Points": 209,
             "Man of the Match": 0,
             "Role": "BAT",
-            "Player Batting Points": 188,
-            "Runs": 77,
-            "Runs Points": 77,
-            "Fours": 3,
-            "Fours Points": 6,
-            "Sixes": 10,
-            "Sixes Points": 30,
-            "Strike Rate": 320.83,
+            "Player Batting Points": 209,
+            "Runs": 91,
+            "Runs Points": 91,
+            "Fours": 5,
+            "Fours Points": 10,
+            "Sixes": 11,
+            "Sixes Points": 33,
+            "Strike Rate": 337.04,
             "Strike Rate Points": 40,
             "Duck Points": 0,
             "Batting Milestone Points": 35,
@@ -201079,7 +201079,7 @@
             "Wicket Points": 0,
             "Dots": 3,
             "Dot Points": 6,
-            "Economy": 10.5,
+            "Economy": 17.4,
             "Economy Points": 0,
             "Bowled Wickets": 0,
             "Bowled Wickets Points": 0,
@@ -201138,14 +201138,14 @@
     ],
     "Eliminator - CFC Points": [
         {
-            "Total Points": 564.0,
+            "Total Points": 627.0,
             "Booster": "None",
             "Sameer Rizvi": 0.0,
             "Shubman Gill": 0.0,
             "Travis Head": 0.0,
             "Jacob Duffy": 0.0,
             "Rajat Patidar": 0.0,
-            "Vaibhav Suryavanshi": 564.0,
+            "Vaibhav Suryavanshi": 627.0,
             "Abishek Porel": 0.0,
             "Rasikh Dar Salam": 0.0,
             "Nehal Wadhera": 0.0,
