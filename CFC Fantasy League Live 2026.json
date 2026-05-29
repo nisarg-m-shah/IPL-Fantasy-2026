@@ -1,7 +1,7 @@
 {
     "Team Final Points": {
         "Gujju Gang": {
-            "Total Points": 21401.5,
+            "Total Points": 21418.0,
             "Orange Cap": 0,
             "Purple Cap": 0,
             "MVP": 0,
@@ -80,10 +80,10 @@
             "Emerging Player": 0,
             "Qualifier 1": 140.0,
             "Eliminator": 346.5,
-            "Qualifier 2": 48.5
+            "Qualifier 2": 65.0
         },
         "Disruptors": {
-            "Total Points": 20777.0,
+            "Total Points": 20795.0,
             "Orange Cap": 500,
             "Purple Cap": 0,
             "MVP": 750,
@@ -162,7 +162,7 @@
             "Emerging Player": 0,
             "Qualifier 1": 710.5,
             "Eliminator": 838.0,
-            "Qualifier 2": 254.0
+            "Qualifier 2": 272.0
         },
         "Nasty Knights": {
             "Total Points": 19396.0,
@@ -659,7 +659,7 @@
     },
     "Player Final Points": {
         "Vaibhav Suryavanshi": {
-            "Total Points": 2998,
+            "Total Points": 3004,
             "Orange Cap": 500,
             "Purple Cap": 0,
             "MVP": 750,
@@ -736,7 +736,7 @@
             "Emerging Player": 0,
             "Qualifier 1": 0,
             "Eliminator": 258,
-            "Qualifier 2": 78
+            "Qualifier 2": 84
         },
         "Bhuvneshwar Kumar": {
             "Total Points": 2240,
@@ -2579,7 +2579,7 @@
             "Qualifier 2": 0
         },
         "Mohammad Siraj": {
-            "Total Points": 1179,
+            "Total Points": 1185,
             "Orange Cap": 0,
             "Purple Cap": 0,
             "MVP": 0,
@@ -2656,7 +2656,7 @@
             "Emerging Player": 0,
             "Qualifier 1": -30,
             "Eliminator": 0,
-            "Qualifier 2": 28
+            "Qualifier 2": 34
         },
         "Devdutt Padikkal": {
             "Total Points": 1178,
@@ -2979,7 +2979,7 @@
             "Qualifier 2": 0
         },
         "Ravindra Jadeja": {
-            "Total Points": 1119,
+            "Total Points": 1126,
             "Orange Cap": 0,
             "Purple Cap": 0,
             "MVP": 0,
@@ -3056,7 +3056,7 @@
             "Emerging Player": 0,
             "Qualifier 1": 0,
             "Eliminator": 149,
-            "Qualifier 2": 7
+            "Qualifier 2": 14
         },
         "Jamie Overton": {
             "Total Points": 1100,
@@ -203872,17 +203872,17 @@
             "Second Runout Points": 0
         },
         {
-            "Player Points": 7,
+            "Player Points": 14,
             "Man of the Match": 0,
             "Role": "AR",
-            "Player Batting Points": 7,
-            "Runs": 5,
-            "Runs Points": 5,
-            "Fours": 1,
-            "Fours Points": 2,
+            "Player Batting Points": 14,
+            "Runs": 10,
+            "Runs Points": 10,
+            "Fours": 2,
+            "Fours Points": 4,
             "Sixes": 0,
             "Sixes Points": 0,
-            "Strike Rate": 250.0,
+            "Strike Rate": 200.0,
             "Strike Rate Points": 0,
             "Duck Points": 0,
             "Batting Milestone Points": 0,
@@ -203911,7 +203911,7 @@
             "Second Runout Points": 0
         },
         {
-            "Player Points": 28,
+            "Player Points": 34,
             "Man of the Match": 0,
             "Role": "BOWL",
             "Player Batting Points": 0,
@@ -203925,14 +203925,14 @@
             "Strike Rate Points": 0,
             "Duck Points": 0,
             "Batting Milestone Points": 0,
-            "Player Bowling Points": 28,
+            "Player Bowling Points": 34,
             "Maidens": 0,
             "Maidens Points": 0,
             "Wickets": 1,
             "Wicket Points": 30,
-            "Dots": 4,
-            "Dot Points": 8,
-            "Economy": 12.0,
+            "Dots": 7,
+            "Dot Points": 14,
+            "Economy": 11.0,
             "Economy Points": -10,
             "Bowled Wickets": 0,
             "Bowled Wickets Points": 0,
@@ -203950,17 +203950,17 @@
             "Second Runout Points": 0
         },
         {
-            "Player Points": 78,
+            "Player Points": 84,
             "Man of the Match": 0,
             "Role": "BAT",
-            "Player Batting Points": 78,
-            "Runs": 27,
-            "Runs Points": 27,
-            "Fours": 4,
-            "Fours Points": 8,
+            "Player Batting Points": 84,
+            "Runs": 31,
+            "Runs Points": 31,
+            "Fours": 5,
+            "Fours Points": 10,
             "Sixes": 1,
             "Sixes Points": 3,
-            "Strike Rate": 192.86,
+            "Strike Rate": 182.35,
             "Strike Rate Points": 40,
             "Duck Points": 0,
             "Batting Milestone Points": 0,
@@ -203991,14 +203991,14 @@
     ],
     "Qualifier 2 - CFC Points": [
         {
-            "Total Points": 254.0,
+            "Total Points": 272.0,
             "Booster": "None",
             "Sameer Rizvi": 0.0,
             "Shubman Gill": 20.0,
             "Travis Head": 0.0,
             "Jacob Duffy": 0.0,
             "Rajat Patidar": 0.0,
-            "Vaibhav Suryavanshi": 234.0,
+            "Vaibhav Suryavanshi": 252.0,
             "Abishek Porel": 0.0,
             "Rasikh Dar Salam": 0.0,
             "Nehal Wadhera": 0.0,
@@ -204843,7 +204843,7 @@
             "Navdeep Saini": 0.0
         },
         {
-            "Total Points": 48.5,
+            "Total Points": 65.0,
             "Booster": "None",
             "Sameer Rizvi": 0.0,
             "Shubman Gill": 0.0,
@@ -204964,10 +204964,10 @@
             "Harshal Patel": 0.0,
             "Ben Duckett": 0.0,
             "Hardik Pandya": 0.0,
-            "Ravindra Jadeja": 10.5,
+            "Ravindra Jadeja": 21.0,
             "Prasidh Krishna": 10.0,
             "Prashant Veer": 0.0,
-            "Mohammad Siraj": 28.0,
+            "Mohammad Siraj": 34.0,
             "Marco Jansen": 0.0,
             "Akeal Hosein": 0.0,
             "Ravi Bishnoi": 0.0,
