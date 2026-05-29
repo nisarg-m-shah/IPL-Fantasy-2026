@@ -1,7 +1,7 @@
 {
     "Team Final Points": {
         "Gujju Gang": {
-            "Total Points": 21530.0,
+            "Total Points": 21531.5,
             "Orange Cap": 0,
             "Purple Cap": 0,
             "MVP": 0,
@@ -80,7 +80,7 @@
             "Emerging Player": 0,
             "Qualifier 1": 140.0,
             "Eliminator": 346.5,
-            "Qualifier 2": 177.0
+            "Qualifier 2": 178.5
         },
         "Disruptors": {
             "Total Points": 20774.0,
@@ -411,7 +411,7 @@
             "Qualifier 2": 0.0
         },
         "Hilarious Hooligans": {
-            "Total Points": 16325.5,
+            "Total Points": 16327.5,
             "Orange Cap": 0,
             "Purple Cap": 0,
             "MVP": 0,
@@ -490,7 +490,7 @@
             "Emerging Player": 0,
             "Qualifier 1": 255.0,
             "Eliminator": 176.0,
-            "Qualifier 2": 6.0
+            "Qualifier 2": 8.0
         },
         "Alpha Acers": {
             "Total Points": 14938.5,
@@ -2499,7 +2499,7 @@
             "Qualifier 2": 0
         },
         "Jason Holder": {
-            "Total Points": 1207,
+            "Total Points": 1209,
             "Orange Cap": 0,
             "Purple Cap": 0,
             "MVP": 0,
@@ -2576,10 +2576,10 @@
             "Emerging Player": 0,
             "Qualifier 1": 100,
             "Eliminator": 0,
-            "Qualifier 2": 6
+            "Qualifier 2": 8
         },
         "Ravindra Jadeja": {
-            "Total Points": 1198,
+            "Total Points": 1199,
             "Orange Cap": 0,
             "Purple Cap": 0,
             "MVP": 0,
@@ -2656,7 +2656,7 @@
             "Emerging Player": 0,
             "Qualifier 1": 0,
             "Eliminator": 149,
-            "Qualifier 2": 86
+            "Qualifier 2": 87
         },
         "Mohammad Siraj": {
             "Total Points": 1185,
@@ -203872,7 +203872,7 @@
             "Second Runout Points": 0
         },
         {
-            "Player Points": 6,
+            "Player Points": 8,
             "Man of the Match": 0,
             "Role": "AR",
             "Player Batting Points": 0,
@@ -203886,13 +203886,13 @@
             "Strike Rate Points": 0,
             "Duck Points": 0,
             "Batting Milestone Points": 0,
-            "Player Bowling Points": 6,
+            "Player Bowling Points": 8,
             "Maidens": 0,
             "Maidens Points": 0,
             "Wickets": 0,
             "Wicket Points": 0,
-            "Dots": 3,
-            "Dot Points": 6,
+            "Dots": 4,
+            "Dot Points": 8,
             "Economy": 6.0,
             "Economy Points": 0,
             "Bowled Wickets": 0,
@@ -203989,17 +203989,17 @@
             "Second Runout Points": 0
         },
         {
-            "Player Points": 86,
+            "Player Points": 87,
             "Man of the Match": 0,
             "Role": "AR",
-            "Player Batting Points": 86,
-            "Runs": 33,
-            "Runs Points": 33,
+            "Player Batting Points": 87,
+            "Runs": 34,
+            "Runs Points": 34,
             "Fours": 5,
             "Fours Points": 10,
             "Sixes": 1,
             "Sixes Points": 3,
-            "Strike Rate": 183.33,
+            "Strike Rate": 178.95,
             "Strike Rate Points": 40,
             "Duck Points": 0,
             "Batting Milestone Points": 0,
@@ -204077,7 +204077,7 @@
             "Fours Points": 10,
             "Sixes": 1,
             "Sixes Points": 3,
-            "Strike Rate": 170.0,
+            "Strike Rate": 161.9,
             "Strike Rate Points": 30,
             "Duck Points": 0,
             "Batting Milestone Points": 0,
@@ -204747,7 +204747,7 @@
             "Navdeep Saini": 0.0
         },
         {
-            "Total Points": 6.0,
+            "Total Points": 8.0,
             "Booster": "None",
             "Sameer Rizvi": 0.0,
             "Shubman Gill": 0.0,
@@ -204845,7 +204845,7 @@
             "Swapnil Singh": 0.0,
             "Manimaran Siddharth": 0.0,
             "Axar Patel": 0.0,
-            "Jason Holder": 6.0,
+            "Jason Holder": 8.0,
             "Romario Shepherd": 0.0,
             "Rahul Tewatia": 0.0,
             "Lockie Ferguson": 0.0,
@@ -204960,7 +204960,7 @@
             "Navdeep Saini": 0.0
         },
         {
-            "Total Points": 177.0,
+            "Total Points": 178.5,
             "Booster": "None",
             "Sameer Rizvi": 0.0,
             "Shubman Gill": 0.0,
@@ -205081,7 +205081,7 @@
             "Harshal Patel": 0.0,
             "Ben Duckett": 0.0,
             "Hardik Pandya": 0.0,
-            "Ravindra Jadeja": 129.0,
+            "Ravindra Jadeja": 130.5,
             "Prasidh Krishna": 14.0,
             "Prashant Veer": 0.0,
             "Mohammad Siraj": 34.0,
