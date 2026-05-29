@@ -83,7 +83,7 @@
             "Qualifier 2": 211.5
         },
         "Disruptors": {
-            "Total Points": 20945.0,
+            "Total Points": 21011.0,
             "Orange Cap": 500,
             "Purple Cap": 0,
             "MVP": 750,
@@ -162,7 +162,7 @@
             "Emerging Player": 0,
             "Qualifier 1": 710.5,
             "Eliminator": 838.0,
-            "Qualifier 2": 422.0
+            "Qualifier 2": 488.0
         },
         "Nasty Knights": {
             "Total Points": 19404.0,
@@ -659,7 +659,7 @@
     },
     "Player Final Points": {
         "Vaibhav Suryavanshi": {
-            "Total Points": 3054,
+            "Total Points": 3076,
             "Orange Cap": 500,
             "Purple Cap": 0,
             "MVP": 750,
@@ -736,7 +736,7 @@
             "Emerging Player": 0,
             "Qualifier 1": 0,
             "Eliminator": 258,
-            "Qualifier 2": 134
+            "Qualifier 2": 156
         },
         "Bhuvneshwar Kumar": {
             "Total Points": 2240,
@@ -204166,7 +204166,7 @@
             "Wicket Points": 30,
             "Dots": 7,
             "Dot Points": 14,
-            "Economy": 11.0,
+            "Economy": 12.0,
             "Economy Points": -10,
             "Bowled Wickets": 0,
             "Bowled Wickets Points": 0,
@@ -204223,18 +204223,18 @@
             "Second Runout Points": 0
         },
         {
-            "Player Points": 134,
+            "Player Points": 156,
             "Man of the Match": 0,
             "Role": "BAT",
-            "Player Batting Points": 134,
-            "Runs": 58,
-            "Runs Points": 58,
+            "Player Batting Points": 156,
+            "Runs": 67,
+            "Runs Points": 67,
             "Fours": 6,
             "Fours Points": 12,
-            "Sixes": 3,
-            "Sixes Points": 9,
-            "Strike Rate": 170.59,
-            "Strike Rate Points": 30,
+            "Sixes": 4,
+            "Sixes Points": 12,
+            "Strike Rate": 181.08,
+            "Strike Rate Points": 40,
             "Duck Points": 0,
             "Batting Milestone Points": 25,
             "Player Bowling Points": 0,
@@ -204264,14 +204264,14 @@
     ],
     "Qualifier 2 - CFC Points": [
         {
-            "Total Points": 422.0,
+            "Total Points": 488.0,
             "Booster": "None",
             "Sameer Rizvi": 0.0,
             "Shubman Gill": 20.0,
             "Travis Head": 0.0,
             "Jacob Duffy": 0.0,
             "Rajat Patidar": 0.0,
-            "Vaibhav Suryavanshi": 402.0,
+            "Vaibhav Suryavanshi": 468.0,
             "Abishek Porel": 0.0,
             "Rasikh Dar Salam": 0.0,
             "Nehal Wadhera": 0.0,
