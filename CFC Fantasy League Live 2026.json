@@ -83,7 +83,7 @@
             "Qualifier 2": 519.5
         },
         "Disruptors": {
-            "Total Points": 21581.0,
+            "Total Points": 21627.0,
             "Orange Cap": 500,
             "Purple Cap": 0,
             "MVP": 750,
@@ -162,7 +162,7 @@
             "Emerging Player": 0,
             "Qualifier 1": 710.5,
             "Eliminator": 838.0,
-            "Qualifier 2": 1058.0
+            "Qualifier 2": 1104.0
         },
         "Nasty Knights": {
             "Total Points": 19478.0,
@@ -575,7 +575,7 @@
             "Qualifier 2": 1.5
         },
         "Tormented Titans": {
-            "Total Points": 13797.0,
+            "Total Points": 13806.0,
             "Orange Cap": 0,
             "Purple Cap": 0,
             "MVP": 0,
@@ -654,7 +654,7 @@
             "Emerging Player": 0,
             "Qualifier 1": 417.0,
             "Eliminator": 44.0,
-            "Qualifier 2": 138.0
+            "Qualifier 2": 147.0
         }
     },
     "Player Final Points": {
@@ -979,7 +979,7 @@
             "Qualifier 2": -6
         },
         "Shubman Gill": {
-            "Total Points": 1659,
+            "Total Points": 1682,
             "Orange Cap": 0,
             "Purple Cap": 0,
             "MVP": 0,
@@ -1056,7 +1056,7 @@
             "Emerging Player": 0,
             "Qualifier 1": 12,
             "Eliminator": 0,
-            "Qualifier 2": 217
+            "Qualifier 2": 240
         },
         "Sai Sudharsan": {
             "Total Points": 1601,
@@ -1459,7 +1459,7 @@
             "Qualifier 2": 0
         },
         "Jos Buttler": {
-            "Total Points": 1396,
+            "Total Points": 1419,
             "Orange Cap": 0,
             "Purple Cap": 0,
             "MVP": 0,
@@ -1536,7 +1536,7 @@
             "Emerging Player": 0,
             "Qualifier 1": 93,
             "Eliminator": 0,
-            "Qualifier 2": 0
+            "Qualifier 2": 23
         },
         "KL Rahul": {
             "Total Points": 1378,
@@ -203911,20 +203911,59 @@
             "Second Runout Points": 0
         },
         {
-            "Player Points": 217,
+            "Player Points": 23,
             "Man of the Match": 0,
             "Role": "BAT",
-            "Player Batting Points": 207,
-            "Runs": 95,
-            "Runs Points": 95,
-            "Fours": 14,
-            "Fours Points": 28,
+            "Player Batting Points": 3,
+            "Runs": 3,
+            "Runs Points": 3,
+            "Fours": 0,
+            "Fours Points": 0,
+            "Sixes": 0,
+            "Sixes Points": 0,
+            "Strike Rate": 150.0,
+            "Strike Rate Points": 0,
+            "Duck Points": 0,
+            "Batting Milestone Points": 0,
+            "Player Bowling Points": 0,
+            "Maidens": 0,
+            "Maidens Points": 0,
+            "Wickets": 0,
+            "Wicket Points": 0,
+            "Dots": 0,
+            "Dot Points": 0,
+            "Economy": 0.0,
+            "Economy Points": 0,
+            "Bowled Wickets": 0,
+            "Bowled Wickets Points": 0,
+            "LBW Wickets": 0,
+            "LBW Wickets Points": 0,
+            "Bowling Milestone Points": 0,
+            "Player Fielding Points": 20,
+            "Catches": 2,
+            "Catching Points": 20,
+            "Stumpings": 0,
+            "Stumping Points": 0,
+            "Main Runouts": 0,
+            "Direct Runout Points": 0,
+            "Secondary Runouts": 0,
+            "Second Runout Points": 0
+        },
+        {
+            "Player Points": 240,
+            "Man of the Match": 0,
+            "Role": "BAT",
+            "Player Batting Points": 230,
+            "Runs": 101,
+            "Runs Points": 101,
+            "Fours": 15,
+            "Fours Points": 30,
             "Sixes": 3,
             "Sixes Points": 9,
-            "Strike Rate": 211.11,
+            "Strike Rate": 210.42,
             "Strike Rate Points": 40,
             "Duck Points": 0,
-            "Batting Milestone Points": 35,
+            "Batting Milestone Points": 50,
             "Player Bowling Points": 0,
             "Maidens": 0,
             "Maidens Points": 0,
@@ -204166,7 +204205,7 @@
             "Wicket Points": 30,
             "Dots": 5,
             "Dot Points": 10,
-            "Economy": 9.88,
+            "Economy": 10.0,
             "Economy Points": 5,
             "Bowled Wickets": 0,
             "Bowled Wickets Points": 0,
@@ -204283,7 +204322,7 @@
             "Wicket Points": 0,
             "Dots": 0,
             "Dot Points": 0,
-            "Economy": 19.0,
+            "Economy": 15.6,
             "Economy Points": 0,
             "Bowled Wickets": 0,
             "Bowled Wickets Points": 0,
@@ -204537,10 +204576,10 @@
     ],
     "Qualifier 2 - CFC Points": [
         {
-            "Total Points": 1058.0,
+            "Total Points": 1104.0,
             "Booster": "None",
             "Sameer Rizvi": 0.0,
-            "Shubman Gill": 434.0,
+            "Shubman Gill": 480.0,
             "Travis Head": 0.0,
             "Jacob Duffy": 0.0,
             "Rajat Patidar": 0.0,
@@ -205602,7 +205641,7 @@
             "Navdeep Saini": 0.0
         },
         {
-            "Total Points": 138.0,
+            "Total Points": 147.0,
             "Booster": "None",
             "Sameer Rizvi": 0.0,
             "Shubman Gill": 0.0,
@@ -205748,7 +205787,7 @@
             "Tushar Deshpande": -16.0,
             "Vaibhav Arora": 0.0,
             "Corbin Bosch": 0.0,
-            "Jos Buttler": 60.0,
+            "Jos Buttler": 69.0,
             "Venkatesh Iyer": 0.0,
             "Donovan Ferreira": 94.0,
             "Azmatullah Omarzai": 0.0,
