@@ -83,7 +83,7 @@
             "Qualifier 2": 217.5
         },
         "Disruptors": {
-            "Total Points": 21011.0,
+            "Total Points": 21029.0,
             "Orange Cap": 500,
             "Purple Cap": 0,
             "MVP": 750,
@@ -162,7 +162,7 @@
             "Emerging Player": 0,
             "Qualifier 1": 710.5,
             "Eliminator": 838.0,
-            "Qualifier 2": 488.0
+            "Qualifier 2": 506.0
         },
         "Nasty Knights": {
             "Total Points": 19404.0,
@@ -411,7 +411,7 @@
             "Qualifier 2": 10.0
         },
         "Hilarious Hooligans": {
-            "Total Points": 16468.5,
+            "Total Points": 16465.5,
             "Orange Cap": 0,
             "Purple Cap": 0,
             "MVP": 0,
@@ -490,7 +490,7 @@
             "Emerging Player": 0,
             "Qualifier 1": 255.0,
             "Eliminator": 176.0,
-            "Qualifier 2": 149.0
+            "Qualifier 2": 146.0
         },
         "Alpha Acers": {
             "Total Points": 14938.5,
@@ -659,7 +659,7 @@
     },
     "Player Final Points": {
         "Vaibhav Suryavanshi": {
-            "Total Points": 3076,
+            "Total Points": 3082,
             "Orange Cap": 500,
             "Purple Cap": 0,
             "MVP": 750,
@@ -736,7 +736,7 @@
             "Emerging Player": 0,
             "Qualifier 1": 0,
             "Eliminator": 258,
-            "Qualifier 2": 156
+            "Qualifier 2": 162
         },
         "Bhuvneshwar Kumar": {
             "Total Points": 2240,
@@ -1699,7 +1699,7 @@
             "Qualifier 2": 0
         },
         "Jason Holder": {
-            "Total Points": 1350,
+            "Total Points": 1347,
             "Orange Cap": 0,
             "Purple Cap": 0,
             "MVP": 0,
@@ -1776,7 +1776,7 @@
             "Emerging Player": 0,
             "Qualifier 1": 100,
             "Eliminator": 0,
-            "Qualifier 2": 149
+            "Qualifier 2": 146
         },
         "Rashid Khan": {
             "Total Points": 1340,
@@ -203950,7 +203950,7 @@
             "Second Runout Points": 0
         },
         {
-            "Player Points": 149,
+            "Player Points": 146,
             "Man of the Match": 0,
             "Role": "AR",
             "Player Batting Points": 0,
@@ -203964,15 +203964,15 @@
             "Strike Rate Points": 0,
             "Duck Points": 0,
             "Batting Milestone Points": 0,
-            "Player Bowling Points": 149,
+            "Player Bowling Points": 146,
             "Maidens": 0,
             "Maidens Points": 0,
             "Wickets": 2,
             "Wicket Points": 60,
-            "Dots": 12,
-            "Dot Points": 24,
-            "Economy": 3.67,
-            "Economy Points": 40,
+            "Dots": 13,
+            "Dot Points": 26,
+            "Economy": 4.5,
+            "Economy Points": 35,
             "Bowled Wickets": 0,
             "Bowled Wickets Points": 0,
             "LBW Wickets": 0,
@@ -204223,17 +204223,17 @@
             "Second Runout Points": 0
         },
         {
-            "Player Points": 156,
+            "Player Points": 162,
             "Man of the Match": 0,
             "Role": "BAT",
-            "Player Batting Points": 156,
-            "Runs": 67,
-            "Runs Points": 67,
-            "Fours": 6,
-            "Fours Points": 12,
+            "Player Batting Points": 162,
+            "Runs": 71,
+            "Runs Points": 71,
+            "Fours": 7,
+            "Fours Points": 14,
             "Sixes": 4,
             "Sixes Points": 12,
-            "Strike Rate": 181.08,
+            "Strike Rate": 182.05,
             "Strike Rate Points": 40,
             "Duck Points": 0,
             "Batting Milestone Points": 25,
@@ -204264,14 +204264,14 @@
     ],
     "Qualifier 2 - CFC Points": [
         {
-            "Total Points": 488.0,
+            "Total Points": 506.0,
             "Booster": "None",
             "Sameer Rizvi": 0.0,
             "Shubman Gill": 20.0,
             "Travis Head": 0.0,
             "Jacob Duffy": 0.0,
             "Rajat Patidar": 0.0,
-            "Vaibhav Suryavanshi": 468.0,
+            "Vaibhav Suryavanshi": 486.0,
             "Abishek Porel": 0.0,
             "Rasikh Dar Salam": 0.0,
             "Nehal Wadhera": 0.0,
@@ -204903,7 +204903,7 @@
             "Navdeep Saini": 0.0
         },
         {
-            "Total Points": 149.0,
+            "Total Points": 146.0,
             "Booster": "None",
             "Sameer Rizvi": 0.0,
             "Shubman Gill": 0.0,
@@ -205001,7 +205001,7 @@
             "Swapnil Singh": 0.0,
             "Manimaran Siddharth": 0.0,
             "Axar Patel": 0.0,
-            "Jason Holder": 149.0,
+            "Jason Holder": 146.0,
             "Romario Shepherd": 0.0,
             "Rahul Tewatia": 0.0,
             "Lockie Ferguson": 0.0,
