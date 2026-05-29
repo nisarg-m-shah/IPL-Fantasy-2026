@@ -1,7 +1,7 @@
 {
     "Team Final Points": {
         "Gujju Gang": {
-            "Total Points": 21576.5,
+            "Total Points": 21578.0,
             "Orange Cap": 0,
             "Purple Cap": 0,
             "MVP": 0,
@@ -80,10 +80,10 @@
             "Emerging Player": 0,
             "Qualifier 1": 140.0,
             "Eliminator": 346.5,
-            "Qualifier 2": 223.5
+            "Qualifier 2": 225.0
         },
         "Disruptors": {
-            "Total Points": 20834.0,
+            "Total Points": 20912.0,
             "Orange Cap": 500,
             "Purple Cap": 0,
             "MVP": 750,
@@ -162,7 +162,7 @@
             "Emerging Player": 0,
             "Qualifier 1": 710.5,
             "Eliminator": 838.0,
-            "Qualifier 2": 311.0
+            "Qualifier 2": 389.0
         },
         "Nasty Knights": {
             "Total Points": 19400.0,
@@ -659,7 +659,7 @@
     },
     "Player Final Points": {
         "Vaibhav Suryavanshi": {
-            "Total Points": 3017,
+            "Total Points": 3043,
             "Orange Cap": 500,
             "Purple Cap": 0,
             "MVP": 750,
@@ -736,7 +736,7 @@
             "Emerging Player": 0,
             "Qualifier 1": 0,
             "Eliminator": 258,
-            "Qualifier 2": 97
+            "Qualifier 2": 123
         },
         "Bhuvneshwar Kumar": {
             "Total Points": 2240,
@@ -2579,7 +2579,7 @@
             "Qualifier 2": 0
         },
         "Ravindra Jadeja": {
-            "Total Points": 1199,
+            "Total Points": 1200,
             "Orange Cap": 0,
             "Purple Cap": 0,
             "MVP": 0,
@@ -2656,7 +2656,7 @@
             "Emerging Player": 0,
             "Qualifier 1": 0,
             "Eliminator": 149,
-            "Qualifier 2": 87
+            "Qualifier 2": 88
         },
         "Mohammad Siraj": {
             "Total Points": 1185,
@@ -203815,7 +203815,7 @@
             "Wicket Points": 30,
             "Dots": 7,
             "Dot Points": 14,
-            "Economy": 10.88,
+            "Economy": 10.33,
             "Economy Points": 5,
             "Bowled Wickets": 0,
             "Bowled Wickets Points": 0,
@@ -204106,17 +204106,17 @@
             "Second Runout Points": 0
         },
         {
-            "Player Points": 87,
+            "Player Points": 88,
             "Man of the Match": 0,
             "Role": "AR",
-            "Player Batting Points": 87,
-            "Runs": 34,
-            "Runs Points": 34,
+            "Player Batting Points": 88,
+            "Runs": 35,
+            "Runs Points": 35,
             "Fours": 5,
             "Fours Points": 10,
             "Sixes": 1,
             "Sixes Points": 3,
-            "Strike Rate": 178.95,
+            "Strike Rate": 175.0,
             "Strike Rate Points": 40,
             "Duck Points": 0,
             "Batting Milestone Points": 0,
@@ -204223,20 +204223,20 @@
             "Second Runout Points": 0
         },
         {
-            "Player Points": 97,
+            "Player Points": 123,
             "Man of the Match": 0,
             "Role": "BAT",
-            "Player Batting Points": 97,
-            "Runs": 49,
-            "Runs Points": 49,
+            "Player Batting Points": 123,
+            "Runs": 50,
+            "Runs Points": 50,
             "Fours": 6,
             "Fours Points": 12,
             "Sixes": 2,
             "Sixes Points": 6,
-            "Strike Rate": 163.33,
+            "Strike Rate": 161.29,
             "Strike Rate Points": 30,
             "Duck Points": 0,
-            "Batting Milestone Points": 0,
+            "Batting Milestone Points": 25,
             "Player Bowling Points": 0,
             "Maidens": 0,
             "Maidens Points": 0,
@@ -204264,14 +204264,14 @@
     ],
     "Qualifier 2 - CFC Points": [
         {
-            "Total Points": 311.0,
+            "Total Points": 389.0,
             "Booster": "None",
             "Sameer Rizvi": 0.0,
             "Shubman Gill": 20.0,
             "Travis Head": 0.0,
             "Jacob Duffy": 0.0,
             "Rajat Patidar": 0.0,
-            "Vaibhav Suryavanshi": 291.0,
+            "Vaibhav Suryavanshi": 369.0,
             "Abishek Porel": 0.0,
             "Rasikh Dar Salam": 0.0,
             "Nehal Wadhera": 0.0,
@@ -205116,7 +205116,7 @@
             "Navdeep Saini": 0.0
         },
         {
-            "Total Points": 223.5,
+            "Total Points": 225.0,
             "Booster": "None",
             "Sameer Rizvi": 0.0,
             "Shubman Gill": 0.0,
@@ -205237,7 +205237,7 @@
             "Harshal Patel": 0.0,
             "Ben Duckett": 0.0,
             "Hardik Pandya": 0.0,
-            "Ravindra Jadeja": 130.5,
+            "Ravindra Jadeja": 132.0,
             "Prasidh Krishna": 59.0,
             "Prashant Veer": 0.0,
             "Mohammad Siraj": 34.0,
