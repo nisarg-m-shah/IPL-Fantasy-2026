@@ -83,7 +83,7 @@
             "Qualifier 2": 46.0
         },
         "Disruptors": {
-            "Total Points": 20526.0,
+            "Total Points": 20546.0,
             "Orange Cap": 500,
             "Purple Cap": 0,
             "MVP": 750,
@@ -162,10 +162,10 @@
             "Emerging Player": 0,
             "Qualifier 1": 710.5,
             "Eliminator": 838.0,
-            "Qualifier 2": 3.0
+            "Qualifier 2": 23.0
         },
         "Nasty Knights": {
-            "Total Points": 19331.0,
+            "Total Points": 19385.0,
             "Orange Cap": 0,
             "Purple Cap": 0,
             "MVP": 0,
@@ -244,7 +244,7 @@
             "Emerging Player": 0,
             "Qualifier 1": 501.0,
             "Eliminator": 525.0,
-            "Qualifier 2": 9.0
+            "Qualifier 2": 63.0
         },
         "Night Watchmen": {
             "Total Points": 19268.5,
@@ -899,7 +899,7 @@
             "Qualifier 2": 0
         },
         "Kagiso Rabada": {
-            "Total Points": 1695,
+            "Total Points": 1731,
             "Orange Cap": 0,
             "Purple Cap": 0,
             "MVP": 0,
@@ -976,7 +976,7 @@
             "Emerging Player": 0,
             "Qualifier 1": 94,
             "Eliminator": 0,
-            "Qualifier 2": 0
+            "Qualifier 2": 36
         },
         "Ishan Kishan": {
             "Total Points": 1538,
@@ -1939,7 +1939,7 @@
             "Qualifier 2": 0
         },
         "Dhruv Jurel": {
-            "Total Points": 1310,
+            "Total Points": 1316,
             "Orange Cap": 0,
             "Purple Cap": 0,
             "MVP": 0,
@@ -2016,7 +2016,7 @@
             "Emerging Player": 0,
             "Qualifier 1": 0,
             "Eliminator": 144,
-            "Qualifier 2": 3
+            "Qualifier 2": 9
         },
         "Mitchell Marsh": {
             "Total Points": 1273,
@@ -203755,7 +203755,7 @@
     },
     "Qualifier 2 - Points Breakdown": [
         {
-            "Player Points": 0,
+            "Player Points": 36,
             "Man of the Match": 0,
             "Role": "BOWL",
             "Player Batting Points": 0,
@@ -203769,14 +203769,14 @@
             "Strike Rate Points": 0,
             "Duck Points": 0,
             "Batting Milestone Points": 0,
-            "Player Bowling Points": 0,
+            "Player Bowling Points": 36,
             "Maidens": 0,
             "Maidens Points": 0,
-            "Wickets": 0,
-            "Wicket Points": 0,
-            "Dots": 0,
-            "Dot Points": 0,
-            "Economy": 12.0,
+            "Wickets": 1,
+            "Wicket Points": 30,
+            "Dots": 3,
+            "Dot Points": 6,
+            "Economy": 7.2,
             "Economy Points": 0,
             "Bowled Wickets": 0,
             "Bowled Wickets Points": 0,
@@ -203833,17 +203833,17 @@
             "Second Runout Points": 0
         },
         {
-            "Player Points": 3,
+            "Player Points": 9,
             "Man of the Match": 0,
             "Role": "BAT",
-            "Player Batting Points": 3,
-            "Runs": 3,
-            "Runs Points": 3,
-            "Fours": 0,
-            "Fours Points": 0,
+            "Player Batting Points": 9,
+            "Runs": 7,
+            "Runs Points": 7,
+            "Fours": 1,
+            "Fours Points": 2,
             "Sixes": 0,
             "Sixes Points": 0,
-            "Strike Rate": 150.0,
+            "Strike Rate": 116.67,
             "Strike Rate Points": 0,
             "Duck Points": 0,
             "Batting Milestone Points": 0,
@@ -203952,10 +203952,10 @@
     ],
     "Qualifier 2 - CFC Points": [
         {
-            "Total Points": 3.0,
+            "Total Points": 23.0,
             "Booster": "None",
             "Sameer Rizvi": 0.0,
-            "Shubman Gill": 0.0,
+            "Shubman Gill": 20.0,
             "Travis Head": 0.0,
             "Jacob Duffy": 0.0,
             "Rajat Patidar": 0.0,
@@ -204165,7 +204165,7 @@
             "Navdeep Saini": 0.0
         },
         {
-            "Total Points": 9.0,
+            "Total Points": 63.0,
             "Booster": "None",
             "Sameer Rizvi": 0.0,
             "Shubman Gill": 0.0,
@@ -204193,7 +204193,7 @@
             "Phil Salt": 0.0,
             "RS Ambrish": 0.0,
             "Dian Forrester": 0.0,
-            "Kagiso Rabada": 0.0,
+            "Kagiso Rabada": 36.0,
             "Shreyas Iyer": 0.0,
             "Ayush Mhatre": 0.0,
             "Sunil Narine": 0.0,
@@ -204209,7 +204209,7 @@
             "Akash Deep": 0.0,
             "Kamindu Mendis": 0.0,
             "Luke Wood": 0.0,
-            "Dhruv Jurel": 9.0,
+            "Dhruv Jurel": 27.0,
             "Suyash Sharma": 0.0,
             "Wanindu Hasaranga": 0.0,
             "Mayank Yadav": 0.0,
