@@ -83,7 +83,7 @@
             "Qualifier 2": 178.5
         },
         "Disruptors": {
-            "Total Points": 20774.0,
+            "Total Points": 20834.0,
             "Orange Cap": 500,
             "Purple Cap": 0,
             "MVP": 750,
@@ -162,7 +162,7 @@
             "Emerging Player": 0,
             "Qualifier 1": 710.5,
             "Eliminator": 838.0,
-            "Qualifier 2": 251.0
+            "Qualifier 2": 311.0
         },
         "Nasty Knights": {
             "Total Points": 19412.0,
@@ -247,7 +247,7 @@
             "Qualifier 2": 90.0
         },
         "Night Watchmen": {
-            "Total Points": 19268.5,
+            "Total Points": 19271.5,
             "Orange Cap": 0,
             "Purple Cap": 500,
             "MVP": 0,
@@ -326,7 +326,7 @@
             "Emerging Player": 0,
             "Qualifier 1": 516.0,
             "Eliminator": 372.0,
-            "Qualifier 2": 0.0
+            "Qualifier 2": 3.0
         },
         "VS Stalwarts": {
             "Total Points": 17201.5,
@@ -659,7 +659,7 @@
     },
     "Player Final Points": {
         "Vaibhav Suryavanshi": {
-            "Total Points": 2997,
+            "Total Points": 3017,
             "Orange Cap": 500,
             "Purple Cap": 0,
             "MVP": 750,
@@ -736,7 +736,7 @@
             "Emerging Player": 0,
             "Qualifier 1": 0,
             "Eliminator": 258,
-            "Qualifier 2": 77
+            "Qualifier 2": 97
         },
         "Bhuvneshwar Kumar": {
             "Total Points": 2240,
@@ -1699,7 +1699,7 @@
             "Qualifier 2": 0
         },
         "Rashid Khan": {
-            "Total Points": 1338,
+            "Total Points": 1340,
             "Orange Cap": 0,
             "Purple Cap": 0,
             "MVP": 0,
@@ -1776,7 +1776,7 @@
             "Emerging Player": 0,
             "Qualifier 1": 9,
             "Eliminator": 0,
-            "Qualifier 2": 0
+            "Qualifier 2": 2
         },
         "Krunal Pandya": {
             "Total Points": 1325,
@@ -203843,7 +203843,7 @@
             "Fours Points": 2,
             "Sixes": 1,
             "Sixes Points": 3,
-            "Strike Rate": 366.67,
+            "Strike Rate": 275.0,
             "Strike Rate Points": 0,
             "Duck Points": 0,
             "Batting Milestone Points": 0,
@@ -203872,7 +203872,7 @@
             "Second Runout Points": 0
         },
         {
-            "Player Points": 0,
+            "Player Points": 2,
             "Man of the Match": 0,
             "Role": "AR",
             "Player Batting Points": 0,
@@ -203886,14 +203886,14 @@
             "Strike Rate Points": 0,
             "Duck Points": 0,
             "Batting Milestone Points": 0,
-            "Player Bowling Points": 0,
+            "Player Bowling Points": 2,
             "Maidens": 0,
             "Maidens Points": 0,
             "Wickets": 0,
             "Wicket Points": 0,
-            "Dots": 0,
-            "Dot Points": 0,
-            "Economy": 22.0,
+            "Dots": 1,
+            "Dot Points": 2,
+            "Economy": 18.0,
             "Economy Points": 0,
             "Bowled Wickets": 0,
             "Bowled Wickets Points": 0,
@@ -204145,18 +204145,18 @@
             "Second Runout Points": 0
         },
         {
-            "Player Points": 77,
+            "Player Points": 97,
             "Man of the Match": 0,
             "Role": "BAT",
-            "Player Batting Points": 77,
-            "Runs": 34,
-            "Runs Points": 34,
+            "Player Batting Points": 97,
+            "Runs": 41,
+            "Runs Points": 41,
             "Fours": 5,
             "Fours Points": 10,
-            "Sixes": 1,
-            "Sixes Points": 3,
-            "Strike Rate": 161.9,
-            "Strike Rate Points": 30,
+            "Sixes": 2,
+            "Sixes Points": 6,
+            "Strike Rate": 178.26,
+            "Strike Rate Points": 40,
             "Duck Points": 0,
             "Batting Milestone Points": 0,
             "Player Bowling Points": 0,
@@ -204186,14 +204186,14 @@
     ],
     "Qualifier 2 - CFC Points": [
         {
-            "Total Points": 251.0,
+            "Total Points": 311.0,
             "Booster": "None",
             "Sameer Rizvi": 0.0,
             "Shubman Gill": 20.0,
             "Travis Head": 0.0,
             "Jacob Duffy": 0.0,
             "Rajat Patidar": 0.0,
-            "Vaibhav Suryavanshi": 231.0,
+            "Vaibhav Suryavanshi": 291.0,
             "Abishek Porel": 0.0,
             "Rasikh Dar Salam": 0.0,
             "Nehal Wadhera": 0.0,
@@ -204612,7 +204612,7 @@
             "Navdeep Saini": 0.0
         },
         {
-            "Total Points": 0.0,
+            "Total Points": 3.0,
             "Booster": "None",
             "Sameer Rizvi": 0.0,
             "Shubman Gill": 0.0,
@@ -204693,7 +204693,7 @@
             "Nandre Burger": 0.0,
             "Smaran Ravichandran": 0.0,
             "Shahbaz Ahmed": 0.0,
-            "Rashid Khan": 0.0,
+            "Rashid Khan": 3.0,
             "Nuwan Thushara": 0.0,
             "Kuldip Yadav": 0.0,
             "Richard Gleeson": 0.0,
