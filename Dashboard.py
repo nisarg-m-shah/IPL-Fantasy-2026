@@ -42,7 +42,7 @@ def show_celebration():
         banner.id = 'cfc-fw-banner';
         banner.innerHTML = `
           <div style="font-family:'Bebas Neue',cursive;font-size:clamp(2.5rem,7vw,4.5rem);color:#efb920;letter-spacing:4px;text-shadow:0 0 30px rgba(239,185,32,0.8);line-height:1.1;">
-            🏆 DISRUPTORS WIN!
+            🏆 CONGRATULATIONS DISRUPTORS!
           </div>
           <div style="color:#00f2fe;font-size:clamp(0.9rem,2.5vw,1.1rem);letter-spacing:4px;margin-top:10px;text-transform:uppercase;">
             CFC Fantasy League 2026 Champions
