@@ -17,6 +17,164 @@ from Output import run_output_pipeline
 from Auction import teams,boosters,names,roles,squads,team_names_ff,team_names_sf,competition_id,database,file_path,json_filename, MATCH_SCHEDULE,emerging_player
 import base64
 
+def show_celebration():
+    import streamlit.components.v1 as components
+    components.html("""
+    <script>
+      (function() {
+        var doc = window.parent.document;
+        if (doc.getElementById('cfc-fw-overlay')) return;
+
+        // --- OVERLAY (semi-opaque backdrop) ---
+        var overlay = doc.createElement('div');
+        overlay.id = 'cfc-fw-overlay';
+        overlay.style.cssText = 'position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(6,11,38,0.82);z-index:99997;';
+        doc.body.appendChild(overlay);
+
+        // --- CANVAS ---
+        var canvas = doc.createElement('canvas');
+        canvas.id = 'cfc-fw-canvas';
+        canvas.style.cssText = 'position:fixed;top:0;left:0;width:100%;height:100%;pointer-events:none;z-index:99998;';
+        doc.body.appendChild(canvas);
+
+        // --- BANNER ---
+        var banner = doc.createElement('div');
+        banner.id = 'cfc-fw-banner';
+        banner.innerHTML = `
+          <div style="font-family:'Bebas Neue',cursive;font-size:clamp(2.5rem,7vw,4.5rem);color:#efb920;letter-spacing:4px;text-shadow:0 0 30px rgba(239,185,32,0.8);line-height:1.1;">
+            🏆 DISRUPTORS WIN!
+          </div>
+          <div style="color:#00f2fe;font-size:clamp(0.9rem,2.5vw,1.1rem);letter-spacing:4px;margin-top:10px;text-transform:uppercase;">
+            CFC Fantasy League 2026 Champions
+          </div>
+        `;
+        banner.style.cssText = 'position:fixed;top:50%;left:50%;transform:translate(-50%,-50%);text-align:center;pointer-events:none;z-index:99999;width:90%;';
+        doc.body.appendChild(banner);
+
+        // --- CONTROLS ---
+        var btnWrap = doc.createElement('div');
+        btnWrap.id = 'cfc-fw-controls';
+        btnWrap.style.cssText = 'position:fixed;bottom:32px;right:32px;z-index:99999;display:flex;gap:10px;';
+        btnWrap.innerHTML = `
+          <button id="cfc-fw-replay" style="background:rgba(6,11,38,0.9);color:white;border:1px solid rgba(255,255,255,0.35);padding:10px 22px;border-radius:24px;cursor:pointer;font-size:0.9rem;backdrop-filter:blur(6px);">🎆 Replay</button>
+          <button id="cfc-fw-close" style="background:rgba(6,11,38,0.9);color:white;border:1px solid rgba(255,255,255,0.35);padding:10px 22px;border-radius:24px;cursor:pointer;font-size:0.9rem;backdrop-filter:blur(6px);">✕ Close</button>
+        `;
+        doc.body.appendChild(btnWrap);
+
+        var link = doc.createElement('link');
+        link.rel = 'stylesheet';
+        link.href = 'https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap';
+        doc.head.appendChild(link);
+
+        var ctx = canvas.getContext('2d');
+        var COLORS = ['#efb920','#00f2fe','#ff4b4b','#a855f7','#22c55e','#fb923c','#ffffff'];
+
+        function resizeCanvas() {
+          canvas.width = window.parent.innerWidth;
+          canvas.height = window.parent.innerHeight;
+        }
+        resizeCanvas();
+        window.parent.addEventListener('resize', resizeCanvas);
+
+        function Particle(x, y, color) {
+          this.x = x; this.y = y; this.color = color;
+          var angle = Math.random() * Math.PI * 2;
+          var speed = Math.random() * 7 + 2;
+          this.vx = Math.cos(angle) * speed;
+          this.vy = Math.sin(angle) * speed;
+          this.alpha = 1;
+          this.decay = Math.random() * 0.018 + 0.010;
+          this.radius = Math.random() * 3.5 + 1.5;
+        }
+        Particle.prototype.update = function() {
+          this.x += this.vx; this.y += this.vy;
+          this.vy += 0.09; this.vx *= 0.98;
+          this.alpha -= this.decay;
+        };
+        Particle.prototype.draw = function() {
+          ctx.save(); ctx.globalAlpha = Math.max(0, this.alpha);
+          ctx.fillStyle = this.color;
+          ctx.beginPath(); ctx.arc(this.x, this.y, this.radius, 0, Math.PI*2); ctx.fill();
+          ctx.restore();
+        };
+
+        function Rocket() { this.reset(); }
+        Rocket.prototype.reset = function() {
+          this.x = Math.random() * canvas.width * 0.8 + canvas.width * 0.1;
+          this.y = canvas.height;
+          this.targetY = Math.random() * canvas.height * 0.5 + 60;
+          this.speed = Math.random() * 5 + 8;
+          this.color = COLORS[Math.floor(Math.random() * COLORS.length)];
+          this.trail = []; this.exploded = false;
+        };
+        Rocket.prototype.update = function(particles) {
+          if (this.exploded) return true;
+          this.trail.push({x: this.x, y: this.y});
+          if (this.trail.length > 12) this.trail.shift();
+          this.y -= this.speed;
+          if (this.y <= this.targetY) {
+            for (var i = 0; i < 120; i++) particles.push(new Particle(this.x, this.y, this.color));
+            this.exploded = true;
+          }
+          return false;
+        };
+        Rocket.prototype.draw = function() {
+          for (var i = 0; i < this.trail.length; i++) {
+            var t = this.trail[i];
+            ctx.save(); ctx.globalAlpha = (i / this.trail.length) * 0.6;
+            ctx.fillStyle = this.color;
+            ctx.beginPath(); ctx.arc(t.x, t.y, 2, 0, Math.PI*2); ctx.fill(); ctx.restore();
+          }
+          if (!this.exploded) {
+            ctx.fillStyle = this.color;
+            ctx.beginPath(); ctx.arc(this.x, this.y, 3, 0, Math.PI*2); ctx.fill();
+          }
+        };
+
+        var particles = [], rockets = [], raf = null, frameCount = 0, running = false;
+
+        function setVisible(v) {
+          var d = v ? 'block' : 'none';
+          overlay.style.display = d;
+          canvas.style.display = d;
+          banner.style.display = d;
+          btnWrap.style.display = v ? 'flex' : 'none';
+        }
+
+        function launch() {
+          particles = []; rockets = []; frameCount = 0; running = true;
+          setVisible(true);
+          if (raf) cancelAnimationFrame(raf);
+          loop();
+        }
+
+        function loop() {
+          if (!running) return;
+          ctx.clearRect(0, 0, canvas.width, canvas.height);
+          frameCount++;
+          if (frameCount % 20 === 0 && rockets.length < 7) rockets.push(new Rocket());
+          if (frameCount > 400 && rockets.length === 0 && particles.length === 0) {
+            running = false; return;
+          }
+          rockets = rockets.filter(function(r) { return !r.update(particles); });
+          rockets.forEach(function(r) { r.draw(); });
+          particles = particles.filter(function(p) { return p.alpha > 0; });
+          particles.forEach(function(p) { p.update(); p.draw(); });
+          raf = requestAnimationFrame(loop);
+        }
+
+        doc.getElementById('cfc-fw-replay').addEventListener('click', launch);
+        doc.getElementById('cfc-fw-close').addEventListener('click', function() {
+          if (raf) cancelAnimationFrame(raf);
+          running = false;
+          setVisible(false);
+        });
+
+        launch();
+      })();
+    </script>
+    """, height=0, scrolling=False)
+
 def get_post_match_scraped():
     try:
         if os.path.exists(POST_MATCH_SCRAPE_FILE):
@@ -817,6 +975,8 @@ def main():
             <div class="subtitle-v2">The Ultimate Fantasy Cricket Experience</div>
         </div>
     ''', unsafe_allow_html=True)
+
+    show_celebration()
 
     # Check for updates with smart scheduling
     should_run_update, update_reason, remaining_seconds = should_update()
