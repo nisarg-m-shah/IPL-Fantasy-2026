@@ -630,6 +630,7 @@ else:
     POST_MATCH_SCRAPE_FILE = ".post_match_scraped"
 OUTPUT_SCRIPT = "Run.py"
 UPDATE_INTERVAL = 600  # 10 minutes in seconds
+BACKLOG_INTERVAL = 30  # seconds between runs while matches are still waiting (backlog)
 LOCK_TIMEOUT = 600  # 10 minutes - max time for update to complete
 
 def acquire_lock():
@@ -828,13 +829,19 @@ def should_update():
     hours = int(time_since_update // 3600)
     mins = int((time_since_update % 3600) // 60)
     secs = int(time_since_update % 60)
+    if last_update <= 0:
+        ago = "no update yet"
+    else:
+        ago = f"{hours}h {mins} min {secs} sec ago"
 
     # Backlog: the previous run stopped at its time limit, so go again soon
-    if os.path.exists("/tmp/.more_matches_pending") and time_since_update >= 60:
-        return True, f"Catching up - {what}", -1
+    if os.path.exists("/tmp/.more_matches_pending"):
+        if time_since_update >= BACKLOG_INTERVAL:
+            return True, f"Catching up - {what}", -1
+        return False, f"Catching up - {what}", int(BACKLOG_INTERVAL - time_since_update) + 1
 
     if time_since_update >= UPDATE_INTERVAL:
-        return True, f"{what} (Last update: {hours}h {mins} min {secs} sec ago)", -1
+        return True, f"{what} (Last update: {ago})", -1
 
     remaining = UPDATE_INTERVAL - time_since_update
     return False, f"{what} | Updated Recently", int(remaining)
@@ -860,7 +867,8 @@ def run_output_script():
         return False, f"Update error: {traceback.format_exc()[-500:]}"
 
 @st.cache_resource(ttl=300)
-def load_live_matches():
+def _read_live_matches():
+    # Raises if the file is empty/corrupt -> Streamlit does not cache the failure.
     if not os.path.exists(PKL_FILE):
         return {}, {}
     with open(PKL_FILE, "rb") as f:
@@ -869,6 +877,24 @@ def load_live_matches():
         ipl_data.get("objects", {}),
         ipl_data.get("states", {})
     )
+
+def load_live_matches():
+    try:
+        return _read_live_matches()
+    except Exception as e:
+        # e.g. EOFError on a 0-byte pickle: behave as "no matches yet" so the
+        # page still renders and the update (which rebuilds it) can run.
+        print(f"Could not read {PKL_FILE}: {type(e).__name__}: {e}")
+        return {}, {}
+
+def _safe_tab(render, *args):
+    """One broken tab must not stop the page (the update runs after the tabs)."""
+    try:
+        render(*args)
+    except Exception as e:
+        import traceback
+        traceback.print_exc()
+        st.error(f"This tab hit an error: {type(e).__name__}: {e}")
 
 @st.cache_data(ttl=300)
 def load_data():
@@ -1039,11 +1065,11 @@ def main():
     
     # Render tabs ONCE
     tab1, tab2, tab3, tab4, tab5 = st.tabs(["🏆 RANKINGS", "🛡️ SQUADS", "🏏 MATCHES", "👤 PLAYERS", "📺 LIVE SCORE"])
-    with tab1: show_rankings(data)
-    with tab2: show_squads(data)
-    with tab3: show_matches(data)
-    with tab4: show_analytics(data)
-    with tab5: show_live_score()
+    with tab1: _safe_tab(show_rankings, data)
+    with tab2: _safe_tab(show_squads, data)
+    with tab3: _safe_tab(show_matches, data)
+    with tab4: _safe_tab(show_analytics, data)
+    with tab5: _safe_tab(show_live_score)
 
     # Update block AFTER tabs — spinner appears below tabs
     if should_run_update:

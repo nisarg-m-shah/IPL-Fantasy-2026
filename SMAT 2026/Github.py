@@ -34,7 +34,11 @@ def push_file_to_github(local_path, repo_path):
         return False
     try:
         with open(local_path, "rb") as f:
-            content = base64.b64encode(f.read()).decode()
+            raw = f.read()
+        if not raw:
+            print(f"{local_path} is empty, not pushing")
+            return False
+        content = base64.b64encode(raw).decode()
         
         sha = _get_sha(repo_path)
         url = f"https://api.github.com/repos/{GITHUB_REPO}/contents/{_repo_file(repo_path)}"
@@ -66,6 +70,9 @@ def pull_file_from_github(repo_path, local_path):
         r = requests.get(url, headers=_headers())
         if r.status_code == 200:
             content = base64.b64decode(r.json()["content"])
+            if not content:
+                print(f"{repo_path} on GitHub is empty, ignoring it")
+                return False
             os.makedirs(os.path.dirname(local_path), exist_ok=True) if os.path.dirname(local_path) else None
             with open(local_path, "wb") as f:
                 f.write(content)
