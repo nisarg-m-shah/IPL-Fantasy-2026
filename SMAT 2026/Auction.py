@@ -1989,13 +1989,13 @@ team_list = [
 import os
 
 if os.path.exists('/mount/src'):
-    database      = "/tmp/smat26_test.pkl"
-    file_path     = "/tmp/CFC Fantasy League Live SMAT 2026 Test.xlsx"
-    json_filename = "/tmp/CFC Fantasy League Live SMAT 2026 Test.json"
+    database      = "/tmp/SMAT 2026/smat26_test.pkl"
+    file_path     = "/tmp/SMAT 2026/CFC Fantasy League Live SMAT 2026 Test.xlsx"
+    json_filename = "/tmp/SMAT 2026/CFC Fantasy League Live SMAT 2026 Test.json"
 else:
-    database      = "smat26_test.pkl"
-    file_path     = "CFC Fantasy League Live SMAT 2026 Test.xlsx"
-    json_filename = "CFC Fantasy League Live SMAT 2026 Test.json"
+    database      = "SMAT 2026/smat26_test.pkl"
+    file_path     = "SMAT 2026/CFC Fantasy League Live SMAT 2026 Test.xlsx"
+    json_filename = "SMAT 2026/CFC Fantasy League Live SMAT 2026 Test.json"
 
 # Replaces competition_id — used by Series() in Scraping.py
 series_slug = "10493/syed-mushtaq-ali-trophy-elite-2025"
