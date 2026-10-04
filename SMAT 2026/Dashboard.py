@@ -834,6 +834,7 @@ def run_output_script():
         save_update_time()
         push_all_files(database, file_path, json_filename)
         load_data.clear()
+        load_live_matches.clear()
         
         if os.path.exists("/tmp/.fully_caught_up"):
             is_final, match_name = get_most_recent_match_state()
@@ -850,12 +851,21 @@ def run_output_script():
 def load_live_matches():
     if not os.path.exists(PKL_FILE):
         return {}, {}
-    with open(PKL_FILE, "rb") as f:
-        ipl_data = dill.load(f)
-    return (
-        ipl_data.get("objects", {}),
-        ipl_data.get("states", {})
-    )
+
+    try:
+        if os.path.getsize(PKL_FILE) == 0:
+            return {}, {}
+
+        with open(PKL_FILE, "rb") as f:
+            ipl_data = dill.load(f)
+
+        return (
+            ipl_data.get("objects", {}),
+            ipl_data.get("states", {})
+        )
+
+    except (EOFError, dill.UnpicklingError, OSError):
+        return {}, {}
 
 @st.cache_data(ttl=300)
 def load_data():
