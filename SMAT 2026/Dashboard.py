@@ -1775,9 +1775,7 @@ def show_matches(data):
         "Select Match",
         sorted(
             match_names,
-            key=lambda x: match_order[
-                re.search(r"Match (\d+)", x).group(1)
-            ]
+            key=lambda x: int(re.search(r"Match (\d+)", x).group(1)),reverse=True
         ),
         key="match_selector"
     )
@@ -2302,12 +2300,10 @@ def show_live_score():
 
     match_name = st.selectbox(
         "Select Match",
-        sorted(
-            match_objects.keys(),
-            key=lambda x: match_order[
-                re.search(r"Match (\d+)", x).group(1)
-            ]
-        ),
+sorted(
+    match_objects.keys(),
+    key=lambda x: int(re.search(r"Match (\d+)", x).group(1)),reverse=True
+),
         key="live_match_selector"
     )
 
