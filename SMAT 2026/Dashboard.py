@@ -824,7 +824,7 @@ def should_update():
         elapsed = time.time() - get_last_update_time()
         if elapsed >= UPDATE_INTERVAL:
             return True, f"{match_reason} | Last update: {int(elapsed // 60)} min ago", -1
-        return False, "Match activity detected | Updated Recently", int(UPDATE_INTERVAL - elapsed)
+        return False, "Match ongoing | Updated Recently", int(UPDATE_INTERVAL - elapsed)
     return False, match_reason, -1
 
 
