@@ -1998,7 +1998,8 @@ else:
     json_filename = "CFC Fantasy League Live SMAT 2026 Test.json"
 
 # Replaces competition_id — used by Series() in Scraping.py
-series_slug = "12420/syed-mushtaq-ali-trophy-elite-2026"
+series_slug = "10493/syed-mushtaq-ali-trophy-elite-2025"
+#series_slug = "12420/syed-mushtaq-ali-trophy-elite-2026"
 
 # SMAT 2026 match schedule — update dates once the schedule is released
 MATCH_SCHEDULE = {
