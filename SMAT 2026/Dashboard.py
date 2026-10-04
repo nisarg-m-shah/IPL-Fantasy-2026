@@ -2314,7 +2314,7 @@ def show_live_score():
         "Select Match",
 sorted(
     match_objects.keys(),
-    key=lambda x: int(re.search(r"Match (\d+)", x).group(1)),reverse=True
+    key=lambda x: int(re.search(r"Match (\d+)", x).group(1))
 ),
         key="live_match_selector"
     )
