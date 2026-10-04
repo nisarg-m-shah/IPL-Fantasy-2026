@@ -909,7 +909,7 @@ def load_data():
             if isinstance(value, dict):
                 df = pd.DataFrame.from_dict(value, orient='index')
                 df = df.dropna(how='all')
-                df - df.fillna(0)
+                df = df.fillna(0)
                 data[key] = df
             else:
                 data[key] = value
