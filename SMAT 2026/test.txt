@@ -1,0 +1,2390 @@
+<!DOCTYPE html>
+<html lang="en">
+ <head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8"/>
+  <title data-page-title="The Board of Control for Cricket in India" id="page_title">
+   The Board of Control for Cricket in India
+  </title>
+  <link href="https://www.bcci.tv/domestic/syed-mushtaq-ali-trophy-elite-2025-26/match/125" rel="canonical"/>
+  <!-- <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0,user-scalable=0"/> -->
+  <meta content="width=device-width, initial-scale=1.0, minimum-scale=0.5, maximum-scale=3.0" name="viewport"/>
+  <meta content="w2vyGEssQKCyobgHehYoGVYX44FSleccaAZgIMmj" name="csrf-token"/>
+  <meta content="IE=edge" http-equiv="X-UA-Compatible"/>
+  <meta content="THE BOARD OF CONTROL FOR CRICKET IN INDIA" property="og:title"/>
+  <meta content="Visit BCCI the official bcci.tv website for minute-to-minute LIVE updates." property="og:description"/>
+  <meta content="Visit BCCI the official bcci.tv website for minute-to-minute LIVE updates." name="description"/>
+  <meta content="website" property="og:type"/>
+  <meta content="https://www.bcci.tv//img/bcci-logo.png" property="og:image"/>
+  <meta content="bcci cricket news,bcci cricket schedule,bcci cricket highlights,bcci cricket live score,bcci cricket association,cricket news, Womens cricket, Ranji trophy" property="keywords"/>
+  <meta content="https://www.bcci.tv/domestic/syed-mushtaq-ali-trophy-elite-2025-26/match/125" property="og:url"/>
+  <meta content="summary_large_image" name="twitter:card"/>
+  <meta content="@BCCI" name="twitter:site"/>
+  <meta content="THE BOARD OF CONTROL FOR CRICKET IN INDIA" name="twitter:title"/>
+  <meta content="Visit BCCI the official bcci.tv website for minute-to-minute LIVE updates." name="twitter:description"/>
+  <meta content="https://www.bcci.tv//img/bcci-logo.png" name="twitter:image"/>
+  <link href="https://documents.bcci.tv/web-images/bcci-logo-rounded.png" rel="icon" type="image/png"/>
+  <link href="https://www.bcci.tv//css/home-page.min.css?v=5.88" rel="stylesheet"/>
+  <!-- <link rel="stylesheet" href="https://www.bcci.tv//css/style.min.css?v=5.88"> -->
+  <!-- <link rel="stylesheet" href="https://www.bcci.tv//css/slick.min.css?v=5.88"> -->
+  <script src="https://www.bcci.tv//js/jquery.min.js?v=5.88">
+  </script>
+  <link as="script" href="https://www.bcci.tv//js/fixtures-common.js?v=5.88" rel="preload"/>
+  <link as="script" href="https://www.bcci.tv//js/match-center-common.js?v=5.88" rel="preload"/>
+  <link as="script" href="https://www.bcci.tv//js/domestic-match-center.js?v=5.88" rel="preload"/>
+  <link as="script" href="https://www.bcci.tv//js/fixtures/manhattan-worm-widget.js?v=5.88" rel="preload"/>
+  <!-- <script src="https://www.bcci.tv//js/slick.min.js?v=5.88"></script> -->
+  <!-- <style></style> -->
+  <script>
+   var AWS_S3_PATH = "https://documents.bcci.tv"
+  </script>
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <!-- Google Tag Manager New Code -->
+  <script>
+   var title = "THE BOARD OF CONTROL FOR CRICKET IN INDIA";
+    window.dataLayer = window.dataLayer || [];
+    window.dataLayer.push({
+        'client_ga_id': '308089989',
+        'content_type': title,
+        'platform_type': 'web',
+        'environment': 'production',
+    });
+  </script>
+  <script>
+   window.addEventListener('DOMContentLoaded', (event) => {
+        window.onload = function() {
+            (function(w, d, s, l, i) {
+                w[l] = w[l] || [];
+                w[l].push({
+                    'gtm.start': new Date().getTime(),
+                    event: 'gtm.js'
+                });
+                var f = d.getElementsByTagName(s)[0],
+                    j = d.createElement(s),
+                    dl = l != 'dataLayer' ? '&l=' + l : '';
+                j.async = true;
+                j.src =
+                    'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
+                f.parentNode.insertBefore(j, f);
+            })(window, document, 'script', 'dataLayer', 'GTM-WXHB9XN');
+        };
+    });
+  </script>
+  <!-- End Google Tag Manager New Code End-->
+  <!-- Microsoft Clarity JS -->
+  <!-- <script type="text/javascript">@
+    (function(c,l,a,r,i,t,y){
+        c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+        t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+        y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+    })(window, document, "clarity", "script", "nbcuveefaq");
+</script> -->
+  <!-- Microsoft Clarity JS -->
+  <link href="https://www.bcci.tv//css/fixtures/grid-style.css?v=5.88" rel="stylesheet"/>
+  <link href="https://www.bcci.tv//css/fixtures/mc-style.css?v=5.88" rel="stylesheet"/>
+  <link href="https://www.bcci.tv//css/fixtures/wagonwheel-min.css?v=5.88" rel="stylesheet"/>
+  <link href="https://www.bcci.tv//css/fixtures/c3.css?v=5.88" rel="stylesheet"/>
+  <link href="https://www.bcci.tv//css/fixtures/mc-overwrite-style.css?v=5.88" rel="stylesheet"/>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.css" rel="stylesheet">
+   <style>
+    .three-container canvas {
+        height: 630px;
+        width: 100%!important;
+        position: relative;
+        z-index: 999;
+        border: none;
+    }
+    .hawk-modal-style object {
+            width: 100%!important;
+            height: 560px;
+        }
+    .graphFooter {
+        width: 100%!important;
+        background: #fff;
+        position: absolute;
+        bottom: 0px!important;
+    }
+    @media only screen and (max-width: 1366px){
+        .hawk-modal-style object {
+            width: 100%!important;
+            height: 560px;
+        }
+    }
+    @media screen and (max-width: 600px) {
+        .hawk-modal-style object {
+            width: 100%!important;
+            height: 590px;
+        }
+      .three-container canvas {
+        height: 328px;
+      }
+    }
+
+    .loaderContainer{
+        min-height: 100vh;
+    }
+    
+    .loaderContainer.hide{
+        min-height: 0px;
+    }
+
+    #pills-scorecard #pills-tabContent .sc-md{
+            display: block;
+        }
+        #pills-match-details-tab{
+            display: none;
+        }
+    @media screen and (max-width: 600px) {
+        #pills-scorecard #pills-tabContent .sc-md{
+            display: none;
+        }
+        #pills-match-details-tab{
+            display: block;
+        }
+    }
+   </style>
+  </link>
+ </head>
+ <body>
+  <!-- side menu start -->
+  <div class="side-menu">
+   <div class="top">
+    <button aria-label="close btn" class="close">
+     <svg fill="none" height="18" viewbox="0 0 19 18" width="19" xmlns="http://www.w3.org/2000/svg">
+      <rect fill="white" height="1.0202" transform="matrix(0.720833 0.693109 -0.720833 0.693109 1.04004 0)" width="24.4847">
+      </rect>
+      <rect fill="white" height="1.0202" transform="matrix(0.720833 -0.693109 0.720833 0.693109 0 17)" width="24.4847">
+      </rect>
+     </svg>
+    </button>
+    <ul class="list-unstyled">
+     <li>
+      <a data-element_text="About" data-event_context="header" data-menu_level="Main" href="https://www.bcci.tv/about" onclick="click_menu(this)">
+       About
+       <svg fill="none" height="10" viewbox="0 0 12 10" width="12" xmlns="http://www.w3.org/2000/svg">
+        <path clip-rule="evenodd" d="M7.48798 0.889086C7.74652 0.645754 8.15337 0.658083 8.3967 0.916623L11.8253 4.55948C12.0582 4.80701 12.0582 5.19313 11.8253 5.44066L8.3967 9.08352C8.15337 9.34206 7.74652 9.35439 7.48798 9.11106C7.22944 8.86773 7.21711 8.46088 7.46044 8.20234L9.8693 5.64293H0.642857C0.287817 5.64293 0 5.35511 0 5.00007C0 4.64503 0.287817 4.35721 0.642857 4.35721H9.8693L7.46044 1.79781C7.21711 1.53927 7.22944 1.13242 7.48798 0.889086Z" fill="white" fill-opacity="0.8" fill-rule="evenodd">
+        </path>
+       </svg>
+      </a>
+      <a data-element_text="Apex Council Members" data-event_context="header" data-menu_level="Main" href="https://www.bcci.tv/about/apex-council-members" onclick="click_menu(this)">
+       Apex Council Members
+       <svg fill="none" height="10" viewbox="0 0 12 10" width="12" xmlns="http://www.w3.org/2000/svg">
+        <path clip-rule="evenodd" d="M7.48798 0.889086C7.74652 0.645754 8.15337 0.658083 8.3967 0.916623L11.8253 4.55948C12.0582 4.80701 12.0582 5.19313 11.8253 5.44066L8.3967 9.08352C8.15337 9.34206 7.74652 9.35439 7.48798 9.11106C7.22944 8.86773 7.21711 8.46088 7.46044 8.20234L9.8693 5.64293H0.642857C0.287817 5.64293 0 5.35511 0 5.00007C0 4.64503 0.287817 4.35721 0.642857 4.35721H9.8693L7.46044 1.79781C7.21711 1.53927 7.22944 1.13242 7.48798 0.889086Z" fill="white" fill-opacity="0.8" fill-rule="evenodd">
+        </path>
+       </svg>
+      </a>
+      <a data-element_text="Documents" data-event_context="header" data-menu_level="Main" href="https://www.bcci.tv/documents" onclick="click_menu(this)">
+       Documents
+       <svg fill="none" height="10" viewbox="0 0 12 10" width="12" xmlns="http://www.w3.org/2000/svg">
+        <path clip-rule="evenodd" d="M7.48798 0.889086C7.74652 0.645754 8.15337 0.658083 8.3967 0.916623L11.8253 4.55948C12.0582 4.80701 12.0582 5.19313 11.8253 5.44066L8.3967 9.08352C8.15337 9.34206 7.74652 9.35439 7.48798 9.11106C7.22944 8.86773 7.21711 8.46088 7.46044 8.20234L9.8693 5.64293H0.642857C0.287817 5.64293 0 5.35511 0 5.00007C0 4.64503 0.287817 4.35721 0.642857 4.35721H9.8693L7.46044 1.79781C7.21711 1.53927 7.22944 1.13242 7.48798 0.889086Z" fill="white" fill-opacity="0.8" fill-rule="evenodd">
+        </path>
+       </svg>
+      </a>
+      <a data-element_text="Tenders" data-event_context="header" data-menu_level="Main" href="https://www.bcci.tv/tenders" onclick="click_menu(this)">
+       Tenders
+       <svg fill="none" height="10" viewbox="0 0 12 10" width="12" xmlns="http://www.w3.org/2000/svg">
+        <path clip-rule="evenodd" d="M7.48798 0.889086C7.74652 0.645754 8.15337 0.658083 8.3967 0.916623L11.8253 4.55948C12.0582 4.80701 12.0582 5.19313 11.8253 5.44066L8.3967 9.08352C8.15337 9.34206 7.74652 9.35439 7.48798 9.11106C7.22944 8.86773 7.21711 8.46088 7.46044 8.20234L9.8693 5.64293H0.642857C0.287817 5.64293 0 5.35511 0 5.00007C0 4.64503 0.287817 4.35721 0.642857 4.35721H9.8693L7.46044 1.79781C7.21711 1.53927 7.22944 1.13242 7.48798 0.889086Z" fill="white" fill-opacity="0.8" fill-rule="evenodd">
+        </path>
+       </svg>
+      </a>
+      <a data-element_text="Jobs" data-event_context="header" data-menu_level="Main" href="https://www.bcci.tv/jobs" onclick="click_menu(this)">
+       Jobs
+       <svg fill="none" height="10" viewbox="0 0 12 10" width="12" xmlns="http://www.w3.org/2000/svg">
+        <path clip-rule="evenodd" d="M7.48798 0.889086C7.74652 0.645754 8.15337 0.658083 8.3967 0.916623L11.8253 4.55948C12.0582 4.80701 12.0582 5.19313 11.8253 5.44066L8.3967 9.08352C8.15337 9.34206 7.74652 9.35439 7.48798 9.11106C7.22944 8.86773 7.21711 8.46088 7.46044 8.20234L9.8693 5.64293H0.642857C0.287817 5.64293 0 5.35511 0 5.00007C0 4.64503 0.287817 4.35721 0.642857 4.35721H9.8693L7.46044 1.79781C7.21711 1.53927 7.22944 1.13242 7.48798 0.889086Z" fill="white" fill-opacity="0.8" fill-rule="evenodd">
+        </path>
+       </svg>
+      </a>
+      <a data-element_text="Integrity Initiatives" data-event_context="header" data-menu_level="Main" href="https://www.bcci.tv/integrity" onclick="click_menu(this)">
+       Integrity Initiatives
+       <svg fill="none" height="10" viewbox="0 0 12 10" width="12" xmlns="http://www.w3.org/2000/svg">
+        <path clip-rule="evenodd" d="M7.48798 0.889086C7.74652 0.645754 8.15337 0.658083 8.3967 0.916623L11.8253 4.55948C12.0582 4.80701 12.0582 5.19313 11.8253 5.44066L8.3967 9.08352C8.15337 9.34206 7.74652 9.35439 7.48798 9.11106C7.22944 8.86773 7.21711 8.46088 7.46044 8.20234L9.8693 5.64293H0.642857C0.287817 5.64293 0 5.35511 0 5.00007C0 4.64503 0.287817 4.35721 0.642857 4.35721H9.8693L7.46044 1.79781C7.21711 1.53927 7.22944 1.13242 7.48798 0.889086Z" fill="white" fill-opacity="0.8" fill-rule="evenodd">
+        </path>
+       </svg>
+      </a>
+      <!-- <a onclick="click_menu(this)" data-menu_level="Main" data-event_context="header" data-element_text="Reports" href="https://www.bcci.tv/about/annual-report">Reports
+                    <svg xmlns="http://www.w3.org/2000/svg" width="12" height="10" viewBox="0 0 12 10" fill="none">
+                        <path fill-rule="evenodd" clip-rule="evenodd"
+                            d="M7.48798 0.889086C7.74652 0.645754 8.15337 0.658083 8.3967 0.916623L11.8253 4.55948C12.0582 4.80701 12.0582 5.19313 11.8253 5.44066L8.3967 9.08352C8.15337 9.34206 7.74652 9.35439 7.48798 9.11106C7.22944 8.86773 7.21711 8.46088 7.46044 8.20234L9.8693 5.64293H0.642857C0.287817 5.64293 0 5.35511 0 5.00007C0 4.64503 0.287817 4.35721 0.642857 4.35721H9.8693L7.46044 1.79781C7.21711 1.53927 7.22944 1.13242 7.48798 0.889086Z"
+                            fill="white" fill-opacity="0.8" />
+                    </svg>
+                </a> -->
+      <!-- <a onclick="click_menu(this)" data-menu_level="Main" data-event_context="header" data-element_text="Playing Conditions" href="https://www.bcci.tv/playing-condition">Playing Conditions
+                    <svg xmlns="http://www.w3.org/2000/svg" width="12" height="10" viewBox="0 0 12 10" fill="none">
+                        <path fill-rule="evenodd" clip-rule="evenodd"
+                            d="M7.48798 0.889086C7.74652 0.645754 8.15337 0.658083 8.3967 0.916623L11.8253 4.55948C12.0582 4.80701 12.0582 5.19313 11.8253 5.44066L8.3967 9.08352C8.15337 9.34206 7.74652 9.35439 7.48798 9.11106C7.22944 8.86773 7.21711 8.46088 7.46044 8.20234L9.8693 5.64293H0.642857C0.287817 5.64293 0 5.35511 0 5.00007C0 4.64503 0.287817 4.35721 0.642857 4.35721H9.8693L7.46044 1.79781C7.21711 1.53927 7.22944 1.13242 7.48798 0.889086Z"
+                            fill="white" fill-opacity="0.8" />
+                    </svg>
+                </a> -->
+      <a data-element_text="Photo Gallery" data-event_context="header" data-menu_level="Main" href="https://www.bcci.tv/albums" onclick="click_menu(this)">
+       Photo Gallery
+       <svg fill="none" height="10" viewbox="0 0 12 10" width="12" xmlns="http://www.w3.org/2000/svg">
+        <path clip-rule="evenodd" d="M7.48798 0.889086C7.74652 0.645754 8.15337 0.658083 8.3967 0.916623L11.8253 4.55948C12.0582 4.80701 12.0582 5.19313 11.8253 5.44066L8.3967 9.08352C8.15337 9.34206 7.74652 9.35439 7.48798 9.11106C7.22944 8.86773 7.21711 8.46088 7.46044 8.20234L9.8693 5.64293H0.642857C0.287817 5.64293 0 5.35511 0 5.00007C0 4.64503 0.287817 4.35721 0.642857 4.35721H9.8693L7.46044 1.79781C7.21711 1.53927 7.22944 1.13242 7.48798 0.889086Z" fill="white" fill-opacity="0.8" fill-rule="evenodd">
+        </path>
+       </svg>
+      </a>
+      <a data-element_text="Venues" data-event_context="header" data-menu_level="Main" href="https://www.bcci.tv/venues" onclick="click_menu(this)">
+       Venues
+       <svg fill="none" height="10" viewbox="0 0 12 10" width="12" xmlns="http://www.w3.org/2000/svg">
+        <path clip-rule="evenodd" d="M7.48798 0.889086C7.74652 0.645754 8.15337 0.658083 8.3967 0.916623L11.8253 4.55948C12.0582 4.80701 12.0582 5.19313 11.8253 5.44066L8.3967 9.08352C8.15337 9.34206 7.74652 9.35439 7.48798 9.11106C7.22944 8.86773 7.21711 8.46088 7.46044 8.20234L9.8693 5.64293H0.642857C0.287817 5.64293 0 5.35511 0 5.00007C0 4.64503 0.287817 4.35721 0.642857 4.35721H9.8693L7.46044 1.79781C7.21711 1.53927 7.22944 1.13242 7.48798 0.889086Z" fill="white" fill-opacity="0.8" fill-rule="evenodd">
+        </path>
+       </svg>
+      </a>
+      <a data-element_text="Mobile Products" data-event_context="header" data-menu_level="Main" href="https://www.bcci.tv/mobile-product" onclick="click_menu(this)">
+       Mobile Products
+       <svg fill="none" height="10" viewbox="0 0 12 10" width="12" xmlns="http://www.w3.org/2000/svg">
+        <path clip-rule="evenodd" d="M7.48798 0.889086C7.74652 0.645754 8.15337 0.658083 8.3967 0.916623L11.8253 4.55948C12.0582 4.80701 12.0582 5.19313 11.8253 5.44066L8.3967 9.08352C8.15337 9.34206 7.74652 9.35439 7.48798 9.11106C7.22944 8.86773 7.21711 8.46088 7.46044 8.20234L9.8693 5.64293H0.642857C0.287817 5.64293 0 5.35511 0 5.00007C0 4.64503 0.287817 4.35721 0.642857 4.35721H9.8693L7.46044 1.79781C7.21711 1.53927 7.22944 1.13242 7.48798 0.889086Z" fill="white" fill-opacity="0.8" fill-rule="evenodd">
+        </path>
+       </svg>
+      </a>
+     </li>
+    </ul>
+   </div>
+   <div class="bottom">
+    <!-- <button class="red-btn">LOG IN</button> -->
+    <div class="copyright text-white">
+     <p class="mb-0">
+      Copyrights BCCI 2026, All Rights Reserved.
+     </p>
+    </div>
+   </div>
+  </div>
+  <!-- side menu end -->
+  <header>
+   <div class="header d-flex">
+    <button class="mb-hamburger">
+     <img alt="hamburger-menu" height="11" src="https://documents.bcci.tv/web-images/hamburger-menu.png" width="24"/>
+    </button>
+    <a class="brand" data-element_text="home" data-event_context="header" data-menu_level="Main" href="https://www.bcci.tv" onclick="click_menu(this)">
+     <img alt="bcci-logo" height="40" src="https://documents.bcci.tv/web-images/bcci-logo-rounded.png" width="40"/>
+    </a>
+    <!-- <a target="__blank" href="https://events.bcci.tv/" class="text-white cwc-mob"><img src="https://documents.bcci.tv/web-images/wcw.png" alt="icon"></a> -->
+    <button class="mb-search">
+     <img alt="icon" height="24" src="https://documents.bcci.tv/web-images/search-icon.png" width="24"/>
+    </button>
+    <div class="right-nav">
+     <!-- <a href="#/" class="fs-opac">Fanworld</a> -->
+     <!-- <a href="#/" class="mx-4 fs-opac">Sustainability</a> -->
+     <button class="br-lft" id="search">
+      <img alt="icon" height="24" src="https://documents.bcci.tv/web-images/search-icon.png" width="24"/>
+     </button>
+     <!-- <a data-element_text="IPL" target="__blank" href="https://events.bcci.tv/" class="br-lft text-white cwc">CWC.tv</a> -->
+     <!-- <a data-element_text="IPL" target="__blank" href="https://events.bcci.tv/" class="br-lft text-white cwc"><img class="wcw-logo" src="https://documents.bcci.tv/web-images/wcw.png" alt="icon"></a> -->
+     <a class="br-lft" data-element_text="IPL" href="https://iplt20.com/" target="_blank">
+      <img alt="ipl-logo" height="30" src="https://documents.bcci.tv/web-images/ipl-logo.webp" width="50"/>
+     </a>
+     <a class="br-lft" href="https://www.wplt20.com/" target="_blank">
+      <img alt="wpl-logo" height="30" src="https://documents.bcci.tv/web-images/wpl-logo.webp" width="50"/>
+     </a>
+     <button class="br-lft" data-bs-target="#d-hum" data-bs-toggle="modal" id="d-hamburger">
+      <img alt="hamburger-menu" height="11" src="https://documents.bcci.tv/web-images/hamburger-menu.png" width="24"/>
+     </button>
+     <div class="selct br-lft d-flex">
+      <div>
+       <button class="lang-img">
+        EN
+        <svg fill="none" height="16" viewbox="0 0 19 20" width="15" xmlns="http://www.w3.org/2000/svg">
+         <path clip-rule="evenodd" d="M9.32843 11.5362C9.42606 11.6338 9.58435 11.6338 9.68199 11.5362L14.5165 6.70159C14.8094 6.4087 15.2843 6.4087 15.5772 6.70159C15.8701 6.99449 15.8701 7.46936 15.5772 7.76225L10.7426 12.5968C10.0592 13.2802 8.95119 13.2802 8.26777 12.5968L3.43321 7.76225C3.14032 7.46936 3.14032 6.99449 3.43321 6.70159C3.72611 6.4087 4.20098 6.4087 4.49387 6.70159L9.32843 11.5362Z" fill="white" fill-rule="evenodd">
+         </path>
+        </svg>
+       </button>
+       <div id="google_translate_element" style="display:none;">
+       </div>
+      </div>
+      <button class="close-trans" style="display:none;">
+       ✕
+      </button>
+     </div>
+    </div>
+   </div>
+   <!-- search start -->
+   <div class="container-fluid py-1 border-bottom border-top search-toggle search-t bg-white">
+    <form action="https://www.bcci.tv/search" class="site-search__form js-navigation-search mb-0" method="get">
+     <div class="row">
+      <div class="col-md-7 mx-auto">
+       <div class="input-group">
+        <input class="form-control border rounded-pill" id="searchInputForHeader" name="term" placeholder="Search" required="" type="search" value=""/>
+        <span class="search-select btn-outline-secondary bg-white border rounded-pill ms-n5 mx-2">
+         <select id="content_type" name="content_type">
+          <option selected="" value="all">
+           All
+          </option>
+          <option value="video">
+           Videos
+          </option>
+          <option value="news">
+           News
+          </option>
+         </select>
+        </span>
+        <span class="input-group-append">
+         <button class="btn-search btn-outline-secondary border rounded-pill ms-n5" onclick="searchEvent(this)" type="submit">
+          Search
+         </button>
+        </span>
+       </div>
+      </div>
+     </div>
+    </form>
+   </div>
+   <div class="tab-content bg-white w-100 mt-0" id="pills-tabContent">
+    <div class="switch-int-dom dark">
+     <div class="toggle">
+      <input checked="" class="inter-domestic-toggle" id="toggle" onclick="setToggle()" type="checkbox"/>
+      <span class="intern">
+       International
+      </span>
+      <label aria-label="toggle" for="toggle">
+      </label>
+      <span class="domtc">
+       Domestic
+      </span>
+     </div>
+    </div>
+    <ul class="nav nav-pills align-items-center mob-id-hide" id="pills-tab" role="tablist">
+     <li class="nav-item" role="presentation">
+      <button aria-controls="pills-international" aria-label="International btn" aria-selected="true" class="h_platform nav-link nav-menu" data-bs-target="#pills-international" data-bs-toggle="pill" data-element_text="International" data-event_context="header" data-menu_level="Main" data-nav="international" data-platform="international" id="pills-international-tab" onclick="click_menu(this)" role="tab" type="button">
+       International
+      </button>
+     </li>
+     <li class="nav-item" role="presentation">
+      <button aria-controls="pills-domestic" aria-label="International btn" aria-selected="true" class="h_platform nav-link nav-menu active" data-bs-target="#pills-domestic" data-bs-toggle="pill" data-element_text="Domestic" data-event_context="header" data-menu_level="Main" data-nav="domestic" data-platform="domestic" id="pills-domestic-tab" onclick="click_menu(this)" role="tab" type="button">
+       Domestic
+      </button>
+     </li>
+    </ul>
+    <div aria-labelledby="pills-international-tab" class="w-100 tab-pane fade" id="pills-international" role="tabpanel">
+     <ul class="match-menu list-unstyled p-0 mb-0">
+      <li class="i-men-women">
+       <a class="active border-0 category-menu international-category-menu h_type" data-element_text="MEN" data-event_context="header" data-menu_level="Main" data-sub="international-men" data-type="men" href="javascript:void(0);" onclick="setNavigationSession('type', 'men'),click_menu(this)">
+        <span class="menu-inner-text">
+         MEN
+        </span>
+       </a>
+       <a class="border-0 category-menu international-category-menu h_type" data-element_text="WOMEN" data-event_context="header" data-menu_level="Main" data-sub="international-women" data-type="women" href="javascript:void(0);" onclick="setNavigationSession('type', 'women'),click_menu(this)">
+        <span class="menu-inner-text">
+         WOMEN
+        </span>
+       </a>
+      </li>
+      <li class="imw-tabs international-tabs" id="imw-international-men">
+       <a class="border-0" data-element_text="News" data-event_context="header" data-menu_level="Sub" href="https://www.bcci.tv/domestic/men/news" onclick="click_menu(this)">
+        News
+       </a>
+       <a class="border-0" data-element_text="Videos" data-event_context="header" data-menu_level="Sub" href="https://www.bcci.tv/domestic/men/videos" onclick="click_menu(this)">
+        Videos
+       </a>
+       <a class="border-0" data-element_text="Fixtures and Results" data-event_context="header" data-menu_level="Sub" href="https://www.bcci.tv/domestic/men/fixtures-results" onclick="click_menu(this)">
+        Fixtures and Results
+       </a>
+       <a class="border-0" data-element_text="Series and Tournaments" data-event_context="header" data-menu_level="Sub" href="https://www.bcci.tv/domestic/men/series-and-tournaments" onclick="click_menu(this)">
+        Series and Tournaments
+       </a>
+       <a class="border-0" data-element_text="Archive" data-event_context="header" data-menu_level="Sub" href="https://www.bcci.tv/domestic/men/archive" onclick="click_menu(this)">
+        Archive
+       </a>
+       <a class="border-0" data-element_text="Players" data-event_context="header" data-menu_level="Sub" href="https://www.bcci.tv/domestic/men/players" onclick="click_menu(this)">
+        Players
+       </a>
+       <a class="border-0" data-element_text="Rankings" data-event_context="header" data-menu_level="Sub" href="https://www.bcci.tv/domestic/men/rankings/test" onclick="click_menu(this)">
+        Rankings
+       </a>
+       <a class="border-0" data-element_text="Stats" data-event_context="header" data-menu_level="Sub" href="https://www.bcci.tv/domestic/men/stats/test" onclick="click_menu(this)">
+        Stats
+       </a>
+      </li>
+      <li class="imw-tabs international-tabs" id="imw-international-women" style="display:none">
+       <a class="border-0" data-element_text="News" data-event_context="header" data-menu_level="Sub" href="https://www.bcci.tv/domestic/men/news" onclick="click_menu(this)">
+        News
+       </a>
+       <a class="border-0" data-element_text="Videos" data-event_context="header" data-menu_level="Sub" href="https://www.bcci.tv/domestic/men/videos" onclick="click_menu(this)">
+        Videos
+       </a>
+       <a class="border-0" data-element_text="Fixtures and Results" data-event_context="header" data-menu_level="Sub" href="https://www.bcci.tv/domestic/men/fixtures-results" onclick="click_menu(this)">
+        Fixtures and Results
+       </a>
+       <a class="border-0" data-element_text="Series and Tournaments" data-event_context="header" data-menu_level="Sub" href="https://www.bcci.tv/domestic/men/series-and-tournaments" onclick="click_menu(this)">
+        Series and Tournaments
+       </a>
+       <a class="border-0" data-element_text="Archive" data-event_context="header" data-menu_level="Sub" href="https://www.bcci.tv/domestic/men/archive" onclick="click_menu(this)">
+        Archive
+       </a>
+       <a class="border-0" data-element_text="Players" data-event_context="header" data-menu_level="Sub" href="https://www.bcci.tv/domestic/men/players" onclick="click_menu(this)">
+        Players
+       </a>
+       <a class="border-0" data-element_text="Rankings" data-event_context="header" data-menu_level="Sub" href="https://www.bcci.tv/domestic/men/rankings/odi" onclick="click_menu(this)">
+        Rankings
+       </a>
+       <a class="border-0" data-element_text="Stats" data-event_context="header" data-menu_level="Sub" href="https://www.bcci.tv/domestic/men/stats/test" onclick="click_menu(this)">
+        Stats
+       </a>
+      </li>
+     </ul>
+    </div>
+    <div aria-labelledby="pills-domestic-tab" class="w-100 tab-pane fade show active" id="pills-domestic" role="tabpanel">
+     <ul class="match-menu list-unstyled p-0 mb-0">
+      <li class="i-men-women">
+       <a class="active border-0 category-menu domestic-category-menu h_type" data-element_text="MEN" data-event_context="header" data-menu_level="Main" data-sub="domestic-men" data-type="men" href="javascript:void(0);" onclick="setNavigationSession('type', 'men'),click_menu(this)">
+        <span class="menu-inner-text">
+         MEN
+        </span>
+       </a>
+       <a class="border-0 category-menu domestic-category-menu h_type" data-element_text="WOMEN" data-event_context="header" data-menu_level="Main" data-sub="domestic-women" data-type="women" href="javascript:void(0);" onclick="setNavigationSession('type', 'women'),click_menu(this)">
+        <span class="menu-inner-text">
+         WOMEN
+        </span>
+       </a>
+      </li>
+      <li class="imw-tabs domestic-tabs" id="imw-domestic-men">
+       <a class="border-0" data-element_text="News" data-event_context="header" data-menu_level="Sub" href="https://www.bcci.tv/domestic/men/news" onclick="click_menu(this)">
+        News
+       </a>
+       <a class="border-0" data-element_text="Videos" data-event_context="header" data-menu_level="Sub" href="https://www.bcci.tv/domestic/men/videos" onclick="click_menu(this)">
+        Videos
+       </a>
+       <a class="border-0" data-element_text="Fixtures and Results" data-event_context="header" data-menu_level="Sub" href="https://www.bcci.tv/domestic/men/fixtures-results" onclick="click_menu(this)">
+        Fixtures and Results
+       </a>
+       <a class="border-0" data-element_text="Series and Tournaments" data-event_context="header" data-menu_level="Sub" href="https://www.bcci.tv/domestic/men/series-and-tournaments" onclick="click_menu(this)">
+        Series and Tournaments
+       </a>
+       <a class="border-0" data-element_text="Archive" data-event_context="header" data-menu_level="Sub" href="https://www.bcci.tv/domestic/men/archive" onclick="click_menu(this)">
+        Archive
+       </a>
+      </li>
+      <li class="imw-tabs domestic-tabs" id="imw-domestic-women" style="display:none">
+       <a class="border-0" data-element_text="News" data-event_context="header" data-menu_level="Sub" href="https://www.bcci.tv/domestic/men/news" onclick="click_menu(this)">
+        News
+       </a>
+       <a class="border-0" data-element_text="Videos" data-event_context="header" data-menu_level="Sub" href="https://www.bcci.tv/domestic/men/videos" onclick="click_menu(this)">
+        Videos
+       </a>
+       <a class="border-0" data-element_text="Fixtures and Results" data-event_context="header" data-menu_level="Sub" href="https://www.bcci.tv/domestic/men/fixtures-results" onclick="click_menu(this)">
+        Fixtures and Results
+       </a>
+       <a class="border-0" data-element_text="Series and Tournaments" data-event_context="header" data-menu_level="Sub" href="https://www.bcci.tv/domestic/men/series-and-tournaments" onclick="click_menu(this)">
+        Series and Tournaments
+       </a>
+       <a class="border-0" data-element_text="Archive" data-event_context="header" data-menu_level="Sub" href="https://www.bcci.tv/domestic/men/archive" onclick="click_menu(this)">
+        Archive
+       </a>
+      </li>
+     </ul>
+    </div>
+   </div>
+  </header>
+  <div class="quick-links">
+   <span>
+    Quick Links
+   </span>
+   <div class="quick-link--items">
+    <a class="quik--items" data-element_text="Apex Council Members" data-event_context="header" data-menu_level="quicklinks" href="https://www.bcci.tv/about/apex-council-members" onclick="click_menu(this)">
+     Apex Council Members
+     <svg fill="none" height="10" viewbox="0 0 6 10" width="6" xmlns="http://www.w3.org/2000/svg">
+      <path d="M0.179345 9.83434C0.293676 9.94042 0.448656 10 0.610243 10C0.771831 10 0.926811 9.94042 1.04114 9.83434L5.82167 5.39347C5.93586 5.28726 6 5.14329 6 4.99318C6 4.84308 5.93586 4.69911 5.82167 4.5929L1.04114 0.152027C0.92555 0.0519709 0.772665 -0.00250103 0.614695 8.72552e-05C0.456725 0.00267649 0.306005 0.0621248 0.194285 0.165906C0.0825668 0.269687 0.0185724 0.4097 0.0157853 0.556446C0.0129982 0.703192 0.0716359 0.845213 0.179344 0.952591L4.53304 4.99318L0.179345 9.03189C0.122499 9.08451 0.0773949 9.14704 0.0466189 9.2159C0.0158429 9.28475 8.97598e-07 9.35857 9.04116e-07 9.43312C9.10633e-07 9.50767 0.0158429 9.58149 0.0466189 9.65034C0.0773949 9.71919 0.122499 9.78172 0.179345 9.83434Z" fill="#C6D1E0">
+      </path>
+     </svg>
+    </a>
+    <a class="quik--items" data-element_text="International Results" data-event_context="header" data-menu_level="quicklinks" href="https://www.bcci.tv/international/men/fixtures-results" onclick="click_menu(this)">
+     International Results
+     <svg fill="none" height="10" viewbox="0 0 6 10" width="6" xmlns="http://www.w3.org/2000/svg">
+      <path d="M0.179345 9.83434C0.293676 9.94042 0.448656 10 0.610243 10C0.771831 10 0.926811 9.94042 1.04114 9.83434L5.82167 5.39347C5.93586 5.28726 6 5.14329 6 4.99318C6 4.84308 5.93586 4.69911 5.82167 4.5929L1.04114 0.152027C0.92555 0.0519709 0.772665 -0.00250103 0.614695 8.72552e-05C0.456725 0.00267649 0.306005 0.0621248 0.194285 0.165906C0.0825668 0.269687 0.0185724 0.4097 0.0157853 0.556446C0.0129982 0.703192 0.0716359 0.845213 0.179344 0.952591L4.53304 4.99318L0.179345 9.03189C0.122499 9.08451 0.0773949 9.14704 0.0466189 9.2159C0.0158429 9.28475 8.97598e-07 9.35857 9.04116e-07 9.43312C9.10633e-07 9.50767 0.0158429 9.58149 0.0466189 9.65034C0.0773949 9.71919 0.122499 9.78172 0.179345 9.83434Z" fill="#C6D1E0">
+      </path>
+     </svg>
+    </a>
+    <a class="quik--items" data-element_text="Domestic Schedule" data-event_context="header" data-menu_level="quicklinks" href="https://documents.bcci.tv/bcci/documents/1779273276961_BCCI 2026-27 Domestic Season Ready Reckoner.pdf" onclick="click_menu(this)" target="_blank">
+     Domestic Schedule
+     <svg fill="none" height="10" viewbox="0 0 6 10" width="6" xmlns="http://www.w3.org/2000/svg">
+      <path d="M0.179345 9.83434C0.293676 9.94042 0.448656 10 0.610243 10C0.771831 10 0.926811 9.94042 1.04114 9.83434L5.82167 5.39347C5.93586 5.28726 6 5.14329 6 4.99318C6 4.84308 5.93586 4.69911 5.82167 4.5929L1.04114 0.152027C0.92555 0.0519709 0.772665 -0.00250103 0.614695 8.72552e-05C0.456725 0.00267649 0.306005 0.0621248 0.194285 0.165906C0.0825668 0.269687 0.0185724 0.4097 0.0157853 0.556446C0.0129982 0.703192 0.0716359 0.845213 0.179344 0.952591L4.53304 4.99318L0.179345 9.03189C0.122499 9.08451 0.0773949 9.14704 0.0466189 9.2159C0.0158429 9.28475 8.97598e-07 9.35857 9.04116e-07 9.43312C9.10633e-07 9.50767 0.0158429 9.58149 0.0466189 9.65034C0.0773949 9.71919 0.122499 9.78172 0.179345 9.83434Z" fill="#C6D1E0">
+      </path>
+     </svg>
+    </a>
+    <a class="quik--items" data-element_text="Documents" data-event_context="header" data-menu_level="quicklinks" href="https://www.bcci.tv/bcci-documentation?platform=domestic" onclick="click_menu(this)">
+     Documents
+     <svg fill="none" height="10" viewbox="0 0 6 10" width="6" xmlns="http://www.w3.org/2000/svg">
+      <path d="M0.179345 9.83434C0.293676 9.94042 0.448656 10 0.610243 10C0.771831 10 0.926811 9.94042 1.04114 9.83434L5.82167 5.39347C5.93586 5.28726 6 5.14329 6 4.99318C6 4.84308 5.93586 4.69911 5.82167 4.5929L1.04114 0.152027C0.92555 0.0519709 0.772665 -0.00250103 0.614695 8.72552e-05C0.456725 0.00267649 0.306005 0.0621248 0.194285 0.165906C0.0825668 0.269687 0.0185724 0.4097 0.0157853 0.556446C0.0129982 0.703192 0.0716359 0.845213 0.179344 0.952591L4.53304 4.99318L0.179345 9.03189C0.122499 9.08451 0.0773949 9.14704 0.0466189 9.2159C0.0158429 9.28475 8.97598e-07 9.35857 9.04116e-07 9.43312C9.10633e-07 9.50767 0.0158429 9.58149 0.0466189 9.65034C0.0773949 9.71919 0.122499 9.78172 0.179345 9.83434Z" fill="#C6D1E0">
+      </path>
+     </svg>
+    </a>
+    <a class="quik--items" data-element_text="Tenders" data-event_context="header" data-menu_level="quicklinks" href="https://www.bcci.tv/tenders" onclick="click_menu(this)">
+     Tenders
+     <svg fill="none" height="10" viewbox="0 0 6 10" width="6" xmlns="http://www.w3.org/2000/svg">
+      <path d="M0.179345 9.83434C0.293676 9.94042 0.448656 10 0.610243 10C0.771831 10 0.926811 9.94042 1.04114 9.83434L5.82167 5.39347C5.93586 5.28726 6 5.14329 6 4.99318C6 4.84308 5.93586 4.69911 5.82167 4.5929L1.04114 0.152027C0.92555 0.0519709 0.772665 -0.00250103 0.614695 8.72552e-05C0.456725 0.00267649 0.306005 0.0621248 0.194285 0.165906C0.0825668 0.269687 0.0185724 0.4097 0.0157853 0.556446C0.0129982 0.703192 0.0716359 0.845213 0.179344 0.952591L4.53304 4.99318L0.179345 9.03189C0.122499 9.08451 0.0773949 9.14704 0.0466189 9.2159C0.0158429 9.28475 8.97598e-07 9.35857 9.04116e-07 9.43312C9.10633e-07 9.50767 0.0158429 9.58149 0.0466189 9.65034C0.0773949 9.71919 0.122499 9.78172 0.179345 9.83434Z" fill="#C6D1E0">
+      </path>
+     </svg>
+    </a>
+    <a class="quik--items" data-element_text="Jobs" data-event_context="header" data-menu_level="quicklinks" href="https://www.bcci.tv/jobs" onclick="click_menu(this)">
+     Jobs
+     <svg fill="none" height="10" viewbox="0 0 6 10" width="6" xmlns="http://www.w3.org/2000/svg">
+      <path d="M0.179345 9.83434C0.293676 9.94042 0.448656 10 0.610243 10C0.771831 10 0.926811 9.94042 1.04114 9.83434L5.82167 5.39347C5.93586 5.28726 6 5.14329 6 4.99318C6 4.84308 5.93586 4.69911 5.82167 4.5929L1.04114 0.152027C0.92555 0.0519709 0.772665 -0.00250103 0.614695 8.72552e-05C0.456725 0.00267649 0.306005 0.0621248 0.194285 0.165906C0.0825668 0.269687 0.0185724 0.4097 0.0157853 0.556446C0.0129982 0.703192 0.0716359 0.845213 0.179344 0.952591L4.53304 4.99318L0.179345 9.03189C0.122499 9.08451 0.0773949 9.14704 0.0466189 9.2159C0.0158429 9.28475 8.97598e-07 9.35857 9.04116e-07 9.43312C9.10633e-07 9.50767 0.0158429 9.58149 0.0466189 9.65034C0.0773949 9.71919 0.122499 9.78172 0.179345 9.83434Z" fill="#C6D1E0">
+      </path>
+     </svg>
+    </a>
+   </div>
+  </div>
+  <!-- womens ipl auction start -->
+  <!--   <div class="women-worldcup-main" >
+        <div class="women-ipl-logo-live">
+            <img class="will" src="https://www.bcci.tv//img/wpl-strip-img.svg" width="50" height="30" alt="wpl-logo">
+        </div>
+        <div class="marquee-content">
+            <a href="https://www.wplt20.com/?utm_source=website&utm_medium=banner&utm_campaign=wwpl26" target="_blank">
+                <span>Click here to follow all the LIVE action from TATA WPL 2026 <img src="https://www.bcci.tv//img/wpl-ball-img.svg" width="50" height="50" alt="wpl-logo"></span>
+                <span>Click here to follow all the LIVE action from TATA WPL 2026 <img src="https://www.bcci.tv//img/wpl-ball-img.svg" width="50" height="50" alt="wpl-logo"></span>
+                <span>Click here to follow all the LIVE action from TATA WPL 2026 <img src="https://www.bcci.tv//img/wpl-ball-img.svg" width="50" height="50" alt="wpl-logo"></span>
+                <span>Click here to follow all the LIVE action from TATA WPL 2026 <img src="https://www.bcci.tv//img/wpl-ball-img.svg" width="50" height="50" alt="wpl-logo"></span>
+                <span>Click here to follow all the LIVE action from TATA WPL 2026 <img src="https://www.bcci.tv//img/wpl-ball-img.svg" width="50" height="50" alt="wpl-logo"></span>
+                <span>Click here to follow all the LIVE action from TATA WPL 2026 <img src="https://www.bcci.tv//img/wpl-ball-img.svg" width="50" height="50" alt="wpl-logo"></span>
+                <span>Click here to follow all the LIVE action from TATA WPL 2026 <img src="https://www.bcci.tv//img/wpl-ball-img.svg" width="50" height="50" alt="wpl-logo"></span>
+                <span>Click here to follow all the LIVE action from TATA WPL 2026 <img src="https://www.bcci.tv//img/wpl-ball-img.svg" width="50" height="50" alt="wpl-logo"></span>
+            </a>
+        </div>
+    </div> -->
+  <!-- womens ipl auction end -->
+  <div aria-hidden="true" aria-labelledby="exampleModalLabel" class="modal fade menu-index" id="d-hum" tabindex="-1">
+   <button aria-label="Close" class="close-btn-modify btn-close" data-bs-dismiss="modal" type="button">
+   </button>
+   <div class="modal-dialog modal-fullscreen">
+    <div class="modal-content">
+     <div class="top-humb">
+      <ul class="p-0 list-unstyled mb-0">
+       <li>
+        <a data-element_text="About" data-event_context="header" data-menu_level="Main" href="https://www.bcci.tv/about" onclick="click_menu(this)">
+         About
+        </a>
+        <!-- <a onclick="click_menu(this)" data-menu_level="Main" data-event_context="header" data-element_text="Reports" href="https://www.bcci.tv/about/annual-report">Reports</a> -->
+        <a data-element_text="Apex Council Members" data-event_context="header" data-menu_level="Main" href="https://www.bcci.tv/about/apex-council-members" onclick="click_menu(this)">
+         Apex Council Members
+        </a>
+        <a data-element_text="Documents" data-event_context="header" data-menu_level="Main" href="https://www.bcci.tv/documents" onclick="click_menu(this)">
+         Documents
+        </a>
+        <a data-element_text="Tenders" data-event_context="header" data-menu_level="Main" href="https://www.bcci.tv/tenders" onclick="click_menu(this)">
+         Tenders
+        </a>
+        <a data-element_text="Jobs" data-event_context="header" data-menu_level="Jobs" href="https://www.bcci.tv/jobs" onclick="click_menu(this)">
+         Jobs
+        </a>
+        <a data-element_text="Integrity Initiatives" data-event_context="header" data-menu_level="Main" href="https://www.bcci.tv/integrity" onclick="click_menu(this)">
+         Integrity Initiatives
+        </a>
+        <a data-element_text="Gallery" data-event_context="header" data-menu_level="Main" href="https://www.bcci.tv/albums" onclick="click_menu(this)">
+         Photo Gallery
+        </a>
+        <a data-element_text="Venues" data-event_context="header" data-menu_level="Main" href="https://www.bcci.tv/venues" onclick="click_menu(this)">
+         Venues
+        </a>
+        <a data-element_text="Mobile Products" data-event_context="header" data-menu_level="Main" href="https://www.bcci.tv/mobile-product" onclick="click_menu(this)">
+         Mobile Products
+        </a>
+        <!-- <a onclick="click_menu(this)" data-event_context="header" data-element_text="Tenders" data-menu_level="Main" href="https://www.bcci.tv/articles/2026/news/146399/tenders-issued-by-bcci-ipl-and-wpl" >Tenders</a> -->
+       </li>
+      </ul>
+      <div class="ctbf-bottom">
+       <!-- <ul class="p-0 list-unstyled mb-0"> -->
+       <article class="ctbf-bottom__items">
+        <a data-element_text="copyrights" data-event_context="header" data-menu_level="Main" href="https://www.bcci.tv/copyrights" onclick="click_menu(this)">
+         <div>
+          <svg fill="none" height="20" viewbox="0 0 28 28" width="20" xmlns="http://www.w3.org/2000/svg">
+           <path d="M13.832 9.996C15.624 10.08 16.086 11.606 16.114 12.32H18.62C18.508 9.548 16.534 7.854 13.79 7.854C10.696 7.854 8.4 9.8 8.4 14.196C8.4 16.912 9.702 20.132 13.776 20.132C16.884 20.132 18.55 17.822 18.592 16.002H16.086C16.044 16.828 15.456 17.934 13.804 18.018C11.97 17.962 11.2 16.534 11.2 14.196C11.2 10.15 12.992 10.024 13.832 9.996ZM14 0C6.272 0 0 6.272 0 14C0 21.728 6.272 28 14 28C21.728 28 28 21.728 28 14C28 6.272 21.728 0 14 0ZM14 25.2C7.826 25.2 2.8 20.174 2.8 14C2.8 7.826 7.826 2.8 14 2.8C20.174 2.8 25.2 7.826 25.2 14C25.2 20.174 20.174 25.2 14 25.2Z" fill="#5E5E5E">
+           </path>
+          </svg>
+          <p>
+           Copyrights
+          </p>
+          <span>
+           All right are reserved,BCCI 2026
+          </span>
+         </div>
+        </a>
+        <a data-element_text="terms and conditions" data-event_context="header" data-menu_level="Main" href="https://www.bcci.tv/terms-and-conditions" onclick="click_menu(this)">
+         <div>
+          <svg fill="none" height="22" viewbox="0 0 26 28" width="20" xmlns="http://www.w3.org/2000/svg">
+           <path d="M26 16C26.002 14.9987 25.7534 14.0127 25.2768 13.1321C24.8002 12.2514 24.1107 11.5041 23.2713 10.9581C22.4319 10.4122 21.4692 10.085 20.4709 10.0064C19.4726 9.92779 18.4706 10.1003 17.5561 10.5082C16.6415 10.916 15.8437 11.5463 15.2351 12.3415C14.6266 13.1368 14.2267 14.0716 14.072 15.061C13.9173 16.0503 14.0127 17.0626 14.3495 18.0057C14.6862 18.9487 15.2536 19.7924 16 20.46V28L20 26.107L24 28V20.46C24.6287 19.8994 25.1318 19.2123 25.4765 18.4437C25.8212 17.6751 25.9996 16.8423 26 16ZM22 24.84L20 23.893L18 24.84V21.65C19.2925 22.1168 20.7075 22.1168 22 21.65V24.84ZM20 20C19.2089 20 18.4355 19.7654 17.7777 19.3259C17.1199 18.8864 16.6072 18.2616 16.3045 17.5307C16.0017 16.7998 15.9225 15.9956 16.0769 15.2196C16.2312 14.4437 16.6122 13.731 17.1716 13.1716C17.731 12.6122 18.4437 12.2312 19.2196 12.0769C19.9956 11.9225 20.7998 12.0017 21.5307 12.3045C22.2616 12.6072 22.8864 13.1199 23.3259 13.7777C23.7654 14.4355 24 15.2089 24 16C23.9987 17.0605 23.5768 18.0771 22.827 18.827C22.0771 19.5768 21.0605 19.9987 20 20ZM5 12H12V14H5V12ZM5 6H15V8H5V6Z" fill="#5E5E5E">
+           </path>
+           <path d="M2 28C1.46973 27.9995 0.961329 27.7886 0.586371 27.4136C0.211413 27.0387 0.000529477 26.5303 0 26V2C0.000529477 1.46973 0.211413 0.961329 0.586371 0.586371C0.961329 0.211413 1.46973 0.000529477 2 0H18C18.5303 0.000529477 19.0387 0.211413 19.4136 0.586371C19.7886 0.961329 19.9995 1.46973 20 2V6H18V2H2V26H12V28H2Z" fill="#5E5E5E">
+           </path>
+          </svg>
+          <p>
+           Terms &amp; Conditions
+          </p>
+          <span>
+           A terms, rules and guidelines for using your website or mobile app
+          </span>
+         </div>
+        </a>
+        <a data-element_text="privacy and policy" data-event_context="header" data-menu_level="Main" href="https://www.bcci.tv/privacy-and-policy" onclick="click_menu(this)">
+         <div>
+          <svg fill="none" height="21" viewbox="0 0 24 27" width="18" xmlns="http://www.w3.org/2000/svg">
+           <path d="M0.0138889 5.26539C0.155556 4.87994 0.28889 4.49737 0.566669 4.18096C0.947225 3.74373 1.43889 3.54238 1.97501 3.48197C3.01112 3.36404 4.02779 3.16844 5.03613 2.90093C6.64169 2.47521 8.16947 1.84814 9.63614 1.05711C10.1389 0.786721 10.5973 0.432915 11.1167 0.197045C11.8223 -0.12512 12.5195 -0.0388259 13.1584 0.358127C14.2556 1.03697 15.3834 1.6324 16.5723 2.1214C17.8473 2.64492 19.1584 3.01886 20.4973 3.2835C21.139 3.41006 21.7917 3.53087 22.4556 3.55101C22.7056 3.55964 22.9695 3.55389 23.2167 3.61429C23.714 3.72935 24.0584 4.15219 23.9917 4.57503C23.9112 5.0928 23.5584 5.53002 22.9779 5.50126C22.3195 5.46962 21.6667 5.37757 21.0112 5.29415C20.3667 5.21361 19.7417 5.05253 19.1001 4.9576C18.6751 4.89432 18.264 4.7131 17.8445 4.59517C16.8945 4.32766 15.9723 3.96522 15.0667 3.57402C14.15 3.17707 13.2584 2.70245 12.425 2.13291C12.0639 1.88553 11.8084 1.9258 11.4667 2.15592C10.7417 2.6478 9.97226 3.05626 9.17781 3.41869C8.3167 3.80989 7.44169 4.15219 6.54447 4.44272C5.99446 4.62106 5.44446 4.7994 4.88057 4.91446C4.13057 5.06691 3.39723 5.32004 2.61945 5.33442C2.45279 5.3373 2.28612 5.3862 2.1139 5.39483C1.94723 5.40346 1.85001 5.49263 1.85001 5.69973C1.85556 8.23678 1.81667 10.7738 1.86945 13.3109C1.89167 14.3205 2.1639 15.3071 2.4889 16.2708C2.73334 17.0014 3.05001 17.7004 3.42779 18.3562C3.7639 18.9373 4.15279 19.4924 4.58335 20.0131C5.10002 20.6372 5.69724 21.1636 6.3028 21.69C6.79169 22.1158 7.34725 22.4207 7.88892 22.7486C8.8667 23.3469 9.86392 23.9049 10.8584 24.4687C11.2028 24.6614 11.5556 24.8398 11.8834 25.0613C11.9473 25.1044 12 25.09 12.0667 25.0498C13.35 24.3047 14.6139 23.5223 15.9223 22.832C17.1473 22.1848 18.1778 21.296 19.1306 20.3007C19.7501 19.6535 20.2417 18.8884 20.6695 18.0887C21.1917 17.1136 21.5945 16.0838 21.8223 14.9907C21.964 14.3148 22.0529 13.633 22.0917 12.9398C22.1584 11.7979 22.1195 10.6588 22.1417 9.51969C22.1501 9.11411 22.4973 8.76318 22.8834 8.7229C23.7112 8.64236 23.9667 9.09109 23.9806 9.83035C23.9945 10.5955 24.0167 11.3635 23.9723 12.1286C23.9445 12.6176 23.8945 13.1124 23.8973 13.5928C23.8973 14.0156 23.7251 14.4097 23.7834 14.8354C23.8056 14.9907 23.6695 15.1691 23.6334 15.3532C23.3084 16.9007 22.7001 18.3361 21.8973 19.6765C21.2529 20.7523 20.4501 21.7015 19.5417 22.5472C18.6556 23.3728 17.6473 24.0286 16.5973 24.6154C15.4278 25.2684 14.2778 25.9558 13.1195 26.6318C12.7862 26.8274 12.4139 26.8993 12.05 27H11.8195C11.4861 26.9022 11.1473 26.8245 10.8361 26.6433C9.55559 25.8983 8.27225 25.1591 6.99169 24.4169C5.60835 23.6144 4.3639 22.6421 3.3139 21.3966C2.37501 20.2806 1.60556 19.0609 1.04723 17.7004C0.588891 16.5785 0.261112 15.4193 0.102778 14.2083C0.0722225 13.9782 0.136112 13.7222 0 13.5065V5.26539H0.0138889Z" fill="#5E5E5E">
+           </path>
+           <path d="M11.969 20.1377C10.8274 20.1377 9.6829 20.155 8.54123 20.1291C8.08568 20.1205 7.68567 19.8674 7.32178 19.6027C6.76067 19.1971 6.41067 18.6276 6.219 17.9488C6.19678 17.8711 6.18567 17.7963 6.18289 17.7186C6.18289 16.2459 6.17178 14.7731 6.17734 13.3004C6.18289 12.3166 6.66623 11.5975 7.41901 11.0539C7.71068 10.841 8.04123 10.7 8.39679 10.6483C8.58012 10.6224 8.61346 10.5303 8.61068 10.3693C8.60512 9.93203 8.61623 9.49481 8.61068 9.05471C8.59401 8.22341 8.83568 7.48128 9.34124 6.83695C9.8829 6.14947 10.5579 5.72375 11.4135 5.5339C11.7135 5.46775 12.019 5.63746 12.3051 5.4361C12.3801 5.38433 12.5496 5.54253 12.7024 5.57418C13.9663 5.84744 15.044 6.87722 15.2996 8.26655C15.4301 8.96553 15.3857 9.67027 15.394 10.3721C15.394 10.5447 15.4246 10.6109 15.619 10.654C16.9635 10.9417 17.8274 12.0577 17.8357 13.4931C17.8413 14.7357 17.8413 15.9812 17.8357 17.2239C17.8302 18.501 17.1718 19.4647 16.0274 19.9508C15.7079 20.086 15.394 20.1406 15.0551 20.1377C14.0274 20.1291 12.9996 20.1377 11.9718 20.1349L11.969 20.1377ZM11.9662 18.2278C12.9746 18.2278 13.9829 18.2278 14.9913 18.2278C15.6135 18.2278 15.9885 17.8366 15.9885 17.1865C15.9913 15.964 15.9913 14.7415 15.9885 13.5161C15.9885 12.8977 15.6246 12.5007 15.0301 12.4978C12.994 12.4892 10.9607 12.4978 8.92457 12.4892C8.52179 12.4892 7.99679 12.9408 8.0079 13.4384C8.03568 14.7214 8.01345 16.0043 8.01901 17.2872C8.01901 17.8538 8.38846 18.2249 8.94401 18.2249C9.95235 18.2278 10.9607 18.2249 11.969 18.2249L11.9662 18.2278ZM11.9912 10.585C12.4329 10.585 12.8718 10.5792 13.3135 10.585C13.4774 10.5879 13.5579 10.5562 13.5524 10.3577C13.5413 9.92052 13.569 9.4833 13.544 9.04895C13.519 8.63186 13.4274 8.23203 13.1274 7.91275C12.7218 7.4784 12.244 7.35471 11.6746 7.46977C11.0551 7.59346 10.4718 8.19752 10.4551 8.81883C10.444 9.33372 10.4579 9.85149 10.4496 10.3664C10.4496 10.539 10.5079 10.5879 10.6662 10.585C11.1079 10.5764 11.5468 10.5821 11.9885 10.5821L11.9912 10.585Z" fill="#5E5E5E">
+           </path>
+          </svg>
+          <p>
+           Privacy &amp; Policy
+          </p>
+          <span>
+           We collect and why, how we use it, and how to review and update it.
+          </span>
+         </div>
+        </a>
+        <div>
+         <div class="fuo">
+          <p>
+           Follow us on
+          </p>
+          <a data-event_context="BCCI" data-title="twitter" href="https://twitter.com/BCCI" onclick="click_social(this)" target="_blank">
+           <svg fill="none" height="17" viewbox="0 0 18 17" width="18" xmlns="http://www.w3.org/2000/svg">
+            <path d="M0.0438858 0.941406L6.99348 9.76635L0 16.9414H1.57395L7.69674 10.6595L12.6438 16.9414H18L10.6594 7.62007L17.1689 0.941406H15.5949L9.95613 6.72688L5.40011 0.941406H0.0438858ZM2.3585 2.04247H4.81916L15.685 15.8402H13.2244L2.3585 2.04247Z" fill="white">
+            </path>
+           </svg>
+          </a>
+          <a data-event_context="BCCI" data-title="instagram" href="https://www.instagram.com/indiancricketteam/" onclick="click_social(this)" target="_blank">
+           <svg fill="none" height="17" viewbox="0 0 16 17" width="16" xmlns="http://www.w3.org/2000/svg">
+            <path clip-rule="evenodd" d="M0 8.94141C0 5.74573 0 4.14789 0.761504 2.99701C1.10155 2.48309 1.54168 2.04296 2.0556 1.70291C3.20648 0.941406 4.80432 0.941406 8 0.941406C11.1957 0.941406 12.7935 0.941406 13.9444 1.70291C14.4583 2.04296 14.8984 2.48309 15.2385 2.99701C16 4.14789 16 5.74573 16 8.94141C16 12.1371 16 13.7349 15.2385 14.8858C14.8984 15.3997 14.4583 15.8399 13.9444 16.1799C12.7935 16.9414 11.1957 16.9414 8 16.9414C4.80432 16.9414 3.20648 16.9414 2.0556 16.1799C1.54168 15.8399 1.10155 15.3997 0.761504 14.8858C0 13.7349 0 12.1371 0 8.94141ZM12.1428 8.93466C12.1428 11.2221 10.2885 13.0764 8.00107 13.0764C5.71368 13.0764 3.85938 11.2221 3.85938 8.93466C3.85938 6.64727 5.71368 4.79297 8.00107 4.79297C10.2885 4.79297 12.1428 6.64727 12.1428 8.93466ZM8.00107 11.6751C9.51458 11.6751 10.7415 10.4482 10.7415 8.93466C10.7415 7.42116 9.51458 6.19422 8.00107 6.19422C6.48757 6.19422 5.26062 7.42116 5.26062 8.93466C5.26062 10.4482 6.48757 11.6751 8.00107 11.6751ZM12.3013 5.55963C12.8388 5.55963 13.2745 5.12393 13.2745 4.58646C13.2745 4.04899 12.8388 3.61328 12.3013 3.61328C11.7638 3.61328 11.3281 4.04899 11.3281 4.58646C11.3281 5.12393 11.7638 5.55963 12.3013 5.55963Z" fill="white" fill-rule="evenodd">
+            </path>
+           </svg>
+          </a>
+          <a class="fface" data-event_context="BCCI" data-title="facebook" href="https://www.facebook.com/IndianCricketTeam/" onclick="click_social(this)" target="_blank">
+           <svg fill="none" height="18" viewbox="0 0 10 18" width="10" xmlns="http://www.w3.org/2000/svg">
+            <path d="M6.30708 17.9414V10.1869H9.17185L9.60076 7.16482H6.307V5.23535C6.307 4.36039 6.57439 3.76415 7.95541 3.76415L9.7167 3.7634V1.06047C9.41207 1.02371 8.36648 0.941406 7.1502 0.941406C4.6107 0.941406 2.87212 2.34974 2.87212 4.93615V7.16482H0V10.1869H2.87212V17.9413H6.30708V17.9414Z" fill="white">
+            </path>
+           </svg>
+          </a>
+          <!-- <a onclick="click_social(this)" data-title="thread" data-event_context="BCCI" class="fthread" href="https://www.threads.net/@indiancricketteam/" target="_blank"><svg xmlns="http://www.w3.org/2000/svg" width="15" height="17" viewBox="0 0 15 17"
+                                        fill="none">
+                                        <path
+                                            d="M11.6089 8.3571C11.5388 8.32406 11.4676 8.29227 11.3955 8.26183C11.2698 5.98626 10.0052 4.68349 7.8818 4.67016C7.87218 4.6701 7.86261 4.6701 7.85299 4.6701C6.5829 4.6701 5.52659 5.20315 4.87643 6.17313L6.04426 6.96081C6.52995 6.23626 7.29219 6.08181 7.85355 6.08181C7.86004 6.08181 7.86654 6.08181 7.87296 6.08186C8.57213 6.08625 9.09972 6.28612 9.4412 6.67591C9.6897 6.95968 9.8559 7.35182 9.93819 7.84672C9.3183 7.74313 8.6479 7.71128 7.93122 7.75168C5.91236 7.86602 4.61447 9.02373 4.70164 10.6324C4.74587 11.4484 5.15932 12.1504 5.86577 12.609C6.46306 12.9967 7.23234 13.1862 8.03185 13.1433C9.08769 13.0864 9.91599 12.6903 10.4938 11.9661C10.9327 11.4161 11.2103 10.7033 11.3328 9.80524C11.836 10.1038 12.2089 10.4967 12.4149 10.9691C12.7651 11.772 12.7855 13.0914 11.6906 14.1671C10.7312 15.1094 9.57807 15.5171 7.83532 15.5297C5.90214 15.5156 4.4401 14.906 3.48953 13.7178C2.59939 12.6052 2.13936 10.9982 2.1222 8.94141C2.13936 6.88456 2.59939 5.27754 3.48953 4.16496C4.4401 2.97681 5.90212 2.36724 7.8353 2.35311C9.7825 2.36735 11.27 2.97986 12.257 4.17374C12.7409 4.75921 13.1058 5.49547 13.3463 6.35393L14.7148 5.99492C14.4233 4.93826 13.9645 4.02771 13.3402 3.27257C12.0749 1.74196 10.2244 0.957669 7.84007 0.941406H7.83052C5.45103 0.957612 3.62124 1.74489 2.39198 3.28135C1.29811 4.64861 0.733863 6.55105 0.714903 8.93578L0.714844 8.94141L0.714903 8.94703C0.733863 11.3317 1.29811 13.2342 2.39198 14.6015C3.62124 16.1379 5.45103 16.9252 7.83052 16.9414H7.84007C9.95557 16.927 11.4467 16.3824 12.6752 15.1757C14.2823 13.5969 14.2339 11.618 13.7042 10.4032C13.3242 9.53199 12.5996 8.82442 11.6089 8.3571ZM7.95626 11.7337C7.07143 11.7827 6.15218 11.3922 6.10686 10.5557C6.07326 9.93557 6.55573 9.24357 8.01057 9.16114C8.17718 9.15169 8.34067 9.14707 8.50128 9.14707C9.02972 9.14707 9.52409 9.19755 9.97354 9.29416C9.80589 11.3527 8.82258 11.6869 7.95626 11.7337Z"
+                                            fill="white" />
+                                        </svg>
+                                    </a> -->
+          <span>
+           Copyrights BCCI 2026, All Rights Reserved.
+          </span>
+         </div>
+        </div>
+       </article>
+       <!-- </ul> -->
+      </div>
+     </div>
+    </div>
+   </div>
+  </div>
+  <!-- champ blocker start-->
+  <!-- <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#myModal">
+  Open champion banner
+</button> -->
+  <!-- champ blocker end-->
+  <script>
+   window.addEventListener('pageshow', function (event) {
+        if (event.persisted) {
+            // Page restored from bfcache, so reload or re-init your tab logic
+            location.reload();
+        }
+    });
+  </script>
+  <script>
+   const input = document.getElementById('searchInputForHeader');
+
+    document.querySelector('form').addEventListener('submit', function (e) {
+        const value = input.value.trim();
+        input.value = value;
+
+        if (value.length < 3) {
+            e.preventDefault();
+            input.setCustomValidity('Please lengthen this text to 3 characters or more (you are currently using 2 characters)');
+            input.reportValidity(); // shows browser message
+        } else {
+            input.setCustomValidity('');
+        }
+    });
+
+    // Clear message while typing
+    input.addEventListener('input', function () {
+        input.setCustomValidity('');
+    });
+  </script>
+  <!-- <div class="loaderContainer">
+    <div class="loaderMain active d-none">
+        <span class="mloader"></span>
+    </div>
+    </div> -->
+  <div class="mcl">
+   <div class="mcLoaderNew pageloader">
+    <div class="loader__inner">
+    </div>
+   </div>
+   <div class="current-mtch-cont mc-info d-none">
+    <div class="mtch-center">
+     <div id="scoreCardWrap">
+      <div class="mtchhead">
+       <a class="bck" href="javascript:void(0)" onclick="history.back()">
+        <span>
+         <img alt="" src="https://www.bcci.tv//img/left.svg"/>
+        </span>
+        Match Center
+       </a>
+      </div>
+      <div class="share-btn">
+       <button class="bg-transparent border-0 float-end">
+        <svg fill="none" height="15" viewbox="0 0 13 15" width="13" xmlns="http://www.w3.org/2000/svg">
+         <g opacity="0.5">
+          <ellipse cx="10.3832" cy="2.62544" rx="1.61758" ry="1.62544" stroke="black" stroke-width="1.5">
+          </ellipse>
+          <ellipse cx="2.61758" cy="7.17232" rx="1.61758" ry="1.62544" stroke="black" stroke-width="1.5">
+          </ellipse>
+          <path d="M8.76803 3.27476L4.23834 5.87323" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5">
+          </path>
+          <path d="M4.23459 7.82104L9.08784 10.7443" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5">
+          </path>
+          <ellipse cx="10.3832" cy="12.3754" rx="1.61758" ry="1.62544" stroke="black" stroke-width="1.5">
+          </ellipse>
+         </g>
+        </svg>
+       </button>
+       <div class="share-social">
+        <span class="mb-0">
+         Share on :
+        </span>
+        <div class="social-auto">
+         <a class="bg-transparent border-0" data-action="share/whatsapp/share" data-method="whatsapp" data-title="Match Center" data-type="Match Center" href="https://wa.me/?text=https://www.bcci.tv/domestic/syed-mushtaq-ali-trophy-elite-2025-26/match/125" onclick="share(this)" tabindex="0" target="_blank">
+          <svg fill="#000000" height="13" id="Layer_1" version="1.1" viewbox="0 0 308 308" width="15" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+           <g id="XMLID_468_">
+            <path d="M227.904,176.981c-0.6-0.288-23.054-11.345-27.044-12.781c-1.629-0.585-3.374-1.156-5.23-1.156
+                                        c-3.032,0-5.579,1.511-7.563,4.479c-2.243,3.334-9.033,11.271-11.131,13.642c-0.274,0.313-0.648,0.687-0.872,0.687
+                                        c-0.201,0-3.676-1.431-4.728-1.888c-24.087-10.463-42.37-35.624-44.877-39.867c-0.358-0.61-0.373-0.887-0.376-0.887
+                                        c0.088-0.323,0.898-1.135,1.316-1.554c1.223-1.21,2.548-2.805,3.83-4.348c0.607-0.731,1.215-1.463,1.812-2.153
+                                        c1.86-2.164,2.688-3.844,3.648-5.79l0.503-1.011c2.344-4.657,0.342-8.587-0.305-9.856c-0.531-1.062-10.012-23.944-11.02-26.348
+                                        c-2.424-5.801-5.627-8.502-10.078-8.502c-0.413,0,0,0-1.732,0.073c-2.109,0.089-13.594,1.601-18.672,4.802
+                                        c-5.385,3.395-14.495,14.217-14.495,33.249c0,17.129,10.87,33.302,15.537,39.453c0.116,0.155,0.329,0.47,0.638,0.922
+                                        c17.873,26.102,40.154,45.446,62.741,54.469c21.745,8.686,32.042,9.69,37.896,9.69c0.001,0,0.001,0,0.001,0
+                                        c2.46,0,4.429-0.193,6.166-0.364l1.102-0.105c7.512-0.666,24.02-9.22,27.775-19.655c2.958-8.219,3.738-17.199,1.77-20.458
+                                        C233.168,179.508,230.845,178.393,227.904,176.981z" id="XMLID_469_">
+            </path>
+            <path d="M156.734,0C73.318,0,5.454,67.354,5.454,150.143c0,26.777,7.166,52.988,20.741,75.928L0.212,302.716
+                                        c-0.484,1.429-0.124,3.009,0.933,4.085C1.908,307.58,2.943,308,4,308c0.405,0,0.813-0.061,1.211-0.188l79.92-25.396
+                                        c21.87,11.685,46.588,17.853,71.604,17.853C240.143,300.27,308,232.923,308,150.143C308,67.354,240.143,0,156.734,0z
+                                        M156.734,268.994c-23.539,0-46.338-6.797-65.936-19.657c-0.659-0.433-1.424-0.655-2.194-0.655c-0.407,0-0.815,0.062-1.212,0.188
+                                        l-40.035,12.726l12.924-38.129c0.418-1.234,0.209-2.595-0.561-3.647c-14.924-20.392-22.813-44.485-22.813-69.677
+                                        c0-65.543,53.754-118.867,119.826-118.867c66.064,0,119.812,53.324,119.812,118.867
+                                        C276.546,215.678,222.799,268.994,156.734,268.994z" id="XMLID_470_">
+            </path>
+           </g>
+          </svg>
+         </a>
+         <a class="bg-transparent border-0" data-method="twitter" data-title="Match Center" data-type="Match Center" href="//twitter.com/share?url=https://www.bcci.tv/domestic/syed-mushtaq-ali-trophy-elite-2025-26/match/125" onclick="share(this)" tabindex="0" target="_blank">
+          <svg fill="none" height="12" viewbox="0 0 18 16" width="14" xmlns="http://www.w3.org/2000/svg">
+           <path d="M0.0438858 0L6.99348 8.82495L0 16H1.57395L7.69674 9.71813L12.6438 16H18L10.6594 6.67867L17.1689 0H15.5949L9.95613 5.78548L5.40011 0H0.0438858ZM2.3585 1.10107H4.81916L15.685 14.8988H13.2244L2.3585 1.10107Z" fill="black">
+           </path>
+          </svg>
+         </a>
+         <a class="copyUrl ctc" data-method="Copy link" data-share="https://www.bcci.tv/domestic/syed-mushtaq-ali-trophy-elite-2025-26/match/125" data-title="Match Center" data-type="Match Center" href="javascript:void(0)" onclick="share(this)" tabindex="0">
+          <span class="c" style="display:none">
+           Copy
+          </span>
+          <svg fill="none" height="20" viewbox="0 0 49 36" width="20" xmlns="http://www.w3.org/2000/svg">
+           <path d="M11.231 35.7132C9.18361 35.7134 7.18214 35.1064 5.47972 33.969C3.77731 32.8316 2.45043 31.2149 1.6669 29.3234C0.883365 27.4318 0.678377 25.3504 1.07786 23.3424C1.47734 21.3343 2.46335 19.4898 3.91118 18.0422L14.5928 7.36474C16.5342 5.4234 19.1672 4.33276 21.9127 4.33276C24.6581 4.33276 27.2912 5.4234 29.2325 7.36474C31.1738 9.30608 32.2645 11.9391 32.2645 14.6846C32.2645 17.43 31.1738 20.0631 29.2325 22.0044L28.0756 23.1592L25.1155 20.2032L26.2807 19.038C27.4332 17.88 28.0794 16.3124 28.0779 14.6787C28.0763 13.045 27.427 11.4785 26.2723 10.3228C25.0971 9.20125 23.5351 8.57549 21.9106 8.57549C20.2861 8.57549 18.724 9.20125 17.5488 10.3228L6.87133 21.0003C6.29812 21.5728 5.84339 22.2528 5.53314 23.0012C5.22289 23.7496 5.0632 24.5519 5.0632 25.362C5.0632 26.1722 5.22289 26.9745 5.53314 27.7229C5.84339 28.4713 6.29812 29.1513 6.87133 29.7238C8.04654 30.8454 9.60861 31.4711 11.2331 31.4711C12.8576 31.4711 14.4197 30.8454 15.5949 29.7238L18.5529 32.6819C17.5935 33.6461 16.4523 34.4104 15.1955 34.9308C13.9387 35.4511 12.5912 35.717 11.231 35.7132Z" fill="black">
+           </path>
+           <path d="M27.9654 31.5327C25.918 31.5329 23.9165 30.926 22.2141 29.7886C20.5117 28.6512 19.1848 27.0345 18.4013 25.143C17.6177 23.2514 17.4128 21.17 17.8122 19.1619C18.2117 17.1539 19.1977 15.3094 20.6456 13.8618L21.8024 12.707L24.7605 15.6672L23.6057 16.8219C22.4492 17.9785 21.7995 19.5471 21.7995 21.1827C21.7995 22.8182 22.4492 24.3868 23.6057 25.5434C24.7809 26.6649 26.343 27.2907 27.9675 27.2907C29.592 27.2907 31.154 26.6649 32.3293 25.5434L43.0088 14.8638C44.1631 13.7066 44.8114 12.1387 44.8114 10.5042C44.8114 8.8696 44.1631 7.30176 43.0088 6.14447C41.8336 5.02292 40.2715 4.39716 38.647 4.39716C37.0225 4.39716 35.4605 5.02292 34.2853 6.14447L31.3272 3.18432C33.2685 1.24298 35.9016 0.152344 38.647 0.152344C41.3925 0.152344 44.0255 1.24298 45.9669 3.18432C47.9082 5.12566 48.9988 7.75869 48.9988 10.5042C48.9988 13.2496 47.9082 15.8827 45.9669 17.824L35.2894 28.4994C34.33 29.4638 33.1889 30.2284 31.9321 30.7491C30.6753 31.2697 29.3278 31.5361 27.9675 31.5327H27.9654Z" fill="black">
+           </path>
+          </svg>
+         </a>
+         <a class="bg-transparent border-0" data-method="facebook" data-title="Match Center" data-type="Match Center" href="//www.facebook.com/sharer.php?u=https://www.bcci.tv/domestic/syed-mushtaq-ali-trophy-elite-2025-26/match/125" onclick="share(this)" tabindex="0" target="_blank">
+          <svg fill="none" height="15" viewbox="0 0 10 17" width="8" xmlns="http://www.w3.org/2000/svg">
+           <path d="M6.30708 17V9.24551H9.17185L9.60076 6.22342H6.307V4.29395C6.307 3.41898 6.57439 2.82274 7.95541 2.82274L9.7167 2.82199V0.119068C9.41207 0.0823045 8.36648 0 7.1502 0C4.6107 0 2.87212 1.40833 2.87212 3.99474V6.22342H0V9.24551H2.87212V16.9999H6.30708V17Z" fill="black">
+           </path>
+          </svg>
+         </a>
+        </div>
+       </div>
+      </div>
+      <div id="Main-section" widgettype="domestic">
+       <div class="Left-section">
+        <div id="brScoreBoard">
+         <div id="scoreBox">
+          <div class="scrBox-top">
+           <div class="scrBox-tour">
+            <div class="tournament-Name">
+             <!-- Asia Cup Women T20 2024 -->
+            </div>
+            <div class="tournament-Name">
+             <!-- 1st T20I  -->
+            </div>
+            <div class="mtchvenue">
+             <span class="matground">
+              <!-- Rangiri Dambulla International Stadium -->
+             </span>
+             ,
+             <span class="matplace">
+              <!-- Dambulla  -->
+             </span>
+            </div>
+           </div>
+          </div>
+          <div class="scrBox-center">
+           <div class="teamScrs">
+            <div class="temLft">
+             <div class="t-nam">
+              <span class="temlogo">
+               <img alt="" src=""/>
+              </span>
+             </div>
+             <div class="inning-Box">
+              <div class="inings">
+               <div class="teamscr">
+                <span class="runs-t">
+                 -/-
+                </span>
+               </div>
+              </div>
+             </div>
+            </div>
+            <div class="vsac">
+             <img alt="" src="https://www.bcci.tv//img/verses-white.png"/>
+            </div>
+            <div class="temRght">
+             <div class="t-nam">
+              <span class="temlogo">
+               <img alt="" src=""/>
+              </span>
+             </div>
+             <div class="inning-Box">
+              <div class="inings">
+               <div class="teamscr">
+                <span class="runs-t">
+                 -/-
+                </span>
+               </div>
+              </div>
+             </div>
+            </div>
+           </div>
+           <div class="mtchsumarytextUpcoming">
+           </div>
+          </div>
+          <div class="matchtime" style="border-bottom: 1px solid #285da9;">
+           <p id="timer">
+           </p>
+          </div>
+          <div class="scrBox-bttom">
+           <div class="mtchdats">
+            <!-- 19 JUL 2024 -->
+           </div>
+           <div class="mtchenddats">
+            <!-- 19 JUL 2024 -->
+           </div>
+           <div class="mtchtimes">
+            <!-- 19:00 IST -->
+           </div>
+          </div>
+         </div>
+        </div>
+       </div>
+       <div class="Right-section">
+        <div class="lright-panel">
+         <div class="prematchCommentary d-none">
+          <article class="quete--wrap tp-bor position-relative p-0">
+           <span class="quete-left">
+            <svg enable-background="new 0 0 475.082 475.081" version="1.1" viewbox="0 0 475.08 475.08" xml:space="preserve" xmlns="http://www.w3.org/2000/svg">
+             <path d="m164.45 219.27h-63.954c-7.614 0-14.087-2.664-19.417-7.994-5.327-5.33-7.994-11.801-7.994-19.417v-9.132c0-20.177 7.139-37.401 21.416-51.678 14.276-14.272 31.503-21.411 51.678-21.411h18.271c4.948 0 9.229-1.809 12.847-5.424 3.616-3.617 5.424-7.898 5.424-12.847v-36.548c0-4.948-1.809-9.233-5.424-12.85-3.617-3.612-7.898-5.424-12.847-5.424h-18.271c-19.797 0-38.684 3.858-56.673 11.563-17.987 7.71-33.545 18.132-46.68 31.267-13.134 13.129-23.553 28.688-31.262 46.677-7.709 17.987-11.564 36.879-11.564 56.674v200.99c0 15.235 5.327 28.171 15.986 38.834 10.66 10.657 23.606 15.985 38.832 15.985h109.64c15.225 0 28.167-5.328 38.828-15.985 10.657-10.663 15.987-23.599 15.987-38.834v-109.63c0-15.232-5.33-28.168-15.994-38.832-10.656-10.656-23.603-15.986-38.828-15.986z">
+             </path>
+             <path d="m459.1 235.26c-10.656-10.656-23.599-15.986-38.828-15.986h-63.953c-7.61 0-14.089-2.664-19.41-7.994-5.332-5.33-7.994-11.801-7.994-19.417v-9.132c0-20.177 7.139-37.401 21.409-51.678 14.271-14.272 31.497-21.411 51.682-21.411h18.267c4.949 0 9.233-1.809 12.848-5.424 3.613-3.617 5.428-7.898 5.428-12.847v-36.548c0-4.948-1.814-9.233-5.428-12.85-3.614-3.612-7.898-5.424-12.848-5.424h-18.267c-19.808 0-38.691 3.858-56.685 11.563-17.984 7.71-33.537 18.132-46.672 31.267-13.135 13.129-23.559 28.688-31.265 46.677-7.707 17.987-11.567 36.879-11.567 56.674v200.99c0 15.235 5.332 28.171 15.988 38.834 10.657 10.657 23.6 15.985 38.828 15.985h109.63c15.229 0 28.171-5.328 38.827-15.985 10.664-10.663 15.985-23.599 15.985-38.834v-109.63c1e-3 -15.233-5.321-28.168-15.978-38.832z">
+             </path>
+            </svg>
+           </span>
+           <summary class="list-unstyled w-100 last__summ">
+           </summary>
+          </article>
+         </div>
+         <div class="widgts mtchDts hide-mob">
+          <h4 class="widgttitl">
+           Match Details
+          </h4>
+          <div class="widgtcontnt">
+           <!-- <ul>
+                                    <li>
+                                        <span>Tournament </span>
+                                        <span>Asia Cup Women T20 2024 BCCI </span>
+                                    </li>
+                                    <li>
+                                        <span>Match </span>
+                                        <span>India (women) vs Nepal (women) </span>
+                                    </li>
+                                    <li>
+                                        <span>Venue </span>
+                                        <span>Rangiri Dambulla International Stadium </span>
+                                    </li>
+                                    <li>
+                                        <span>Umpires </span>
+                                        <span>Saleem Imtiaz , Nimali Perera</span>
+                                    </li>
+                                </ul> -->
+          </div>
+         </div>
+         <div class="widgts PlayigXI hide-mob">
+          <div id="fix-squad-block">
+           <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
+            <li class="nav-item" role="presentation">
+             <button aria-controls="pills-home" aria-selected="true" class="nav-link active" data-bs-target="#pills-home" data-bs-toggle="pill" id="pills-home-team" role="tab" type="button">
+             </button>
+            </li>
+            <li class="nav-item" role="presentation">
+             <button aria-controls="pills-profile" aria-selected="false" class="nav-link" data-bs-target="#pills-away" data-bs-toggle="pill" id="pills-away-team" role="tab" type="button">
+             </button>
+            </li>
+           </ul>
+           <div class="tab-content fixSquad-con" id="pills-tabContent">
+            <div aria-labelledby="pills-home-team" class="tab-pane fade show active" id="pills-home" role="tabpanel">
+             <!--<div class="fixsquad-title">Squad </div>-->
+             <ul class="fixsquad-list">
+              <li class="fixsquad-item">
+               <!--<span class="fix-ply-img">
+                                                    <img src="https://www.bcci.tv//img/fix-plyr-img.png" alt="">
+                                                </span>
+                                                <span class="fix-ply-name"><a href="javascript:void(0)">Harmanpreet Kaur (c)</a>
+                                                <i class="plyr-role">All Rounder <img src="https://www.bcci.tv//img/all-rounder.png" alt=""></i>
+                                                </span>-->
+              </li>
+             </ul>
+            </div>
+            <div aria-labelledby="pills-away-team" class="tab-pane fade" id="pills-away" role="tabpanel">
+            </div>
+           </div>
+          </div>
+         </div>
+        </div>
+       </div>
+      </div>
+     </div>
+    </div>
+   </div>
+   <script>
+    var getMenURL = "https://documents.bcci.tv/web-images/Default-M.png";
+var getWomenURL = "https://documents.bcci.tv/web-images/Default-W.png";
+var getDocumentURL = "https://documents.bcci.tv/";
+
+var legendsquadsDom = '<div class="note-container">'+
+'<h5>Note</h5>' + 
+'<span class="LegendItems">* </span>' +
+'<span class="LegendItems">IP - (Impact Player) </span>' +
+'<span class="LegendItems">RP - (Replaced Player) </span>' +
+'<span class="LegendItems">CS - (Concussion Substitute) </span>' +
+'</div>';
+   </script>
+   <div class="current-mtch-cont mc-result d-none">
+    <div class="mtch-center">
+     <div id="scoreCardWrap">
+      <div class="mtchhead">
+       <a class="bck" href="javascript:void(0)" onclick="history.back()">
+        <span>
+         <img alt="" src="https://www.bcci.tv//img/left.svg"/>
+        </span>
+        Match Center
+       </a>
+      </div>
+      <!-- The Modal -->
+      <div id="Main-section" widgettype="domestic">
+       <div class="Left-section">
+        <div id="brScoreBoard">
+         <div id="scoreBox">
+          <div class="scrBox-top">
+           <div class="blink--live d-none">
+            <span class="hpto__recent__open__live">
+             <em class="hpto__live__btn">
+             </em>
+             LIVE
+            </span>
+           </div>
+           <div class="scrBox-tour">
+            <div class="tournament-Name">
+             <!-- Asia Cup Women T20 2024 -->
+            </div>
+            <div class="tournament-Name">
+             <!-- 1st T20I  -->
+            </div>
+            <div class="mtchvenue">
+             <span class="matground">
+              <!-- Rangiri Dambulla International Stadium -->
+             </span>
+             ,
+             <span class="matplace">
+              <!-- Dambulla  -->
+             </span>
+            </div>
+           </div>
+          </div>
+          <div class="scrBox-center">
+           <div class="teamScrs">
+            <div class="temLft">
+             <div class="t-nam">
+              <span class="temlogo">
+               <img alt="" src="https://www.bcci.tv//img/india.png"/>
+              </span>
+             </div>
+             <div class="inning-Box">
+              <div class="inings">
+               <div class="teamscr">
+                <span class="runs-t">
+                 <!-- 178/3 -->
+                </span>
+                <span class="ovrs">
+                 <!-- 20.0 overs -->
+                </span>
+               </div>
+              </div>
+             </div>
+            </div>
+            <div class="vsac">
+             <img alt="" src="https://www.bcci.tv//./img/verses-white.png"/>
+            </div>
+            <div class="temRght">
+             <div class="t-nam">
+              <span class="temlogo">
+               <img alt="" src="https://www.bcci.tv//img/india.png"/>
+              </span>
+             </div>
+             <div class="inning-Box">
+              <div class="inings">
+               <div class="teamscr">
+                <span class="runs-t">
+                 <!-- 178/3  -->
+                </span>
+                <span class="ovrs">
+                 <!-- 20.0 overs  -->
+                </span>
+               </div>
+              </div>
+             </div>
+            </div>
+           </div>
+           <div class="mtchsumaryText">
+           </div>
+           <div class="mtchsumaryChasingtext">
+           </div>
+           <div class="mtchsumarytextToss">
+           </div>
+           <!-- <div class="mtchsumaryBreakComments">
+                                </div>-->
+          </div>
+          <div class="scrBox-bttom">
+           <div class="mtchdats">
+            <!-- 19 JUL 2024 -->
+           </div>
+           <div class="mtchenddats">
+            <!-- 19 JUL 2024 -->
+           </div>
+           <div class="mtchtimes">
+            <!-- 19:00 IST -->
+           </div>
+          </div>
+         </div>
+        </div>
+        <!-- <div class="overstrm" id="overStreamMC">
+                        <div class="Selctor">
+                            <p class="bSelector icon-block">Last 12 deliveries</p>
+                        </div>
+                        <div class="bContainer" id="overStream">
+                            <div class="dataStream">
+                                <div class="dataviewprt">
+
+                                </div>
+                            </div>
+                        </div>
+                    </div> -->
+       </div>
+       <div class="Right-section result position-relative">
+        <div class="lright-panel">
+         <ul class="nav nav-pills result__nav-tab tab-visibility" id="pills-tab" role="tablist">
+          <li class="nav-item" role="presentation">
+           <button aria-controls="pills-commentary" aria-selected="true" class="nav-link" data-bs-target="#pills-commentary" data-bs-toggle="pill" id="pills-commentary-tab" role="tab" type="button">
+            Commentary
+           </button>
+          </li>
+          <li class="nav-item" role="presentation">
+           <button aria-controls="pills-scorecard" aria-selected="false" class="nav-link active" data-bs-target="#pills-scorecard" data-bs-toggle="pill" id="pills-scorecard-tab" onclick="loadInning('', 'scorecard')" role="tab" type="button">
+            Scorecard
+           </button>
+          </li>
+          <li class="nav-item" role="presentation">
+           <button aria-controls="pills-videos" aria-selected="false" class="nav-link" data-bs-target="#pills-videos" data-bs-toggle="pill" id="pills-videos-tab" onclick="filterMatchVideosList('all')" role="tab" type="button">
+            Videos
+           </button>
+          </li>
+          <li class="nav-item" role="presentation">
+           <button aria-controls="pills-match-details" aria-selected="false" class="nav-link" data-bs-target="#pills-match-details" data-bs-toggle="pill" id="pills-match-details-tab" role="tab" type="button">
+            Match Details
+           </button>
+          </li>
+          <li class="nav-item" role="presentation">
+           <button aria-controls="pills-squad" aria-selected="false" class="nav-link" data-bs-target="#pills-squad" data-bs-toggle="pill" id="pills-squad-tab" role="tab" type="button">
+            Squad
+           </button>
+          </li>
+          <li class="nav-item" role="presentation">
+           <button aria-controls="pills-photos" aria-selected="false" class="nav-link" data-bs-target="#pills-photos" data-bs-toggle="pill" id="pills-photos-tab" role="tab" type="button">
+            Photos
+           </button>
+          </li>
+          <li class="nav-item" role="presentation">
+           <button aria-controls="pills-wagonwheel" aria-selected="false" class="nav-link" data-bs-target="#pills-wagonwheel" data-bs-toggle="pill" id="pills-wagonwheel-tab" role="tab" type="button">
+            Wagon Wheel
+           </button>
+          </li>
+          <li class="nav-item" role="presentation">
+           <button aria-controls="pills-manhattanworm" aria-selected="false" class="nav-link" data-bs-target="#pills-manhattanworm" data-bs-toggle="pill" id="pills-manhattanworm-tab" role="tab" type="button">
+            Manhattan &amp; Worm
+           </button>
+          </li>
+         </ul>
+         <div class="tab-content px-3 mt-3" id="pills-tabContent">
+          <div aria-labelledby="pills-commentary-tab" class="tab-pane fade" id="pills-commentary" role="tabpanel">
+           <ul class="nav nav-pills mb-3 result__nav-tab--inside b" id="pills-tab" role="tablist">
+           </ul>
+           <div class="tab-content" id="pills-tabContent">
+           </div>
+           <div class="mcLoaderNew pageloader mcinnerMcLoaderCommentary active">
+            <div class="loader__inner">
+            </div>
+           </div>
+          </div>
+          <div aria-labelledby="pills-scorecard-tab" class="tab-pane fade show active" id="pills-scorecard" role="tabpanel">
+           <ul class="nav nav-pills mb-3 result__nav-tab--inside b" id="pills-tab" role="tablist">
+           </ul>
+           <div class="tab-content" id="pills-tabContent">
+           </div>
+           <div class="mcLoaderNew pageloader mcinnerMcLoaderScorecard active">
+            <div class="loader__inner">
+            </div>
+           </div>
+          </div>
+          <div aria-labelledby="pills-match-details-tab" class="tab-pane fade" id="pills-match-details" role="tabpanel">
+           <div class="tab-content" id="pills-tabContent">
+           </div>
+           <div class="mcLoaderNew pageloader mcinnerMcLoaderMatchDetails">
+            <div class="loader__inner">
+            </div>
+           </div>
+          </div>
+          <div aria-labelledby="pills-videos-tab" class="tab-pane fade" id="pills-videos" role="tabpanel">
+           <div class="videotabContent px-0" id="videostreampage">
+            <div class="videosecondarymenu">
+             <ul class="statsubmenu mtchvideolistFilterMenu">
+              <li class="all" onclick="filterMatchVideosList('all')">
+               Latest
+              </li>
+              <li class="highlights" onclick="filterMatchVideosList('highlights')">
+               Highlights
+              </li>
+              <li class="supersix" onclick="filterMatchVideosList('six')">
+               Super 6s
+              </li>
+              <li class="wicket" onclick="filterMatchVideosList('wicket')">
+               Wickets
+              </li>
+              <!-- <li onclick="filterMatchVideosList('feature')" class="feature">Features</li> -->
+              <!-- <li onclick="filterMatchVideosList('highlights')" class="highlights">Highlights</li> -->
+             </ul>
+             <div class="article-container video-page-container video-section-append-video-here">
+             </div>
+             <div class="mcLoaderNew pageloader mcinnerMcLoaderVideo">
+              <div class="loader__inner">
+              </div>
+             </div>
+            </div>
+           </div>
+          </div>
+          <div aria-labelledby="pills-squad-tab" class="tab-pane fade" id="pills-squad" role="tabpanel">
+           <div class="current-mtch-cont">
+            <ul class="nav squad-nav nav-pills mb-3 result__nav-tab--inside cnter-text" id="pills-tab" role="tablist">
+             <li class="nav-item squad-nav-item" role="presentation">
+              <button aria-controls="pills-team1" aria-selected="true" class="nav-link squad-nav-link active" data-bs-target="#pills-team1" data-bs-toggle="pill" id="pills-team1-tab" role="tab" type="button">
+               <!-- Team Name (WOMEN) &nbsp; -->
+               <span class="inni">
+                <!-- 1st Inns -->
+               </span>
+              </button>
+             </li>
+             <li class="nav-item squad-nav-item" role="presentation">
+              <button aria-controls="pills-team2" aria-selected="false" class="nav-link squad-nav-link" data-bs-target="#pills-team2" data-bs-toggle="pill" id="pills-team2-tab" role="tab" type="button">
+               <!-- Team Name  &nbsp; -->
+               <span class="inni">
+                <!-- 2st Inns -->
+               </span>
+              </button>
+             </li>
+            </ul>
+            <div class="tab-content" id="pills-tabContent">
+             <div aria-labelledby="pills-team1-tab" class="tab-pane fade show active" id="pills-team1" role="tabpanel">
+              <div class="playing-elev">
+               <div class="fixsquad-title">
+                Playing XI
+               </div>
+               <ul class="fixsquad-list playing-11">
+               </ul>
+              </div>
+              <div class="rest-plyr mt-5">
+               <div class="fixsquad-title">
+                Rest of the Squad
+               </div>
+               <ul class="fixsquad-list rest-of-the-squad">
+               </ul>
+               <div class="Legendblock">
+               </div>
+              </div>
+             </div>
+             <div aria-labelledby="pills-team2-tab" class="tab-pane fade" id="pills-team2" role="tabpanel">
+              <div class="playing-elev">
+               <div class="fixsquad-title">
+                Playing XI
+               </div>
+               <ul class="fixsquad-list playing-11">
+               </ul>
+              </div>
+              <div class="rest-plyr mt-5">
+               <div class="fixsquad-title">
+                Rest of the Squad
+               </div>
+               <ul class="fixsquad-list rest-of-the-squad">
+               </ul>
+               <span class="Legendblock" id="legendBlockLive">
+               </span>
+              </div>
+             </div>
+            </div>
+            <div class="mcLoaderNew pageloader mcinnerMcLoaderSquad">
+             <div class="loader__inner">
+             </div>
+            </div>
+           </div>
+          </div>
+          <div aria-labelledby="pills-photos-tab" class="tab-pane fade" id="pills-photos" role="tabpanel">
+           <div class="mcLoaderNew pageloader mcinnerMcLoaderPhoto active">
+            <div class="loader__inner">
+            </div>
+           </div>
+          </div>
+          <div aria-labelledby="pills-wagonwheel-tab" class="tab-pane fade" id="pills-wagonwheel" role="tabpanel">
+           <div id="wagonWheelContent">
+            <div class="scorecardHeader" id="wagonScoreCardHeader">
+            </div>
+            <div class="wagonWheelContentWrapper">
+             <div class="col s12 m12 l12 settingWrap uniform-grid">
+              <select class="mcSelectDefault batsmenFilter" id="indvBattingData" onchange="viewIndvBatData(this.value)">
+               <option value="">
+                All Batters
+               </option>
+              </select>
+              <select class="mcSelectDefault bowlerFilter" id="indvBowlingData" onchange="viewIndvBowlData(this.value)">
+               <option value="">
+                All Bowlers
+               </option>
+              </select>
+             </div>
+             <div id="wagonwheelContainer">
+              <div class="graphCircle" id="Wagonwheel" style="width: 450px; height: 450px;background-position: center;background-size:inherit;">
+              </div>
+              <div id="mob_Wagonwheel" style="width: 300px; height: 300px;">
+              </div>
+             </div>
+             <div class="switch_data">
+              <div class="batStyle" id="batStyle">
+              </div>
+              <div class="wagonData uniform-grid js-wagonSideElements offside" id="offsideWagonData">
+              </div>
+              <div class="wagonData uniform-grid js-wagonSideElements onside hide" id="onsideWagonData">
+              </div>
+              <div id="wagon-panel">
+               <ul class="wagon-points uniform-grid" id="wagon-points">
+               </ul>
+              </div>
+             </div>
+            </div>
+           </div>
+           <div id="wagonWheelNoDataFound" style="display: none;">
+            <div class="nothing_here_cont text-center">
+             <h3 class="noothing_title">
+              Nothing's Here!!
+             </h3>
+             <img alt="nothing here img" class="nothing_here_img" height="240" src="https://documents.bcci.tv/web-images/no-data-img.svg" width="324"/>
+             <p class="try_again_msg">
+              Currently there is no data available.
+              Please try again later.
+             </p>
+            </div>
+           </div>
+           <div class="mcLoaderNew pageloader mcinnerMcLoaderWagonwheel">
+            <div class="loader__inner">
+            </div>
+           </div>
+          </div>
+          <div aria-labelledby="pills-manhattanworm-tab" class="tab-pane fade" id="pills-manhattanworm" role="tabpanel">
+           <!--Manhattan & Worm-->
+           <div class="mcTabContent current" id="mwpage">
+            <div class="scorecardItems version2 active" id="manhattan-wrapper">
+             <div class="scorecardHeader" id="scorecardHeader" ng-show="matchSummary.MatchType == \'Multi Day\'">
+             </div>
+             <div id="smipl-graphsplots">
+              <div class="manhattonwidgetTitle">
+               Manhattan
+              </div>
+              <div class="manhattonwidgetLegend manhattonLegend" ng-show="matchSummary.MatchType != \'Multi Day\'">
+               <div class="manhattonwidgetLegendItem teamALegendItem" ng-if="currentInnText == \'Innings2\' || currentInnText == \'Innings4\'" ng-style="{\'color\':\'#2C82C9\'}">
+               </div>
+               <div class="manhattonwidgetLegendItem teamALegendItem" ng-if="currentInnText == \'Innings1\' || currentInnText == \'Innings3\'" ng-style="{\'color\':\'#2C82C9\'}">
+               </div>
+               <div class="manhattonwidgetLegendItem teamBLegendItem" ng-if="currentInnText == \'Innings2\' || currentInnText == \'Innings4\'" ng-style="{\'color\':\'#D14841\'}">
+               </div>
+               <div class="manhattonwidgetLegendItem teamBLegendItem" ng-if="currentInnText == \'Innings1\' || currentInnText == \'Innings3\'" ng-style="{\'color\':\'#D14841\'}">
+               </div>
+              </div>
+              <div id="smipl-manhattan-wrap">
+               <div class="smipl-graph-yes" id="smipl-manhattan">
+               </div>
+              </div>
+              <div class="manhattan-nav">
+               <div class="MHprev" end="" start="">
+               </div>
+               <div class="MHnext" end="" start="">
+               </div>
+              </div>
+              <div class="manhattonwidgetTitle">
+               Worm
+              </div>
+              <div class="manhattonwidgetLegend manhattonLegend" ng-show="matchSummary.MatchType != \'Multi Day\'">
+               <div class="manhattonwidgetLegendItem teamALegendItem" ng-if="currentInnText == \'Innings2\' || currentInnText == \'Innings4\'" ng-style="{\'color\':\'#2C82C9\'}">
+               </div>
+               <div class="manhattonwidgetLegendItem teamALegendItem" ng-if="currentInnText == \'Innings1\' || currentInnText == \'Innings3\'" ng-style="{\'color\':\'#2C82C9\'}">
+               </div>
+               <div class="manhattonwidgetLegendItem teamBLegendItem" ng-if="currentInnText == \'Innings2\' || currentInnText == \'Innings4\'" ng-style="{\'color\':\'#D14841\'}">
+               </div>
+               <div class="manhattonwidgetLegendItem teamBLegendItem" ng-if="currentInnText == \'Innings1\' || currentInnText == \'Innings3\'" ng-style="{\'color\':\'#D14841\'}">
+               </div>
+              </div>
+              <div class="smipl-graph-yes" id="smipl-worm">
+              </div>
+             </div>
+             <div class="smipl-chart-parent">
+              <div class="smipl-chart-popup">
+               <span class="tooltip-span">
+                <div class="tool-center">
+                 <div class="tool-value">
+                 </div>
+                </div>
+               </span>
+              </div>
+             </div>
+            </div>
+           </div>
+           <!--End of Manhattan & Worm-->
+           <div class="mcLoaderNew pageloader mcinnerMcLoaderManhattanworm">
+            <div class="loader__inner">
+            </div>
+           </div>
+          </div>
+         </div>
+        </div>
+       </div>
+      </div>
+     </div>
+    </div>
+    <div class="share-btn">
+     <button class="bg-transparent border-0 float-end">
+      <svg fill="none" height="15" viewbox="0 0 13 15" width="13" xmlns="http://www.w3.org/2000/svg">
+       <g opacity="0.5">
+        <ellipse cx="10.3832" cy="2.62544" rx="1.61758" ry="1.62544" stroke="black" stroke-width="1.5">
+        </ellipse>
+        <ellipse cx="2.61758" cy="7.17232" rx="1.61758" ry="1.62544" stroke="black" stroke-width="1.5">
+        </ellipse>
+        <path d="M8.76803 3.27476L4.23834 5.87323" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5">
+        </path>
+        <path d="M4.23459 7.82104L9.08784 10.7443" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5">
+        </path>
+        <ellipse cx="10.3832" cy="12.3754" rx="1.61758" ry="1.62544" stroke="black" stroke-width="1.5">
+        </ellipse>
+       </g>
+      </svg>
+     </button>
+     <div class="share-social">
+      <span class="mb-0">
+       Share on :
+      </span>
+      <div class="social-auto">
+       <a class="bg-transparent border-0" data-action="share/whatsapp/share" data-method="whatsapp" data-title="Match Center" data-type="Match Center" href="https://wa.me/?text=https://www.bcci.tv/domestic/syed-mushtaq-ali-trophy-elite-2025-26/match/125" onclick="share(this)" tabindex="0" target="_blank">
+        <svg fill="#000000" height="13" id="Layer_1" version="1.1" viewbox="0 0 308 308" width="15" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+         <g id="XMLID_468_">
+          <path d="M227.904,176.981c-0.6-0.288-23.054-11.345-27.044-12.781c-1.629-0.585-3.374-1.156-5.23-1.156
+                                    c-3.032,0-5.579,1.511-7.563,4.479c-2.243,3.334-9.033,11.271-11.131,13.642c-0.274,0.313-0.648,0.687-0.872,0.687
+                                    c-0.201,0-3.676-1.431-4.728-1.888c-24.087-10.463-42.37-35.624-44.877-39.867c-0.358-0.61-0.373-0.887-0.376-0.887
+                                    c0.088-0.323,0.898-1.135,1.316-1.554c1.223-1.21,2.548-2.805,3.83-4.348c0.607-0.731,1.215-1.463,1.812-2.153
+                                    c1.86-2.164,2.688-3.844,3.648-5.79l0.503-1.011c2.344-4.657,0.342-8.587-0.305-9.856c-0.531-1.062-10.012-23.944-11.02-26.348
+                                    c-2.424-5.801-5.627-8.502-10.078-8.502c-0.413,0,0,0-1.732,0.073c-2.109,0.089-13.594,1.601-18.672,4.802
+                                    c-5.385,3.395-14.495,14.217-14.495,33.249c0,17.129,10.87,33.302,15.537,39.453c0.116,0.155,0.329,0.47,0.638,0.922
+                                    c17.873,26.102,40.154,45.446,62.741,54.469c21.745,8.686,32.042,9.69,37.896,9.69c0.001,0,0.001,0,0.001,0
+                                    c2.46,0,4.429-0.193,6.166-0.364l1.102-0.105c7.512-0.666,24.02-9.22,27.775-19.655c2.958-8.219,3.738-17.199,1.77-20.458
+                                    C233.168,179.508,230.845,178.393,227.904,176.981z" id="XMLID_469_">
+          </path>
+          <path d="M156.734,0C73.318,0,5.454,67.354,5.454,150.143c0,26.777,7.166,52.988,20.741,75.928L0.212,302.716
+                                    c-0.484,1.429-0.124,3.009,0.933,4.085C1.908,307.58,2.943,308,4,308c0.405,0,0.813-0.061,1.211-0.188l79.92-25.396
+                                    c21.87,11.685,46.588,17.853,71.604,17.853C240.143,300.27,308,232.923,308,150.143C308,67.354,240.143,0,156.734,0z
+                                    M156.734,268.994c-23.539,0-46.338-6.797-65.936-19.657c-0.659-0.433-1.424-0.655-2.194-0.655c-0.407,0-0.815,0.062-1.212,0.188
+                                    l-40.035,12.726l12.924-38.129c0.418-1.234,0.209-2.595-0.561-3.647c-14.924-20.392-22.813-44.485-22.813-69.677
+                                    c0-65.543,53.754-118.867,119.826-118.867c66.064,0,119.812,53.324,119.812,118.867
+                                    C276.546,215.678,222.799,268.994,156.734,268.994z" id="XMLID_470_">
+          </path>
+         </g>
+        </svg>
+       </a>
+       <a class="bg-transparent border-0" data-method="twitter" data-title="Match Center" data-type="Match Center" href="//twitter.com/share?url=https://www.bcci.tv/domestic/syed-mushtaq-ali-trophy-elite-2025-26/match/125" onclick="share(this)" tabindex="0" target="_blank">
+        <svg fill="none" height="12" viewbox="0 0 18 16" width="14" xmlns="http://www.w3.org/2000/svg">
+         <path d="M0.0438858 0L6.99348 8.82495L0 16H1.57395L7.69674 9.71813L12.6438 16H18L10.6594 6.67867L17.1689 0H15.5949L9.95613 5.78548L5.40011 0H0.0438858ZM2.3585 1.10107H4.81916L15.685 14.8988H13.2244L2.3585 1.10107Z" fill="black">
+         </path>
+        </svg>
+       </a>
+       <a class="copyUrl ctc" data-method="Copy link" data-share="https://www.bcci.tv/domestic/syed-mushtaq-ali-trophy-elite-2025-26/match/125" data-title="Match Center" data-type="Match Center" href="javascript:void(0)" onclick="share(this)" tabindex="0">
+        <span class="c" style="display:none">
+         Copy
+        </span>
+        <svg fill="none" height="20" viewbox="0 0 49 36" width="20" xmlns="http://www.w3.org/2000/svg">
+         <path d="M11.231 35.7132C9.18361 35.7134 7.18214 35.1064 5.47972 33.969C3.77731 32.8316 2.45043 31.2149 1.6669 29.3234C0.883365 27.4318 0.678377 25.3504 1.07786 23.3424C1.47734 21.3343 2.46335 19.4898 3.91118 18.0422L14.5928 7.36474C16.5342 5.4234 19.1672 4.33276 21.9127 4.33276C24.6581 4.33276 27.2912 5.4234 29.2325 7.36474C31.1738 9.30608 32.2645 11.9391 32.2645 14.6846C32.2645 17.43 31.1738 20.0631 29.2325 22.0044L28.0756 23.1592L25.1155 20.2032L26.2807 19.038C27.4332 17.88 28.0794 16.3124 28.0779 14.6787C28.0763 13.045 27.427 11.4785 26.2723 10.3228C25.0971 9.20125 23.5351 8.57549 21.9106 8.57549C20.2861 8.57549 18.724 9.20125 17.5488 10.3228L6.87133 21.0003C6.29812 21.5728 5.84339 22.2528 5.53314 23.0012C5.22289 23.7496 5.0632 24.5519 5.0632 25.362C5.0632 26.1722 5.22289 26.9745 5.53314 27.7229C5.84339 28.4713 6.29812 29.1513 6.87133 29.7238C8.04654 30.8454 9.60861 31.4711 11.2331 31.4711C12.8576 31.4711 14.4197 30.8454 15.5949 29.7238L18.5529 32.6819C17.5935 33.6461 16.4523 34.4104 15.1955 34.9308C13.9387 35.4511 12.5912 35.717 11.231 35.7132Z" fill="black">
+         </path>
+         <path d="M27.9654 31.5327C25.918 31.5329 23.9165 30.926 22.2141 29.7886C20.5117 28.6512 19.1848 27.0345 18.4013 25.143C17.6177 23.2514 17.4128 21.17 17.8122 19.1619C18.2117 17.1539 19.1977 15.3094 20.6456 13.8618L21.8024 12.707L24.7605 15.6672L23.6057 16.8219C22.4492 17.9785 21.7995 19.5471 21.7995 21.1827C21.7995 22.8182 22.4492 24.3868 23.6057 25.5434C24.7809 26.6649 26.343 27.2907 27.9675 27.2907C29.592 27.2907 31.154 26.6649 32.3293 25.5434L43.0088 14.8638C44.1631 13.7066 44.8114 12.1387 44.8114 10.5042C44.8114 8.8696 44.1631 7.30176 43.0088 6.14447C41.8336 5.02292 40.2715 4.39716 38.647 4.39716C37.0225 4.39716 35.4605 5.02292 34.2853 6.14447L31.3272 3.18432C33.2685 1.24298 35.9016 0.152344 38.647 0.152344C41.3925 0.152344 44.0255 1.24298 45.9669 3.18432C47.9082 5.12566 48.9988 7.75869 48.9988 10.5042C48.9988 13.2496 47.9082 15.8827 45.9669 17.824L35.2894 28.4994C34.33 29.4638 33.1889 30.2284 31.9321 30.7491C30.6753 31.2697 29.3278 31.5361 27.9675 31.5327H27.9654Z" fill="black">
+         </path>
+        </svg>
+       </a>
+       <a class="bg-transparent border-0" data-method="facebook" data-title="Match Center" data-type="Match Center" href="//www.facebook.com/sharer.php?u=https://www.bcci.tv/domestic/syed-mushtaq-ali-trophy-elite-2025-26/match/125" onclick="share(this)" tabindex="0" target="_blank">
+        <svg fill="none" height="15" viewbox="0 0 10 17" width="8" xmlns="http://www.w3.org/2000/svg">
+         <path d="M6.30708 17V9.24551H9.17185L9.60076 6.22342H6.307V4.29395C6.307 3.41898 6.57439 2.82274 7.95541 2.82274L9.7167 2.82199V0.119068C9.41207 0.0823045 8.36648 0 7.1502 0C4.6107 0 2.87212 1.40833 2.87212 3.99474V6.22342H0V9.24551H2.87212V16.9999H6.30708V17Z" fill="black">
+         </path>
+        </svg>
+       </a>
+      </div>
+     </div>
+    </div>
+   </div>
+  </div>
+  <script>
+   var seriesSlug = "syed-mushtaq-ali-trophy-elite";
+    var feedSource = "https://scores.bcci.tv/feeds";
+    var matchID = "15873";
+    var SERIES_ID = "319";
+    var checkSeriresName = "SYED MUSHTAQ ALI TROPHY ELITE 2025-26";
+    var getDomesticMatchCenterDetailsURL = "https://scores2.bcci.tv/getDomesticMatchCenterDetails"; //"https://www.bcci.tv/getDomesticMatchCenterDetails";
+    //var getDomesticMatchCenterDetailsURL = "https://www.bcci.tv/getDomesticMatchCenterDetails";
+    var DEFAULT_PLAYER_THUMB = "https://documents.bcci.tv/web-images/player-thumb.webp";
+    var platform ="domestic";
+    var mcVSImage = "https://documents.bcci.tv/web-images/verses-white.png";
+    var domesticMatchCenterRefresh = false;
+    var widgetSource = "https://scores.bcci.tv"
+    var  webviewcontent ="";
+    var  webviewtype ="";
+    var  webenvironment = "https://api.bcci.tv/api/v1/";
+    var bcciDomain = "https://www.bcci.tv"
+  </script>
+  <script src="https://www.bcci.tv//js/fixtures-common.js?v=5.88">
+  </script>
+  <script src="https://www.bcci.tv//js/match-center-common.js?v=5.88">
+  </script>
+  <script src="https://www.bcci.tv//js/domestic-match-center.js?v=5.88">
+  </script>
+  <!-- <script src="https://www.bcci.tv//js/fixtures/d3.v3.min.js?v=5.88" ></script>
+<script src="https://www.bcci.tv//js/fixtures/c3.js?v=5.88" ></script> -->
+  <script>
+   window.d3 = "https://www.bcci.tv//js/fixtures/d3.v3.min.js?v=5.88"
+  </script>
+  <script>
+   window.c3 = "https://www.bcci.tv//js/fixtures/c3.js?v=5.88"
+  </script>
+  <script>
+   window.jsDraw2DXUrl = "https://www.bcci.tv//js/fixtures/jsDraw2DX.js?v=5.88"
+  </script>
+  <script src="https://www.bcci.tv//js/fixtures/manhattan-worm-widget.js?v=5.88">
+  </script>
+  <script defer="" src="https://www.bcci.tv//js/fixtures/jquery.nicescroll.min.js?v=5.88">
+  </script>
+  <!-- <script src="https://www.bcci.tv//js/fixtures/jsDraw2DX.js?v=5.88" ></script>-->
+  <script async="" src="https://www.bcci.tv//js/ww_functions.js?v=5.88">
+  </script>
+  <script defer="" src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.js">
+  </script>
+  <div class="hpto-view-alignment">
+   <footer class="footer-bg-dk" style="">
+    <!-- new sponsor panel start -->
+    <div class="w-100 ftwebview nspb" style="background:#000;">
+     <div class="mxwid">
+      <div class="new-black-sponsor">
+       <a data-element_text="IDFC FIRST BANK" data-event_context="Title Sponsor" href="https://www.idfcfirstbank.com/" onclick="outbound_click(this)" target="_blank">
+        <!-- <span><img class="sponsor-text lazy" src="https://documents.bcci.tv/web-images/title-sponsor.svg" alt="image"></span> -->
+        <span>
+         Title Sponsor
+        </span>
+        <div class="sponsor-logos-1">
+         <img alt="image" class="lazy" height="43" src="https://documents.bcci.tv/web-images/spsr-idfc-first.png" width="120"/>
+        </div>
+       </a>
+       <a class="second__child" data-element_text="Dream11" data-event_context="Lead Sponsor" href="https://www.apollotyres.com/en-in/" onclick="outbound_click(this)" target="_blank">
+        <!-- <span><img class="sponsor-text lazy" src="https://documents.bcci.tv/web-images/lead-sponsor.svg" alt="image"></span> -->
+        <span>
+         Lead Sponsor
+        </span>
+        <div class="sponsor-logos-2">
+         <img alt="image" class="lazy" height="24" src="https://documents.bcci.tv/web-images/apollo-tyre.png" width="110"/>
+         <!-- <img src="https://www.bcci.tv//img/apollo-tyre.png" alt="image" class="lazy" width="110" height="24"> -->
+        </div>
+       </a>
+       <!-- <a onclick="outbound_click(this)" class="second__child" data-event_context="Lead Sponsor" data-element_text="Dream11" href="https://www.dream11.com/" target="_blank">
+                        <span><img class="sponsor-text lazy" src="https://documents.bcci.tv/web-images/lead-sponsor.svg" alt="image"></span>
+                        <span>Lead Sponsor</span>
+                        <div class="sponsor-logos-2">
+                            <img src="https://documents.bcci.tv/web-images/spsr-dream11.png" alt="image" class="lazy" width="110" height="24">
+                        </div>
+                    </a> -->
+       <a class="third__child" data-element_text="Adidas" data-event_context="Kit Sponsor" href="https://www.adidas.co.in/" onclick="outbound_click(this)" target="_blank">
+        <!-- <span><img class="sponsor-text lazy" src="https://documents.bcci.tv/web-images/kit-sponsor.svg" alt="image"></span> -->
+        <span>
+         Kit sponsor
+        </span>
+        <div class="sponsor-logos-3">
+         <img alt="image" class="lazy" height="47" src="https://documents.bcci.tv/web-images/spsr-addidas.png" width="75"/>
+        </div>
+       </a>
+       <div class="sponsor-logos-4">
+        <!-- <span><img class="sponsor-text lazy" src="https://documents.bcci.tv/web-images/official-partner.svg" alt="image"></span> -->
+        <span>
+         Official Partners
+        </span>
+        <div class="official-partner d-flex align-items-center">
+         <a class="first__child" data-element_text="SBI Life" data-event_context="Official partner" href="https://www.sbilife.co.in/" onclick="outbound_click(this)" target="_blank">
+          <div class="new-logos">
+           <img alt="image" class="lazy" height="35" src="https://documents.bcci.tv/web-images/SBI.png" width="120"/>
+          </div>
+         </a>
+         <a class="second__child" data-element_text="Campa" data-event_context="Official partner" href="https://www.instagram.com/officialcampa/" onclick="outbound_click(this)" target="_blank">
+          <div class="new-logos">
+           <img alt="image" class="lazy" height="49" src="https://documents.bcci.tv/web-images/campa-white-bg.png" width="80"/>
+          </div>
+         </a>
+         <a class="third__child" data-element_text="Atomberg" data-event_context="Official partner" href="https://atomberg.com/" onclick="outbound_click(this)" target="_blank">
+          <div class="new-logos">
+           <img alt="image" class="lazy" height="57" src="https://documents.bcci.tv/web-images/atomberg.png" width="90"/>
+          </div>
+         </a>
+         <a class="fourth__child" data-element_text="Atomberg" data-event_context="Official partner" href="https://www.asianpaints.com/" onclick="outbound_click(this)" target="_blank">
+          <div class="new-logos">
+           <!-- <img src="https://www.bcci.tv//img/asian_paints.png" alt="image" class="lazy" width="90" height="57"> -->
+           <img alt="image" class="lazy" height="57" src="https://documents.bcci.tv/web-images/asian_paints.png" width="90"/>
+          </div>
+         </a>
+        </div>
+       </div>
+       <a class="fifth__child" data-element_text="Start Sports" data-event_context="Official broadcaster" href="https://www.hotstar.com/" onclick="outbound_click(this)" target="_blank">
+        <!-- <span><img class="sponsor-text-2 lazy" src="https://documents.bcci.tv/web-images/official-broadcaster.svg" alt="image"></span> -->
+        <span>
+         Official
+         <br/>
+         broadcaster
+        </span>
+        <div class="sponsor-logos-5">
+         <img alt="image" class="lazy" height="51" src="https://documents.bcci.tv/web-images/spsr-star-sports.png" width="70"/>
+        </div>
+       </a>
+       <a class="sixth__child" data-element_text="Jio Cinema" data-event_context="Official digital streaming partner" href="https://www.jiocinema.com/" onclick="outbound_click(this)" target="_blank">
+        <!-- <span><img class="sponsor-text-2 lazy" src="https://documents.bcci.tv/web-images/official-digital-steaming.svg" alt="image"></span> -->
+        <span>
+         Official digital
+         <br/>
+         streaming partner
+        </span>
+        <div class="sponsor-logos-6">
+         <img alt="image" class="lazy" height="59" src="https://documents.bcci.tv/web-images/JioHotstar.webp" width="66"/>
+        </div>
+       </a>
+      </div>
+     </div>
+    </div>
+    <!-- new sponsor panel end -->
+    <section class="footer-bcci">
+     <div class="container-fluid">
+      <div class="first-foot col-sm-11">
+       <a href="https://www.bcci.tv">
+        <img alt="bcci-logo" height="74" src="https://documents.bcci.tv/web-images/bcci-logo-rounded.png" width="74"/>
+       </a>
+       <div class="social-div">
+        <a aria-label="Twitter" data-event_context="BCCI" data-title="Twitter" href="https://twitter.com/BCCI" onclick="click_social(this)" target="_blank">
+         <svg fill="none" height="17" viewbox="0 0 18 17" width="18" xmlns="http://www.w3.org/2000/svg">
+          <path d="M0.0438858 0.941406L6.99348 9.76635L0 16.9414H1.57395L7.69674 10.6595L12.6438 16.9414H18L10.6594 7.62007L17.1689 0.941406H15.5949L9.95613 6.72688L5.40011 0.941406H0.0438858ZM2.3585 2.04247H4.81916L15.685 15.8402H13.2244L2.3585 2.04247Z" fill="white">
+          </path>
+         </svg>
+        </a>
+        <a aria-label="Instagram" data-event_context="BCCI" data-title="Instagram" href="https://www.instagram.com/indiancricketteam/" onclick="click_social(this)" target="_blank">
+         <svg fill="none" height="17" viewbox="0 0 16 17" width="16" xmlns="http://www.w3.org/2000/svg">
+          <path clip-rule="evenodd" d="M0 8.94141C0 5.74573 0 4.14789 0.761504 2.99701C1.10155 2.48309 1.54168 2.04296 2.0556 1.70291C3.20648 0.941406 4.80432 0.941406 8 0.941406C11.1957 0.941406 12.7935 0.941406 13.9444 1.70291C14.4583 2.04296 14.8984 2.48309 15.2385 2.99701C16 4.14789 16 5.74573 16 8.94141C16 12.1371 16 13.7349 15.2385 14.8858C14.8984 15.3997 14.4583 15.8399 13.9444 16.1799C12.7935 16.9414 11.1957 16.9414 8 16.9414C4.80432 16.9414 3.20648 16.9414 2.0556 16.1799C1.54168 15.8399 1.10155 15.3997 0.761504 14.8858C0 13.7349 0 12.1371 0 8.94141ZM12.1428 8.93466C12.1428 11.2221 10.2885 13.0764 8.00107 13.0764C5.71368 13.0764 3.85938 11.2221 3.85938 8.93466C3.85938 6.64727 5.71368 4.79297 8.00107 4.79297C10.2885 4.79297 12.1428 6.64727 12.1428 8.93466ZM8.00107 11.6751C9.51458 11.6751 10.7415 10.4482 10.7415 8.93466C10.7415 7.42116 9.51458 6.19422 8.00107 6.19422C6.48757 6.19422 5.26062 7.42116 5.26062 8.93466C5.26062 10.4482 6.48757 11.6751 8.00107 11.6751ZM12.3013 5.55963C12.8388 5.55963 13.2745 5.12393 13.2745 4.58646C13.2745 4.04899 12.8388 3.61328 12.3013 3.61328C11.7638 3.61328 11.3281 4.04899 11.3281 4.58646C11.3281 5.12393 11.7638 5.55963 12.3013 5.55963Z" fill="white" fill-rule="evenodd">
+          </path>
+         </svg>
+        </a>
+        <a aria-label="Facebook" class="fface" data-event_context="BCCI" data-title="Facebook" href="https://www.facebook.com/IndianCricketTeam/" onclick="click_social(this)" target="_blank">
+         <svg fill="none" height="18" viewbox="0 0 10 18" width="10" xmlns="http://www.w3.org/2000/svg">
+          <path d="M6.30708 17.9414V10.1869H9.17185L9.60076 7.16482H6.307V5.23535C6.307 4.36039 6.57439 3.76415 7.95541 3.76415L9.7167 3.7634V1.06047C9.41207 1.02371 8.36648 0.941406 7.1502 0.941406C4.6107 0.941406 2.87212 2.34974 2.87212 4.93615V7.16482H0V10.1869H2.87212V17.9413H6.30708V17.9414Z" fill="white">
+          </path>
+         </svg>
+        </a>
+        <!-- <a  onclick="click_social(this)" data-title="Thread" data-event_context="BCCI" class="fthread" href="https://www.threads.net/@indiancricketteam/" target="_blank"><svg xmlns="http://www.w3.org/2000/svg" width="15" height="17" viewBox="0 0 15 17"
+                                fill="none">
+                                <path
+                                    d="M11.6089 8.3571C11.5388 8.32406 11.4676 8.29227 11.3955 8.26183C11.2698 5.98626 10.0052 4.68349 7.8818 4.67016C7.87218 4.6701 7.86261 4.6701 7.85299 4.6701C6.5829 4.6701 5.52659 5.20315 4.87643 6.17313L6.04426 6.96081C6.52995 6.23626 7.29219 6.08181 7.85355 6.08181C7.86004 6.08181 7.86654 6.08181 7.87296 6.08186C8.57213 6.08625 9.09972 6.28612 9.4412 6.67591C9.6897 6.95968 9.8559 7.35182 9.93819 7.84672C9.3183 7.74313 8.6479 7.71128 7.93122 7.75168C5.91236 7.86602 4.61447 9.02373 4.70164 10.6324C4.74587 11.4484 5.15932 12.1504 5.86577 12.609C6.46306 12.9967 7.23234 13.1862 8.03185 13.1433C9.08769 13.0864 9.91599 12.6903 10.4938 11.9661C10.9327 11.4161 11.2103 10.7033 11.3328 9.80524C11.836 10.1038 12.2089 10.4967 12.4149 10.9691C12.7651 11.772 12.7855 13.0914 11.6906 14.1671C10.7312 15.1094 9.57807 15.5171 7.83532 15.5297C5.90214 15.5156 4.4401 14.906 3.48953 13.7178C2.59939 12.6052 2.13936 10.9982 2.1222 8.94141C2.13936 6.88456 2.59939 5.27754 3.48953 4.16496C4.4401 2.97681 5.90212 2.36724 7.8353 2.35311C9.7825 2.36735 11.27 2.97986 12.257 4.17374C12.7409 4.75921 13.1058 5.49547 13.3463 6.35393L14.7148 5.99492C14.4233 4.93826 13.9645 4.02771 13.3402 3.27257C12.0749 1.74196 10.2244 0.957669 7.84007 0.941406H7.83052C5.45103 0.957612 3.62124 1.74489 2.39198 3.28135C1.29811 4.64861 0.733863 6.55105 0.714903 8.93578L0.714844 8.94141L0.714903 8.94703C0.733863 11.3317 1.29811 13.2342 2.39198 14.6015C3.62124 16.1379 5.45103 16.9252 7.83052 16.9414H7.84007C9.95557 16.927 11.4467 16.3824 12.6752 15.1757C14.2823 13.5969 14.2339 11.618 13.7042 10.4032C13.3242 9.53199 12.5996 8.82442 11.6089 8.3571ZM7.95626 11.7337C7.07143 11.7827 6.15218 11.3922 6.10686 10.5557C6.07326 9.93557 6.55573 9.24357 8.01057 9.16114C8.17718 9.15169 8.34067 9.14707 8.50128 9.14707C9.02972 9.14707 9.52409 9.19755 9.97354 9.29416C9.80589 11.3527 8.82258 11.6869 7.95626 11.7337Z"
+                                    fill="white" />
+                            </svg></a> -->
+       </div>
+      </div>
+      <div class="second-foot">
+       <div class="contact-div">
+        <h2 class="sub-heading text-white">
+         Contact Us
+        </h2>
+        <p class="w-100">
+         4th Floor, Cricket Centre
+         <br/>
+         Wankhede Stadium ‘D’ Road,
+         <br/>
+         Churchgate Mumbai - 400020, India.
+        </p>
+        <br/>
+        <a href="mailto:office@bcci.tv">
+         Email: office@bcci.tv
+        </a>
+        <a href="tel:+912267598800">
+         T:+91 22 67598800
+        </a>
+        <a href="tel:+912261580300">
+         T:+91 22 61580300
+        </a>
+       </div>
+       <div class="matches-div">
+        <h2 class="sub-heading text-white">
+         Matches
+        </h2>
+        <a data-element_text="Domestic Matches" data-event_context="footer" href="https://www.bcci.tv/domestic" onclick="click_menu_footer(this)">
+         Domestic
+        </a>
+        <a data-element_text="International Matches" data-event_context="footer" href="https://www.bcci.tv/international" onclick="click_menu_footer(this)">
+         International
+        </a>
+       </div>
+       <div class="matches-div">
+        <h2 class="sub-heading text-white">
+         Videos
+        </h2>
+        <a data-element_text="Videos-Latest" data-event_context="footer" href="https://www.bcci.tv/domestic/men/videos/latest" onclick="click_menu_footer(this)">
+         Latest
+        </a>
+        <a data-element_text="Videos-Highlights" data-event_context="footer" href="https://www.bcci.tv/domestic/men/videos/highlights" onclick="click_menu_footer(this)">
+         Highlights
+        </a>
+        <a data-element_text="Videos-Features and Interviews" data-event_context="footer" href="https://www.bcci.tv/domestic/men/videos/interviews" onclick="click_menu_footer(this)">
+         Features and Interviews
+        </a>
+        <a data-element_text="Videos-Press Conferences" data-event_context="footer" href="https://www.bcci.tv/domestic/men/videos/press-conference" onclick="click_menu_footer(this)">
+         Press Conferences
+        </a>
+       </div>
+       <div class="matches-div">
+        <h2 class="sub-heading text-white">
+         News
+        </h2>
+        <a data-element_text="Latest News" data-event_context="footer" href="https://www.bcci.tv/domestic/men/news/latest" onclick="click_menu_footer(this)">
+         Latest
+        </a>
+        <a data-element_text="Press Releases News" data-event_context="footer" href="https://www.bcci.tv/domestic/men/news/press-releases" onclick="click_menu_footer(this)">
+         Press Releases
+        </a>
+        <a data-element_text="Features and Interviews News" data-event_context="footer" href="https://www.bcci.tv/domestic/men/news/interviews" onclick="click_menu_footer(this)">
+         Features and Interviews
+        </a>
+        <a data-element_text="BCCI News" data-event_context="footer" href="https://www.bcci.tv/domestic/men/news/bcci-news" onclick="click_menu_footer(this)">
+         BCCI News
+        </a>
+       </div>
+       <div class="matches-div">
+        <h2 class="sub-heading text-white">
+         More
+        </h2>
+        <a data-element_text="IPL" data-event_context="footer" href="https://iplt20.com" onclick="click_menu_footer(this)">
+         IPL
+        </a>
+        <a data-element_text="WPL" data-event_context="footer" href="https://www.wplt20.com" onclick="click_menu_footer(this)">
+         WPL
+        </a>
+        <a data-element_text="Venues" data-event_context="footer" href="https://www.bcci.tv/venues" onclick="click_menu_footer(this)">
+         Venues
+        </a>
+        <a data-element_text="Galleries" data-event_context="footer" href="https://www.bcci.tv/albums" onclick="click_menu_footer(this)">
+         Galleries
+        </a>
+        <a data-element_text="Jobs" data-event_context="footer" href="https://www.bcci.tv/jobs" onclick="click_menu_footer(this)">
+         Jobs
+        </a>
+        <a data-element_text="Tender" data-event_context="footer" href="https://www.bcci.tv/articles/2026/news/146399/tenders-issued-by-bcci-ipl-and-wpl" onclick="click_menu_footer(this)">
+         Tender
+        </a>
+        <a data-element_text="Playing Conditions" data-event_context="footer" href="https://www.bcci.tv/playing-condition" onclick="click_menu_footer(this)">
+         Playing Conditions
+        </a>
+       </div>
+       <div class="matches-div">
+        <h2 class="sub-heading text-white">
+         About
+        </h2>
+        <a data-element_text="History" data-event_context="footer" href="https://www.bcci.tv/about/history" onclick="click_menu_footer(this)">
+         History
+        </a>
+        <a data-element_text="Anti Corruption" data-event_context="footer" href="https://www.bcci.tv/integrity/anti-corruption" onclick="click_menu_footer(this)">
+         Anti Corruption
+        </a>
+        <a data-element_text="Anti Racism" data-event_context="footer" href="https://www.bcci.tv/integrity/anti-racism" onclick="click_menu_footer(this)">
+         Anti Racism
+        </a>
+        <a data-element_text="Anti Doping" data-event_context="footer" href="https://www.bcci.tv/integrity/anti-doping" onclick="click_menu_footer(this)">
+         Anti Doping
+        </a>
+        <a data-element_text="TUE Application Form" data-event_context="footer" href="https://www.bcci.tv/integrity/anti-doping" onclick="click_menu_footer(this)">
+         TUE Application Form
+        </a>
+        <a data-element_text="Annual Reports" data-event_context="footer" href="https://www.bcci.tv/about/annual-report" onclick="click_menu_footer(this)">
+         Annual Reports
+        </a>
+        <a data-element_text="MCC Laws of Cricket" data-event_context="footer" href="https://www.bcci.tv/integrity/mcc-laws" onclick="click_menu_footer(this)">
+         MCC Laws of Cricket
+        </a>
+       </div>
+       <div class="matches-div">
+        <h2 class="sub-heading text-white">
+         Players
+        </h2>
+        <a data-element_text="Men" data-event_context="footer" href="https://www.bcci.tv/international/men/players" onclick="click_menu_footer(this)">
+         Men
+        </a>
+        <a data-element_text="Women" data-event_context="footer" href="https://www.bcci.tv/international/women/players" onclick="click_menu_footer(this)">
+         Women
+        </a>
+       </div>
+       <div class="matches-div">
+        <h2 class="sub-heading text-white">
+         BCCI
+        </h2>
+        <a data-element_text="Copyrights" data-event_context="footer" href="https://www.bcci.tv/copyrights" onclick="click_menu_footer(this)">
+         Copyrights
+        </a>
+        <a data-element_text="Terms and Conditions" data-event_context="footer" href="https://www.bcci.tv/terms-and-conditions" onclick="click_menu_footer(this)">
+         Terms and Conditions
+        </a>
+        <a data-element_text="Privacy and Policy" data-event_context="footer" href="https://www.bcci.tv/privacy-and-policy" onclick="click_menu_footer(this)">
+         Privacy and Policy
+        </a>
+       </div>
+      </div>
+     </div>
+    </section>
+    <div class="third-foot">
+     <div class="container tnc__c--right d-flex justify-content-between align-items-center">
+      <p>
+       <a class="text-white" data-element_text="Terms &amp; Conditions" data-event_context="footer" href="https://www.bcci.tv/terms-and-conditions" onclick="click_menu_footer(this)">
+        Terms &amp; Conditions
+       </a>
+       |
+       <a class="text-white" data-element_text="Privacy Policy" data-event_context="footer" href="https://www.bcci.tv/privacy-and-policy" onclick="click_menu_footer(this)">
+        Privacy Policy
+       </a>
+      </p>
+      <p class="text-white">
+       Copyrights © BCCI 2026, All Rights Reserved.
+      </p>
+     </div>
+    </div>
+   </footer>
+  </div>
+  <!-- <script src="https://www.bcci.tv//js/custom-new.min.js?v=5.88" async></script> -->
+  <script async="" src="https://www.bcci.tv//js/bootstrap.bundle.min.js?v=5.88">
+  </script>
+  <script defer="" src="https://www.bcci.tv//js/ga_tag_manager.js?v=5.88">
+  </script>
+  <!-- <script src="https://cdn.jsdelivr.net/npm/lozad/dist/lozad.min.js"></script> -->
+  <!-- <script type="text/javascript" src="https://www.bcci.tv//js/bcciplayer.js?v=5.88" ></script> -->
+  <script>
+   var playerStatus = false;
+    // Google Translate Initialization
+    function googleTranslateElementInit() {
+        var elementId = $(window).width() < 760 ? 'google_translate_element_mob' : 'google_translate_element';
+        new google.translate.TranslateElement({ pageLanguage: 'en', includedLanguages: 'en,hi' }, elementId);
+    }
+
+    // Set Navigation Session
+    function setNavigationSession(key, value) {
+        return false; // Temporary block of AJAX call
+        $.ajax({
+            url: "https://www.bcci.tv/set-session",
+            type: "get",
+            data: { 'key': key, 'value': value },
+            success: function(response) {
+                if (response.status) {
+                    location.href = "/";
+                }
+            }
+        });
+    }
+
+    function setNavigationUrl(base_url = '') {
+        let platform = $('.h_platform.active').data('platform');
+        let type = $('.h_type.active').data('type');
+        let url = '/'+platform+'/'+type;
+        if (base_url) {
+            url = url+'/'+base_url;
+        }
+        url = url.replace('//', '/')
+        window.location.href = url;
+        return false;
+    }
+
+
+    // Get Active Platform/Type
+    function getActivePlatform() {
+        return $('.h_platform.active').data('platform');
+    }
+
+    function getActiveType() {
+        return $('.h_type.active').data('type');
+    }
+
+
+    // Copy URL Function
+    // $(document).on('click', '.copyUrl', function() {
+    //     $(".ctc .c").text("Copied!");
+    //     var shareurl = $(this).attr('data-share');
+    //     var dummy = document.createElement("input");
+    //     dummy.value = shareurl;
+    //     document.body.appendChild(dummy);
+    //     dummy.select();
+    //     dummy.focus();
+    //     document.execCommand('copy');
+    //     document.body.removeChild(dummy);
+    //     const box = $('.ctc');
+    //     setTimeout(() => {
+    //         box.find('.c').text("Copy");
+    //     }, 1000);
+    // });
+
+    // $('.copyUrl').mouseout(function(){
+    //     $(".ctc .c").text("Copy");
+    // });
+    // Reusable copy function: returns a Promise that resolves on success
+    function copyToClipboard(text) {
+    // Try Clipboard API first (preferred)
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+        return navigator.clipboard.writeText(text).then(
+        () => Promise.resolve(true),
+        () => fallbackCopy(text) // if clipboard API rejects, try fallback
+        );
+    }
+    // Otherwise fallback
+    return fallbackCopy(text);
+    }
+
+    // Fallback: textarea with small delay to ensure selectable (works on iOS too)
+    function fallbackCopy(text) {
+    return new Promise((resolve, reject) => {
+        try {
+        const isIOS = /ipad|iphone|ipod/i.test(navigator.userAgent);
+
+        if (isIOS) {
+            // iOS needs a textarea and special selection
+            const ta = document.createElement('textarea');
+            ta.value = text;
+            ta.setAttribute('readonly', '');
+            ta.style.position = 'absolute';
+            ta.style.left = '-9999px';
+            ta.style.fontSize = '12px'; // iOS fix: prevent zoom
+            document.body.appendChild(ta);
+
+            // iOS needs setSelectionRange
+            const range = document.createRange();
+            range.selectNodeContents(ta);
+            const sel = window.getSelection();
+            sel.removeAllRanges();
+            sel.addRange(range);
+
+            ta.setSelectionRange(0, ta.value.length);
+
+            const ok = document.execCommand('copy');
+            document.body.removeChild(ta);
+            return ok ? resolve(true) : reject(new Error('execCommand failed'));
+        }
+
+        // Non-iOS fallback: textarea, small timeout to let browser render
+        const textarea = document.createElement('textarea');
+        textarea.value = text;
+        textarea.setAttribute('readonly', '');
+        // Keep off-screen but focusable (avoid scroll)
+        textarea.style.position = 'absolute';
+        textarea.style.left = '-9999px';
+        textarea.style.top = '0';
+        document.body.appendChild(textarea);
+
+        // Use requestAnimationFrame to ensure element is rendered before select()
+        requestAnimationFrame(() => {
+            textarea.select();
+            // For some browsers, also set selection range
+            textarea.setSelectionRange(0, textarea.value.length);
+
+            const ok = document.execCommand('copy');
+            document.body.removeChild(textarea);
+
+            if (ok) resolve(true);
+            else {
+            // final fallback: use contentEditable div + Range
+            try {
+                const div = document.createElement('div');
+                div.textContent = text;
+                div.setAttribute('contenteditable', 'true');
+                div.style.position = 'absolute';
+                div.style.left = '-9999px';
+                document.body.appendChild(div);
+
+                const range2 = document.createRange();
+                range2.selectNodeContents(div);
+                const sel2 = window.getSelection();
+                sel2.removeAllRanges();
+                sel2.addRange(range2);
+
+                const ok2 = document.execCommand('copy');
+                sel2.removeAllRanges();
+                document.body.removeChild(div);
+
+                ok2 ? resolve(true) : reject(new Error('all copy attempts failed'));
+            } catch (e) {
+                reject(e);
+            }
+            }
+        });
+        } catch (err) {
+        reject(err);
+        }
+    });
+    }
+
+    // Example usage inside your click handler
+    $(document).on('click', '.copyUrl', function() {
+    const shareurl = $(this).attr('data-share');
+
+    // UI: immediate feedback
+    const $ctc = $(".ctc .c");
+    $ctc.text("Copied!");
+
+    copyToClipboard(String(shareurl)).then(() => {
+        // success - keep 'Copied!' for a bit
+        setTimeout(() => $ctc.text("Copy"), 1000);
+    }).catch((err) => {
+        // failure - show a message and still reset
+        console.error('Copy failed:', err);
+        $ctc.text("Copy");
+        // optionally show a tooltip or fallback prompt
+        alert('Unable to copy automatically. Select and copy the URL manually:\n\n' + shareurl);
+    });
+    });
+
+    // Optional mouseout reset like you had
+    $('.copyUrl').on('mouseout', function(){
+    $(".ctc .c").text("Copy");
+    });
+
+    $(".lang-img").on('click',function(){
+        $('#google_translate_element').show();
+        $('.close-trans').show();
+        $(this).hide();
+    })
+
+    $(".close-trans").on('click',function(){
+        $('#google_translate_element').hide();
+        $(this).hide();
+        $('.lang-img').show();
+    });
+
+    // const observer = lozad('img');
+    // observer.observe();
+
+    const urlParams = new URLSearchParams(window.location.search);
+    const myParam = urlParams.get('view');
+    const typeParam = urlParams.get('type');
+    if((myParam || typeParam) == 'webview'){
+        $('.submenu').hide();
+    }
+
+
+    // Load each JavaScript file after the page has loaded
+    function loadScript(url) {
+        var url = 'https://players.brightcove.net/3588749423001/default_default/index.min.js';
+        var deferred = $.Deferred();
+        var script = document.createElement('script');
+        script.src = url;
+
+        // Add an event listener to resolve the promise when the script is loaded
+        script.onload = function() {
+            deferred.resolve();
+        };
+
+        // Add the script to the body to start loading it
+        document.body.appendChild(script);
+
+        // Return the promise
+        return deferred.promise();
+    }
+    load_js()
+    function load_js() {
+        var deferred = $.Deferred();
+        var head = document.getElementsByTagName('head')[0];
+        var script = document.createElement('script');
+        script.type = 'text/javascript';
+        script.src = "https://www.bcci.tv//js/bcciplayer.js?v=5.88";
+        // Add an event listener to resolve the promise when the script is loaded
+        script.onload = function() {
+            deferred.resolve();
+        };
+
+        head.appendChild(script);
+
+        // Return the promise
+        return deferred.promise();
+    }
+
+      $(document).on("click", ".playerpopup", function () {
+        var t = window.location.href || null;
+        var e = $(this).attr("data-videoId") || null,
+            a = $(this).attr("data-duration") || null,
+            r = ($(this).attr("data-duration1"), $(this).attr("data-mediaId")) || null,
+            o = $(this).attr("data-videoTitle") || null,
+            i = $(this).attr("data-videoView") || null,
+            n = $(this).attr("data-videoDate") || null,
+            d = ($(this).attr("data-videoslug") || null,
+            desc=$(this).attr("data-short-description")) || null,
+            s = $(this).attr("data-share") || null;
+          $("#social-twitter").attr("href", "https://twitter.com/share?url="+s);
+          $("#social-facebook").attr("href", "https://facebook.com/sharer.php?u="+s);
+          $("#social-whatsapp").attr("href", "https://wa.me/?text="+s);
+        //   PlayFun(t, e, a, r, o, i, n, d, desc, s);
+        if(playerStatus == false){
+            playerStatus = true;
+            load_js()
+            .then(loadScript)
+            .then(function() {
+                PlayFun(t, e, a, r, o, i, n, d, desc, s);
+            })
+            .catch(function(error) {
+                console.error("An error occurred while loading scripts footer:", error);
+            });
+        }else{
+            PlayFun(t,e,a,r,o,i,n,d,desc,s);
+        }
+    });
+
+
+    $(document).on("click", ".playerpage", function () {
+            var t = $(this).attr("data-mediaId") || null,
+            e = $(this).attr("data-videoId") || null,
+            a = $(this).attr("data-videoTitle") || null,
+            r = $(this).attr("data-description") || null,
+            o = $(this).attr("data-short-description") || null,
+            i = $(this).attr("data-videoView") || null,
+            n = $(this).attr("data-videoDate") || null,
+            d = $(this).attr("data-share") || null,
+            s = ($(this).attr("data-thumbnile"), $(this).attr("data-duration")) || null,
+            c = ($(this).attr("data-duration1")|| null);
+        if(playerStatus == false){
+            playerStatus = true;
+            load_js()
+            .then(loadScript)
+            .then(function() {
+                Playpage(t, e, a, r, o, i, n, d, s, c);
+            })
+            .catch(function(error) {
+                console.error("An error occurred while loading scripts:", error);
+            });
+
+        }else{
+            Playpage(t, e, a, r, o, i, n, d, s, c);
+        }
+    });
+
+
+
+    /////////// Popup Banner Handling //////////////
+    $(document).ready(function() {
+        //$('#sect-dy-data').css('display', 'none');
+        // function closeModal() {
+        //     var modal = document.querySelector('.modal-backdrop');
+        //     modal.style.display = 'none';
+        // }
+        // function setCookie(cookieName, cookieValue, expiryDays) {
+        //     const date = new Date();
+        //     date.setTime(date.getTime() + (expiryDays * 24 * 60 * 60 * 1000));
+        //     const expires = 'expires=' + date.toUTCString();
+        //     document.cookie = cookieName + '=' + cookieValue + ';' + expires + ';path=/';
+        // }
+
+        // Close the modal by hiding the backdrop
+        function closeModal() {
+            $('.modal-backdrop').hide();
+        }
+
+        // Set a cookie with an expiry date
+        function setCookie(cookieName, cookieValue, expiryDays) {
+            const date = new Date();
+            date.setTime(date.getTime() + (expiryDays * 24 * 60 * 60 * 1000));
+            document.cookie = `${cookieName}=${cookieValue};expires=${date.toUTCString()};path=/`;
+        }
+        // function getCookie(cookieName) {
+        //     const name = cookieName + '=';
+        //     const decodedCookie = decodeURIComponent(document.cookie);
+        //     const ca = decodedCookie.split(';');
+        //     for(let i = 0; i < ca.length; i++) {
+        //         let c = ca[i];
+        //         while (c.charAt(0) == ' ') {
+        //             c = c.substring(1);
+        //         }
+        //         if (c.indexOf(name) == 0) {
+        //             return c.substring(name.length, c.length);
+        //         }
+        //     }
+        //     return "";
+        // }
+
+        function getCookie(cookieName) {
+            const name = cookieName + "=";
+            const cookies = document.cookie.split(';');
+            for (let cookie of cookies) {
+                cookie = cookie.trim();  // Automatically handles leading spaces
+                if (cookie.startsWith(name)) {
+                    return cookie.slice(name.length);
+                }
+            }
+            return "";
+        }
+
+        // function hideShowPageBlocker(){
+        //     const cookieValue = getCookie('showblocker');
+        //     if (!cookieValue) {
+        //         $('#myModalbanner').modal('show');
+        //     }
+        // }
+
+        // hideShowPageBlocker();
+
+        // $('#myModalbanner').on('click', function(event) {
+        //     if (!$(event.target).closest('.modal-body').length) {
+        //         setCookie('showblocker', '1', 1);
+        //         $('#myModalbanner').hide();
+        //     }
+        // });
+
+        // $('#myModalbanner').click(function() {
+        //     setCookie('showblocker', '1', 1);
+        //     $('#myModalbanner').hide();
+        // });
+
+
+        // Show the modal if the cookie isn't set
+        function showModalIfNeeded() {
+            if (!getCookie('showblocker')) {
+                $('#myModalbanner').modal('show');
+            }
+        }
+
+        // Event handler for closing the modal when clicking outside the modal body
+        $('#myModalbanner').click(function(event) {
+            if (!$(event.target).closest('.modal-body').length) {
+                setCookie('showblocker', '1', 1);
+                closeModal();
+            }
+        });
+
+        // Show the modal on page load if the cookie isn't present
+        showModalIfNeeded();
+    });
+
+    $(".nav-menu").on("click", function () {
+    $(".category-menu").removeClass("active");
+    $('.' + $(this).attr('data-nav') + '-category-menu:first').addClass("active");
+    $(".imw-tabs").hide();
+    $('.' + $(this).attr('data-nav') + "-tabs:first").show();
+
+    setNavigationUrl();
+  });
+
+  $(".category-menu").on("click", function () {
+    $(".category-menu").removeClass("active");
+    $(this).addClass("active");
+    $(".imw-tabs").hide();
+    $("#imw-" + $(this).attr('data-sub')).show();
+    setNavigationUrl();
+  });
+  </script>
+  <script>
+   $(window).on('load', function() {
+            // $(function() {
+                if ($(window).width() >= 767) {
+                    $.getScript('https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit');
+                }
+            // });
+        });
+  </script>
+  <!--   <script>
+  let translateLoaded = false;
+
+  $(document).on('click', '.lang-img', function () {
+    if (!translateLoaded && $(window).width() >= 767) {
+      translateLoaded = true;
+      $.getScript('https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit');
+    } else {
+      $('#google_translate_element').toggle(); // Toggle visibility if already loaded
+      $('.close-trans').toggle(); // Optional: toggle close button
+    }
+  });
+
+
+
+  // Optional: close button functionality
+  $(document).on('click', '.close-trans', function () {
+    $('#google_translate_element').hide();
+    $(this).hide();
+  });
+</script> -->
+  <!-- <script src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit" defer rel="preconnect"></script> -->
+  <!-- The Modal Start-->
+  <div class="modal vidpoup fade p-3" id="video-modal">
+   <div class="modal-dialog position-relative">
+    <button class="btn-close" data-bs-dismiss="modal" type="button">
+     <svg fill="none" height="34" viewbox="0 0 40 40" width="34" xmlns="http://www.w3.org/2000/svg">
+      <circle cx="20" cy="20" fill="#DC5034" r="20">
+      </circle>
+      <rect fill="white" height="2.04813" rx="1.02407" transform="rotate(-45 14 25.0488)" width="17.7505" x="14" y="25.0488">
+      </rect>
+      <rect fill="white" height="2.04813" rx="1.02407" transform="rotate(45 15.4531 12.498)" width="17.7505" x="15.4531" y="12.498">
+      </rect>
+     </svg>
+    </button>
+    <div class="modal-content">
+     <div class="modal-body">
+      <div class="video-left-right">
+       <div class="vid-left">
+        <div class="video-section pb-4">
+         <div class="vid">
+          <!--start player -->
+          <video-js autoplay="" class="vjs-16-9" controls="true" data-account="3588749423001" data-application-id="" data-embed="default" data-player="default" data-tracker-action="VIEW" data-tracker-type="VIDEO" data-video-id="" id="myPlayers">
+          </video-js>
+         </div>
+         <!-- <script src="//players.brightcove.net/3588749423001/default_default/index.min.js" defer> -->
+         <div class="vjs-playlist">
+         </div>
+         <!--end player -->
+         <div class="video-text-details">
+          <h5 class="popuptitle">
+          </h5>
+          <p class="popupShort">
+          </p>
+          <div class="vid-date-time-views">
+           <!-- social hover start-->
+           <div class="share-social">
+            <span class="mb-0">
+             Share video on :
+            </span>
+            <div class="social-auto">
+             <a class="bg-transparent border-0" data-method="whatsapp" data-title="" data-type="video" href="https://wa.me/?text=https://www.bcci.tv/domestic/men/video?tagNames=" id="social-whatsapp" onclick="share(this)" tabindex="0" target="_blank">
+              <svg fill="#000000" height="15" id="Layer_1" version="1.1" viewbox="0 0 308 308" width="15" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+               <g id="XMLID_468_">
+                <path d="M227.904,176.981c-0.6-0.288-23.054-11.345-27.044-12.781c-1.629-0.585-3.374-1.156-5.23-1.156
+                        c-3.032,0-5.579,1.511-7.563,4.479c-2.243,3.334-9.033,11.271-11.131,13.642c-0.274,0.313-0.648,0.687-0.872,0.687
+                        c-0.201,0-3.676-1.431-4.728-1.888c-24.087-10.463-42.37-35.624-44.877-39.867c-0.358-0.61-0.373-0.887-0.376-0.887
+                        c0.088-0.323,0.898-1.135,1.316-1.554c1.223-1.21,2.548-2.805,3.83-4.348c0.607-0.731,1.215-1.463,1.812-2.153
+                        c1.86-2.164,2.688-3.844,3.648-5.79l0.503-1.011c2.344-4.657,0.342-8.587-0.305-9.856c-0.531-1.062-10.012-23.944-11.02-26.348
+                        c-2.424-5.801-5.627-8.502-10.078-8.502c-0.413,0,0,0-1.732,0.073c-2.109,0.089-13.594,1.601-18.672,4.802
+                        c-5.385,3.395-14.495,14.217-14.495,33.249c0,17.129,10.87,33.302,15.537,39.453c0.116,0.155,0.329,0.47,0.638,0.922
+                        c17.873,26.102,40.154,45.446,62.741,54.469c21.745,8.686,32.042,9.69,37.896,9.69c0.001,0,0.001,0,0.001,0
+                        c2.46,0,4.429-0.193,6.166-0.364l1.102-0.105c7.512-0.666,24.02-9.22,27.775-19.655c2.958-8.219,3.738-17.199,1.77-20.458
+                        C233.168,179.508,230.845,178.393,227.904,176.981z" id="XMLID_469_">
+                </path>
+                <path d="M156.734,0C73.318,0,5.454,67.354,5.454,150.143c0,26.777,7.166,52.988,20.741,75.928L0.212,302.716
+                        c-0.484,1.429-0.124,3.009,0.933,4.085C1.908,307.58,2.943,308,4,308c0.405,0,0.813-0.061,1.211-0.188l79.92-25.396
+                        c21.87,11.685,46.588,17.853,71.604,17.853C240.143,300.27,308,232.923,308,150.143C308,67.354,240.143,0,156.734,0z
+                        M156.734,268.994c-23.539,0-46.338-6.797-65.936-19.657c-0.659-0.433-1.424-0.655-2.194-0.655c-0.407,0-0.815,0.062-1.212,0.188
+                        l-40.035,12.726l12.924-38.129c0.418-1.234,0.209-2.595-0.561-3.647c-14.924-20.392-22.813-44.485-22.813-69.677
+                        c0-65.543,53.754-118.867,119.826-118.867c66.064,0,119.812,53.324,119.812,118.867
+                        C276.546,215.678,222.799,268.994,156.734,268.994z" id="XMLID_470_">
+                </path>
+               </g>
+              </svg>
+             </a>
+             <a class="bg-transparent border-0" data-method="twitter" data-title="" data-type="video" href="//twitter.com/share?url=https://www.bcci.tv/domestic/men/video?tagNames=" id="social-twitter" onclick="share(this)" tabindex="0" target="_blank">
+              <svg fill="none" height="12" viewbox="0 0 18 16" width="14" xmlns="http://www.w3.org/2000/svg">
+               <path d="M0.0438858 0L6.99348 8.82495L0 16H1.57395L7.69674 9.71813L12.6438 16H18L10.6594 6.67867L17.1689 0H15.5949L9.95613 5.78548L5.40011 0H0.0438858ZM2.3585 1.10107H4.81916L15.685 14.8988H13.2244L2.3585 1.10107Z" fill="black">
+               </path>
+              </svg>
+             </a>
+             <a class="copyUrl copyUrlText ctc" data-method="Copy link" data-share="https://www.bcci.tv/domestic/men/video?tagNames=" data-title="" data-type="video" href="javascript:void(0)" id="social-copyurl" onclick="share(this)">
+              <span class="c" style="display:none">
+               Copy
+              </span>
+              <svg fill="none" height="20" viewbox="0 0 49 36" width="20" xmlns="http://www.w3.org/2000/svg">
+               <path d="M11.231 35.7132C9.18361 35.7134 7.18214 35.1064 5.47972 33.969C3.77731 32.8316 2.45043 31.2149 1.6669 29.3234C0.883365 27.4318 0.678377 25.3504 1.07786 23.3424C1.47734 21.3343 2.46335 19.4898 3.91118 18.0422L14.5928 7.36474C16.5342 5.4234 19.1672 4.33276 21.9127 4.33276C24.6581 4.33276 27.2912 5.4234 29.2325 7.36474C31.1738 9.30608 32.2645 11.9391 32.2645 14.6846C32.2645 17.43 31.1738 20.0631 29.2325 22.0044L28.0756 23.1592L25.1155 20.2032L26.2807 19.038C27.4332 17.88 28.0794 16.3124 28.0779 14.6787C28.0763 13.045 27.427 11.4785 26.2723 10.3228C25.0971 9.20125 23.5351 8.57549 21.9106 8.57549C20.2861 8.57549 18.724 9.20125 17.5488 10.3228L6.87133 21.0003C6.29812 21.5728 5.84339 22.2528 5.53314 23.0012C5.22289 23.7496 5.0632 24.5519 5.0632 25.362C5.0632 26.1722 5.22289 26.9745 5.53314 27.7229C5.84339 28.4713 6.29812 29.1513 6.87133 29.7238C8.04654 30.8454 9.60861 31.4711 11.2331 31.4711C12.8576 31.4711 14.4197 30.8454 15.5949 29.7238L18.5529 32.6819C17.5935 33.6461 16.4523 34.4104 15.1955 34.9308C13.9387 35.4511 12.5912 35.717 11.231 35.7132Z" fill="black">
+               </path>
+               <path d="M27.9654 31.5327C25.918 31.5329 23.9165 30.926 22.2141 29.7886C20.5117 28.6512 19.1848 27.0345 18.4013 25.143C17.6177 23.2514 17.4128 21.17 17.8122 19.1619C18.2117 17.1539 19.1977 15.3094 20.6456 13.8618L21.8024 12.707L24.7605 15.6672L23.6057 16.8219C22.4492 17.9785 21.7995 19.5471 21.7995 21.1827C21.7995 22.8182 22.4492 24.3868 23.6057 25.5434C24.7809 26.6649 26.343 27.2907 27.9675 27.2907C29.592 27.2907 31.154 26.6649 32.3293 25.5434L43.0088 14.8638C44.1631 13.7066 44.8114 12.1387 44.8114 10.5042C44.8114 8.8696 44.1631 7.30176 43.0088 6.14447C41.8336 5.02292 40.2715 4.39716 38.647 4.39716C37.0225 4.39716 35.4605 5.02292 34.2853 6.14447L31.3272 3.18432C33.2685 1.24298 35.9016 0.152344 38.647 0.152344C41.3925 0.152344 44.0255 1.24298 45.9669 3.18432C47.9082 5.12566 48.9988 7.75869 48.9988 10.5042C48.9988 13.2496 47.9082 15.8827 45.9669 17.824L35.2894 28.4994C34.33 29.4638 33.1889 30.2284 31.9321 30.7491C30.6753 31.2697 29.3278 31.5361 27.9675 31.5327H27.9654Z" fill="black">
+               </path>
+              </svg>
+             </a>
+             <a class="bg-transparent border-0" data-method="facebook as" data-title="" data-type="video" href="//www.facebook.com/sharer.php?u=https://www.bcci.tv/domestic/men/video?tagNames=" id="social-facebook" onclick="share(this)" tabindex="0" target="_blank">
+              <svg fill="none" height="15" viewbox="0 0 10 17" width="8" xmlns="http://www.w3.org/2000/svg">
+               <path d="M6.30708 17V9.24551H9.17185L9.60076 6.22342H6.307V4.29395C6.307 3.41898 6.57439 2.82274 7.95541 2.82274L9.7167 2.82199V0.119068C9.41207 0.0823045 8.36648 0 7.1502 0C4.6107 0 2.87212 1.40833 2.87212 3.99474V6.22342H0V9.24551H2.87212V16.9999H6.30708V17Z" fill="black">
+               </path>
+              </svg>
+             </a>
+            </div>
+           </div>
+           <!-- social hover end -->
+           <span class="border-vid-rt popupdate">
+           </span>
+           <span class="border-vid-rt popupduration">
+           </span>
+           <span class="border-vid-rt">
+            <svg fill="none" height="10" viewbox="0 0 16 10" width="16" xmlns="http://www.w3.org/2000/svg">
+             <path d="M8 4C8.41146 4 8.79948 4.07812 9.16406 4.23438C9.52865 4.39062 9.84635 4.60417 10.1172 4.875C10.388 5.14583 10.6042 5.46615 10.7656 5.83594C10.9271 6.20573 11.0052 6.59375 11 7C11 7.41667 10.9219 7.80469 10.7656 8.16406C10.6094 8.52344 10.3958 8.84115 10.125 9.11719C9.85417 9.39323 9.53385 9.60938 9.16406 9.76562C8.79427 9.92188 8.40625 10 8 10C7.58333 10 7.19531 9.92188 6.83594 9.76562C6.47656 9.60938 6.15885 9.39583 5.88281 9.125C5.60677 8.85417 5.39062 8.53646 5.23438 8.17188C5.07812 7.80729 5 7.41667 5 7C5 6.58854 5.07812 6.20052 5.23438 5.83594C5.39062 5.47135 5.60417 5.15365 5.875 4.88281C6.14583 4.61198 6.46354 4.39583 6.82812 4.23438C7.19271 4.07292 7.58333 3.99479 8 4ZM8 9C8.27604 9 8.53385 8.94792 8.77344 8.84375C9.01302 8.73958 9.22656 8.59635 9.41406 8.41406C9.60156 8.23177 9.74479 8.02083 9.84375 7.78125C9.94271 7.54167 9.99479 7.28125 10 7C10 6.72396 9.94792 6.46615 9.84375 6.22656C9.73958 5.98698 9.59635 5.77344 9.41406 5.58594C9.23177 5.39844 9.02083 5.25521 8.78125 5.15625C8.54167 5.05729 8.28125 5.00521 8 5C7.72396 5 7.46615 5.05208 7.22656 5.15625C6.98698 5.26042 6.77344 5.40365 6.58594 5.58594C6.39844 5.76823 6.25521 5.97917 6.15625 6.21875C6.05729 6.45833 6.00521 6.71875 6 7C6 7.27604 6.05208 7.53385 6.15625 7.77344C6.26042 8.01302 6.40365 8.22656 6.58594 8.41406C6.76823 8.60156 6.97917 8.74479 7.21875 8.84375C7.45833 8.94271 7.71875 8.99479 8 9ZM8 0C8.74479 0 9.48438 0.0911458 10.2188 0.273438C10.9531 0.455729 11.6458 0.729167 12.2969 1.09375C12.9479 1.45833 13.5365 1.90104 14.0625 2.42188C14.5885 2.94271 15.0208 3.55208 15.3594 4.25C15.5677 4.68229 15.7266 5.1276 15.8359 5.58594C15.9453 6.04427 16 6.51562 16 7H15C15 6.38542 14.9062 5.8099 14.7188 5.27344C14.5312 4.73698 14.2734 4.2474 13.9453 3.80469C13.6172 3.36198 13.2266 2.96615 12.7734 2.61719C12.3203 2.26823 11.8385 1.97396 11.3281 1.73438C10.8177 1.49479 10.2734 1.3125 9.69531 1.1875C9.11719 1.0625 8.55208 1 8 1C7.4375 1 6.8724 1.0625 6.30469 1.1875C5.73698 1.3125 5.19531 1.49479 4.67969 1.73438C4.16406 1.97396 3.67969 2.26823 3.22656 2.61719C2.77344 2.96615 2.38542 3.36198 2.0625 3.80469C1.73958 4.2474 1.47917 4.73698 1.28125 5.27344C1.08333 5.8099 0.989583 6.38542 1 7H0C0 6.52083 0.0546875 6.05208 0.164062 5.59375C0.273438 5.13542 0.432292 4.6875 0.640625 4.25C0.973958 3.5625 1.40365 2.95573 1.92969 2.42969C2.45573 1.90365 3.04688 1.45833 3.70312 1.09375C4.35938 0.729167 5.05208 0.458333 5.78125 0.28125C6.51042 0.104167 7.25 0.0104167 8 0Z" fill="#11141C">
+             </path>
+            </svg>
+            <span class="popupview pe-0 me-0">
+            </span>
+           </span>
+           <span>
+            <button class="bg-transparent border-0">
+             <svg fill="none" height="17" viewbox="0 0 14 17" width="14" xmlns="http://www.w3.org/2000/svg">
+              <path d="M9.14991 12.929L9.28574 12.5538L8.95003 12.3382L4.92209 9.7504L4.58648 9.53479L4.3017 9.81413C3.98731 10.1225 3.58885 10.3312 3.15631 10.414C2.72376 10.4968 2.2764 10.45 1.87035 10.2795C1.46429 10.109 1.11763 9.82241 0.873839 9.45565C0.630051 9.08888 0.5 8.6583 0.5 8.2179C0.5 7.77751 0.630051 7.34692 0.873839 6.98015C1.11763 6.61339 1.46429 6.32678 1.87035 6.15629C2.2764 5.9858 2.72376 5.93902 3.15631 6.02181C3.58885 6.1046 3.98731 6.31329 4.3017 6.62168L4.58628 6.90082L4.92181 6.68558L8.94975 4.10162L9.28641 3.88565L9.14962 3.50978C8.96102 2.99153 8.96998 2.42195 9.1748 1.90988C9.37961 1.39782 9.76592 0.979167 10.2599 0.733932C10.7539 0.488696 11.3209 0.434069 11.8526 0.580488C12.3843 0.726907 12.8435 1.06411 13.1423 1.52765C13.4411 1.9912 13.5586 2.54859 13.4724 3.09332C13.3862 3.63806 13.1024 4.13193 12.675 4.48058C12.2477 4.82923 11.7069 5.0082 11.156 4.98331C10.605 4.95842 10.0826 4.7314 9.68842 4.34563L9.40366 4.06692L9.06842 4.28229L5.04048 6.87005L4.70482 7.0857L4.84058 7.46085C5.01849 7.95249 5.01849 8.49092 4.84058 8.98255L4.70482 9.35771L5.04048 9.57335L9.06842 12.1611L9.40364 12.3765L9.6884 12.0978C10.0027 11.7902 10.4007 11.5821 10.8327 11.4996C11.2646 11.417 11.7113 11.4637 12.1169 11.6337C12.5224 11.8038 12.8688 12.0896 13.1128 12.4555C13.3566 12.8213 13.4872 13.2509 13.4883 13.6905C13.4882 14.0166 13.4168 14.3388 13.2791 14.6345C13.1413 14.9303 12.9404 15.1923 12.6905 15.4023C12.4406 15.6122 12.1478 15.7648 11.8326 15.8495C11.5174 15.9342 11.1875 15.9489 10.8661 15.8925L10.7797 16.385L10.8661 15.8925C10.5446 15.8361 10.2394 15.7101 9.97189 15.5232C9.70435 15.3363 9.48096 15.0931 9.31741 14.8107C9.15386 14.5283 9.05411 14.2135 9.02518 13.8884C8.99624 13.5634 9.03881 13.2359 9.14991 12.929Z" stroke="black">
+              </path>
+             </svg>
+            </button>
+           </span>
+          </div>
+         </div>
+        </div>
+       </div>
+       <div class="vid-right vsp-0">
+        <div class="video-list">
+         <h4>
+          Latest Videos
+         </h4>
+         <div class="videos">
+          <ul class="p-0 list-unstyled mb-0" id="relatedVideo">
+          </ul>
+         </div>
+        </div>
+       </div>
+      </div>
+     </div>
+    </div>
+   </div>
+  </div>
+  <!-- The Modal End-->
+ </body>
+</html>

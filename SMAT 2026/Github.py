@@ -1,6 +1,7 @@
 import os
 import base64
 import requests
+import re
 
 GITHUB_TOKEN = os.environ.get("GITHUB_TOKEN")
 GITHUB_REPO = os.environ.get("GITHUB_REPO")  # e.g. "nisarg52/ipl-fantasy-2026"
@@ -67,6 +68,15 @@ def pull_file_from_github(repo_path, local_path):
         print(f"Error pulling {repo_path} from GitHub: {e}")
         return False
 
+def _links_paths(database):
+    """Return the local and repository path for the series links file."""
+    base = os.path.basename(database)
+    m = re.search(r"smat(\d{2})", base, flags=re.IGNORECASE)
+    year = f"20{m.group(1)}" if m else "2026"
+    filename = f"SMAT_{year}_links.pkl"
+    return os.path.join(os.path.dirname(database), filename), filename
+
+
 def push_all_files(database, file_path, json_filename):
     if not os.path.exists('/mount/src'):
         return
@@ -82,8 +92,12 @@ def push_all_files(database, file_path, json_filename):
     if os.path.exists(json_filename):
         push_file_to_github(json_filename, json_repo_path)
     
+    links_local_path, links_repo_path = _links_paths(database)
+    if os.path.exists(links_local_path):
+        push_file_to_github(links_local_path, links_repo_path)
+    
     # Push trackers
-    for tracker in ["/tmp/.final_scrape_tracker", "/tmp/.last_update_timestamp" "/tmp/.post_match_scraped"]:
+    for tracker in ["/tmp/.final_scrape_tracker", "/tmp/.last_update_timestamp", "/tmp/.post_match_scraped"]:
         if os.path.exists(tracker):
             push_file_to_github(tracker, os.path.basename(tracker))
     
@@ -106,8 +120,12 @@ def sync_files_from_github(database, file_path, json_filename):
     if not os.path.exists(json_filename):
         pull_file_from_github(json_repo_path, json_filename)
     
+    links_local_path, links_repo_path = _links_paths(database)
+    if not os.path.exists(links_local_path):
+        pull_file_from_github(links_repo_path, links_local_path)
+    
     # Pull trackers
-    for tracker in [".final_scrape_tracker", ".last_update_timestamp", "/tmp/.post_match_scraped"]:
+    for tracker in [".final_scrape_tracker", ".last_update_timestamp", ".post_match_scraped"]:
         local_path = f"/tmp/{tracker}"
         if not os.path.exists(local_path):
             pull_file_from_github(tracker, local_path)

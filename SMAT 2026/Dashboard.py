@@ -7,14 +7,14 @@ import time
 import subprocess
 import threading
 import re
+import json
 from datetime import datetime, time as dt_time, timedelta
 import pytz
 import dill
 import sys
-from GitHub import sync_files_from_github, push_all_files
-from Auction import database, file_path, json_filename
+from Github import sync_files_from_github, push_all_files
 from Output import run_output_pipeline
-from Auction import teams,boosters,names,roles,squads,team_names_ff,team_names_sf,competition_id,database,file_path,json_filename, MATCH_SCHEDULE,emerging_player
+from Auction import teams,boosters,names,roles,squads,team_names_ff,team_names_sf,series_slug,database,file_path,json_filename, match_numbers
 import base64
 
 def show_celebration():
@@ -214,6 +214,10 @@ def format_points(val):
             return int(val)
         # If it has .5, keep it
         elif val % 1 == 0.5:
+            return val
+        elif val % 1 == 0.25:
+            return val
+        elif val % 1 == 0.75:
             return val
         # For other decimals, round to 1 decimal place
         else:
@@ -541,7 +545,7 @@ st.markdown("""
 
 /* UNIFIED AWARDS STYLING */
 /* UNIFIED THICK AWARDS STYLING */
-    .orange-card, .purple-card, .mvp-card, .emerging-card {
+    .orange-card, .purple-card, .mvp-card {
         border-left: 6px solid !important;
         border-top: 1px solid rgba(255, 255, 255, 0.1) !important;
         border-bottom: 1px solid rgba(255, 255, 255, 0.1) !important;
@@ -552,10 +556,9 @@ st.markdown("""
     .orange-card   { border-left-color: #efb920 !important; }
     .purple-card   { border-left-color: #a855f7 !important; }
     .mvp-card      { border-left-color: #22c55e !important; }
-    .emerging-card { border-left-color: #ff007f !important; }
 
     /* Unified Hover - Thick Border Effect */
-    .orange-card:hover, .purple-card:hover, .mvp-card:hover, .emerging-card:hover {
+    .orange-card:hover, .purple-card:hover, .mvp-card:hover {
         outline: none !important;
         background: rgba(255, 255, 255, 0.05) !important;
         border-top: 2px solid !important;
@@ -568,13 +571,7 @@ st.markdown("""
     .orange-card:hover   { border-color: #efb920 !important; }
     .purple-card:hover   { border-color: #a855f7 !important; }
     .mvp-card:hover      { border-color: #22c55e !important; }
-    .emerging-card:hover { border-color: #ff007f !important; }
 
-    /* Row highlight in the squad list stays the same for consistency */
-    .emerging-player-row {
-        background: rgba(255, 0, 127, 0.1) !important;
-        border-right: 6px solid #ff007f !important;
-    }
             
     @media (min-width: 768px) {
         [data-testid="column"] {
@@ -627,7 +624,6 @@ else:
     LOCK_FILE = ".update_lock"
     FINAL_SCRAPE_TRACKER = ".final_scrape_tracker"
     POST_MATCH_SCRAPE_FILE = ".post_match_scraped"
-EXCEL_FILE = file_path
 OUTPUT_SCRIPT = "Run.py"
 UPDATE_INTERVAL = 600  # 10 minutes in seconds
 LOCK_TIMEOUT = 600  # 10 minutes - max time for update to complete
@@ -681,6 +677,14 @@ def save_update_time():
         f.write(str(time.time()))
 
 PKL_FILE = database  # The pickle file with match states
+
+def get_links_file():
+    """Return the persisted Cricbuzz series-links file for this season."""
+    m = re.search(r"-(\d{4})$", str(series_slug).strip("/"))
+    year = m.group(1) if m else "2026"
+    return os.path.join(os.path.dirname(database), f"SMAT_{year}_links.pkl")
+
+LINKS_FILE = get_links_file()
 
 def get_final_scraped_matches():
     """Get set of match names that have been scraped after being final"""
@@ -741,109 +745,88 @@ def get_most_recent_match_state():
         print(f"Error reading pkl file: {e}")
         return None, None
     
-def is_time_between(start, end, now):
-    """
-    Handles time ranges that may cross midnight.
-    """
-    if start <= end:
-        return start <= now <= end
-    else:
-        return now >= start or now <= end
+def get_active_match_states():
+    """Return started, non-final scheduled matches from the saved links file."""
+    try:
+        if not os.path.exists(LINKS_FILE):
+            return None, "Series links file not available"
+        with open(LINKS_FILE, "rb") as f:
+            links_payload = dill.load(f)
+        if os.path.exists(PKL_FILE):
+            with open(PKL_FILE, "rb") as f:
+                db_payload = dill.load(f)
+        else:
+            db_payload = {}
+        match_states = db_payload.get("states", {})
+        now_ms = int(datetime.now(pytz.timezone("Asia/Kolkata")).timestamp() * 1000)
+        active = []
+        for match in links_payload.get("matches", []):
+            match_id = str(match.get("match_id", ""))
+            if not match_id:
+                continue
+            teams = {str(match.get("team1") or "").strip().upper(), str(match.get("team2") or "").strip().upper()}
+            if "TBC" in teams or "TBD" in teams or "" in teams:
+                continue
+            try:
+                start_ms = int(match.get("start_timestamp")) + 30 * 60 * 1000
+            except (TypeError, ValueError):
+                continue
+            if now_ms < start_ms:
+                continue
+            if not match_states.get(match_id, {}).get("is_final", False):
+                active.append(match)
+        if active:
+            active.sort(key=lambda m: int(m.get("start_timestamp", 0)))
+            m = active[0]
+            return active, f'{m.get("team1", "")} vs {m.get("team2", "")}'
+        return [], "No started unfinished matches"
+    except Exception as e:
+        print(f"Error reading match schedule/state: {e}")
+        return None, f"Could not determine match state: {e}"
+
+
+def get_most_recent_match_state():
+    """Return the latest stored match state for final-scrape bookkeeping."""
+    try:
+        if not os.path.exists(PKL_FILE):
+            return None, None
+        with open(PKL_FILE, "rb") as f:
+            payload = dill.load(f)
+        states, objects = payload.get("states", {}), payload.get("objects", {})
+        if not states or not objects:
+            return None, None
+        name = list(objects.keys())[-1]
+        last_id = list(states.keys())[-1]
+        return states[last_id].get("is_final", False), name
+    except Exception as e:
+        print(f"Error reading pkl file: {e}")
+        return None, None
 
 
 def is_match_time():
-    """
-    Check if current time falls within match hours based on schedule
-    Returns: (bool, str)
-    """
-    ist = pytz.timezone('Asia/Kolkata')
-    now = datetime.now(ist)
+    """Return whether at least one scheduled match currently needs scraping."""
+    active, reason = get_active_match_states()
+    if active is None:
+        return True, reason
+    if active:
+        return True, f"Unfinished match: {reason}"
+    return False, reason
 
-    current_date = now.strftime('%Y-%m-%d')
-    yesterday_date = (now - timedelta(days=1)).strftime('%Y-%m-%d')
-    current_time = now.time()
-
-    # Define windows
-    SINGLE_START = dt_time(19, 30)   # 7:30 PM
-    DOUBLE_START = dt_time(15, 30)   # 3:30 PM
-    END_TIME = dt_time(1, 0)        # 1:30 AM (safe upper bound)
-
-    # --- TODAY checks ---
-    if current_date in MATCH_SCHEDULE.get('single_header', []):
-        if is_time_between(SINGLE_START, END_TIME, current_time):
-            return True, f"Single header match day ({current_date})"
-
-    if current_date in MATCH_SCHEDULE.get('double_header', []):
-        if is_time_between(DOUBLE_START, END_TIME, current_time):
-            return True, f"Double header match day ({current_date})"
-
-    # --- YESTERDAY spillover (post-midnight only) ---
-    if current_time <= END_TIME:
-        if yesterday_date in MATCH_SCHEDULE.get('single_header', []):
-            return True, f"Single header continued ({yesterday_date})"
-
-        if yesterday_date in MATCH_SCHEDULE.get('double_header', []):
-            return True, f"Double header continued ({yesterday_date})"
-
-    # --- Otherwise ---
-    return False, "No match scheduled"
 
 def should_update():
     is_match, match_reason = is_match_time()
-
     if os.path.exists(LOCK_FILE):
         lock_age = time.time() - os.path.getmtime(LOCK_FILE)
         if lock_age < LOCK_TIMEOUT:
-            mins = int(lock_age // 60)
-            secs = int(lock_age % 60)
+            mins, secs = int(lock_age // 60), int(lock_age % 60)
             return False, f"Update in progress by another user ({mins}m {secs}s ago)", -1
-
-
-    is_final, match_name = get_most_recent_match_state()
-
-    if is_final is None:
-        return True, "Unknown match state - checking", -1
-
-    # ----------------------------
-    # RESET LOGIC (FIXED)
-    # ----------------------------
-    # Only reset when match is NOT final
-    if not is_final:
-        reset_post_match_scraped()
-
-    # ----------------------------
-    # DURING MATCH HOURS
-    # ----------------------------
     if is_match:
-        if not is_final:
-            last_update = get_last_update_time()
-            time_since_update = time.time() - last_update
-            hours = int(time_since_update // 3600)
-            mins = int((time_since_update%3600) // 60)
-            secs = int(time_since_update % 60)
-            # Match ongoing → periodic scraping
-            if time_since_update >= UPDATE_INTERVAL:
-                return True, f"Match Ongoing - {match_reason} (Last update: {hours}h {mins} min {secs} sec ago)", -1
-            else:
-                remaining = UPDATE_INTERVAL - time_since_update
-                return False, "Match ongoing | Updated Recently", int(remaining)
+        elapsed = time.time() - get_last_update_time()
+        if elapsed >= UPDATE_INTERVAL:
+            return True, f"{match_reason} | Last update: {int(elapsed // 60)} min ago", -1
+        return False, "Match activity detected | Updated Recently", int(UPDATE_INTERVAL - elapsed)
+    return False, match_reason, -1
 
-        else:
-            # Match finished → do ONE final scrape
-            if not get_post_match_scraped():
-                return True, f"Finalizing match ({match_name})", -1
-
-            return False, f"Latest match ({match_name}) over - No update needed", -1
-
-    # ----------------------------
-    # OUTSIDE MATCH HOURS
-    # ----------------------------
-    else:
-        # Recovery: if something was missed
-        if not get_post_match_scraped():
-            return True, f"Post-match scrape ({match_name})", -1
-
-        return False, f"Outside match hours - {match_reason}", -1
 
 def run_output_script():
     try:
@@ -855,9 +838,6 @@ def run_output_script():
             is_final, match_name = get_most_recent_match_state()
             if is_final and match_name:
                 mark_match_as_final_scraped(match_name)
-        
-        # Mark post-match scrape as done
-        set_post_match_scraped()
         
         return True, "Update successful"
     except Exception as e:
@@ -876,21 +856,25 @@ def load_live_matches():
         ipl_data.get("states", {})
     )
 
-# Use cache_resource instead of cache_data for Excel file
-@st.cache_resource(ttl=300)
-def get_excel_engine():
-    if not os.path.exists(EXCEL_FILE): 
-        return None
-    return pd.ExcelFile(EXCEL_FILE)
-
+@st.cache_data(ttl=300)
 def load_data():
-    engine = get_excel_engine()
-    if not engine:
+    if not os.path.exists(json_filename):
         return None
     try:
-        return {sheet: pd.read_excel(engine, sheet, index_col=0).dropna(how='all') for sheet in engine.sheet_names}
+        with open(json_filename, "r") as f:
+            raw = json.load(f)
+
+        data = {}
+        for key, value in raw.items():
+            if isinstance(value, dict):
+                df = pd.DataFrame.from_dict(value, orient='index')
+                df = df.dropna(how='all')
+                data[key] = df
+            else:
+                data[key] = value
+        return data
     except Exception:
-        st.cache_resource.clear()
+        st.cache_data.clear()
         return None
 
 # --- SQUAD CONFIGURATION ---
@@ -976,7 +960,7 @@ def main():
         </div>
     ''', unsafe_allow_html=True)
 
-    show_celebration()
+    #show_celebration()
 
     # Check for updates with smart scheduling
     should_run_update, update_reason, remaining_seconds = should_update()
@@ -1177,9 +1161,6 @@ def show_rankings(data):
     # Only include columns that actually exist in the DataFrame
     base_cols = ['Rank', 'Team', 'Total Points']
     optional_cols = ['Franchise Points', 'Orange Cap', 'Purple Cap', 'MVP']
-    if emerging_player:
-        optional_cols.append('Emerging Player')
-    
     # Build column list from available columns only
     cols_order = base_cols + [col for col in optional_cols if col in df_display.columns]
     
@@ -1191,7 +1172,6 @@ def show_rankings(data):
     has_orange = 'Orange Cap' in cols_order
     has_purple = 'Purple Cap' in cols_order
     has_mvp = 'MVP' in cols_order
-    has_emerging = 'Emerging Player' in cols_order
     
     # Wrap table in scrollable container for mobile
     html_table = '<div class="table-container">'
@@ -1209,8 +1189,6 @@ def show_rankings(data):
         html_table += '<th style="padding: 12px 8px; color: #a855f7; font-family: \'Bebas Neue\', sans-serif; font-size: clamp(0.9rem, 2.5vw, 1.1rem); text-align: center;">PURPLE CAP</th>'
     if has_mvp:
         html_table += '<th style="padding: 12px 8px; color: #22c55e; font-family: \'Bebas Neue\', sans-serif; font-size: clamp(0.9rem, 2.5vw, 1.1rem); text-align: center;">MVP</th>'
-    if has_emerging:
-        html_table += '<th style="padding: 12px 8px; color: #ff007f; font-family: \'Bebas Neue\', sans-serif; font-size: clamp(0.9rem, 2.5vw, 1.1rem); text-align: center;">EMERGING PLAYER</th>'
     
     html_table += '</tr></thead><tbody>'
 
@@ -1255,8 +1233,6 @@ def show_rankings(data):
             html_table += f'<td style="padding: 10px 8px; text-align: center; color: #a855f7;">{row.get("Purple Cap", 0)}</td>'
         if has_mvp:
             html_table += f'<td style="padding: 10px 8px; text-align: center; color: #22c55e;">{row.get("MVP", 0)}</td>'
-        if has_emerging:
-            html_table += f'<td style="padding: 10px 8px; text-align: center; color: #ff007f;">{row.get("Emerging Player", 0)}</td>'
         
         html_table += "</tr>"
 
@@ -1312,21 +1288,14 @@ def show_rankings(data):
                     </div>
                 """, unsafe_allow_html=True)
 
-    # EMERGING PLAYER
-    if emerging_player and has_emerging:
-        st.markdown(f"""
-            <div class="metric-card emerging-card">
-                <div style="color:#ff007f; font-weight:bold; font-size:1.1rem;">✨ EMERGING PLAYER</div>
-                <div style="font-size:1.6rem; font-weight:bold; margin-top:6px; color: white;">{emerging_player}</div>
-            </div>
-        """, unsafe_allow_html=True)
+
 
     # Team performance trends - CUMULATIVE
     st.markdown('<div class="section-header">📊 POINTS RACE</div>', unsafe_allow_html=True)
 
     # Safely get match columns
     all_cols = set(team_final.columns)
-    exclude_cols = ['Total Points','Orange Cap','Purple Cap','MVP','Franchise Points','Emerging Player']
+    exclude_cols = ['Total Points','Orange Cap','Purple Cap','MVP','Franchise Points']
     match_cols = [col for col in team_final.columns if col not in exclude_cols]
     cap_cols = [col for col in exclude_cols if col != 'Total Points' and col in team_final.columns]
 
@@ -1758,7 +1727,7 @@ def show_squads(data):
             total_with_caps = pts
             if "Player Final Points" in data and not data["Player Final Points"].empty and player in data["Player Final Points"].index:
                 pfd = data["Player Final Points"].loc[player]
-                total_with_caps += sum([pfd.get(k, 0) for k in ['Orange Cap', 'Purple Cap', 'MVP','Emerging Player'] if pd.notna(pfd.get(k, 0))])
+                total_with_caps += sum([pfd.get(k, 0) for k in ['Orange Cap', 'Purple Cap', 'MVP'] if pd.notna(pfd.get(k, 0))])
             
             # Injury/Replacement logic
             is_replacement = False
@@ -1779,7 +1748,6 @@ def show_squads(data):
                 if player == mvp_player: row_class += " mvp-player"
                 elif player == orange_cap_player: row_class += " orange-cap-player"
                 elif player == purple_cap_player: row_class += " purple-cap-player"
-                elif player == emerging_player: row_class += " emerging-player-row"
 
                 st.markdown(f"""
                     <div class="{row_class}">
@@ -1797,8 +1765,35 @@ def show_matches(data):
     if not match_names:
         st.info("⏳ No matches played yet. Match data will appear once the first match begins!")
         return
+
+    match_order = {
+        match_no: i
+        for i, match_no in enumerate(match_numbers)
+    }
+
+    selected_match = st.selectbox(
+        "Select Match",
+        sorted(
+            match_names,
+            key=lambda x: match_order[
+                re.search(r"Match (\d+)", x).group(1)
+            ]
+        ),
+        key="match_selector"
+    )
+
+
+    # selected_match = st.selectbox(
+    #     "Select Match",
+    #     reversed(sorted(
+    #         match_names,
+    #         key=lambda x: int(x.split("Match ")[1].split("-")[0].strip())
+    #     )),
+    #     key="match_selector"
+    # )
+
         
-    selected_match = st.selectbox("Select Match", reversed(match_names), key="match_selector")
+    # selected_match = st.selectbox("Select Match", (match_names), key="match_selector")
     
     if selected_match:
         cfc_sheet = f"{selected_match} - CFC Points"
@@ -2049,8 +2044,8 @@ def show_analytics(data):
             # Create DataFrame
             perf_df = pd.DataFrame(match_performance)
             
-            # Get total points from player_final
-            total_points = player_final.loc[selected_player, 'Total Points']
+            # Sum directly from match breakdown (more reliable than stored Total Points)
+            total_points = perf_df['Points'].sum()
             avg_points = perf_df['Points'].mean()
             best_performance = perf_df['Points'].max()
             mom_count = perf_df['MoM'].apply(lambda x: 1 if pd.notna(x) and x != 0 else 0).sum()
@@ -2176,31 +2171,72 @@ def show_analytics(data):
     # All Players Table
     st.markdown('<div class="section-header">📋 All Players Performance</div>', unsafe_allow_html=True)
     st.markdown('<p style="color: #00f2fe; font-size: clamp(0.85rem, 2.5vw, 1rem); margin-bottom: 15px;">Complete player rankings (without boosters or captain/vice-captain multipliers)</p>', unsafe_allow_html=True)
-    
+
+    # Calculate batting and bowling totals
+    batting_points = {}
+    bowling_points = {}
+    fielding_points = {}
+    man_of_the_matches = {}
+
+    for key, match_data in data.items():
+
+        if key.endswith(" - Points Breakdown"):
+
+            for player,points in match_data["Player Batting Points"].items():
+                batting_points[player] = batting_points.get(player, 0) + points
+            for player,points in match_data["Player Bowling Points"].items():
+                bowling_points[player] = bowling_points.get(player, 0) + points
+            for player,points in match_data["Player Fielding Points"].items():
+                fielding_points[player] = fielding_points.get(player, 0) + points
+            for player,points in match_data["Man of the Match"].items():
+                man_of_the_matches[player] = man_of_the_matches.get(player, 0) + points/30
+
     # Sort by total points descending
     all_players_df = player_final.sort_values('Total Points', ascending=False).reset_index()
     all_players_df.columns = ['Player'] + list(all_players_df.columns[1:])
     all_players_df.insert(0, 'Rank', range(1, len(all_players_df) + 1))
-    
+
+    # Add batting/bowling columns
+    all_players_df["Batting Points"] = all_players_df["Player"].map(
+        lambda p: batting_points.get(p, 0)
+    )
+
+    all_players_df["Bowling Points"] = all_players_df["Player"].map(
+        lambda p: bowling_points.get(p, 0)
+    )
+
+    all_players_df["Fielding Points"] = all_players_df["Player"].map(
+        lambda p: fielding_points.get(p, 0)
+    )
+
+    all_players_df["MOTMs"] = all_players_df["Player"].map(
+        lambda p: man_of_the_matches.get(p, 0)
+    )
+
     # Display table with mobile scrolling
     players_html = '<div class="table-container">'
-    players_html += '<table style="width:100%; border-collapse:collapse; background-color:transparent; min-width: 500px;">'
+    players_html += '<table style="width:100%; border-collapse:collapse; background-color:transparent; min-width: 700px;">'
+
     players_html += '<thead><tr style="border-bottom:2px solid #efb920;">'
     players_html += '<th style="padding:10px 8px; color:#efb920; font-family:\'Bebas Neue\'; text-align:center; font-size: clamp(0.85rem, 2.5vw, 1rem);">RANK</th>'
     players_html += '<th style="padding:10px 8px; color:#efb920; font-family:\'Bebas Neue\'; text-align:left; font-size: clamp(0.85rem, 2.5vw, 1rem);">PLAYER</th>'
     players_html += '<th style="padding:10px 8px; color:#efb920; font-family:\'Bebas Neue\'; text-align:center; font-size: clamp(0.85rem, 2.5vw, 1rem);">TOTAL POINTS</th>'
+    players_html += '<th style="padding:10px 8px; color:#22c55e; font-family:\'Bebas Neue\'; text-align:center; font-size: clamp(0.85rem, 2.5vw, 1rem);">BATTING</th>'
+    players_html += '<th style="padding:10px 8px; color:#3b82f6; font-family:\'Bebas Neue\'; text-align:center; font-size: clamp(0.85rem, 2.5vw, 1rem);">BOWLING</th>'
+    players_html += '<th style="padding:10px 8px; color:#3b82f6; font-family:\'Bebas Neue\'; text-align:center; font-size: clamp(0.85rem, 2.5vw, 1rem);">FIELDING</th>'
+    players_html += '<th style="padding:10px 8px; color:#3b82f6; font-family:\'Bebas Neue\'; text-align:center; font-size: clamp(0.85rem, 2.5vw, 1rem);">MOTM</th>'
     players_html += '<th style="padding:10px 8px; color:#efb920; font-family:\'Bebas Neue\'; text-align:center; font-size: clamp(0.85rem, 2.5vw, 1rem);">ORANGE CAP</th>'
-    players_html += '<th style="padding:10px 8px; color:#efb920; font-family:\'Bebas Neue\'; text-align:center; font-size: clamp(0.85rem, 2.5vw, 1rem);">PURPLE CAP</th>'
-    players_html += '<th style="padding:10px 8px; color:#efb920; font-family:\'Bebas Neue\'; text-align:center; font-size: clamp(0.85rem, 2.5vw, 1rem);">MVP</th>'
-    players_html += '<th style="padding:10px 8px; color:#efb920; font-family:\'Bebas Neue\'; text-align:center; font-size: clamp(0.85rem, 2.5vw, 1rem);">EMERGING PLAYER</th>'
+    players_html += '<th style="padding:10px 8px; color:#a855f7; font-family:\'Bebas Neue\'; text-align:center; font-size: clamp(0.85rem, 2.5vw, 1rem);">PURPLE CAP</th>'
+    players_html += '<th style="padding:10px 8px; color:#22c55e; font-family:\'Bebas Neue\'; text-align:center; font-size: clamp(0.85rem, 2.5vw, 1rem);">MVP</th>'
     players_html += '</tr></thead><tbody>'
-    
+
     for _, row in all_players_df.iterrows():
+
         rank = row['Rank']
-        
-        # Highlight top 3
+
         row_style = "border-bottom:1px solid rgba(255,255,255,0.05);"
         rank_style = ""
+
         if rank == 1:
             row_style += " background-color: rgba(239, 185, 32, 0.15);"
             rank_style = "border-left: 6px solid #efb920;"
@@ -2212,29 +2248,42 @@ def show_analytics(data):
             rank_style = "border-left: 6px solid #CD7F32;"
         else:
             row_style += " background-color: rgba(255,255,255,0.02);"
-        
+
         players_html += f'<tr style="{row_style}">'
+
         players_html += f'<td style="padding:10px 8px; text-align:center; font-weight:bold; {rank_style} font-size: clamp(0.75rem, 2.5vw, 0.9rem);">{rank}</td>'
+
         players_html += f'<td style="padding:10px 8px; text-align:left; font-weight:bold; color:white; font-size: clamp(0.75rem, 2.5vw, 0.9rem);">{row["Player"]}</td>'
+
         players_html += f'<td style="padding:10px 8px; text-align:center; color:white; font-size: clamp(0.75rem, 2.5vw, 0.9rem);">{format_points(row["Total Points"])}</td>'
-        
+
+        players_html += f'<td style="padding:10px 8px; text-align:center; color:#22c55e; font-size: clamp(0.75rem, 2.5vw, 0.9rem);">{format_points(row["Batting Points"])}</td>'
+
+        players_html += f'<td style="padding:10px 8px; text-align:center; color:#3b82f6; font-size: clamp(0.75rem, 2.5vw, 0.9rem);">{format_points(row["Bowling Points"])}</td>'
+
+        players_html += f'<td style="padding:10px 8px; text-align:center; color:#F54927; font-size: clamp(0.75rem, 2.5vw, 0.9rem);">{format_points(row["Fielding Points"])}</td>'
+
+        players_html += f'<td style="padding:10px 8px; text-align:center; color:#FFE140; font-size: clamp(0.75rem, 2.5vw, 0.9rem);">{format_points(row["MOTMs"])}</td>'
+
+
         orange_val = row.get("Orange Cap", 0)
         purple_val = row.get("Purple Cap", 0)
         mvp_val = row.get("MVP", 0)
-        emerging_val = row.get("Emerging Player", 0)
+
         orange_display = format_points(orange_val) if pd.notna(orange_val) and orange_val > 0 else "-"
         purple_display = format_points(purple_val) if pd.notna(purple_val) and purple_val > 0 else "-"
         mvp_display = format_points(mvp_val) if pd.notna(mvp_val) and mvp_val > 0 else "-"
-        emerging_display = format_points(emerging_val) if pd.notna(emerging_val) and emerging_val > 0 else "-"
-        
+
         players_html += f'<td style="padding:10px 8px; text-align:center; color:#efb920; font-size: clamp(0.75rem, 2.5vw, 0.9rem);">{orange_display}</td>'
         players_html += f'<td style="padding:10px 8px; text-align:center; color:#a855f7; font-size: clamp(0.75rem, 2.5vw, 0.9rem);">{purple_display}</td>'
         players_html += f'<td style="padding:10px 8px; text-align:center; color:#22c55e; font-size: clamp(0.75rem, 2.5vw, 0.9rem);">{mvp_display}</td>'
-        players_html += f'<td style="padding:10px 8px; text-align:center; color:#ff007f; font-size: clamp(0.75rem, 2.5vw, 0.9rem);">{emerging_display}</td>'
+
         players_html += '</tr>'
-    
+
     players_html += '</tbody></table></div>'
+
     st.markdown(players_html, unsafe_allow_html=True)
+
 
 def show_live_score():
     st.markdown('<div class="section-header">📺 LIVE SCORECARD</div>', unsafe_allow_html=True)
@@ -2245,14 +2294,34 @@ def show_live_score():
         st.warning("No live match data available.")
         return
 
+
+    match_order = {
+        match_no: i
+        for i, match_no in enumerate(match_numbers)
+    }
+
     match_name = st.selectbox(
         "Select Match",
-        reversed(list(match_objects.keys())),
+        sorted(
+            match_objects.keys(),
+            key=lambda x: match_order[
+                re.search(r"Match (\d+)", x).group(1)
+            ]
+        ),
         key="live_match_selector"
     )
 
+    # match_name = st.selectbox(
+    #     "Select Match",
+    #     reversed(sorted(
+    #         list(match_objects.keys()),
+    #         key=lambda x: int(x.split("Match ")[1].split("-")[0].strip())
+    #     )),
+    #     key="live_match_selector"
+    # )
+
     score = match_objects.get(match_name)
-    state = match_states.get(score.match_id, {}) if score else {}
+    state = match_states.get(score.match_number, {}) if score else {}
 
     if not score:
         st.error("Match data not found.")
@@ -2289,7 +2358,6 @@ def show_live_score():
 
     # ---------------- INNINGS ----------------
     for innings in score.innings_list:
-        innings_name = team_names_sf[team_names_ff.index(innings)]
         score_current = score.innings_scores[innings]
         bats = score.batsmen_list[
             score.batsmen_list["Innings Name"] == innings
@@ -2324,7 +2392,7 @@ def show_live_score():
                 border-left: 4px solid #efb920;
             ">
             <b style="font-size:1.1rem;">
-                {innings_name}
+                {innings}
                 <span style="font-size:0.8rem; opacity:0.7; margin-left:6px;">
                     · {innings_label}
                 </span>

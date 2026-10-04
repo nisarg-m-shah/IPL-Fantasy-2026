@@ -1,22 +1,32 @@
-import requests
-import json
 import re
-import pandas as pd
-from typing import Dict, List, Any
-import difflib
-from datetime import datetime
+import json
 import os
+import time
 import time as _time
+import difflib
+import requests
+import pandas as pd
+
+from datetime import datetime, timedelta, timezone
+from bs4 import BeautifulSoup
+
+
 def load_dill():
     import dill
     return dill
 dill = load_dill()
-import time
-from Auction import teams,boosters,names,roles,squads,team_names_ff,team_names_sf
+
+from Auction import final_squads
 
 
-# ---------------- HELPERS (UNCHANGED) ----------------
-
+# ============================================================
+# NAME RESOLUTION
+#
+# split_camel_short / find_full_name are copied unchanged from
+# the original code. The resolvers below replace the old
+# _resolve_name_by_id / _resolve_name_by_bcci, because the new
+# source has no player IDs - names are matched by text only.
+# ============================================================
 
 def split_camel_short(name):
     parts, word = [], ""
@@ -37,7 +47,7 @@ def find_full_name(team, short_name):
         if "(c)" in short_name:
             short_name = short_name.split('(c)')[0]
         if "(wk)" in short_name:
-            short_name = short_name.split('(wk)')[0]        
+            short_name = short_name.split('(wk)')[0]
         if "Rahul" in short_name and "K" in short_name and "L" in short_name:
             return "KL Rahul"
         if "Fraser" in short_name:
@@ -87,7 +97,6 @@ def find_full_name(team, short_name):
         if "Natarajan" in short_name:
             return "T Natarajan"
         s = short_name.strip()
-
         s = re.sub(r'^\(sub\)?\s*', '', s, flags=re.IGNORECASE)
         s = s.strip("() ").strip()
 
@@ -113,13 +122,62 @@ def find_full_name(team, short_name):
         return short_name
 
 
-# ---------------- MAIN CLASS ----------------
+def _resolve_team_key(team_name):
+    """Map a scraped team name onto the matching final_squads key."""
+    team_name = (team_name or "").strip()
+
+    if team_name in final_squads:
+        return team_name
+
+    lowered = {k.lower(): k for k in final_squads}
+
+    if team_name.lower() in lowered:
+        return lowered[team_name.lower()]
+
+    close = difflib.get_close_matches(
+        team_name.lower(), list(lowered), n=1, cutoff=0.8
+    )
+
+    return lowered[close[0]] if close else team_name
+
+
+def _lookup_exact(team_name, raw_name):
+    """Exact (case-insensitive) match on canonical name or bcci_name."""
+    squad = final_squads.get(team_name)
+
+    if not squad:
+        return None
+
+    raw = (raw_name or "").strip().lower()
+
+    for canon, bcci in zip(squad["name"], squad["bcci_name"]):
+        if raw == canon.lower() or raw == bcci.lower():
+            return canon
+
+    return None
+
+
+
+class ScoreCardNotFound(ValueError):
+    """Raised when the page has no 'scoreCard' key (e.g. match not started)."""
+
 
 class Score:
 
-    def __init__(self, match_id: int):
-        self.match_id = match_id
-        self.match_type = "" #CHANGE THIS LATER
+    # Only these innings count towards scoring. Anything else
+    # (e.g. a super over listed as innings 3/4) is ignored.
+    SCORED_INNINGS = (1, 2)
+
+    # ============================================================
+    # INITIALISATION
+    # ============================================================
+
+    def __init__(self, match_number: str, driver=None):
+
+        self.match_number = str(match_number)
+        self.match_id = None
+
+        self.match_type = ""
         self.match_squads = {}
         self.playing_24 = []
 
@@ -134,471 +192,2502 @@ class Score:
         self.batsmen_list = pd.DataFrame()
         self.bowlers_info = pd.DataFrame()
 
+        self.match_name = ""
         self.winner = ""
+        self.margin = ""
         self.man_of_the_match = ""
+        self.player_of_series = ""
+
+        self.toss_winner = ""
+        self.toss_decision = ""
+        self.venue = ""
+        self.city = ""
+
+        # is_final         -> this match is COMPLETE (original meaning;
+        #                     Series uses it to skip re-scraping)
+        # is_tournament_final -> this match is the tournament's final
+        self.is_final = False
+        self.is_tournament_final = False
+        self.not_started = False
 
         self.innings_scores = {}
 
-        self._parse_match()
+        # Names that did not match final_squads (add them to Auction.py)
+        self.unresolved_names = set()
+
+        self._scorecard_cache = []
+        self._html_cache = ""
+        self._live_score_html_cache = ""
+
+        self._parse_match(driver)
 
 
-    # ---------------- DISMISSAL PARSER (SAME LOGIC) ----------------
+    # ============================================================
+    # REQUEST HELPER
+    # ============================================================
 
-    def _parse_dismissal(self, outdec: str):
-        outdec = (outdec or "").strip()
+    def _cricbuzz_get(self, url, headers=None):
+        """
+        Make a Cricbuzz request with a 2-second delay before
+        every internet call.
+        """
 
-        res = {
-            'catcher': '',
-            'stumper': '',
-            'main_ro': '',
-            'secondary_ro': '',
-            'bowler_bowled': '',
-            'bowler_lbw': ''
-        }
+        time.sleep(2)
 
-        if not outdec or outdec.lower() == 'not out':
-            return res
+        if headers is None:
+            headers = {
+                "User-Agent": (
+                    "Mozilla/5.0 "
+                    "(Macintosh; Intel Mac OS X 10_15_7) "
+                    "AppleWebKit/537.36 "
+                    "(KHTML, like Gecko) "
+                    "Chrome/153.0.0.0 Safari/537.36"
+                )
+            }
 
-        if outdec.startswith('c & b '):
-            res['catcher'] = outdec.replace('c & b ', '').strip()
-            return res
+        response = requests.get(
+            url,
+            headers=headers,
+            timeout=30
+        )
 
-        if outdec.startswith('c ') and ' b ' in outdec:
-            res['catcher'] = outdec.split(' b ')[0].replace('c ', '').strip()
-            return res
+        response.raise_for_status()
 
-        if outdec.startswith('st ') and ' b ' in outdec:
-            res['stumper'] = outdec.split(' b ')[0].replace('st ', '').strip()
-            return res
-
-        if outdec.startswith('b ') and 'lbw' not in outdec.lower():
-            res['bowler_bowled'] = outdec.replace('b ', '').strip()
-            return res
-
-        if 'lbw' in outdec.lower():
-            res['bowler_lbw'] = outdec.split('lbw ')[-1].strip()
-            return res
-
-        if 'run out' in outdec.lower():
-            m = re.search(r'\(([^)]*)\)', outdec)
-            if m:
-                parts = [p.strip() for p in m.group(1).split('/') if p.strip()]
-                if len(parts) == 1:
-                    res['main_ro'] = parts[0]
-                elif len(parts) >= 2:
-                    res['main_ro'], res['secondary_ro'] = parts[-2:]
-            return res
-
-        return res
+        return response
 
 
-    # ---------------- CORE PARSER ----------------
+    # ============================================================
+    # NAME RESOLUTION (class side)
+    # ============================================================
 
-    def _parse_match(self):
-        BASE_URL = "https://ipl-stats-sports-mechanic.s3.ap-south-1.amazonaws.com/ipl/feeds"
-        self.is_final = False
+    def _resolve(self, team_name, raw_name, roster=None):
+        """
+        Resolve a scraped name to the canonical name in final_squads
+        for the given team.
 
-        squads_url = "https://ipl-stats-sports-mechanic.s3.ap-south-1.amazonaws.com/ipl/feeds/"+str(self.match_id)+"-squad.js"
+        Order: exact match -> (optional) players who actually appear
+        on this scorecard -> find_full_name over the full squad.
 
-        res = requests.get(squads_url)
-        text = res.text
-        start = text.find("(")
-        end = text.rfind(")")
-        json_str = text[start+1:end]
-        score = json.loads(json_str)
+        The roster step stops a bare surname like "Samson" from
+        resolving to the first Samson in the squad when only one of
+        them played.
+        """
 
-        self.match_squads = {}
-        self.playing_24 = []
-        for player in score['squadA']:
-            team = player["TeamName"]
-            name = player['PlayerName'].strip()
-            name = find_full_name(squads.get(team, []),name)
-            position = int(player["PlayingOrder"])
-            if team not in self.match_squads.keys():
-                self.match_squads[team] = []
-            else:
-                self.match_squads[team].append(name)
-            if position <= 11:
-                self.playing_24.append(name)
-        for player in score['squadB']:
-            team = player["TeamName"]
-            name = player['PlayerName'].strip()
-            name = find_full_name(squads.get(team, []),name)
-            position = int(player["PlayingOrder"])
-            if team not in self.match_squads.keys():
-                self.match_squads[team] = []
-            else:
-                self.match_squads[team].append(name)
-            if position <= 11:
-                self.playing_24.append(name)
+        raw = (raw_name or "").strip()
 
-        batsmen_rows, bowlers_rows = [], []
+        if not raw:
+            return ""
 
-        for inn in [1, 2]:
-            url = f"{BASE_URL}/{str(self.match_id)}-Innings{inn}.js"
-            r = requests.get(url, params={"onScoring": "_jqjsp"}, headers={"User-Agent": "Mozilla/5.0"})
-            if r.status_code != 200:
+        exact = _lookup_exact(team_name, raw)
+
+        if exact:
+            return exact
+
+        if roster:
+
+            hit = find_full_name(roster, raw)
+
+            if hit in roster:
+                return hit
+
+        known = final_squads.get(team_name, {}).get("name", [])
+
+        result = find_full_name(known, raw)
+
+        if result not in known:
+            self.unresolved_names.add(f"{team_name}: {raw}")
+
+        return result
+
+
+    def _resolve_player_of_match(self, raw_names, rosters=None):
+        """
+        Man of the match has no team attached, so try every team
+        in this match. Handles several names joined by ', '.
+        """
+
+        if not raw_names:
+            return ""
+
+        teams = list(self.match_squads.keys())
+
+        known_all = [
+            n
+            for t in teams
+            for n in final_squads.get(t, {}).get("name", [])
+        ]
+
+        resolved_parts = []
+
+        for part in raw_names.split(","):
+
+            part = part.strip()
+
+            if not part:
                 continue
 
-            data = json.loads(re.sub(r"^[^(]*\(|\);?$", "", r.text))
-            innings = data[f"Innings{inn}"]
+            resolved = None
 
-            bat_team = innings["Extras"][0]["BattingTeamName"]
-            bowl_team = innings["Extras"][0]["BowlingTeamName"]
-            self.innings_list.append(bat_team)
+            for team in teams:
 
-            innings_score = innings['Extras'][0]['Total']
-            innings_score = innings_score.replace('Overs','ov')
-            self.innings_scores[bat_team] = innings_score
+                resolved = _lookup_exact(team, part)
 
-            bat_players = squads.get(bat_team, [])
-            bowl_players = squads.get(bowl_team, [])
+                if resolved:
+                    break
 
-            # ---------- BATTERS ----------
-            for b in innings["BattingCard"]:
-                if not b["OutDesc"] and b["Balls"] == 0:
+            # Prefer players who actually appeared in this match, so a
+            # bare surname doesn't resolve to the wrong squad member.
+            if resolved is None and rosters:
+
+                played = [
+                    n
+                    for t in teams
+                    for n in rosters.get(t, [])
+                ]
+
+                if played:
+
+                    hit = find_full_name(played, part)
+
+                    if hit in played:
+                        resolved = hit
+
+            if resolved is None:
+
+                resolved = (
+                    find_full_name(known_all, part)
+                    if known_all
+                    else part
+                )
+
+                if resolved not in known_all:
+                    self.unresolved_names.add(f"MOM: {part}")
+
+            resolved_parts.append(resolved)
+
+        return ", ".join(resolved_parts)
+
+
+    # ============================================================
+    # DISMISSAL PARSER
+    # ============================================================
+
+    def _parse_dismissal(self, outdec: str):
+
+        outdec = (outdec or "").strip()
+
+        result = {
+            "catcher": "",
+            "stumper": "",
+            "main_ro": "",
+            "secondary_ro": "",
+            "bowler_bowled": "",
+            "bowler_lbw": ""
+        }
+
+        if not outdec:
+            return result
+
+        # --------------------------------------------------------
+        # Caught & bowled
+        # --------------------------------------------------------
+
+        if outdec.lower().startswith("c & b "):
+
+            result["catcher"] = outdec[6:].strip()
+
+            return result
+
+        # --------------------------------------------------------
+        # Caught
+        # --------------------------------------------------------
+
+        if (
+            outdec.lower().startswith("c ")
+            and " b " in outdec
+        ):
+
+            catcher = outdec.split(
+                " b ",
+                1
+            )[0]
+
+            result["catcher"] = catcher[2:].strip()
+
+            return result
+
+        # --------------------------------------------------------
+        # Stumped
+        # --------------------------------------------------------
+
+        if (
+            outdec.lower().startswith("st ")
+            and " b " in outdec
+        ):
+
+            stumper = outdec.split(
+                " b ",
+                1
+            )[0]
+
+            result["stumper"] = stumper[3:].strip()
+
+            return result
+
+        # --------------------------------------------------------
+        # Bowled
+        # --------------------------------------------------------
+
+        if outdec.lower().startswith("b "):
+
+            result["bowler_bowled"] = outdec[2:].strip()
+
+            return result
+
+        # --------------------------------------------------------
+        # LBW
+        # --------------------------------------------------------
+
+        if "lbw" in outdec.lower():
+
+            parts = re.split(
+                r"\blbw b \b",
+                outdec,
+                flags=re.IGNORECASE
+            )
+
+            if len(parts) > 1:
+
+                result["bowler_lbw"] = parts[-1].strip()
+
+            return result
+
+        # --------------------------------------------------------
+        # Run out
+        # --------------------------------------------------------
+
+        if "run out" in outdec.lower():
+
+            match = re.search(
+                r"\(([^)]*)\)",
+                outdec
+            )
+
+            if match:
+
+                names = [
+                    x.strip()
+                    for x in match.group(1).split("/")
+                    if x.strip()
+                ]
+
+                if len(names) == 1:
+
+                    result["main_ro"] = names[0]
+
+                elif len(names) >= 2:
+
+                    result["main_ro"] = names[-2]
+                    result["secondary_ro"] = names[-1]
+
+            return result
+
+        return result
+
+
+    # ============================================================
+    # EXTRACT SCORECARD FROM CRICBUZZ NEXT.JS HTML
+    # ============================================================
+
+    def _extract_cricbuzz_scorecard(self, html):
+
+        markers = [
+            '"scoreCard":',
+            '\\"scoreCard\\":'
+        ]
+
+        pos = -1
+
+        for marker in markers:
+
+            pos = html.find(marker)
+
+            if pos != -1:
+                break
+
+        if pos == -1:
+
+            # Dedicated exception so callers can tell
+            # "no scorecard on page" apart from "bad JSON".
+            raise ScoreCardNotFound(
+                f'"scoreCard" not found for match {self.match_id}'
+            )
+
+        start = html.find(
+            "[",
+            pos
+        )
+
+        if start == -1:
+
+            raise ValueError(
+                "Could not find beginning of scoreCard"
+            )
+
+        depth = 0
+        in_string = False
+        escaped = False
+        end = None
+
+        for i in range(
+            start,
+            len(html)
+        ):
+
+            char = html[i]
+
+            if in_string:
+
+                if escaped:
+                    escaped = False
+
+                elif char == "\\":
+                    escaped = True
+
+                elif char == '"':
+                    in_string = False
+
+                continue
+
+            if char == '"':
+                in_string = True
+
+            elif char == "[":
+                depth += 1
+
+            elif char == "]":
+
+                depth -= 1
+
+                if depth == 0:
+
+                    end = i + 1
+
+                    break
+
+        if end is None:
+
+            raise ValueError(
+                "Could not find end of scoreCard array"
+            )
+
+        raw = html[start:end]
+
+        # Cricbuzz Next.js payload may contain escaped quotes.
+        raw = raw.replace('\\"', '"')
+
+        decoder = json.JSONDecoder()
+
+        try:
+
+            scorecard, _ = decoder.raw_decode(raw)
+
+        except json.JSONDecodeError as e:
+
+            preview_start = max(
+                0,
+                e.pos - 200
+            )
+
+            preview_end = min(
+                len(raw),
+                e.pos + 200
+            )
+
+            print("JSON around error:")
+            print(
+                raw[
+                    preview_start:
+                    preview_end
+                ]
+            )
+
+            raise ValueError(
+                f"Could not decode Cricbuzz scoreCard: {e}"
+            )
+
+        if not isinstance(
+            scorecard,
+            list
+        ):
+
+            raise ValueError(
+                "Decoded scoreCard is not a list"
+            )
+
+        return scorecard
+
+
+    # ============================================================
+    # GET CRICBUZZ SCORECARD
+    # ============================================================
+
+    def _get_scorecard(self):
+
+        url = (
+            "https://www.cricbuzz.com/"
+            f"live-cricket-scorecard/"
+            f"{self.match_id}"
+        )
+
+        response = self._cricbuzz_get(url)
+
+        html = response.text
+
+        try:
+
+            scorecard = self._extract_cricbuzz_scorecard(
+                html
+            )
+
+        except ScoreCardNotFound:
+
+            # Page loaded but has no scorecard (match not started).
+            # Return an empty list so _parse_match can flag
+            # not_started instead of crashing the caller.
+            scorecard = []
+
+        return scorecard, html
+
+
+    # ============================================================
+    # GET CRICBUZZ LIVE SCORE PAGE
+    # ============================================================
+
+    def _get_live_score_page(self, scorecard_html):
+
+        """
+        Convert the scorecard canonical URL into the
+        live-cricket-scores URL.
+
+        Example:
+
+        /live-cricket-scorecard/128787/har-vs-jhkd-...
+                    ->
+        /live-cricket-scores/128787/har-vs-jhkd-...
+        """
+
+        match = re.search(
+            r'initialCanonicalUrl\\?":\\"?'
+            r'(/live-cricket-scorecard/[^"\\]+)',
+            scorecard_html
+        )
+
+        if not match:
+
+            match = re.search(
+                r'initialCanonicalUrl"?\s*:\s*'
+                r'"?(/live-cricket-scorecard/[^"\\]+)',
+                scorecard_html
+            )
+
+        if not match:
+
+            return ""
+
+        path = match.group(1)
+
+        path = path.replace(
+            "/live-cricket-scorecard/",
+            "/live-cricket-scores/",
+            1
+        )
+
+        url = (
+            "https://www.cricbuzz.com"
+            + path
+        )
+
+        try:
+
+            response = self._cricbuzz_get(url)
+
+            return response.text
+
+        except requests.RequestException:
+
+            return ""
+
+
+    # ============================================================
+    # PAGE TEXT
+    # ============================================================
+
+    def _get_page_text(self, html):
+
+        if not html:
+            return ""
+
+        soup = BeautifulSoup(
+            html,
+            "html.parser"
+        )
+
+        for tag in soup(
+            ["script", "style", "noscript"]
+        ):
+            tag.decompose()
+
+        return soup.get_text(
+            " ",
+            strip=True
+        )
+
+
+    # ============================================================
+    # PARSE MATCH METADATA
+    # ============================================================
+
+    def _parse_match_metadata(self, html):
+        """
+        Extract match metadata directly from Cricbuzz's embedded matchHeader
+        object inside the Next.js page payload.
+        """
+
+        # Cricbuzz embeds the JSON inside an escaped Next.js string:
+        # \"matchHeader\":{\"matchId\":...
+        # Normalize escaped quotes first.
+        normalised_html = html.replace('\\"', '"')
+
+        marker = '"matchHeader":'
+        marker_pos = normalised_html.find(marker)
+
+        if marker_pos == -1:
+            return
+
+        # Find the opening { of the matchHeader object
+        start = normalised_html.find("{", marker_pos + len(marker))
+
+        if start == -1:
+            return
+
+        try:
+            # Decode exactly one JSON object starting at matchHeader's {
+            decoder = json.JSONDecoder()
+            match_header, _ = decoder.raw_decode(
+                normalised_html[start:]
+            )
+        except Exception as e:
+            print(f"Warning: Could not parse Cricbuzz matchHeader: {e}")
+            return
+
+        # ---------------------------------------------------------
+        # Match format
+        # ---------------------------------------------------------
+        self.match_type = match_header.get("matchFormat", "")
+
+        # ---------------------------------------------------------
+        # Teams / Match name
+        # ---------------------------------------------------------
+        team1 = match_header.get("team1", {})
+        team2 = match_header.get("team2", {})
+
+        team1_short = team1.get("shortName", "")
+        team2_short = team2.get("shortName", "")
+
+        match_description = match_header.get("matchDescription", "")
+        series_desc = match_header.get("seriesDesc", "")
+
+        if team1_short and team2_short:
+            self.match_name = (
+                f"{team1_short} vs {team2_short}"
+            )
+
+            if match_description:
+                self.match_name += f", {match_description}"
+
+            if series_desc:
+                self.match_name += f", {series_desc}"
+        else:
+            self.match_name = ""
+
+        # ---------------------------------------------------------
+        # Winner / margin
+        # ---------------------------------------------------------
+        result = match_header.get("result", {})
+
+        self.winner = result.get("winningTeam", "")
+
+        winning_margin = result.get("winningMargin")
+
+        if winning_margin is not None:
+            if result.get("winByRuns"):
+                self.margin = f"{winning_margin} runs"
+
+            elif result.get("winByInnings"):
+                self.margin = f"by an innings"
+
+            else:
+                self.margin = str(winning_margin)
+        else:
+            # Useful for matches that are not completed yet
+            self.margin = ""
+
+        # ---------------------------------------------------------
+        # Player of the Match
+        # ---------------------------------------------------------
+        players_of_match = match_header.get(
+            "playersOfTheMatch", []
+        )
+
+        if players_of_match:
+            self.man_of_the_match = ", ".join(
+                p.get("name", "")
+                for p in players_of_match
+                if p.get("name")
+            )
+        else:
+            self.man_of_the_match = ""
+
+        # ---------------------------------------------------------
+        # Player(s) of the Series
+        # ---------------------------------------------------------
+        players_of_series = match_header.get(
+            "playersOfTheSeries", []
+        )
+
+        if players_of_series:
+            self.player_of_series = ", ".join(
+                p.get("name", "")
+                for p in players_of_series
+                if p.get("name")
+            )
+        else:
+            self.player_of_series = ""
+
+        # ---------------------------------------------------------
+        # Toss
+        # ---------------------------------------------------------
+        toss = match_header.get("tossResults", {})
+
+        self.toss_winner = toss.get(
+            "tossWinnerName", ""
+        )
+
+        self.toss_decision = toss.get(
+            "decision", ""
+        )
+
+        # ---------------------------------------------------------
+        # Venue
+        # ---------------------------------------------------------
+        venue = match_header.get("venue", {})
+
+        self.venue = venue.get(
+            "name", ""
+        )
+
+        self.city = venue.get(
+            "city", ""
+        )
+
+        # ---------------------------------------------------------
+        # Tournament final (is THIS match the final?)
+        # ---------------------------------------------------------
+        self.is_tournament_final = (
+            str(match_description).strip().lower()
+            == "final"
+        )
+
+        # ---------------------------------------------------------
+        # Match complete (original is_final meaning)
+        #
+        # NOTE: "state" is expected to read "Complete" for a
+        # finished match. Verify against a real finished match
+        # payload. A winner being present is used as a fallback.
+        # ---------------------------------------------------------
+        state = str(
+            match_header.get("state", "")
+        ).strip().lower()
+
+        self.is_final = (
+            state in ("complete", "abandon")
+            or bool(self.winner)
+        )
+
+
+    # ============================================================
+    # CRICBUZZ OVER-BY-OVER DOT BALLS
+    # ============================================================
+
+    def _get_cricbuzz_dot_balls(self):
+
+        """
+        Calculate bowler dot balls from Cricbuzz
+        over-by-over data.
+
+        Dot-ball definition:
+
+            0       -> dot
+            W       -> dot
+            B       -> dot
+            B1/B2   -> dot
+            B4      -> dot
+            L       -> dot
+            L1/L2   -> dot
+            L4      -> dot
+
+        NOT dots:
+
+            Wd
+            Wd4
+            N
+            N4
+            etc.
+        """
+
+        dot_balls = {}
+
+        # --------------------------------------------------------
+        # Get every scored innings from scorecard.
+        # --------------------------------------------------------
+
+        innings_numbers = [
+            int(innings.get("inningsId"))
+            for innings in getattr(
+                self,
+                "_scorecard_cache",
+                []
+            )
+            if isinstance(innings, dict)
+            and innings.get("inningsId") is not None
+            and int(innings.get("inningsId")) in self.SCORED_INNINGS
+        ]
+
+        if not innings_numbers:
+
+            innings_numbers = list(self.SCORED_INNINGS)
+
+        for innings_number in innings_numbers:
+
+            url = (
+                "https://www.cricbuzz.com/"
+                "api/mcenter/over-by-over/"
+                f"{self.match_id}/"
+                f"{innings_number}"
+            )
+
+            while url:
+
+                try:
+
+                    response = self._cricbuzz_get(url)
+
+                except requests.RequestException:
+
+                    break
+
+                if response.status_code != 200:
+                    break
+
+                try:
+
+                    data = response.json()
+
+                except ValueError:
+
+                    break
+
+                over_data = data.get(
+                    "paginatedData",
+                    []
+                )
+
+                for over in over_data:
+
+                    if not isinstance(
+                        over,
+                        dict
+                    ):
+                        continue
+
+                    summary = over.get(
+                        "ovrSummary",
+                        ""
+                    )
+
+                    bowl_names = over.get(
+                        "bowlNames",
+                        []
+                    )
+
+                    if isinstance(
+                        bowl_names,
+                        str
+                    ):
+
+                        bowl_names = [
+                            bowl_names
+                        ]
+
+                    if not bowl_names:
+                        continue
+
+                    bowler_name = (
+                        bowl_names[0]
+                    )
+
+                    tokens = str(
+                        summary
+                    ).split()
+
+                    dots = 0
+
+                    for token in tokens:
+
+                        token = token.strip()
+
+                        if (
+                            token == "0"
+                            or token.upper() == "W"
+                            or re.fullmatch(
+                                r"B\d*",
+                                token,
+                                flags=re.IGNORECASE
+                            )
+                            or re.fullmatch(
+                                r"L\d*",
+                                token,
+                                flags=re.IGNORECASE
+                            )
+                        ):
+
+                            dots += 1
+
+                    key = (
+                        int(innings_number),
+                        bowler_name.strip()
+                    )
+
+                    dot_balls[key] = (
+                        dot_balls.get(
+                            key,
+                            0
+                        )
+                        + dots
+                    )
+
+                # ------------------------------------------------
+                # Pagination
+                # ------------------------------------------------
+
+                next_url = data.get(
+                    "nextPaginationURL"
+                )
+
+                if next_url:
+
+                    if next_url.startswith("http"):
+
+                        url = next_url
+
+                    else:
+
+                        url = (
+                            "https://www.cricbuzz.com"
+                            + next_url
+                        )
+
+                else:
+
+                    url = None
+
+        return dot_balls
+
+
+    # ============================================================
+    # NAME NORMALISATION
+    # ============================================================
+
+    def _normalise_name(self, name):
+
+        if name is None:
+            return ""
+
+        name = str(
+            name
+        ).strip().lower()
+
+        name = re.sub(
+            r"[^a-z0-9 ]",
+            "",
+            name
+        )
+
+        name = re.sub(
+            r"\s+",
+            " ",
+            name
+        )
+
+        return name
+
+
+    # ============================================================
+    # DOT BALL LOOKUP
+    # ============================================================
+
+    def _lookup_dot_balls(
+        self,
+        dot_balls,
+        innings_number,
+        bowler_name
+    ):
+
+        exact_key = (
+            int(innings_number),
+            bowler_name
+        )
+
+        if exact_key in dot_balls:
+
+            return dot_balls[
+                exact_key
+            ]
+
+        target = self._normalise_name(
+            bowler_name
+        )
+
+        for (
+            innings,
+            cricbuzz_name
+        ), count in dot_balls.items():
+
+            if int(innings) != int(
+                innings_number
+            ):
+                continue
+
+            if (
+                self._normalise_name(
+                    cricbuzz_name
+                )
+                == target
+            ):
+
+                return count
+
+        return 0
+
+
+    # ============================================================
+    # MAIN PARSER
+    # ============================================================
+
+    def _parse_match(self, driver=None):
+
+        # --------------------------------------------------------
+        # Match number is the Cricbuzz match ID.
+        # --------------------------------------------------------
+
+        self.match_id = self.match_number
+
+        # --------------------------------------------------------
+        # Get scorecard.
+        # --------------------------------------------------------
+
+        scorecard, html = (
+            self._get_scorecard()
+        )
+
+        self._scorecard_cache = scorecard
+        self._html_cache = html
+
+        # --------------------------------------------------------
+        # Match metadata (winner, toss, venue, is_final, ...).
+        # --------------------------------------------------------
+
+        self._parse_match_metadata(html)
+
+        # --------------------------------------------------------
+        # No scorecard -> match has not started.
+        # --------------------------------------------------------
+
+        if not scorecard:
+
+            self.not_started = True
+
+            return
+
+        self.not_started = False
+
+        # --------------------------------------------------------
+        # Calculate all bowler dot balls.
+        # --------------------------------------------------------
+
+        dot_balls = (
+            self._get_cricbuzz_dot_balls()
+        )
+
+        # --------------------------------------------------------
+        # Process innings.
+        # --------------------------------------------------------
+
+        # --------------------------------------------------------
+        # Roster per team = every player named on this scorecard
+        # (batters incl. did-not-bat, plus bowlers). Needed up front
+        # because a catcher in innings 1 is on the OTHER innings'
+        # batting list.
+        # --------------------------------------------------------
+
+        rosters = {}
+
+        for innings in scorecard:
+
+            if not isinstance(innings, dict):
+                continue
+
+            try:
+                inn_no = int(innings.get("inningsId"))
+            except (TypeError, ValueError):
+                continue
+
+            if inn_no not in self.SCORED_INNINGS:
+                continue
+
+            bat_det = innings.get("batTeamDetails", {}) or {}
+            bowl_det = innings.get("bowlTeamDetails", {}) or {}
+
+            bat_t = _resolve_team_key(bat_det.get("batTeamName", ""))
+            bowl_t = _resolve_team_key(bowl_det.get("bowlTeamName", ""))
+
+            for p in (bat_det.get("batsmenData", {}) or {}).values():
+
+                raw = p.get("batName") or p.get("batShortName") or ""
+
+                if raw and bat_t:
+
+                    rosters.setdefault(bat_t, [])
+
+                    full = self._resolve(bat_t, raw)
+
+                    if full not in rosters[bat_t]:
+                        rosters[bat_t].append(full)
+
+            for p in (bowl_det.get("bowlersData", {}) or {}).values():
+
+                raw = p.get("bowlName") or p.get("bowlShortName") or ""
+
+                if raw and bowl_t:
+
+                    rosters.setdefault(bowl_t, [])
+
+                    full = self._resolve(bowl_t, raw)
+
+                    if full not in rosters[bowl_t]:
+                        rosters[bowl_t].append(full)
+
+        batsmen_rows = []
+        bowlers_rows = []
+
+        for innings in scorecard:
+
+            if not isinstance(
+                innings,
+                dict
+            ):
+                continue
+
+            innings_number = innings.get(
+                "inningsId"
+            )
+
+            if innings_number is None:
+                continue
+
+            innings_number = int(
+                innings_number
+            )
+
+            # Ignore anything beyond the two scored innings
+            # (e.g. super overs).
+            if innings_number not in self.SCORED_INNINGS:
+                continue
+
+            # ----------------------------------------------------
+            # Team details
+            # ----------------------------------------------------
+
+            bat_team_details = (
+                innings.get(
+                    "batTeamDetails",
+                    {}
+                )
+            )
+
+            bowl_team_details = (
+                innings.get(
+                    "bowlTeamDetails",
+                    {}
+                )
+            )
+
+            bat_team = (
+                bat_team_details.get(
+                    "batTeamName",
+                    ""
+                )
+            )
+
+            bowl_team = (
+                bowl_team_details.get(
+                    "bowlTeamName",
+                    ""
+                )
+            )
+
+            if not bat_team:
+                continue
+
+            # Use final_squads' spelling of the team names everywhere.
+            bat_team = _resolve_team_key(bat_team)
+
+            if bowl_team:
+                bowl_team = _resolve_team_key(bowl_team)
+
+            self.innings_list.append(
+                bat_team
+            )
+
+            # ----------------------------------------------------
+            # Player data
+            # ----------------------------------------------------
+
+            batsmen_data = (
+                bat_team_details.get(
+                    "batsmenData",
+                    {}
+                )
+            )
+
+            bowlers_data = (
+                bowl_team_details.get(
+                    "bowlersData",
+                    {}
+                )
+            )
+
+            batting_players = []
+
+            if isinstance(
+                batsmen_data,
+                dict
+            ):
+
+                for batsman in (
+                    batsmen_data.values()
+                ):
+
+                    name = (
+                        batsman.get(
+                            "batName"
+                        )
+                        or batsman.get(
+                            "batShortName"
+                        )
+                        or ""
+                    )
+
+                    if name:
+
+                        batting_players.append(
+                            name
+                        )
+
+            bowling_players = []
+
+            if isinstance(
+                bowlers_data,
+                dict
+            ):
+
+                for bowler in (
+                    bowlers_data.values()
+                ):
+
+                    name = (
+                        bowler.get(
+                            "bowlName"
+                        )
+                        or bowler.get(
+                            "bowlShortName"
+                        )
+                        or ""
+                    )
+
+                    if name:
+
+                        bowling_players.append(
+                            name
+                        )
+
+            # ----------------------------------------------------
+            # Match squads / Playing 24
+            #
+            # Same as the original: full squad from final_squads.
+            # If a team is missing from final_squads, fall back to
+            # the (resolved) names seen on the scorecard.
+            # ----------------------------------------------------
+
+            for team, players in (
+                (bat_team, batting_players),
+                (bowl_team, bowling_players)
+            ):
+
+                if not team:
                     continue
 
-                name = find_full_name(bat_players, b["PlayerName"])
-                outdec = b["OutDesc"] or "not out"
-                dis = self._parse_dismissal(outdec)
+                if team in final_squads:
 
-                if dis['catcher']:
-                    self.catchers.append(find_full_name(bowl_players, dis['catcher']))
-                if dis['stumper']:
-                    self.stumpers.append(find_full_name(bowl_players, dis['stumper']))
-                if dis['main_ro']:
-                    self.main_runouters.append(find_full_name(bowl_players, dis['main_ro']))
-                if dis['secondary_ro']:
-                    self.secondary_runouters.append(find_full_name(bowl_players, dis['secondary_ro']))
-                if dis['bowler_bowled']:
-                    self.bowled.append(find_full_name(bowl_players, dis['bowler_bowled']))
-                if dis['bowler_lbw']:
-                    self.lbw.append(find_full_name(bowl_players, dis['bowler_lbw']))
+                    if team not in self.match_squads:
 
-                strike_rate = b["StrikeRate"]
-                if strike_rate == '-':
-                    strike_rate = 0
-                strike_rate = float(strike_rate)
-                batsmen_rows.append({
-                    "Innings Number": inn,
-                    "Innings Name": bat_team,
-                    "Batsman": name,
-                    "Dismissal": outdec,
-                    "Runs": int(b["Runs"]),
-                    "Balls": int(b["Balls"]),
-                    "4s": int(b["Fours"]),
-                    "6s": int(b["Sixes"]),
-                    "Strike Rate": strike_rate
-                })
+                        self.match_squads[team] = list(
+                            final_squads[team].get("name", [])
+                        )
 
-            # ---------- BOWLERS ----------
-            for blr in innings["BowlingCard"]:
-                name = find_full_name(bowl_players, blr["PlayerName"])
-                bowlers_rows.append({
-                    "Innings Number": inn,
-                    "Innings Name": bat_team,
-                    "Bowler": name,
-                    "Overs": float(blr["Overs"]),
-                    "Maidens": int(blr["Maidens"]),
-                    "Runs": int(blr["Runs"]),
-                    "Wickets": int(blr["Wickets"]),
-                    "Economy": float(blr["Economy"]),
-                    "0s": int(blr["DotBalls"])
-                })
+                else:
 
-        self.batsmen_list = pd.DataFrame(batsmen_rows)
-        self.bowlers_info = pd.DataFrame(bowlers_rows)
+                    squad = self.match_squads.setdefault(
+                        team,
+                        []
+                    )
 
-        # ---------- SUMMARY ----------
-        summary_url = f"{BASE_URL}/{self.match_id}-matchsummary.js"
-        r = requests.get(summary_url)
-        summary = json.loads(re.sub(r"^[^(]*\(|\);?$", "", r.text))["MatchSummary"][0]
+                    for player in players:
 
-        man_of_the_match = summary.get("MOM", "").split(" (")[0].strip()
-        if man_of_the_match:
-            self.man_of_the_match = find_full_name(self.playing_24,man_of_the_match)
-        comments = summary.get("Comments", "")
-        self.winner = comments.split(" Won")[0].strip() if "Won" in comments else ""
+                        player = self._resolve(team, player)
+
+                        if player not in squad:
+
+                            squad.append(
+                                player
+                            )
+
+            for team in (bat_team, bowl_team):
+
+                for player in self.match_squads.get(team, []):
+
+                    if player not in self.playing_24:
+
+                        self.playing_24.append(
+                            player
+                        )
+
+            # ----------------------------------------------------
+            # Score details
+            # ----------------------------------------------------
+
+            score_details = (
+                innings.get(
+                    "scoreDetails",
+                    {}
+                )
+            )
+
+            runs = score_details.get(
+                "runs"
+            )
+
+            wickets = score_details.get(
+                "wickets"
+            )
+
+            overs = score_details.get(
+                "overs"
+            )
+
+            if (
+                runs is not None
+                and wickets is not None
+            ):
+
+                if overs is not None:
+
+                    self.innings_scores[
+                        bat_team
+                    ] = (
+                        f"{runs}/{wickets} "
+                        f"({overs} ov)"
+                    )
+
+                else:
+
+                    self.innings_scores[
+                        bat_team
+                    ] = (
+                        f"{runs}/{wickets}"
+                    )
+
+            # ====================================================
+            # BATTING
+            # ====================================================
+
+            if isinstance(
+                batsmen_data,
+                dict
+            ):
+
+                for batsman in (
+                    batsmen_data.values()
+                ):
+
+                    name = (
+                        batsman.get(
+                            "batName"
+                        )
+                        or batsman.get(
+                            "batShortName"
+                        )
+                        or ""
+                    )
+
+                    if not name:
+                        continue
+
+                    name = self._resolve(bat_team, name)
+
+                    runs_value = batsman.get(
+                        "runs",
+                        0
+                    )
+
+                    balls_value = batsman.get(
+                        "balls",
+                        0
+                    )
+
+                    fours_value = batsman.get(
+                        "fours",
+                        0
+                    )
+
+                    sixes_value = batsman.get(
+                        "sixes",
+                        0
+                    )
+
+                    strike_rate = batsman.get(
+                        "strikeRate",
+                        0
+                    )
+
+                    outdec = (
+                        batsman.get(
+                            "outDesc",
+                            ""
+                        )
+                        or ""
+                    ).strip()
+
+                    # Skip players who genuinely did not bat.
+                    if (
+                        not outdec
+                        and runs_value == 0
+                        and balls_value == 0
+                    ):
+
+                        continue
+
+                    if not outdec:
+
+                        outdec = "not out"
+
+                    # ------------------------------------------------
+                    # Dismissal
+                    # ------------------------------------------------
+
+                    dismissal = (
+                        self._parse_dismissal(
+                            re.sub(
+                                r"\(Sub\)",
+                                "",
+                                outdec,
+                                flags=re.IGNORECASE
+                            ).strip()
+                        )
+                    )
+
+                    # Every fielder / bowler named in a dismissal
+                    # belongs to the bowling (fielding) team.
+                    dismissal = {
+                        key: (
+                            self._resolve(
+                                bowl_team,
+                                value,
+                                roster=rosters.get(bowl_team)
+                            )
+                            if value else ""
+                        )
+                        for key, value in dismissal.items()
+                    }
+
+                    if dismissal["catcher"]:
+
+                        self.catchers.append(
+                            dismissal["catcher"]
+                        )
+
+                    if dismissal["stumper"]:
+
+                        self.stumpers.append(
+                            dismissal["stumper"]
+                        )
+
+                    if dismissal["main_ro"]:
+
+                        self.main_runouters.append(
+                            dismissal["main_ro"]
+                        )
+
+                    if dismissal["secondary_ro"]:
+
+                        self.secondary_runouters.append(
+                            dismissal["secondary_ro"]
+                        )
+
+                    if dismissal["bowler_bowled"]:
+
+                        self.bowled.append(
+                            dismissal["bowler_bowled"]
+                        )
+
+                    if dismissal["bowler_lbw"]:
+
+                        self.lbw.append(
+                            dismissal["bowler_lbw"]
+                        )
+
+                    # ------------------------------------------------
+                    # Type conversion
+                    # ------------------------------------------------
+
+                    try:
+                        runs_value = int(
+                            runs_value
+                        )
+                    except Exception:
+                        runs_value = 0
+
+                    try:
+                        balls_value = int(
+                            balls_value
+                        )
+                    except Exception:
+                        balls_value = 0
+
+                    try:
+                        fours_value = int(
+                            fours_value
+                        )
+                    except Exception:
+                        fours_value = 0
+
+                    try:
+                        sixes_value = int(
+                            sixes_value
+                        )
+                    except Exception:
+                        sixes_value = 0
+
+                    try:
+                        strike_rate = float(
+                            strike_rate
+                        )
+                    except Exception:
+                        strike_rate = 0.0
+
+                    batsmen_rows.append({
+
+                        "Innings Number":
+                            innings_number,
+
+                        "Innings Name":
+                            bat_team,
+
+                        "Batsman":
+                            name,
+
+                        "Dismissal":
+                            outdec,
+
+                        "Runs":
+                            runs_value,
+
+                        "Balls":
+                            balls_value,
+
+                        "4s":
+                            fours_value,
+
+                        "6s":
+                            sixes_value,
+
+                        "Strike Rate":
+                            strike_rate
+                    })
+
+            # ====================================================
+            # BOWLING
+            # ====================================================
+
+            if isinstance(
+                bowlers_data,
+                dict
+            ):
+
+                for bowler in (
+                    bowlers_data.values()
+                ):
+
+                    name = (
+                        bowler.get(
+                            "bowlName"
+                        )
+                        or bowler.get(
+                            "bowlShortName"
+                        )
+                        or ""
+                    )
+
+                    if not name:
+                        continue
+
+                    # Keep the raw Cricbuzz name for the dot-ball lookup,
+                    # store the canonical name in the DataFrame.
+                    raw_name = name
+                    name = self._resolve(bowl_team, name)
+
+                    try:
+
+                        overs_value = float(
+                            bowler.get(
+                                "overs",
+                                0
+                            )
+                        )
+
+                    except Exception:
+
+                        overs_value = 0.0
+
+                    try:
+
+                        maidens_value = int(
+                            bowler.get(
+                                "maidens",
+                                0
+                            )
+                        )
+
+                    except Exception:
+
+                        maidens_value = 0
+
+                    try:
+
+                        runs_value = int(
+                            bowler.get(
+                                "runs",
+                                0
+                            )
+                        )
+
+                    except Exception:
+
+                        runs_value = 0
+
+                    try:
+
+                        wickets_value = int(
+                            bowler.get(
+                                "wickets",
+                                0
+                            )
+                        )
+
+                    except Exception:
+
+                        wickets_value = 0
+
+                    try:
+
+                        economy_value = float(
+                            bowler.get(
+                                "economy",
+                                0
+                            )
+                        )
+
+                    except Exception:
+
+                        economy_value = 0.0
+
+                    # ------------------------------------------------
+                    # Calculated dot balls
+                    # ------------------------------------------------
+
+                    calculated_dots = (
+                        self._lookup_dot_balls(
+                            dot_balls,
+                            innings_number,
+                            raw_name
+                        )
+                    )
+
+                    bowlers_rows.append({
+
+                        "Innings Number":
+                            innings_number,
+
+                        "Innings Name":
+                            bat_team,
+
+                        "Bowler":
+                            name,
+
+                        "Overs":
+                            overs_value,
+
+                        "Maidens":
+                            maidens_value,
+
+                        "Runs":
+                            runs_value,
+
+                        "Wickets":
+                            wickets_value,
+
+                        "Economy":
+                            economy_value,
+
+                        "0s":
+                            calculated_dots
+                    })
+
+        self.man_of_the_match = self._resolve_player_of_match(
+            self.man_of_the_match,
+            rosters=rosters
+        )
+
+        # ========================================================
+        # FINAL DATAFRAMES
+        # ========================================================
+
+        self.batsmen_list = pd.DataFrame(
+            batsmen_rows,
+            columns=[
+                "Innings Number",
+                "Innings Name",
+                "Batsman",
+                "Dismissal",
+                "Runs",
+                "Balls",
+                "4s",
+                "6s",
+                "Strike Rate"
+            ]
+        )
+
+        self.bowlers_info = pd.DataFrame(
+            bowlers_rows,
+            columns=[
+                "Innings Number",
+                "Innings Name",
+                "Bowler",
+                "Overs",
+                "Maidens",
+                "Runs",
+                "Wickets",
+                "Economy",
+                "0s"
+            ]
+        )
 
 
-    # ---------------- PRINTING ----------------
+    # ============================================================
+    # PRINTING SCORECARD
+    # ============================================================
 
     def printing_scorecard(self):
+
         for innings in self.innings_list:
+
             print("-" * 140)
-            print(f"{innings}:")
+
+            print(
+                f"{innings}:"
+            )
+
             print()
+
+            # ----------------------------------------------------
+            # Batsmen
+            # ----------------------------------------------------
 
             print("Batsmen:")
-            batsmen_inn = self.batsmen_list[self.batsmen_list['Innings Name'] == innings]
+
+            batsmen_inn = (
+                self.batsmen_list[
+                    self.batsmen_list[
+                        "Innings Name"
+                    ] == innings
+                ]
+            )
+
             if not batsmen_inn.empty:
-                df = batsmen_inn.drop(columns=['Innings Number', 'Innings Name']).copy()
-                print(df.to_string(index=False))
+
+                df = (
+                    batsmen_inn
+                    .drop(
+                        columns=[
+                            "Innings Number",
+                            "Innings Name"
+                        ]
+                    )
+                    .copy()
+                )
+
+                print(
+                    df.to_string(
+                        index=False
+                    )
+                )
+
             else:
+
                 print("(No data)")
+
             print()
+
+            # ----------------------------------------------------
+            # Bowlers
+            # ----------------------------------------------------
 
             print("Bowlers:")
-            bowlers_inn = self.bowlers_info[self.bowlers_info['Innings Name'] == innings]
+
+            bowlers_inn = (
+                self.bowlers_info[
+                    self.bowlers_info[
+                        "Innings Name"
+                    ] == innings
+                ]
+            )
+
             if not bowlers_inn.empty:
-                df = bowlers_inn.drop(columns=['Innings Number', 'Innings Name']).copy()
-                # Format Overs to show exactly one decimal place (e.g., 2.2, 4.0)
-                df['Overs'] = df['Overs'].apply(lambda x: f"{x:.1f}")
-                print(df.to_string(index=False))
+
+                df = (
+                    bowlers_inn
+                    .drop(
+                        columns=[
+                            "Innings Number",
+                            "Innings Name"
+                        ]
+                    )
+                    .copy()
+                )
+
+                df["Overs"] = (
+                    df["Overs"].apply(
+                        lambda x:
+                        f"{x:.1f}"
+                    )
+                )
+
+                print(
+                    df.to_string(
+                        index=False
+                    )
+                )
+
             else:
+
                 print("(No data)")
+
             print()
 
-        print("Catchers:")
-        print(self.catchers)
+        # ========================================================
+        # DISMISSAL INFORMATION
+        # ========================================================
+
+        print(
+            "Catchers:",
+            self.catchers
+        )
+
+        print(
+            "Stumpings:",
+            self.stumpers
+        )
+
+        print(
+            "Main Run Outs:",
+            self.main_runouters
+        )
+
+        print(
+            "Secondary Run Outs:",
+            self.secondary_runouters
+        )
+
+        print(
+            "Bowled:",
+            self.bowled
+        )
+
+        print(
+            "LBW:",
+            self.lbw
+        )
+
         print()
 
-        print("Stumpings:")
-        print(self.stumpers)
-        print()
+        # ========================================================
+        # MATCH INFORMATION
+        # ========================================================
 
-        print("Main Run Outs:")
-        print(self.main_runouters)
-        print()
-
-        print("Secondary Run Outs:")
-        print(self.secondary_runouters)
-        print()
-
-        print("Bowled:")
-        print(self.bowled)
-        print()
-
-        print("LBW:")
-        print(self.lbw)
-        print()
-        print("-" * 140)
-        print()
-
-        print("Catchers:", self.catchers)
-        print("Stumpers:", self.stumpers)
-        print("Main Run Outs:", self.main_runouters)
-        print("Secondary Run Outs:", self.secondary_runouters)
-        print("Bowled:", self.bowled)
-        print("LBW:", self.lbw)
-        print()
+        print("Unresolved names:", sorted(self.unresolved_names))
+        print("Match:", self.match_name)
+        print("Match ID:", self.match_id)
+        print("Match Type:", self.match_type)
         print("Winner:", self.winner)
+        print("Margin:", self.margin)
         print("Man of the Match:", self.man_of_the_match)
+        print("Player(s) of the Series:", self.player_of_series)
+        print("Toss Winner:", self.toss_winner)
+        print("Toss Decision:", self.toss_decision)
+        print("Venue:", self.venue)
+        print("City:", self.city)
+        print("Complete (is_final):", self.is_final)
+        print("Tournament Final:", self.is_tournament_final)
 
-
-#score = Score(1856, squads)
-#score.printing_scorecard()
 
 # ---------------- SERIES CLASS ----------------
 
 class Series:
-    def __init__(self, competition_id: int, database_name: str):
-        self.competition_id = competition_id
+
+    # Cricbuzz request header
+    HEADERS = {
+        "User-Agent": (
+            "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) "
+            "AppleWebKit/537.36 (KHTML, like Gecko) "
+            "Chrome/153.0.0.0 Safari/537.36"
+        )
+    }
+
+    # A match is scraped from its scheduled start until this many
+    # hours later (anything older that was never completed is
+    # also picked up - see match_id_generator).
+    WINDOW_HOURS = 8
+
+    # Cricbuzz's startDate is the TOSS time; play starts this much later.
+    # The scrape window opens at the real start (toss + offset).
+    START_OFFSET_MINUTES = 30
+
+    # A match that was tried and had no scorecard (washed out) is no longer
+    # retried once this many days have passed since its start.
+    CATCHUP_DAYS = 3
+
+    # Stages whose links are placeholders (teams TBC) until the day
+    # they are played. Each stage's links are re-scraped on/after
+    # that day, at most MAX_LINK_REFRESHES times.
+    REFRESH_STAGES = ("super_league", "final")
+    MAX_LINK_REFRESHES = 1
+
+    # SMAT_<year>_links.pkl, year taken from the slug (SMAT_2026_links.pkl)
+    LINKS_FILE_TEMPLATE = "SMAT_{year}_links.pkl"
+
+    IST = timezone(timedelta(hours=5, minutes=30))
+
+    def __init__(self, series_slug: str, database_name: str):
+        """
+        series_slug   : Cricbuzz series path '<series id>/<slug>',
+                        e.g. '12420/syed-mushtaq-ali-trophy-elite-2026'
+        database_name : path to the dill pkl persistence file
+        """
+        self.series_slug   = series_slug
         self.database_name = database_name
 
-        self.match_objects = {}   # match_name -> Score
-        self.match_names = []
-        self.match_states = {}    # match_id -> {"is_final": bool}
+        self.series_id  = str(series_slug).strip("/").split("/")[0]
+        self.series_url = (
+            "https://www.cricbuzz.com/cricket-series/"
+            f"{str(series_slug).strip('/')}/matches"
+        )
 
-        self._dirty = False   # ✅ NEW: track if DB needs to be saved
+        # Links database (saved at every link scrape), kept next to
+        # the main database.
+        year = re.search(r"-(\d{4})/?$", str(series_slug))
+        links_name = self.LINKS_FILE_TEMPLATE.format(
+            year=year.group(1) if year else self.series_id
+        )
+        self.links_database = os.path.join(
+            os.path.dirname(database_name),
+            links_name
+        )
+        self.match_links         = []   # list of schedule dicts
+        self.match_numbers       = {}   # match_id -> overall match number
+        self.no_play             = set()  # match numbers tried with no scorecard
+        self._links_dirty        = False
+        self.link_refresh_counts = {s: 0 for s in self.REFRESH_STAGES}
+
+        self.match_objects = {}   # match_name -> Score
+        self.match_names   = []
+        self.match_states  = {}   # match_number (str) -> {"is_final": bool}
+
+        self._dirty = False
 
         # ---------------- LOAD DATABASE ----------------
         try:
             with open(self.database_name, "rb") as f:
                 payload = dill.load(f)
                 self.match_objects = payload.get("objects", {})
-                self.match_states = payload.get("states", {})
+                self.match_states  = payload.get("states", {})
         except Exception:
             self.match_objects = {}
-            self.match_states = {}
+            self.match_states  = {}
         self.match_names = list(self.match_objects.keys())
 
+        # ---------------- NO DRIVER NEEDED ----------------
+        # Cricbuzz is plain HTTP, so the shared Selenium driver of the
+        # original is gone. The argument is kept so the call
+        # signatures (match_id_generator / Score) are unchanged.
+        driver = None
+
         # ---------------- GET MATCHES ----------------
-        combined_sorted = self.match_id_generator()
-        attempt_limit = 3
+        combined_sorted = self.match_id_generator(driver)
+        attempt_limit   = 3
 
         # ---------------- MAIN LOOP ----------------
         _start_time = _time.time()
-        self._hit_time_limit = False  # ← add this line
-        for match_id, match_type, match_name, status in combined_sorted:
-            # Stop after 50 seconds - progress is saved to GitHub per match
+        self._hit_time_limit = False
+
+        for match_number, match_type, match_name, status in combined_sorted:
             if _time.time() - _start_time > 50:
                 print("Time limit reached, saving progress")
                 self._hit_time_limit = True
                 break
-            
-            print("Processing",match_id,match_type,match_name,status,)
 
-            if match_name not in self.match_names:
-                self.match_names.append(match_name)
-            else:
-                print(match_name,"already exists")
+            print("Processing", match_number, match_type, match_name)
 
-            # ---------- NOT STARTED ----------
-            if status == 0:
-                print(match_id,match_name,"not started")
+            # Skip matches already marked final in the database
+            if self.match_states.get(match_number, {}).get("is_final", False):
+                print(match_name, "already scraped as final, skipping")
                 continue
 
-            # ---------- FINISHED ----------
-            if status == 2:
-                if self.match_states.get(match_id, {}).get("is_final", False):
-                    print(match_name, "already scraped, skipping")
-                    continue
-
-                print(f"Scraping finished match: {match_name}")
-                self._scrape_match(
-                    match_id,
-                    match_name,
-                    match_type,
-                    is_final=True,
-                    attempts=attempt_limit
-                )
-                time.sleep(5)
-                continue
-
-            # ---------- LIVE ----------
-            if status == 1:
-                print(f"\n[LIVE] Scraping match: {match_name}")
-                self._scrape_match(
-                    match_id,
-                    match_name,
-                    match_type,
-                    is_final=False,
-                    attempts=attempt_limit
-                )
-                time.sleep(5)
+            self._scrape_match(
+                match_number, match_name, match_type,
+                attempts=attempt_limit, driver=driver
+            )
+            time.sleep(10)
 
         # ---------------- SAVE ONLY IF NEEDED ----------------
-        if self._dirty:   # ✅ NEW
+        if self._dirty:
             tmp_path = self.database_name + ".tmp"
             with open(tmp_path, "wb") as f:
                 dill.dump({
                     "objects": self.match_objects,
-                    "states": self.match_states
+                    "states":  self.match_states
                 }, f)
             os.replace(tmp_path, self.database_name)
+
+        if self._links_dirty:
+            self._save_links()
 
         print("\nLOADING SUCCESSFUL")
         print("Matches stored:", len(self.match_objects))
 
+
     # =====================================================
     # Internal scraper
     # =====================================================
-    def _scrape_match(self, match_id, match_name, match_type, is_final, attempts):
-        if (
-            match_name in self.match_objects
-            and self.match_states.get(match_id, {}).get("is_final", False)
-        ):
-            return
-
+    def _scrape_match(self, match_number, match_name, match_type, attempts, driver):
         attempt = 1
         while attempt <= attempts:
-            score = Score(match_id)
-            score.is_final = is_final
+            score            = Score(match_number, driver=driver)
             score.match_type = match_type
 
-            self.match_objects[match_name] = score
-            self.match_states[match_id] = {"is_final": is_final}
+            # Toss hasn't happened yet — nothing to store
+            if score.not_started:
+                print(f"Match {match_number} not started yet (no toss), skipping")
+                self.no_play.add(str(match_number))
+                self._links_dirty = True
+                return
+
+            # Use "Match 15: Mumbai vs Chennai" format as key —
+            # guarantees uniqueness even when two teams meet more than once
+            real_name = f"Match {match_number} - {score.match_name}" if score.match_name else match_name
+
+            self.match_objects[real_name] = score
+            self.match_states[match_number] = {"is_final": score.is_final}
             self._dirty = True
 
-            # Save immediately after each match
-            
-            # After the dill.dump in _scrape_match:
+            if str(match_number) in self.no_play:
+                self.no_play.discard(str(match_number))
+                self._links_dirty = True
+
             with open(self.database_name, "wb") as f:
                 dill.dump({
                     "objects": self.match_objects,
-                    "states": self.match_states
+                    "states":  self.match_states
                 }, f)
 
-            # Push to GitHub so progress survives restarts
             try:
                 from GitHub import push_file_to_github
-                import os
                 push_file_to_github(
                     self.database_name,
                     os.path.basename(self.database_name)
                 )
             except Exception:
-                pass  # Don't crash scraping if GitHub push fails
+                pass
 
-            print("Scraped:", match_name, "\n")
+            print("Scraped:", real_name, "\n")
             return
 
             attempt += 1
 
+
     # =====================================================
-    # Match schedule + ordering (UNCHANGED)
+    # Match schedule — Cricbuzz series page (plain HTTP)
+    #
+    # The full schedule is scraped ONCE and saved to
+    # SMAT_2026_links.pkl. After that only the Super League and
+    # Final links are re-scraped (once each, on/after their day,
+    # because they are placeholders until the teams are known).
+    #
+    # Only matches that have started are returned: those inside
+    # their WINDOW_HOURS window, plus earlier matches that were
+    # never scraped to completion.
+    #
+    # Returns list of (match_number, match_type, match_name, status)
+    # sorted ascending by scheduled start.
     # =====================================================
-    def match_id_generator(self):
-        BASE_URL = "https://ipl-stats-sports-mechanic.s3.ap-south-1.amazonaws.com/ipl/feeds"
-        url = f"{BASE_URL}/{self.competition_id}-matchschedule.js"
+    def match_id_generator(self, driver=None):
+        # Load saved links, or scrape them once.
+        fresh = self._load_links()
 
-        params = {"MatchSchedule": "_jqjsp"}
-        headers = {"User-Agent": "Mozilla/5.0"}
+        # Re-scrape Super League / Final placeholders if their day came.
+        self._refresh_links_if_due(fresh)
 
-        r = requests.get(url, params=params, headers=headers, timeout=20)
-        r.raise_for_status()
+        now_ms     = self._now_ms()
+        window_ms  = self.WINDOW_HOURS * 3600 * 1000
+        offset_ms  = self.START_OFFSET_MINUTES * 60 * 1000
+        catchup_ms = self.CATCHUP_DAYS * 24 * 3600 * 1000
 
-        json_text = re.sub(r"^[^(]*\(|\);?$", "", r.text)
-        data = json.loads(json_text)
+        self._assign_match_numbers()
 
-        combined = []
+        eligible = []
 
-        for match in data.get("Matchsummary", []):
-            try:
-                match_id = match["MatchID"]
-                match_type = match["MatchOrder"]
-                match_name = match["MatchName"]
-                given_status = match["MatchStatus"]
+        for m in self.match_links:
+            start_ms = self._start_ms(m)
 
-                winner = "yes" if "Won" in match.get("Comments", "") else "no"
-                current_bowler = match.get("CurrentBowlerName", "")
-                mom = match.get("MOM", "").strip()
-
-                if current_bowler == "":
-                    status = 0
-                elif mom or (winner == "no" and given_status == "Post"):
-                    status = 2
-                else:
-                    status = 1
-
-                if status == 0:
-                    continue
-
-                if "Match" in match_type:
-                    team1,team2 = match_name.split(' vs ')
-                    team1 = team_names_sf[team_names_ff.index(team1)]
-                    team2 = team_names_sf[team_names_ff.index(team2)]
-                    match_name = team1 + " vs " + team2
-                else:
-                    match_name = match_type
-
-
-                combined.append(
-                    (match_id, match_type, match_name, status)
-                )
-
-            except Exception:
+            if start_ms is None:
                 continue
 
-        playoff_order = {
-            "Qualifier 1": 1000,
-            "Eliminator": 1001,
-            "Qualifier 2": 1002,
-            "Final": 1003
+            # startDate is the toss; real play starts START_OFFSET later.
+            start_ms += offset_ms
+
+            # Not started yet
+            if now_ms < start_ms:
+                continue
+
+            match_number = str(m["match_id"])
+
+            # Link still a TBC placeholder - nothing to scrape
+            if self._is_placeholder(m):
+                print(f"Match {match_number} link is still TBC, skipping")
+                continue
+
+            # Already scraped as final
+            if self.match_states.get(match_number, {}).get("is_final", False):
+                continue
+
+            in_window = now_ms <= start_ms + window_ms
+            missed    = now_ms > start_ms + window_ms
+
+            # Washed out (tried, no scorecard) and too old: stop catching up
+            if (
+                missed
+                and match_number in self.no_play
+                and now_ms > start_ms + catchup_ms
+            ):
+                print(f"Match {match_number}: no scorecard {self.CATCHUP_DAYS} days after its start, giving up")
+                continue
+
+            # in_window = live / just finished.
+            # missed    = window passed but never completed (e.g. the script
+            #             did not run for hours, or until the next day).
+            if in_window or missed:
+                eligible.append((start_ms, m))
+
+        eligible.sort(key=lambda x: x[0])
+
+        # Status is a placeholder (1), exactly as in the original; the real
+        # is_final determination happens inside Score._parse_match.
+        combined = []
+        for _, m in eligible:
+            match_number = str(m["match_id"])
+            match_name   = f"Match {match_number} - {m['team1']} vs {m['team2']}"
+
+            # "Elite Group B Match 2", "Super League Group A Match 113", "Final"
+            desc  = m.get("match_desc") or ""
+            num   = self.match_numbers.get(m["match_id"])
+            match_type = (
+                f"{desc} Match {num}" if num
+                else (desc or f"Match {match_number}")
+            )
+
+            combined.append((match_number, match_type, match_name, 1))
+
+        return combined
+
+
+    def _assign_match_numbers(self):
+        """
+        Overall match number across all group matches (all Elite groups,
+        then Super League), following Cricbuzz match-id order, which is the
+        schedule order. The Final (or anything without 'group' in its
+        description) gets no number.
+        """
+        group_matches = [
+            m for m in self.match_links
+            if m.get("match_id") is not None
+            and "group" in str(m.get("match_desc") or "").lower()
+        ]
+
+        group_matches.sort(key=lambda m: (
+            1 if self._stage_of(m) == "super_league" else 0,
+            int(m["match_id"])
+        ))
+
+        self.match_numbers = {
+            m["match_id"]: n
+            for n, m in enumerate(group_matches, start=1)
         }
 
-        def sort_key(item):
-            _, match_type, _, _ = item
-            if match_type.startswith("Match"):
-                return int(match_type.split()[1])
-            return playoff_order.get(match_type, 9999)
 
-        return sorted(combined, key=sort_key)
+    # =====================================================
+    # Links: load / scrape / refresh / save
+    # =====================================================
+    def _load_links(self):
+        """
+        Load SMAT_2026_links.pkl. If it is missing/empty, scrape the whole
+        schedule once and save it. Returns the freshly scraped list when a
+        scrape happened (so a refresh in the same run can reuse it),
+        otherwise None.
+        """
+        try:
+            with open(self.links_database, "rb") as f:
+                payload = dill.load(f)
+
+            # Never reuse links that belong to a different series
+            if str(payload.get("series_id", self.series_id)) != self.series_id:
+                raise ValueError("links file is for another series")
+
+            self.no_play = set(map(str, payload.get("not_started", [])))
+            self.match_links = payload.get("matches", [])
+            counts = payload.get("refresh_counts", {})
+
+            for stage in self.REFRESH_STAGES:
+                self.link_refresh_counts[stage] = int(counts.get(stage, 0))
+
+            if self.match_links:
+                return None
+        except Exception:
+            pass
+
+        print("No saved links, scraping the series page")
+
+        self.match_links = self._scrape_links()
+        self._save_links()
+
+        return list(self.match_links)
 
 
+    def _scrape_links(self):
+        html    = self._fetch_page(self.series_url)
+        matches = self._extract_series_matches(html)
+
+        # Remove duplicate match IDs
+        unique = {}
+        for match in matches:
+            if match["match_id"] is not None:
+                unique[match["match_id"]] = match
+
+        matches = list(unique.values())
+
+        if not matches:
+            raise ValueError(f"No matches found for series {self.series_id}")
+
+        print(f"Found {len(matches)} matches on series page")
+
+        return matches
+
+
+    def _refresh_links_if_due(self, fresh=None):
+        """
+        For each late stage (Super League, Final): once its first match's
+        day (IST) has arrived, replace that stage's links with freshly
+        scraped ones. A per-stage counter makes sure this happens at most
+        MAX_LINK_REFRESHES times. The counter is only used up once the
+        refreshed matches no longer show TBC teams; if they still do, it
+        retries on the next run.
+        """
+        today = datetime.fromtimestamp(self._now_ms() / 1000, self.IST).date()
+
+        due = []
+
+        for stage in self.REFRESH_STAGES:
+            if self.link_refresh_counts.get(stage, 0) >= self.MAX_LINK_REFRESHES:
+                continue
+
+            starts = [
+                self._start_ms(m)
+                for m in self.match_links
+                if self._stage_of(m) == stage
+            ]
+            starts = [s for s in starts if s is not None]
+
+            if not starts:
+                continue
+
+            first_day = datetime.fromtimestamp(min(starts) / 1000, self.IST).date()
+
+            if today >= first_day:
+                due.append(stage)
+
+        if not due:
+            return
+
+        if fresh is None:
+            print("Re-scraping links for:", ", ".join(due))
+            fresh = self._scrape_links()
+
+        changed = False
+
+        for stage in due:
+            new_stage = [m for m in fresh if self._stage_of(m) == stage]
+
+            if not new_stage:
+                print(f"No {stage} matches found on refresh, keeping old links")
+                continue
+
+            self.match_links = [
+                m for m in self.match_links
+                if self._stage_of(m) != stage
+            ] + new_stage
+
+            if any(self._is_placeholder(m) for m in new_stage):
+                print(f"{stage} still has TBC teams, will retry next run")
+            else:
+                self.link_refresh_counts[stage] += 1
+
+            changed = True
+
+        if changed:
+            self._save_links()
+
+
+    def _save_links(self):
+        tmp_path = self.links_database + ".tmp"
+        with open(tmp_path, "wb") as f:
+            dill.dump({
+                "series_id":      self.series_id,
+                "matches":        self.match_links,
+                "refresh_counts": self.link_refresh_counts,
+                "not_started":    sorted(self.no_play)
+            }, f)
+        os.replace(tmp_path, self.links_database)
+
+        try:
+            from GitHub import push_file_to_github
+            push_file_to_github(
+                self.links_database,
+                os.path.basename(self.links_database)
+            )
+        except Exception:
+            pass
+
+
+    # =====================================================
+    # Small helpers
+    # =====================================================
+    def _now_ms(self):
+        return int(time.time() * 1000)
+
+
+    def _start_ms(self, match):
+        try:
+            return int(match.get("start_timestamp"))
+        except (TypeError, ValueError):
+            return None
+
+
+    def _stage_of(self, match):
+        desc = str(match.get("match_desc") or "").strip().lower()
+
+        if desc.startswith("super league"):
+            return "super_league"
+
+        if desc == "final":
+            return "final"
+
+        return "elite"
+
+
+    def _is_placeholder(self, match):
+        for key in ("team1", "team2"):
+            name = str(match.get(key) or "").strip().upper()
+            if name in ("", "TBC", "TBD"):
+                return True
+        return False
+
+
+    # =====================================================
+    # Cricbuzz series page parsing
+    # =====================================================
+    def _fetch_page(self, url):
+        # Keep a proper delay before every internet call.
+        time.sleep(2)
+
+        response = requests.get(
+            url,
+            headers=self.HEADERS,
+            timeout=30
+        )
+
+        response.raise_for_status()
+
+        return response.text
+
+
+    def _extract_matches_data(self, html):
+
+        normalised = html.replace('\\"', '"')
+
+        marker = '"matchesData":'
+
+        idx = normalised.find(marker)
+
+        if idx == -1:
+            raise ValueError("matchesData not found")
+
+        start = idx + len(marker)
+
+        decoder = json.JSONDecoder()
+
+        matches_data, _ = decoder.raw_decode(
+            normalised[start:]
+        )
+
+        return matches_data
+
+
+    def _convert_gmt_to_ist(self, status):
+        """
+        Convert Cricbuzz status time from GMT to IST.
+
+            Match starts at Nov 14, 04:00 GMT
+            ->
+            Match starts at Nov 14, 09:30 IST
+        """
+
+        if not status:
+            return status
+
+        match = re.search(
+            r"Match starts at (.+?), (\d{1,2}):(\d{2}) GMT",
+            status
+        )
+
+        if not match:
+            return status
+
+        try:
+            gmt_time = datetime.strptime(
+                f"{match.group(1)} "
+                f"{int(match.group(2)):02d}:{match.group(3)}",
+                "%b %d %H:%M"
+            )
+        except ValueError:
+            return status
+
+        ist_time = gmt_time + timedelta(hours=5, minutes=30)
+
+        return (
+            f"Match starts at "
+            f"{ist_time.strftime('%b %d, %H:%M')} IST"
+        )
+
+
+    def _extract_series_matches(self, html):
+
+        matches_data = self._extract_matches_data(html)
+
+        matches = []
+
+        for date_block in matches_data.get("matchDetails", []):
+
+            match_map = date_block.get("matchDetailsMap", {})
+
+            date_key = match_map.get("key")
+
+            for match_wrapper in match_map.get("match", []):
+
+                match_info = match_wrapper.get("matchInfo", {})
+
+                if not match_info:
+                    continue
+
+                # Filter by series
+                series_id = str(match_info.get("seriesId", ""))
+
+                if series_id and self.series_id and series_id != self.series_id:
+                    continue
+
+                match_id = match_info.get("matchId")
+
+                team1 = match_info.get("team1", {})
+                team2 = match_info.get("team2", {})
+
+                matches.append({
+                    "match_id":        match_id,
+                    "date":            date_key,
+                    "team1":           team1.get("teamName"),
+                    "team2":           team2.get("teamName"),
+                    "match_desc":      match_info.get("matchDesc"),
+                    "status":          self._convert_gmt_to_ist(
+                                           match_info.get("status")
+                                       ),
+                    "start_timestamp": match_info.get("startDate"),
+                    "match_url": (
+                        "https://www.cricbuzz.com/"
+                        f"live-cricket-scorecard/{match_id}"
+                    ),
+                })
+
+        return matches
+
+
+    # =====================================================
+    # Convenience flag
+    # =====================================================
+    @property
+    def fully_caught_up(self):
+        return not self._hit_time_limit
 
 
 if __name__ == "__main__":
-    ipl2025 = Series(284,"ipl26.pkl")
+    # TEST on last year's series (reliable data). Switch to the line below for 2026:
+    # smat2026 = Series("12420/syed-mushtaq-ali-trophy-elite-2026", "smat26.pkl")
+    smat2025 = Series("10493/syed-mushtaq-ali-trophy-elite-2025", "smat25_test.pkl")
+    # score = Score(128787)
+    # score.printing_scorecard()
