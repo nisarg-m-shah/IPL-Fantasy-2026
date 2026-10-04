@@ -1,12 +1,12 @@
 {
     "Team Final Points": {
         "Hilarious Hooligans": {
-            "Total Points": 1792.0,
-            "Franchise Points": 0,
+            "Total Points": 1943.0,
+            "Franchise Points": 150,
             "Match 127819 - KAR vs UTK, Elite Group D, Syed Mushtaq Ali Trophy Elite 2025": 0.0,
             "Match 127764 - CG vs VID, Elite Group A, Syed Mushtaq Ali Trophy Elite 2025": 309.0,
             "Match 127786 - GOA vs UP, Elite Group B, Syed Mushtaq Ali Trophy Elite 2025": 211.0,
-            "Franchise Wins": 0,
+            "Franchise Wins": 1,
             "Match 127802 - GUJ vs SER, Elite Group C, Syed Mushtaq Ali Trophy Elite 2025": 394.0,
             "Match 127753 - MUM vs RLYS, Elite Group A, Syed Mushtaq Ali Trophy Elite 2025": 0.0,
             "Match 127813 - SAUR vs TRI, Elite Group D, Syed Mushtaq Ali Trophy Elite 2025": 57.0,
@@ -72,6 +72,20 @@
             "Match 127775 - JK vs MAH, Elite Group B, Syed Mushtaq Ali Trophy Elite 2025": 0.0,
             "Match 127852 - HYD vs MP, Elite Group B, Syed Mushtaq Ali Trophy Elite 2025": 0.0
         },
+        "Nasty Knights": {
+            "Total Points": 1017.0,
+            "Franchise Points": 150,
+            "Match 127819 - KAR vs UTK, Elite Group D, Syed Mushtaq Ali Trophy Elite 2025": 202.0,
+            "Match 127764 - CG vs VID, Elite Group A, Syed Mushtaq Ali Trophy Elite 2025": 0.0,
+            "Match 127786 - GOA vs UP, Elite Group B, Syed Mushtaq Ali Trophy Elite 2025": 5.0,
+            "Franchise Wins": 1,
+            "Match 127802 - GUJ vs SER, Elite Group C, Syed Mushtaq Ali Trophy Elite 2025": 45.0,
+            "Match 127753 - MUM vs RLYS, Elite Group A, Syed Mushtaq Ali Trophy Elite 2025": 105.0,
+            "Match 127813 - SAUR vs TRI, Elite Group D, Syed Mushtaq Ali Trophy Elite 2025": -10.0,
+            "Match 127797 - HP vs PUN, Elite Group C, Syed Mushtaq Ali Trophy Elite 2025": 95.0,
+            "Match 127775 - JK vs MAH, Elite Group B, Syed Mushtaq Ali Trophy Elite 2025": 164.0,
+            "Match 127852 - HYD vs MP, Elite Group B, Syed Mushtaq Ali Trophy Elite 2025": 260.0
+        },
         "Gujju Gang": {
             "Total Points": 959.0,
             "Franchise Points": 150,
@@ -86,20 +100,6 @@
             "Match 127797 - HP vs PUN, Elite Group C, Syed Mushtaq Ali Trophy Elite 2025": 115.0,
             "Match 127775 - JK vs MAH, Elite Group B, Syed Mushtaq Ali Trophy Elite 2025": 0.0,
             "Match 127852 - HYD vs MP, Elite Group B, Syed Mushtaq Ali Trophy Elite 2025": 0.0
-        },
-        "Nasty Knights": {
-            "Total Points": 866.0,
-            "Franchise Points": 0,
-            "Match 127819 - KAR vs UTK, Elite Group D, Syed Mushtaq Ali Trophy Elite 2025": 202.0,
-            "Match 127764 - CG vs VID, Elite Group A, Syed Mushtaq Ali Trophy Elite 2025": 0.0,
-            "Match 127786 - GOA vs UP, Elite Group B, Syed Mushtaq Ali Trophy Elite 2025": 5.0,
-            "Franchise Wins": 0,
-            "Match 127802 - GUJ vs SER, Elite Group C, Syed Mushtaq Ali Trophy Elite 2025": 45.0,
-            "Match 127753 - MUM vs RLYS, Elite Group A, Syed Mushtaq Ali Trophy Elite 2025": 105.0,
-            "Match 127813 - SAUR vs TRI, Elite Group D, Syed Mushtaq Ali Trophy Elite 2025": -10.0,
-            "Match 127797 - HP vs PUN, Elite Group C, Syed Mushtaq Ali Trophy Elite 2025": 95.0,
-            "Match 127775 - JK vs MAH, Elite Group B, Syed Mushtaq Ali Trophy Elite 2025": 164.0,
-            "Match 127852 - HYD vs MP, Elite Group B, Syed Mushtaq Ali Trophy Elite 2025": 260.0
         },
         "VS Stalwarts": {
             "Total Points": 746.0,
