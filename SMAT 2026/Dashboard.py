@@ -833,6 +833,7 @@ def run_output_script():
         run_output_pipeline()
         save_update_time()
         push_all_files(database, file_path, json_filename)
+        load_data.clear()
         
         if os.path.exists("/tmp/.fully_caught_up"):
             is_final, match_name = get_most_recent_match_state()
@@ -869,6 +870,7 @@ def load_data():
             if isinstance(value, dict):
                 df = pd.DataFrame.from_dict(value, orient='index')
                 df = df.dropna(how='all')
+                df = df.fillna(0)
                 data[key] = df
             else:
                 data[key] = value
