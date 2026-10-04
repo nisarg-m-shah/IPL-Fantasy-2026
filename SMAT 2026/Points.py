@@ -238,8 +238,8 @@ class Team:
                 match_number = int(match_type.split("Match")[1].strip())
             except:
                 match_number = 0
-        elif str(match_type).strip() == "Final":
-            match_number = 125
+        elif match_type in ["Qualifier 1", "Eliminator", "Qualifier 2", "Final"]:
+            match_number = 200
 
         self.points_list  = {}
         self.total_points = 0

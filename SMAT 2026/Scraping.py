@@ -158,6 +158,30 @@ def _lookup_exact(team_name, raw_name):
 
 
 
+def _push_to_github(local_path):
+    """Push a file to GitHub (module is Github.py; GitHub.py also accepted)."""
+    try:
+        try:
+            from Github import push_file_to_github
+        except ImportError:
+            from GitHub import push_file_to_github
+        push_file_to_github(local_path, os.path.basename(local_path))
+    except Exception:
+        pass
+
+
+def _pull_from_github(local_path):
+    """Pull a file from GitHub if it is missing locally. Returns True if pulled."""
+    try:
+        try:
+            from Github import pull_file_from_github
+        except ImportError:
+            from GitHub import pull_file_from_github
+        return bool(pull_file_from_github(os.path.basename(local_path), local_path))
+    except Exception:
+        return False
+
+
 class ScoreCardNotFound(ValueError):
     """Raised when the page has no 'scoreCard' key (e.g. match not started)."""
 
@@ -792,22 +816,18 @@ class Score:
         team1 = match_header.get("team1", {})
         team2 = match_header.get("team2", {})
 
-        team1_short = team1.get("shortName", "")
-        team2_short = team2.get("shortName", "")
+        team1_name = team1.get("name") or team1.get("shortName") or ""
+        team2_name = team2.get("name") or team2.get("shortName") or ""
 
         match_description = match_header.get("matchDescription", "")
-        series_desc = match_header.get("seriesDesc", "")
 
-        if team1_short and team2_short:
+        # Plain "Team1 vs Team2" (same style as the booster keys, e.g.
+        # "Match 15 - Mumbai vs Railways"), with canonical team names.
+        if team1_name and team2_name:
             self.match_name = (
-                f"{team1_short} vs {team2_short}"
+                f"{_resolve_team_key(team1_name)} vs "
+                f"{_resolve_team_key(team2_name)}"
             )
-
-            if match_description:
-                self.match_name += f", {match_description}"
-
-            if series_desc:
-                self.match_name += f", {series_desc}"
         else:
             self.match_name = ""
 
@@ -2125,16 +2145,10 @@ class Series:
 
         # Links database (saved at every link scrape), kept next to
         # the main database.
-        year = re.search(r"-(\d{4})/?$", str(series_slug))
-        links_name = self.LINKS_FILE_TEMPLATE.format(
-            year=year.group(1) if year else self.series_id
-        )
-        self.links_database = os.path.join(
-            os.path.dirname(database_name),
-            links_name
-        )
+        self.links_database = self.links_path(series_slug, database_name)
         self.match_links         = []   # list of schedule dicts
-        self.match_numbers       = {}   # match_id -> overall match number
+        self.match_numbers       = {}   # str(match_id) -> overall number (group matches)
+        self.overall_numbers     = {}   # str(match_id) -> overall number (incl. Final)
         self.no_play             = set()  # match numbers tried with no scorecard
         self._links_dirty        = False
         self.link_refresh_counts = {s: 0 for s in self.REFRESH_STAGES}
@@ -2224,7 +2238,9 @@ class Series:
 
             # Use "Match 15: Mumbai vs Chennai" format as key —
             # guarantees uniqueness even when two teams meet more than once
-            real_name = f"Match {match_number} - {score.match_name}" if score.match_name else match_name
+            # (the number is the overall match number, 1-125, not Cricbuzz's id)
+            overall   = self.overall_numbers.get(str(match_number), match_number)
+            real_name = f"Match {overall} - {score.match_name}" if score.match_name else match_name
 
             self.match_objects[real_name] = score
             self.match_states[match_number] = {"is_final": score.is_final}
@@ -2240,14 +2256,7 @@ class Series:
                     "states":  self.match_states
                 }, f)
 
-            try:
-                from GitHub import push_file_to_github
-                push_file_to_github(
-                    self.database_name,
-                    os.path.basename(self.database_name)
-                )
-            except Exception:
-                pass
+            _push_to_github(self.database_name)
 
             print("Scraped:", real_name, "\n")
             return
@@ -2277,69 +2286,32 @@ class Series:
         # Re-scrape Super League / Final placeholders if their day came.
         self._refresh_links_if_due(fresh)
 
-        now_ms     = self._now_ms()
-        window_ms  = self.WINDOW_HOURS * 3600 * 1000
-        offset_ms  = self.START_OFFSET_MINUTES * 60 * 1000
-        catchup_ms = self.CATCHUP_DAYS * 24 * 3600 * 1000
+        now_ms = self._now_ms()
 
         self._assign_match_numbers()
 
-        eligible = []
-
-        for m in self.match_links:
-            start_ms = self._start_ms(m)
-
-            if start_ms is None:
-                continue
-
-            # startDate is the toss; real play starts START_OFFSET later.
-            start_ms += offset_ms
-
-            # Not started yet
-            if now_ms < start_ms:
-                continue
-
-            match_number = str(m["match_id"])
-
-            # Link still a TBC placeholder - nothing to scrape
-            if self._is_placeholder(m):
-                print(f"Match {match_number} link is still TBC, skipping")
-                continue
-
-            # Already scraped as final
-            if self.match_states.get(match_number, {}).get("is_final", False):
-                continue
-
-            in_window = now_ms <= start_ms + window_ms
-            missed    = now_ms > start_ms + window_ms
-
-            # Washed out (tried, no scorecard) and too old: stop catching up
-            if (
-                missed
-                and match_number in self.no_play
-                and now_ms > start_ms + catchup_ms
-            ):
-                print(f"Match {match_number}: no scorecard {self.CATCHUP_DAYS} days after its start, giving up")
-                continue
-
-            # in_window = live / just finished.
-            # missed    = window passed but never completed (e.g. the script
-            #             did not run for hours, or until the next day).
-            if in_window or missed:
-                eligible.append((start_ms, m))
-
-        eligible.sort(key=lambda x: x[0])
+        eligible = self._eligible(
+            self.match_links,
+            self.match_states,
+            self.no_play,
+            now_ms,
+            verbose=True
+        )
 
         # Status is a placeholder (1), exactly as in the original; the real
         # is_final determination happens inside Score._parse_match.
         combined = []
         for _, m in eligible:
             match_number = str(m["match_id"])
-            match_name   = f"Match {match_number} - {m['team1']} vs {m['team2']}"
+            overall      = self.overall_numbers.get(match_number, match_number)
+            match_name   = (
+                f"Match {overall} - "
+                f"{_resolve_team_key(m['team1'])} vs {_resolve_team_key(m['team2'])}"
+            )
 
             # "Elite Group B Match 2", "Super League Group A Match 113", "Final"
             desc  = m.get("match_desc") or ""
-            num   = self.match_numbers.get(m["match_id"])
+            num   = self.match_numbers.get(match_number)
             match_type = (
                 f"{desc} Match {num}" if num
                 else (desc or f"Match {match_number}")
@@ -2350,27 +2322,193 @@ class Series:
         return combined
 
 
-    def _assign_match_numbers(self):
+    @classmethod
+    def _eligible(cls, match_links, match_states, no_play, now_ms, verbose=False):
         """
-        Overall match number across all group matches (all Elite groups,
-        then Super League), following Cricbuzz match-id order, which is the
-        schedule order. The Final (or anything without 'group' in its
-        description) gets no number.
+        Which matches should be scraped right now? Returns a list of
+        (real_start_ms, match_dict) sorted by start.
+
+          - not started yet                       -> no
+          - link still TBC                        -> no
+          - already scraped as final              -> no
+          - inside its WINDOW_HOURS window        -> yes (live / just finished)
+          - window passed, never completed        -> yes (catch-up), unless it
+            was tried, had no scorecard (washed out) and is older than
+            CATCHUP_DAYS
         """
-        group_matches = [
-            m for m in self.match_links
-            if m.get("match_id") is not None
-            and "group" in str(m.get("match_desc") or "").lower()
+        window_ms  = cls.WINDOW_HOURS * 3600 * 1000
+        offset_ms  = cls.START_OFFSET_MINUTES * 60 * 1000
+        catchup_ms = cls.CATCHUP_DAYS * 24 * 3600 * 1000
+
+        eligible = []
+
+        for m in match_links:
+            start_ms = cls._start_ms(m)
+
+            if start_ms is None:
+                continue
+
+            # startDate is the toss; real play starts START_OFFSET later.
+            start_ms += offset_ms
+
+            if now_ms < start_ms:
+                continue
+
+            match_number = str(m["match_id"])
+
+            if cls._is_placeholder(m):
+                if verbose:
+                    print(f"Match {match_number} link is still TBC, skipping")
+                continue
+
+            if match_states.get(match_number, {}).get("is_final", False):
+                continue
+
+            in_window = now_ms <= start_ms + window_ms
+            missed    = now_ms > start_ms + window_ms
+
+            if (
+                missed
+                and match_number in no_play
+                and now_ms > start_ms + catchup_ms
+            ):
+                if verbose:
+                    print(f"Match {match_number}: no scorecard {cls.CATCHUP_DAYS} days after its start, giving up")
+                continue
+
+            if in_window or missed:
+                eligible.append((start_ms, m))
+
+        eligible.sort(key=lambda x: x[0])
+
+        return eligible
+
+
+    @classmethod
+    def _due_stages(cls, match_links, refresh_counts, now_ms):
+        """Late stages (Super League / Final) whose links should be re-scraped now."""
+        today = datetime.fromtimestamp(now_ms / 1000, cls.IST).date()
+
+        due = []
+
+        for stage in cls.REFRESH_STAGES:
+            if refresh_counts.get(stage, 0) >= cls.MAX_LINK_REFRESHES:
+                continue
+
+            starts = [
+                cls._start_ms(m)
+                for m in match_links
+                if cls._stage_of(m) == stage
+            ]
+            starts = [x for x in starts if x is not None]
+
+            if not starts:
+                continue
+
+            first_day = datetime.fromtimestamp(min(starts) / 1000, cls.IST).date()
+
+            if today >= first_day:
+                due.append(stage)
+
+        return due
+
+
+    @classmethod
+    def links_path(cls, series_slug, database_name):
+        """Where the links pickle lives: next to the database, SMAT_<year>_links.pkl."""
+        slug      = str(series_slug).strip("/")
+        series_id = slug.split("/")[0]
+        year      = re.search(r"-(\d{4})$", slug)
+
+        name = cls.LINKS_FILE_TEMPLATE.format(
+            year=year.group(1) if year else series_id
+        )
+
+        return os.path.join(os.path.dirname(database_name), name)
+
+
+    @classmethod
+    def pending_matches(cls, series_slug, database_name, now_ms=None):
+        """
+        Lightweight check for the dashboard (no scraping, no network).
+
+        Returns None if the schedule has not been saved yet (so a run is
+        needed to build it), otherwise a list of match ids that should be
+        scraped right now, plus 'links:<stage>' for each late stage whose
+        links are due for their one-time refresh. An empty list means
+        nothing to do.
+        """
+        try:
+            with open(cls.links_path(series_slug, database_name), "rb") as f:
+                payload = dill.load(f)
+        except Exception:
+            return None
+
+        series_id = str(series_slug).strip("/").split("/")[0]
+
+        if str(payload.get("series_id", series_id)) != series_id:
+            return None
+
+        links = payload.get("matches", [])
+
+        if not links:
+            return None
+
+        try:
+            with open(database_name, "rb") as f:
+                states = dill.load(f).get("states", {})
+        except Exception:
+            states = {}
+
+        if now_ms is None:
+            now_ms = int(time.time() * 1000)
+
+        no_play = set(map(str, payload.get("not_started", [])))
+
+        pending = [
+            str(m["match_id"])
+            for _, m in cls._eligible(links, states, no_play, now_ms)
         ]
 
-        group_matches.sort(key=lambda m: (
-            1 if self._stage_of(m) == "super_league" else 0,
+        due = cls._due_stages(
+            links,
+            payload.get("refresh_counts", {}),
+            now_ms
+        )
+
+        return pending + [f"links:{stage}" for stage in due]
+
+
+    def _assign_match_numbers(self):
+        """
+        Overall match numbers, following Cricbuzz match-id order (which is
+        the schedule order): all Elite group matches, then Super League,
+        then the Final.
+
+          match_numbers   : group matches only (used in match_type)
+          overall_numbers : every match, Final = last (used in the match key,
+                            so it lines up with 'match_numbers' in Auction.py)
+        """
+        valid = [m for m in self.match_links if m.get("match_id") is not None]
+
+        valid.sort(key=lambda m: (
+            {"elite": 0, "super_league": 1, "final": 2}.get(self._stage_of(m), 0),
             int(m["match_id"])
         ))
 
+        group = [
+            m for m in valid
+            if "group" in str(m.get("match_desc") or "").lower()
+        ]
+        others = [m for m in valid if m not in group]
+
         self.match_numbers = {
-            m["match_id"]: n
-            for n, m in enumerate(group_matches, start=1)
+            str(m["match_id"]): n
+            for n, m in enumerate(group, start=1)
+        }
+        self.overall_numbers = {
+            str(m["match_id"]): n
+            for n, m in enumerate(group + others, start=1)
         }
 
 
@@ -2384,6 +2522,10 @@ class Series:
         scrape happened (so a refresh in the same run can reuse it),
         otherwise None.
         """
+        # After a restart the local file may be gone but still be on GitHub.
+        if not os.path.exists(self.links_database):
+            _pull_from_github(self.links_database)
+
         try:
             with open(self.links_database, "rb") as f:
                 payload = dill.load(f)
@@ -2441,28 +2583,11 @@ class Series:
         refreshed matches no longer show TBC teams; if they still do, it
         retries on the next run.
         """
-        today = datetime.fromtimestamp(self._now_ms() / 1000, self.IST).date()
-
-        due = []
-
-        for stage in self.REFRESH_STAGES:
-            if self.link_refresh_counts.get(stage, 0) >= self.MAX_LINK_REFRESHES:
-                continue
-
-            starts = [
-                self._start_ms(m)
-                for m in self.match_links
-                if self._stage_of(m) == stage
-            ]
-            starts = [s for s in starts if s is not None]
-
-            if not starts:
-                continue
-
-            first_day = datetime.fromtimestamp(min(starts) / 1000, self.IST).date()
-
-            if today >= first_day:
-                due.append(stage)
+        due = self._due_stages(
+            self.match_links,
+            self.link_refresh_counts,
+            self._now_ms()
+        )
 
         if not due:
             return
@@ -2507,14 +2632,7 @@ class Series:
             }, f)
         os.replace(tmp_path, self.links_database)
 
-        try:
-            from GitHub import push_file_to_github
-            push_file_to_github(
-                self.links_database,
-                os.path.basename(self.links_database)
-            )
-        except Exception:
-            pass
+        _push_to_github(self.links_database)
 
 
     # =====================================================
@@ -2524,14 +2642,16 @@ class Series:
         return int(time.time() * 1000)
 
 
-    def _start_ms(self, match):
+    @staticmethod
+    def _start_ms(match):
         try:
             return int(match.get("start_timestamp"))
         except (TypeError, ValueError):
             return None
 
 
-    def _stage_of(self, match):
+    @staticmethod
+    def _stage_of(match):
         desc = str(match.get("match_desc") or "").strip().lower()
 
         if desc.startswith("super league"):
@@ -2543,7 +2663,8 @@ class Series:
         return "elite"
 
 
-    def _is_placeholder(self, match):
+    @staticmethod
+    def _is_placeholder(match):
         for key in ("team1", "team2"):
             name = str(match.get(key) or "").strip().upper()
             if name in ("", "TBC", "TBD"):
@@ -2688,6 +2809,6 @@ class Series:
 if __name__ == "__main__":
     # TEST on last year's series (reliable data). Switch to the line below for 2026:
     # smat2026 = Series("12420/syed-mushtaq-ali-trophy-elite-2026", "smat26.pkl")
-    smat2025 = Series("10493/syed-mushtaq-ali-trophy-elite-2025", "smat25_test.pkl")
+    smat2025 = Series("10493/syed-mushtaq-ali-trophy-elite-2025", "smat25test.pkl")
     # score = Score(128787)
     # score.printing_scorecard()

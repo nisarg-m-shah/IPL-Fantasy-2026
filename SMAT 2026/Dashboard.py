@@ -14,8 +14,12 @@ import dill
 import sys
 from Github import sync_files_from_github, push_all_files
 from Output import run_output_pipeline
-from Auction import teams,boosters,names,roles,squads,team_names_ff,team_names_sf,series_slug,database,file_path,json_filename, match_numbers
+from Scraping import Series
+from Auction import teams,boosters,names,roles,squads,team_names_ff,team_names_sf,series_slug,database,file_path,json_filename, MATCH_SCHEDULE,match_numbers
 import base64
+
+# Match-links pickle (schedule, refresh counters) - same place Series saves it
+LINKS_FILE = Series.links_path(series_slug, database)
 
 def show_celebration():
     import streamlit.components.v1 as components
@@ -678,14 +682,6 @@ def save_update_time():
 
 PKL_FILE = database  # The pickle file with match states
 
-def get_links_file():
-    """Return the persisted Cricbuzz series-links file for this season."""
-    m = re.search(r"-(\d{4})$", str(series_slug).strip("/"))
-    year = m.group(1) if m else "2026"
-    return os.path.join(os.path.dirname(database), f"SMAT_{year}_links.pkl")
-
-LINKS_FILE = get_links_file()
-
 def get_final_scraped_matches():
     """Get set of match names that have been scraped after being final"""
     try:
@@ -745,127 +741,134 @@ def get_most_recent_match_state():
         print(f"Error reading pkl file: {e}")
         return None, None
     
-def get_active_match_states():
-    """Return started, non-final scheduled matches from the saved links file."""
-    try:
-        if not os.path.exists(LINKS_FILE):
-            return None, "Series links file not available"
-        with open(LINKS_FILE, "rb") as f:
-            links_payload = dill.load(f)
-        if os.path.exists(PKL_FILE):
-            with open(PKL_FILE, "rb") as f:
-                db_payload = dill.load(f)
-        else:
-            db_payload = {}
-        match_states = db_payload.get("states", {})
-        now_ms = int(datetime.now(pytz.timezone("Asia/Kolkata")).timestamp() * 1000)
-        active = []
-        for match in links_payload.get("matches", []):
-            match_id = str(match.get("match_id", ""))
-            if not match_id:
-                continue
-            teams = {str(match.get("team1") or "").strip().upper(), str(match.get("team2") or "").strip().upper()}
-            if "TBC" in teams or "TBD" in teams or "" in teams:
-                continue
-            try:
-                start_ms = int(match.get("start_timestamp")) + 30 * 60 * 1000
-            except (TypeError, ValueError):
-                continue
-            if now_ms < start_ms:
-                continue
-            if not match_states.get(match_id, {}).get("is_final", False):
-                active.append(match)
-        if active:
-            active.sort(key=lambda m: int(m.get("start_timestamp", 0)))
-            m = active[0]
-            return active, f'{m.get("team1", "")} vs {m.get("team2", "")}'
-        return [], "No started unfinished matches"
-    except Exception as e:
-        print(f"Error reading match schedule/state: {e}")
-        return None, f"Could not determine match state: {e}"
-
-
-def get_most_recent_match_state():
-    """Return the latest stored match state for final-scrape bookkeeping."""
-    try:
-        if not os.path.exists(PKL_FILE):
-            return None, None
-        with open(PKL_FILE, "rb") as f:
-            payload = dill.load(f)
-        states, objects = payload.get("states", {}), payload.get("objects", {})
-        if not states or not objects:
-            return None, None
-        name = list(objects.keys())[-1]
-        last_id = list(states.keys())[-1]
-        return states[last_id].get("is_final", False), name
-    except Exception as e:
-        print(f"Error reading pkl file: {e}")
-        return None, None
+def is_time_between(start, end, now):
+    """
+    Handles time ranges that may cross midnight.
+    """
+    if start <= end:
+        return start <= now <= end
+    else:
+        return now >= start or now <= end
 
 
 def is_match_time():
-    """Return whether at least one scheduled match currently needs scraping."""
-    active, reason = get_active_match_states()
-    if active is None:
-        return True, reason
-    if active:
-        return True, f"Unfinished match: {reason}"
-    return False, reason
+    """
+    Check if current time falls within match hours based on schedule
+    Returns: (bool, str)
+    """
+    ist = pytz.timezone('Asia/Kolkata')
+    now = datetime.now(ist)
 
+    current_date = now.strftime('%Y-%m-%d')
+    yesterday_date = (now - timedelta(days=1)).strftime('%Y-%m-%d')
+    current_time = now.time()
+
+    # Define windows
+    SINGLE_START = dt_time(19, 30)   # 7:30 PM
+    DOUBLE_START = dt_time(15, 30)   # 3:30 PM
+    END_TIME = dt_time(1, 0)        # 1:30 AM (safe upper bound)
+
+    # --- TODAY checks ---
+    if current_date in MATCH_SCHEDULE.get('single_header', []):
+        if is_time_between(SINGLE_START, END_TIME, current_time):
+            return True, f"Single header match day ({current_date})"
+
+    if current_date in MATCH_SCHEDULE.get('double_header', []):
+        if is_time_between(DOUBLE_START, END_TIME, current_time):
+            return True, f"Double header match day ({current_date})"
+
+    # --- YESTERDAY spillover (post-midnight only) ---
+    if current_time <= END_TIME:
+        if yesterday_date in MATCH_SCHEDULE.get('single_header', []):
+            return True, f"Single header continued ({yesterday_date})"
+
+        if yesterday_date in MATCH_SCHEDULE.get('double_header', []):
+            return True, f"Double header continued ({yesterday_date})"
+
+    # --- Otherwise ---
+    return False, "No match scheduled"
 
 def should_update():
-    is_match, match_reason = is_match_time()
+    """
+    Decide whether to run the scraper now.
+
+    The scraper (Series) owns the match schedule: it knows which matches have
+    started, are inside their scrape window, or were missed and still need
+    catching up (several SMAT matches run at the same time, so looking only
+    at the last scraped match is not enough). This just asks it.
+    """
     if os.path.exists(LOCK_FILE):
         lock_age = time.time() - os.path.getmtime(LOCK_FILE)
         if lock_age < LOCK_TIMEOUT:
-            mins, secs = int(lock_age // 60), int(lock_age % 60)
+            mins = int(lock_age // 60)
+            secs = int(lock_age % 60)
             return False, f"Update in progress by another user ({mins}m {secs}s ago)", -1
-    if is_match:
-        elapsed = time.time() - get_last_update_time()
-        if elapsed >= UPDATE_INTERVAL:
-            return True, f"{match_reason} | Last update: {int(elapsed // 60)} min ago", -1
-        return False, "Match ongoing | Updated Recently", int(UPDATE_INTERVAL - elapsed)
-    return False, match_reason, -1
 
+    pending = Series.pending_matches(series_slug, database)
+
+    # No saved schedule yet -> one run builds it
+    if pending is None:
+        return True, "No match schedule saved yet - fetching it", -1
+
+    if not pending:
+        return False, "No match in progress or waiting to be scraped", -1
+
+    matches_waiting = [p for p in pending if not p.startswith("links:")]
+    links_due       = [p for p in pending if p.startswith("links:")]
+
+    parts = []
+    if matches_waiting:
+        parts.append(f"{len(matches_waiting)} match(es) to scrape")
+    if links_due:
+        parts.append("match links due for refresh")
+    what = " + ".join(parts)
+
+    last_update = get_last_update_time()
+    time_since_update = time.time() - last_update
+    hours = int(time_since_update // 3600)
+    mins = int((time_since_update % 3600) // 60)
+    secs = int(time_since_update % 60)
+
+    # Backlog: the previous run stopped at its time limit, so go again soon
+    if os.path.exists("/tmp/.more_matches_pending") and time_since_update >= 60:
+        return True, f"Catching up - {what}", -1
+
+    if time_since_update >= UPDATE_INTERVAL:
+        return True, f"{what} (Last update: {hours}h {mins} min {secs} sec ago)", -1
+
+    remaining = UPDATE_INTERVAL - time_since_update
+    return False, f"{what} | Updated Recently", int(remaining)
 
 def run_output_script():
     try:
         run_output_pipeline()
         save_update_time()
-        push_all_files(database, file_path, json_filename)
-        load_data.clear()
-        load_live_matches.clear()
+        push_all_files(database, file_path, json_filename, links_file=LINKS_FILE)
         
         if os.path.exists("/tmp/.fully_caught_up"):
             is_final, match_name = get_most_recent_match_state()
             if is_final and match_name:
                 mark_match_as_final_scraped(match_name)
         
+        # Mark post-match scrape as done
+        set_post_match_scraped()
+        
         return True, "Update successful"
     except Exception as e:
         import traceback
-        push_all_files(database, file_path, json_filename)
+        push_all_files(database, file_path, json_filename, links_file=LINKS_FILE)
         return False, f"Update error: {traceback.format_exc()[-500:]}"
 
 @st.cache_resource(ttl=300)
 def load_live_matches():
     if not os.path.exists(PKL_FILE):
         return {}, {}
-
-    try:
-        if os.path.getsize(PKL_FILE) == 0:
-            return {}, {}
-
-        with open(PKL_FILE, "rb") as f:
-            ipl_data = dill.load(f)
-
-        return (
-            ipl_data.get("objects", {}),
-            ipl_data.get("states", {})
-        )
-
-    except (EOFError, dill.UnpicklingError, OSError):
-        return {}, {}
+    with open(PKL_FILE, "rb") as f:
+        ipl_data = dill.load(f)
+    return (
+        ipl_data.get("objects", {}),
+        ipl_data.get("states", {})
+    )
 
 @st.cache_data(ttl=300)
 def load_data():
@@ -880,7 +883,6 @@ def load_data():
             if isinstance(value, dict):
                 df = pd.DataFrame.from_dict(value, orient='index')
                 df = df.dropna(how='all')
-                df = df.fillna(0)
                 data[key] = df
             else:
                 data[key] = value
@@ -892,7 +894,7 @@ def load_data():
 # --- SQUAD CONFIGURATION ---
 SQUAD_INFO = teams
 # Pull data files from GitHub on startup (Streamlit Cloud only)
-sync_files_from_github(database, file_path, json_filename)
+sync_files_from_github(database, file_path, json_filename, links_file=LINKS_FILE)
 def main():
 # Header - Professional IPL Broadcast Style (Balanced Spacing)
     st.markdown('''
@@ -1787,7 +1789,9 @@ def show_matches(data):
         "Select Match",
         sorted(
             match_names,
-            key=lambda x: int(re.search(r"Match (\d+)", x).group(1)),reverse=True
+            key=lambda x: match_order.get(
+                re.search(r"Match (\d+)", x).group(1), len(match_order)
+            )
         ),
         key="match_selector"
     )
@@ -2312,10 +2316,12 @@ def show_live_score():
 
     match_name = st.selectbox(
         "Select Match",
-sorted(
-    match_objects.keys(),
-    key=lambda x: int(re.search(r"Match (\d+)", x).group(1))
-),
+        sorted(
+            match_objects.keys(),
+            key=lambda x: match_order.get(
+                re.search(r"Match (\d+)", x).group(1), len(match_order)
+            )
+        ),
         key="live_match_selector"
     )
 

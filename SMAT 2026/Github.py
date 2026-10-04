@@ -1,17 +1,27 @@
 import os
 import base64
 import requests
-import re
+from urllib.parse import quote
 
 GITHUB_TOKEN = os.environ.get("GITHUB_TOKEN")
 GITHUB_REPO = os.environ.get("GITHUB_REPO")  # e.g. "nisarg52/ipl-fantasy-2026"
+
+# Folder inside the repo that holds this project's files. Every path sent to
+# or read from GitHub is placed under it. Override with the GITHUB_FOLDER
+# environment variable (set it to "" to use the repo root).
+GITHUB_FOLDER = os.environ.get("GITHUB_FOLDER", "SMAT 2026").strip("/")
+
+def _repo_file(repo_path):
+    """'smat25.pkl' -> 'SMAT 2026/smat25.pkl' (URL-safe)."""
+    full = f"{GITHUB_FOLDER}/{repo_path}" if GITHUB_FOLDER else repo_path
+    return quote(full)
 
 def _headers():
     return {"Authorization": f"token {GITHUB_TOKEN}"}
 
 def _get_sha(repo_path):
     """Get SHA of existing file in repo, None if doesn't exist"""
-    url = f"https://api.github.com/repos/{GITHUB_REPO}/contents/{repo_path}"
+    url = f"https://api.github.com/repos/{GITHUB_REPO}/contents/{_repo_file(repo_path)}"
     r = requests.get(url, headers=_headers())
     if r.status_code == 200:
         return r.json().get("sha")
@@ -27,7 +37,7 @@ def push_file_to_github(local_path, repo_path):
             content = base64.b64encode(f.read()).decode()
         
         sha = _get_sha(repo_path)
-        url = f"https://api.github.com/repos/{GITHUB_REPO}/contents/{repo_path}"
+        url = f"https://api.github.com/repos/{GITHUB_REPO}/contents/{_repo_file(repo_path)}"
         data = {
             "message": f"Update {repo_path}",
             "content": content,
@@ -52,7 +62,7 @@ def pull_file_from_github(repo_path, local_path):
         print("GitHub credentials not set, skipping pull")
         return False
     try:
-        url = f"https://api.github.com/repos/{GITHUB_REPO}/contents/{repo_path}"
+        url = f"https://api.github.com/repos/{GITHUB_REPO}/contents/{_repo_file(repo_path)}"
         r = requests.get(url, headers=_headers())
         if r.status_code == 200:
             content = base64.b64decode(r.json()["content"])
@@ -68,16 +78,7 @@ def pull_file_from_github(repo_path, local_path):
         print(f"Error pulling {repo_path} from GitHub: {e}")
         return False
 
-def _links_paths(database):
-    """Return the local and repository path for the series links file."""
-    base = os.path.basename(database)
-    m = re.search(r"smat(\d{2})", base, flags=re.IGNORECASE)
-    year = f"20{m.group(1)}" if m else "2026"
-    filename = f"SMAT_{year}_links.pkl"
-    return os.path.join(os.path.dirname(database), filename), filename
-
-
-def push_all_files(database, file_path, json_filename):
+def push_all_files(database, file_path, json_filename, links_file=None):
     if not os.path.exists('/mount/src'):
         return
     
@@ -91,13 +92,13 @@ def push_all_files(database, file_path, json_filename):
         push_file_to_github(file_path, excel_repo_path)
     if os.path.exists(json_filename):
         push_file_to_github(json_filename, json_repo_path)
-    
-    links_local_path, links_repo_path = _links_paths(database)
-    if os.path.exists(links_local_path):
-        push_file_to_github(links_local_path, links_repo_path)
+
+    # Push the match-links file (schedule, refresh counters, washed-out list)
+    if links_file and os.path.exists(links_file):
+        push_file_to_github(links_file, os.path.basename(links_file))
     
     # Push trackers
-    for tracker in ["/tmp/.final_scrape_tracker", "/tmp/.last_update_timestamp", "/tmp/.post_match_scraped"]:
+    for tracker in ["/tmp/.final_scrape_tracker", "/tmp/.last_update_timestamp" "/tmp/.post_match_scraped"]:
         if os.path.exists(tracker):
             push_file_to_github(tracker, os.path.basename(tracker))
     
@@ -105,7 +106,7 @@ def push_all_files(database, file_path, json_filename):
     if os.path.exists("/tmp/caps.pkl"):
         push_file_to_github("/tmp/caps.pkl", "caps.pkl")
 
-def sync_files_from_github(database, file_path, json_filename):
+def sync_files_from_github(database, file_path, json_filename, links_file=None):
     if not os.path.exists('/mount/src'):
         return
     
@@ -119,13 +120,13 @@ def sync_files_from_github(database, file_path, json_filename):
         pull_file_from_github(excel_repo_path, file_path)
     if not os.path.exists(json_filename):
         pull_file_from_github(json_repo_path, json_filename)
-    
-    links_local_path, links_repo_path = _links_paths(database)
-    if not os.path.exists(links_local_path):
-        pull_file_from_github(links_repo_path, links_local_path)
+
+    # Pull the match-links file
+    if links_file and not os.path.exists(links_file):
+        pull_file_from_github(os.path.basename(links_file), links_file)
     
     # Pull trackers
-    for tracker in [".final_scrape_tracker", ".last_update_timestamp", ".post_match_scraped"]:
+    for tracker in [".final_scrape_tracker", ".last_update_timestamp", "/tmp/.post_match_scraped"]:
         local_path = f"/tmp/{tracker}"
         if not os.path.exists(local_path):
             pull_file_from_github(tracker, local_path)
