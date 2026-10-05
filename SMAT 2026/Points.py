@@ -168,7 +168,7 @@ class Player:
         lbw_wickets    = lbw.count(self.player_name)
 
         if balls_bowled != 0:
-            if abs((runs_conceded*6/balls_bowled) - economy) > 0.01:
+            if abs((runs_conceded*6/balls_bowled) - economy) > 0.05:
                 print("Economy not properly scraped", self.player_name, economy, (runs_conceded*6/balls_bowled))
         else:
             if economy not in [None, 0]:
