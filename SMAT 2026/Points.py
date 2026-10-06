@@ -13,7 +13,7 @@ class Player:
         self.booster      = booster
         self.match_object = match_object
         result = self.points()
-        self.role,self.player_mompoints,self.catches,self.stumpings,self.main_runouts,self.secondary_runouts,self.catching_points,self.stumping_points,self.direct_runout_points,self.second_runout_points, self.maidens, self.wickets, self.economy, self.bowled_wickets, self.lbw_wickets, self.maidens_points, self.wicket_points, self.dot_points, self.economy_points, self.bowling_milestone_points, self.bowled_wickets_points, self.lbw_wickets_points, self.runs, self.fours, self.sixes, self.strike_rate, self.runs_points, self.fours_points, self.sixes_points, self.duck_points, self.strike_rate_points, self.batting_milestone_points, self.player_points,self.player_batpoints,self.player_bowlpoints,self.player_fieldpoints = result
+        self.role,self.player_mompoints,self.catches,self.stumpings,self.main_runouts,self.secondary_runouts,self.catching_points,self.stumping_points,self.direct_runout_points,self.second_runout_points, self.maidens, self.wickets, self.economy, self.bowled_wickets, self.lbw_wickets, self.maidens_points, self.wicket_points, self.economy_points, self.bowling_milestone_points, self.bowled_wickets_points, self.lbw_wickets_points, self.runs, self.fours, self.sixes, self.strike_rate, self.runs_points, self.fours_points, self.sixes_points, self.duck_points, self.strike_rate_points, self.batting_milestone_points, self.player_points,self.player_batpoints,self.player_bowlpoints,self.player_fieldpoints = result
         self.points_list = {
     'Player Points': self.player_points, 'Man of the Match': self.player_mompoints,'Role': self.role,
     'Player Batting Points': self.player_batpoints, 'Runs': self.runs, 'Runs Points': self.runs_points,
@@ -21,7 +21,7 @@ class Player:
     'Strike Rate': self.strike_rate, 'Strike Rate Points': self.strike_rate_points, 'Duck Points': self.duck_points,
     'Batting Milestone Points': self.batting_milestone_points,
     'Player Bowling Points': self.player_bowlpoints, 'Maidens': self.maidens, 'Maidens Points': self.maidens_points,
-    'Wickets': self.wickets, 'Wicket Points': self.wicket_points, 'Dot Points': self.dot_points,
+    'Wickets': self.wickets, 'Wicket Points': self.wicket_points,
     'Economy': self.economy, 'Economy Points': self.economy_points, 'Bowled Wickets': self.bowled_wickets,
     'Bowled Wickets Points': self.bowled_wickets_points, 'LBW Wickets': self.lbw_wickets,
     'LBW Wickets Points': self.lbw_wickets_points, 'Bowling Milestone Points': self.bowling_milestone_points,
@@ -198,9 +198,8 @@ class Player:
             bowling_milestone_points = 70
 
         bowled_wickets_points = bowled_wickets * 10
-        lbw_wickets_points    = lbw_wickets * 10
 
-        player_bowlpoints = maidens_points + wicket_points + dot_points + economy_points + bowling_milestone_points + bowled_wickets_points + lbw_wickets_points
+        player_bowlpoints = maidens_points + wicket_points + economy_points + bowling_milestone_points + bowled_wickets_points + lbw_wickets_points
 
         catches            = catchers.count(self.player_name)
         stumpings          = stumpers.count(self.player_name)
@@ -216,7 +215,7 @@ class Player:
 
         player_points = player_batpoints + player_bowlpoints + player_fieldpoints + player_mompoints
 
-        return role,player_mompoints,catches,stumpings,main_runouts,secondary_runouts,catching_points,stumping_points,direct_runout_points,second_runout_points,maidens,wickets,economy,bowled_wickets,lbw_wickets,maidens_points,wicket_points,dot_points,economy_points,bowling_milestone_points,bowled_wickets_points,lbw_wickets_points,runs,fours,sixes,strike_rate,runs_points,fours_points,sixes_points,duck_points,strike_rate_points,batting_milestone_points,player_points,player_batpoints,player_bowlpoints,player_fieldpoints
+        return role,player_mompoints,catches,stumpings,main_runouts,secondary_runouts,catching_points,stumping_points,direct_runout_points,second_runout_points,maidens,wickets,economy,bowled_wickets,lbw_wickets,maidens_points,wicket_points,economy_points,bowling_milestone_points,bowled_wickets_points,lbw_wickets_points,runs,fours,sixes,strike_rate,runs_points,fours_points,sixes_points,duck_points,strike_rate_points,batting_milestone_points,player_points,player_batpoints,player_bowlpoints,player_fieldpoints
 
 
 class Team:
