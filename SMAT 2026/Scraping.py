@@ -2165,9 +2165,20 @@ class Series:
                 payload = dill.load(f)
                 self.match_objects = payload.get("objects", {})
                 self.match_states  = payload.get("states", {})
-        except Exception:
+        except (FileNotFoundError, EOFError):
+            # No database yet, or an empty file: start fresh.
+            print(f"No stored matches in {self.database_name} (missing or empty) - starting fresh")
             self.match_objects = {}
             self.match_states  = {}
+        except Exception as e:
+            # The file exists but cannot be read. Starting "fresh" here would
+            # overwrite (and push to GitHub) every stored match with just the
+            # new ones, so stop instead and leave the file untouched.
+            raise RuntimeError(
+                f"{self.database_name} exists but could not be read "
+                f"({type(e).__name__}: {e}). Refusing to overwrite it - "
+                "fix or delete the file, then run again."
+            ) from e
         self.match_names = list(self.match_objects.keys())
 
         # ---------------- NO DRIVER NEEDED ----------------
@@ -2489,7 +2500,11 @@ class Series:
         try:
             with open(database_name, "rb") as f:
                 states = dill.load(f).get("states", {})
-        except Exception:
+        except (FileNotFoundError, EOFError):
+            print(f"pending_matches: {database_name} is missing or empty - treating every match as not yet scraped")
+            states = {}
+        except Exception as e:
+            print(f"pending_matches: could not read {database_name} ({type(e).__name__}: {e}) - treating every match as not yet scraped")
             states = {}
 
         if now_ms is None:
