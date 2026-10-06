@@ -2530,7 +2530,6 @@ def show_live_score():
                     <div>O</div>
                     <div>R</div>
                     <div>W</div>
-                    <div>Dots</div>
                     <div>Econ</div>
                 </div>
             </div>
@@ -2549,7 +2548,6 @@ def show_live_score():
                     <div>{row['Overs']:.1f}</div>
                     <div>{row['Runs']}</div>
                     <div>{row['Wickets']}</div>
-                    <div>{row['0s']}</div>
                     <div>{row['Economy']}</div>
                 </div>
             """, unsafe_allow_html=True)
