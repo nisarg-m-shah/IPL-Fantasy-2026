@@ -182,6 +182,27 @@ def _pull_from_github(local_path):
         return False
 
 
+def _flight_text(html):
+    """
+    Cricbuzz pages are Next.js: the data sits inside many
+    self.__next_f.push([1,"..."]) script chunks, each a JS string literal.
+    Decode every chunk and join them, so JSON that is escaped differently or
+    split across chunks is read back as ordinary, clean text.
+    """
+    parts = []
+
+    for literal in re.findall(
+        r'self\.__next_f\.push\(\[\d+,("(?:[^"\\]|\\.)*")\]\)',
+        html
+    ):
+        try:
+            parts.append(json.loads(literal))
+        except ValueError:
+            continue
+
+    return "".join(parts)
+
+
 class ScoreCardNotFound(ValueError):
     """Raised when the page has no 'scoreCard' key (e.g. match not started)."""
 
@@ -233,6 +254,11 @@ class Score:
         self.is_final = False
         self.is_tournament_final = False
         self.not_started = False
+
+        # True when Cricbuzz says the match is finished but no scorecard
+        # could be read (a scraper problem, NOT a washed-out match).
+        self.scorecard_missing = False
+        self.header_state = ""
 
         self.innings_scores = {}
 
@@ -524,132 +550,66 @@ class Score:
     # ============================================================
 
     def _extract_cricbuzz_scorecard(self, html):
+        """
+        Find the innings list. Every '"scoreCard":' in the page is tried (in
+        the decoded Next.js payload first, then the raw page) and the first
+        one that decodes to a non-empty list of innings wins. Returns []
+        only if the page has the key but no innings; raises ScoreCardNotFound
+        if the key is not on the page at all.
+        """
+        marker = '"scoreCard":'
+        texts  = []
 
-        markers = [
-            '"scoreCard":',
-            '\\"scoreCard\\":'
-        ]
+        flight = _flight_text(html)
+        if flight:
+            texts.append(flight)
+        texts.append(html.replace('\\"', '"'))
 
-        pos = -1
+        decoder   = json.JSONDecoder()
+        seen_any  = False
+        seen_list = False
 
-        for marker in markers:
+        for text in texts:
 
-            pos = html.find(marker)
+            pos = text.find(marker)
 
-            if pos != -1:
-                break
+            while pos != -1:
 
-        if pos == -1:
+                seen_any = True
 
-            # Dedicated exception so callers can tell
-            # "no scorecard on page" apart from "bad JSON".
-            raise ScoreCardNotFound(
-                f'"scoreCard" not found for match {self.match_id}'
+                start = pos + len(marker)
+
+                while start < len(text) and text[start] in " \t\r\n":
+                    start += 1
+
+                if start < len(text) and text[start] == "[":
+
+                    try:
+                        value, _ = decoder.raw_decode(text[start:])
+                    except json.JSONDecodeError:
+                        value = None
+
+                    if isinstance(value, list):
+
+                        seen_list = True
+
+                        if value and all(isinstance(v, dict) for v in value):
+                            return value
+
+                pos = text.find(marker, pos + len(marker))
+
+        if seen_list:
+            return []
+
+        if seen_any:
+            raise ValueError(
+                f'"scoreCard" found for match {self.match_id} '
+                "but could not be decoded"
             )
 
-        start = html.find(
-            "[",
-            pos
+        raise ScoreCardNotFound(
+            f'"scoreCard" not found for match {self.match_id}'
         )
-
-        if start == -1:
-
-            raise ValueError(
-                "Could not find beginning of scoreCard"
-            )
-
-        depth = 0
-        in_string = False
-        escaped = False
-        end = None
-
-        for i in range(
-            start,
-            len(html)
-        ):
-
-            char = html[i]
-
-            if in_string:
-
-                if escaped:
-                    escaped = False
-
-                elif char == "\\":
-                    escaped = True
-
-                elif char == '"':
-                    in_string = False
-
-                continue
-
-            if char == '"':
-                in_string = True
-
-            elif char == "[":
-                depth += 1
-
-            elif char == "]":
-
-                depth -= 1
-
-                if depth == 0:
-
-                    end = i + 1
-
-                    break
-
-        if end is None:
-
-            raise ValueError(
-                "Could not find end of scoreCard array"
-            )
-
-        raw = html[start:end]
-
-        # Cricbuzz Next.js payload may contain escaped quotes.
-        raw = raw.replace('\\"', '"')
-
-        decoder = json.JSONDecoder()
-
-        try:
-
-            scorecard, _ = decoder.raw_decode(raw)
-
-        except json.JSONDecodeError as e:
-
-            preview_start = max(
-                0,
-                e.pos - 200
-            )
-
-            preview_end = min(
-                len(raw),
-                e.pos + 200
-            )
-
-            print("JSON around error:")
-            print(
-                raw[
-                    preview_start:
-                    preview_end
-                ]
-            )
-
-            raise ValueError(
-                f"Could not decode Cricbuzz scoreCard: {e}"
-            )
-
-        if not isinstance(
-            scorecard,
-            list
-        ):
-
-            raise ValueError(
-                "Decoded scoreCard is not a list"
-            )
-
-        return scorecard
 
 
     # ============================================================
@@ -781,7 +741,10 @@ class Score:
         # Cricbuzz embeds the JSON inside an escaped Next.js string:
         # \"matchHeader\":{\"matchId\":...
         # Normalize escaped quotes first.
-        normalised_html = html.replace('\\"', '"')
+        normalised_html = _flight_text(html)
+
+        if '"matchHeader":' not in normalised_html:
+            normalised_html = html.replace('\\"', '"')
 
         marker = '"matchHeader":'
         marker_pos = normalised_html.find(marker)
@@ -934,6 +897,8 @@ class Score:
             state in ("complete", "abandon")
             or bool(self.winner)
         )
+
+        self.header_state = state
 
 
     # ============================================================
@@ -1236,7 +1201,19 @@ class Score:
 
         if not scorecard:
 
-            self.not_started = True
+            # A finished match must have a scorecard. If Cricbuzz says it is
+            # complete (or names a winner) this is a scraping problem, so it
+            # must NOT be written off as "no play".
+            if self.header_state == "complete" or self.winner:
+                self.scorecard_missing = True
+                self.not_started = False
+                print(
+                    f"Match {self.match_id}: Cricbuzz says "
+                    f"state={self.header_state!r}, winner={self.winner!r} "
+                    "but no scorecard could be read"
+                )
+            else:
+                self.not_started = True
 
             return
 
@@ -1852,6 +1829,19 @@ class Score:
 
                         economy_value = 0.0
 
+                    # Cricbuzz rounds economy to 1 decimal (e.g. 4.96 -> 5.0),
+                    # which can move a bowler across a scoring band. Recompute
+                    # from runs and balls, counting balls the same way
+                    # Points.py does ("3.4" = 3 overs 4 balls).
+                    try:
+                        whole, part = str(overs_value).split(".")
+                        balls_bowled = int(whole) * 6 + int(part)
+                    except Exception:
+                        balls_bowled = 0
+
+                    if balls_bowled > 0:
+                        economy_value = round(runs_value * 6 / balls_bowled, 2)
+
                     # ------------------------------------------------
                     # Calculated dot balls
                     # ------------------------------------------------
@@ -2117,6 +2107,14 @@ class Series:
     # retried once this many days have passed since its start.
     CATCHUP_DAYS = 3
 
+    # Bump when the meaning of the saved links file changes. An older file
+    # has its "tried, no scorecard" list cleared (it may hold false marks).
+    LINKS_VERSION = 2
+
+    # A match Cricbuzz lists as finished but whose scorecard cannot be read
+    # is retried this many times, then flagged and left alone.
+    MAX_SCORECARD_FAILURES = 3
+
     # Stages whose links are placeholders (teams TBC) until the day
     # they are played. Each stage's links are re-scraped on/after
     # that day, at most MAX_LINK_REFRESHES times.
@@ -2150,6 +2148,8 @@ class Series:
         self.match_numbers       = {}   # str(match_id) -> overall number (group matches)
         self.overall_numbers     = {}   # str(match_id) -> overall number (incl. Final)
         self.no_play             = set()  # match numbers tried with no scorecard
+        self.scorecard_missing   = {}   # match number -> failed scorecard reads
+        self.scraped_now         = []   # match keys scraped during this run
         self._links_dirty        = False
         self.link_refresh_counts = {s: 0 for s in self.REFRESH_STAGES}
 
@@ -2229,6 +2229,19 @@ class Series:
             score            = Score(match_number, driver=driver)
             score.match_type = match_type
 
+            # Finished on Cricbuzz but the scorecard could not be read: report
+            # it, count it, store nothing (and do NOT mark it as washed out).
+            if score.scorecard_missing:
+                n = self.scorecard_missing.get(str(match_number), 0) + 1
+                self.scorecard_missing[str(match_number)] = n
+                self._links_dirty = True
+                print(
+                    f"WARNING: match {match_number} is finished on Cricbuzz but "
+                    f"its scorecard could not be read "
+                    f"(attempt {n} of {self.MAX_SCORECARD_FAILURES})"
+                )
+                return
+
             # Toss hasn't happened yet — nothing to store
             if score.not_started:
                 print(f"Match {match_number} not started yet (no toss), skipping")
@@ -2245,6 +2258,11 @@ class Series:
             self.match_objects[real_name] = score
             self.match_states[match_number] = {"is_final": score.is_final}
             self._dirty = True
+            self.scraped_now.append(real_name)
+
+            if str(match_number) in self.scorecard_missing:
+                del self.scorecard_missing[str(match_number)]
+                self._links_dirty = True
 
             if str(match_number) in self.no_play:
                 self.no_play.discard(str(match_number))
@@ -2295,7 +2313,8 @@ class Series:
             self.match_states,
             self.no_play,
             now_ms,
-            verbose=True
+            verbose=True,
+            missing=self.scorecard_missing
         )
 
         # Status is a placeholder (1), exactly as in the original; the real
@@ -2323,7 +2342,7 @@ class Series:
 
 
     @classmethod
-    def _eligible(cls, match_links, match_states, no_play, now_ms, verbose=False):
+    def _eligible(cls, match_links, match_states, no_play, now_ms, verbose=False, missing=None):
         """
         Which matches should be scraped right now? Returns a list of
         (real_start_ms, match_dict) sorted by start.
@@ -2341,6 +2360,8 @@ class Series:
         catchup_ms = cls.CATCHUP_DAYS * 24 * 3600 * 1000
 
         eligible = []
+        gave_up  = 0
+        flagged  = 0
 
         for m in match_links:
             start_ms = cls._start_ms(m)
@@ -2364,6 +2385,11 @@ class Series:
             if match_states.get(match_number, {}).get("is_final", False):
                 continue
 
+            # Finished on Cricbuzz but unreadable too many times: leave it
+            if (missing or {}).get(match_number, 0) >= cls.MAX_SCORECARD_FAILURES:
+                flagged += 1
+                continue
+
             in_window = now_ms <= start_ms + window_ms
             missed    = now_ms > start_ms + window_ms
 
@@ -2372,14 +2398,20 @@ class Series:
                 and match_number in no_play
                 and now_ms > start_ms + catchup_ms
             ):
-                if verbose:
-                    print(f"Match {match_number}: no scorecard {cls.CATCHUP_DAYS} days after its start, giving up")
+                gave_up += 1
                 continue
 
             if in_window or missed:
                 eligible.append((start_ms, m))
 
         eligible.sort(key=lambda x: x[0])
+
+        if verbose and flagged:
+            print(f"ATTENTION: {flagged} finished match(es) could not be read after "
+                  f"{cls.MAX_SCORECARD_FAILURES} tries and are being skipped")
+
+        if verbose and gave_up:
+            print(f"{gave_up} match(es) had no scorecard {cls.CATCHUP_DAYS}+ days after their start and are no longer retried")
 
         return eligible
 
@@ -2463,11 +2495,16 @@ class Series:
         if now_ms is None:
             now_ms = int(time.time() * 1000)
 
-        no_play = set(map(str, payload.get("not_started", [])))
+        if payload.get("version", 1) < cls.LINKS_VERSION:
+            no_play = set()
+        else:
+            no_play = set(map(str, payload.get("not_started", [])))
+
+        missing = payload.get("scorecard_missing", {})
 
         pending = [
             str(m["match_id"])
-            for _, m in cls._eligible(links, states, no_play, now_ms)
+            for _, m in cls._eligible(links, states, no_play, now_ms, missing=missing)
         ]
 
         due = cls._due_stages(
@@ -2534,7 +2571,14 @@ class Series:
             if str(payload.get("series_id", self.series_id)) != self.series_id:
                 raise ValueError("links file is for another series")
 
-            self.no_play = set(map(str, payload.get("not_started", [])))
+            if payload.get("version", 1) < self.LINKS_VERSION:
+                # an older file may hold false "no scorecard" marks: start clean
+                self.no_play = set()
+                self._links_dirty = True
+            else:
+                self.no_play = set(map(str, payload.get("not_started", [])))
+
+            self.scorecard_missing = dict(payload.get("scorecard_missing", {}))
             self.match_links = payload.get("matches", [])
             counts = payload.get("refresh_counts", {})
 
@@ -2628,7 +2672,9 @@ class Series:
                 "series_id":      self.series_id,
                 "matches":        self.match_links,
                 "refresh_counts": self.link_refresh_counts,
-                "not_started":    sorted(self.no_play)
+                "not_started":    sorted(self.no_play),
+                "version":        self.LINKS_VERSION,
+                "scorecard_missing": self.scorecard_missing
             }, f)
         os.replace(tmp_path, self.links_database)
 

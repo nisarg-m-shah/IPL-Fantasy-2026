@@ -7,7 +7,7 @@ premium_players = ["Anukul Roy",
                   "Arzan Nagwaswalla",
                   "Shardul Thakur",
                   "Yash Thakur",
-                  ""
+                  "Kumar Kushagra(might drop off if not played at 3/4 tho)"
                   ]
 
 decent_players = ["Jaydev Unadkat - 8 and 12 wickets",
@@ -17,8 +17,8 @@ decent_players = ["Jaydev Unadkat - 8 and 12 wickets",
                   "Sushant Mishra",
                   "Chama Milind",
                   "Raj Limbani",
-                  "Samant Jakhar",
-                  "Shivam Shukla",
+                  "Samant Jakhar(power hitter batting AR)",
+                  "Shivam Shukla(mystery spinner for MP)",
                   "Vikash Arun Singh",
                   "Mridul Sirocch(AR, nobody might end up taking him)",
                   "Mukhtar Hussain(bowler who plays for Assam)",
@@ -32,6 +32,9 @@ decent_players = ["Jaydev Unadkat - 8 and 12 wickets",
                  ]
 
 unsure = ["Chintan Rakshan",
-          "Kunal Chandela???"
+          "Kunal Chandela???",
+          "Arshad Khan",
+          "Aman Khan",
+          "Biplab Samantray"
 
 ]

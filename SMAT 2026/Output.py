@@ -11,6 +11,8 @@ def run_output_pipeline():
     import dill
     import re
     import os
+    import hashlib
+    import inspect
     from Scraping import find_full_name
     from Auction import team_list, teams, boosters, names, roles, squads, team_names_ff, team_names_sf, series_slug, database, file_path, json_filename, match_numbers, orange_cap, purple_cap, mvp
 
@@ -90,6 +92,23 @@ def run_output_pipeline():
     match_names_list  = list(match_objects.keys())
     number_of_matches = len(match_objects)
 
+    # ---- Skip re-scoring finished matches whose points cannot have changed ----
+    # Scoring every stored match on every run gets slower as matches pile up.
+    # A match that is final, already in the JSON, and was NOT re-scraped in
+    # this run only needs re-scoring if the scoring inputs changed (squads,
+    # boosters, or the scoring code), which a fingerprint tracks.
+    fingerprint = hashlib.md5(
+        (repr((teams, boosters)) + open(inspect.getsourcefile(Match)).read()).encode()
+    ).hexdigest()
+    fingerprint_file = json_filename + ".fp"
+    try:
+        with open(fingerprint_file) as f:
+            config_unchanged = (f.read().strip() == fingerprint)
+    except OSError:
+        config_unchanged = False
+    scraped_now  = set(getattr(smat, "scraped_now", []))
+    fast_skipped = 0
+
     # ---- Franchise win tracking ----
     franchise_wins = {team: 0 for team in team_list}
     franchise_map  = {}
@@ -103,17 +122,30 @@ def run_output_pipeline():
         match_object = match_objects[match_name]
         match_type   = match_object.match_type
 
-        match = Match(teams, match_object, match_name, match_type, boosters)
-        team_breakdown      = match.match_points_breakdown
-        General_points_list = match.general_player_points_list
-        points_key          = match_name + " - CFC Points"
+        points_key = match_name + " - CFC Points"
 
-        # Track franchise wins
+        # Track franchise wins (cheap, so done for every match)
         if hasattr(match_object, 'winner') and match_object.winner:
             winner_name = match_object.winner
             if winner_name in franchise_map:
                 custom_team = franchise_map[winner_name]
                 franchise_wins[custom_team] += 1
+
+        # Finished, already scored, same scoring inputs, not re-scraped now:
+        # nothing can have changed, so skip the expensive scoring entirely.
+        if (
+            config_unchanged
+            and match_states.get(str(getattr(match_object, "match_number", "")), {}).get("is_final", False)
+            and points_key in spreadsheet
+            and (match_name + " - Points Breakdown") in spreadsheet
+            and match_name not in scraped_now
+        ):
+            fast_skipped += 1
+            continue
+
+        match = Match(teams, match_object, match_name, match_type, boosters)
+        team_breakdown      = match.match_points_breakdown
+        General_points_list = match.general_player_points_list
 
         # Check if data has changed (skip if unchanged)
         if points_key in spreadsheet and spreadsheet:
@@ -261,6 +293,12 @@ def run_output_pipeline():
         with open(json_filename, "w") as json_file:
             json.dump(spreadsheet_serializable, json_file, indent=4, cls=NumpyEncoder)
         print("JSON file saved successfully!")
+
+        # Remember what these results were scored with
+        with open(fingerprint_file, "w") as f:
+            f.write(fingerprint)
+        if fast_skipped:
+            print(f"Skipped re-scoring {fast_skipped} finished match(es) - nothing changed")
 
     except Exception as e:
         import traceback
