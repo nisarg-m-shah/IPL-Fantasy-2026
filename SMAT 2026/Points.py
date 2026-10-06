@@ -198,6 +198,7 @@ class Player:
             bowling_milestone_points = 70
 
         bowled_wickets_points = bowled_wickets * 10
+        lbw_wickets_points    = lbw_wickets * 10
 
         player_bowlpoints = maidens_points + wicket_points + economy_points + bowling_milestone_points + bowled_wickets_points + lbw_wickets_points
 
