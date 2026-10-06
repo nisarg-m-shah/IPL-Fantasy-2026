@@ -901,193 +901,193 @@ class Score:
         self.header_state = state
 
 
-    # ============================================================
-    # CRICBUZZ OVER-BY-OVER DOT BALLS
-    # ============================================================
+    # # ============================================================
+    # # CRICBUZZ OVER-BY-OVER DOT BALLS
+    # # ============================================================
 
-    def _get_cricbuzz_dot_balls(self):
+    # def _get_cricbuzz_dot_balls(self):
 
-        """
-        Calculate bowler dot balls from Cricbuzz
-        over-by-over data.
+    #     """
+    #     Calculate bowler dot balls from Cricbuzz
+    #     over-by-over data.
 
-        Dot-ball definition:
+    #     Dot-ball definition:
 
-            0       -> dot
-            W       -> dot
-            B       -> dot
-            B1/B2   -> dot
-            B4      -> dot
-            L       -> dot
-            L1/L2   -> dot
-            L4      -> dot
+    #         0       -> dot
+    #         W       -> dot
+    #         B       -> dot
+    #         B1/B2   -> dot
+    #         B4      -> dot
+    #         L       -> dot
+    #         L1/L2   -> dot
+    #         L4      -> dot
 
-        NOT dots:
+    #     NOT dots:
 
-            Wd
-            Wd4
-            N
-            N4
-            etc.
-        """
+    #         Wd
+    #         Wd4
+    #         N
+    #         N4
+    #         etc.
+    #     """
 
-        dot_balls = {}
+    #     dot_balls = {}
 
-        # --------------------------------------------------------
-        # Get every scored innings from scorecard.
-        # --------------------------------------------------------
+    #     # --------------------------------------------------------
+    #     # Get every scored innings from scorecard.
+    #     # --------------------------------------------------------
 
-        innings_numbers = [
-            int(innings.get("inningsId"))
-            for innings in getattr(
-                self,
-                "_scorecard_cache",
-                []
-            )
-            if isinstance(innings, dict)
-            and innings.get("inningsId") is not None
-            and int(innings.get("inningsId")) in self.SCORED_INNINGS
-        ]
+    #     innings_numbers = [
+    #         int(innings.get("inningsId"))
+    #         for innings in getattr(
+    #             self,
+    #             "_scorecard_cache",
+    #             []
+    #         )
+    #         if isinstance(innings, dict)
+    #         and innings.get("inningsId") is not None
+    #         and int(innings.get("inningsId")) in self.SCORED_INNINGS
+    #     ]
 
-        if not innings_numbers:
+    #     if not innings_numbers:
 
-            innings_numbers = list(self.SCORED_INNINGS)
+    #         innings_numbers = list(self.SCORED_INNINGS)
 
-        for innings_number in innings_numbers:
+    #     for innings_number in innings_numbers:
 
-            url = (
-                "https://www.cricbuzz.com/"
-                "api/mcenter/over-by-over/"
-                f"{self.match_id}/"
-                f"{innings_number}"
-            )
+    #         url = (
+    #             "https://www.cricbuzz.com/"
+    #             "api/mcenter/over-by-over/"
+    #             f"{self.match_id}/"
+    #             f"{innings_number}"
+    #         )
 
-            while url:
+    #         while url:
 
-                try:
+    #             try:
 
-                    response = self._cricbuzz_get(url)
+    #                 response = self._cricbuzz_get(url)
 
-                except requests.RequestException:
+    #             except requests.RequestException:
 
-                    break
+    #                 break
 
-                if response.status_code != 200:
-                    break
+    #             if response.status_code != 200:
+    #                 break
 
-                try:
+    #             try:
 
-                    data = response.json()
+    #                 data = response.json()
 
-                except ValueError:
+    #             except ValueError:
 
-                    break
+    #                 break
 
-                over_data = data.get(
-                    "paginatedData",
-                    []
-                )
+    #             over_data = data.get(
+    #                 "paginatedData",
+    #                 []
+    #             )
 
-                for over in over_data:
+    #             for over in over_data:
 
-                    if not isinstance(
-                        over,
-                        dict
-                    ):
-                        continue
+    #                 if not isinstance(
+    #                     over,
+    #                     dict
+    #                 ):
+    #                     continue
 
-                    summary = over.get(
-                        "ovrSummary",
-                        ""
-                    )
+    #                 summary = over.get(
+    #                     "ovrSummary",
+    #                     ""
+    #                 )
 
-                    bowl_names = over.get(
-                        "bowlNames",
-                        []
-                    )
+    #                 bowl_names = over.get(
+    #                     "bowlNames",
+    #                     []
+    #                 )
 
-                    if isinstance(
-                        bowl_names,
-                        str
-                    ):
+    #                 if isinstance(
+    #                     bowl_names,
+    #                     str
+    #                 ):
 
-                        bowl_names = [
-                            bowl_names
-                        ]
+    #                     bowl_names = [
+    #                         bowl_names
+    #                     ]
 
-                    if not bowl_names:
-                        continue
+    #                 if not bowl_names:
+    #                     continue
 
-                    bowler_name = (
-                        bowl_names[0]
-                    )
+    #                 bowler_name = (
+    #                     bowl_names[0]
+    #                 )
 
-                    tokens = str(
-                        summary
-                    ).split()
+    #                 tokens = str(
+    #                     summary
+    #                 ).split()
 
-                    dots = 0
+    #                 dots = 0
 
-                    for token in tokens:
+    #                 for token in tokens:
 
-                        token = token.strip()
+    #                     token = token.strip()
 
-                        if (
-                            token == "0"
-                            or token.upper() == "W"
-                            or re.fullmatch(
-                                r"B\d*",
-                                token,
-                                flags=re.IGNORECASE
-                            )
-                            or re.fullmatch(
-                                r"L\d*",
-                                token,
-                                flags=re.IGNORECASE
-                            )
-                        ):
+    #                     if (
+    #                         token == "0"
+    #                         or token.upper() == "W"
+    #                         or re.fullmatch(
+    #                             r"B\d*",
+    #                             token,
+    #                             flags=re.IGNORECASE
+    #                         )
+    #                         or re.fullmatch(
+    #                             r"L\d*",
+    #                             token,
+    #                             flags=re.IGNORECASE
+    #                         )
+    #                     ):
 
-                            dots += 1
+    #                         dots += 1
 
-                    key = (
-                        int(innings_number),
-                        bowler_name.strip()
-                    )
+    #                 key = (
+    #                     int(innings_number),
+    #                     bowler_name.strip()
+    #                 )
 
-                    dot_balls[key] = (
-                        dot_balls.get(
-                            key,
-                            0
-                        )
-                        + dots
-                    )
+    #                 dot_balls[key] = (
+    #                     dot_balls.get(
+    #                         key,
+    #                         0
+    #                     )
+    #                     + dots
+    #                 )
 
-                # ------------------------------------------------
-                # Pagination
-                # ------------------------------------------------
+    #             # ------------------------------------------------
+    #             # Pagination
+    #             # ------------------------------------------------
 
-                next_url = data.get(
-                    "nextPaginationURL"
-                )
+    #             next_url = data.get(
+    #                 "nextPaginationURL"
+    #             )
 
-                if next_url:
+    #             if next_url:
 
-                    if next_url.startswith("http"):
+    #                 if next_url.startswith("http"):
 
-                        url = next_url
+    #                     url = next_url
 
-                    else:
+    #                 else:
 
-                        url = (
-                            "https://www.cricbuzz.com"
-                            + next_url
-                        )
+    #                     url = (
+    #                         "https://www.cricbuzz.com"
+    #                         + next_url
+    #                     )
 
-                else:
+    #             else:
 
-                    url = None
+    #                 url = None
 
-        return dot_balls
+    #     return dot_balls
 
 
     # ============================================================
@@ -1118,52 +1118,52 @@ class Score:
         return name
 
 
-    # ============================================================
-    # DOT BALL LOOKUP
-    # ============================================================
+    # # ============================================================
+    # # DOT BALL LOOKUP
+    # # ============================================================
 
-    def _lookup_dot_balls(
-        self,
-        dot_balls,
-        innings_number,
-        bowler_name
-    ):
+    # def _lookup_dot_balls(
+    #     self,
+    #     dot_balls,
+    #     innings_number,
+    #     bowler_name
+    # ):
 
-        exact_key = (
-            int(innings_number),
-            bowler_name
-        )
+    #     exact_key = (
+    #         int(innings_number),
+    #         bowler_name
+    #     )
 
-        if exact_key in dot_balls:
+    #     if exact_key in dot_balls:
 
-            return dot_balls[
-                exact_key
-            ]
+    #         return dot_balls[
+    #             exact_key
+    #         ]
 
-        target = self._normalise_name(
-            bowler_name
-        )
+    #     target = self._normalise_name(
+    #         bowler_name
+    #     )
 
-        for (
-            innings,
-            cricbuzz_name
-        ), count in dot_balls.items():
+    #     for (
+    #         innings,
+    #         cricbuzz_name
+    #     ), count in dot_balls.items():
 
-            if int(innings) != int(
-                innings_number
-            ):
-                continue
+    #         if int(innings) != int(
+    #             innings_number
+    #         ):
+    #             continue
 
-            if (
-                self._normalise_name(
-                    cricbuzz_name
-                )
-                == target
-            ):
+    #         if (
+    #             self._normalise_name(
+    #                 cricbuzz_name
+    #             )
+    #             == target
+    #         ):
 
-                return count
+    #             return count
 
-        return 0
+    #     return 0
 
 
     # ============================================================
@@ -1219,13 +1219,13 @@ class Score:
 
         self.not_started = False
 
-        # --------------------------------------------------------
-        # Calculate all bowler dot balls.
-        # --------------------------------------------------------
+        # # --------------------------------------------------------
+        # # Calculate all bowler dot balls.
+        # # --------------------------------------------------------
 
-        dot_balls = (
-            self._get_cricbuzz_dot_balls()
-        )
+        # dot_balls = (
+        #     self._get_cricbuzz_dot_balls()
+        # )
 
         # --------------------------------------------------------
         # Process innings.
@@ -1842,17 +1842,17 @@ class Score:
                     if balls_bowled > 0:
                         economy_value = round(runs_value * 6 / balls_bowled, 2)
 
-                    # ------------------------------------------------
-                    # Calculated dot balls
-                    # ------------------------------------------------
+                    # # ------------------------------------------------
+                    # # Calculated dot balls
+                    # # ------------------------------------------------
 
-                    calculated_dots = (
-                        self._lookup_dot_balls(
-                            dot_balls,
-                            innings_number,
-                            raw_name
-                        )
-                    )
+                    # calculated_dots = (
+                    #     self._lookup_dot_balls(
+                    #         dot_balls,
+                    #         innings_number,
+                    #         raw_name
+                    #     )
+                    # )
 
                     bowlers_rows.append({
 
@@ -1878,10 +1878,10 @@ class Score:
                             wickets_value,
 
                         "Economy":
-                            economy_value,
+                            economy_value
 
-                        "0s":
-                            calculated_dots
+                        # "0s":
+                        #     calculated_dots
                     })
 
         self.man_of_the_match = self._resolve_player_of_match(
