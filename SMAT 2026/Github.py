@@ -16,13 +16,21 @@ def _repo_file(repo_path):
     full = f"{GITHUB_FOLDER}/{repo_path}" if GITHUB_FOLDER else repo_path
     return quote(full)
 
-def _headers():
-    return {"Authorization": f"token {GITHUB_TOKEN}"}
+def _headers(accept=None):
+    h = {"Authorization": f"token {GITHUB_TOKEN}"}
+    if accept:
+        h["Accept"] = accept
+    return h
 
 def _get_sha(repo_path):
-    """Get SHA of existing file in repo, None if doesn't exist"""
+    """Get SHA of existing file in repo, None if doesn't exist.
+
+    The default contents response is refused for files over 1 MB, which made
+    this return None, so every later push of a big file failed ("sha wasn't
+    supplied"). The 'object' media type works up to 100 MB (sha included,
+    content left empty)."""
     url = f"https://api.github.com/repos/{GITHUB_REPO}/contents/{_repo_file(repo_path)}"
-    r = requests.get(url, headers=_headers())
+    r = requests.get(url, headers=_headers("application/vnd.github.object+json"))
     if r.status_code == 200:
         return r.json().get("sha")
     return None
@@ -67,9 +75,11 @@ def pull_file_from_github(repo_path, local_path):
         return False
     try:
         url = f"https://api.github.com/repos/{GITHUB_REPO}/contents/{_repo_file(repo_path)}"
-        r = requests.get(url, headers=_headers())
+        # 'raw' returns the file bytes directly and works up to 100 MB; the
+        # default JSON response has no content for files over 1 MB.
+        r = requests.get(url, headers=_headers("application/vnd.github.raw+json"))
         if r.status_code == 200:
-            content = base64.b64decode(r.json()["content"])
+            content = r.content
             if not content:
                 print(f"{repo_path} on GitHub is empty, ignoring it")
                 return False
@@ -79,7 +89,7 @@ def pull_file_from_github(repo_path, local_path):
             print(f"Pulled {repo_path} from GitHub to {local_path}")
             return True
         else:
-            print(f"File {repo_path} not found in GitHub repo")
+            print(f"Could not pull {repo_path} from GitHub: {r.status_code} {r.text[:200]}")
             return False
     except Exception as e:
         print(f"Error pulling {repo_path} from GitHub: {e}")
@@ -105,7 +115,7 @@ def push_all_files(database, file_path, json_filename, links_file=None):
         push_file_to_github(links_file, os.path.basename(links_file))
     
     # Push trackers
-    for tracker in ["/tmp/.final_scrape_tracker", "/tmp/.last_update_timestamp" "/tmp/.post_match_scraped"]:
+    for tracker in ["/tmp/.final_scrape_tracker", "/tmp/.last_update_timestamp", "/tmp/.post_match_scraped"]:
         if os.path.exists(tracker):
             push_file_to_github(tracker, os.path.basename(tracker))
     
@@ -133,7 +143,7 @@ def sync_files_from_github(database, file_path, json_filename, links_file=None):
         pull_file_from_github(os.path.basename(links_file), links_file)
     
     # Pull trackers
-    for tracker in [".final_scrape_tracker", ".last_update_timestamp", "/tmp/.post_match_scraped"]:
+    for tracker in [".final_scrape_tracker", ".last_update_timestamp", ".post_match_scraped"]:
         local_path = f"/tmp/{tracker}"
         if not os.path.exists(local_path):
             pull_file_from_github(tracker, local_path)
