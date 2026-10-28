@@ -290,8 +290,12 @@ def run_output_pipeline():
 
         # Save to JSON only
         spreadsheet_serializable = convert_values(spreadsheet)
-        with open(json_filename, "w") as json_file:
+        # Temp file + rename: the dashboard reads this file while a run may be
+        # writing it, and must never see a half-written JSON.
+        tmp_json = json_filename + ".tmp"
+        with open(tmp_json, "w") as json_file:
             json.dump(spreadsheet_serializable, json_file, indent=4, cls=NumpyEncoder)
+        os.replace(tmp_json, json_filename)
         print("JSON file saved successfully!")
 
         # Remember what these results were scored with

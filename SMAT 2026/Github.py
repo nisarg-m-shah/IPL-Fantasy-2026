@@ -48,16 +48,26 @@ def push_file_to_github(local_path, repo_path):
             return False
         content = base64.b64encode(raw).decode()
         
-        sha = _get_sha(repo_path)
         url = f"https://api.github.com/repos/{GITHUB_REPO}/contents/{_repo_file(repo_path)}"
         data = {
             "message": f"Update {repo_path}",
             "content": content,
         }
-        if sha:
-            data["sha"] = sha
-        
-        r = requests.put(url, json=data, headers=_headers())
+
+        # If the file changed on GitHub between reading its sha and writing
+        # (409 conflict / 422 stale sha, e.g. a code push at the same moment),
+        # read the sha again and retry once.
+        for attempt in (1, 2):
+            sha = _get_sha(repo_path)
+            if sha:
+                data["sha"] = sha
+            else:
+                data.pop("sha", None)
+            r = requests.put(url, json=data, headers=_headers())
+            if r.status_code not in (409, 422) or attempt == 2:
+                break
+            print(f"Push of {repo_path} hit {r.status_code}, retrying with a fresh sha")
+
         if r.status_code in (200, 201):
             print(f"Pushed {repo_path} to GitHub")
             return True

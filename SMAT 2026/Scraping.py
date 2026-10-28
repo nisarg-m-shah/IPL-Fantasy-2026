@@ -255,6 +255,10 @@ class Score:
         self.is_tournament_final = False
         self.not_started = False
 
+        # True when there is no scorecard AND Cricbuzz says the match was
+        # abandoned (so there will never be one).
+        self.washed_out = False
+
         # True when Cricbuzz says the match is finished but no scorecard
         # could be read (a scraper problem, NOT a washed-out match).
         self.scorecard_missing = False
@@ -1214,6 +1218,7 @@ class Score:
                 )
             else:
                 self.not_started = True
+                self.washed_out = "abandon" in self.header_state
 
             return
 
@@ -2115,6 +2120,17 @@ class Series:
     # is retried this many times, then flagged and left alone.
     MAX_SCORECARD_FAILURES = 3
 
+    # Time budget for one run's scraping loop (seconds). Matches are scraped
+    # one after another with a pause in between (~15 s per match all in), so
+    # this fits roughly 15 matches - enough for 8 running at once. Keep it
+    # well under the dashboard's LOCK_TIMEOUT (600 s), which also has to
+    # cover scoring and the GitHub push.
+    RUN_TIME_LIMIT = 240
+
+    # Pause between two matches, and tries per match within one run.
+    MATCH_PAUSE_SECONDS = 10
+    MATCH_ATTEMPTS = 3
+
     # Stages whose links are placeholders (teams TBC) until the day
     # they are played. Each stage's links are re-scraped on/after
     # that day, at most MAX_LINK_REFRESHES times.
@@ -2148,6 +2164,7 @@ class Series:
         self.match_numbers       = {}   # str(match_id) -> overall number (group matches)
         self.overall_numbers     = {}   # str(match_id) -> overall number (incl. Final)
         self.no_play             = set()  # match numbers tried with no scorecard
+        self.washed_out          = set()  # match numbers Cricbuzz lists as abandoned, no play
         self.scorecard_missing   = {}   # match number -> failed scorecard reads
         self.scraped_now         = []   # match keys scraped during this run
         self._links_dirty        = False
@@ -2189,14 +2206,13 @@ class Series:
 
         # ---------------- GET MATCHES ----------------
         combined_sorted = self.match_id_generator(driver)
-        attempt_limit   = 3
 
         # ---------------- MAIN LOOP ----------------
         _start_time = _time.time()
         self._hit_time_limit = False
 
-        for match_number, match_type, match_name, status in combined_sorted:
-            if _time.time() - _start_time > 50:
+        for idx, (match_number, match_type, match_name, status) in enumerate(combined_sorted):
+            if _time.time() - _start_time > self.RUN_TIME_LIMIT:
                 print("Time limit reached, saving progress")
                 self._hit_time_limit = True
                 break
@@ -2210,20 +2226,15 @@ class Series:
 
             self._scrape_match(
                 match_number, match_name, match_type,
-                attempts=attempt_limit, driver=driver
+                attempts=self.MATCH_ATTEMPTS, driver=driver
             )
-            time.sleep(10)
 
-        # ---------------- SAVE ONLY IF NEEDED ----------------
-        if self._dirty:
-            tmp_path = self.database_name + ".tmp"
-            with open(tmp_path, "wb") as f:
-                dill.dump({
-                    "objects": self.match_objects,
-                    "states":  self.match_states
-                }, f)
-            os.replace(tmp_path, self.database_name)
+            # Polite pause between matches (not needed after the last one)
+            if idx < len(combined_sorted) - 1:
+                time.sleep(self.MATCH_PAUSE_SECONDS)
 
+        # The database is saved after every match (see _scrape_match), so
+        # only the links file can still be waiting to be saved here.
         if self._links_dirty:
             self._save_links()
 
@@ -2234,63 +2245,116 @@ class Series:
     # =====================================================
     # Internal scraper
     # =====================================================
+    @staticmethod
+    def _atomic_dump(obj, path, dumper):
+        """Write via a temp file + rename, so a crash or a reader never sees a half-written file."""
+        tmp_path = path + ".tmp"
+        with open(tmp_path, "wb") as f:
+            dumper(obj, f)
+        os.replace(tmp_path, path)
+
+    @staticmethod
+    def states_path(database_name):
+        """Small side file holding only {match_id: {"is_final": bool}} (see pending_matches)."""
+        return database_name + ".states.json"
+
+    def _save_database(self):
+        self._atomic_dump(
+            {"objects": self.match_objects, "states": self.match_states},
+            self.database_name,
+            dill.dump
+        )
+        # Tiny copy of the states so the dashboard does not have to unpickle
+        # the whole database on every page load just to see what is pending.
+        self._atomic_dump(
+            self.match_states,
+            self.states_path(self.database_name),
+            lambda obj, f: f.write(json.dumps(obj).encode())
+        )
+
     def _scrape_match(self, match_number, match_name, match_type, attempts, driver):
-        attempt = 1
-        while attempt <= attempts:
-            score            = Score(match_number, driver=driver)
-            score.match_type = match_type
-
-            # Finished on Cricbuzz but the scorecard could not be read: report
-            # it, count it, store nothing (and do NOT mark it as washed out).
-            if score.scorecard_missing:
-                n = self.scorecard_missing.get(str(match_number), 0) + 1
-                self.scorecard_missing[str(match_number)] = n
-                self._links_dirty = True
+        # A network error / Cricbuzz hiccup must not abort the whole run (and
+        # the matches after this one): retry with a growing pause, then move on.
+        score = None
+        for attempt in range(1, attempts + 1):
+            try:
+                score = Score(match_number, driver=driver)
+                break
+            except Exception as e:
                 print(
-                    f"WARNING: match {match_number} is finished on Cricbuzz but "
-                    f"its scorecard could not be read "
-                    f"(attempt {n} of {self.MAX_SCORECARD_FAILURES})"
+                    f"Match {match_number}: attempt {attempt} of {attempts} "
+                    f"failed ({type(e).__name__}: {e})"
                 )
-                return
+                if attempt < attempts:
+                    time.sleep(5 * attempt)
 
-            # Toss hasn't happened yet — nothing to store
-            if score.not_started:
-                print(f"Match {match_number} not started yet (no toss), skipping")
-                self.no_play.add(str(match_number))
-                self._links_dirty = True
-                return
-
-            # Use "Match 15: Mumbai vs Chennai" format as key —
-            # guarantees uniqueness even when two teams meet more than once
-            # (the number is the overall match number, 1-125, not Cricbuzz's id)
-            overall   = self.overall_numbers.get(str(match_number), match_number)
-            real_name = f"Match {overall} - {score.match_name}" if score.match_name else match_name
-
-            self.match_objects[real_name] = score
-            self.match_states[match_number] = {"is_final": score.is_final}
-            self._dirty = True
-            self.scraped_now.append(real_name)
-
-            if str(match_number) in self.scorecard_missing:
-                del self.scorecard_missing[str(match_number)]
-                self._links_dirty = True
-
-            if str(match_number) in self.no_play:
-                self.no_play.discard(str(match_number))
-                self._links_dirty = True
-
-            with open(self.database_name, "wb") as f:
-                dill.dump({
-                    "objects": self.match_objects,
-                    "states":  self.match_states
-                }, f)
-
-            _push_to_github(self.database_name)
-
-            print("Scraped:", real_name, "\n")
+        if score is None:
+            print(f"Match {match_number}: giving up for this run, will retry next run")
             return
 
-            attempt += 1
+        score.match_type = match_type
+
+        # Finished on Cricbuzz but the scorecard could not be read: report
+        # it, count it, store nothing (and do NOT mark it as washed out).
+        if score.scorecard_missing:
+            n = self.scorecard_missing.get(str(match_number), 0) + 1
+            self.scorecard_missing[str(match_number)] = n
+            self._links_dirty = True
+            print(
+                f"WARNING: match {match_number} is finished on Cricbuzz but "
+                f"its scorecard could not be read "
+                f"(attempt {n} of {self.MAX_SCORECARD_FAILURES})"
+            )
+            return
+
+        # No scorecard: nothing to store.
+        if score.not_started:
+            self.no_play.add(str(match_number))
+            if score.washed_out:
+                # Cricbuzz says it was abandoned: never look at it again
+                print(f"Match {match_number} abandoned without play, will not be retried")
+                self.washed_out.add(str(match_number))
+            else:
+                print(f"Match {match_number} not started yet (no toss), skipping")
+            self._links_dirty = True
+            return
+
+        # Use "Match 15 - Mumbai vs Chennai" format as key (the number is
+        # the overall match number, 1-125, not Cricbuzz's id). Team names are
+        # already mapped onto the final_squads names by _resolve_team_key.
+        overall   = self.overall_numbers.get(str(match_number), match_number)
+        real_name = f"Match {overall} - {score.match_name}" if score.match_name else match_name
+
+        # Safeguard: if this match is already stored under a different key
+        # (e.g. the name or numbering changed since), replace it - never keep
+        # two copies, which would score the match twice.
+        for old_key in [
+            k for k, o in self.match_objects.items()
+            if k != real_name and str(getattr(o, "match_number", "")) == str(match_number)
+        ]:
+            print(f"Replacing stored '{old_key}' with '{real_name}' (same match)")
+            del self.match_objects[old_key]
+
+        self.match_objects[real_name] = score
+        self.match_states[match_number] = {"is_final": score.is_final}
+        self._dirty = True
+        self.scraped_now.append(real_name)
+
+        if str(match_number) in self.scorecard_missing:
+            del self.scorecard_missing[str(match_number)]
+            self._links_dirty = True
+
+        for marks in (self.no_play, self.washed_out):
+            if str(match_number) in marks:
+                marks.discard(str(match_number))
+                self._links_dirty = True
+
+        # Saved locally after every match so progress survives a crash. It is
+        # NOT pushed to GitHub here: the database is tens of MB, and the
+        # dashboard pushes it once at the end of the run (push_all_files).
+        self._save_database()
+
+        print("Scraped:", real_name, "\n")
 
 
     # =====================================================
@@ -2325,7 +2389,8 @@ class Series:
             self.no_play,
             now_ms,
             verbose=True,
-            missing=self.scorecard_missing
+            missing=self.scorecard_missing,
+            washed_out=self.washed_out
         )
 
         # Status is a placeholder (1), exactly as in the original; the real
@@ -2353,7 +2418,7 @@ class Series:
 
 
     @classmethod
-    def _eligible(cls, match_links, match_states, no_play, now_ms, verbose=False, missing=None):
+    def _eligible(cls, match_links, match_states, no_play, now_ms, verbose=False, missing=None, washed_out=None):
         """
         Which matches should be scraped right now? Returns a list of
         (real_start_ms, match_dict) sorted by start.
@@ -2394,6 +2459,10 @@ class Series:
                 continue
 
             if match_states.get(match_number, {}).get("is_final", False):
+                continue
+
+            # Abandoned without play: there will never be a scorecard
+            if match_number in (washed_out or ()):
                 continue
 
             # Finished on Cricbuzz but unreadable too many times: leave it
@@ -2497,15 +2566,36 @@ class Series:
         if not links:
             return None
 
+        # Fast path: the small states file written next to the database. It
+        # is only trusted if it is at least as new as the database; otherwise
+        # (first run after a restart, or an older database) read the full
+        # database once and rebuild it.
+        states = None
+        states_file = cls.states_path(database_name)
         try:
-            with open(database_name, "rb") as f:
-                states = dill.load(f).get("states", {})
-        except (FileNotFoundError, EOFError):
-            print(f"pending_matches: {database_name} is missing or empty - treating every match as not yet scraped")
-            states = {}
-        except Exception as e:
-            print(f"pending_matches: could not read {database_name} ({type(e).__name__}: {e}) - treating every match as not yet scraped")
-            states = {}
+            if os.path.getmtime(states_file) >= os.path.getmtime(database_name):
+                with open(states_file, "rb") as f:
+                    states = json.loads(f.read().decode())
+        except Exception:
+            states = None
+
+        if states is None:
+            try:
+                with open(database_name, "rb") as f:
+                    states = dill.load(f).get("states", {})
+                try:
+                    cls._atomic_dump(
+                        states, states_file,
+                        lambda obj, f: f.write(json.dumps(obj).encode())
+                    )
+                except Exception:
+                    pass
+            except (FileNotFoundError, EOFError):
+                print(f"pending_matches: {database_name} is missing or empty - treating every match as not yet scraped")
+                states = {}
+            except Exception as e:
+                print(f"pending_matches: could not read {database_name} ({type(e).__name__}: {e}) - treating every match as not yet scraped")
+                states = {}
 
         if now_ms is None:
             now_ms = int(time.time() * 1000)
@@ -2517,9 +2607,11 @@ class Series:
 
         missing = payload.get("scorecard_missing", {})
 
+        washed_out = set(map(str, payload.get("washed_out", [])))
+
         pending = [
             str(m["match_id"])
-            for _, m in cls._eligible(links, states, no_play, now_ms, missing=missing)
+            for _, m in cls._eligible(links, states, no_play, now_ms, missing=missing, washed_out=washed_out)
         ]
 
         due = cls._due_stages(
@@ -2594,6 +2686,7 @@ class Series:
                 self.no_play = set(map(str, payload.get("not_started", [])))
 
             self.scorecard_missing = dict(payload.get("scorecard_missing", {}))
+            self.washed_out = set(map(str, payload.get("washed_out", [])))
             self.match_links = payload.get("matches", [])
             counts = payload.get("refresh_counts", {})
 
@@ -2689,7 +2782,8 @@ class Series:
                 "refresh_counts": self.link_refresh_counts,
                 "not_started":    sorted(self.no_play),
                 "version":        self.LINKS_VERSION,
-                "scorecard_missing": self.scorecard_missing
+                "scorecard_missing": self.scorecard_missing,
+                "washed_out":     sorted(self.washed_out)
             }, f)
         os.replace(tmp_path, self.links_database)
 
