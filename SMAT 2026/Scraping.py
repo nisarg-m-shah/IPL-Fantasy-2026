@@ -1191,7 +1191,9 @@ class Score:
         )
 
         self._scorecard_cache = scorecard
-        self._html_cache = html
+        # The raw page (~570 KB) is NOT kept: nothing reads it after parsing,
+        # and storing it made up 97% of the saved database.
+        self._html_cache = ""
 
         # --------------------------------------------------------
         # Match metadata (winner, toss, venue, is_final, ...).
@@ -2197,6 +2199,18 @@ class Series:
                 "fix or delete the file, then run again."
             ) from e
         self.match_names = list(self.match_objects.keys())
+
+        # One-off shrink of databases saved before the page HTML was dropped
+        # (it was ~97% of the file). Saved straight away so the smaller file
+        # is what gets pushed to GitHub.
+        _shrunk = 0
+        for _obj in self.match_objects.values():
+            if getattr(_obj, "_html_cache", ""):
+                _obj._html_cache = ""
+                _shrunk += 1
+        if _shrunk:
+            print(f"Dropped stored page HTML from {_shrunk} matches")
+            self._save_database()
 
         # ---------------- NO DRIVER NEEDED ----------------
         # Cricbuzz is plain HTTP, so the shared Selenium driver of the
