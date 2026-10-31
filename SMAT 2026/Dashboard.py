@@ -15,7 +15,7 @@ import sys
 from Github import sync_files_from_github, push_all_files
 from Output import run_output_pipeline
 from Scraping import Series
-from Auction import teams,boosters,names,roles,squads,team_names_ff,team_names_sf,series_slug,database,file_path,json_filename, MATCH_SCHEDULE,match_numbers
+from Auction import teams,boosters,roles,squads,team_names_ff,team_names_sf,series_slug,database,file_path,json_filename, MATCH_SCHEDULE,match_numbers
 import base64
 
 # Match-links pickle (schedule, refresh counters) - same place Series saves it
