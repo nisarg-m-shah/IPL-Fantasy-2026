@@ -97,8 +97,19 @@ def run_output_pipeline():
     # A match that is final, already in the JSON, and was NOT re-scraped in
     # this run only needs re-scoring if the scoring inputs changed (squads,
     # boosters, or the scoring code), which a fingerprint tracks.
+    source_files = [
+        inspect.getsourcefile(Match),   # Points.py
+        inspect.getsourcefile(Series)   # Scraping.py
+    ]
+
+    source_code = ""
+
+    for file_path in sorted(set(source_files)):
+        with open(file_path, "r", encoding="utf-8") as f:
+            source_code += f.read()
+
     fingerprint = hashlib.md5(
-        (repr((teams, boosters)) + open(inspect.getsourcefile(Match)).read()).encode()
+        (repr((teams, boosters)) + source_code).encode("utf-8")
     ).hexdigest()
     fingerprint_file = json_filename + ".fp"
     try:
