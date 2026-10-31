@@ -326,6 +326,15 @@ class Match:
         all_players.update(self.match_object.batsmen_list['Batsman'].values)
         all_players.update(self.match_object.bowlers_info['Bowler'].values)
 
+        # Include fielders who may not have batted or bowled
+        all_players.update(self.match_object.catchers)
+        all_players.update(self.match_object.stumpers)
+        all_players.update(self.match_object.main_runouters)
+        all_players.update(self.match_object.secondary_runouters)
+
+        # Remove any missing player names
+        all_players.discard(None)
+
         general_player_points_list = {}
         for player in all_players:
             #player        = find_full_name(names, player)

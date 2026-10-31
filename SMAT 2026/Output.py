@@ -147,24 +147,49 @@ def run_output_pipeline():
         team_breakdown      = match.match_points_breakdown
         General_points_list = match.general_player_points_list
 
-        # Check if data has changed (skip if unchanged)
-        if points_key in spreadsheet and spreadsheet:
-            existing_data = spreadsheet[points_key]
-            if isinstance(existing_data, (dict, list)):
-                existing_list = list(existing_data.keys()) if isinstance(existing_data, dict) else existing_data
-                if len(existing_list) == len(list(team_breakdown.index)):
-                    count = 0
-                    for player in list(team_breakdown.index):
-                        existing_val = existing_data[player]['Total Points'] if isinstance(existing_data, dict) else None
-                        if existing_val is not None and existing_val != team_breakdown['Total Points'][player]:
-                            count += 1
-                            break
-                    if count == 0:
-                        print(f"Match {match_name} already processed and unchanged, skipping...")
-                        continue
+        # Check whether team points AND individual player points have changed
+        player_points_key = match_name + " - Points Breakdown"
 
-        spreadsheet[(match_name + " - Points Breakdown")] = General_points_list
-        spreadsheet[(match_name + " - CFC Points")]        = team_breakdown
+        # Convert newly generated data into JSON-comparable dictionaries
+        new_team_data = convert_values(team_breakdown)
+        new_player_data = convert_values(General_points_list)
+
+        # Check team points
+        team_points_unchanged = (
+            points_key in spreadsheet
+            and json.dumps(
+                spreadsheet[points_key],
+                sort_keys=True,
+                cls=NumpyEncoder
+            ) == json.dumps(
+                new_team_data,
+                sort_keys=True,
+                cls=NumpyEncoder
+            )
+        )
+
+        # Check individual player breakdown
+        player_points_unchanged = (
+            player_points_key in spreadsheet
+            and json.dumps(
+                spreadsheet[player_points_key],
+                sort_keys=True,
+                cls=NumpyEncoder
+            ) == json.dumps(
+                new_player_data,
+                sort_keys=True,
+                cls=NumpyEncoder
+            )
+        )
+
+        # Skip only when BOTH datasets are unchanged
+        if team_points_unchanged and player_points_unchanged:
+            print(f"Match {match_name} already processed and unchanged, skipping...")
+            continue
+
+        # Save both datasets
+        spreadsheet[player_points_key] = General_points_list
+        spreadsheet[points_key] = team_breakdown
 
         for team in list(team_breakdown.index):
             spreadsheet['Team Final Points'].setdefault(team, {}).setdefault("Total Points", 0)
