@@ -446,7 +446,7 @@ class Score:
         # Caught & bowled
         # --------------------------------------------------------
 
-        if outdec.lower().startswith("c & b "):
+        if outdec.lower().startswith("c and b "):
 
             result["catcher"] = outdec[6:].strip()
 
@@ -1613,7 +1613,7 @@ class Score:
                     dismissal = (
                         self._parse_dismissal(
                             re.sub(
-                                r"\(Sub\)",
+                                r"\(sub\)",
                                 "",
                                 outdec,
                                 flags=re.IGNORECASE
@@ -2512,7 +2512,7 @@ class Series:
 
     @classmethod
     def _due_stages(cls, match_links, refresh_counts, now_ms):
-        """Late stages (Super League / Final) whose links should be re-scraped now."""
+        """Late stages (Final) whose links should be re-scraped now."""
         today = datetime.fromtimestamp(now_ms / 1000, cls.IST).date()
 
         due = []
