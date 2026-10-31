@@ -1846,6 +1846,135 @@ boosters = {
     'Night Watchmen':      {},
 }
 
+# ---- Player lists (unchanged from IPL season — your CFC fantasy squad) ----
+names = [
+    # Gujju Gang
+    'Salil Arora','Arshad Khan','Anshul Kamboj','KL Rahul','Ayush Badoni','Harshal Patel',
+    'Ben Duckett','Hardik Pandya','Ravindra Jadeja','Prasidh Krishna','Prashant Veer',
+    'Mohammad Siraj','Marco Jansen','Akeal Hosein','Ravi Bishnoi','Sai Sudharsan',
+    'Jaydev Unadkat','Kuldeep Yadav','Eshan Malinga','Mukul Choudhary','Naman Tiwari',
+    'Ashwani Kumar','Kartik Sharma',
+
+    # Disruptors
+    'Sameer Rizvi','Shubman Gill','Travis Head','Jacob Duffy','Rajat Patidar',
+    'Vaibhav Suryavanshi','Abishek Porel','Rasikh Dar Salam','Nehal Wadhera','Noor Ahmad',
+    'Rishabh Pant','Mukesh Choudhary','Kuldeep Sen','Umran Malik','Ashutosh Sharma',
+    'Deepak Chahar','Jamie Overton','Dushmantha Chameera','Matthew Short',
+    'Gurjapneet Singh','Yudhvir Singh Charak','Shivam Mavi','Pathum Nissanka',
+
+    # Nasty Knights
+    'Kagiso Rabada','Shreyas Iyer','Ayush Mhatre','Sunil Narine','Vijaykumar Vyshak',
+    'Anukul Roy','Akash Maharaj Singh','Shivam Dube','Matt Henry','Ajinkya Rahane','Riyan Parag',
+    'Sam Curran','Angkrish Raghuvanshi','Akash Deep','Kamindu Mendis','Luke Wood',
+    'Dhruv Jurel','Suyash Sharma','Wanindu Hasaranga','Mayank Yadav','Allah Ghazanfar',
+    'Ben Dwarshuis','Prithvi Raj Yarra',
+
+    # Night Watchmen
+    'Jacob Bethell','Bhuvneshwar Kumar','Virat Kohli','Quinton de Kock','Heinrich Klaasen',
+    'Harsh Dubey','Yash Thakur','Washington Sundar','Avesh Khan','Khaleel Ahmed',
+    'Priyansh Arya','Naman Dhir','Prithvi Shaw','Tristan Stubbs','Vipraj Nigam',
+    'Mitchell Starc','Nitish Rana','Sai Kishore','Mangesh Yadav','Sarthak Ranjan',
+    'Nandre Burger','Smaran Ravichandran',
+
+    # Hilarious Hooligans
+    'Marcus Stoinis','Rohit Sharma','Cooper Connolly','Anrich Nortje','Zeeshan Ansari',
+    'Prabhsimran Singh','Ishan Kishan','MS Dhoni','Rinku Singh','Yuzvendra Chahal',
+    'Swapnil Singh','Manimaran Siddharth','Axar Patel','Jason Holder','Romario Shepherd',
+    'Rahul Tewatia','Lockie Ferguson','Mitchell Santner','Matthew Breetzke',
+    'Nathan Ellis','Mayank Markande','Shubham Dubey','Kyle Jamieson',
+
+    # Tormented Titans
+    'Ruturaj Gaikwad','Suryakumar Yadav','Sandeep Sharma','Tushar Deshpande',
+    'Vaibhav Arora','Corbin Bosch','Jos Buttler','Venkatesh Iyer','Donovan Ferreira',
+    'Azmatullah Omarzai','Kumar Kushagra','Aiden Markram','Ishant Sharma','Will Jacks',
+    'Josh Inglis','David Miller','Shimron Hetmyer','Tim Seifert','Mitchell Owen',
+    'Mukesh Kumar','Digvesh Singh Rathi','Harnoor Pannu','Xavier Bartlett',
+
+    # VS Stalwarts
+    'Varun Chakaravarthy','Josh Hazlewood','Abhishek Sharma','Adam Milne','Lungi Ngidi',
+    'Shardul Thakur','Rachin Ravindra','Karun Nair','Pat Cummins','Liam Livingstone',
+    'Arjun Tendulkar','Rahul Tripathi','Jofra Archer','Nicholas Pooran',
+    'Sherfane Rutherford','Cameron Green','Mitchell Marsh','Ryan Rickelton',
+    'Suryansh Shedge','Vihaan Malhotra','Prashant Solanki','Prince Yadav',
+
+    # Alpha Acers
+    'Sanju Samson','Finn Allen','Devdutt Padikkal','Yashasvi Jaiswal','Tejasvi Singh',
+    'Auqib Nabi','Harshit Rana','Sarfaraz Khan','Nitish Reddy','Trent Boult',
+    'Glenn Phillips','Mohammed Shami','Tilak Varma','Matheesha Pathirana',
+    'Shashank Singh','Harpreet Brar','Rahul Chahar','Urvil Patel','Mohsin Khan',
+    'Mohammad Izhar','Danish Malewar',
+
+    # Replacements
+    'Dasun Shanaka','Saurabh Dubey','Blessing Muzarabani','Navdeep Saini',
+    'Kulwant Khejroliya','Spencer Johnson','David Payne','Abhinandan Singh',
+    'Zakary Foulkes','Brijesh Sharma','Ashok Sharma','Shivang Kumar','Aman Khan',
+    'Shreyas Gopal','Sahil Parakh','Ajay Mandal','Madhav Tiwari','Tripurana Vijay',
+    'Manav Suthar','Gurnoor Brar','Daksh Kamra','Mayank Rawat','Raghu Sharma',
+    'Pyla Avanish','Vishnu Vinod','Musheer Khan','Praveen Dubey','Vishal Nishad',
+    'Aman Rao Perala','Ravi Singh','Lhuan-dre Pretorius','Yash Raj Punja',
+    'Jordan Cox','Kanishk Chouhan','Satwik Deswal','Vicky Ostwal','Krains Fuletra',
+    'Kartik Tyagi','George Linde','Praful Hinge','Sakib Hussain',
+    'Dilshan Madushanka','Krish Bhagat','Gerald Coetzee','Akash Madhwal',
+    'Himmat Singh','Rehan Ahmed','Keshav Maharaj','RS Ambrish','Dian Forrester',
+    'Kuldip Yadav','Richard Gleeson'
+]
+
+roles = [
+    'BAT','AR','AR','BAT','AR','AR',
+    'BAT','AR','AR','BOWL','AR',
+    'BOWL','AR','BOWL','BOWL','AR',
+    'BOWL','BOWL','BOWL','BAT','BOWL',
+    'BOWL','BAT',
+
+    'AR','BAT','BAT','BOWL','BAT',
+    'BAT','BAT','BOWL','BAT','BOWL',
+    'BAT','BOWL','BOWL','BOWL','AR',
+    'BOWL','AR','BOWL','AR',
+    'BOWL','AR','BOWL','BAT',
+
+    'BOWL','BAT','BAT','BOWL','BOWL',
+    'AR','BOWL','AR','BOWL','BAT','BAT',
+    'AR','BAT','BOWL','AR','BOWL',
+    'BAT','BOWL','AR','BOWL','BOWL',
+    'AR','BOWL',
+
+    'AR','BOWL','BAT','BAT','BAT',
+    'AR','BOWL','AR','BOWL','BOWL',
+    'AR','AR','BAT','BAT','AR',
+    'BOWL','AR','AR','AR','AR',
+    'BOWL','BAT',
+
+    'AR','BAT','AR','BOWL','BOWL',
+    'BAT','BAT','BAT','BAT','BOWL',
+    'AR','BOWL','AR','AR','AR',
+    'BOWL','AR','AR','BAT',
+    'BOWL','BOWL','BAT','BOWL',
+
+    'BAT','BAT','BOWL','BOWL',
+    'BOWL','AR','BAT','AR','BAT',
+    'AR','BAT','AR','BOWL','AR',
+    'BAT','BAT','BAT','BAT','AR',
+    'BOWL','BOWL','BAT','BOWL',
+
+    'BOWL','BOWL','AR','BOWL','BOWL',
+    'AR','AR','BAT','BOWL','AR',
+    'AR','BAT','BOWL','BAT',
+    'BAT','AR','AR','BAT',
+    'AR','BAT','BOWL','BOWL',
+
+    'BAT','BAT','BAT','BAT','BAT',
+    'BOWL','BOWL','BAT','AR','BOWL',
+    'BAT','BOWL','BAT','BOWL',
+    'BAT','AR','BOWL','BAT','BOWL',
+    'BOWL','BAT',
+
+    'AR','BOWL','BOWL','BOWL','BOWL','BOWL','BOWL','BOWL','BOWL','BOWL','BOWL',
+    'AR','AR','AR','BAT','AR','AR','AR','BOWL','BOWL',
+    'AR','AR','BOWL','BAT','BAT','AR','BOWL','BOWL','BAT','BAT','BAT',
+    'BOWL','BAT','AR','BOWL','BOWL','BOWL','BOWL','AR','BOWL','BOWL',
+    'BOWL','AR','BOWL','BOWL','BAT','AR','BOWL','AR','AR','BOWL','BOWL'
+]
+
 team_list = [
     'Disruptors',
     'Tormented Titans',
