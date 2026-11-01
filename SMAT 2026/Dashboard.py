@@ -358,60 +358,137 @@ st.markdown("""
         border-left: 4px solid #00f2fe !important;
     }
     
-    /* MOBILE-RESPONSIVE: Tabs styling - UPDATED (Scrollable on mobile) */
-    .stTabs [data-baseweb="tab-list"] {
-        gap: 8px;
-        background-color: rgba(0, 0, 0, 0.3);
-        border-radius: 10px;
-        padding: 6px;
-        display: flex;
-        justify-content: flex-start;
+    # /* MOBILE-RESPONSIVE: Tabs styling - UPDATED (Scrollable on mobile) */
+    # .stTabs [data-baseweb="tab-list"] {
+    #     gap: 8px;
+    #     background-color: rgba(0, 0, 0, 0.3);
+    #     border-radius: 10px;
+    #     padding: 6px;
+    #     display: flex;
+    #     justify-content: flex-start;
+    #     width: 100%;
+    # }
+
+    # /* Base tab styling */
+    # .stTabs [data-baseweb="tab"] {
+    #     background-color: transparent;
+    #     border-radius: 8px;
+    #     color: white;
+    #     font-weight: 600;
+    #     padding: 12px 16px;
+    #     font-size: clamp(0.9rem, 2.8vw, 1.05rem);
+    #     white-space: nowrap;
+    #     text-align: center;
+    # }
+
+    # /* Selected tab */
+    # .stTabs [aria-selected="true"] {
+    #     background: linear-gradient(135deg, #efb920 0%, #d4a017 100%) !important;
+    #     color: #060b26 !important;
+    # }
+
+    # /* Desktop only */
+    # @media (min-width: 1475px) {
+    #     .stTabs [data-baseweb="tab"] {
+    #         padding: 12px 24px;
+    #     }
+    # }
+
+    # /* Mobile: make tabs horizontally scrollable */
+    # @media (max-width: 768px) {
+    #     .stTabs [data-baseweb="tab-list"] {
+    #         overflow-x: auto;
+    #         overflow-y: hidden;
+    #         white-space: nowrap;
+    #         -webkit-overflow-scrolling: touch;
+    #         scrollbar-width: none;
+    #     }
+
+    #     .stTabs [data-baseweb="tab-list"]::-webkit-scrollbar {
+    #         display: none;
+    #     }
+
+    #     .stTabs [data-baseweb="tab"] {
+    #         flex: 0 0 auto;      /* prevent shrinking */
+    #         min-width: 120px;   /* make each tab wider */
+    #         padding: 12px 18px; /* comfy touch target */
+    #     }
+    # }
+
+    /* ================= CFC CUSTOM NAVIGATION ================= */
+
+    /* Desktop: all five buttons in one row */
+    .st-key-nav_grid [data-testid="stHorizontalBlock"] {
+        display: grid !important;
+        grid-template-columns: repeat(5, minmax(0, 1fr));
+        gap: 10px !important;
+    }
+
+    .st-key-nav_grid [data-testid="column"] {
+        width: 100% !important;
+        min-width: 0 !important;
+        flex: unset !important;
+    }
+
+    /* Common button styling */
+    .st-key-nav_grid [data-testid="stButton"] button {
         width: 100%;
-    }
-
-    /* Base tab styling */
-    .stTabs [data-baseweb="tab"] {
-        background-color: transparent;
-        border-radius: 8px;
-        color: white;
-        font-weight: 600;
-        padding: 12px 16px;
-        font-size: clamp(0.9rem, 2.8vw, 1.05rem);
+        min-height: 58px;
+        border-radius: 12px;
+        font-weight: 700;
+        font-size: clamp(0.7rem, 1.2vw, 0.95rem);
         white-space: nowrap;
-        text-align: center;
+        transition: all 0.2s ease;
     }
 
-    /* Selected tab */
-    .stTabs [aria-selected="true"] {
-        background: linear-gradient(135deg, #efb920 0%, #d4a017 100%) !important;
-        color: #060b26 !important;
+    /* Inactive navigation buttons */
+    .st-key-nav_grid button[data-testid="stBaseButton-secondary"] {
+        background: #17264B;
+        color: white;
+        border: 1px solid rgba(255,255,255,0.12);
     }
 
-    /* Desktop only */
-    @media (min-width: 1475px) {
-        .stTabs [data-baseweb="tab"] {
-            padding: 12px 24px;
-        }
+    /* Active navigation button */
+    .st-key-nav_grid button[data-testid="stBaseButton-primary"] {
+        background: linear-gradient(135deg, #EFB920, #D4A017);
+        color: #060B26;
+        border: 1px solid #EFB920;
     }
 
-    /* Mobile: make tabs horizontally scrollable */
+    /* Mobile layout */
     @media (max-width: 768px) {
-        .stTabs [data-baseweb="tab-list"] {
-            overflow-x: auto;
-            overflow-y: hidden;
-            white-space: nowrap;
-            -webkit-overflow-scrolling: touch;
-            scrollbar-width: none;
+
+        .st-key-nav_grid [data-testid="stHorizontalBlock"] {
+            grid-template-columns: repeat(6, minmax(0, 1fr));
+            gap: 8px !important;
         }
 
-        .stTabs [data-baseweb="tab-list"]::-webkit-scrollbar {
-            display: none;
+        /* First row: Rankings and Squads, centred */
+        .st-key-nav_grid [data-testid="column"]:nth-child(1) {
+            grid-column: 2 / span 2;
         }
 
-        .stTabs [data-baseweb="tab"] {
-            flex: 0 0 auto;      /* prevent shrinking */
-            min-width: 120px;   /* make each tab wider */
-            padding: 12px 18px; /* comfy touch target */
+        .st-key-nav_grid [data-testid="column"]:nth-child(2) {
+            grid-column: 4 / span 2;
+        }
+
+        /* Second row: Matches, Players and Live Score */
+        .st-key-nav_grid [data-testid="column"]:nth-child(3) {
+            grid-column: 1 / span 2;
+        }
+
+        .st-key-nav_grid [data-testid="column"]:nth-child(4) {
+            grid-column: 3 / span 2;
+        }
+
+        .st-key-nav_grid [data-testid="column"]:nth-child(5) {
+            grid-column: 5 / span 2;
+        }
+
+        .st-key-nav_grid [data-testid="stButton"] button {
+            min-height: 62px;
+            padding: 6px 2px;
+            font-size: 0.72rem;
         }
     }
     
@@ -920,6 +997,9 @@ def load_data(file_signature):
     except Exception:
         return None
 
+def set_active_tab(tab):
+    st.session_state["active_tab"] = tab
+
 # --- SQUAD CONFIGURATION ---
 SQUAD_INFO = teams
 # Pull data files from GitHub on startup (Streamlit Cloud only)
@@ -1072,13 +1152,58 @@ def main():
             "Player Final Points": pd.DataFrame()
         }
     
-    # Render tabs ONCE
-    tab1, tab2, tab3, tab4, tab5 = st.tabs(["🏆 RANKINGS", "🛡️ SQUADS", "🏏 MATCHES", "👤 PLAYERS", "📺 LIVE SCORE"])
-    with tab1: _safe_tab(show_rankings, data)
-    with tab2: _safe_tab(show_squads, data)
-    with tab3: _safe_tab(show_matches, data)
-    with tab4: _safe_tab(show_analytics, data)
-    with tab5: _safe_tab(show_live_score)
+    # ================= CUSTOM NAVIGATION =================
+
+    # Default page
+    st.session_state.setdefault("active_tab", "RANKINGS")
+
+    navigation = [
+        ("RANKINGS", "🏆 RANKINGS"),
+        ("SQUADS", "🛡️ SQUADS"),
+        ("MATCHES", "🏏 MATCHES"),
+        ("PLAYERS", "👤 PLAYERS"),
+        ("LIVE SCORE", "📺 LIVE SCORE")
+    ]
+
+    # Navigation buttons
+    with st.container(key="nav_grid"):
+
+        cols = st.columns(5, gap="small")
+
+        for col, (tab_key, label) in zip(cols, navigation):
+
+            with col:
+                st.button(
+                    label,
+                    key=f"nav_{tab_key.lower().replace(' ', '_')}",
+                    type=(
+                        "primary"
+                        if st.session_state["active_tab"] == tab_key
+                        else "secondary"
+                    ),
+                    use_container_width=True,
+                    on_click=set_active_tab,
+                    args=(tab_key,)
+                )
+
+    # ================= DISPLAY SELECTED PAGE =================
+
+    active_tab = st.session_state["active_tab"]
+
+    if active_tab == "RANKINGS":
+        _safe_tab(show_rankings, data)
+
+    elif active_tab == "SQUADS":
+        _safe_tab(show_squads, data)
+
+    elif active_tab == "MATCHES":
+        _safe_tab(show_matches, data)
+
+    elif active_tab == "PLAYERS":
+        _safe_tab(show_analytics, data)
+
+    elif active_tab == "LIVE SCORE":
+        _safe_tab(show_live_score)
 
     # Update block AFTER tabs — spinner appears below tabs
     if should_run_update:
