@@ -2603,7 +2603,7 @@ def show_live_score():
             ">
                 <div style="
                     display:grid;
-                    grid-template-columns: 3fr 1fr 1fr 1fr 1fr 1fr;
+                    grid-template-columns: 3fr 1fr 1fr 1fr 1fr;
                     font-size:0.75rem;
                     font-weight:600;
                     color:#efb920;
@@ -2623,7 +2623,7 @@ def show_live_score():
             st.markdown(f"""
                 <div style="
                     display:grid;
-                    grid-template-columns: 3fr 1fr 1fr 1fr 1fr 1fr;
+                    grid-template-columns: 3fr 1fr 1fr 1fr 1fr;
                     padding:8px 10px;
                     border-bottom:1px solid rgba(255,255,255,0.05);
                     font-size:0.9rem;
