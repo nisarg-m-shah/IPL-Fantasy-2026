@@ -357,142 +357,88 @@ st.markdown("""
         background: rgba(0, 242, 254, 0.15) !important;
         border-left: 4px solid #00f2fe !important;
     }
-    
-    # /* MOBILE-RESPONSIVE: Tabs styling - UPDATED (Scrollable on mobile) */
-    # .stTabs [data-baseweb="tab-list"] {
-    #     gap: 8px;
-    #     background-color: rgba(0, 0, 0, 0.3);
-    #     border-radius: 10px;
-    #     padding: 6px;
-    #     display: flex;
-    #     justify-content: flex-start;
-    #     width: 100%;
-    # }
 
-    # /* Base tab styling */
-    # .stTabs [data-baseweb="tab"] {
-    #     background-color: transparent;
-    #     border-radius: 8px;
-    #     color: white;
-    #     font-weight: 600;
-    #     padding: 12px 16px;
-    #     font-size: clamp(0.9rem, 2.8vw, 1.05rem);
-    #     white-space: nowrap;
-    #     text-align: center;
-    # }
+     /* ================= NAVIGATION ================= */
 
-    # /* Selected tab */
-    # .stTabs [aria-selected="true"] {
-    #     background: linear-gradient(135deg, #efb920 0%, #d4a017 100%) !important;
-    #     color: #060b26 !important;
-    # }
-
-    # /* Desktop only */
-    # @media (min-width: 1475px) {
-    #     .stTabs [data-baseweb="tab"] {
-    #         padding: 12px 24px;
-    #     }
-    # }
-
-    # /* Mobile: make tabs horizontally scrollable */
-    # @media (max-width: 768px) {
-    #     .stTabs [data-baseweb="tab-list"] {
-    #         overflow-x: auto;
-    #         overflow-y: hidden;
-    #         white-space: nowrap;
-    #         -webkit-overflow-scrolling: touch;
-    #         scrollbar-width: none;
-    #     }
-
-    #     .stTabs [data-baseweb="tab-list"]::-webkit-scrollbar {
-    #         display: none;
-    #     }
-
-    #     .stTabs [data-baseweb="tab"] {
-    #         flex: 0 0 auto;      /* prevent shrinking */
-    #         min-width: 120px;   /* make each tab wider */
-    #         padding: 12px 18px; /* comfy touch target */
-    #     }
-    # }
-
-    /* ================= DESKTOP NAVIGATION ================= */
-
+    /* The row of five columns becomes a grid */
     .st-key-nav_grid [data-testid="stHorizontalBlock"] {
         display: grid !important;
         grid-template-columns: repeat(5, minmax(0, 1fr)) !important;
         gap: 12px !important;
         width: 100% !important;
+        flex-wrap: nowrap !important;
     }
 
-    .st-key-nav_grid [data-testid="column"] {
+    /* Each column: cancel Streamlit's inline calc(20% - gap) sizing.
+       Matches stColumn (new) and column (old) via structure, not testid. */
+    .st-key-nav_grid [data-testid="stHorizontalBlock"] > div {
         width: 100% !important;
         min-width: 0 !important;
+        max-width: 100% !important;
         flex: none !important;
+        padding: 0 !important;
     }
 
     .st-key-nav_grid [data-testid="stButton"] {
         width: 100% !important;
     }
 
-    .st-key-nav_grid [data-testid="stButton"] > button {
+    .st-key-nav_grid [data-testid="stButton"] button {
         width: 100% !important;
         min-width: 0 !important;
         min-height: 62px !important;
-        padding: 10px 12px !important;
+        padding: 10px 8px !important;
         border-radius: 12px !important;
+        transition: all 0.2s ease;
+    }
+
+    /* Label lives in an inner <p> */
+    .st-key-nav_grid [data-testid="stButton"] button p {
         font-size: 0.95rem !important;
         font-weight: 700 !important;
         white-space: nowrap !important;
+        margin: 0 !important;
+        line-height: 1.2 !important;
     }
 
-    /* Inactive buttons */
+    /* Inactive */
     .st-key-nav_grid button[data-testid="stBaseButton-secondary"] {
         background: #17264B !important;
         color: white !important;
         border: 1px solid rgba(255,255,255,0.12) !important;
     }
+    .st-key-nav_grid button[data-testid="stBaseButton-secondary"]:hover {
+        border-color: #EFB920 !important;
+        color: #EFB920 !important;
+    }
 
-    /* Active button */
+    /* Active */
     .st-key-nav_grid button[data-testid="stBaseButton-primary"] {
         background: linear-gradient(135deg, #EFB920, #D4A017) !important;
         color: #060B26 !important;
         border: 1px solid #EFB920 !important;
     }
+    .st-key-nav_grid button[data-testid="stBaseButton-primary"] p {
+        color: #060B26 !important;
+    }
 
-    /* Mobile navigation layout */
+    /* Mobile: row 1 = 2 buttons centred, row 2 = 3 buttons */
     @media (max-width: 768px) {
-
         .st-key-nav_grid [data-testid="stHorizontalBlock"] {
             grid-template-columns: repeat(6, minmax(0, 1fr)) !important;
             gap: 8px !important;
         }
+        .st-key-nav_grid [data-testid="stHorizontalBlock"] > div:nth-child(1) { grid-column: 2 / span 2; grid-row: 1; }
+        .st-key-nav_grid [data-testid="stHorizontalBlock"] > div:nth-child(2) { grid-column: 4 / span 2; grid-row: 1; }
+        .st-key-nav_grid [data-testid="stHorizontalBlock"] > div:nth-child(3) { grid-column: 1 / span 2; grid-row: 2; }
+        .st-key-nav_grid [data-testid="stHorizontalBlock"] > div:nth-child(4) { grid-column: 3 / span 2; grid-row: 2; }
+        .st-key-nav_grid [data-testid="stHorizontalBlock"] > div:nth-child(5) { grid-column: 5 / span 2; grid-row: 2; }
 
-        /* First row: Rankings and Squads, centred */
-        .st-key-nav_grid [data-testid="column"]:nth-child(1) {
-            grid-column: 2 / span 2;
-        }
-
-        .st-key-nav_grid [data-testid="column"]:nth-child(2) {
-            grid-column: 4 / span 2;
-        }
-
-        /* Second row: Matches, Players and Live Score */
-        .st-key-nav_grid [data-testid="column"]:nth-child(3) {
-            grid-column: 1 / span 2;
-        }
-
-        .st-key-nav_grid [data-testid="column"]:nth-child(4) {
-            grid-column: 3 / span 2;
-        }
-
-        .st-key-nav_grid [data-testid="column"]:nth-child(5) {
-            grid-column: 5 / span 2;
-        }
-
-        /* Mobile button sizing */
-        .st-key-nav_grid [data-testid="stButton"] > button {
-            min-height: 62px !important;
+        .st-key-nav_grid [data-testid="stButton"] button {
+            min-height: 56px !important;
             padding: 6px 2px !important;
+        }
+        .st-key-nav_grid [data-testid="stButton"] button p {
             font-size: 0.72rem !important;
         }
     }
