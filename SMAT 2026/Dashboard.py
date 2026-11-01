@@ -896,10 +896,11 @@ def _safe_tab(render, *args):
         traceback.print_exc()
         st.error(f"This tab hit an error: {type(e).__name__}: {e}")
 
-@st.cache_data(ttl=300)
-def load_data():
+@st.cache_data(ttl=450)
+def load_data(file_signature):
     if not os.path.exists(json_filename):
         return None
+
     try:
         with open(json_filename, "r") as f:
             raw = json.load(f)
@@ -913,9 +914,10 @@ def load_data():
                 data[key] = df
             else:
                 data[key] = value
+
         return data
+
     except Exception:
-        st.cache_data.clear()
         return None
 
 # --- SQUAD CONFIGURATION ---
@@ -1056,7 +1058,13 @@ def main():
         """, unsafe_allow_html=True)
 
     # Load and display cached data FIRST
-    data = load_data()
+    if os.path.exists(json_filename):
+        stat = os.stat(json_filename)
+        file_signature = (stat.st_mtime_ns, stat.st_size)
+    else:
+        file_signature = None
+
+    data = load_data(file_signature)
     if not data:
         from Auction import team_list as _team_list
         data = {
