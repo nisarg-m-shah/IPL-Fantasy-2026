@@ -398,7 +398,20 @@ st.markdown("""
         font-weight: 700 !important;
         white-space: nowrap !important;
         margin: 0 !important;
-        line-height: 1.2 !important;
+        padding: 0 !important;
+        line-height: 1 !important;
+    }
+
+    /* Centre the label box inside the button */
+    .st-key-nav_grid [data-testid="stButton"] button {
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+    }
+    .st-key-nav_grid [data-testid="stButton"] button [data-testid="stMarkdownContainer"] {
+        display: flex !important;
+        align-items: center !important;
+        margin: 0 !important;
     }
 
     /* Inactive */
