@@ -415,51 +415,55 @@ st.markdown("""
     #     }
     # }
 
-    /* ================= CFC CUSTOM NAVIGATION ================= */
+    /* ================= DESKTOP NAVIGATION ================= */
 
-    /* Desktop: all five buttons in one row */
     .st-key-nav_grid [data-testid="stHorizontalBlock"] {
         display: grid !important;
-        grid-template-columns: repeat(5, minmax(0, 1fr));
-        gap: 10px !important;
+        grid-template-columns: repeat(5, minmax(0, 1fr)) !important;
+        gap: 12px !important;
+        width: 100% !important;
     }
 
     .st-key-nav_grid [data-testid="column"] {
         width: 100% !important;
         min-width: 0 !important;
-        flex: unset !important;
+        flex: none !important;
     }
 
-    /* Common button styling */
-    .st-key-nav_grid [data-testid="stButton"] button {
-        width: 100%;
-        min-height: 58px;
-        border-radius: 12px;
-        font-weight: 700;
-        font-size: clamp(0.7rem, 1.2vw, 0.95rem);
-        white-space: nowrap;
-        transition: all 0.2s ease;
+    .st-key-nav_grid [data-testid="stButton"] {
+        width: 100% !important;
     }
 
-    /* Inactive navigation buttons */
+    .st-key-nav_grid [data-testid="stButton"] > button {
+        width: 100% !important;
+        min-width: 0 !important;
+        min-height: 62px !important;
+        padding: 10px 12px !important;
+        border-radius: 12px !important;
+        font-size: 0.95rem !important;
+        font-weight: 700 !important;
+        white-space: nowrap !important;
+    }
+
+    /* Inactive buttons */
     .st-key-nav_grid button[data-testid="stBaseButton-secondary"] {
-        background: #17264B;
-        color: white;
-        border: 1px solid rgba(255,255,255,0.12);
+        background: #17264B !important;
+        color: white !important;
+        border: 1px solid rgba(255,255,255,0.12) !important;
     }
 
-    /* Active navigation button */
+    /* Active button */
     .st-key-nav_grid button[data-testid="stBaseButton-primary"] {
-        background: linear-gradient(135deg, #EFB920, #D4A017);
-        color: #060B26;
-        border: 1px solid #EFB920;
+        background: linear-gradient(135deg, #EFB920, #D4A017) !important;
+        color: #060B26 !important;
+        border: 1px solid #EFB920 !important;
     }
 
-    /* Mobile layout */
+    /* Mobile navigation layout */
     @media (max-width: 768px) {
 
         .st-key-nav_grid [data-testid="stHorizontalBlock"] {
-            grid-template-columns: repeat(6, minmax(0, 1fr));
+            grid-template-columns: repeat(6, minmax(0, 1fr)) !important;
             gap: 8px !important;
         }
 
@@ -485,10 +489,11 @@ st.markdown("""
             grid-column: 5 / span 2;
         }
 
-        .st-key-nav_grid [data-testid="stButton"] button {
-            min-height: 62px;
-            padding: 6px 2px;
-            font-size: 0.72rem;
+        /* Mobile button sizing */
+        .st-key-nav_grid [data-testid="stButton"] > button {
+            min-height: 62px !important;
+            padding: 6px 2px !important;
+            font-size: 0.72rem !important;
         }
     }
     
