@@ -60,24 +60,16 @@ def find_full_name(team, short_name):
             return "Rasikh Dar Salam"
         if "Satyanarayana" in short_name:
             return "Satyanarayana Raju"
-        if "Salt" in short_name and "Phil" in short_name:
-            return "Phil Salt"
-        if "Siddharth" in short_name and "M" in short_name:
+        if "Siddharth" in short_name and "Mani" in short_name:
             return "Manimaran Siddharth"
         if "Shami" in short_name:
             return "Mohammed Shami"
-        if "Mitch" in short_name and "Owen" in short_name:
-            return "Mitchell Owen"
-        if "Ngidi" in short_name:
-            return "Lungi Ngidi"
         if "Arshad Khan" in short_name:
             return "Arshad Khan"
         if "Nitish" in short_name and "Reddy" in short_name:
             return "Nitish Reddy"
-        if "Quinton" in short_name and "Kock" in short_name:
-            return "Quinton de Kock"
         if "Digvesh" in short_name:
-            return "Digvesh Singh Rathi"
+            return "Digvesh Rathi"
         if "Tilak" in short_name:
             return "Tilak Varma"
         if "Surya" in short_name and "Yadav" in short_name and "umar" in short_name:
@@ -86,8 +78,6 @@ def find_full_name(team, short_name):
             return "Khaleel Ahmed"
         if "Shreyas" in short_name and "yer" in short_name:
             return "Shreyas Iyer"
-        if "Jaiswal" in short_name:
-            return "Yashasvi Jaiswal"
         if "Buttler" in short_name:
             return "Jos Buttler"
         if "Sai Kishore" in short_name:
