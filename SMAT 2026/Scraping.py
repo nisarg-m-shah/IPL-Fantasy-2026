@@ -67,7 +67,7 @@ def find_full_name(team, short_name):
         if "Arshad Khan" in short_name:
             return "Arshad Khan"
         if "Nitish" in short_name and "Reddy" in short_name:
-            return "Nitish Reddy"
+            return "Nitish Kumar Reddy"
         if "Digvesh" in short_name:
             return "Digvesh Rathi"
         if "Tilak" in short_name:
