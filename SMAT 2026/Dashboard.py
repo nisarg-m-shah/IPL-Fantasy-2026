@@ -15,7 +15,7 @@ import sys
 from Github import sync_files_from_github, push_all_files
 from Output import run_output_pipeline
 from Scraping import Series
-from Auction import teams,boosters,squads,team_names_ff,team_names_sf,series_slug,database,file_path,json_filename, MATCH_SCHEDULE,match_numbers,active_role
+from Auction import teams, boosters, series_slug, database, json_filename, active_role
 import base64
 
 # Match-links pickle (schedule, refresh counters) - same place Series saves it
@@ -783,52 +783,52 @@ def get_most_recent_match_state():
         print(f"Error reading pkl file: {e}")
         return None, None
     
-def is_time_between(start, end, now):
-    """
-    Handles time ranges that may cross midnight.
-    """
-    if start <= end:
-        return start <= now <= end
-    else:
-        return now >= start or now <= end
+# def is_time_between(start, end, now):
+#     """
+#     Handles time ranges that may cross midnight.
+#     """
+#     if start <= end:
+#         return start <= now <= end
+#     else:
+#         return now >= start or now <= end
 
 
-def is_match_time():
-    """
-    Check if current time falls within match hours based on schedule
-    Returns: (bool, str)
-    """
-    ist = pytz.timezone('Asia/Kolkata')
-    now = datetime.now(ist)
+# def is_match_time():
+#     """
+#     Check if current time falls within match hours based on schedule
+#     Returns: (bool, str)
+#     """
+#     ist = pytz.timezone('Asia/Kolkata')
+#     now = datetime.now(ist)
 
-    current_date = now.strftime('%Y-%m-%d')
-    yesterday_date = (now - timedelta(days=1)).strftime('%Y-%m-%d')
-    current_time = now.time()
+#     current_date = now.strftime('%Y-%m-%d')
+#     yesterday_date = (now - timedelta(days=1)).strftime('%Y-%m-%d')
+#     current_time = now.time()
 
-    # Define windows
-    SINGLE_START = dt_time(19, 30)   # 7:30 PM
-    DOUBLE_START = dt_time(15, 30)   # 3:30 PM
-    END_TIME = dt_time(1, 0)        # 1:30 AM (safe upper bound)
+#     # Define windows
+#     SINGLE_START = dt_time(19, 30)   # 7:30 PM
+#     DOUBLE_START = dt_time(15, 30)   # 3:30 PM
+#     END_TIME = dt_time(1, 0)        # 1:30 AM (safe upper bound)
 
-    # --- TODAY checks ---
-    if current_date in MATCH_SCHEDULE.get('single_header', []):
-        if is_time_between(SINGLE_START, END_TIME, current_time):
-            return True, f"Single header match day ({current_date})"
+#     # --- TODAY checks ---
+#     if current_date in MATCH_SCHEDULE.get('single_header', []):
+#         if is_time_between(SINGLE_START, END_TIME, current_time):
+#             return True, f"Single header match day ({current_date})"
 
-    if current_date in MATCH_SCHEDULE.get('double_header', []):
-        if is_time_between(DOUBLE_START, END_TIME, current_time):
-            return True, f"Double header match day ({current_date})"
+#     if current_date in MATCH_SCHEDULE.get('double_header', []):
+#         if is_time_between(DOUBLE_START, END_TIME, current_time):
+#             return True, f"Double header match day ({current_date})"
 
-    # --- YESTERDAY spillover (post-midnight only) ---
-    if current_time <= END_TIME:
-        if yesterday_date in MATCH_SCHEDULE.get('single_header', []):
-            return True, f"Single header continued ({yesterday_date})"
+#     # --- YESTERDAY spillover (post-midnight only) ---
+#     if current_time <= END_TIME:
+#         if yesterday_date in MATCH_SCHEDULE.get('single_header', []):
+#             return True, f"Single header continued ({yesterday_date})"
 
-        if yesterday_date in MATCH_SCHEDULE.get('double_header', []):
-            return True, f"Double header continued ({yesterday_date})"
+#         if yesterday_date in MATCH_SCHEDULE.get('double_header', []):
+#             return True, f"Double header continued ({yesterday_date})"
 
-    # --- Otherwise ---
-    return False, "No match scheduled"
+#     # --- Otherwise ---
+#     return False, "No match scheduled"
 
 @st.cache_data(ttl=60)
 def _count_scored_matches(file_signature):
@@ -924,7 +924,7 @@ def run_output_script():
     try:
         run_output_pipeline()
         save_update_time()
-        push_all_files(database, file_path, json_filename, links_file=LINKS_FILE)
+        push_all_files(database, json_filename, links_file=LINKS_FILE)
         
         if os.path.exists("/tmp/.fully_caught_up"):
             is_final, match_name = get_most_recent_match_state()
@@ -937,7 +937,7 @@ def run_output_script():
         return True, "Update successful"
     except Exception as e:
         import traceback
-        push_all_files(database, file_path, json_filename, links_file=LINKS_FILE)
+        push_all_files(database, json_filename, links_file=LINKS_FILE)
         return False, f"Update error: {traceback.format_exc()[-500:]}"
 
 @st.cache_resource(ttl=300)
@@ -1000,7 +1000,7 @@ def set_active_tab(tab):
 # --- SQUAD CONFIGURATION ---
 SQUAD_INFO = teams
 # Pull data files from GitHub on startup (Streamlit Cloud only)
-sync_files_from_github(database, file_path, json_filename, links_file=LINKS_FILE)
+sync_files_from_github(database, json_filename, links_file=LINKS_FILE)
 def main():
 # Header - Professional IPL Broadcast Style (Balanced Spacing)
     st.markdown('''

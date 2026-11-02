@@ -14,8 +14,8 @@ def run_output_pipeline():
     import hashlib
     import inspect
     from Scraping import find_full_name
-    from Auction import team_list, teams, boosters, names, roles, squads, team_names_ff, team_names_sf, series_slug, database, file_path, json_filename, match_numbers, orange_cap, purple_cap, mvp
-
+    from Auction import team_list, teams, boosters, series_slug, database, json_filename, orange_cap, purple_cap, mvp
+    
     def convert_values(obj):
         """ Recursively convert DataFrame and NumPy objects to serializable formats """
         if isinstance(obj, pd.DataFrame):

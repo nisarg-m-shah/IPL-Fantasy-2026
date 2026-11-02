@@ -16,7 +16,7 @@ def load_dill():
     return dill
 dill = load_dill()
 
-from Auction import final_squads
+from Auction import squads
 
 
 # ============================================================
@@ -126,10 +126,10 @@ def _resolve_team_key(team_name):
     """Map a scraped team name onto the matching final_squads key."""
     team_name = (team_name or "").strip()
 
-    if team_name in final_squads:
+    if team_name in squads:
         return team_name
 
-    lowered = {k.lower(): k for k in final_squads}
+    lowered = {k.lower(): k for k in squads}
 
     if team_name.lower() in lowered:
         return lowered[team_name.lower()]
@@ -142,16 +142,16 @@ def _resolve_team_key(team_name):
 
 
 def _lookup_exact(team_name, raw_name):
-    """Exact (case-insensitive) match on canonical name or bcci_name."""
-    squad = final_squads.get(team_name)
+    """Exact (case-insensitive) match on canonical name."""
+    squad = squads.get(team_name)
 
     if not squad:
         return None
 
     raw = (raw_name or "").strip().lower()
 
-    for canon, bcci in zip(squad["name"], squad["bcci_name"]):
-        if raw == canon.lower() or raw == bcci.lower():
+    for canon in squad["name"]:
+        if raw == canon.strip().lower():
             return canon
 
     return None
@@ -344,7 +344,7 @@ class Score:
             if hit in roster:
                 return hit
 
-        known = final_squads.get(team_name, {}).get("name", [])
+        known = squads.get(team_name, {}).get("name", [])
 
         result = find_full_name(known, raw)
 
@@ -368,7 +368,7 @@ class Score:
         known_all = [
             n
             for t in teams
-            for n in final_squads.get(t, {}).get("name", [])
+            for n in squads.get(t, {}).get("name", [])
         ]
 
         resolved_parts = []
@@ -448,7 +448,7 @@ class Score:
 
         if outdec.lower().startswith("c and b "):
 
-            result["catcher"] = outdec[6:].strip()
+            result["catcher"] = outdec[8:].strip()
 
             return result
 
@@ -1452,12 +1452,12 @@ class Score:
                 if not team:
                     continue
 
-                if team in final_squads:
+                if team in squads:
 
                     if team not in self.match_squads:
 
                         self.match_squads[team] = list(
-                            final_squads[team].get("name", [])
+                            squads[team].get("name", [])
                         )
 
                 else:

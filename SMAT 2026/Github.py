@@ -105,18 +105,15 @@ def pull_file_from_github(repo_path, local_path):
         print(f"Error pulling {repo_path} from GitHub: {e}")
         return False
 
-def push_all_files(database, file_path, json_filename, links_file=None):
+def push_all_files(database, json_filename, links_file=None):
     if not os.path.exists('/mount/src'):
         return
-    
+
     db_repo_path = os.path.basename(database)
-    excel_repo_path = os.path.basename(file_path)
     json_repo_path = os.path.basename(json_filename)
-    
+
     if os.path.exists(database):
         push_file_to_github(database, db_repo_path)
-    if os.path.exists(file_path):
-        push_file_to_github(file_path, excel_repo_path)
     if os.path.exists(json_filename):
         push_file_to_github(json_filename, json_repo_path)
 
@@ -133,18 +130,15 @@ def push_all_files(database, file_path, json_filename, links_file=None):
     if os.path.exists("/tmp/caps.pkl"):
         push_file_to_github("/tmp/caps.pkl", "caps.pkl")
 
-def sync_files_from_github(database, file_path, json_filename, links_file=None):
+def sync_files_from_github(database, json_filename, links_file=None):
     if not os.path.exists('/mount/src'):
         return
-    
+
     db_repo_path = os.path.basename(database)
-    excel_repo_path = os.path.basename(file_path)
     json_repo_path = os.path.basename(json_filename)
-    
+
     if not os.path.exists(database):
         pull_file_from_github(db_repo_path, database)
-    if not os.path.exists(file_path):
-        pull_file_from_github(excel_repo_path, file_path)
     if not os.path.exists(json_filename):
         pull_file_from_github(json_repo_path, json_filename)
 

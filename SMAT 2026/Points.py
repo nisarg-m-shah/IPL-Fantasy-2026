@@ -5,7 +5,7 @@ dill = load_dill()
 from Scraping import Series, Score, find_full_name
 import pandas as pd
 import time
-from Auction import teams, boosters, names, roles, squads, team_names_ff, team_names_sf, series_slug, database, file_path, json_filename, final_squads, cricbuzz_squads, active_role
+from Auction import teams, boosters, series_slug, database, json_filename, squads, active_role
 
 class Player:
     def __init__(self, player_name, match_object, booster):
@@ -32,27 +32,14 @@ class Player:
 }
 
     def points(self):
+        role = ""
         try:
-            squads = self.match_object.match_squads
-            for team_name in squads:
-                if self.player_name in squads[team_name]:             
-                    #print("eh",team_name)       
-                    nname = find_full_name(cricbuzz_squads[team_name]['name'],self.player_name)
-                    idx = cricbuzz_squads[team_name]['name'].index(nname)
-                    role = cricbuzz_squads[team_name]['role'][idx]
-                    if "Allrounder" in role:
-                        role = "AR"
-                    elif "Batsman" in role:
-                        role = "BAT"
-                    elif "Bowler" in role:
-                        role = "BOWL"
-                    #print(self.player_name,"Role found",role)
+            for team_name, squad_names in self.match_object.match_squads.items():
+                if self.player_name in squad_names:
+                    s = squads[team_name]
+                    role = s["role"][s["name"].index(self.player_name)]
                     break
-                else:
-                    role = ""
-            
-        except:
-            #"Ayoooooooooooo"
+        except Exception:
             role = ""
         man_of_the_match   = self.match_object.man_of_the_match
         player_mompoints   = 0
