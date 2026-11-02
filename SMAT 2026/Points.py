@@ -5,7 +5,7 @@ dill = load_dill()
 from Scraping import Series, Score, find_full_name
 import pandas as pd
 import time
-from Auction import teams, boosters, names, roles, squads, team_names_ff, team_names_sf, series_slug, database, file_path, json_filename, final_squads, cricbuzz_squads
+from Auction import teams, boosters, names, roles, squads, team_names_ff, team_names_sf, series_slug, database, file_path, json_filename, final_squads, cricbuzz_squads, active_role
 
 class Player:
     def __init__(self, player_name, match_object, booster):
@@ -234,8 +234,10 @@ class Team:
                 match_number = int(match_type.split("Match")[1].strip())
             except:
                 match_number = 0
-        elif match_type in ["Qualifier 1", "Eliminator", "Qualifier 2", "Final"]:
-            match_number = 200
+        elif match_type in ["Final"]:
+            match_number = 125
+        captains      = active_role(team['captain'], match_number)
+        vice_captains = active_role(team['vice captain'], match_number)
 
         self.points_list  = {}
         self.total_points = 0
@@ -255,9 +257,9 @@ class Team:
                     if self.booster[1] == player:
                         multiplier = 3
                     else:
-                        if player in team['captain']:
+                        if player in captains:
                             multiplier *= 2
-                        elif player in team['vice captain']:
+                        elif player in vice_captains:
                             multiplier *= 1.5
                         elif player in team['trump card'] and match_number > 56:
                             multiplier *= 3
@@ -270,9 +272,9 @@ class Team:
                         multiplier *= 2
                     elif "Double" in self.booster:
                         multiplier *= 2
-                    elif player in team['captain']:
+                    elif player in captains:
                         multiplier *= 2
-                    elif player in team['vice captain']:
+                    elif player in vice_captains:
                         multiplier *= 1.5
 
                 player_points *= multiplier

@@ -2011,3 +2011,24 @@ MATCH_SCHEDULE = {
 orange_cap = "Ishan Kishan"
 purple_cap = "Sushant Mishra"
 mvp = "Anukul Roy"
+
+def active_role(entries, match_number=None):
+    """
+    Resolve a captain / vice-captain list for one match.
+      ['A']                    -> A in every match
+      [('A', 0), ('B', 42)]    -> A for matches below 42, B from match 42 on
+    A plain string counts as (name, 0). match_number=None means "latest".
+    """
+    resolved = []
+    for e in entries or []:
+        if isinstance(e, (tuple, list)):
+            name, start = e[0], int(e[1])
+        else:
+            name, start = e, 0
+        resolved.append((name, start))
+    if match_number is not None:
+        resolved = [r for r in resolved if r[1] <= match_number]
+    if not resolved:
+        return []
+    latest = max(s for _, s in resolved)
+    return [n for n, s in resolved if s == latest]

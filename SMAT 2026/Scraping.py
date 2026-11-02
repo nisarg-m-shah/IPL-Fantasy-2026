@@ -2647,12 +2647,20 @@ class Series:
           overall_numbers : every match, Final = last (used in the match key,
                             so it lines up with 'match_numbers' in Auction.py)
         """
-        valid = [m for m in self.match_links if m.get("match_id") is not None]
+        indexed = [
+            (i, m) for i, m in enumerate(self.match_links)
+            if m.get("match_id") is not None
+        ]
 
-        valid.sort(key=lambda m: (
-            {"elite": 0, "super_league": 1, "final": 2}.get(self._stage_of(m), 0),
-            int(m["match_id"])
+        # Stage first, then scheduled start time, then the order Cricbuzz
+        # lists them (stable tie-break for matches starting at the same time).
+        indexed.sort(key=lambda im: (
+            {"elite": 0, "super_league": 1, "final": 2}.get(self._stage_of(im[1]), 0),
+            self._start_ms(im[1]) if self._start_ms(im[1]) is not None else float("inf"),
+            im[0]
         ))
+
+        valid = [m for _, m in indexed]
 
         group = [
             m for m in valid

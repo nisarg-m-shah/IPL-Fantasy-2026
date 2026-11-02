@@ -15,7 +15,7 @@ import sys
 from Github import sync_files_from_github, push_all_files
 from Output import run_output_pipeline
 from Scraping import Series
-from Auction import teams,boosters,squads,team_names_ff,team_names_sf,series_slug,database,file_path,json_filename, MATCH_SCHEDULE,match_numbers
+from Auction import teams,boosters,squads,team_names_ff,team_names_sf,series_slug,database,file_path,json_filename, MATCH_SCHEDULE,match_numbers,active_role
 import base64
 
 # Match-links pickle (schedule, refresh counters) - same place Series saves it
@@ -830,6 +830,31 @@ def is_match_time():
     # --- Otherwise ---
     return False, "No match scheduled"
 
+@st.cache_data(ttl=60)
+def _count_scored_matches(file_signature):
+    if file_signature is None:
+        return 0
+    try:
+        with open(json_filename, "r") as f:
+            raw = json.load(f)
+        return sum(1 for k in raw if k.endswith(" - CFC Points"))
+    except Exception:
+        return 0
+
+def matches_missing_points():
+    """Finished matches in the pickle that have no points in the JSON."""
+    try:
+        with open(Series.states_path(database), "rb") as f:
+            states = json.loads(f.read().decode())
+    except Exception:
+        return 0
+    final_count = sum(1 for v in states.values() if v.get("is_final"))
+    sig = None
+    if os.path.exists(json_filename):
+        s = os.stat(json_filename)
+        sig = (s.st_mtime_ns, s.st_size)
+    return max(0, final_count - _count_scored_matches(sig))
+
 def should_update():
     """
     Decide whether to run the scraper now.
@@ -851,6 +876,14 @@ def should_update():
     # No saved schedule yet -> one run builds it
     if pending is None:
         return True, "No match schedule saved yet - fetching it", -1
+
+    # Points JSON is missing matches that the pickle has -> re-score them
+    missing_points = matches_missing_points()
+    if missing_points:
+        since = time.time() - get_last_update_time()
+        if since >= BACKLOG_INTERVAL:
+            return True, f"{missing_points} match(es) missing points - rebuilding from saved matches", -1
+        return False, f"{missing_points} match(es) missing points - rebuilding shortly", int(BACKLOG_INTERVAL - since) + 1
 
     if not pending:
         return False, "No match in progress or waiting to be scraped", -1
@@ -1722,8 +1755,8 @@ def show_squads(data):
         # --- CAPTAIN / VC / TRUMP (Unified Grid) ---
         team_meta = SQUAD_INFO[selected_team]
         roles_display = [
-            ("🧢 CAPTAIN", team_meta.get("captain", []), "#efb920"),
-            ("🎽 VICE CAPTAIN", team_meta.get("vice captain", []), "#00f2fe"),
+            ("🧢 CAPTAIN", active_role(team_meta.get("captain", [])), "#efb920"),
+            ("🎽 VICE CAPTAIN", active_role(team_meta.get("vice captain", [])), "#00f2fe"),
             ("🃏 TRUMP CARD", team_meta.get("trump card", []), "#a855f7")
         ]
 
@@ -1904,18 +1937,11 @@ def show_matches(data):
         st.info("⏳ No matches played yet. Match data will appear once the first match begins!")
         return
 
-    match_order = {
-        match_no: i
-        for i, match_no in enumerate(match_numbers)
-    }
-
     selected_match = st.selectbox(
         "Select Match",
         sorted(
             match_names,
-            key=lambda x: match_order.get(
-                re.search(r"Match (\d+)", x).group(1), len(match_order)
-            )
+            key=lambda x: -int(re.search(r"Match (\d+)", x).group(1))
         ),
         key="match_selector"
     )
@@ -2433,18 +2459,11 @@ def show_live_score():
         return
 
 
-    match_order = {
-        match_no: i
-        for i, match_no in enumerate(match_numbers)
-    }
-
     match_name = st.selectbox(
         "Select Match",
         sorted(
             match_objects.keys(),
-            key=lambda x: match_order.get(
-                re.search(r"Match (\d+)", x).group(1), len(match_order)
-            )
+            key=lambda x: -int(re.search(r"Match (\d+)", x).group(1))
         ),
         key="live_match_selector"
     )

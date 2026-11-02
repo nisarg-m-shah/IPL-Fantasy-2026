@@ -142,11 +142,10 @@ def run_output_pipeline():
                 custom_team = franchise_map[winner_name]
                 franchise_wins[custom_team] += 1
 
-        # Finished, already scored, same scoring inputs, not re-scraped now:
-        # nothing can have changed, so skip the expensive scoring entirely.
+        # Finished, already scored and not re-scraped in this run: FROZEN.
+        # Never recomputed. To redo a match, remove it with Rescrape.py.
         if (
-            config_unchanged
-            and match_states.get(str(getattr(match_object, "match_number", "")), {}).get("is_final", False)
+            match_states.get(str(getattr(match_object, "match_number", "")), {}).get("is_final", False)
             and points_key in spreadsheet
             and (match_name + " - Points Breakdown") in spreadsheet
             and match_name not in scraped_now
@@ -209,6 +208,41 @@ def run_output_pipeline():
 
         print(match_name, "added")
 
+    # ---- Keep the JSON consistent with the pickle ----
+    # 1) drop match sheets whose match no longer exists in the pickle
+    current_names = set(match_names_list)
+    if current_names:
+        for key in list(spreadsheet.keys()):
+            for suffix in (" - CFC Points", " - Points Breakdown"):
+                if key.endswith(suffix) and key[:-len(suffix)] not in current_names:
+                    print(f"Removing orphan sheet: {key}")
+                    del spreadsheet[key]
+                    break
+
+    # 2) rebuild every team's per-match columns from the stored CFC Points
+    #    sheets (the single source of truth), ordered by match number
+    def _match_no(key):
+        m = re.match(r"Match (\d+)", key)
+        return int(m.group(1)) if m else 10**6
+
+    cfc_keys = sorted(
+        [k for k in spreadsheet if k.endswith(" - CFC Points")],
+        key=_match_no
+    )
+    for team in dict.fromkeys(list(team_list) + list(spreadsheet['Team Final Points'].keys())):
+        new_row = {"Total Points": 0, "Franchise Points": 0}
+        for key in cfc_keys:
+            sheet = spreadsheet[key]
+            try:
+                if isinstance(sheet, pd.DataFrame):
+                    val = sheet.loc[team, 'Total Points']
+                else:
+                    val = sheet[team]['Total Points']
+            except KeyError:
+                continue
+            new_row[key[:-len(" - CFC Points")]] = val
+        spreadsheet['Team Final Points'][team] = new_row
+
     # Add franchise points (150 per win)
     for team in team_list:
         franchise_points = franchise_wins[team] * 150
@@ -228,6 +262,9 @@ def run_output_pipeline():
         print(f"{team}: {franchise_wins[team]} wins = {franchise_points} franchise points")
 
     try:
+        # Rebuilt from the stored breakdown sheets every run, so no stale
+        # rows (e.g. a misnamed player) can survive a rescrape
+        spreadsheet['Player Final Points'] = {}
         player_list_points = []
         match_list_points  = []
         for key in spreadsheet.keys():
