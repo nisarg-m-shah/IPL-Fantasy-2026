@@ -56,8 +56,8 @@ def find_full_name(team, short_name):
             return "Akash Maharaj Singh"
         if "yshak" in short_name:
             return "Vijaykumar Vyshak"
-        if "Rasikh" in short_name and "Dar" in short_name:
-            return "Rasikh Dar Salam"
+        if "Rasikh" in short_name and "Salam" in short_name:
+            return "Rasikh Salam Dar"
         if "Satyanarayana" in short_name:
             return "Satyanarayana Raju"
         if "Siddharth" in short_name and "Mani" in short_name:
@@ -86,6 +86,8 @@ def find_full_name(team, short_name):
             return "Abishek Porel"
         if "Natarajan" in short_name:
             return "T Natarajan"
+        if "R Rajkumar" in short_name:
+            return "Rajkumar Ravichandran"
         s = short_name.strip()
         s = re.sub(r'^\(sub\)?\s*', '', s, flags=re.IGNORECASE)
         s = s.strip("() ").strip()
