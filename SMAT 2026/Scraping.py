@@ -58,6 +58,22 @@ def find_full_name(team, short_name):
             return "Vijaykumar Vyshak"
         if "Rasikh" in short_name and "Salam" in short_name:
             return "Rasikh Salam Dar"
+        if "Arfaz" in short_name and "Ahmed" in short_name:
+            return "Mohammad Arfaz Ahmed"
+        if "Suchith" in short_name:
+            return "Jagadeesha Suchith"
+        if "S Gani" in short_name:
+            return "Sakibul Gani"
+        if "S Lad" in short_name:
+            return "Siddhesh Lad"
+        if "DA Jadeja" in short_name:
+            return "Dharmendrasinh Jadeja"
+        if "C Stephen" in short_name:
+            return "Cheepurapalli Stephen"
+        if "Singupuram" in short_name:
+            return "SDNV Prasad"
+        if "M Saif" in short_name:
+            return "Mohammad Saif"
         if "Satyanarayana" in short_name:
             return "Satyanarayana Raju"
         if "Siddharth" in short_name and "Mani" in short_name:
@@ -68,6 +84,8 @@ def find_full_name(team, short_name):
             return "Arshad Khan"
         if "Nitish" in short_name and "Reddy" in short_name:
             return "Nitish Kumar Reddy"
+        if "Ankit Kumar" in short_name and "Ankit Rajesh Kumar" in team:
+            return "Ankit Rajesh Kumar"
         if "Digvesh" in short_name:
             return "Digvesh Rathi"
         if "Tilak" in short_name:
@@ -88,6 +106,12 @@ def find_full_name(team, short_name):
             return "T Natarajan"
         if "R Rajkumar" in short_name:
             return "Rajkumar Ravichandran"
+        if "Rajkumar Ravichandiran" in short_name:
+            return "Rajkumar Ravichandran"
+        if "Aman Akram Rao" in short_name:
+            return "Aman Rao Perala"
+        if "K S Bharat" in short_name:
+            return "Srikar Bharat"
         s = short_name.strip()
         s = re.sub(r'^\(sub\)?\s*', '', s, flags=re.IGNORECASE)
         s = s.strip("() ").strip()
