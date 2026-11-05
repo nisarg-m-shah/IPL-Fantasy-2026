@@ -60,6 +60,14 @@ def find_full_name(team, short_name):
             return "Rasikh Salam Dar"
         if "Arfaz" in short_name and "Ahmed" in short_name:
             return "Mohammad Arfaz Ahmed"
+        if "Ninad" in short_name and "Rathva" in short_name:
+            return "Ninad Rathva"
+        if "Jagadeesan" in short_name:
+            return "Narayan Jagadeesan"
+        if "A Sheth" in short_name:
+            return "Atit Sheth"
+            if "Ishant" in short_name:
+                return "Ishant Sharma"
         if "Suchith" in short_name:
             return "Jagadeesha Suchith"
         if "S Gani" in short_name:
@@ -91,6 +99,8 @@ def find_full_name(team, short_name):
                 return "Ankit Kumar"
         if "Digvesh" in short_name:
             return "Digvesh Rathi"
+        if "Aryaman Singh" in short_name:
+            return "Aryaman Singh Dhaliwal"
         if "Tilak" in short_name:
             return "Tilak Varma"
         if "Surya" in short_name and "Yadav" in short_name and "umar" in short_name:
@@ -109,7 +119,7 @@ def find_full_name(team, short_name):
             return "T Natarajan"
         if "R Rajkumar" in short_name:
             return "Rajkumar Ravichandran"
-        if "Rajkumar Ravichandiran" in short_name:
+        if "Ravichandiran" in short_name:
             return "Rajkumar Ravichandran"
         if "Aman Akram Rao" in short_name:
             return "Aman Rao Perala"
