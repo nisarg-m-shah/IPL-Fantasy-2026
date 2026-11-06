@@ -1524,18 +1524,26 @@ team_list = ['Disruptors',
 
 import os
 
+# database      = "smat25test.pkl"
+# json_filename = "CFC Fantasy League Live SMAT Test2 2025.json"
+
+database      = "smat24test.pkl"
+json_filename = "CFC Fantasy League Live SMAT Test 2024.json"
+
 if os.path.exists('/mount/src'):
-    database      = "/tmp/smat25test.pkl"
-    json_filename = "/tmp/CFC Fantasy League Live SMAT Test2 2025.json"
-else:
-    database      = "smat25test.pkl"
-    json_filename = "CFC Fantasy League Live SMAT Test2 2025.json"
+    database      = "/tmp/" + database
+    json_filename = "/tmp/" + database
 
-series_slug = "10493/syed-mushtaq-ali-trophy-elite-2025"
+# series_slug = "10493/syed-mushtaq-ali-trophy-elite-2025"
+series_slug = "8364/syed-mushtaq-ali-trophy-2024"
 
-orange_cap = "Ishan Kishan"
-purple_cap = "Sushant Mishra"
-mvp = "Anukul Roy"
+# orange_cap = "Ishan Kishan"
+# purple_cap = "Sushant Mishra"
+# mvp = "Anukul Roy"
+
+orange_cap = "Ajinkya Rahane"
+purple_cap = "Jagjit Singh"
+mvp = "Ajinkya Rahane"
 
 
 def active_role(entries, match_number=None):
