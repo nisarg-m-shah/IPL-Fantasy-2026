@@ -1532,7 +1532,7 @@ json_filename = "CFC Fantasy League Live SMAT Test 2024.json"
 
 if os.path.exists('/mount/src'):
     database      = "/tmp/" + database
-    json_filename = "/tmp/" + database
+    json_filename = "/tmp/" + json_filename
 
 # series_slug = "10493/syed-mushtaq-ali-trophy-elite-2025"
 series_slug = "8364/syed-mushtaq-ali-trophy-2024"
