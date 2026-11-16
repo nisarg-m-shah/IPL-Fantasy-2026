@@ -1527,8 +1527,8 @@ import os
 # database      = "smat25test.pkl"
 # json_filename = "CFC Fantasy League Live SMAT Test2 2025.json"
 
-database      = "smat24test.pkl"
-json_filename = "CFC Fantasy League Live SMAT Test 2024.json"
+# database      = "smat24test.pkl"
+# json_filename = "CFC Fantasy League Live SMAT Test 2024.json"
 
 database      = "smat26.pkl"
 json_filename = "CFC Fantasy League SMAT 2026.json"
