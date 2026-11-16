@@ -1530,20 +1530,24 @@ import os
 database      = "smat24test.pkl"
 json_filename = "CFC Fantasy League Live SMAT Test 2024.json"
 
+database      = "smat26.pkl"
+json_filename = "CFC Fantasy League SMAT 2026.json"
+
 if os.path.exists('/mount/src'):
     database      = "/tmp/" + database
     json_filename = "/tmp/" + json_filename
 
 # series_slug = "10493/syed-mushtaq-ali-trophy-elite-2025"
-series_slug = "8364/syed-mushtaq-ali-trophy-2024"
+# series_slug = "8364/syed-mushtaq-ali-trophy-2024"
+series_slug = "12420/syed-mushtaq-ali-trophy-elite-2026"
 
 # orange_cap = "Ishan Kishan"
 # purple_cap = "Sushant Mishra"
 # mvp = "Anukul Roy"
 
-orange_cap = "Ajinkya Rahane"
-purple_cap = "Jagjit Singh"
-mvp = "Ajinkya Rahane"
+orange_cap = ""
+purple_cap = ""
+mvp = ""
 
 
 def active_role(entries, match_number=None):
