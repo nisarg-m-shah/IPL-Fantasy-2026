@@ -1,10 +1,10 @@
 """
 Rescrape.py - force matches to be re-scraped (pkl) and/or re-scored (json).
 
-  python Rescrape.py "Haryana vs Jharkhand" both
-  python Rescrape.py "Haryana vs Jharkhand" json --onwards   (that match and all after it)
-  python Rescrape.py 3,7,12 pkl                              (specific match numbers)
-  python Rescrape.py all both
+  python3 Rescrape.py "Haryana vs Jharkhand" both
+  python3 Rescrape.py "Haryana vs Jharkhand" json --onwards   (that match and all after it)
+  python3 Rescrape.py 3,7,12 pkl                              (specific match numbers)
+  python3 Rescrape.py all both
 
 Options:  --yes  (no confirmation)   --no-pull  (use local files as they are)
 

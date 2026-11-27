@@ -38,117 +38,127 @@ def split_camel_short(name):
     return parts
 
 
+ALIAS_RULES = [
+    (lambda s: "kl rahul" in s, "KL Rahul"),
+    (lambda s: "fraser" in s, "Jake Fraser-McGurk"),
+    (lambda s: "akash" in s and "singh" in s, "Akash Maharaj Singh"),
+    (lambda s: "yshak" in s, "Vijaykumar Vyshak"),
+    (lambda s: "rasikh" in s and "salam" in s, "Rasikh Salam Dar"),
+    (lambda s: "arfaz" in s and "ahmed" in s, "Mohammad Arfaz Ahmed"),
+    (lambda s: "jagadeesan" in s, "Narayan Jagadeesan"),
+    (lambda s: s == "a sheth", "Atit Sheth"),
+    (lambda s: "ishant" in s, "Ishant Sharma"),
+    (lambda s: "suchith" in s, "Jagadeesha Suchith"),
+    (lambda s: s == "s gani", "Sakibul Gani"),
+    (lambda s: s == "s lad", "Siddhesh Lad"),
+    (lambda s: s == "da jadeja", "Dharmendrasinh Jadeja"),
+    (lambda s: s == "c stephen", "Cheepurapalli Stephen"),
+    (lambda s: "singupuram" in s, "SDNV Prasad"),
+    (lambda s: s == "m saif", "Mohammad Saif"),
+    (lambda s: "satyanarayana" in s, "Satyanarayana Raju"),
+    (lambda s: "siddharth" in s and "mani" in s, "Manimaran Siddharth"),
+    (lambda s: "shami" in s, "Mohammed Shami"),
+    (lambda s: "arshad khan" in s, "Arshad Khan"),
+    (lambda s: "nitish" in s and "reddy" in s, "Nitish Kumar Reddy"),
+    (lambda s: "ankit" in s and "kumar" in s, "Ankit Rajesh Kumar"),
+    (lambda s: "ankit" in s and "kumar" in s, "Ankit Kumar"),
+    (lambda s: "digvesh" in s, "Digvesh Rathi"),
+    (lambda s: "aryaman singh" in s, "Aryaman Singh Dhaliwal"),
+    (lambda s: "tilak" in s, "Tilak Varma"),
+    (lambda s: "surya" in s and "yadav" in s and "umar" in s, "Suryakumar Yadav"),
+    (lambda s: "khaleel" in s, "Khaleel Ahmed"),
+    (lambda s: "shreyas" in s and "yer" in s, "Shreyas Iyer"),
+    (lambda s: "buttler" in s, "Jos Buttler"),
+    (lambda s: "sai kishore" in s, "Sai Kishore"),
+    (lambda s: "porel" in s, "Abishek Porel"),
+    (lambda s: "natarajan" in s, "T Natarajan"),
+    (lambda s: s == "r rajkumar" or "ravichandiran" in s, "Rajkumar Ravichandran"),
+    (lambda s: "aman akram rao" in s, "Aman Rao Perala"),
+    (lambda s: s == "k s bharat", "Srikar Bharat"),
+    (lambda s: s == "aayush pandey", "Ayush Pandey"),
+    (lambda s: s == "pranay singh", "Pronay Singh"),
+    (lambda s: "salahuddin" in s and "izhar" in s, "Mohammed Izhar"),
+    (lambda s: s == "gourav choudhury", "Gourav Madan Choudhury"),
+    (lambda s: s in ("vivek naresh kumar", "v n kumar", "vn kumar"), "Vivek Kumar"),
+]
+
+
+def _clean_short_name(name):
+    s = (name or "").strip()
+    for marker in (" (IP", " (RP", "(c)", "(wk)"):
+        if marker in s:
+            s = s.split(marker, 1)[0]
+    s = re.sub(r"^\(sub\)\s*", "", s, flags=re.IGNORECASE)
+    return s.strip("() ").strip()
+
+
+def _name_tokens(name):
+    return re.findall(r"[a-z0-9]+", (name or "").lower())
+
+
 def find_full_name(team, short_name):
-    try:
-        if " (IP" in short_name:
-            short_name = short_name.split(' (IP')[0]
-        if " (RP" in short_name:
-            short_name = short_name.split(' (RP')[0]
-        if "(c)" in short_name:
-            short_name = short_name.split('(c)')[0]
-        if "(wk)" in short_name:
-            short_name = short_name.split('(wk)')[0]
-        if "Rahul" in short_name and "K" in short_name and "L" in short_name:
-            return "KL Rahul"
-        if "Fraser" in short_name:
-            return "Jake Fraser-McGurk"
-        if "Akash" in short_name and "Singh" in short_name:
-            return "Akash Maharaj Singh"
-        if "yshak" in short_name:
-            return "Vijaykumar Vyshak"
-        if "Rasikh" in short_name and "Salam" in short_name:
-            return "Rasikh Salam Dar"
-        if "Arfaz" in short_name and "Ahmed" in short_name:
-            return "Mohammad Arfaz Ahmed"
-        if "Ninad" in short_name and "Rathva" in short_name:
-            return "Ninad Rathva"
-        if "Jagadeesan" in short_name:
-            return "Narayan Jagadeesan"
-        if "A Sheth" in short_name:
-            return "Atit Sheth"
-            if "Ishant" in short_name:
-                return "Ishant Sharma"
-        if "Suchith" in short_name:
-            return "Jagadeesha Suchith"
-        if "S Gani" in short_name:
-            return "Sakibul Gani"
-        if "S Lad" in short_name:
-            return "Siddhesh Lad"
-        if "DA Jadeja" in short_name:
-            return "Dharmendrasinh Jadeja"
-        if "C Stephen" in short_name:
-            return "Cheepurapalli Stephen"
-        if "Singupuram" in short_name:
-            return "SDNV Prasad"
-        if "M Saif" in short_name:
-            return "Mohammad Saif"
-        if "Satyanarayana" in short_name:
-            return "Satyanarayana Raju"
-        if "Siddharth" in short_name and "Mani" in short_name:
-            return "Manimaran Siddharth"
-        if "Shami" in short_name:
-            return "Mohammed Shami"
-        if "Arshad Khan" in short_name:
-            return "Arshad Khan"
-        if "Nitish" in short_name and "Reddy" in short_name:
-            return "Nitish Kumar Reddy"
-        if "Ankit" in short_name and "Kumar" in short_name:
-            if "Ankit Rajesh Kumar" in team:
-                return "Ankit Rajesh Kumar"
-            else:
-                return "Ankit Kumar"
-        if "Digvesh" in short_name:
-            return "Digvesh Rathi"
-        if "Aryaman Singh" in short_name:
-            return "Aryaman Singh Dhaliwal"
-        if "Tilak" in short_name:
-            return "Tilak Varma"
-        if "Surya" in short_name and "Yadav" in short_name and "umar" in short_name:
-            return "Suryakumar Yadav"
-        if "Khaleel" in short_name:
-            return "Khaleel Ahmed"
-        if "Shreyas" in short_name and "yer" in short_name:
-            return "Shreyas Iyer"
-        if "Buttler" in short_name:
-            return "Jos Buttler"
-        if "Sai Kishore" in short_name:
-            return "Sai Kishore"
-        if "Porel" in short_name:
-            return "Abishek Porel"
-        if "Natarajan" in short_name:
-            return "T Natarajan"
-        if "R Rajkumar" in short_name:
-            return "Rajkumar Ravichandran"
-        if "Ravichandiran" in short_name:
-            return "Rajkumar Ravichandran"
-        if "Aman Akram Rao" in short_name:
-            return "Aman Rao Perala"
-        if "K S Bharat" in short_name:
-            return "Srikar Bharat"
-        s = short_name.strip()
-        s = re.sub(r'^\(sub\)?\s*', '', s, flags=re.IGNORECASE)
-        s = s.strip("() ").strip()
+    """
+    Resolve a scraped name to a canonical squad name.
 
-        if s in team:
-            return s
+    Only confident matches are used: exact names, curated aliases whose
+    target is on the team, and unambiguous token matches. An unknown name
+    is returned unchanged so two different players are never merged.
+    """
+    s = _clean_short_name(short_name)
 
-        for player in team:
-            if len(player) > len(s):
-                if all(p in player for p in split_camel_short(s)):
-                    return player
-            else:
-                if all(p in s for p in split_camel_short(player)):
-                    return player
+    if not s:
+        return ""
 
-        matches = difflib.get_close_matches(
-            s.lower(), [p.lower() for p in team], n=1, cutoff=0.7
-        )
-        if matches:
-            return team[[p.lower() for p in team].index(matches[0])]
+    exact = {p.strip().lower(): p for p in team}
 
-        return s
-    except:
-        return short_name
+    if s.lower() in exact:
+        return exact[s.lower()]
+
+    lowered = s.lower()
+
+    for matches, canonical in ALIAS_RULES:
+        if canonical in team and matches(lowered):
+            return canonical
+
+    raw_tokens = _name_tokens(s)
+    candidates = []
+
+    for player in team:
+        canon_tokens = _name_tokens(player)
+
+        if len(canon_tokens) < 2:
+            continue
+
+        used = set()
+
+        for token in canon_tokens:
+            hit = next(
+                (
+                    r for r in raw_tokens
+                    if r not in used and (
+                        r == token
+                        or (len(token) == 1 and r.startswith(token))
+                        or (len(r) == 1 and token.startswith(r))
+                        or (len(r) > 2 and r.startswith(token))
+                    )
+                ),
+                None
+            )
+            if hit is None:
+                break
+            used.add(hit)
+
+        if (
+            len(used) == len(canon_tokens)
+            and len(used) >= 2
+            and all(len(r) == 1 or r in used for r in raw_tokens)
+        ):
+            candidates.append(player)
+
+    if len(candidates) == 1:
+        return candidates[0]
+
+    return s
 
 
 def _resolve_team_key(team_name):
